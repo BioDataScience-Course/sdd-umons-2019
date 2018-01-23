@@ -1,10 +1,10 @@
 # Introduction {#intro}
 
-This is my first bookdown, ... and a sandbox to test its features. I started from [here](http://seankross.com/2016/11/17/How-to-Start-a-Bookdown-Book.html), then got some pieces from [here](https://github.com/rstudio/bookdown-demo), and finally skimmed the [bookdown book](https://bookdown.org/yihui/bookdown/) and took some notes hereunder. I had also a look at this [blog](http://seankross.com/2016/11/17/How-to-Start-a-Bookdown-Book.html).
+Cet ouvrage couvrira, à terme, la matière des cinq cours de science des données enseignés aux biologistes de la Faculté des Sciences de l'Université de Mons (Belgique). La matière sera complétée progressivement à partir du premier cours prévu pour l'année académique 2018-2019.
 
-To convine someone to switch to Markdown, show him [this](http://nerdplusart.com/markdown-is-the-future/). A short discussion of html/active documents _versus_ pdf/static printable pages should be nice here.
+Cet ouvrage est également disponible en format PDF (en vue de son impression), mais il est surtout conçu pour être utilisé de manière interactive, en ligne. En effet, nous prévoyons d'y adjoindre des capsules (unités d'enseignement) sous forme de vidéo, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables que en ligne.**
 
-*Now, let's look at spacial formattings provided by bookdown.*
+_Je laisse pour l'instant la suite qui présente les aspects spécifiques de R Markdown pour bookdown, à l'usage des auteurs... et à effacer ensuite!_
 
 
 ## Book-wide references

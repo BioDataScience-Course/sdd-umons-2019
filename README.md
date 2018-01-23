@@ -1,5 +1,6 @@
-This is my test area for a [bookdown](https://bookdown.org/home/about.html) book. You can find the
-preview of this book at http://phgrosjean.sciviews.org/bookdown-test/
+# Science des données - Cours UMONS - Le book!
 
-All of the content of this repository is licensed 
-[CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+The source files for the SDD-UMONS book, written using [bookdown](https://bookdown.org/home/about.html). You can find this book at http://biodatascience-course.sciviews.org/sdd-umons/
+
+The content of this book is licensed 
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr).

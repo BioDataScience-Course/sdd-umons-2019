@@ -6,10 +6,13 @@ bookdown::gitbook:
     toc:
       collapse: subsection
       before: |
-        <li><a href="./">A Test Bookdown Book</a></li>
+        <li><a href="./">Science des données (cours UMONS)</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/phgrosjean/bookdown-test/edit/master/%s
+        <li><a href="http://biodatascience-course.sciviews.org">Site web du cours</a></li>
+        <li><a href="https://github.com/BioDataScience-Course">Organisation Github du cours</a></li>
+        <br/>
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
+    edit: https://github.com/BioDataScience-Course/sdd-umons/edit/master/%s
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

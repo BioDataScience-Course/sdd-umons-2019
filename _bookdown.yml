@@ -1,6 +1,6 @@
-book_filename: "bookdown-test"
-chapter_name: "Chapter "
-repo: https://github.com/phgrosjean/bookdown-test
+book_filename: "sdd-umons"
+chapter_name: "Chapitre "
+repo: https://github.com/BioDataScience-Course/sdd-umons
 output_dir: docs
 clean: [packages.bib, bookdown.bbl]
 new_session: yes
