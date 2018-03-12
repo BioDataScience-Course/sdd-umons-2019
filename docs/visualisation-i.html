@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="visualisation-i.html">
+<link rel="prev" href="intro.html">
+<link rel="next" href="visualisation-ii.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -116,45 +116,57 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1">
-<h1><span class="header-section-number">Module 1</span> Introduction</h1>
-<p>L’objectif de ce module est de motiver les étudiants pour apprendre les outils qui leur permettront de faire de la science des données. nous n’entrerons pas directement dans le vif du sujet, mais nous initierons une activité plus <em>ludique</em>, mais néanmoins utile et qui leur permettra de faire connaissance avec divers outils logiciels dont Git, Markdown, RStudio, Blogdown, … Il s’agira de réaliser son propre <strong>site web professionnel</strong> avec <code>blogdown</code> and un dépôt Github.</p>
-<p>Les aquis recherchés ici sont:</p>
+<div id="visualisation-i" class="section level1">
+<h1><span class="header-section-number">Module 2</span> Visualisation I</h1>
+<p>Les objectifs de ce module sont:</p>
 <ul>
-<li>Appréhender ce qu’est la science des données et les (bio)statistiques.</li>
-<li>S’initier à des outils de base (SciViews Box, RStudio, Markdown, git, Github).</li>
-<li>Se sensibiliser à l’importance d’une présence web au niveau professionnel.</li>
+<li>Découvrir ce qu’on peut faire avec R (“wow factor”)</li>
+<li>Découvrir R Markdown et la recherche reproductible</li>
+<li>Découvrir comment faire un graphique en nuage de points dans R et <code>chart</code></li>
+<li>Intégrer des graphiques dans un rapport. Comparer de manière critique un workflow avec Excel - Word et avec R - R Markdown: se sensibiliser à la recherche reproductible</li>
 </ul>
-<p>Un template <code>blogdown</code> sera fourni dans Github Classroom. Il sera également expliqué qu’un “bookdown” collectif sera créé, et pourra être complété par les étudiants avec du matériel qu’ils créeront eux-mêmes, ou des liens vers des sites intéressants qu’ils découvriront au cours de leur apprentissage. Concernant ces éléments concrets, un débriefing sera prévu concernant la participation au “bookdown” au module #11.</p>
-<p><strong>Idées provisoires:</strong></p>
+<div id="prerequis" class="section level2">
+<h2><span class="header-section-number">2.1</span> Prérequis</h2>
+<p>S’être familiarisé avec la SciViews Box, RStudio et Markdown. Maitriser les bases de git et Github (avoir un compte Github, savoir cloner un dépôt localement, travailler avec Github Desktop pour faire ses commits + push/pull). Ceci correspond à la matière du module #1, qui est conséquente, mais doit être assimilée assez rapidement. <strong>Laisser le temps suffisant à l’horaire!</strong></p>
+<p>Proposer une liste de matériel pédagogique pour aider à approfondir les prérequis, si nécessaire:</p>
 <ul>
-<li><p><strong>Présentation 1h</strong>, installation de SciViews Box sur les machines du labo et présentation de RStudio + projet + un document markdown + ajouter git et montrer l’intérêt, suivi d’une “install party” (temps prévu après le cours), quelques jours où ils ont à digérer la matière, voir Markdown et créer un compte Github, 2h pour créer le site web blogdown.</p></li>
-<li><p>Ensuite, il faut du matériel qui présente git, github, clone, commit, push, pull, fetch, … comme capsule à étudier après le cours</p></li>
-<li><p>Début de module suivant (participation cotée): réexpliquer avec ses propres mots git + Github.</p></li>
-<li><p>Leur expliquer les changements. Comment le monde était il y a 25 ans? Pas d’internet, pas de smartphone. Que feraient-ils sans smartphone.</p></li>
-<li>Les révolutions indistrielles:
+<li>…</li>
+<li>…</li>
+</ul>
+</div>
+<div id="materiel-pedagogique-1" class="section level2">
+<h2><span class="header-section-number">2.2</span> Matériel pédagogique</h2>
 <ul>
-<li>1770 (1756) révolution 1: mécanisation</li>
-<li>1870 révolution 2: maîtrise de l’énergie</li>
-<li>1970 (1979) révolution 3: informatique</li>
-<li>1990 révolution 4: internet (1990 Web, 1992 ISOC = Internet society, 1993 = premuer browser web)</li>
-<li>2000 révolution 5: numérique. GAFA = Google - Apple - Facebook - Amazon + Microsoft = GAFAM aux USA et BATX en Chine = Baidu - Alibaba - Tencent - Xiaomi. Aussi NATU = Netflix - Airbnb - Tesla - Uber. 2010 révolution 6: NBIC = nanotechnologies - biotechnologies - informatique - sciences cognitives. 2020 = date prévue pour que l’ordinateur ait la même puissane de traitement de l’information que le cerveau humain 2030 = transhumanisme: ordinateur plus puissant que l’homme et le remplaçant.</li>
-</ul></li>
-<li><p>Valeur estimée des données et informations mises à disposition par les utilisateurs du net: 1000 milliards de dollar par an (écrire en chiffres)!</p></li>
-<li><p>En 2020, quantité d’information ajoutée sur le net: 1000 milliards de milliards par semaine (écrire en chiffre aussi)</p></li>
-<li><p>Comparaison de puissance de traitement du cerveau humain <em>versus</em> l’ordinateur: 89 milliards de neurones, mais travail en multitâche alors qu’un processeur est monotâche =&gt; difficile à comparer. Une étude a montré en 2017 que l’un des 5 ordinateurs les plus puissants a été capable de simuler le fonctionnement d’environ 1% du cerveau humain en 1 sec. Il lui a fallu 40 min de calcul pour y arriver. Intel estime que l’évolution permettra d’égaler le cerveau humain en terme de vitesse de traitement vers 2020.</p></li>
-<li><p>Consommation du supercalculateur: en mégawatts, alors que le cerveau humain consomme 12-13W seulement!</p></li>
-<li><p>“Le <strong>transhumanisme</strong> est une approche interdisciplinaire qui nous amène à comprendre et à évaluer les avenues qui nous permettrons de surmonter nos limites biologiques par les progrès technologiques. Les transhumanistes cherchent à développer les possibilités techniques afin que les gens vivent plus longtemps et …”</p></li>
+<li>…</li>
+<li>Capsule vidéo sur le nuage de points</li>
+<li>…</li>
+</ul>
+</div>
+<div id="a-vous-de-jouer" class="section level2">
+<h2><span class="header-section-number">2.3</span> A vous de jouer…</h2>
+<p>Un squelette de projet RStudio vous sera fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d’étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d’autres visualisations graphiques.</p>
+<p><em>Le travail que vous aurez réalisé sera discuté tous ensembles à la fin de ce module.</em></p>
+</div>
+<div id="pour-en-savoir-plus" class="section level2">
+<h2><span class="header-section-number">2.4</span> Pour en savoir plus</h2>
+<ul>
+<li><p><a href="https://rmarkdown.rstudio.com/lesson-1.html">What is R Markdown?</a>. Video en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).</p></li>
+<li><p><a href="https://rmarkdown.rstudio.com/articles_intro.html">Introduction to R Markdown</a>. Tutorial en anglais, par RStudio, les concepteurs de R Markdown,</p></li>
+<li><p>Aide mémoire R Markdown: dans les menus RStudio <code>Help -&gt; Cheatsheets -&gt; R Markdown Cheat Sheet</code></p></li>
+<li><p>Référence rapide à Markdown: dans les menus RStudio <code>Help -&gt; Markdown Quick Reference</code></p></li>
+<li><p><a href="https://rstudio-pubs-static.s3.amazonaws.com/32239_0956f02cef24443abd9525551368ef12.html#6">Introduction à R Markdown</a>. Présentation en français par Agrocampus Ouest - Rennes.</p></li>
+<li><p><a href="https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/RMarkdown.pdf">Le langage R Markdown</a>. Introduction en français concise, mais relativement complète.</p></li>
 </ul>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="visualisation-i.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualisation-ii.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -183,7 +195,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/01-Introduction.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/02-Visualisation-I.Rmd",
 "text": "Edit"
 },
 "download": null,

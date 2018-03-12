@@ -1,5 +1,5 @@
 book_filename: "sdd-umons"
-chapter_name: "Chapitre "
+chapter_name: "Module "
 repo: https://github.com/BioDataScience-Course/sdd-umons
 output_dir: docs
 clean: [packages.bib, bookdown.bbl]

@@ -1,4 +1,4 @@
-# Science des données - Cours UMONS - Le book!
+# Science des données biologiques, UMONS - Le book!
 
 The source files for the SDD-UMONS book, written using [bookdown](https://bookdown.org/home/about.html). You can find this book at http://biodatascience-course.sciviews.org/sdd-umons/
 

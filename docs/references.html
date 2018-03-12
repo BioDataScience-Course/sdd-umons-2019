@@ -5,34 +5,34 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Science des données - Cours UMONS - Le book!</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec SciViews::R.">
+  <title>Science des données biologiques, UMONS - Le book!</title>
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews::R.">
   <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Science des données - Cours UMONS - Le book!" />
+  <meta property="og:title" content="Science des données biologiques, UMONS - Le book!" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
-  <meta property="og:description" content="Tutoriel interactif pour la science des données avec SciViews::R." />
+  <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews::R." />
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Science des données - Cours UMONS - Le book!" />
+  <meta name="twitter:title" content="Science des données biologiques, UMONS - Le book!" />
   
-  <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec SciViews::R." />
+  <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews::R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-01-23">
+<meta name="date" content="2018-03-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="suite.html">
+<link rel="prev" href="design-experimental-critique-statistique.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -47,8 +47,52 @@
 
 
 
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-0.9.0/grViz.js"></script>
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -63,22 +107,24 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Science des données (cours UMONS)</a></li>
+<li><a href="./">Science des données biologiques (cours UMONS)</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#book-wide-references"><i class="fa fa-check"></i><b>1.1</b> Book-wide references</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#reference-to-chapter-and-titles"><i class="fa fa-check"></i><b>1.1.1</b> Reference to chapter and titles</a></li>
-<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#numbered-figures-and-tables"><i class="fa fa-check"></i><b>1.1.2</b> Numbered figures and tables</a></li>
-<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#numbered-equations"><i class="fa fa-check"></i><b>1.1.3</b> Numbered equations</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préambule</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#evaluation"><i class="fa fa-check"></i>Evaluation</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#citations"><i class="fa fa-check"></i><b>1.2</b> Citations</a></li>
-<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#cache-long-computations"><i class="fa fa-check"></i><b>1.3</b> Cache long computations</a></li>
-<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#section"><i class="fa fa-check"></i><b>1.4</b> [1] 2</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="point-de-depart.html"><a href="point-de-depart.html"><i class="fa fa-check"></i><b>2</b> Point de départ</a></li>
-<li class="chapter" data-level="3" data-path="suite.html"><a href="suite.html"><i class="fa fa-check"></i><b>3</b> Suite</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="visualisation-i.html"><a href="visualisation-i.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a></li>
+<li class="chapter" data-level="3" data-path="visualisation-ii.html"><a href="visualisation-ii.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a></li>
+<li class="chapter" data-level="4" data-path="visualisation-iii.html"><a href="visualisation-iii.html"><i class="fa fa-check"></i><b>4</b> Visualisation III</a></li>
+<li class="chapter" data-level="5" data-path="importationtransformation-des-donnees.html"><a href="importationtransformation-des-donnees.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a></li>
+<li class="chapter" data-level="6" data-path="donnees-qualitatives.html"><a href="donnees-qualitatives.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a></li>
+<li class="chapter" data-level="7" data-path="probabilites-distributions.html"><a href="probabilites-distributions.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a></li>
+<li class="chapter" data-level="8" data-path="test-chi-carre.html"><a href="test-chi-carre.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
+<li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
+<li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
+<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
+<li class="chapter" data-level="12" data-path="design-experimental-critique-statistique.html"><a href="design-experimental-critique-statistique.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
 <li><a href="http://biodatascience-course.sciviews.org">Site web du cours</a></li>
@@ -95,7 +141,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Science des données - Cours UMONS - Le book!</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Science des données biologiques, UMONS - Le book!</a>
           </h1>
         </div>
 
@@ -106,13 +152,21 @@
 <div id="references" class="section level1 unnumbered">
 <h1>Références</h1>
 
+<div id="refs" class="references">
+<div>
+<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
+</div>
+<div>
+<p>———. 2017. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown" class="uri">https://CRAN.R-project.org/package=bookdown</a>.</p>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="suite.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="design-experimental-critique-statistique.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -153,6 +207,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
