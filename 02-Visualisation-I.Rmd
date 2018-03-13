@@ -1,24 +1,22 @@
-# Visualisation I
+# Visualisation I {#visu1}
 
-Les objectifs de ce module sont:
+Vos objectifs pour ce module sont:
 
-- Découvrir ce qu'on peut faire avec R ("wow factor")
-- Découvrir R Markdown et la recherche reproductible
-- Découvrir comment faire un graphique en nuage de points dans R et `chart`
-- Intégrer des graphiques dans un rapport. Comparer de manière critique un workflow avec Excel - Word et avec R - R Markdown: se sensibiliser à la recherche reproductible
+- Découvrir --et vous émerveiller de--  ce que l'on peut faire avec le [logiciel R](http://www.r-project.org) [@R-base]
+- Découvrir le format R Markdown [@R-rmarkdown] et la recherche reproductible
+- Savoir réaliser différentes variantes d'un graphique en nuage de points dans R avec la fonction `chart()`
+- Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez
+- Comparer de manière critique un workflow 'classique' en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown; prendre conscience de l'énorme potentiel de R
 
 
 ## Prérequis
 
-S'être familiarisé avec la SciViews Box, RStudio et Markdown. Maitriser les bases de git et Github (avoir un compte Github, savoir cloner un dépôt localement, travailler avec Github Desktop pour faire ses commits + push/pull). Ceci correspond à la matière du module #1, qui est conséquente, mais doit être assimilée assez rapidement. **Laisser le temps suffisant à l'horaire!**
+Si ce n'est déjà fait (matériel du module \@ref(intro)), vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown. Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull).
 
-Proposer une liste de matériel pédagogique pour aider à approfondir les prérequis, si nécessaire:
-
-- ...
-- ...
+**A faire: proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire**
 
 
-## Matériel pédagogique
+## Matière
 
 - ...
 - Capsule vidéo sur le nuage de points

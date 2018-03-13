@@ -1,7 +1,7 @@
 --- 
-title: "Science des données biologiques, UMONS - Le book!"
+title: "Science des données biologiques, UMONS"
 author: "Philippe Grosjean & Guyliann Engels"
-date: "2018-03-12"
+date: "2018-03-13"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -16,165 +16,100 @@ cover-image: "images/front-cover.png"
 
 # Préambule {-}
 
+
+
+
 Cet ouvrage couvrira, à terme, la matière des cinq cours de science des données enseignés aux biologistes de la Faculté des Sciences de l'Université de Mons (Belgique). La matière sera complétée progressivement à partir du premier cours prévu pour l'année académique 2018-2019.
 
-Cet ouvrage sera également disponible en format PDF (en vue de son impression), mais il est surtout conçu pour être utilisé de manière interactive, en ligne. En effet, nous prévoyons d'y adjoindre des capsules (unités d'enseignement) sous forme de vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
+Cet ouvrage sera également disponible en format PDF (en vue de son impression), mais il est surtout conçu pour être utilisé de manière interactive, en ligne. En effet, nous prévoyons d'y adjoindre des capsules (unités d'enseignement ciblant un et un seul concept) sous forme de vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
 
 ![](images/front-cover.png)
 
-Le premier cours intitulé **Science des données I: visualisation et inférence** qui sera dispensé aux biologistes de second Bachelier en Faculté des Sciences de l'Université de Mons à partir de l'année académique 2018-2019 contient 25h de cours et 50h d'exercices.
 
-Cette matière est divisée en 12 modules de 2h de cours et 4h d'exercices chacuns. Cependant, la formation étant prévue en grande partie en classe inversée, les 6h de chaque module seront mises à profit pour des activités interactives dans le cadre de la matière dévolue à chaque module.
+## Vue générale du cours {-}
 
-<!--html_preserve--><div id="htmlwidget-bc20e250d25c180b2416" style="width:600px;height:600px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bc20e250d25c180b2416">{"x":{"diagram":"\ndigraph general_flow {\n  graph [rankdir = \"TB\", overlap = true, compount = true, fontsize = 10]\n  \n  node [shape = box,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = LightSteelBlue,\n        fixedsize = true,\n        width = 2]\n  \"1 Introduction\"; \"12 Design/critique\"\n  \n  subgraph cluster_0 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = red];\n    \"2 Visualisation I\"->\"3 Visualisation II\"\n    \"2 Visualisation I\"->\"4 Visualisation III\"\n    label = \"Visualisation & description des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_1 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = blue];\n    \"5 Quantitatif\"->\"6 Qualitatif\"\n    label = \"Importation & transformation des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_2 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = green];\n    \"7 Probabilités\"->\"8 Test Chi2\"\n    \"7 Probabilités\"->\"9 IC/t-test\"\n    \"8 Test Chi2\"->\"9 IC/t-test\"\n    \"9 IC/t-test\"->\"10 ANOVA\"\n    \"10 ANOVA\"->\"11 Correlation\"\n    label = \"Inférence & hypothèses\";\n    color = lightgray\n  }\n\n  \"1 Introduction\"->\"2 Visualisation I\" [lhead = cluster_0]\n  \"2 Visualisation I\"->\"5 Quantitatif\" [lhead = cluster_1]\n  \"3 Visualisation II\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"4 Visualisation III\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"6 Qualitatif\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"11 Correlation\"->\"12 Design/critique\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+Le premier cours intitulé **Science des données I: visualisation et inférence** qui sera dispensé aux biologistes de second Bachelier en Faculté des Sciences de l'Université de Mons à partir de l'année académique 2018-2019 contient 25h de cours et 50h d'exercices en presentiel, et il nécessitera environ un tiers de ce temps (voir plus, en fonction de votre rythme et de votre technique d'apprentissage) de travail à domicile.
+
+Cette matière est divisée en 12 modules de 2h de cours et 4h d'exercices en présentiel chacun (voir Figure \@ref(fig:diagram-fig)). Cependant, la formation étant prévue en grande partie en classe inversée, les 6h de chaque module seront mises à profit pour des activités interactives dans le cadre de la matière dévolue à chaque module.
+
+<div class="figure" style="text-align: center">
+<!--html_preserve--><div id="htmlwidget-16d0246fc2eb11949b68" style="width:600px;height:600px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-16d0246fc2eb11949b68">{"x":{"diagram":"\ndigraph general_flow {\n  graph [rankdir = \"TB\", overlap = true, compount = true, fontsize = 10]\n  \n  node [shape = box,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = LightSteelBlue,\n        fixedsize = true,\n        width = 2]\n  \"1 Introduction\"; \"12 Design/critique\"\n  \n  subgraph cluster_0 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = red];\n    \"2 Visualisation I\"->\"3 Visualisation II\"\n    \"2 Visualisation I\"->\"4 Visualisation III\"\n    label = \"Visualisation & description des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_1 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = blue];\n    \"5 Quantitatif\"->\"6 Qualitatif\"\n    label = \"Importation & transformation des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_2 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = green];\n    \"7 Probabilités\"->\"8 Test Chi2\"\n    \"7 Probabilités\"->\"9 IC/t-test\"\n    \"8 Test Chi2\"->\"9 IC/t-test\"\n    \"9 IC/t-test\"->\"10 ANOVA\"\n    \"10 ANOVA\"->\"11 Correlation\"\n    label = \"Inférence & hypothèses\";\n    color = lightgray\n  }\n\n  \"1 Introduction\"->\"2 Visualisation I\" [lhead = cluster_0]\n  \"2 Visualisation I\"->\"5 Quantitatif\" [lhead = cluster_1]\n  \"3 Visualisation II\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"4 Visualisation III\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"6 Qualitatif\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"11 Correlation\"->\"12 Design/critique\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<p class="caption">(\#fig:diagram-fig)Agencement des différents modules du cours I.</p>
+</div>
 
 
 ## Matériel pédagogique {-}
 
-Du matériel varié sera proposé. Les étudiants pourront piocher dans l'offre en fonction de leur profil d'apprenant:
+Du matériel varié vous est proposé. Vous pourrez ainsi piocher dans l'offre en fonction de vos envies et de votre profil d'apprenant pour optimiser votre travail. Vous trouverez:
 
-- Des capsules, essentiellement sous forme de vidéos < 10 min,
+- un ouvrage en ligne (celui que vous lisez en ce moment!) et qui pointe vers les différentes autres ressources disponibles,
 
-- Un ouvrage en ligne type 'bookdown' (ici même!),
+- des capsules, essentiellement sous forme de vidéos < 10 min qui ciblent chacune un concept particulier,
 
-- Des tutoriaux, éventuellement interactifs,
+- des tutoriaux, éventuellement interactifs,
 
-- Des documents `learnr` avec explications et exercices + quizzs en ligne,
+- des documents `learnr`, c'est-à-dire, des pages Web interactives avec explications, exercices et quizzs en ligne,
 
-- Des slides (essentiellement liées aux partie de type cours plus classiques),
+- des slides (essentiellement liées aux cours plus classiques),
 
-- Des dépôts Github Classroom `BioDataScience-Course` pour les devoirs ("assignments"), partiellement pré-remplis.
+- des dépôts Github Classroom dans `BioDataScience-Course` (vous apprendrez ce que c'est très rapidement dès le premier module) pour réaliser et documenter vos travaux personnels.
 
-- Des renvois vers des documents externes en ligne, types vidéos youtube ou vimeo, des ouvrages en ligne type 'R for Data Science', des blogs, des tutoriaux, des vignettes liées aux packages R, des parties gratuites de cours Datacamp, ou équivalent, des questions Stackoverflow ou mailing list R, ...
+- des renvois vers des documents externes en ligne, types vidéos youtube ou vimeo, des ouvrages en ligne en anglais ou en français, des blogs, des tutoriaux, des vignettes liées aux packages R, des parties gratuites de cours Datacamp ou équivalents, des questions Stackoverflow ou mailing list R, ...
+
+> Tout ce matériel sera accessible à partir d'un site web, de Moodle et/ou du dossier `SDD` sur `StudentTemp` en Intranet UMONS. Les aspects pratiques seront à réaliser en utilisant la 'SciViews Box', une machine virtuelle préconfigurée que nous installerons ensemble lors du premier cours^[Il est donc très important que vous soyez présent à ce cours, et vous pouvez venir aussi avec l'ordinateur portable que vous utiliserez ensuite chez vous.]. Il vous faudra donc avoir accès à un ordinateur (sous Windows, MacOS, ou Linux peu importe, suffisamment puissant et connecté à Internet ou à l'Intranet UMONS). Enfin, vous pourrez poser vos questions par mail à l'adresse `sdd@sciviews.org`.
 
 
-**Tout ce matériel sera disponible à partir d'un site web, de Moodle et/ou du dossier `SDD` sur `StudentTemp` en Intranet. Les aspects pratiques seront à réaliser en utilisant la SciViews Box. Les questions pourront être adressées par mail via `sdd@sciviews.org`**
+## Comment apprendre? {-}
+
+
+```r
+fortunes::fortune("brain surgery")
+```
+
+```
+#! 
+#! I wish to perform brain surgery this afternoon at 4pm and don't know where
+#! to start. My background is the history of great statistician sports
+#! legends but I am willing to learn. I know there are courses and numerous
+#! books on brain surgery but I don't have the time for those. Please direct
+#! me to the appropriate HowTos, and be on standby for solving any problem I
+#! may encounter while in the operating room. Some of you might ask for
+#! specifics of the case, but that would require my following the posting
+#! guide and spending even more time than I am already taking to write this
+#! note.
+#!    -- I. Ben Fooled (aka Frank Harrell)
+#!       R-help (April 1, 2005)
+```
+
+Version courte: **en pratiquant, en faisant des erreurs!**
+
+Version longue: aujourd'hui --et encore plus dans l'avenir-- les données sont complexes et ne se manipulent plus simplement avec un tableur comme Microsoft Excel. Vous allez apprendre à maitriser des outils professionnels, ce qui sous-entend qu'ils sont très puissants mais aussi relativement complexes. La méthode d'apprentissage que nous vous proposons a pour objectif prioritaire de vous faciliter la tâche, quelles que soient vos aptitudes au départ. Envisagez votre voyage en science des données comme l'apprentissage d'une nouvelle langue. **C'est en pratiquant, et en pratiquant encore sur le long terme que vous allez progresser.** La formation s'étale sur quatre années, et est répartie en cinq cours de difficulté croissante pour vous aider dans cet apprentissage progressif et dans la durée. N'hésitez pas à expérimenter, tester, essayer des nouvelles idées (même au delà de ce qui sera demandé dans les exercices) et **n'ayez pas peur de faire des erreurs**. Vous en ferez, ... beaucoup ... _nous vous le souhaitons!_ En fait, la meilleure manière d'apprendre, c'est justement en faisant des erreurs, et puis en mettant tout en oeuvre pour les comprendre et les corriger. Donc, si un message d'erreur, ou un "warning" apparait en rouge dans le logiciel, ne soyez pas intimidé. Prenez une bonne respiration, lisez-le attentivement, essayez de le comprendre, et au besoin faites-vous aider: la solution est sur le Net, 'Google^[Il existe des outils plus pointus, par exemple, pour obtenir de l'aide sur le logiciel R (ref à ajouter ici vers un appendice)] est votre ami'!
 
 
 ## Evaluation {-}
 
-Sur 20:
+On imagine que c'est une question qui vous taraude l'esprit. Alors, voilà, l'évaluation sera une somme de petites contributions qui matérialiseront votre progression sur le long terme. Avec cette évaluation, nous souhaitons vous gratifier chaque fois que vous franchirez des étapes, plutôt que de vous sanctionner lorsque vous bloquez. Donc, pour une note finale sur 20:
 
-- 2 points pour la progression sur base des exercices `learnr` en classe inversée.
+- 2 points pour la progression sur base des exercices que vous réaliserez en classe inversée (donc, chez vous).
 
-- 2 points pour la restitution des capsules/participation.
+- 2 points pour la restitution des capsules et votre participation en présentiel. Au début de chaque séance, nous discuterons des notions que vous aurez à préparer par avance, et votre participation sera évaluée.
 
-- 5 points pour un quizz `learnr` final: 5 questions au hasard pour chaque étudiant sur base de 20 questions au total.
+- 5 points pour un quizz final: vous aurez à répondre à cinq questions au hasard (set différent pour chaque étudiant sur base de 20 questions au total).
 
-- 11 points pour l’évaluation d’un des rapports (choisi en fin de sesssion)
+- 11 points pour l’évaluation d’un des rapports d'analyse de données (choisi au hasard en fin de cours).
 
-- Eventuellement un point bonus pour une participation particulièrement bonne, ou tout autre élément à valoriser (site web perso/blob exceptionnel, participation importante au bookdown collaboratif, aide des autres étudiants, etc.)
-
-----
-
-Matériel distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr).
-
-
-
+- Enfin, vous pourrez éventuellement encore gagner un point bonus pour une participation remarquable, ou tout autre élément à valoriser (site web personnel et/ou blog exceptionnel, contribution significative à l'ouvrage bookdown [@R-bookdown] collaboratif, aide des autres étudiants, etc.). Ceci étant à l'appréciation des enseignants.
 
 ----
 
-La suite est un mémo pour les nouvelles fonctionnalités apportées par bookdown... le temps qu'on s'y habitue!
+_Le matériel dans cet ouvrage est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)._
 
 
-**Book-wide references**
+**TODO:**
 
-With R Markdown, it is only possible to reference items inside the same document, and there is no numbered figures, tables or equations (at least if LaTeX code is not used, but then, you can olny generate a PDF). Bookdown fills the gap with new formatting instructions that work across all documents of the book. It also provides updated versions of R MArkdown output formats that support numbered figures, tables and equations, e.g., `html_document2` to replace `html_document`, for instance.
+- Ajouter des blocs particuliers comme suggestion, warning, piège, info, etc. (voir 2.7 dans bookdown)
 
+- Ajout de widgets HTML & apps Shiny: voir 2.10 & 2.11.
 
-**Reference to chapter and titles**
-
-You can reference **chapters** and **titles** using \@ref(intro). The book is organized in chapters and all numbers are by chapters. However, there are special level 1 title you can use:
-
-- **Parts**: use `# (PART) Part I {-}` just before the first title of that part. 
-
-- **Appendix**: use `# (APPENDIX) Appendix {-}` just before appendices titles. They will be numbered separately.
-
-
-**Numbered figures and tables**
-
-**Figures** and **tables** are in their own environments:
-
-
-```r
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
-
-<div class="figure" style="text-align: center">
-<img src="index_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
-<p class="caption">(\#fig:nice-fig)Here is a nice figure!</p>
-</div>
-
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
-
-
-```r
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-
-
-Table: (\#tab:nice-tab)Here is a nice table!
-
- Sepal.Length   Sepal.Width   Petal.Length   Petal.Width  Species 
--------------  ------------  -------------  ------------  --------
-          5.1           3.5            1.4           0.2  setosa  
-          4.9           3.0            1.4           0.2  setosa  
-          4.7           3.2            1.3           0.2  setosa  
-          4.6           3.1            1.5           0.2  setosa  
-          5.0           3.6            1.4           0.2  setosa  
-          5.4           3.9            1.7           0.4  setosa  
-          4.6           3.4            1.4           0.3  setosa  
-          5.0           3.4            1.5           0.2  setosa  
-          4.4           2.9            1.4           0.2  setosa  
-          4.9           3.1            1.5           0.1  setosa  
-          5.4           3.7            1.5           0.2  setosa  
-          4.8           3.4            1.6           0.2  setosa  
-          4.8           3.0            1.4           0.1  setosa  
-          4.3           3.0            1.1           0.1  setosa  
-          5.8           4.0            1.2           0.2  setosa  
-          5.7           4.4            1.5           0.4  setosa  
-          5.4           3.9            1.3           0.4  setosa  
-          5.1           3.5            1.4           0.3  setosa  
-          5.7           3.8            1.7           0.3  setosa  
-          5.1           3.8            1.5           0.3  setosa  
-
-
-**Numbered equations**
-
-To number equations and allow to refer to them, use an `equation` environment and label them with the syntax `(\#eq:label)`:
-
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  (\#eq:binom)
-\end{equation} 
-
-... and here, I refer to eq. \@ref(eq:binom). In the vase equations are not labelled, use the `equation*` environment instead.
-
-
-**Citations**
-
-You can reference citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
-
-
-**Cache long computations**
-
-If some computation is time-consuming, we could consider to cache it:
-
-
-```r
-# A verrry long computation!
-1 + 1
-```
-
-```
-## [1] 2
-```
-
-
-**TODO:** browse the bookdown book from 2.4 Figures on....
+- Lire et voir ce qui est intéressant à partir de section 3 dans bookdown.

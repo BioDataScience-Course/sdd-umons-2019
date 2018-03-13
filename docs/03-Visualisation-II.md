@@ -1,4 +1,4 @@
-# Visualisation II
+# Visualisation II {#visu2}
 
 _A ce niveau, les étudiants pourront choisir entre le module 3 et le module 4 à faire en premier. Ensuite, les groupes switcheront vers l'autre modules et s'entre-aideront._
 

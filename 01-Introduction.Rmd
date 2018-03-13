@@ -1,8 +1,12 @@
+# (PART) Cours I: visualisation et inférence {-}
+
 # Introduction {#intro}
 
-L'objectif de ce module est de motiver les étudiants pour apprendre les outils qui leur permettront de faire de la science des données. nous n'entrerons pas directement dans le vif du sujet, mais nous initierons une activité plus _ludique_, mais néanmoins utile et qui leur permettra de faire connaissance avec divers outils logiciels dont Git, Markdown, RStudio, Blogdown, ... Il s'agira de réaliser son propre **site web professionnel** avec `blogdown` and un dépôt Github.
+**Contenu provisoire, à retravailler en fonction d'un canevas commun aux différents modules.**
 
-Les aquis recherchés ici sont:
+L'objectif de ce module est de motiver les étudiants pour apprendre les outils qui leur permettront de faire de la science des données. nous n'entrerons pas directement dans le vif du sujet, mais nous initierons une activité plus _ludique_, mais néanmoins utile et qui leur permettra de faire connaissance avec divers outils logiciels dont Git, Markdown, RStudio, Blogdown, ... Il s'agira de réaliser son propre **site web professionnel** avec `blogdown` et un dépôt Github.
+
+Les acquis recherchés ici sont:
 
 - Appréhender ce qu'est la science des données et les (bio)statistiques.
 - S'initier à des outils de base (SciViews Box, RStudio, Markdown, git, Github).
@@ -11,6 +15,8 @@ Les aquis recherchés ici sont:
 Un template `blogdown` sera fourni dans Github Classroom. Il sera également expliqué qu'un "bookdown" collectif sera créé, et pourra être complété par les étudiants avec du matériel qu'ils créeront eux-mêmes, ou des liens vers des sites intéressants qu'ils découvriront au cours de leur apprentissage. Concernant ces éléments concrets, un débriefing sera prévu concernant la participation au "bookdown" au module #11.
 
 **Idées provisoires:**
+
+- Fournir un document qui explique comment on passe du document R Markdown à la version finale, grâce à **knitr** [@R-knitr; @xie2015].
 
 - **Présentation 1h**, installation de SciViews Box sur les machines du labo et présentation de RStudio + projet + un document markdown + ajouter git et montrer l'intérêt, suivi d'une "install party" (temps prévu après le cours), quelques jours où ils ont à digérer la matière, voir Markdown et créer un compte Github, 2h pour créer le site web blogdown.
 

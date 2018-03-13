@@ -1,3 +1,12 @@
-# Importation/transformation des données
+# Importation/transformation des données {#import}
 
 Importation, tranformation, "cook", `dplyr`, `tidyr`. Type de variables et façon de les représenter dans R. Expression de condition. Chemins relatifs. Challenges: faire tel type de graphe étant donné tel jeu de données (avec étape de transformation nécessaire).
+
+Un exemple de jeu de données est présenté à la Table \@ref(tab:exemple-tab).
+
+```{r exemple-tab, tidy = FALSE, echo = FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Un exemple de tableau.',
+  booktabs = TRUE
+)
+```
