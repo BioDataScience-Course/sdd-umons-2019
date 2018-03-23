@@ -16,21 +16,44 @@ Si ce n'est déjà fait (matériel du module \@ref(intro)), vous devez installer
 **A faire: proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire**
 
 
-## Matière
+## Visualisation graphique à l'aide du nuage de points
 
 - ...
 - Capsule vidéo sur le nuage de points
 - ...
 
 
-## A vous de jouer...
+### A vous de jouer !
 
-Un squelette de projet RStudio vous sera fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres visualisations graphiques.
+Sur base des jeux de données `XXX` et `YYY`, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script (+ /reports pour la suite) + projet.
 
-_Le travail que vous aurez réalisé sera discuté tous ensembles à la fin de ce module._
+_Le travail que vous aurez réalisé sera discuté à la séance suivante._
 
 
-## Pour en savoir plus
+## Intégration des graphiques dans un rapport: R Markdown
+
+- Qu'est-ce que R Markdown?
+- ...
+
+### A vous de jouer !
+
+Un squelette de projet RStudio vous a été fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres visualisations graphiques.
+
+_Vous allez comparer différentes approches pour réaliser un rapport d'analyse lors de la prochaine séance d'exercices._
+
+
+## Récapitulons
+
+- Petite réflexion concernant la comparaison Word-Excel _versus_ R Markdown. Rédigez éventuellement un article sur votre blog à ce sujet.
+
+
+### Testez vos acquis
+
+- Learnr de vérification des acquis
+- Learnr de test des compétences
+
+
+## Pour en savoir plus...
 
 - [What is R Markdown?](https://rmarkdown.rstudio.com/lesson-1.html). Video en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).
 

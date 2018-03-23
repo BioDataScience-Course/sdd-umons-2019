@@ -1,6 +1,24 @@
-book_filename: "sdd-umons"
-chapter_name: "Module "
+book_filename: 'sdd-umons'
+#chapter_name: 'Module '
 repo: https://github.com/BioDataScience-Course/sdd-umons
 output_dir: docs
 clean: [packages.bib, bookdown.bbl]
 new_session: yes
+language:
+  label:
+    fig: 'Figure '
+    tab: 'Tableau '
+    eq: 'Equation '
+    thm: 'Théorème '
+    lem: 'Lemme '
+    def: 'Définition '
+    cor: 'Corollaire '
+    prp: 'Proposition '
+    exm: 'Exemple '
+    exr: 'Exercice '
+    proof: 'Preuve. '
+    remark: 'Remarque. '
+    solution: 'Solution. '
+  ui:
+    edit: Editer
+    chapter_name: 'Module '

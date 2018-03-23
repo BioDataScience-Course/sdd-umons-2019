@@ -1,7 +1,8 @@
 bookdown::gitbook:
+  dev: svglite
   highlight: kate
   css: style.css
-  split_by: chapter
+  split_by: section
   config:
     toc:
       collapse: subsection
