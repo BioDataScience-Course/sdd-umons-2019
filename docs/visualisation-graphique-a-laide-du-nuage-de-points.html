@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-03-23">
+<meta name="date" content="2018-03-26">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,7 +50,7 @@
 <script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
 
 
 
@@ -81,15 +81,16 @@
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>2.1</b> Prérequis</a></li>
 <li class="chapter" data-level="2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html"><i class="fa fa-check"></i><b>2.2</b> Visualisation graphique à l’aide du nuage de points</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>2.2.1</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.2.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pour-en-savoir-plus"><i class="fa fa-check"></i><b>2.2.1</b> Pour en savoir plus…</a></li>
+<li class="chapter" data-level="2.2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>2.2.2</b> A vous de jouer !</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html"><i class="fa fa-check"></i><b>2.3</b> Intégration des graphiques dans un rapport: R Markdown</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.3.1</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.3.2" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#pour-en-savoir-plus-1"><i class="fa fa-check"></i><b>2.3.2</b> Pour en savoir plus…</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="recapitulons.html"><a href="recapitulons.html"><i class="fa fa-check"></i><b>2.4</b> Récapitulons</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="recapitulons.html"><a href="recapitulons.html#testez-vos-acquis"><i class="fa fa-check"></i><b>2.4.1</b> Testez vos acquis</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="pour-en-savoir-plus.html"><a href="pour-en-savoir-plus.html"><i class="fa fa-check"></i><b>2.5</b> Pour en savoir plus…</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="visu2.html"><a href="visu2.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a></li>
 <li class="chapter" data-level="4" data-path="visu3.html"><a href="visu3.html"><i class="fa fa-check"></i><b>4</b> Visualisation III</a></li>
@@ -129,15 +130,34 @@
             <section class="normal" id="section-">
 <div id="visualisation-graphique-a-laide-du-nuage-de-points" class="section level2">
 <h2><span class="header-section-number">2.2</span> Visualisation graphique à l’aide du nuage de points</h2>
+<p>Lorsque vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique. On peut exprimer cette relation dans R sous la forme de <span class="math display">\[y \sim x\]</span> que l’on peut lire : <span class="math display">\[y \ en \ fonction \ de \ x\]</span> ou encore <span class="math display">\[Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative\]</span></p>
+<p><img src="02-Visualisation-I_files/figure-html/unnamed-chunk-1-1.svg" width="672" /></p>
+<p>Les éléments indispensable à la compréhension d’un nuage de points sont :</p>
 <ul>
-<li>…</li>
-<li>Capsule vidéo sur le nuage de points</li>
-<li>…</li>
+<li>Les axes avec les graduations (en rouge)</li>
+<li>les labels et unité des axes (en bleu)</li>
 </ul>
+<p>Vous trouverez une vidéo ci-dessous illustrant l’utilisation du nuage de point dans R sur un jeu de données portant sur la croissance des oursins (fiche informative sur le jeu de données (à faire)).</p>
+<iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe>
+<div id="pour-en-savoir-plus" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Pour en savoir plus…</h3>
+<ul>
+<li><p><a href="http://r4ds.had.co.nz/data-visualisation.html" class="uri">http://r4ds.had.co.nz/data-visualisation.html</a></p></li>
+<li><p><a href="http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples" class="uri">http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples</a></p></li>
+<li><p><a href="https://www.r-graph-gallery.com/272-basic-scatterplot-with-ggplot2/" class="uri">https://www.r-graph-gallery.com/272-basic-scatterplot-with-ggplot2/</a></p></li>
+<li><p><a href="http://rstudio-pubs-static.s3.amazonaws.com/4232_18799469a57949e98f54195ada15fd70.html" class="uri">http://rstudio-pubs-static.s3.amazonaws.com/4232_18799469a57949e98f54195ada15fd70.html</a></p></li>
+<li><p><a href="http://serialmentor.com/dataviz/" class="uri">http://serialmentor.com/dataviz/</a></p></li>
+<li><p><a href="http://ggplot2.tidyverse.org/reference/geom_point.html" class="uri">http://ggplot2.tidyverse.org/reference/geom_point.html</a></p></li>
+<li><p><a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1" class="uri">https://www.datacamp.com/courses/data-visualization-with-ggplot2-1</a></p></li>
+<li><p><a href="http://www.cookbook-r.com/Graphs/Scatterplots_(ggplot2)/" class="uri">http://www.cookbook-r.com/Graphs/Scatterplots_(ggplot2)/</a></p></li>
+<li><p><a href="http://rforpublichealth.blogspot.be/2013/11/ggplot2-cheatsheet-for-scatterplots.html" class="uri">http://rforpublichealth.blogspot.be/2013/11/ggplot2-cheatsheet-for-scatterplots.html</a></p></li>
+<li><p><a href="https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots" class="uri">https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots</a></p></li>
+</ul>
+</div>
 <div id="a-vous-de-jouer" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> A vous de jouer !</h3>
-<p>Sur base des jeux de données <code>XXX</code> et <code>YYY</code>, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script (+ /reports pour la suite) + projet.</p>
-<p><em>Le travail que vous aurez réalisé sera discuté à la séance suivante.</em></p>
+<h3><span class="header-section-number">2.2.2</span> A vous de jouer !</h3>
+<p>Sur base des jeux de données <code>urchin_bio</code>, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script (+ /reports pour la suite) + projet.</p>
+<p>Chargez le package <code>BioDataScience</code> + accès direct au learnR (à faire, package en cours de développement sur <a href="https://github.com/BioDataScience-Course/BioDataScience">github</a>)</p>
 </div>
 </div>
             </section>

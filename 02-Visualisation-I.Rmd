@@ -18,16 +18,69 @@ Si ce n'est déjà fait (matériel du module \@ref(intro)), vous devez installer
 
 ## Visualisation graphique à l'aide du nuage de points
 
-- ...
-- Capsule vidéo sur le nuage de points
-- ...
+Lorsque vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
+
+```{r, echo=FALSE, results= 'hide', message=FALSE}
+library(data)
+library(chart)
+
+urchin <- read(file = "urchin_bio", package = "data")
+
+chart(urchin,formula = height ~  weight) + 
+  geom_point() +
+  labs( x = "Label de l'axe x  + [Unité]", 
+        y = "Label de l'axe y + [Unité]") +
+  theme(axis.text.x = element_text(colour = "#a80039", size = 13), 
+        axis.title.x = element_text(colour = "#029687", size = 13), 
+        axis.text.y = element_text(colour = "#a80039", size = 13), 
+        axis.title.y = element_text(colour = "#029687", size = 13),
+        axis.line.x = element_line(colour = "#a80039"),
+        axis.line.y = element_line(colour = "#a80039"),
+        )
+```
+
+Les éléments indispensable à la compréhension d'un nuage de points sont : 
+
+- Les axes avec les graduations (en rouge)
+- les labels et unité des axes (en bleu)
+
+
+Vous trouverez une vidéo ci-dessous illustrant l'utilisation du nuage de point dans R sur un jeu de données portant sur la croissance des oursins (fiche informative sur le jeu de données (à faire)).
+
+```{r, echo=FALSE}
+library(htmltools)
+library(vembedr)
+embed_youtube(id = "-QzG3Xr202w", width = 600, height = 451)
+```
 
 
 ### A vous de jouer !
 
-Sur base des jeux de données `XXX` et `YYY`, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script (+ /reports pour la suite) + projet.
+Sur base des jeux de données `urchin_bio`, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script (+ /reports pour la suite) + projet.
 
-_Le travail que vous aurez réalisé sera discuté à la séance suivante._
+Chargez le package `BioDataScience` + accès direct au learnR (à faire, package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience))
+
+
+### Pour en savoir plus...
+
+- <http://r4ds.had.co.nz/data-visualisation.html>
+
+- <http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples>
+
+- <https://www.r-graph-gallery.com/272-basic-scatterplot-with-ggplot2/>
+
+- <http://rstudio-pubs-static.s3.amazonaws.com/4232_18799469a57949e98f54195ada15fd70.html>
+
+- <http://serialmentor.com/dataviz/>
+
+- <http://ggplot2.tidyverse.org/reference/geom_point.html>
+
+- <https://www.datacamp.com/courses/data-visualization-with-ggplot2-1>
+
+- <http://www.cookbook-r.com/Graphs/Scatterplots_(ggplot2)/>
+
+- <http://rforpublichealth.blogspot.be/2013/11/ggplot2-cheatsheet-for-scatterplots.html>
+- <https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots>
 
 
 ## Intégration des graphiques dans un rapport: R Markdown
@@ -41,19 +94,7 @@ Un squelette de projet RStudio vous a été fournit dans un dépôt Github Class
 
 _Vous allez comparer différentes approches pour réaliser un rapport d'analyse lors de la prochaine séance d'exercices._
 
-
-## Récapitulons
-
-- Petite réflexion concernant la comparaison Word-Excel _versus_ R Markdown. Rédigez éventuellement un article sur votre blog à ce sujet.
-
-
-### Testez vos acquis
-
-- Learnr de vérification des acquis
-- Learnr de test des compétences
-
-
-## Pour en savoir plus...
+### Pour en savoir plus...
 
 - [What is R Markdown?](https://rmarkdown.rstudio.com/lesson-1.html). Video en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).
 
@@ -66,3 +107,16 @@ _Vous allez comparer différentes approches pour réaliser un rapport d'analyse 
 - [Introduction à R Markdown](https://rstudio-pubs-static.s3.amazonaws.com/32239_0956f02cef24443abd9525551368ef12.html#6). Présentation en français par Agrocampus Ouest - Rennes.
 
 - [Le langage R Markdown](https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/RMarkdown.pdf). Introduction en français concise, mais relativement complète.
+
+
+## Récapitulons
+
+- Petite réflexion concernant la comparaison Word-Excel _versus_ R Markdown. Rédigez éventuellement un article sur votre blog à ce sujet.
+
+
+### Testez vos acquis
+
+- Learnr de vérification des acquis
+- Learnr de test des compétences
+
+
