@@ -32,35 +32,24 @@ Vous trouverez une vidéo ci-dessous illustrant l'utilisation du nuage de point 
 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
-
-### Pour en savoir plus...
-
-- <http://r4ds.had.co.nz/data-visualisation.html>
-
-- <http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples>
-
-- <https://www.r-graph-gallery.com/272-basic-scatterplot-with-ggplot2/>
-
-- <http://rstudio-pubs-static.s3.amazonaws.com/4232_18799469a57949e98f54195ada15fd70.html>
-
-- <http://serialmentor.com/dataviz/>
-
-- <http://ggplot2.tidyverse.org/reference/geom_point.html>
-
-- <https://www.datacamp.com/courses/data-visualization-with-ggplot2-1>
-
-- <http://www.cookbook-r.com/Graphs/Scatterplots_(ggplot2)/>
-
-- <http://rforpublichealth.blogspot.be/2013/11/ggplot2-cheatsheet-for-scatterplots.html>
-
-- <https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots>
-
+Cette vidéo ne vous a montrez que les principaux outils disponible lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
 
 ### A vous de jouer !
 
 Sur base des jeux de données `urchin_bio`, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script (+ /reports pour la suite) + projet.
 
 Chargez le package `BioDataScience` + accès direct au learnR (à faire, package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience))
+
+
+### Pour en savoir plus...
+
+- [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutarial en français portant sur l'utilisation d'un nuage de point avec le package `ggplot2` et la fonction `geom_point()`.
+
+- [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/). Un livre sur les fondamentaux de la visualisation graphique.
+
+- [R Graphics Cookbook - Chapter 5: Scatter Plots](https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots). Un chapitre d'un livre en anglais sur l'utilisation du nuage de point.
+
+- [geom_point()](http://ggplot2.tidyverse.org/reference/geom_point.html). La fiche technique de la fonction proposée par tidyverse.
 
 
 ## Intégration des graphiques dans un rapport: R Markdown

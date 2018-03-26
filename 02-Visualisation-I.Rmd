@@ -30,10 +30,10 @@ chart(urchin,formula = height ~  weight) +
   geom_point() +
   labs( x = "Label de l'axe x  + [Unité]", 
         y = "Label de l'axe y + [Unité]") +
-  theme(axis.text.x = element_text(colour = "#a80039", size = 13), 
-        axis.title.x = element_text(colour = "#029687", size = 13), 
-        axis.text.y = element_text(colour = "#a80039", size = 13), 
-        axis.title.y = element_text(colour = "#029687", size = 13),
+  theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
+        axis.title.x = element_text(colour = "#029687", size = 15), 
+        axis.text.y = element_text(colour = "#a80039", size = 15), 
+        axis.title.y = element_text(colour = "#029687", size = 15),
         axis.line.x = element_line(colour = "#a80039"),
         axis.line.y = element_line(colour = "#a80039"),
         )
@@ -53,6 +53,7 @@ library(vembedr)
 embed_youtube(id = "-QzG3Xr202w", width = 600, height = 451)
 ```
 
+Cette vidéo ne vous a montrez que les principaux outils disponible lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
 
 ### A vous de jouer !
 
@@ -63,24 +64,13 @@ Chargez le package `BioDataScience` + accès direct au learnR (à faire, package
 
 ### Pour en savoir plus...
 
-- <http://r4ds.had.co.nz/data-visualisation.html>
+- [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutarial en français portant sur l'utilisation d'un nuage de point avec le package `ggplot2` et la fonction `geom_point()`.
 
-- <http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples>
+- [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/). Un livre sur les fondamentaux de la visualisation graphique.
 
-- <https://www.r-graph-gallery.com/272-basic-scatterplot-with-ggplot2/>
+- [R Graphics Cookbook - Chapter 5: Scatter Plots](https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots). Un chapitre d'un livre en anglais sur l'utilisation du nuage de point.
 
-- <http://rstudio-pubs-static.s3.amazonaws.com/4232_18799469a57949e98f54195ada15fd70.html>
-
-- <http://serialmentor.com/dataviz/>
-
-- <http://ggplot2.tidyverse.org/reference/geom_point.html>
-
-- <https://www.datacamp.com/courses/data-visualization-with-ggplot2-1>
-
-- <http://www.cookbook-r.com/Graphs/Scatterplots_(ggplot2)/>
-
-- <http://rforpublichealth.blogspot.be/2013/11/ggplot2-cheatsheet-for-scatterplots.html>
-- <https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots>
+- [geom_point()](http://ggplot2.tidyverse.org/reference/geom_point.html). La fiche technique de la fonction proposée par tidyverse.
 
 
 ## Intégration des graphiques dans un rapport: R Markdown
