@@ -3,9 +3,13 @@
 Vos objectifs pour ce module sont:
 
 - Découvrir --et vous émerveiller de--  ce que l'on peut faire avec le [logiciel R](http://www.r-project.org) [@R-base]
-- Découvrir le format R Markdown [@R-rmarkdown] et la recherche reproductible
+
 - Savoir réaliser différentes variantes d'un graphique en nuage de points dans R avec la fonction `chart()`
+
+- Découvrir le format R Markdown [@R-rmarkdown] et la recherche reproductible
+
 - Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez
+
 - Comparer de manière critique un workflow 'classique' en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown; prendre conscience de l'énorme potentiel de R
 
 
@@ -32,7 +36,7 @@ Vous trouverez une vidéo ci-dessous illustrant l'utilisation du nuage de point 
 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
-Cette vidéo ne vous a montrez que les principaux outils disponible lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
+Cette vidéo ne vous a montrez que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
 
 ### A vous de jouer !
 
@@ -63,6 +67,22 @@ Un squelette de projet RStudio vous a été fournit dans un dépôt Github Class
 
 _Vous allez comparer différentes approches pour réaliser un rapport d'analyse lors de la prochaine séance d'exercices._
 
+### La rédaction de rapport scientifique
+
+Un rapport scientifique respecte généralement le schéma suivant :
+
+1. Tables des matières
+2. Introduction
+3. Matériels et méthodes
+4. Résultat
+5. Discussion
+6. Conclusion
+7. Bibliographie
+9. Annexe (si nécessaire)
+
+Pour des travaux de plus grandes ampleurs comme les travaux de fin d'études, le schéma ci-dessus est adapté en y ajoutant généralement une partie remerciement en début de manuscrit. 
+La rédaction de travaux s'appuye toujours sur une recherche bibliographique au préalable. Cependant, il est capital d'insérer convenablement les sources du travail au sein de la bibliographie afin d'éviter le **plagiat** volontaire ou involontaire. 
+
 ### Pour en savoir plus...
 
 - [What is R Markdown?](https://rmarkdown.rstudio.com/lesson-1.html). Video en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).
@@ -77,6 +97,7 @@ _Vous allez comparer différentes approches pour réaliser un rapport d'analyse 
 
 - [Le langage R Markdown](https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/RMarkdown.pdf). Introduction en français concise, mais relativement complète.
 
+- [Recherche documentaire et aide à la création (ReDAC)](https://moodle.umons.ac.be/enrol/index.php?id=5). L'Université de Mons met à disposition de ces étudiants un cours en ligne afin de trouver un maximum de renseignement sur la rédaction de rapport scientifique.
 
 ## Récapitulons
 
