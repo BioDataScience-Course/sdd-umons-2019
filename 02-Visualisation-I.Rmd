@@ -20,9 +20,14 @@ Si ce n'est déjà fait (matériel du module \@ref(intro)), vous devez installer
 **A faire: proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire**
 
 
+
 ## Visualisation graphique à l'aide du nuage de points
 
-Lorsque vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
+Découvrez les premiers rudiments de R afin de réaliser par la suite vos premiers graphiques.
+
+Chargez le package `BioDataScience` + accès direct au learnR (à faire, package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience))
+
+Maintenant que vous avez appris deux trois principes dans R, vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
 
 ```{r, echo=FALSE, results= 'hide', message=FALSE}
 library(data)
@@ -43,7 +48,7 @@ chart(urchin,formula = height ~  weight) +
         )
 ```
 
-Les éléments indispensable à la compréhension d'un nuage de points sont : 
+Les éléments indispensables à la compréhension d'un nuage de points sont : 
 
 - Les axes avec les graduations (en rouge)
 - les labels et unité des axes (en bleu)
@@ -101,8 +106,9 @@ Un rapport scientifique respecte généralement le schéma suivant :
 7. Bibliographie
 9. Annexe (si nécessaire)
 
-Pour des travaux de plus grandes ampleurs comme les travaux de fin d'études, le schéma ci-dessus est adapté en y ajoutant généralement une partie remerciement en début de manuscrit. 
-La rédaction de travaux s'appuye toujours sur une recherche bibliographique au préalable. Cependant, il est capital d'insérer convenablement les sources du travail au sein de la bibliographie afin d'éviter le **plagiat** volontaire ou involontaire. 
+Pour des travaux de plus grandes ampleurs comme les travaux de fin d'études, le schéma ci-dessus est adapté en y ajoutant généralement une partie remerciement en début de manuscrit.
+
+La rédaction de travaux s'appuye toujours sur une recherche bibliographique au préalable. Cependant, il est capital d'insérer convenablement les sources du travail au sein de la bibliographie afin d'éviter le **plagiat** volontaire ou involontaire. Il existe une multitude de programme permettant la gestion d'une bibliographie comme [Mendeley](https://www.mendeley.com/), [Zotero](https://www.zotero.org/) ou encore [Endnote](https://endnote.com/) 
 
 ### Pour en savoir plus...
 
@@ -119,6 +125,8 @@ La rédaction de travaux s'appuye toujours sur une recherche bibliographique au 
 - [Le langage R Markdown](https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/RMarkdown.pdf). Introduction en français concise, mais relativement complète.
 
 - [Recherche documentaire et aide à la création (ReDAC)](https://moodle.umons.ac.be/enrol/index.php?id=5). L'Université de Mons met à disposition de ces étudiants un cours en ligne afin de trouver un maximum de renseignement sur la rédaction de rapport scientifique.
+
+- [Citer ses sources dans un rapport R Notebook](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles) : page en anglais présentant la manière d'introduire une bibliographie dans un rapport R Notebook.
 
 ## Récapitulons
 

@@ -1,3 +1,44 @@
+--- 
+title: "Science des données biologiques, UMONS"
+author: "Philippe Grosjean & Guyliann Engels"
+date: "2018-05-11"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: biodatascience-course/sdd-umons
+url: 'http\://biodatascience-course.sciviews.org/sdd-umons/'
+description: "Tutoriel interactif pour la science des données avec R & SciViews::R."
+cover-image: "images/front-cover.png"
+---
+
+# Préambule {-}
+
+Placeholder
+
+
+## Vue générale du cours {-}
+## Matériel pédagogique {-}
+## Comment apprendre? {-}
+## Evaluation {-}
+
+<!--chapter:end:index.Rmd-->
+
+
+# (PART) Cours I: visualisation et inférence {-}
+
+Placeholder
+
+# Introduction {#intro}
+
+Placeholder
+
+
+
+<!--chapter:end:01-Introduction.Rmd-->
+
 # Visualisation I {#visu1}
 
 Vos objectifs pour ce module sont:
@@ -117,4 +158,99 @@ La rédaction de travaux s'appuye toujours sur une recherche bibliographique au 
 - Learnr de vérification des acquis
 - Learnr de test des compétences
 
+
+
+<!--chapter:end:02-Visualisation-I.Rmd-->
+
+# Visualisation II {#visu2}
+
+_A ce niveau, les étudiants pourront choisir entre le module 3 et le module 4 à faire en premier. Ensuite, les groupes switcheront vers l'autre modules et s'entre-aideront._
+
+Distribution des données, histogramme, graphe de densité, violin plot. Projet RStudio, organisation des dossiers, noms de fichiers. Jeux de données fournis. A la fin, projet perso: explorer un autre type de graphique et l’implémenter dans son rapport.
+
+
+<!--chapter:end:03-Visualisation-II.Rmd-->
+
+# Visualisation III {#visu3}
+
+Quantiles, médianes, quartiles, percentiles, boite de dispersion, boite de dispersion parallèle. Graphiques composites et intro aux graphes de base et lattice. Restitution graphe perso.
+
+<!--chapter:end:04-Visualisation-III.Rmd-->
+
+
+# Importation/transformation des données {#import}
+
+Placeholder
+
+
+
+<!--chapter:end:05-Importation-Transformation.Rmd-->
+
+# Données qualitatives {#qualit}
+
+Variables de type `factor`/`ordered`, transformation, découpage en classes, tableau de contigence. Choix des variables à mesurer, biométrie humaine.
+
+<!--chapter:end:06-Donnees-qualitatives.Rmd-->
+
+# Probabilités & distributions {#proba}
+
+On part du paradoxe bayésien (effet d’un test de dépistage en fonction de la prévalence d’une maladie) -> probabilités et calculs de probabilités. Généralisation = lois de distributions. Distributions discrètes et continues. Principales lois de distributions et utilisation en pratique. Evaluation par les pairs d’un rapport réalisé jusqu’ici.
+
+<!--chapter:end:07-Probabilites-Distributions.Rmd-->
+
+# Test Chi carré {#chi2}
+
+Restitution globale concernant l’évaluation de rapports par les pairs. Test de Chi2, et application sur base d’une courte manip réalisée par les étudiants (par exemple, sur des coraux).
+
+<!--chapter:end:08-Test-Chi2.Rmd-->
+
+# Moyenne {#moyenne}
+
+Moyenne, intervalle de confiance et t-test. Présentation graphique: dynamite plot + barres d’erreurs. Transformation des données pour linéariser et ou rendre symétrique autour de la moyenne. Comparaison moyenne/médiane => paramétrique versus non paramétrique.
+
+Exemple d'équation avec référence, voir éq. \@ref(eq:moyenne):
+
+\begin{equation} 
+  \mu=\sum_{i=1}^n{\frac{x_i}{n}}
+  (\#eq:moyenne)
+\end{equation} 
+
+L'équation suivante n'est pas libellée:
+
+\begin{equation*} 
+  \mu=\frac{\sum_{i=1}^nx_i}{n}
+\end{equation*}
+
+<!--chapter:end:09-Moyenne.Rmd-->
+
+# Variance {#variance}
+
+Comparaison de deux populations (suite): Wilcoxon-Mann-Withney + comparaison au t-test. Variance, ANOVAs, test de Bartlett. Graphiques associés. Petite recherche biblio concernant l’application en pratique de ces tests à faire par les étudiants.
+
+<!--chapter:end:10-Variance.Rmd-->
+
+# Corrélation {#correlation}
+
+Suite ANOVA (ANOVA à deux facteurs) + correlation + graphes et tests. Restitution participation à l’élaboration du bookdown commun.
+
+<!--chapter:end:11-Correlation.Rmd-->
+
+# Design expérimental & critique statistique {#design}
+
+Design de l’expérience, choix du nombre de réplicas et puissance d’un test. Critique stat + "bad graphs" + pseudo-réplication. "Challenges" sur base de la critique statistique. Débriefing général.
+
+<!--chapter:end:12-Design-et-Critique.Rmd-->
+
+# (APPENDIX) Appendices {-}
+
+# Installation de la SciViews Box {#svbox}
+
+**A faire...**
+
+<!--chapter:end:A1-Installation-svbox.Rmd-->
+
+# Références {-}
+
+
+<!--chapter:end:B0-References.Rmd-->
 
