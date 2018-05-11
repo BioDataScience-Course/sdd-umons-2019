@@ -20,7 +20,6 @@ Si ce n'est déjà fait (matériel du module \@ref(intro)), vous devez installer
 **A faire: proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire**
 
 
-
 ## Visualisation graphique à l'aide du nuage de points
 
 Découvrez les premiers rudiments de R afin de réaliser par la suite vos premiers graphiques.
@@ -66,9 +65,19 @@ Cette vidéo ne vous a montrez que les principaux outils disponibles lors de la 
 
 ### A vous de jouer !
 
-Sur base des jeux de données `urchin_bio`, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script (+ /reports pour la suite) + projet.
-
 Chargez le package `BioDataScience` + accès direct au learnR (à faire, package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience))
+
+Les instructions que vous employez dans un learnR peuvent être employée dans un script d'analyse. Sur base des jeux de données `urchin_bio`, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script.
+
+Inspirez vous de script présent dans le projet que vous venez de clonez. Faites une attention toute particulière à l'écriture d'un script. Il contient un titre , une date de la dernière mise à jour, le nom de l'auteur , un ensemble de commentaires permettant l'organisation de ce script.
+
+Réalisez votre propre script et réalisez les graphiques suivants :
+
+- Représentez la variation de la hauteur en fonction de la masse des oursins
+
+- Représentez la variation du parties solides en fonction du poids immergés des oursins
+
+- Explorez par vous même le jeu de données `urchin_bio` qui contient pas moins de 19 variables que vous pouvez tentez d'associer graphiquement. Réalisez au moins 5 graphiques différents.
 
 
 ### Pour en savoir plus...
