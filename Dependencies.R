@@ -1,5 +1,5 @@
 # This bookdown needs the following R packages
-# R 3.4.4
+#  R 3.4.4
 
 # From CRAN
 install.packages(c("knitr", "bookdown", # The bases!
