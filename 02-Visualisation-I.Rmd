@@ -26,7 +26,7 @@ Découvrez les premiers rudiments de R afin de réaliser par la suite vos premie
 
 Chargez le package `BioDataScience` + accès direct au learnR (à faire, package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience))
 
-Maintenant que vous avez appris deux trois principes dans R, vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
+Maintenant que vous avez appris deux/trois principes dans R, vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
 
 ```{r, echo=FALSE, results= 'hide', message=FALSE}
 library(data)
@@ -47,7 +47,7 @@ chart(urchin,formula = height ~  weight) +
         )
 ```
 
-Les éléments indispensables à la compréhension d'un nuage de points sont : 
+Les éléments indispensables à la compréhension d'un nuage de points sont (ici mis en évidence en couleur) : 
 
 - Les axes avec les graduations (en rouge)
 - les labels et unité des axes (en bleu)
@@ -61,7 +61,9 @@ library(vembedr)
 embed_youtube(id = "-QzG3Xr202w", width = 600, height = 451)
 ```
 
-Cette vidéo ne vous a montrez que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
+Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
+
+***Ajouter un lien vers les aides-mémoires ggplot2 + complement chart (à faire)***
 
 ### A vous de jouer !
 
@@ -82,7 +84,7 @@ Réalisez votre propre script et réalisez les graphiques suivants :
 
 ### Pour en savoir plus...
 
-- [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutarial en français portant sur l'utilisation d'un nuage de point avec le package `ggplot2` et la fonction `geom_point()`.
+- [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutorial en français portant sur l'utilisation d'un nuage de point avec le package `ggplot2` et la fonction `geom_point()`.
 
 - [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/). Un livre sur les fondamentaux de la visualisation graphique.
 
@@ -133,7 +135,7 @@ La rédaction de travaux s'appuye toujours sur une recherche bibliographique au 
 
 - [Le langage R Markdown](https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/RMarkdown.pdf). Introduction en français concise, mais relativement complète.
 
-- [Recherche documentaire et aide à la création (ReDAC)](https://moodle.umons.ac.be/enrol/index.php?id=5). L'Université de Mons met à disposition de ces étudiants un cours en ligne afin de trouver un maximum de renseignement sur la rédaction de rapport scientifique.
+- [Recherche documentaire et aide à la création (ReDAC)](https://moodle.umons.ac.be/enrol/index.php?id=5). L'Université de Mons met à disposition de ses étudiants un cours en ligne afin de trouver un maximum de renseignements sur la rédaction de rapport scientifique.
 
 - [Citer ses sources dans un rapport R Notebook](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles) : page en anglais présentant la manière d'introduire une bibliographie dans un rapport R Notebook.
 

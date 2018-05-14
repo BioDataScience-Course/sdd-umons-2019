@@ -53,46 +53,6 @@
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -173,16 +133,17 @@ code > span. { color: #1f1c1b; } /* Normal */
 <h2><span class="header-section-number">2.2</span> Visualisation graphique à l’aide du nuage de points</h2>
 <p>Découvrez les premiers rudiments de R afin de réaliser par la suite vos premiers graphiques.</p>
 <p>Chargez le package <code>BioDataScience</code> + accès direct au learnR (à faire, package en cours de développement sur <a href="https://github.com/BioDataScience-Course/BioDataScience">github</a>)</p>
-<p>Maintenant que vous avez appris deux trois principes dans R, vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique. On peut exprimer cette relation dans R sous la forme de <span class="math display">\[y \sim x\]</span> que l’on peut lire : <span class="math display">\[y \ en \ fonction \ de \ x\]</span> ou encore <span class="math display">\[Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative\]</span></p>
+<p>Maintenant que vous avez appris deux/trois principes dans R, vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique. On peut exprimer cette relation dans R sous la forme de <span class="math display">\[y \sim x\]</span> que l’on peut lire : <span class="math display">\[y \ en \ fonction \ de \ x\]</span> ou encore <span class="math display">\[Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative\]</span></p>
 <p><img src="02-Visualisation-I_files/figure-html/unnamed-chunk-1-1.svg" width="672" /></p>
-<p>Les éléments indispensables à la compréhension d’un nuage de points sont :</p>
+<p>Les éléments indispensables à la compréhension d’un nuage de points sont (ici mis en évidence en couleur) :</p>
 <ul>
 <li>Les axes avec les graduations (en rouge)</li>
 <li>les labels et unité des axes (en bleu)</li>
 </ul>
 <p>Vous trouverez une vidéo ci-dessous illustrant l’utilisation du nuage de point dans R sur un jeu de données portant sur la croissance des oursins (fiche informative sur le jeu de données (à faire)).</p>
 <iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe>
-<p>Cette vidéo ne vous a montrez que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre <a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science</a> qui vous donneras les clés pour obtenir des graphiques de grandes qualités.</p>
+<p>Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre <a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science</a> qui vous donneras les clés pour obtenir des graphiques de grandes qualités.</p>
+<p><strong><em>Ajouter un lien vers les aides-mémoires ggplot2 + complement chart (à faire)</em></strong></p>
 <div id="a-vous-de-jouer" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> A vous de jouer !</h3>
 <p>Chargez le package <code>BioDataScience</code> + accès direct au learnR (à faire, package en cours de développement sur <a href="https://github.com/BioDataScience-Course/BioDataScience">github</a>)</p>
@@ -198,7 +159,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="pour-en-savoir-plus" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Pour en savoir plus…</h3>
 <ul>
-<li><p><a href="http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples">ggplot2 nuage de point</a>. Tutarial en français portant sur l’utilisation d’un nuage de point avec le package <code>ggplot2</code> et la fonction <code>geom_point()</code>.</p></li>
+<li><p><a href="http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples">ggplot2 nuage de point</a>. Tutorial en français portant sur l’utilisation d’un nuage de point avec le package <code>ggplot2</code> et la fonction <code>geom_point()</code>.</p></li>
 <li><p><a href="http://serialmentor.com/dataviz/">Fundamentals of Data Visualization</a>. Un livre sur les fondamentaux de la visualisation graphique.</p></li>
 <li><p><a href="https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots">R Graphics Cookbook - Chapter 5: Scatter Plots</a>. Un chapitre d’un livre en anglais sur l’utilisation du nuage de point.</p></li>
 <li><p><a href="http://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a>. La fiche technique de la fonction proposée par tidyverse.</p></li>

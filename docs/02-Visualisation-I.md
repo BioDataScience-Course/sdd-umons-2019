@@ -26,11 +26,11 @@ Découvrez les premiers rudiments de R afin de réaliser par la suite vos premie
 
 Chargez le package `BioDataScience` + accès direct au learnR (à faire, package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience))
 
-Maintenant que vous avez appris deux trois principes dans R, vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
+Maintenant que vous avez appris deux/trois principes dans R, vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
 
 <img src="02-Visualisation-I_files/figure-html/unnamed-chunk-1-1.svg" width="672" />
 
-Les éléments indispensables à la compréhension d'un nuage de points sont : 
+Les éléments indispensables à la compréhension d'un nuage de points sont (ici mis en évidence en couleur) : 
 
 - Les axes avec les graduations (en rouge)
 - les labels et unité des axes (en bleu)
@@ -40,7 +40,9 @@ Vous trouverez une vidéo ci-dessous illustrant l'utilisation du nuage de point 
 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
-Cette vidéo ne vous a montrez que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
+Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
+
+***Ajouter un lien vers les aides-mémoires ggplot2 + complement chart (à faire)***
 
 ### A vous de jouer !
 
@@ -61,7 +63,7 @@ Réalisez votre propre script et réalisez les graphiques suivants :
 
 ### Pour en savoir plus...
 
-- [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutarial en français portant sur l'utilisation d'un nuage de point avec le package `ggplot2` et la fonction `geom_point()`.
+- [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutorial en français portant sur l'utilisation d'un nuage de point avec le package `ggplot2` et la fonction `geom_point()`.
 
 - [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/). Un livre sur les fondamentaux de la visualisation graphique.
 
