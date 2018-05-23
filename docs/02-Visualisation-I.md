@@ -17,7 +17,7 @@ Vos objectifs pour ce module sont:
 
 Si ce n'est déjà fait (matériel du module \@ref(intro)), vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown. Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull).
 
-**A faire: proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire**
+> A faire: proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire 
 
 
 ## Visualisation graphique à l'aide du nuage de points
@@ -28,21 +28,79 @@ Chargez le package `BioDataScience` + accès direct au learnR (à faire, package
 
 Maintenant que vous avez appris deux/trois principes dans R, vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
 
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-1-1.svg" width="672" />
+<div class="figure">
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-1-1.svg" alt="Points essentiels d'un nuage de points" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-1)Points essentiels d'un nuage de points</p>
+</div>
 
 Les éléments indispensables à la compréhension d'un nuage de points sont (ici mis en évidence en couleur) : 
 
 - Les axes avec les graduations (en rouge)
 - les labels et unité des axes (en bleu)
 
+### Pièges et Astuces
+
+Vous devez être particulièrement vigilant lors de la réalisation d'un nuage de point particulièrement sur les ranges de valeurs présentés sur vos axes. 
+
+Vous devez utilisez votre expertise de biologistes pour vous posez les deux questions suivantes :
+
+- Est ce que l'axe représente des valeurs plausibles de hauteurs et de masses de *P. lividus* ?
+
+- Quels est la précision de mesures effectués ?
+
+
+```r
+a <- chart(urchin,formula = height ~  weight) + 
+  geom_point() +
+  labs( y = "Hauteur du test [mm]", x = "Masse [g]") +
+  theme(text = element_text(size = 10))
+
+b <- a + scale_x_continuous(limits = c(0,500))
+
+c <- a + scale_x_continuous(limits = c(-100, 120))
+
+d <- a + scale_x_continuous(limits = c(-400, 400)) +
+  scale_y_continuous(limits = c(-400, 400))
+
+ggpubr::ggarrange(a,b,c,d,labels = "AUTO", font.label = list(size = 14, align = "hv"))
+```
+
+<div class="figure">
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" alt="Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-2)Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y.</p>
+</div>
+
+Vous avez la possiblité d'appliquer une transformation des données afin qu'elle soit plus facilement analysable comme aligner les point d'un nuage de point le long d'une droite (On parle de **linéarisation**^[TODO def] des données en statistiques). Vous pouvez utilisez 
+
+
+```r
+a <- chart(urchin,formula = height ~  weight) + 
+  geom_point() +
+  labs( y = "Hauteur du test [mm]", x = "Masse [g]")
+
+b <- chart(urchin,formula = log(height) ~  log(weight)) + 
+  geom_point() +
+  labs( y = "Logarithme de la hauteur du test [mm]", x = "Logarithme de la Masse [g]")
+ggpubr::ggarrange(a,b,labels = "AUTO", font.label = list(size = 14, align = "hv"))
+```
+
+<div class="figure">
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme de la hauteur [mm] en fonction du logarithme de la masse [g] d'oursins violets " width="672" />
+<p class="caption">(\#fig:unnamed-chunk-3)A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme de la hauteur [mm] en fonction du logarithme de la masse [g] d'oursins violets </p>
+</div>
+
+
+### Vidéo
 
 Vous trouverez une vidéo ci-dessous illustrant l'utilisation du nuage de point dans R sur un jeu de données portant sur la croissance des oursins (fiche informative sur le jeu de données (à faire)).
 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
-Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre [R for Data Science](http://r4ds.had.co.nz/data-visualisation.html) qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
+Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Soyez curieux et regardez la section **A vous de jouer** ci-dessous Feuilletez le livre  qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
 
-***Ajouter un lien vers les aides-mémoires ggplot2 + complement chart (à faire)***
+Vous avez à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/))
+
+> Ajouter un lien vers complement chart (à faire) 
 
 ### A vous de jouer !
 
@@ -62,6 +120,8 @@ Réalisez votre propre script et réalisez les graphiques suivants :
 
 
 ### Pour en savoir plus...
+
+- [Visualisation des données dans R for Data Science](http://r4ds.had.co.nz/data-visualisation.html). Chapitre du livre portant sur la visualisation des données
 
 - [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutorial en français portant sur l'utilisation d'un nuage de point avec le package `ggplot2` et la fonction `geom_point()`.
 
@@ -114,7 +174,7 @@ La rédaction de travaux s'appuye toujours sur une recherche bibliographique au 
 
 - [Le langage R Markdown](https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/RMarkdown.pdf). Introduction en français concise, mais relativement complète.
 
-- [Recherche documentaire et aide à la création (ReDAC)](https://moodle.umons.ac.be/enrol/index.php?id=5). L'Université de Mons met à disposition de ces étudiants un cours en ligne afin de trouver un maximum de renseignement sur la rédaction de rapport scientifique.
+- [Recherche documentaire et aide à la création (ReDAC)](https://moodle.umons.ac.be/enrol/index.php?id=5). L'Université de Mons met à disposition de ses étudiants un cours en ligne afin de trouver un maximum de renseignements sur la rédaction de rapport scientifique.
 
 - [Citer ses sources dans un rapport R Notebook](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles) : page en anglais présentant la manière d'introduire une bibliographie dans un rapport R Notebook.
 

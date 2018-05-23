@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-05-11">
+<meta name="date" content="2018-05-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,9 +50,49 @@
 <script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -81,8 +121,10 @@
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>2.1</b> Prérequis</a></li>
 <li class="chapter" data-level="2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html"><i class="fa fa-check"></i><b>2.2</b> Visualisation graphique à l’aide du nuage de points</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>2.2.1</b> A vous de jouer !</a></li>
-<li class="chapter" data-level="2.2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pour-en-savoir-plus"><i class="fa fa-check"></i><b>2.2.2</b> Pour en savoir plus…</a></li>
+<li class="chapter" data-level="2.2.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.2.1</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="2.2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#video"><i class="fa fa-check"></i><b>2.2.2</b> Vidéo</a></li>
+<li class="chapter" data-level="2.2.3" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>2.2.3</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.2.4" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pour-en-savoir-plus"><i class="fa fa-check"></i><b>2.2.4</b> Pour en savoir plus…</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html"><i class="fa fa-check"></i><b>2.3</b> Intégration des graphiques dans un rapport: R Markdown</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.3.1</b> A vous de jouer !</a></li>
@@ -134,18 +176,72 @@
 <p>Découvrez les premiers rudiments de R afin de réaliser par la suite vos premiers graphiques.</p>
 <p>Chargez le package <code>BioDataScience</code> + accès direct au learnR (à faire, package en cours de développement sur <a href="https://github.com/BioDataScience-Course/BioDataScience">github</a>)</p>
 <p>Maintenant que vous avez appris deux/trois principes dans R, vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique. On peut exprimer cette relation dans R sous la forme de <span class="math display">\[y \sim x\]</span> que l’on peut lire : <span class="math display">\[y \ en \ fonction \ de \ x\]</span> ou encore <span class="math display">\[Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative\]</span></p>
-<p><img src="02-Visualisation-I_files/figure-html/unnamed-chunk-1-1.svg" width="672" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-1-1.svg" alt="Points essentiels d'un nuage de points" width="672" />
+<p class="caption">
+Figure 2.1: Points essentiels d’un nuage de points
+</p>
+</div>
 <p>Les éléments indispensables à la compréhension d’un nuage de points sont (ici mis en évidence en couleur) :</p>
 <ul>
 <li>Les axes avec les graduations (en rouge)</li>
 <li>les labels et unité des axes (en bleu)</li>
 </ul>
+<div id="pieges-et-astuces" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Pièges et Astuces</h3>
+<p>Vous devez être particulièrement vigilant lors de la réalisation d’un nuage de point particulièrement sur les ranges de valeurs présentés sur vos axes.</p>
+<p>Vous devez utilisez votre expertise de biologistes pour vous posez les deux questions suivantes :</p>
+<ul>
+<li><p>Est ce que l’axe représente des valeurs plausibles de hauteurs et de masses de <em>P. lividus</em> ?</p></li>
+<li><p>Quels est la précision de mesures effectués ?</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin,<span class="dt">formula =</span> height <span class="op">~</span><span class="st">  </span>weight) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>( <span class="dt">y =</span> <span class="st">&quot;Hauteur du test [mm]&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Masse [g]&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">10</span>))
+
+b &lt;-<span class="st"> </span>a <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">500</span>))
+
+c &lt;-<span class="st"> </span>a <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">100</span>, <span class="dv">120</span>))
+
+d &lt;-<span class="st"> </span>a <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">400</span>, <span class="dv">400</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">400</span>, <span class="dv">400</span>))
+
+ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(a,b,c,d,<span class="dt">labels =</span> <span class="st">&quot;AUTO&quot;</span>, <span class="dt">font.label =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">align =</span> <span class="st">&quot;hv&quot;</span>))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" alt="Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y." width="672" />
+<p class="caption">
+Figure 2.2: Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l’échelle de l’axe x. C) Graphique A avec une seconde modification de l’axe x. D) Graphique A avec modification de l’echelle de l’axe x et de l’axe Y.
+</p>
+</div>
+<p>Vous avez la possiblité d’appliquer une transformation des données afin qu’elle soit plus facilement analysable comme aligner les point d’un nuage de point le long d’une droite (On parle de <strong>linéarisation</strong><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> des données en statistiques). Vous pouvez utilisez</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin,<span class="dt">formula =</span> height <span class="op">~</span><span class="st">  </span>weight) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>( <span class="dt">y =</span> <span class="st">&quot;Hauteur du test [mm]&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Masse [g]&quot;</span>)
+
+b &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin,<span class="dt">formula =</span> <span class="kw">log</span>(height) <span class="op">~</span><span class="st">  </span><span class="kw">log</span>(weight)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>( <span class="dt">y =</span> <span class="st">&quot;Logarithme de la hauteur du test [mm]&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Logarithme de la Masse [g]&quot;</span>)
+ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(a,b,<span class="dt">labels =</span> <span class="st">&quot;AUTO&quot;</span>, <span class="dt">font.label =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">align =</span> <span class="st">&quot;hv&quot;</span>))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme de la hauteur [mm] en fonction du logarithme de la masse [g] d'oursins violets " width="672" />
+<p class="caption">
+Figure 2.3: A) Variation de la hauteur [mm] en fonction de la masse [g] d’oursins violets. B) Variation du logarithme de la hauteur [mm] en fonction du logarithme de la masse [g] d’oursins violets
+</p>
+</div>
+</div>
+<div id="video" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Vidéo</h3>
 <p>Vous trouverez une vidéo ci-dessous illustrant l’utilisation du nuage de point dans R sur un jeu de données portant sur la croissance des oursins (fiche informative sur le jeu de données (à faire)).</p>
 <iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe>
-<p>Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Feuilletez le livre <a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science</a> qui vous donneras les clés pour obtenir des graphiques de grandes qualités.</p>
-<p><strong><em>Ajouter un lien vers les aides-mémoires ggplot2 + complement chart (à faire)</em></strong></p>
+<p>Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Soyez curieux et regardez la section <strong>A vous de jouer</strong> ci-dessous Feuilletez le livre qui vous donneras les clés pour obtenir des graphiques de grandes qualités.</p>
+<p>Vous avez à votre disposition l’aide-mémoire sur la visualisation des données (<a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Data Visualization Cheat Sheet</strong></a>)</p>
+<blockquote>
+<p>Ajouter un lien vers complement chart (à faire)</p>
+</blockquote>
+</div>
 <div id="a-vous-de-jouer" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> A vous de jouer !</h3>
+<h3><span class="header-section-number">2.2.3</span> A vous de jouer !</h3>
 <p>Chargez le package <code>BioDataScience</code> + accès direct au learnR (à faire, package en cours de développement sur <a href="https://github.com/BioDataScience-Course/BioDataScience">github</a>)</p>
 <p>Les instructions que vous employez dans un learnR peuvent être employée dans un script d’analyse. Sur base des jeux de données <code>urchin_bio</code>, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script.</p>
 <p>Inspirez vous de script présent dans le projet que vous venez de clonez. Faites une attention toute particulière à l’écriture d’un script. Il contient un titre , une date de la dernière mise à jour, le nom de l’auteur , un ensemble de commentaires permettant l’organisation de ce script.</p>
@@ -157,14 +253,21 @@
 </ul>
 </div>
 <div id="pour-en-savoir-plus" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Pour en savoir plus…</h3>
+<h3><span class="header-section-number">2.2.4</span> Pour en savoir plus…</h3>
 <ul>
+<li><p><a href="http://r4ds.had.co.nz/data-visualisation.html">Visualisation des données dans R for Data Science</a>. Chapitre du livre portant sur la visualisation des données</p></li>
 <li><p><a href="http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples">ggplot2 nuage de point</a>. Tutorial en français portant sur l’utilisation d’un nuage de point avec le package <code>ggplot2</code> et la fonction <code>geom_point()</code>.</p></li>
 <li><p><a href="http://serialmentor.com/dataviz/">Fundamentals of Data Visualization</a>. Un livre sur les fondamentaux de la visualisation graphique.</p></li>
 <li><p><a href="https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots">R Graphics Cookbook - Chapter 5: Scatter Plots</a>. Un chapitre d’un livre en anglais sur l’utilisation du nuage de point.</p></li>
 <li><p><a href="http://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a>. La fiche technique de la fonction proposée par tidyverse.</p></li>
 </ul>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>TODO def<a href="visualisation-graphique-a-laide-du-nuage-de-points.html#fnref1">↩</a></p></li>
+</ol>
 </div>
             </section>
 
