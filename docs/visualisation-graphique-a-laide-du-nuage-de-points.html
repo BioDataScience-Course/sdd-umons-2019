@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-05-23">
+<meta name="date" content="2018-05-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -214,7 +214,10 @@ ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(a,b,c,d,<span 
 Figure 2.2: Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l’échelle de l’axe x. C) Graphique A avec une seconde modification de l’axe x. D) Graphique A avec modification de l’echelle de l’axe x et de l’axe Y.
 </p>
 </div>
-<p>Vous avez la possiblité d’appliquer une transformation des données afin qu’elle soit plus facilement analysable comme aligner les point d’un nuage de point le long d’une droite (On parle de <strong>linéarisation</strong><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> des données en statistiques). Vous pouvez utilisez</p>
+<p>Vous avez la possiblité d’appliquer une transformation des données (il est même conseillé de le faire) afin qu’elle soit plus facilement analysable comme en alignant les point d’un nuage de point le long d’une droite (On parle de <strong>linéarisation</strong><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> des données en statistiques).</p>
+<p>Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, ..</p>
+<p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :</p>
+<p><span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span> ou <span class="math inline">\(%′ = \arcsin \sqrt{frac{%}{100}\)</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin,<span class="dt">formula =</span> height <span class="op">~</span><span class="st">  </span>weight) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">y =</span> <span class="st">&quot;Hauteur du test [mm]&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Masse [g]&quot;</span>)
@@ -234,7 +237,7 @@ Figure 2.3: A) Variation de la hauteur [mm] en fonction de la masse [g] d’ours
 <h3><span class="header-section-number">2.2.2</span> Vidéo</h3>
 <p>Vous trouverez une vidéo ci-dessous illustrant l’utilisation du nuage de point dans R sur un jeu de données portant sur la croissance des oursins (fiche informative sur le jeu de données (à faire)).</p>
 <iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe>
-<p>Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Soyez curieux et regardez la section <strong>A vous de jouer</strong> ci-dessous Feuilletez le livre qui vous donneras les clés pour obtenir des graphiques de grandes qualités.</p>
+<p>Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Soyez curieux et regardez la section <strong>A vous de jouer</strong> ci-dessous.</p>
 <p>Vous avez à votre disposition l’aide-mémoire sur la visualisation des données (<a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Data Visualization Cheat Sheet</strong></a>)</p>
 <blockquote>
 <p>Ajouter un lien vers complement chart (à faire)</p>

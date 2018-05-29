@@ -78,7 +78,13 @@ d <- a + scale_x_continuous(limits = c(-400, 400)) +
 ggpubr::ggarrange(a,b,c,d,labels = "AUTO", font.label = list(size = 14, align = "hv"))
 ```
 
-Vous avez la possiblité d'appliquer une transformation des données afin qu'elle soit plus facilement analysable comme aligner les point d'un nuage de point le long d'une droite (On parle de **linéarisation**^[TODO def] des données en statistiques). Vous pouvez utilisez 
+Vous avez la possiblité d'appliquer une transformation des données (il est même conseillé de le faire) afin qu'elle soit plus facilement analysable comme en alignant les point d'un nuage de point le long d'une droite (On parle de **linéarisation**^[TODO def] des données en statistiques). 
+
+Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, ..
+
+Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :
+
+$p′ = \arcsin \sqrt{p}$  ou  $%′ = \arcsin \sqrt{frac{%}{100}}$
 
 ```{r, fig.cap = "A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme de la hauteur [mm] en fonction du logarithme de la masse [g] d'oursins violets "}
 a <- chart(urchin,formula = height ~  weight) + 

@@ -70,7 +70,13 @@ ggpubr::ggarrange(a,b,c,d,labels = "AUTO", font.label = list(size = 14, align = 
 <p class="caption">(\#fig:unnamed-chunk-2)Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y.</p>
 </div>
 
-Vous avez la possiblité d'appliquer une transformation des données afin qu'elle soit plus facilement analysable comme aligner les point d'un nuage de point le long d'une droite (On parle de **linéarisation**^[TODO def] des données en statistiques). Vous pouvez utilisez 
+Vous avez la possiblité d'appliquer une transformation des données (il est même conseillé de le faire) afin qu'elle soit plus facilement analysable comme en alignant les point d'un nuage de point le long d'une droite (On parle de **linéarisation**^[TODO def] des données en statistiques). 
+
+Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, ..
+
+Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :
+
+$p′ = \arcsin \sqrt{p}$  ou  $%′ = \arcsin \sqrt{frac{%}{100}$
 
 
 ```r
@@ -96,7 +102,7 @@ Vous trouverez une vidéo ci-dessous illustrant l'utilisation du nuage de point 
 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
-Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Soyez curieux et regardez la section **A vous de jouer** ci-dessous Feuilletez le livre  qui vous donneras les clés pour obtenir des graphiques de grandes qualités.
+Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Soyez curieux et regardez la section **A vous de jouer** ci-dessous. 
 
 Vous avez à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/))
 
