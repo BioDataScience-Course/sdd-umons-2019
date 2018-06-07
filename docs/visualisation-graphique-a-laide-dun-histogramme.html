@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Science des données biologiques, UMONS</title>
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews::R.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Science des données biologiques, UMONS" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
+  <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews::R." />
+  <meta name="github-repo" content="biodatascience-course/sdd-umons" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
+  
+  <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews::R." />
+  <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+
+
+<meta name="date" content="2018-06-07">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="prerequis-1.html">
+<link rel="next" href="visualisation-graphique-a-laide-dun-graphique-de-densite.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Science des données biologiques (cours UMONS)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préambule</a><ul>
+<li class="chapter" data-level="" data-path="vue-generale-du-cours.html"><a href="vue-generale-du-cours.html"><i class="fa fa-check"></i>Vue générale du cours</a></li>
+<li class="chapter" data-level="" data-path="materiel-pedagogique.html"><a href="materiel-pedagogique.html"><i class="fa fa-check"></i>Matériel pédagogique</a></li>
+<li class="chapter" data-level="" data-path="comment-apprendre.html"><a href="comment-apprendre.html"><i class="fa fa-check"></i>Comment apprendre?</a></li>
+<li class="chapter" data-level="" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i>Evaluation</a></li>
+</ul></li>
+<li class="part"><span><b>I Cours I: visualisation et inférence</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
+<li class="chapter" data-level="2.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>2.1</b> Prérequis</a></li>
+<li class="chapter" data-level="2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html"><i class="fa fa-check"></i><b>2.2</b> Visualisation graphique à l’aide du nuage de points</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.2.1</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="2.2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#video"><i class="fa fa-check"></i><b>2.2.2</b> Vidéo</a></li>
+<li class="chapter" data-level="2.2.3" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>2.2.3</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.2.4" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pour-en-savoir-plus"><i class="fa fa-check"></i><b>2.2.4</b> Pour en savoir plus…</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html"><i class="fa fa-check"></i><b>2.3</b> Intégration des graphiques dans un rapport: R Markdown</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.3.1</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.3.2" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#la-redaction-de-rapport-scientifique"><i class="fa fa-check"></i><b>2.3.2</b> La rédaction de rapport scientifique</a></li>
+<li class="chapter" data-level="2.3.3" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#pour-en-savoir-plus-1"><i class="fa fa-check"></i><b>2.3.3</b> Pour en savoir plus…</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="recapitulons.html"><a href="recapitulons.html"><i class="fa fa-check"></i><b>2.4</b> Récapitulons</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="recapitulons.html"><a href="recapitulons.html#testez-vos-acquis"><i class="fa fa-check"></i><b>2.4.1</b> Testez vos acquis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visu2.html"><a href="visu2.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a><ul>
+<li class="chapter" data-level="3.1" data-path="prerequis-1.html"><a href="prerequis-1.html"><i class="fa fa-check"></i><b>3.1</b> Prérequis</a></li>
+<li class="chapter" data-level="3.2" data-path="visualisation-graphique-a-laide-dun-histogramme.html"><a href="visualisation-graphique-a-laide-dun-histogramme.html"><i class="fa fa-check"></i><b>3.2</b> Visualisation graphique à l’aide d’un histogramme</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="visualisation-graphique-a-laide-dun-histogramme.html"><a href="visualisation-graphique-a-laide-dun-histogramme.html#pieges-et-astuces-1"><i class="fa fa-check"></i><b>3.2.1</b> Pièges et Astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="visualisation-graphique-a-laide-dun-graphique-de-densite.html"><a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html"><i class="fa fa-check"></i><b>3.3</b> Visualisation graphique à l’aide d’un graphique de densité</a></li>
+<li class="chapter" data-level="3.4" data-path="visualisation-graphique-a-laide-dun-diagramme-en-violon.html"><a href="visualisation-graphique-a-laide-dun-diagramme-en-violon.html"><i class="fa fa-check"></i><b>3.4</b> Visualisation graphique à l’aide d’un diagramme en violon</a></li>
+<li class="chapter" data-level="3.5" data-path="a-vous-de-jouer-2.html"><a href="a-vous-de-jouer-2.html"><i class="fa fa-check"></i><b>3.5</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visu3.html"><a href="visu3.html"><i class="fa fa-check"></i><b>4</b> Visualisation III</a><ul>
+<li class="chapter" data-level="4.1" data-path="prerequis-2.html"><a href="prerequis-2.html"><i class="fa fa-check"></i><b>4.1</b> Prérequis</a></li>
+<li class="chapter" data-level="4.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><i class="fa fa-check"></i><b>4.2</b> Visualisation graphique à l’aide d’un graphique en barre</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html#representation-dun-denombration-dobservations-par-facteur"><i class="fa fa-check"></i><b>4.2.1</b> Représentation d’un dénombration d’observations par facteur</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html#representation-dune-valeur-moyenne-a-laide-dun-graphe-en-barre."><i class="fa fa-check"></i><b>4.2.2</b> Représentation d’une valeur moyenne à l’aide d’un graphe en barre.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.3</b> Visualisation graphique à l’aide d’un graphique en camembert</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pieges-et-astuces-4"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pour-en-savoir-plus-4"><i class="fa fa-check"></i><b>4.3.2</b> Pour en savoir plus</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><i class="fa fa-check"></i><b>4.4</b> Visualisation graphique à l’aide de la boite de dispersion</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.4.1</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="4.4.2" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html#pour-en-savoir-plus-5"><i class="fa fa-check"></i><b>4.4.2</b> Pour en savoir plus !</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Visualisation de multi-graphiques</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#facet_grid"><i class="fa fa-check"></i><b>4.5.1</b> <code>facet_grid()</code></a></li>
+<li class="chapter" data-level="4.5.2" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#plot_grid"><i class="fa fa-check"></i><b>4.5.2</b> <code>plot_grid()</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#a-vous-de-jouer-3"><i class="fa fa-check"></i><b>4.5.3</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="apercu-des-differents-systemes-graphiques.html"><a href="apercu-des-differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.6</b> Aperçu des différents systèmes graphiques</a></li>
+<li class="chapter" data-level="4.7" data-path="a-vous-de-jouer-4.html"><a href="a-vous-de-jouer-4.html"><i class="fa fa-check"></i><b>4.7</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a></li>
+<li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a></li>
+<li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a></li>
+<li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
+<li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
+<li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
+<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
+<li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
+<li class="divider"></li>
+<li><a href="http://biodatascience-course.sciviews.org">Site Web du cours</a></li>
+<li><a href="https://github.com/BioDataScience-Course">Site Github du cours</a></li>
+<br/>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Science des données biologiques, UMONS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="visualisation-graphique-a-laide-dun-histogramme" class="section level2">
+<h2><span class="header-section-number">3.2</span> Visualisation graphique à l’aide d’un histogramme</h2>
+<p>Lors d’une expérience vous souhaitez visualiser la façon dont vos données s’étale sur un axe (On parle de <strong>distribution</strong><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> en statistique) pour l’une des vairables étudiées. L’histogramme est l’un des outils pouvant vous apporter cette information. Ce graphique va découper en plusieurs <strong>classes</strong><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> la variable étudiée.</p>
+<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-1-1.svg" alt="Histogramme montrant la distribution de la longueur des pétales d'iris." width="672" />
+<p class="caption">
+Figure 2.1: Histogramme montrant la distribution de la longueur des pétales d’iris.
+</p>
+</div>
+<p>Les instructions de base afin de produire un histogramme :</p>
+<pre><code>chart(DF, formula = ~ VAR) +
+  geom_histogram()</code></pre>
+<p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée (dataframe, DF), ainsi que la formule à employer ~ VAR . Pour réaliser un histogramme, vous devez ajouter la seconde fonction <code>geom_histogram()</code>.</p>
+<p>Les éléments indispensables à la compréhension d’un histogramme sont (ici mis en évidence en couleur)</p>
+<ul>
+<li>Les axes avec les graduations (en rouge)</li>
+<li>les labels et unité des axes (en bleu)</li>
+</ul>
+<p>Vous pouvez décripter votre histogramme sur base des <strong>modes</strong><a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> et de la <strong>symétrie</strong><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> de ces derniers. Les modes les plus fréquents sont unimodal, bimodal ou multimodal.</p>
+<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.svg" alt="Histogrammes montrant les modes et symétries : a) histogramme unimodal et symétrique, b) histogramme bimodal et asymétrique, c) histogramme unimodal et asymétrique, d) histogramme multimodal et symétrique." width="672" />
+<p class="caption">
+Figure 2.2: Histogrammes montrant les modes et symétries : a) histogramme unimodal et symétrique, b) histogramme bimodal et asymétrique, c) histogramme unimodal et asymétrique, d) histogramme multimodal et symétrique.
+</p>
+</div>
+<div id="pieges-et-astuces-1" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Pièges et Astuces</h3>
+<p>Vous devez être particulièrement vigilant lors de la réalisation d’un histogramme au classes de ce dernier.</p>
+<pre><code>library(shiny)
+runExample(&quot;01_hello&quot;)</code></pre>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref5">↩</a></p></li>
+<li id="fn6"><p>todo<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref6">↩</a></p></li>
+<li id="fn7"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref7">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="prerequis-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/03-Visualisation-II.Rmd",
+"text": "Editer"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

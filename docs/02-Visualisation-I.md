@@ -33,6 +33,15 @@ Maintenant que vous avez appris deux/trois principes dans R, vous souhaitez repr
 <p class="caption">(\#fig:unnamed-chunk-1)Points essentiels d'un nuage de points</p>
 </div>
 
+Les instructions de base afin de produire une nuage de point sont :
+
+```
+chart(DF, formula = YNUM ~ XNUM) +
+  geom_point()
+```
+
+La fonction `chart()` requiert comme argument le jeu de donnée ( dataframe, DF), ainsi que la formule à employer YNUM ~ XNUM. Pour réaliser une nuage de point vous devez ajouter la seconde fonction `geom_point()`.
+
 Les éléments indispensables à la compréhension d'un nuage de points sont (ici mis en évidence en couleur) : 
 
 - Les axes avec les graduations (en rouge)
@@ -76,7 +85,7 @@ Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, .
 
 Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :
 
-$p′ = \arcsin \sqrt{p}$  ou  $%′ = \arcsin \sqrt{frac{%}{100}$
+$p′ = \arcsin \sqrt{p}$  ou  $%′ = \arcsin \sqrt{frac{%}{100}}$
 
 
 ```r
@@ -106,7 +115,7 @@ Cette vidéo ne vous a montré que les principaux outils disponibles lors de la 
 
 Vous avez à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/))
 
-> Ajouter un lien vers complement chart (à faire) 
+
 
 ### A vous de jouer !
 
