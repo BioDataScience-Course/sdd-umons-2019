@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="vue-generale-du-cours.html">
+<link rel="prev" href="type-de-variables.html">
+<link rel="next" href="qualit.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -209,27 +209,116 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Science des données biologiques, UMONS</h1>
-<h4 class="author"><em>Philippe Grosjean &amp; Guyliann Engels</em></h4>
-<h4 class="date"><em>2018-06-08</em></h4>
-</div>
-<div id="preambule" class="section level1 unnumbered">
-<h1>Préambule</h1>
-<p>Cet ouvrage couvrira, à terme, la matière des cinq cours de science des données enseignés aux biologistes de la Faculté des Sciences de l’Université de Mons (Belgique). La matière sera complétée progressivement à partir du premier cours prévu pour l’année académique 2018-2019.</p>
-<p>Cet ouvrage sera également disponible en format PDF (en vue de son impression), mais il est surtout conçu pour être utilisé de manière interactive, en ligne. En effet, nous prévoyons d’y adjoindre des capsules (unités d’enseignement ciblant un et un seul concept) sous forme de vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. <strong>Ces différents éléments ne sont, bien évidemment, utilisables qu’en ligne.</strong></p>
-<div class="figure">
-<img src="images/front-cover.png" />
+<div id="transformation-des-donnees" class="section level2">
+<h2><span class="header-section-number">5.4</span> Transformation des données</h2>
+<p>Lors du module IV, vous avez réalisé votre premier remaniement de données afin de réaliser un graphique en barre résumant une variable numérique en fonction d’une variable facteur.</p>
+<p>Le principale remaniement des données peut être réalisé en 5 grands piliers :</p>
+<ul>
+<li><p>sélectionner des colonnes au sein d’un jeu de données <code>select()</code></p></li>
+<li><p>filtrer des lignes dans un jeu de données <code>filter()</code></p></li>
+<li><p>réordonner les lignes dans un jeu de données <code>arrange()</code></p></li>
+<li><p>calculer de nouvelles variables dans un jeu de donées <code>mutate()</code></p></li>
+<li><p>Résumer de colonnes d’un jeu de données initiale <code>summarise()</code></p></li>
+</ul>
+<div id="select" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> <code>select()</code></h3>
+<p>Lors de l’uilisation vos jeux de données, vous serez amené à réduire vos jeu de données en sous tableau.</p>
+<p>Partez du jeu de données portant sur la croissance des oursins, ce dernier contient pas moins de 19 variables étudiées sur 421 individus.</p>
+<p>Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction <code>select()</code> et les fonctions d’aide à la selection (<code>?select_helpers</code>) peut vous apporter la solution à votre demande.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub1 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, origin, solid_parts, test)
+  
+ub2 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">14</span>))
 
-</div> 
+ub3 &lt;-<span class="st">  </span><span class="kw">select</span>(ub, origin, <span class="kw">contains</span>(<span class="st">&quot;weight&quot;</span>))
+
+ub4 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, <span class="kw">ends_with</span>(<span class="st">&quot;ht&quot;</span>))</code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-3-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
+<p class="caption">
+Figure 2.3: a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4
+</p>
 </div>
+</div>
+<div id="filter" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> <code>filter()</code></h3>
+<p>Lors de l’analyse de vos jeux de données, vous serez amené à filtrer les lignes de vos tableaux de données. La fonction <code>filter()</code> est l’un des outils pouvant vous apporter la solution.</p>
+<p>Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (l’origine, la hauteur et la masse du squelette).</p>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-4-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
+<p class="caption">
+Figure 3.1: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.
+</p>
+</div>
+<p>Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau.</p>
+<ul>
+<li><p>égal à : ==</p></li>
+<li><p>tout sauf : !=</p></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">u &lt;-<span class="st"> </span><span class="kw">filter</span>(ub2, origin <span class="op">!=</span><span class="st"> &quot;Fishery&quot;</span>) <span class="co"># tous les origines sauf ceux provenant de Fishery </span></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-6-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
+<p class="caption">
+Figure 5.1: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins.
+</p>
+</div>
+<p>Vous pouvez utiliser une variable numérique pour filtrer les données.</p>
+<ul>
+<li><p>supérieur à : &gt;</p></li>
+<li><p>inférieur à : &lt;</p></li>
+<li><p>supérieur ou égal à : &gt;=</p></li>
+<li><p>inférieur ou égal à : &lt;=</p></li>
+</ul>
+<div class="figure"><span id="fig:unnamed-chunk-8"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-8-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
+<p class="caption">
+Figure 4.1: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur les tailles des individus.
+</p>
+</div>
+<p>Vous pouvez combiner différents filtres :</p>
+<ul>
+<li><p>&amp; : et</p></li>
+<li><div style="white-space: pre-line;">: ou</div></li>
+</ul>
+<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-10-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
+<p class="caption">
+Figure 4.3: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins et sur les tailles des individus.
+</p>
+</div>
+<div id="pieges-et-astuces-6" class="section level4">
+<h4><span class="header-section-number">5.4.2.1</span> Pièges et astuces</h4>
+<p>Avec des variables facteurs composé des nombreux niveaux, on peut être amené à en sélectionné plusieurs</p>
+<pre><code>is &lt;- filter(iris, Species == &quot;virginica&quot;| &quot;setosa&quot;) ## erreur
+
+is &lt;- filter(iris, Species %in% c(&quot;setosa&quot;, &quot;virginica&quot;))</code></pre>
+</div>
+</div>
+<div id="mutate" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> <code>mutate()</code></h3>
+<p>Lors de l’analyse de vos jeux de données, vous serez amené à calculer de nouvelles variables. La fonction <code>mutate()</code> est l’un des outils pouvant vous apporter la solution.</p>
+<p>Repartez du jeu de données portant sur la croisance des oursins.</p>
+<p>Vous pouvez tout d’abord employer les - les opérateurs arithmétiques + addition : <code>+</code> + soustraction : <code>-</code> + multiplication : <code>*</code> + division : <code>/</code> + exposant : <code>^</code> ou <code>**</code> + modulo (reste lors d’une division) : <code>%%</code> + division entière : <code>%/%</code></p>
+<pre><code>e.g. : x / sum(x)</code></pre>
+<p>-log</p>
+<pre><code>e.g. : log(x)</code></pre>
+<ul>
+<li></li>
+</ul>
+<div id="pieges-et-astuces-7" class="section level4">
+<h4><span class="header-section-number">5.4.3.1</span> Pièges et astuces</h4>
+<p>La fonction <code>mutate()</code> permet de calculer de nouvelles variables. Cependant, la fonction <code>transmute()</code> permet de retirer les anciennes variables employées dans le calcule de la nouvelle.</p>
+
+</div>
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="vue-generale-du-cours.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="type-de-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="qualit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -259,7 +348,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/index.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/05-Importation-Transformation.Rmd",
 "text": "Editer"
 },
 "download": null,

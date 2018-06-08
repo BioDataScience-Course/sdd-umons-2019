@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-06-07">
+<meta name="date" content="2018-06-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="a-vous-de-jouer-4.html">
-<link rel="next" href="qualit.html">
+<link rel="next" href="prerequis-3.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -166,7 +166,16 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.6" data-path="apercu-des-differents-systemes-graphiques.html"><a href="apercu-des-differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.6</b> Aperçu des différents systèmes graphiques</a></li>
 <li class="chapter" data-level="4.7" data-path="a-vous-de-jouer-4.html"><a href="a-vous-de-jouer-4.html"><i class="fa fa-check"></i><b>4.7</b> A vous de jouer !</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a></li>
+<li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a><ul>
+<li class="chapter" data-level="5.1" data-path="prerequis-3.html"><a href="prerequis-3.html"><i class="fa fa-check"></i><b>5.1</b> Prérequis</a></li>
+<li class="chapter" data-level="5.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html"><i class="fa fa-check"></i><b>5.2</b> Importation des données</a></li>
+<li class="chapter" data-level="5.3" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.3</b> Type de variables</a></li>
+<li class="chapter" data-level="5.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html"><i class="fa fa-check"></i><b>5.4</b> Transformation des données</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#select"><i class="fa fa-check"></i><b>5.4.1</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#filter"><i class="fa fa-check"></i><b>5.4.2</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#mutate"><i class="fa fa-check"></i><b>5.4.3</b> <code>mutate()</code></a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a></li>
 <li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
@@ -203,162 +212,38 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="import" class="section level1">
 <h1><span class="header-section-number">Module 5</span> Importation/transformation des données</h1>
 <p>Importation, tranformation, “cook”, <code>dplyr</code>, <code>tidyr</code>. Type de variables et façon de les représenter dans R. Expression de condition. Chemins relatifs. Challenges: faire tel type de graphe étant donné tel jeu de données (avec étape de transformation nécessaire).</p>
-<p>Un exemple de jeu de données est présenté à la Table <a href="import.html#tab:exemple-tab">5.1</a>.</p>
-<table>
-<caption><span id="tab:exemple-tab">Tableau 5.1: </span>Un exemple de tableau.</caption>
-<thead>
-<tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.6</td>
-<td align="right">3.4</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.0</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.4</td>
-<td align="right">2.9</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.8</td>
-<td align="right">3.4</td>
-<td align="right">1.6</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.8</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.3</td>
-<td align="right">3.0</td>
-<td align="right">1.1</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.8</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.7</td>
-<td align="right">4.4</td>
-<td align="right">1.5</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.3</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.8</td>
-<td align="right">1.5</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-</tbody>
-</table>
-
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo=</span><span class="ot">FALSE</span>, <span class="dt">results=</span> <span class="st">&#39;hide&#39;</span>, <span class="dt">message=</span><span class="ot">FALSE</span>)
+<span class="kw">library</span>(knitr)
+<span class="kw">library</span>(chart)</code></pre></div>
+<pre><code>## Le chargement a nécessité le package : lattice</code></pre>
+<pre><code>## Le chargement a nécessité le package : ggplot2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr)</code></pre></div>
+<pre><code>## Le chargement a nécessité le package : magrittr</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SciViews<span class="op">::</span>R</code></pre></div>
+<pre><code>## ── Attaching packages ───────────────────────────────────────────────────────── SciViews::R 1.0.1 ──</code></pre>
+<pre><code>## ✔ SciViews  1.0.1      ✔ purrr     0.2.4 
+## ✔ flow      1.0.0      ✔ readr     1.1.1 
+## ✔ data      1.0.0      ✔ tidyr     0.8.0 
+## ✔ svMisc    1.0.2      ✔ tibble    1.4.2 
+## ✔ forcats   0.3.0      ✔ tidyverse 1.2.1 
+## ✔ stringr   1.3.0      ✔ MASS      7.3.49
+## ✔ dplyr     0.7.4</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ tidyr::extract()   masks magrittr::extract()
+## ✖ dplyr::filter()    masks stats::filter()
+## ✖ dplyr::lag()       masks stats::lag()
+## ✖ dplyr::select()    masks MASS::select()
+## ✖ purrr::set_names() masks magrittr::set_names()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nf &lt;-<span class="st"> </span>data<span class="op">::</span><span class="kw">read</span>(<span class="st">&quot;flights&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;nycflights13&quot;</span>)
+iris &lt;-<span class="st"> </span>data<span class="op">::</span><span class="kw">read</span>(<span class="st">&quot;iris&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)
+ub &lt;-data<span class="op">::</span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data&quot;</span>)</code></pre></div>
+<p>Un exemple de jeu de données est présenté à la Table <a href="#tab:exemple-tab"><strong>??</strong></a>.</p>
+<p>Vos objectifs pour ce module sont :</p>
+<ul>
+<li><p>Savoir importer des données via la fonction read(), ainsi qu’appréhender ses arguments.</p></li>
+<li><p>Appréhender les type de variables et l’importance d’encoder convenablement les variables.</p></li>
+<li><p>Savoir remanier des données afin d’extraire l’information importante d’un jeu de données.</p></li>
+</ul> 
 </div>
             </section>
 
@@ -366,7 +251,7 @@ code > span. { color: #1f1c1b; } /* Normal */
         </div>
       </div>
 <a href="a-vous-de-jouer-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="qualit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prerequis-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
