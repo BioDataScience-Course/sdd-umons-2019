@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-06-08">
+<meta name="date" content="2018-06-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -168,12 +168,18 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a><ul>
 <li class="chapter" data-level="5.1" data-path="prerequis-3.html"><a href="prerequis-3.html"><i class="fa fa-check"></i><b>5.1</b> Prérequis</a></li>
-<li class="chapter" data-level="5.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html"><i class="fa fa-check"></i><b>5.2</b> Importation des données</a></li>
-<li class="chapter" data-level="5.3" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.3</b> Type de variables</a></li>
+<li class="chapter" data-level="5.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html"><i class="fa fa-check"></i><b>5.2</b> Importation des données</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#pieges-et-astuces-6"><i class="fa fa-check"></i><b>5.2.1</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.3</b> Type de variables</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="type-de-variables.html"><a href="type-de-variables.html#pieges-et-astuces-7"><i class="fa fa-check"></i><b>5.3.1</b> Pièges et astuces</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html"><i class="fa fa-check"></i><b>5.4</b> Transformation des données</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#select"><i class="fa fa-check"></i><b>5.4.1</b> <code>select()</code></a></li>
 <li class="chapter" data-level="5.4.2" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#filter"><i class="fa fa-check"></i><b>5.4.2</b> <code>filter()</code></a></li>
 <li class="chapter" data-level="5.4.3" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#mutate"><i class="fa fa-check"></i><b>5.4.3</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#summarise"><i class="fa fa-check"></i><b>5.4.4</b> <code>summarise()</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#pieges-et-astuces-11"><i class="fa fa-check"></i><b>5.4.5</b> Pièges et astuces</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a></li>
@@ -212,18 +218,18 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="transformation-des-donnees" class="section level2">
 <h2><span class="header-section-number">5.4</span> Transformation des données</h2>
 <p>Lors du module IV, vous avez réalisé votre premier remaniement de données afin de réaliser un graphique en barre résumant une variable numérique en fonction d’une variable facteur.</p>
-<p>Le principale remaniement des données peut être réalisé en 5 grands piliers :</p>
+<p>Le principale remaniement des données peut être réalisé en 4 grands piliers :</p>
 <ul>
 <li><p>sélectionner des colonnes au sein d’un jeu de données <code>select()</code></p></li>
 <li><p>filtrer des lignes dans un jeu de données <code>filter()</code></p></li>
-<li><p>réordonner les lignes dans un jeu de données <code>arrange()</code></p></li>
 <li><p>calculer de nouvelles variables dans un jeu de donées <code>mutate()</code></p></li>
 <li><p>Résumer de colonnes d’un jeu de données initiale <code>summarise()</code></p></li>
 </ul>
 <div id="select" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> <code>select()</code></h3>
-<p>Lors de l’uilisation vos jeux de données, vous serez amené à réduire vos jeu de données en sous tableau.</p>
+<p>Lors de l’ut ilisation vos jeux de données, vous serez amené à réduire vos jeu de données en sous tableau.</p>
 <p>Partez du jeu de données portant sur la croissance des oursins, ce dernier contient pas moins de 19 variables étudiées sur 421 individus.</p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
 <p>Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction <code>select()</code> et les fonctions d’aide à la selection (<code>?select_helpers</code>) peut vous apporter la solution à votre demande.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub1 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, origin, solid_parts, test)
   
@@ -232,10 +238,10 @@ ub2 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, <span class
 ub3 &lt;-<span class="st">  </span><span class="kw">select</span>(ub, origin, <span class="kw">contains</span>(<span class="st">&quot;weight&quot;</span>))
 
 ub4 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, <span class="kw">ends_with</span>(<span class="st">&quot;ht&quot;</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-3"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-3-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-14"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-14-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
 <p class="caption">
-Figure 2.3: a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4
+Figure 5.1: a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4
 </p>
 </div>
 </div>
@@ -243,10 +249,10 @@ Figure 2.3: a) Résumé de la sélection effectué ub1, b) Résumé de la sélec
 <h3><span class="header-section-number">5.4.2</span> <code>filter()</code></h3>
 <p>Lors de l’analyse de vos jeux de données, vous serez amené à filtrer les lignes de vos tableaux de données. La fonction <code>filter()</code> est l’un des outils pouvant vous apporter la solution.</p>
 <p>Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (l’origine, la hauteur et la masse du squelette).</p>
-<div class="figure"><span id="fig:unnamed-chunk-4"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-4-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-15"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
 <p class="caption">
-Figure 3.1: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.
+Figure 4.5: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.
 </p>
 </div>
 <p>Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau.</p>
@@ -255,10 +261,10 @@ Figure 3.1: a) Nuage de points montrant la variation de la hauteur du test des o
 <li><p>tout sauf : !=</p></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">u &lt;-<span class="st"> </span><span class="kw">filter</span>(ub2, origin <span class="op">!=</span><span class="st"> &quot;Fishery&quot;</span>) <span class="co"># tous les origines sauf ceux provenant de Fishery </span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-6"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-6-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-17"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-17-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
 <p class="caption">
-Figure 5.1: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins.
+Figure 4.7: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins.
 </p>
 </div>
 <p>Vous pouvez utiliser une variable numérique pour filtrer les données.</p>
@@ -268,10 +274,10 @@ Figure 5.1: a) Nuage de points montrant la variation de la hauteur du test des o
 <li><p>supérieur ou égal à : &gt;=</p></li>
 <li><p>inférieur ou égal à : &lt;=</p></li>
 </ul>
-<div class="figure"><span id="fig:unnamed-chunk-8"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-8-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-19"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-19-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
 <p class="caption">
-Figure 4.1: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur les tailles des individus.
+Figure 4.9: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur les tailles des individus.
 </p>
 </div>
 <p>Vous pouvez combiner différents filtres :</p>
@@ -279,13 +285,13 @@ Figure 4.1: a) Nuage de points montrant la variation de la hauteur du test des o
 <li><p>&amp; : et</p></li>
 <li><div style="white-space: pre-line;">: ou</div></li>
 </ul>
-<div class="figure"><span id="fig:unnamed-chunk-10"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-10-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-21"></span>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-21-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
 <p class="caption">
-Figure 4.3: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins et sur les tailles des individus.
+Figure 4.11: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins et sur les tailles des individus.
 </p>
 </div>
-<div id="pieges-et-astuces-6" class="section level4">
+<div id="pieges-et-astuces-8" class="section level4">
 <h4><span class="header-section-number">5.4.2.1</span> Pièges et astuces</h4>
 <p>Avec des variables facteurs composé des nombreux niveaux, on peut être amené à en sélectionné plusieurs</p>
 <pre><code>is &lt;- filter(iris, Species == &quot;virginica&quot;| &quot;setosa&quot;) ## erreur
@@ -298,20 +304,73 @@ is &lt;- filter(iris, Species %in% c(&quot;setosa&quot;, &quot;virginica&quot;))
 <p>Lors de l’analyse de vos jeux de données, vous serez amené à calculer de nouvelles variables. La fonction <code>mutate()</code> est l’un des outils pouvant vous apporter la solution.</p>
 <p>Repartez du jeu de données portant sur la croisance des oursins.</p>
 <p>Vous pouvez tout d’abord employer les - les opérateurs arithmétiques + addition : <code>+</code> + soustraction : <code>-</code> + multiplication : <code>*</code> + division : <code>/</code> + exposant : <code>^</code> ou <code>**</code> + modulo (reste lors d’une division) : <code>%%</code> + division entière : <code>%/%</code></p>
-<pre><code>e.g. : x / sum(x)</code></pre>
-<p>-log</p>
-<pre><code>e.g. : log(x)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1 =</span>  lantern <span class="op">+</span><span class="st"> </span>spines <span class="op">+</span><span class="st"> </span>test, 
+             <span class="dt">v2 =</span> v1<span class="op">/</span>skeleton,
+             <span class="dt">v3 =</span> skeleton<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
 <ul>
-<li></li>
+<li>les fonctions mathématiques
+<ul>
+<li>log</li>
+<li>sqrt</li>
+<li>sin, cos, tan</li>
+</ul></li>
 </ul>
-<div id="pieges-et-astuces-7" class="section level4">
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1_log =</span>  <span class="kw">log</span>(skeleton), 
+             <span class="dt">v2_sqrt =</span> <span class="kw">sqrt</span>(skeleton),
+             <span class="dt">v3_sin =</span> <span class="kw">sin</span>(skeleton))</code></pre></div>
+<div id="pieges-et-astuces-9" class="section level4">
 <h4><span class="header-section-number">5.4.3.1</span> Pièges et astuces</h4>
 <p>La fonction <code>mutate()</code> permet de calculer de nouvelles variables. Cependant, la fonction <code>transmute()</code> permet de retirer les anciennes variables employées dans le calcule de la nouvelle.</p>
+</div>
+</div>
+<div id="summarise" class="section level3">
+<h3><span class="header-section-number">5.4.4</span> <code>summarise()</code></h3>
+<p>Lors de l’analyse de vos jeux de données, vous serez amené à résumer vos données.</p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-24-1.svg" width="672" /></p>
+<p>Cette fonction n’a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d’une ou plusieurs variable de type facteur.</p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" /></p>
+<div id="pieges-et-astuces-10" class="section level4">
+<h4><span class="header-section-number">5.4.4.1</span> Pièges et astuces</h4>
+<p>Tout comme lors de réalisation d’une boite de dispersion, vous devez être particulièrement vigilant ou nombre d’observation par sous groupe. Ajoutez à chaque tableau résumé des données, le nombre d’observation par sous-groupe.</p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
+</div>
+</div>
+<div id="pieges-et-astuces-11" class="section level3">
+<h3><span class="header-section-number">5.4.5</span> Pièges et astuces</h3>
+<p>Lors de l’analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d’employer le <strong>pipe</strong><a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> `%&gt;.% qui permet de réaliser une suite d’intructions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1 =</span>  lantern <span class="op">+</span><span class="st"> </span>spines <span class="op">+</span><span class="st"> </span>test, 
+             <span class="dt">v2 =</span> v1<span class="op">/</span>skeleton,
+             <span class="dt">v3 =</span> skeleton<span class="op">^</span><span class="dv">2</span>)
+
+ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1_log =</span>  <span class="kw">log</span>(skeleton), 
+             <span class="dt">v2_sqrt =</span> <span class="kw">sqrt</span>(skeleton),
+             <span class="dt">v3_sin =</span> <span class="kw">sin</span>(skeleton))
+
+ub &lt;-<span class="st"> </span><span class="kw">filter</span>(ub, height <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>origin <span class="op">==</span><span class="st"> &quot;Farm&quot;</span>)
+
+ub &lt;-<span class="st"> </span><span class="kw">select</span>(ub, origin, solid_parts, test, v2_sqrt)</code></pre></div>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-30-1.svg" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub1 <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">v1 =</span>  lantern <span class="op">+</span><span class="st"> </span>spines <span class="op">+</span><span class="st"> </span>test, 
+         <span class="dt">v2 =</span> v1<span class="op">/</span>skeleton,
+         <span class="dt">v3 =</span> skeleton<span class="op">^</span><span class="dv">2</span>, 
+         <span class="dt">v1_log =</span>  <span class="kw">log</span>(skeleton), 
+         <span class="dt">v2_sqrt =</span> <span class="kw">sqrt</span>(skeleton),
+         <span class="dt">v3_sin =</span> <span class="kw">sin</span>(skeleton)) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">filter</span>(., height <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>origin <span class="op">==</span><span class="st"> &quot;Farm&quot;</span>) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">select</span>(., origin, solid_parts, test, v2_sqrt) -&gt;<span class="st"> </span>ub1</code></pre></div>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" /></p>
 
 </div>
 </div>
-</div>
 <!-- </div> -->
+<div class="footnotes">
+<hr />
+<ol start="10">
+<li id="fn10"><p>TODO<a href="transformation-des-donnees.html#fnref10">↩</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>

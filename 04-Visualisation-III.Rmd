@@ -3,12 +3,18 @@
 ```{r setup}
 SciViews::R
 library(knitr)
+library(flow)
+library(chart)
+library(data)
+
 knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
-data("ToothGrowth")
+ToothGrowth <- read(file = "ToothGrowth", package = "datasets", lang = "fr")
 data("PlantGrowth")
-data("iris")
-data("ChickWeight")
-urchin <- read(file = "urchin_bio", package = "data")
+PlantGrowth <- read(file = "PlantGrowth", package = "datasets", lang = "fr")
+iris <- read(file = "iris", package = "datasets", lang = "fr")
+ChickWeight <- read(file = "ChickWeight", package = "datasets", lang = "fr")
+urchin <- read(file = "urchin_bio", package = "data", lang = "fr")
+diamonds <- data::read(file = "diamonds", package = "ggplot2", lang = "fr")
 ```
 
 
@@ -41,8 +47,6 @@ que l'on peut lire
 
 $$\ en \ fonction \ de \ la \ variable \ facteur$$
 ```{r , fig.cap= "Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur."}
-diamonds <- data::read(file = "diamonds", package = "ggplot2")
-
 chart(diamonds, formula = ~ cut) +
   geom_bar() +
   labs( x = "Label de l'axe x  + [Unité]", 
@@ -356,7 +360,7 @@ Les éléments indispensables à la compréhension d'un graphe en camembert sont
 #### Représentation de boites de dispersion par une variable facteurs à plusieurs niveaux
 
 ```{r, fig.cap= "Boite de dispersion de la longueur de pétales de trois espèces d'iris."}
-chart(iris, formula = Petal.Length ~ Species) +
+chart(iris, formula = petal_length ~ species) +
   geom_boxplot() +
   labs( y = "Longueur des pétales [mm]", x = "Espèce")
 ```

@@ -12,8 +12,11 @@ Vos objectifs pour ce module sont:
 
 ```{r setup}
 SciViews::R
+library(flow)
+library(chart)
+library(data)
 knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
-iris <- data::read(file = "iris", package = "datasets")
+iris <- data::read(file = "iris", package = "datasets", lang = "fr")
 ```
 
 ## Prérequis
@@ -28,7 +31,7 @@ Lors d'une expérience vous souhaitez visualiser la façon dont vos données s'�
 
 
 ```{r, fig.cap= "Histogramme montrant la distribution de la longueur des pétales d'iris."}
-chart(iris, formula = ~ Petal.Length) +
+chart(iris, formula = ~ petal_length) +
   geom_histogram() +
   labs( x = "Unimodal & symétrique", 
         y = "Nombre d'occurence") +
@@ -136,7 +139,7 @@ runExample("01_hello")
 L'histogramme n'est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l'histogramme. Il ne s'agit plus de représenter un dénombrement comme l'histogramme le fait mais une **probabilité**^[TODO] d'obtenir une valeur parmi un échantillon aléatoire. Le passage d'un histogramme vers un graphe de densité se base sur une **estimation par noyaux gaussien**^[TODO]
 
 ```{r, fig.cap= "A) Histogramme montrant la distribution de la longueur des pétales d'iris B) Graphique de densité montrant la distribution de la longueur des pétales d'iris."}
-a <- chart(iris, formula = ~ Petal.Length) +
+a <- chart(iris, formula = ~ petal_length) +
   geom_histogram() +
   labs( y = "Dénombrement") +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
@@ -146,7 +149,7 @@ a <- chart(iris, formula = ~ Petal.Length) +
         axis.line.x = element_line(colour = "#a80039"),
         axis.line.y = element_line(colour = "#a80039"))
 
-  b <- chart(iris, formula = ~ Petal.Length) +
+  b <- chart(iris, formula = ~ petal_length) +
   geom_density() +
   labs( y = "Densité") +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
@@ -178,7 +181,7 @@ Les éléments indispensables à la compréhension d'un graphique de densité so
 Le graphique de densité peut être représenté via un autre graphique qui sera d'autant plus intéressant que la variable facteur étudiée peut être discriminée par un grand nombre de niveaux différents. Il s'agit également d'une estimation se basant sur un histogramme via la méthode l'estimation par noyau gaussien.
 
 ```{r, fig.cap= "Ponts essentiels d'un diagramme en violon."}
-chart(iris, formula = Petal.Length ~ Species %fill=% Species) +
+chart(iris, formula = petal_length ~ species %fill=% species) +
   geom_violin(show.legend = FALSE)  +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
         axis.title.x = element_text(colour = "#029687", size = 15), 

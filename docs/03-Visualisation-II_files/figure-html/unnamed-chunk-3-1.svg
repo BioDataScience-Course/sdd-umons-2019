@@ -92,7 +92,7 @@
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='83.87' y='332.96' style='font-size: 15.00px; fill: #A80039; font-family: Arial;' textLength='8.34px' lengthAdjust='spacingAndGlyphs'>2</text></g>
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='143.22' y='332.96' style='font-size: 15.00px; fill: #A80039; font-family: Arial;' textLength='8.34px' lengthAdjust='spacingAndGlyphs'>4</text></g>
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='202.56' y='332.96' style='font-size: 15.00px; fill: #A80039; font-family: Arial;' textLength='8.34px' lengthAdjust='spacingAndGlyphs'>6</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='104.30' y='350.14' style='font-size: 15.00px; fill: #029687; font-family: Arial;' textLength='84.24px' lengthAdjust='spacingAndGlyphs'>Petal.Length</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='55.94' y='350.14' style='font-size: 15.00px; fill: #029687; font-family: Arial;' textLength='180.94px' lengthAdjust='spacingAndGlyphs'>Longueur des pétales  [cm]</text></g>
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text transform='translate(19.36,213.02) rotate(-90)' style='font-size: 15.00px; fill: #029687; font-family: Arial;' textLength='103.38px' lengthAdjust='spacingAndGlyphs'>Dénombrement</text></g>
 <defs>
   <clipPath id='cpMjUyfDUwNHwzNjB8MA=='>
@@ -145,6 +145,6 @@
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='337.73' y='332.96' style='font-size: 15.00px; fill: #A80039; font-family: Arial;' textLength='8.34px' lengthAdjust='spacingAndGlyphs'>2</text></g>
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='397.83' y='332.96' style='font-size: 15.00px; fill: #A80039; font-family: Arial;' textLength='8.34px' lengthAdjust='spacingAndGlyphs'>4</text></g>
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='457.94' y='332.96' style='font-size: 15.00px; fill: #A80039; font-family: Arial;' textLength='8.34px' lengthAdjust='spacingAndGlyphs'>6</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='358.38' y='350.14' style='font-size: 15.00px; fill: #029687; font-family: Arial;' textLength='84.24px' lengthAdjust='spacingAndGlyphs'>Petal.Length</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='310.03' y='350.14' style='font-size: 15.00px; fill: #029687; font-family: Arial;' textLength='180.94px' lengthAdjust='spacingAndGlyphs'>Longueur des pétales  [cm]</text></g>
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text transform='translate(271.36,186.76) rotate(-90)' style='font-size: 15.00px; fill: #029687; font-family: Arial;' textLength='50.86px' lengthAdjust='spacingAndGlyphs'>Densité</text></g>
 </svg>

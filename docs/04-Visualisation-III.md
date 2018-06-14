@@ -6,22 +6,20 @@ SciViews::R
 ```
 
 ```
-## ── Attaching packages ───────────────────────────────────────────────────────── SciViews::R 1.0.1 ──
+## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────── SciViews::R 1.0.0 ──
 ```
 
 ```
-## ✔ SciViews  1.0.1       ✔ purrr     0.2.4  
-## ✔ chart     1.0.1       ✔ readr     1.1.1  
-## ✔ flow      1.0.0       ✔ tidyr     0.8.0  
-## ✔ data      1.0.0       ✔ tibble    1.4.2  
-## ✔ svMisc    1.0.2       ✔ ggplot2   2.2.1  
-## ✔ forcats   0.3.0       ✔ tidyverse 1.2.1  
-## ✔ stringr   1.3.0       ✔ lattice   0.20.35
-## ✔ dplyr     0.7.4       ✔ MASS      7.3.49
+## ✔ SciViews  1.0.0      ✔ readr     1.1.1 
+## ✔ svMisc    1.1.0      ✔ tidyr     0.8.1 
+## ✔ forcats   0.3.0      ✔ tibble    1.4.2 
+## ✔ stringr   1.3.1      ✔ ggplot2   2.2.1 
+## ✔ dplyr     0.7.5      ✔ tidyverse 1.2.1 
+## ✔ purrr     0.2.5      ✔ MASS      7.3.50
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ✖ dplyr::select() masks MASS::select()
@@ -29,12 +27,25 @@ SciViews::R
 
 ```r
 library(knitr)
+library(flow)
+library(chart)
+```
+
+```
+## Le chargement a nécessité le package : lattice
+```
+
+```r
+library(data)
+
 knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
-data("ToothGrowth")
+ToothGrowth <- read(file = "ToothGrowth", package = "datasets", lang = "fr")
 data("PlantGrowth")
-data("iris")
-data("ChickWeight")
-urchin <- read(file = "urchin_bio", package = "data")
+PlantGrowth <- read(file = "PlantGrowth", package = "datasets", lang = "fr")
+iris <- read(file = "iris", package = "datasets", lang = "fr")
+ChickWeight <- read(file = "ChickWeight", package = "datasets", lang = "fr")
+urchin <- read(file = "urchin_bio", package = "data", lang = "fr")
+diamonds <- data::read(file = "diamonds", package = "ggplot2", lang = "fr")
 ```
 
 

@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-06-08">
+<meta name="date" content="2018-06-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -168,12 +168,18 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a><ul>
 <li class="chapter" data-level="5.1" data-path="prerequis-3.html"><a href="prerequis-3.html"><i class="fa fa-check"></i><b>5.1</b> Prérequis</a></li>
-<li class="chapter" data-level="5.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html"><i class="fa fa-check"></i><b>5.2</b> Importation des données</a></li>
-<li class="chapter" data-level="5.3" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.3</b> Type de variables</a></li>
+<li class="chapter" data-level="5.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html"><i class="fa fa-check"></i><b>5.2</b> Importation des données</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#pieges-et-astuces-6"><i class="fa fa-check"></i><b>5.2.1</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.3</b> Type de variables</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="type-de-variables.html"><a href="type-de-variables.html#pieges-et-astuces-7"><i class="fa fa-check"></i><b>5.3.1</b> Pièges et astuces</a></li>
+</ul></li>
 <li class="chapter" data-level="5.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html"><i class="fa fa-check"></i><b>5.4</b> Transformation des données</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#select"><i class="fa fa-check"></i><b>5.4.1</b> <code>select()</code></a></li>
 <li class="chapter" data-level="5.4.2" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#filter"><i class="fa fa-check"></i><b>5.4.2</b> <code>filter()</code></a></li>
 <li class="chapter" data-level="5.4.3" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#mutate"><i class="fa fa-check"></i><b>5.4.3</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#summarise"><i class="fa fa-check"></i><b>5.4.4</b> <code>summarise()</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#pieges-et-astuces-11"><i class="fa fa-check"></i><b>5.4.5</b> Pièges et astuces</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a></li>
@@ -211,6 +217,47 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="type-de-variables" class="section level2">
 <h2><span class="header-section-number">5.3</span> Type de variables</h2>
+<p>Prenez l’exemple de jeu de donnée portant sur la croissance des dents de cochon d’Inde (<code>ToothGrowth, du package</code>datasets`). Il est composé de 60 observations et de trois variables portant sur la longueur des dents (mm), le supplément administré (OJ jus d’orange ou VC vitamine C) et la dose administrée ( 0.5, 1 et 2 en mm/j).</p>
+<p>Les jeux de données sont une suite de variables mises côte à côte. Vous avez à votre disposition plusieurs type de variables :</p>
+<ul>
+<li>nombre :
+<ul>
+<li>numérique : <code>numeric</code></li>
+<li>entiers : <code>integer</code></li>
+<li>valeurs arrondies : <code>double</code></li>
+<li>nombre complexe : <code>complex</code></li>
+</ul></li>
+</ul>
+<p>Il s’agit des valeurs numériques qui vont composer vos jeux de données. Si une variable numérique ne l’est pas vous pouvez la tranformer avec l’instruction suivante :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg<span class="op">$</span>len &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(tg<span class="op">$</span>len)</code></pre></div>
+<ul>
+<li>caractères : <code>character</code></li>
+</ul>
+<p>Il s’agit de chaine de charactères qui vont composer vos jeux de données. Les chaines de caractères vont avoir 2 bu. Soit ils s’agit d’une information ayant pour objectif d’être employé comme variable facteur. Soit il s’agit d’une information complémentaire sur les observations qui ne sera pas employer dans l’analyse des données. Cependant, vous pouvez être amené à transformer une variable en caractère avec l’instruction suivante :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg<span class="op">$</span>supp &lt;-<span class="st"> </span><span class="kw">as.character</span>(tg<span class="op">$</span>supp)</code></pre></div>
+<ul>
+<li>facteur : <code>factor</code></li>
+</ul>
+<p>Il s’agit d’une variable permettant de discriminer des observations avec un ensemble de niveau dans un jeu de données comme la variable portant sur le supplément administré ou en portant sur la dose administrée. Si une variable facteur ne l’est pas vous pouvez la tranformer avec l’instruction suivante :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg<span class="op">$</span>supp &lt;-<span class="st"> </span><span class="kw">as.factor</span>(tg<span class="op">$</span>supp)</code></pre></div>
+<p>Il est possible de ne pas simplement changer une variable en variable facteur. Il est possible de de préciser les niveaux <code>levels</code>, de l’ordonner avec l’argument <code>ordered = TRUE</code>. Prenez la variable dose du jeu de données <code>ToothGrowth</code>. Etant donné qu’il s’agit de doses croissantes administrées à des cochons d’Inde, cette variable doit donc être une variable ordonnée.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">factor</span>(tg<span class="op">$</span>dose, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>La fonction <code>levels()</code> permet de prendre connaissance des niveaux d’une variable facteur.</p>
+<ul>
+<li>logique : <code>logical</code></li>
+</ul>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<p>La fonction <code>str()</code> permet d’obtenir un maximum d’information sur un jeu de données.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(tg)</code></pre></div>
+<div id="pieges-et-astuces-7" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Pièges et astuces</h3>
+<p>Les variables d’un jeu de données doivent être correctement intégré afin d’éviter toutes mauvaises interprétations comme le montre les deux graphiques ci-dessous.</p>
+<p>Dans les graphiques a) ci-dessous, vous pouvez observer que la dose a été employé comme une variable numérique et dans le graphique b) la dose est employée comme variable facteur. Vous observez que le bon encodage de la variable dose permet d’obtenir le graphique pertinent et cohérent avec la signification des données.</p>
+<pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-11-1.svg" width="672" /></p>
+</div>
 </div>
             </section>
 
