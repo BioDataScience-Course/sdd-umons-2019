@@ -9,7 +9,7 @@ SciViews::R
 ```
 
 ```
-## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────── SciViews::R 1.0.0 ──
+## ── Attaching packages ───────────────────────────────────── SciViews::R 1.0.0 ──
 ```
 
 ```
@@ -22,7 +22,7 @@ SciViews::R
 ```
 
 ```
-## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ✖ dplyr::select() masks MASS::select()
@@ -74,7 +74,7 @@ iris <- data::read("iris", package = "datasets", lang = "fr")
 urchin <- data::read("urchin_bio", package = "data")
 ```
 
-Un exemple de jeu de données est présenté à la Table \@ref(tab:exemple-tab).
+
 
 
 
@@ -100,6 +100,9 @@ Afin de réaliser l'analyse de vos résultat vous devez commencer par importer c
 Vos données peuvent provenir de plusieurs endroit :
 
 - un package 
+- un jeu de données encodé manuellement 
+
+### Données provenant d'un package
 
 En effet, les packages que l'on peut assimiler à des boites à outils dans R sont pour certain composé de jeu de données. La fonction `read() permet de les importer.
 
@@ -112,16 +115,69 @@ ub <- data::read("urchin_bio", package = "data", lang = "fr")
 
 La fonction `read()` requiert comme premier argument le nom du jeu de données (e.g. "iris" ou "urchin_bio"), suivi de l'argument `package` (e.g. "datasets", ou "data"), suivi de l'argument `lang` (e.g. "fr") qui définit la langue d'intérêt.  
 
-- un jeu de données encodé manuellement 
+### Données encodées manuellement
 
-En effet, vous serez amené à encoder manuellement vos jeux de données dans un fichier au format "xlsx", "csv" ou encore "txt". La fonction `read()` permet de les importer.
+En effet, vous serez amené à encoder manuellement vos jeux de données dans un fichier au format "xlsx", "csv" ou encore "txt". La fonction `read()` permet de les importer. Vous devrez dans ce cas spécifier le chemin d'accès à votre fichier.
+
+Le chemin d'accès à votre fichier peut s'écrire de diffférentes manières absolue ou bien de manière relative. Vous devez tant que possible employer des chemins relatifs. Les projets dans RStudio définissent un environnement de travail comme vu dans le module 1. Afin que ce projet soit portable, il est indisensable d'employer des chemins relatifs. 
+
+Votre projet s'organise comme ceci :
+
+```
+/home
+  /sv
+    /Shared
+      /Projects
+        /Projet test                 # Le répertoire de base du projet
+          Projet test.Rproj          # Fichier de configuration du projet créé par RStudio
+          /data                      # Le dossier avec les données de départ
+            Oursins.csv              # Un jeu de données au format CSV
+          /R                         # Un dossier pour les scripts d'analyse R
+            première analyse.R       # Un scirpt de découverte des données
+          /reports                   # Un dossier pour les rapports d'analyse
+            Rapport de test.nb.html  # Vue HTML du rapport générée automatiquement
+            Rapport de test.Rmd      # Un premier rapport au format R Notebook
+```
+
+Afin de définir la position de votre fichiers `Oursins.csv`, vous aller simplement lister l'ensemble de dossier. Il s'agit du chemin absolu , de la position de votre fichier sur votre ordinateur. Ce format n'est pas du tout portable
+
+```
+/home/sv/Shared/Projects/Projet test/data/Oursins.csv 
+```
+
+Ce chemin est plus portable que le précédent et le tild représente le dossier utilisateur. 
+
+```
+~/Shared/Projects/Projet test/data/Oursins.csv
+```
+
+Vous détemrinez le chemin relatif en fonction du répertoire actif dans un projet R studio, c'est le projet lui même qui est le répertoire actif. 
+
+```
+data/Oursins.csv
+```
+Afin de passer d'un chemin absolu à un chemin relatif vous devez :
+
+- connaitre le répertoire actif 
+- utiliser le `/` pour rentrer dans un dossier 
+- utiliser le `../` pour sortir d'un dossier
+
+Pour obtenir une explication complète et détaillée sur l'utilisation des chemins relatifs dans l'organisation d'un projet Rstudio, lisez le tutoriel : **"Tutoriel SDD-UMONS : La gestion des fichiers dans un projet et les chemins relatifs"**
 
 
 ```r
-# cg <- read(../data/jeu_fictif.csv)
+# cg <- read("/Users/engels/Documents/projet/data/jeu_fictif.csv") # chemin absolu
+# ou encore
+# cg <- read(data/jeu_fictif.csv) # Chemin relatif
 ```
 
-- une base des données
+#### Pièges et astuces
+
+L'utilisation des chemins relatifs est indispensable comme expliqués ci-dessus. Lors de vos travaux organisé en plusieurs projets cohérents vous serez amené à travailler principalement dans des fichiers de type `Rscript` ou des fichiers `R notebook`. Le `Rscript` utilise comme point de départ la position de projet R studio. Par contre, le `R notebook` utilise sa propre position comme point de départ.
+
+
+### Données provenant d'une base des données
+
 > TODO ? 
 
 
@@ -231,11 +287,11 @@ Le principale remaniement des données peut être réalisé en 4 grands piliers 
 
 ### `select()`
 
-Lors de l'ut ilisation vos jeux de données, vous serez amené à réduire vos jeu de données en sous tableau.
+Lors de l'utilisation vos jeux de données, vous serez amené à réduire vos jeu de données en sous tableau.
 
 Partez du jeu de données portant sur la croissance des oursins, ce dernier contient pas moins de 19 variables étudiées sur 421 individus. 
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" />
+
 
 Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction `select()` et les fonctions d'aide à la selection (`?select_helpers`) peut vous apporter la solution à votre demande.
 
@@ -402,13 +458,16 @@ Tout comme lors de réalisation d'une boite de dispersion, vous devez être part
 
 Lors de l'analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d'employer le **pipe**^[TODO] `%>.% qui permet de réaliser une suite d'intructions. 
 
+Vous pouvez calculer de nouvelles variables puis filtrer les lignes et enfin sélectionner des colonnes.
+
+Etape par étape, vous allez utiliser la fonction `mutate()`, puis `filter()` et enfin `select()
+
 
 ```r
 ub <- mutate(ub, v1 =  lantern + spines + test, 
              v2 = v1/skeleton,
-             v3 = skeleton^2)
-
-ub <- mutate(ub, v1_log =  log(skeleton), 
+             v3 = skeleton^2,
+             v1_log =  log(skeleton), 
              v2_sqrt = sqrt(skeleton),
              v3_sin = sin(skeleton))
 
@@ -422,6 +481,7 @@ ub <- select(ub, origin, solid_parts, test, v2_sqrt)
 
 
 
+Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
 
 
 ```r
@@ -433,7 +493,88 @@ ub1 %>.%
          v2_sqrt = sqrt(skeleton),
          v3_sin = sin(skeleton)) %>.%
   filter(., height > 20 & origin == "Farm") %>.%
-  select(., origin, solid_parts, test, v2_sqrt) -> ub1
+  select(., origin, solid_parts, test, v2_sqrt) -> ub1 
+
+# fonction pour afficher 
+ggtexttable(head(ub1, n = 6), theme = ttheme("lBlack"))
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-32-1.svg" width="672" />
+
+
+Le pipe est un outil très intéressant lors du résumé de données par une ou plusieurs variables facteurs.
+
+
+```r
+tg <- group_by(tg, supp, dose)
+a <- summarise(tg, "moyenne" = mean(len), 
+               "minimum" = min(len), 
+               "médiane" = median(len), 
+               "maximum" = max(len))
+ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" />
+
+
+```r
+tg %>.%
+  group_by(., supp, dose) %>.%
+  summarise(., "moyenne" = mean(len), 
+               "minimum" = min(len), 
+               "médiane" = median(len), 
+               "maximum" = max(len)) %>.%
+  ggtexttable(., theme = ttheme("lBlack"), rows = NULL)
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" />
+
+```r
+tg %>.%
+  group_by(., supp, dose) %>.%
+  summarise(., "moyenne" = mean(len), 
+               "minimum" = min(len), 
+               "médiane" = median(len), 
+               "maximum" = max(len)) %>.%
+  ggtexttable(., theme = ttheme(
+             colnames.style = colnames_style(fill = "white"),
+             tbody.style = tbody_style(fill = get_palette("RdBu", 6))
+           ), rows = NULL, 
+           cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum"))
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-2.svg" width="672" />
+
+```r
+tg %>.%
+  group_by(., supp, dose) %>.%
+  summarise(., "moyenne" = mean(len), 
+               "minimum" = min(len), 
+               "médiane" = median(len), 
+               "maximum" = max(len)) %>.%
+  ggtexttable(., theme = ttheme("classic"), rows = NULL, 
+           cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum")) %>.%
+  table_cell_bg(., row = 4, column = 3, linewidth = 5, fill= "darkolivegreen1", color = "darkolivegreen4")
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-3.svg" width="672" />
+####Pour en savoir plus 
+
+- [Customisation de tableau](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggtexttable.html)
+
+## A vous de jouer !
+
+
+Un squelette de projet RStudio vous a été fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de : 
+
+- Importer les données provenant du `ToothGrowth`
+
+- Comprendre les données proposées, en utilisant des visualisations graphiques appropriées 
+
+- Reproduire de plus le graphique ci-dessous 
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" />
+
+
+
+- Documenter  le fruit de votre étude dans un rapport R Notebook.

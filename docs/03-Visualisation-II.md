@@ -16,7 +16,7 @@ SciViews::R
 ```
 
 ```
-## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────── SciViews::R 1.0.0 ──
+## ── Attaching packages ───────────────────────────────────── SciViews::R 1.0.0 ──
 ```
 
 ```
@@ -29,7 +29,7 @@ SciViews::R
 ```
 
 ```
-## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ✖ dplyr::select() masks MASS::select()
