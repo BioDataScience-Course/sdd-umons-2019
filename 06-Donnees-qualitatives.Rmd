@@ -1,3 +1,96 @@
 # Données qualitatives {#qualit}
 
 Variables de type `factor`/`ordered`, transformation, découpage en classes, tableau de contigence. Choix des variables à mesurer, biométrie humaine.
+
+
+```{r setup}
+knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
+SciViews::R
+library(knitr)
+library(chart)
+library(ggpubr)
+library(flow)
+library(data)
+dm <- read("diamonds", package = "ggplot2")
+```
+
+> Suite d'idée afin de rédiger le chapitre 6
+
+Vos objectifs pour ce module sont :
+
+- Appréhender le découpage en classe d'une variable numérique, afin de réaliser une variable facteur 
+
+- Appréhender la réalisation des tableaux de contingences.
+
+- Acquérir des données et les encoder de manière reproductible 
+
+## Découpage en classe
+
+
+```{r}
+is <- data::read("iris", package = "datasets", lang = "fr")
+
+chart(is, formula = ~ sepal_length) +
+  geom_histogram(bins = 40)
+```
+
+## Tableaux de contingences
+
+```{r}
+tg <- data::read("ToothGrowth", package = "datasets")
+tg$dose <- factor(tg$dose, levels = c("0.5", "1", "2"), ordered = TRUE)
+```
+
+```{r}
+a <- table(tg$supp, tg$dose)
+a
+```
+
+```{r}
+table(dm$cut, dm$color)
+```
+
+
+```{r}
+timolol <- data.frame(patient = c("sain", "malade", "sain",
+                                  "malade"),
+                      traitement = c("timolol", "timolol", "placebo", "placebo"),
+                      freq = c(44, 116, 19, 128))
+#Creation du tableau de contingence 
+timolol.Table <- xtabs(freq ~ patient + traitement, data =
+                          timolol)
+timolol.Table
+```
+
+```{r}
+anthirrhinum <- as.table(c("fleur rouge" = 54, "fleur rose" = 122, "fleur blanche" = 58))
+anthirrhinum
+```
+
+
+
+## Acquisition de données scientifiques
+
+Vous avez pour objectif de réaliser une recherche 
+
+Thématique de la **biométrie humaine**
+
+- Recherche bibliographique sur la thématique
+- Profil de l'expérience
+    + Variables mesurées afin de répondre à la thématique 
+    + Analyses souhiatées 
+- Acquisition des données
+    + Précision & exactitude
+    + Systèmes de codifications : respect de la vie privée
+- Encodage des données 
+    + Importation des données
+    + Correction des erreurs (tidy)
+- Traitement des données ( Transform, visualise, model )
+    + Visualisation graphiques des données
+    + Analyse statistiques des données 
+- Réalisation d'un rapport structuré répondant à la question de départ
+
+
+
+
+## A vous de jouer !

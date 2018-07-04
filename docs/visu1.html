@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-03-23">
+<meta name="date" content="2018-06-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,9 +50,49 @@
 <script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -81,20 +121,76 @@
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>2.1</b> Prérequis</a></li>
 <li class="chapter" data-level="2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html"><i class="fa fa-check"></i><b>2.2</b> Visualisation graphique à l’aide du nuage de points</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>2.2.1</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.2.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.2.1</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="2.2.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#video"><i class="fa fa-check"></i><b>2.2.2</b> Vidéo</a></li>
+<li class="chapter" data-level="2.2.3" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>2.2.3</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.2.4" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pour-en-savoir-plus"><i class="fa fa-check"></i><b>2.2.4</b> Pour en savoir plus…</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html"><i class="fa fa-check"></i><b>2.3</b> Intégration des graphiques dans un rapport: R Markdown</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.3.1</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.3.2" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#la-redaction-de-rapport-scientifique"><i class="fa fa-check"></i><b>2.3.2</b> La rédaction de rapport scientifique</a></li>
+<li class="chapter" data-level="2.3.3" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#pour-en-savoir-plus-1"><i class="fa fa-check"></i><b>2.3.3</b> Pour en savoir plus…</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="recapitulons.html"><a href="recapitulons.html"><i class="fa fa-check"></i><b>2.4</b> Récapitulons</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="recapitulons.html"><a href="recapitulons.html#testez-vos-acquis"><i class="fa fa-check"></i><b>2.4.1</b> Testez vos acquis</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="pour-en-savoir-plus.html"><a href="pour-en-savoir-plus.html"><i class="fa fa-check"></i><b>2.5</b> Pour en savoir plus…</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="visu2.html"><a href="visu2.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a></li>
-<li class="chapter" data-level="4" data-path="visu3.html"><a href="visu3.html"><i class="fa fa-check"></i><b>4</b> Visualisation III</a></li>
-<li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a></li>
-<li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a></li>
+<li class="chapter" data-level="3" data-path="visu2.html"><a href="visu2.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a><ul>
+<li class="chapter" data-level="3.1" data-path="prerequis-1.html"><a href="prerequis-1.html"><i class="fa fa-check"></i><b>3.1</b> Prérequis</a></li>
+<li class="chapter" data-level="3.2" data-path="visualisation-graphique-a-laide-dun-histogramme.html"><a href="visualisation-graphique-a-laide-dun-histogramme.html"><i class="fa fa-check"></i><b>3.2</b> Visualisation graphique à l’aide d’un histogramme</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="visualisation-graphique-a-laide-dun-histogramme.html"><a href="visualisation-graphique-a-laide-dun-histogramme.html#pieges-et-astuces-1"><i class="fa fa-check"></i><b>3.2.1</b> Pièges et Astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="visualisation-graphique-a-laide-dun-graphique-de-densite.html"><a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html"><i class="fa fa-check"></i><b>3.3</b> Visualisation graphique à l’aide d’un graphique de densité</a></li>
+<li class="chapter" data-level="3.4" data-path="visualisation-graphique-a-laide-dun-diagramme-en-violon.html"><a href="visualisation-graphique-a-laide-dun-diagramme-en-violon.html"><i class="fa fa-check"></i><b>3.4</b> Visualisation graphique à l’aide d’un diagramme en violon</a></li>
+<li class="chapter" data-level="3.5" data-path="a-vous-de-jouer-2.html"><a href="a-vous-de-jouer-2.html"><i class="fa fa-check"></i><b>3.5</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visu3.html"><a href="visu3.html"><i class="fa fa-check"></i><b>4</b> Visualisation III</a><ul>
+<li class="chapter" data-level="4.1" data-path="prerequis-2.html"><a href="prerequis-2.html"><i class="fa fa-check"></i><b>4.1</b> Prérequis</a></li>
+<li class="chapter" data-level="4.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><i class="fa fa-check"></i><b>4.2</b> Visualisation graphique à l’aide d’un graphique en barre</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html#representation-dun-denombration-dobservations-par-facteur"><i class="fa fa-check"></i><b>4.2.1</b> Représentation d’un dénombration d’observations par facteur</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html#representation-dune-valeur-moyenne-a-laide-dun-graphe-en-barre."><i class="fa fa-check"></i><b>4.2.2</b> Représentation d’une valeur moyenne à l’aide d’un graphe en barre.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.3</b> Visualisation graphique à l’aide d’un graphique en camembert</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pieges-et-astuces-4"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pour-en-savoir-plus-4"><i class="fa fa-check"></i><b>4.3.2</b> Pour en savoir plus</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><i class="fa fa-check"></i><b>4.4</b> Visualisation graphique à l’aide de la boite de dispersion</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.4.1</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="4.4.2" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html#pour-en-savoir-plus-5"><i class="fa fa-check"></i><b>4.4.2</b> Pour en savoir plus !</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Visualisation de multi-graphiques</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#facet_grid"><i class="fa fa-check"></i><b>4.5.1</b> <code>facet_grid()</code></a></li>
+<li class="chapter" data-level="4.5.2" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#plot_grid"><i class="fa fa-check"></i><b>4.5.2</b> <code>plot_grid()</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#a-vous-de-jouer-3"><i class="fa fa-check"></i><b>4.5.3</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="apercu-des-differents-systemes-graphiques.html"><a href="apercu-des-differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.6</b> Aperçu des différents systèmes graphiques</a></li>
+<li class="chapter" data-level="4.7" data-path="a-vous-de-jouer-4.html"><a href="a-vous-de-jouer-4.html"><i class="fa fa-check"></i><b>4.7</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a><ul>
+<li class="chapter" data-level="5.1" data-path="prerequis-3.html"><a href="prerequis-3.html"><i class="fa fa-check"></i><b>5.1</b> Prérequis</a></li>
+<li class="chapter" data-level="5.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html"><i class="fa fa-check"></i><b>5.2</b> Importation des données</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#donnees-provenant-dun-package"><i class="fa fa-check"></i><b>5.2.1</b> Données provenant d’un package</a></li>
+<li class="chapter" data-level="5.2.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#donnees-encodees-manuellement"><i class="fa fa-check"></i><b>5.2.2</b> Données encodées manuellement</a></li>
+<li class="chapter" data-level="5.2.3" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#pieges-et-astuces-7"><i class="fa fa-check"></i><b>5.2.3</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.3</b> Type de variables</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="type-de-variables.html"><a href="type-de-variables.html#pieges-et-astuces-8"><i class="fa fa-check"></i><b>5.3.1</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html"><i class="fa fa-check"></i><b>5.4</b> Transformation des données</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#select"><i class="fa fa-check"></i><b>5.4.1</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#filter"><i class="fa fa-check"></i><b>5.4.2</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#mutate"><i class="fa fa-check"></i><b>5.4.3</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#summarise"><i class="fa fa-check"></i><b>5.4.4</b> <code>summarise()</code></a></li>
+<li class="chapter" data-level="5.4.5" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#pieges-et-astuces-12"><i class="fa fa-check"></i><b>5.4.5</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>5.5</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a><ul>
+<li class="chapter" data-level="6.1" data-path="decoupage-en-classe.html"><a href="decoupage-en-classe.html"><i class="fa fa-check"></i><b>6.1</b> Découpage en classe</a></li>
+<li class="chapter" data-level="6.2" data-path="tableaux-de-contingences.html"><a href="tableaux-de-contingences.html"><i class="fa fa-check"></i><b>6.2</b> Tableaux de contingences</a></li>
+<li class="chapter" data-level="6.3" data-path="acquisition-de-donnees-scientifiques.html"><a href="acquisition-de-donnees-scientifiques.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données scientifiques</a></li>
+<li class="chapter" data-level="6.4" data-path="a-vous-de-jouer-6.html"><a href="a-vous-de-jouer-6.html"><i class="fa fa-check"></i><b>6.4</b> A vous de jouer !</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a></li>
 <li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
@@ -131,11 +227,11 @@
 <h1><span class="header-section-number">Module 2</span> Visualisation I</h1>
 <p>Vos objectifs pour ce module sont:</p>
 <ul>
-<li>Découvrir –et vous émerveiller de– ce que l’on peut faire avec le <a href="http://www.r-project.org">logiciel R</a> <span class="citation">(R Core Team <a href="#ref-R-base">2018</a>)</span></li>
-<li>Découvrir le format R Markdown <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span> et la recherche reproductible</li>
-<li>Savoir réaliser différentes variantes d’un graphique en nuage de points dans R avec la fonction <code>chart()</code></li>
-<li>Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez</li>
-<li>Comparer de manière critique un workflow ‘classique’ en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown; prendre conscience de l’énorme potentiel de R</li>
+<li><p>Découvrir –et vous émerveiller de– ce que l’on peut faire avec le <a href="http://www.r-project.org">logiciel R</a> <span class="citation">(R Core Team <a href="#ref-R-base">2018</a>)</span></p></li>
+<li><p>Savoir réaliser différentes variantes d’un graphique en nuage de points dans R avec la fonction <code>chart()</code></p></li>
+<li><p>Découvrir le format R Markdown <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span> et la recherche reproductible</p></li>
+<li><p>Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez</p></li>
+<li><p>Comparer de manière critique un workflow ‘classique’ en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown; prendre conscience de l’énorme potentiel de R</p></li>
 </ul> 
 </div>
 <h3>Références</h3>
