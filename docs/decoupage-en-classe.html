@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="type-de-variables.html">
-<link rel="next" href="a-vous-de-jouer-5.html">
+<link rel="prev" href="qualit.html">
+<link rel="next" href="tableaux-de-contingences.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -223,212 +223,17 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="transformation-des-donnees" class="section level2">
-<h2><span class="header-section-number">5.4</span> Transformation des données</h2>
-<p>Lors du module IV, vous avez réalisé votre premier remaniement de données afin de réaliser un graphique en barre résumant une variable numérique en fonction d’une variable facteur.</p>
-<p>Le principale remaniement des données peut être réalisé en 4 grands piliers :</p>
-<ul>
-<li><p>sélectionner des colonnes au sein d’un jeu de données <code>select()</code></p></li>
-<li><p>filtrer des lignes dans un jeu de données <code>filter()</code></p></li>
-<li><p>calculer de nouvelles variables dans un jeu de donées <code>mutate()</code></p></li>
-<li><p>Résumer de colonnes d’un jeu de données initiale <code>summarise()</code></p></li>
-</ul>
-<div id="select" class="section level3">
-<h3><span class="header-section-number">5.4.1</span> <code>select()</code></h3>
-<p>Lors de l’utilisation vos jeux de données, vous serez amené à réduire vos jeu de données en sous tableau.</p>
-<p>Partez du jeu de données portant sur la croissance des oursins, ce dernier contient pas moins de 19 variables étudiées sur 421 individus.</p>
-<p>Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction <code>select()</code> et les fonctions d’aide à la selection (<code>?select_helpers</code>) peut vous apporter la solution à votre demande.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub1 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, origin, solid_parts, test)
-  
-ub2 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">14</span>))
-
-ub3 &lt;-<span class="st">  </span><span class="kw">select</span>(ub, origin, <span class="kw">contains</span>(<span class="st">&quot;weight&quot;</span>))
-
-ub4 &lt;-<span class="st"> </span><span class="kw">select</span>(ub, <span class="kw">ends_with</span>(<span class="st">&quot;ht&quot;</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-15"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
-<p class="caption">
-Figure 4.5: a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4
-</p>
-</div>
-</div>
-<div id="filter" class="section level3">
-<h3><span class="header-section-number">5.4.2</span> <code>filter()</code></h3>
-<p>Lors de l’analyse de vos jeux de données, vous serez amené à filtrer les lignes de vos tableaux de données. La fonction <code>filter()</code> est l’un des outils pouvant vous apporter la solution.</p>
-<p>Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (l’origine, la hauteur et la masse du squelette).</p>
-<div class="figure"><span id="fig:unnamed-chunk-16"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-16-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
-<p class="caption">
-Figure 4.6: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.
-</p>
-</div>
-<p>Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau.</p>
-<ul>
-<li><p>égal à : ==</p></li>
-<li><p>tout sauf : !=</p></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">u &lt;-<span class="st"> </span><span class="kw">filter</span>(ub2, origin <span class="op">!=</span><span class="st"> &quot;Fishery&quot;</span>) <span class="co"># tous les origines sauf ceux provenant de Fishery </span></code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-18"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-18-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
-<p class="caption">
-Figure 4.8: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins.
-</p>
-</div>
-<p>Vous pouvez utiliser une variable numérique pour filtrer les données.</p>
-<ul>
-<li><p>supérieur à : &gt;</p></li>
-<li><p>inférieur à : &lt;</p></li>
-<li><p>supérieur ou égal à : &gt;=</p></li>
-<li><p>inférieur ou égal à : &lt;=</p></li>
-</ul>
-<div class="figure"><span id="fig:unnamed-chunk-20"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-20-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
-<p class="caption">
-Figure 4.10: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur les tailles des individus.
-</p>
-</div>
-<p>Vous pouvez combiner différents filtres :</p>
-<ul>
-<li><p>&amp; : et</p></li>
-<li><div style="white-space: pre-line;">: ou</div></li>
-</ul>
-<div class="figure"><span id="fig:unnamed-chunk-22"></span>
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-22-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
-<p class="caption">
-Figure 4.12: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins et sur les tailles des individus.
-</p>
-</div>
-<div id="pieges-et-astuces-9" class="section level4">
-<h4><span class="header-section-number">5.4.2.1</span> Pièges et astuces</h4>
-<p>Avec des variables facteurs composé des nombreux niveaux, on peut être amené à en sélectionné plusieurs</p>
-<pre><code>is &lt;- filter(iris, Species == &quot;virginica&quot;| &quot;setosa&quot;) ## erreur
-
-is &lt;- filter(iris, Species %in% c(&quot;setosa&quot;, &quot;virginica&quot;))</code></pre>
-</div>
-</div>
-<div id="mutate" class="section level3">
-<h3><span class="header-section-number">5.4.3</span> <code>mutate()</code></h3>
-<p>Lors de l’analyse de vos jeux de données, vous serez amené à calculer de nouvelles variables. La fonction <code>mutate()</code> est l’un des outils pouvant vous apporter la solution.</p>
-<p>Repartez du jeu de données portant sur la croisance des oursins.</p>
-<p>Vous pouvez tout d’abord employer les - les opérateurs arithmétiques + addition : <code>+</code> + soustraction : <code>-</code> + multiplication : <code>*</code> + division : <code>/</code> + exposant : <code>^</code> ou <code>**</code> + modulo (reste lors d’une division) : <code>%%</code> + division entière : <code>%/%</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1 =</span>  lantern <span class="op">+</span><span class="st"> </span>spines <span class="op">+</span><span class="st"> </span>test, 
-             <span class="dt">v2 =</span> v1<span class="op">/</span>skeleton,
-             <span class="dt">v3 =</span> skeleton<span class="op">^</span><span class="dv">2</span>)</code></pre></div>
-<ul>
-<li>les fonctions mathématiques
-<ul>
-<li>log</li>
-<li>sqrt</li>
-<li>sin, cos, tan</li>
-</ul></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1_log =</span>  <span class="kw">log</span>(skeleton), 
-             <span class="dt">v2_sqrt =</span> <span class="kw">sqrt</span>(skeleton),
-             <span class="dt">v3_sin =</span> <span class="kw">sin</span>(skeleton))</code></pre></div>
-<div id="pieges-et-astuces-10" class="section level4">
-<h4><span class="header-section-number">5.4.3.1</span> Pièges et astuces</h4>
-<p>La fonction <code>mutate()</code> permet de calculer de nouvelles variables. Cependant, la fonction <code>transmute()</code> permet de retirer les anciennes variables employées dans le calcule de la nouvelle.</p>
-</div>
-</div>
-<div id="summarise" class="section level3">
-<h3><span class="header-section-number">5.4.4</span> <code>summarise()</code></h3>
-<p>Lors de l’analyse de vos jeux de données, vous serez amené à résumer vos données.</p>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" /></p>
-<p>Cette fonction n’a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d’une ou plusieurs variable de type facteur.</p>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" /></p>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
-<div id="pieges-et-astuces-11" class="section level4">
-<h4><span class="header-section-number">5.4.4.1</span> Pièges et astuces</h4>
-<p>Tout comme lors de réalisation d’une boite de dispersion, vous devez être particulièrement vigilant ou nombre d’observation par sous groupe. Ajoutez à chaque tableau résumé des données, le nombre d’observation par sous-groupe.</p>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" width="672" /></p>
-</div>
-</div>
-<div id="pieges-et-astuces-12" class="section level3">
-<h3><span class="header-section-number">5.4.5</span> Pièges et astuces</h3>
-<p>Lors de l’analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d’employer le <strong>pipe</strong><a href="#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> `%&gt;.% qui permet de réaliser une suite d’intructions.</p>
-<p>Vous pouvez calculer de nouvelles variables puis filtrer les lignes et enfin sélectionner des colonnes.</p>
-<p>Etape par étape, vous allez utiliser la fonction <code>mutate()</code>, puis <code>filter()</code> et enfin `select()</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1 =</span>  lantern <span class="op">+</span><span class="st"> </span>spines <span class="op">+</span><span class="st"> </span>test, 
-             <span class="dt">v2 =</span> v1<span class="op">/</span>skeleton,
-             <span class="dt">v3 =</span> skeleton<span class="op">^</span><span class="dv">2</span>,
-             <span class="dt">v1_log =</span>  <span class="kw">log</span>(skeleton), 
-             <span class="dt">v2_sqrt =</span> <span class="kw">sqrt</span>(skeleton),
-             <span class="dt">v3_sin =</span> <span class="kw">sin</span>(skeleton))
-
-ub &lt;-<span class="st"> </span><span class="kw">filter</span>(ub, height <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>origin <span class="op">==</span><span class="st"> &quot;Farm&quot;</span>)
-
-ub &lt;-<span class="st"> </span><span class="kw">select</span>(ub, origin, solid_parts, test, v2_sqrt)</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
-<p>Le pipe permet d’éviter certaine répétion afin de réaliser en cascade la suite des opérations. Vous devez être vigilant à la structure du pipe qui comprend le pipe <code>%&gt;.%</code>et le point au début des fonctions <code>.</code>. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub1 <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">v1 =</span>  lantern <span class="op">+</span><span class="st"> </span>spines <span class="op">+</span><span class="st"> </span>test, 
-         <span class="dt">v2 =</span> v1<span class="op">/</span>skeleton,
-         <span class="dt">v3 =</span> skeleton<span class="op">^</span><span class="dv">2</span>, 
-         <span class="dt">v1_log =</span>  <span class="kw">log</span>(skeleton), 
-         <span class="dt">v2_sqrt =</span> <span class="kw">sqrt</span>(skeleton),
-         <span class="dt">v3_sin =</span> <span class="kw">sin</span>(skeleton)) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">filter</span>(., height <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>origin <span class="op">==</span><span class="st"> &quot;Farm&quot;</span>) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">select</span>(., origin, solid_parts, test, v2_sqrt) -&gt;<span class="st"> </span>ub1 
-
-<span class="co"># fonction pour afficher </span>
-<span class="kw">ggtexttable</span>(<span class="kw">head</span>(ub1, <span class="dt">n =</span> <span class="dv">6</span>), <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" /></p>
-<p>Le pipe est un outil très intéressant lors du résumé de données par une ou plusieurs variables facteurs.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg &lt;-<span class="st"> </span><span class="kw">group_by</span>(tg, supp, dose)
-a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span class="st">&quot;moyenne&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(len), 
-               <span class="st">&quot;minimum&quot;</span> =<span class="st"> </span><span class="kw">min</span>(len), 
-               <span class="st">&quot;médiane&quot;</span> =<span class="st"> </span><span class="kw">median</span>(len), 
-               <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len))
-<span class="kw">ggtexttable</span>(a, <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">group_by</span>(., supp, dose) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">summarise</span>(., <span class="st">&quot;moyenne&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(len), 
-               <span class="st">&quot;minimum&quot;</span> =<span class="st"> </span><span class="kw">min</span>(len), 
-               <span class="st">&quot;médiane&quot;</span> =<span class="st"> </span><span class="kw">median</span>(len), 
-               <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len)) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">ggtexttable</span>(., <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>), <span class="dt">rows =</span> <span class="ot">NULL</span>)</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">group_by</span>(., supp, dose) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">summarise</span>(., <span class="st">&quot;moyenne&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(len), 
-               <span class="st">&quot;minimum&quot;</span> =<span class="st"> </span><span class="kw">min</span>(len), 
-               <span class="st">&quot;médiane&quot;</span> =<span class="st"> </span><span class="kw">median</span>(len), 
-               <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len)) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">ggtexttable</span>(., <span class="dt">theme =</span> <span class="kw">ttheme</span>(
-             <span class="dt">colnames.style =</span> <span class="kw">colnames_style</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>),
-             <span class="dt">tbody.style =</span> <span class="kw">tbody_style</span>(<span class="dt">fill =</span> <span class="kw">get_palette</span>(<span class="st">&quot;RdBu&quot;</span>, <span class="dv">6</span>))
-           ), <span class="dt">rows =</span> <span class="ot">NULL</span>, 
-           <span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;Supplément&quot;</span>, <span class="st">&quot;Dose&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Minimum&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Maximum&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-2.svg" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">group_by</span>(., supp, dose) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">summarise</span>(., <span class="st">&quot;moyenne&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(len), 
-               <span class="st">&quot;minimum&quot;</span> =<span class="st"> </span><span class="kw">min</span>(len), 
-               <span class="st">&quot;médiane&quot;</span> =<span class="st"> </span><span class="kw">median</span>(len), 
-               <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len)) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">ggtexttable</span>(., <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;classic&quot;</span>), <span class="dt">rows =</span> <span class="ot">NULL</span>, 
-           <span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;Supplément&quot;</span>, <span class="st">&quot;Dose&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Minimum&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Maximum&quot;</span>)) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">table_cell_bg</span>(., <span class="dt">row =</span> <span class="dv">4</span>, <span class="dt">column =</span> <span class="dv">3</span>, <span class="dt">linewidth =</span> <span class="dv">5</span>, <span class="dt">fill=</span> <span class="st">&quot;darkolivegreen1&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;darkolivegreen4&quot;</span>)</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-3.svg" width="672" /> ####Pour en savoir plus</p>
-<ul>
-<li><a href="http://www.sthda.com/english/rpkgs/ggpubr/reference/ggtexttable.html">Customisation de tableau</a></li>
-</ul>
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="10">
-<li id="fn10"><p>TODO<a href="transformation-des-donnees.html#fnref10">↩</a></p></li>
-</ol>
+<div id="decoupage-en-classe" class="section level2">
+<h2><span class="header-section-number">6.1</span> Découpage en classe</h2>
+<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-1-1.svg" width="672" /></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="type-de-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-vous-de-jouer-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="qualit.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tableaux-de-contingences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -458,7 +263,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/05-Importation-Transformation.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/06-Donnees-qualitatives.Rmd",
 "text": "Editer"
 },
 "download": null,

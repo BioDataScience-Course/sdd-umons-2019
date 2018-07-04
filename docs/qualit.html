@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-06-15">
+<meta name="date" content="2018-06-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="a-vous-de-jouer-5.html">
-<link rel="next" href="proba.html">
+<link rel="next" href="decoupage-en-classe.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -171,8 +171,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="5.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html"><i class="fa fa-check"></i><b>5.2</b> Importation des données</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#donnees-provenant-dun-package"><i class="fa fa-check"></i><b>5.2.1</b> Données provenant d’un package</a></li>
 <li class="chapter" data-level="5.2.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#donnees-encodees-manuellement"><i class="fa fa-check"></i><b>5.2.2</b> Données encodées manuellement</a></li>
-<li class="chapter" data-level="5.2.3" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#donnees-provenant-dune-base-des-donnees"><i class="fa fa-check"></i><b>5.2.3</b> Données provenant d’une base des données</a></li>
-<li class="chapter" data-level="5.2.4" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#pieges-et-astuces-7"><i class="fa fa-check"></i><b>5.2.4</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="5.2.3" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#pieges-et-astuces-7"><i class="fa fa-check"></i><b>5.2.3</b> Pièges et astuces</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.3</b> Type de variables</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="type-de-variables.html"><a href="type-de-variables.html#pieges-et-astuces-8"><i class="fa fa-check"></i><b>5.3.1</b> Pièges et astuces</a></li>
@@ -186,7 +185,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>5.5</b> A vous de jouer !</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a></li>
+<li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a><ul>
+<li class="chapter" data-level="6.1" data-path="decoupage-en-classe.html"><a href="decoupage-en-classe.html"><i class="fa fa-check"></i><b>6.1</b> Découpage en classe</a></li>
+<li class="chapter" data-level="6.2" data-path="tableaux-de-contingences.html"><a href="tableaux-de-contingences.html"><i class="fa fa-check"></i><b>6.2</b> Tableaux de contingences</a></li>
+<li class="chapter" data-level="6.3" data-path="acquisition-de-donnees-scientifiques.html"><a href="acquisition-de-donnees-scientifiques.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données scientifiques</a></li>
+<li class="chapter" data-level="6.4" data-path="a-vous-de-jouer-6.html"><a href="a-vous-de-jouer-6.html"><i class="fa fa-check"></i><b>6.4</b> A vous de jouer !</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a></li>
 <li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
@@ -222,7 +226,44 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="qualit" class="section level1">
 <h1><span class="header-section-number">Module 6</span> Données qualitatives</h1>
 <p>Variables de type <code>factor</code>/<code>ordered</code>, transformation, découpage en classes, tableau de contigence. Choix des variables à mesurer, biométrie humaine.</p>
-
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo=</span><span class="ot">FALSE</span>, <span class="dt">results=</span> <span class="st">&#39;hide&#39;</span>, <span class="dt">message=</span><span class="ot">FALSE</span>)
+SciViews<span class="op">::</span>R</code></pre></div>
+<pre><code>## ── Attaching packages ───────────────────────────────────── SciViews::R 1.0.0 ──</code></pre>
+<pre><code>## ✔ SciViews  1.0.0      ✔ readr     1.1.1 
+## ✔ svMisc    1.1.0      ✔ tidyr     0.8.1 
+## ✔ forcats   0.3.0      ✔ tibble    1.4.2 
+## ✔ stringr   1.3.1      ✔ ggplot2   2.2.1 
+## ✔ dplyr     0.7.5      ✔ tidyverse 1.2.1 
+## ✔ purrr     0.2.5      ✔ MASS      7.3.50</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ✖ dplyr::select() masks MASS::select()</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+<span class="kw">library</span>(chart)</code></pre></div>
+<pre><code>## Le chargement a nécessité le package : lattice</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggpubr)</code></pre></div>
+<pre><code>## Le chargement a nécessité le package : magrittr</code></pre>
+<pre><code>## 
+## Attachement du package : &#39;magrittr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     set_names</code></pre>
+<pre><code>## The following object is masked from &#39;package:tidyr&#39;:
+## 
+##     extract</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(flow)
+<span class="kw">library</span>(data)
+dm &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;diamonds&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;ggplot2&quot;</span>)</code></pre></div>
+<blockquote>
+<p>Suite d’idée afin de rédiger le chapitre 6</p>
+</blockquote>
+<p>Vos objectifs pour ce module sont :</p>
+<ul>
+<li><p>Appréhender le découpage en classe d’une variable numérique, afin de réaliser une variable facteur</p></li>
+<li><p>Appréhender la réalisation des tableaux de contingences.</p></li>
+<li><p>Acquérir des données et les encoder de manière reproductible</p></li>
+</ul> 
 </div>
             </section>
 
@@ -230,7 +271,7 @@ code > span. { color: #1f1c1b; } /* Normal */
         </div>
       </div>
 <a href="a-vous-de-jouer-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="proba.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="decoupage-en-classe.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
