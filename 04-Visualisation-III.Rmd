@@ -26,7 +26,7 @@ Vos objectif durant ce module sont :
 
 - Découvrir différents systèmes graphiques (graphiques de base, Lattice, ggplot2) et comparaison avec `chart()`
 
-> TODO: changer le jeu de données par des données biologiques
+> TODO: changer le jeu de données par des données biologiques si possible
 
 
 ## Prérequis
@@ -421,7 +421,7 @@ chart(ChickWeight, formula = weight ~ Time ) +
 
 Vous observez que les échelles en abscisse et en ordonnée sont similaires. Cela permet une meilleure comparaison.
 
-### `plot_grid()`
+### `ggarrange()`
 
 ```{r , fig.cap= "A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine."}
 a <- chart(urchin, formula = weight ~ height %col=% origin) +

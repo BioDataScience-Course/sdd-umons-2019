@@ -504,14 +504,6 @@ ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
 ```{r, echo = TRUE}
-tg %>.%
-  group_by(., supp, dose) %>.%
-  summarise(., "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len)) %>.%
-  ggtexttable(., theme = ttheme("lBlack"), rows = NULL)
-
 
 tg %>.%
   group_by(., supp, dose) %>.%
@@ -526,15 +518,6 @@ tg %>.%
            cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum"))
 
 
-tg %>.%
-  group_by(., supp, dose) %>.%
-  summarise(., "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len)) %>.%
-  ggtexttable(., theme = ttheme("classic"), rows = NULL, 
-           cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum")) %>.%
-  table_cell_bg(., row = 4, column = 3, linewidth = 5, fill= "darkolivegreen1", color = "darkolivegreen4")
 ```
 ####Pour en savoir plus 
 

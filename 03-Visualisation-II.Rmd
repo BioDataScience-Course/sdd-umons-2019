@@ -1,8 +1,5 @@
 # Visualisation II {#visu2}
 
-_A ce niveau, les étudiants pourront choisir entre le module 3 et le module 4 à faire en premier. Ensuite, les groupes switcheront vers l'autre modules et s'entre-aideront._
-
-Distribution des données, histogramme, graphe de densité, violin plot. Projet RStudio, organisation des dossiers, noms de fichiers. Jeux de données fournis. A la fin, projet perso: explorer un autre type de graphique et l’implémenter dans son rapport.
 
 Vos objectifs pour ce module sont:
 
@@ -10,31 +7,32 @@ Vos objectifs pour ce module sont:
 
 - Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez
 
-```{r setup}
+```{r setup, echo=FALSE, message=FALSE, results='hide'}
 SciViews::R
 library(flow)
 library(chart)
 library(data)
 knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
 iris <- data::read(file = "iris", package = "datasets", lang = "fr")
+zp <- data::read( file = "zooplankton", package = "data", lang = "fr")
+tg <- data::read(file = "ToothGrowth", package = "datasets", lang = "fr")
 ```
 
 ## Prérequis
 
 Si ce n'est déjà fait, vous devez avoir réaliser le module précédent.
 
-> A faire: proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire 
+> TODO : proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire 
 
 ## Visualisation graphique à l'aide d'un histogramme
 
 Lors d'une expérience vous souhaitez visualiser la façon dont vos données s'étale sur un axe (On parle de **distribution**^[TODO] en statistique) pour l'une des vairables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va découper en plusieurs **classes**^[TODO] la variable étudiée.
 
 
-```{r, fig.cap= "Histogramme montrant la distribution de la longueur des pétales d'iris."}
-chart(iris, formula = ~ petal_length) +
-  geom_histogram() +
-  labs( x = "Unimodal & symétrique", 
-        y = "Nombre d'occurence") +
+```{r, fig.cap= "Histogramme montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image."}
+chart(zp, formula = ~ size) +
+  geom_histogram(bins = 50) +
+  ylab("Nombre d'occurence") +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
         axis.title.x = element_text(colour = "#029687", size = 15), 
         axis.text.y = element_text(colour = "#a80039", size  = 15), 
@@ -121,13 +119,14 @@ g4 <- chart(c1, formula = ~ c) +
         axis.line.y = element_line(colour = "#a80039"))
 
 ggpubr::ggarrange(g1, g2, g3, g4)
+rm(g1, g2, g3, g4, c1, c, f, e1, e, d1, g, d)
 ```
 
 
 ### Pièges et Astuces
 
 
-Vous devez être particulièrement vigilant lors de la réalisation d'un histogramme au classes de ce dernier. 
+Vous devez être particulièrement vigilant lors de la réalisation d'un histogramme aux classes de ce dernier. 
 
 ```
 library(shiny)
@@ -138,8 +137,8 @@ runExample("01_hello")
 
 L'histogramme n'est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l'histogramme. Il ne s'agit plus de représenter un dénombrement comme l'histogramme le fait mais une **probabilité**^[TODO] d'obtenir une valeur parmi un échantillon aléatoire. Le passage d'un histogramme vers un graphe de densité se base sur une **estimation par noyaux gaussien**^[TODO]
 
-```{r, fig.cap= "A) Histogramme montrant la distribution de la longueur des pétales d'iris B) Graphique de densité montrant la distribution de la longueur des pétales d'iris."}
-a <- chart(iris, formula = ~ petal_length) +
+```{r, fig.cap= "A) Histogramme  et B) graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image."}
+a <- chart(zp, formula = ~ size) +
   geom_histogram() +
   labs( y = "Dénombrement") +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
@@ -149,7 +148,7 @@ a <- chart(iris, formula = ~ petal_length) +
         axis.line.x = element_line(colour = "#a80039"),
         axis.line.y = element_line(colour = "#a80039"))
 
-  b <- chart(iris, formula = ~ petal_length) +
+  b <- chart(zp, formula = ~ size) +
   geom_density() +
   labs( y = "Densité") +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
@@ -160,6 +159,7 @@ a <- chart(iris, formula = ~ petal_length) +
         axis.line.y = element_line(colour = "#a80039"))
 
 ggpubr::ggarrange(a,b)
+rm(a,b)
 ```
 
 Les instructions de base afin de produire un histogramme sont :
@@ -174,14 +174,13 @@ Les éléments indispensables à la compréhension d'un graphique de densité so
 - Les axes avec les graduations (en rouge)
 - les labels et unité des axes (en bleu)
 
-
-
 ## Visualisation graphique à l'aide d'un diagramme en violon
 
 Le graphique de densité peut être représenté via un autre graphique qui sera d'autant plus intéressant que la variable facteur étudiée peut être discriminée par un grand nombre de niveaux différents. Il s'agit également d'une estimation se basant sur un histogramme via la méthode l'estimation par noyau gaussien.
 
-```{r, fig.cap= "Ponts essentiels d'un diagramme en violon."}
-chart(iris, formula = petal_length ~ species %fill=% species) +
+```{r, fig.cap= "Ponts essentiels d'un diagramme en violon portant sur la distribution de la taille d'un échantillon de zooplancton en fonction de leurs classes analysé par analyse d'image."}
+
+chart(filter(zp, class %in% c("Annelid", "Calanoid", "Cyclopoid", "Decapod")), formula = size ~ class %fill=% class) +
   geom_violin(show.legend = FALSE)  +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
         axis.title.x = element_text(colour = "#029687", size = 15), 
