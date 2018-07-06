@@ -1,8 +1,5 @@
 # Visualisation II {#visu2}
 
-_A ce niveau, les étudiants pourront choisir entre le module 3 et le module 4 à faire en premier. Ensuite, les groupes switcheront vers l'autre modules et s'entre-aideront._
-
-Distribution des données, histogramme, graphe de densité, violin plot. Projet RStudio, organisation des dossiers, noms de fichiers. Jeux de données fournis. A la fin, projet perso: explorer un autre type de graphique et l’implémenter dans son rapport.
 
 Vos objectifs pour ce module sont:
 
@@ -11,50 +8,12 @@ Vos objectifs pour ce module sont:
 - Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez
 
 
-```r
-SciViews::R
-```
-
-```
-## ── Attaching packages ───────────────────────────────────── SciViews::R 1.0.0 ──
-```
-
-```
-## ✔ SciViews  1.0.0      ✔ readr     1.1.1 
-## ✔ svMisc    1.1.0      ✔ tidyr     0.8.1 
-## ✔ forcats   0.3.0      ✔ tibble    1.4.2 
-## ✔ stringr   1.3.1      ✔ ggplot2   2.2.1 
-## ✔ dplyr     0.7.5      ✔ tidyverse 1.2.1 
-## ✔ purrr     0.2.5      ✔ MASS      7.3.50
-```
-
-```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ✖ dplyr::select() masks MASS::select()
-```
-
-```r
-library(flow)
-library(chart)
-```
-
-```
-## Le chargement a nécessité le package : lattice
-```
-
-```r
-library(data)
-knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
-iris <- data::read(file = "iris", package = "datasets", lang = "fr")
-```
 
 ## Prérequis
 
 Si ce n'est déjà fait, vous devez avoir réaliser le module précédent.
 
-> A faire: proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire 
+> TODO : proposer une liste de matériel pédagogique supplémentaire pour aider à approfondir les prérequis, si nécessaire 
 
 ## Visualisation graphique à l'aide d'un histogramme
 
@@ -62,8 +21,8 @@ Lors d'une expérience vous souhaitez visualiser la façon dont vos données s'�
 
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-1-1.svg" alt="Histogramme montrant la distribution de la longueur des pétales d'iris." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-1)Histogramme montrant la distribution de la longueur des pétales d'iris.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-1-1.svg" alt="Histogramme montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-1)Histogramme montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image.</p>
 </div>
  
 Les instructions de base afin de produire un histogramme :
@@ -92,7 +51,7 @@ Vous pouvez décripter votre histogramme sur base des **modes**^[todo] et de la 
 ### Pièges et Astuces
 
 
-Vous devez être particulièrement vigilant lors de la réalisation d'un histogramme au classes de ce dernier. 
+Vous devez être particulièrement vigilant lors de la réalisation d'un histogramme aux classes de ce dernier. 
 
 ```
 library(shiny)
@@ -104,8 +63,8 @@ runExample("01_hello")
 L'histogramme n'est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l'histogramme. Il ne s'agit plus de représenter un dénombrement comme l'histogramme le fait mais une **probabilité**^[TODO] d'obtenir une valeur parmi un échantillon aléatoire. Le passage d'un histogramme vers un graphe de densité se base sur une **estimation par noyaux gaussien**^[TODO]
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="A) Histogramme montrant la distribution de la longueur des pétales d'iris B) Graphique de densité montrant la distribution de la longueur des pétales d'iris." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)A) Histogramme montrant la distribution de la longueur des pétales d'iris B) Graphique de densité montrant la distribution de la longueur des pétales d'iris.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="A) Histogramme  et B) graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-3)A) Histogramme  et B) graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image.</p>
 </div>
 
 Les instructions de base afin de produire un histogramme sont :
@@ -120,15 +79,13 @@ Les éléments indispensables à la compréhension d'un graphique de densité so
 - Les axes avec les graduations (en rouge)
 - les labels et unité des axes (en bleu)
 
-
-
 ## Visualisation graphique à l'aide d'un diagramme en violon
 
 Le graphique de densité peut être représenté via un autre graphique qui sera d'autant plus intéressant que la variable facteur étudiée peut être discriminée par un grand nombre de niveaux différents. Il s'agit également d'une estimation se basant sur un histogramme via la méthode l'estimation par noyau gaussien.
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Ponts essentiels d'un diagramme en violon." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Ponts essentiels d'un diagramme en violon.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Ponts essentiels d'un diagramme en violon portant sur la distribution de la taille d'un échantillon de zooplancton en fonction de leurs classes analysé par analyse d'image." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-4)Ponts essentiels d'un diagramme en violon portant sur la distribution de la taille d'un échantillon de zooplancton en fonction de leurs classes analysé par analyse d'image.</p>
 </div>
 
 Les instructions de base afin de produire un diagramme en violon sont :

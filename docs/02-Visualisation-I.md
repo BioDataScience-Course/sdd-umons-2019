@@ -85,7 +85,7 @@ Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, .
 
 Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :
 
-$p′ = \arcsin \sqrt{p}$  ou  $%′ = \arcsin \sqrt{frac{%}{100}}$
+$p′ = \arcsin \sqrt{p}$
 
 
 ```r

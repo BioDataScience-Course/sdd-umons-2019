@@ -1,7 +1,5 @@
 # Importation/transformation des données {#import}
 
-Importation, tranformation, "cook", `dplyr`, `tidyr`. Type de variables et façon de les représenter dans R. Expression de condition. Chemins relatifs. Challenges: faire tel type de graphe étant donné tel jeu de données (avec étape de transformation nécessaire).
-
 
 ```r
 knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
@@ -9,20 +7,20 @@ SciViews::R
 ```
 
 ```
-## ── Attaching packages ───────────────────────────────────── SciViews::R 1.0.0 ──
+## ── Attaching packages ──────────────────────────────────────────────────── SciViews::R 1.0.0 ──
 ```
 
 ```
 ## ✔ SciViews  1.0.0      ✔ readr     1.1.1 
 ## ✔ svMisc    1.1.0      ✔ tidyr     0.8.1 
 ## ✔ forcats   0.3.0      ✔ tibble    1.4.2 
-## ✔ stringr   1.3.1      ✔ ggplot2   2.2.1 
-## ✔ dplyr     0.7.5      ✔ tidyverse 1.2.1 
+## ✔ stringr   1.3.1      ✔ ggplot2   3.0.0 
+## ✔ dplyr     0.7.6      ✔ tidyverse 1.2.1 
 ## ✔ purrr     0.2.5      ✔ MASS      7.3.50
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ───────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ✖ dplyr::select() masks MASS::select()
@@ -212,7 +210,7 @@ tg$len <- as.numeric(tg$len)
 
 - caractères : `character`
 
-Il s'agit de chaine de charactères qui vont composer vos jeux de données. Les chaines de caractères vont avoir 2 bu. Soit ils s'agit d'une information ayant pour objectif d'être employé comme variable facteur. Soit il s'agit d'une information complémentaire sur les observations qui ne sera pas employer dans l'analyse des données. Cependant, vous pouvez être amené à transformer une variable en caractère avec l'instruction suivante :
+Il s'agit de chaine de charactères qui vont composer vos jeux de données. Les chaines de caractères vont avoir 2 but. Soit il s'agit d'une information ayant pour objectif d'être employé comme variable facteur ou bien il s'agit d'une information complémentaire sur les observations qui ne sera pas employer dans l'analyse des données. Cependant, vous pouvez être amené à transformer une variable en caractère avec l'instruction suivante :
 
 
 ```r
@@ -237,29 +235,20 @@ tg$dose <- factor(tg$dose, levels = c(0.5, 1, 2), ordered = TRUE)
 
 La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu'une variable facteur simple. 
 
-La fonction `levels()` permet de prendre connaissance des niveaux d'une variable facteur.
+La fonction `skim()` du package `skimr` permet de visualiser le type de la variable et bien plus encore. Il fournit une visualisation différentes en fonction du type de la variable. Il propose par exemple un histogramme pour les variables numériques comme le montre le tableau ci-dessous
 
 
 ```r
-levels(tg$dose)
+skimr::skim(tg)
 ```
+Avec une seule instruction, on obtient une quantité d'information sur notr jeu de données comme le nombre d'observation, le nombre de variables et un traitement spécifique pour chaque type de variable. 
 
-- logique : `logical` 
-
-
-> TODO
-
-La fonction `str()` permet d'obtenir un maximum d'information sur un jeu de données.
-
-
-```r
-str(tg)
-```
+Cet instruction permet de visualiser et d'appréhender le jeu de données mais ne doit pas figurer tel quel dans un rapport d'analyse. 
 
 
 ### Pièges et astuces
 
-Les variables d'un jeu de données doivent être correctement intégré afin d'éviter toutes mauvaises interprétations comme le montre les deux graphiques ci-dessous. 
+Les variables d'un jeu de données doivent être correctement importées afin d'éviter toutes mauvaises interprétations comme le montre les deux graphiques ci-dessous. 
 
 Dans les graphiques a), vous pouvez observer que la dose a été employé comme une variable numérique et dans le graphique b) la dose est employée comme variable facteur. Vous observez que le bon encodage de la variable dose permet d'obtenir le graphique pertinent et cohérent avec la signification des données.
 
@@ -269,7 +258,7 @@ Dans les graphiques a), vous pouvez observer que la dose a été employé comme 
 ## Warning: Continuous x aesthetic -- did you forget aes(group=...)?
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-11-1.svg" width="672" />
 
 
 ## Transformation des données
@@ -288,7 +277,7 @@ Le principale remaniement des données peut être réalisé en 4 grands piliers 
 
 ### `select()`
 
-Lors de l'utilisation vos jeux de données, vous serez amené à réduire vos jeu de données en sous tableau.
+Lors de l'utilisation vos jeux de données, vous serez amené à réduire vos jeux de données en sous tableau.
 
 Partez du jeu de données portant sur la croissance des oursins, ce dernier contient pas moins de 19 variables étudiées sur 421 individus. 
 
@@ -310,8 +299,8 @@ ub4 <- select(ub, ends_with("ht"))
 
 
 <div class="figure">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-15)a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-14-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-14)a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4</p>
 </div>
 
 
@@ -322,8 +311,8 @@ Lors de l'analyse de vos jeux de données, vous serez amené à filtrer les lign
 Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (l'origine, la hauteur et la masse du squelette).
 
 <div class="figure">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-16-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-16)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-15)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.</p>
 </div>
 
 Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau. 
@@ -339,8 +328,8 @@ u <- filter(ub2, origin != "Fishery") # tous les origines sauf ceux provenant de
 
 
 <div class="figure">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-18-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-18)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-17-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-17)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins.</p>
 </div>
 
 Vous pouvez utiliser une variable numérique pour filtrer les données. 
@@ -357,8 +346,8 @@ Vous pouvez utiliser une variable numérique pour filtrer les données.
 
 
 <div class="figure">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-20-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-20)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-19-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-19)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus.</p>
 </div>
 
 Vous pouvez combiner différents filtres :  
@@ -372,8 +361,8 @@ Vous pouvez combiner différents filtres :
 
 
 <div class="figure">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-22-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-22)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-21-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-21)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus.</p>
 </div>
 
 
@@ -436,21 +425,21 @@ La fonction `mutate()` permet de calculer de nouvelles variables. Cependant, la 
 
 Lors de l'analyse de vos jeux de données, vous serez amené à résumer vos données. 
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-24-1.svg" width="672" />
 
 
 Cette fonction n'a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d'une ou plusieurs variable de type facteur.
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" />
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
 
 
 #### Pièges et astuces
 
 Tout comme lors de réalisation d'une boite de dispersion, vous devez être particulièrement vigilant ou nombre d'observation par sous groupe. Ajoutez à chaque tableau résumé des données, le nombre d'observation par sous-groupe.
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" />
 
 
 ### Pièges et astuces
@@ -477,7 +466,7 @@ ub <- filter(ub, height > 20 & origin == "Farm")
 ub <- select(ub, origin, solid_parts, test, v2_sqrt)
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-31-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-30-1.svg" width="672" />
 
 
 
@@ -500,7 +489,7 @@ ub1 %>.%
 ggtexttable(head(ub1, n = 6), theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-32-1.svg" width="672" />
 
 
 Le pipe est un outil très intéressant lors du résumé de données par une ou plusieurs variables facteurs.
@@ -515,20 +504,8 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" />
 
-
-```r
-tg %>.%
-  group_by(., supp, dose) %>.%
-  summarise(., "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len)) %>.%
-  ggtexttable(., theme = ttheme("lBlack"), rows = NULL)
-```
-
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" />
 
 ```r
 tg %>.%
@@ -544,21 +521,7 @@ tg %>.%
            cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-2.svg" width="672" />
-
-```r
-tg %>.%
-  group_by(., supp, dose) %>.%
-  summarise(., "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len)) %>.%
-  ggtexttable(., theme = ttheme("classic"), rows = NULL, 
-           cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum")) %>.%
-  table_cell_bg(., row = 4, column = 3, linewidth = 5, fill= "darkolivegreen1", color = "darkolivegreen4")
-```
-
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-3.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" />
 ####Pour en savoir plus 
 
 - [Customisation de tableau](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggtexttable.html)
@@ -574,7 +537,7 @@ Un squelette de projet RStudio vous a été fournit dans un dépôt Github Class
 
 - Reproduire de plus le graphique ci-dessous 
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-36-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" />
 
 
 

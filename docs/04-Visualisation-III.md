@@ -6,20 +6,20 @@ SciViews::R
 ```
 
 ```
-## ── Attaching packages ───────────────────────────────────── SciViews::R 1.0.0 ──
+## ── Attaching packages ──────────────────────────────────────────────────── SciViews::R 1.0.0 ──
 ```
 
 ```
 ## ✔ SciViews  1.0.0      ✔ readr     1.1.1 
 ## ✔ svMisc    1.1.0      ✔ tidyr     0.8.1 
 ## ✔ forcats   0.3.0      ✔ tibble    1.4.2 
-## ✔ stringr   1.3.1      ✔ ggplot2   2.2.1 
-## ✔ dplyr     0.7.5      ✔ tidyverse 1.2.1 
+## ✔ stringr   1.3.1      ✔ ggplot2   3.0.0 
+## ✔ dplyr     0.7.6      ✔ tidyverse 1.2.1 
 ## ✔ purrr     0.2.5      ✔ MASS      7.3.50
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ───────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ✖ dplyr::select() masks MASS::select()
@@ -57,7 +57,7 @@ Vos objectif durant ce module sont :
 
 - Découvrir différents systèmes graphiques (graphiques de base, Lattice, ggplot2) et comparaison avec `chart()`
 
-> TODO: changer le jeu de données par des données biologiques
+> TODO: changer le jeu de données par des données biologiques si possible
 
 
 ## Prérequis
@@ -386,7 +386,7 @@ Le graphique ci-dessus peut par exemple être simplifié avec la fonction `facet
 
 Vous observez que les échelles en abscisse et en ordonnée sont similaires. Cela permet une meilleure comparaison.
 
-### `plot_grid()`
+### `ggarrange()`
 
 <div class="figure">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.svg" alt="A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine." width="672" />

@@ -93,7 +93,7 @@ Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, .
 
 Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :
 
-$p′ = \arcsin \sqrt{p}$  ou  $%′ = \arcsin \sqrt{frac{%}{100}}$
+$p′ = \arcsin \sqrt{p}$
 
 ```{r, fig.cap = "A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme de la hauteur [mm] en fonction du logarithme de la masse [g] d'oursins violets "}
 a <- chart(urchin,formula = height ~  weight) + 

@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-06-21">
+<meta name="date" content="2018-07-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -160,7 +160,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Visualisation de multi-graphiques</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#facet_grid"><i class="fa fa-check"></i><b>4.5.1</b> <code>facet_grid()</code></a></li>
-<li class="chapter" data-level="4.5.2" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#plot_grid"><i class="fa fa-check"></i><b>4.5.2</b> <code>plot_grid()</code></a></li>
+<li class="chapter" data-level="4.5.2" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#ggarrange"><i class="fa fa-check"></i><b>4.5.2</b> <code>ggarrange()</code></a></li>
 <li class="chapter" data-level="4.5.3" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#a-vous-de-jouer-3"><i class="fa fa-check"></i><b>4.5.3</b> A vous de jouer !</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="apercu-des-differents-systemes-graphiques.html"><a href="apercu-des-differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.6</b> Aperçu des différents systèmes graphiques</a></li>
@@ -225,31 +225,11 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="visu2" class="section level1">
 <h1><span class="header-section-number">Module 3</span> Visualisation II</h1>
-<p><em>A ce niveau, les étudiants pourront choisir entre le module 3 et le module 4 à faire en premier. Ensuite, les groupes switcheront vers l’autre modules et s’entre-aideront.</em></p>
-<p>Distribution des données, histogramme, graphe de densité, violin plot. Projet RStudio, organisation des dossiers, noms de fichiers. Jeux de données fournis. A la fin, projet perso: explorer un autre type de graphique et l’implémenter dans son rapport.</p>
 <p>Vos objectifs pour ce module sont:</p>
 <ul>
 <li><p>Savoir réaliser différentes variantes de différents graphiques tel que les histogrammes, les graphes de densité dans R avec la fonction <code>chart()</code></p></li>
 <li><p>Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez</p></li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SciViews<span class="op">::</span>R</code></pre></div>
-<pre><code>## ── Attaching packages ───────────────────────────────────── SciViews::R 1.0.0 ──</code></pre>
-<pre><code>## ✔ SciViews  1.0.0      ✔ readr     1.1.1 
-## ✔ svMisc    1.1.0      ✔ tidyr     0.8.1 
-## ✔ forcats   0.3.0      ✔ tibble    1.4.2 
-## ✔ stringr   1.3.1      ✔ ggplot2   2.2.1 
-## ✔ dplyr     0.7.5      ✔ tidyverse 1.2.1 
-## ✔ purrr     0.2.5      ✔ MASS      7.3.50</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ✖ dplyr::select() masks MASS::select()</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(flow)
-<span class="kw">library</span>(chart)</code></pre></div>
-<pre><code>## Le chargement a nécessité le package : lattice</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(data)
-knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">echo=</span><span class="ot">FALSE</span>, <span class="dt">results=</span> <span class="st">&#39;hide&#39;</span>, <span class="dt">message=</span><span class="ot">FALSE</span>)
-iris &lt;-<span class="st"> </span>data<span class="op">::</span><span class="kw">read</span>(<span class="dt">file =</span> <span class="st">&quot;iris&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div> 
+</ul> 
 </div>
             </section>
 
