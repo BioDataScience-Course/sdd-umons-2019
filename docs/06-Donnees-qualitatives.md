@@ -10,20 +10,20 @@ SciViews::R
 ```
 
 ```
-## ── Attaching packages ──────────────────────────────────────────────────── SciViews::R 1.0.0 ──
+## ── Attaching packages ────────────────────────────────────────── SciViews::R 1.0.0 ──
 ```
 
 ```
-## ✔ SciViews  1.0.0      ✔ readr     1.1.1 
-## ✔ svMisc    1.1.0      ✔ tidyr     0.8.1 
-## ✔ forcats   0.3.0      ✔ tibble    1.4.2 
-## ✔ stringr   1.3.1      ✔ ggplot2   3.0.0 
-## ✔ dplyr     0.7.6      ✔ tidyverse 1.2.1 
-## ✔ purrr     0.2.5      ✔ MASS      7.3.50
+## ✔ SciViews  1.0.0          ✔ readr     1.1.1     
+## ✔ svMisc    1.1.0          ✔ tidyr     0.8.1     
+## ✔ forcats   0.3.0          ✔ tibble    1.4.2     
+## ✔ stringr   1.3.1          ✔ ggplot2   3.0.0.9000
+## ✔ dplyr     0.7.6          ✔ tidyverse 1.2.1     
+## ✔ purrr     0.2.5          ✔ MASS      7.3.50
 ```
 
 ```
-## ── Conflicts ───────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ─────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ✖ dplyr::select() masks MASS::select()

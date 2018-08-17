@@ -24,7 +24,10 @@ Un template `blogdown` sera fourni dans Github Classroom. Il sera également exp
 
 - Début de module suivant (participation cotée): réexpliquer avec ses propres mots git + Github.
 
-- Leur expliquer les changements. Comment le monde était il y a 25 ans? Pas d'internet, pas de smartphone. Que feraient-ils sans smartphone.
+
+## Comment le monde était il y a 25 ans ? {#donnees}
+
+Il y a 25 ans, Pas d'internet, pas de smartphone. Que feraient-ils sans smartphone.
 
 - Les révolutions indistrielles:
     * 1770 (1756) révolution 1: mécanisation
@@ -45,4 +48,52 @@ Un template `blogdown` sera fourni dans Github Classroom. Il sera également exp
 - Consommation du supercalculateur: en mégawatts, alors que le cerveau humain consomme 12-13W seulement!
 
 - "Le **transhumanisme** est une approche interdisciplinaire qui nous amène à comprendre et à évaluer les avenues qui nous permettrons de surmonter nos limites biologiques par les progrès technologiques. Les transhumanistes cherchent à développer les possibilités techniques afin que les gens vivent plus longtemps et ..."
+
+Vous pouvez maintenant avoir un aperçu de l'importance d'avoir des outils performants afin d'appréhender les données dont le nombre croit de manière exponentielle. Pour ce cours de sciences des données,  plusieurs outils puissants sont mis à votre disposition (Vous trouverez sur l'hyperlien suivant, un poster présentant la philosophie du cours <https://github.com/BioDataScience-Course/RencontresRRennes2018>)
+
+## Création de son propre site web professionnel 
+
+De nos jours, un nombre important de données sont collectées \ref{donnees} sur nous. A la fin de vos études, vous serez amené à chercher un travail. Ce dernier peut se trouver dans le mileu de la recherche universitaire, dans la recherche en entreprise ou encore dans les métiers de l'éco-conseils. Cependant, tous les recruteurs utilisent actuellement les données que l'on a semé sur le net afin de réaliser un profil dès plus détaillés sur nous. 
+
+Les réseaux sociaux sont une mine d'or sur nos habitudes de vie comme Facebook, Twitter ou encore Instagram. On peut parler de l'image numérique d'une personne. Afin de mettre l'accent sur les compétences professionnels, de plus en plus de personnes utilisent des réseaux plus profesionnels comme LinkedIn ou encore des sites webs personnels professionels (par exemple : <http://phgrosjean.sciviews.org/>, <http://www.guyliann.be/>).
+
+Dans le cadre de ce premier module, vous allez réaliser votre premier site professionnel et entièrement gratuit. Afin de mener à bien ce premier projet, divers outils vont vous être proposés.
+
+### Une machine virtuelle
+
+La SciViews Box est une machine virtuelle complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, et ensuite écrire des rapports ou des documents prêts à publication. 
+
+![Logo de la SciViews box]("images/svBox-1024.png"){width= 50%}
+
+Etant préconfigurée, son installation est relativement facile et rapide.
+
+> Inserer un lien vers les autoinstalleurs de la machine virtuelle, les tutoriels d'installation,.... <https://github.com/BioDataScience-Course/tutorials/tree/master/docs/01_Installation> (qui est actuellement sur un projet privé)
+
+> TODO revoir le tutoriel afin qu'il corresponde avec les nouvautées proposées dans la version 2019 de la svbox <https://github.com/BioDataScience-Course/tutorials/tree/master/docs/02_prise_en_main> (qui est actuellement sur un projet privé)
+
+## R studio
+
+R Studio est l'outil au sein de la machine virtuelle que vous allez utilisez le plus fréquement durant ces cours. Il sert d'éditeur de texte, d'éditeur de graphique, ...
+
+> TODO tutoriels introduction Rstudio
+
+## Git hub classroom et les projets
+
+Git hub permet d'héberger nos projets qu'il appelle dépot sur ce site.
+
+### Markdown
+
+Afin de compléter votre site en vous focalisant uniquement sur le fond et non la forme, vous allez employer le language `Markdown`. Ce language a été mis au point afin de négliger la mise en forme et de revenir au fondamental de l'écriture le fond. 
+
+Son avantage principal réside dans sa simplicité d'apprentissage. 
+
+> TODO ajouter image avec markdonw le rendu après avoir été compilé. cheatsheet, ....
+
+## Gestionnaire de version
+
+
+
+## A vous de jouer 
+
+
 
