@@ -61,9 +61,9 @@ Dans le cadre de ce premier module, vous allez réaliser votre premier site prof
 
 ### Une machine virtuelle
 
-La SciViews Box est une machine virtuelle complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, et ensuite écrire des rapports ou des documents prêts à publication. 
+La SciViews Box est une machine virtuelle complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, ensuite écrire des rapports ou des documents prêts à publication et enfin collaborer avec d'autres chercheurs.
 
-![Logo de la SciViews box]("images/svBox-1024.png"){width= 50%}
+![Logo de la SciViews box](images/svBox-256.png)
 
 Etant préconfigurée, son installation est relativement facile et rapide.
 
@@ -71,29 +71,164 @@ Etant préconfigurée, son installation est relativement facile et rapide.
 
 > TODO revoir le tutoriel afin qu'il corresponde avec les nouvautées proposées dans la version 2019 de la svbox <https://github.com/BioDataScience-Course/tutorials/tree/master/docs/02_prise_en_main> (qui est actuellement sur un projet privé)
 
-## R studio
+### R studio
 
-R Studio est l'outil au sein de la machine virtuelle que vous allez utilisez le plus fréquement durant ces cours. Il sert d'éditeur de texte, d'éditeur de graphique, ...
+R Studio est l'outil au sein de la machine virtuelle que vous allez utilisez le plus fréquement durant ces cours. Il sert d'éditeur de texte, d'éditeur de graphique, ... Cette une interface à plusieurs outils mais principalment à R un programme que nous verrons par la suite. 
 
 > TODO tutoriels introduction Rstudio
 
-## Git hub classroom et les projets
+Rstudio a été conçu afin de travailler en projet. Un projet portera sur une thématique ou sur une expérience précise. Ce dernier va contenir l'ensemble des fichiers relatif à la thématique comme par exemple toutes les informations, fichiers, images, de son propre site web personnel profesionnel. Le projet permet de configurer un environnement de travail pour cette thématique que l'on peut sauvegarder et recharger par la suite. Un bon projet sera transportable afin que des collaborateur puisse utiliser notre environnement de travail sur un autre ordinateur. 
 
-Git hub permet d'héberger nos projets qu'il appelle dépot sur ce site.
+> TODO tutoriels création d'un projet
+
+#### Pour en savoir plus ...
+
+- <https://quanti.hypotheses.org/488/>
+
+- <https://elementr.hypotheses.org/237>
+
+### Gestionnaire de version 
+
+Lors de la rédaction de travaux comme par exemple lors de l'écriture d'un travail de fin d'étude ou d'un rapport assez important. On se retrouve rapidement avec plusieurs fichiers correspondant à des états d'avancements de ce dernier : 
+
+- TFE_final
+- TFE_final1
+- TFE_final2
+- TFE_final3
+- TFE_final...
+- TFE_final99
+
+Lors de différents essais, on va avoir tendance à tout garder dans différents fichiers afin de ne rien supprimer d'important. Cette pratique bien que très courante comporte le gros désavantage de prendre énormément de place sur le disque de votre ordinateur et de n'être pas pratique.
+Les questions suivantes peuvent se poser  : 
+
+Que se cache t'il dans la version TFE_final 2 ? Après 1 mois sans travailler sur ce projet, seriez vous capable de specifier la différence entre le fichier TFE_final 2 et le TFE_final3 ? 
+
+Et cela peut encore se compliquer lorsque plusieurs personnes collaborent sur un même projet. Ils vont devoir s'envoyer par mail tous les fichiers, avec chacun y apportant ses idées. 
+
+- TFE_final
+- TFE_final1
+- TFE_final1_jacques
+- TFE_final1_pierre
+- TFE_final2
+- TFE_final2_jules
+- TFE_final...
+- TFE_final99
+
+Dans quel fichier se trouve la dernière version de chaque personne ayant collaboré sur le projet ? Une petit peu dans chaque fichier. 
+
+Différentes avancées ont été réalisées pour améliorer le travail collaboratif comme :
+
+- L'utilisation de partage de fichiers en ligne ( [Dropbox](https://www.dropbox.com/business/landing-t68fl?_tk=sem_b_goog&_camp=sem-b-goog-emea-be-fre-exact-restructure&_kw=dropbox|e&_ad=244691468861|1t1|c&gclid=CjwKCAjwzenbBRB3EiwAItS-u3vb9iSK6F4MFnw3oWaEq0gwxQk74_ekOASIah0P-9u_pYFis8hxFxoCdOIQAvD_BwE), [Google Drive](https://www.google.com/drive/), [One Drive](https://onedrive.live.com/about/fr-be/))
+
+Il en est fini le temps où l'on s'envoyait un dossier comprenend chacune des avancées par mails. Cette option ne règle toujours pas le problème de collaboration sur le même fichier. 
+
+- L'utilisation de programme d'édition collaboratif et en temps réel ( [etherpad](http://etherpad.org/), [Google Drive - Docs](https://www.google.com/intl/fr_be/docs/about/), [Gobby](https://gobby.github.io/) ). 
+
+Il est possible de travailler en même temps sur un même fichier d'édition. Cette option ne règle pas le problème du retour en arrière. Lorsqu'une modification a été réalisée l'ancienne version est tout simplement écrasée. Il est donc impossible de revenir dessus. 
+
+- La meilleur combinaison pour gérer ses versions et collaborer : [*Git*](https://git-scm.com/) et [Git Hub](https://github.com/)
+
+Ces outils ont l'étiquette d'être des outils fait par et pour des geeks. Cependant, ils permettent de gérer et collaborer de manière efficace sur un même projet contenant du code ou non. 
+
+#### Git
+
+La gestion de versions est gérée par *Git*. Cet outil va remplacer les nombreuses copies d'un même fichier par une sorte d'arbre que l'on peut représenter schématiquement comme ci-dessous :
+
+![Représentation de la gestion de fichiers via Git](images/git1.png)
+
+Comme vous pouvez le voir ci-dessus, on peut suivre la progression de notre projet via les boules bleues. Chaque boule représente l'état de notre projet lorsque l'on a décidé de l'enregistrer. Pour envoyer une nouvelle version de votre projet, vous réalisez un **commit** qui sera accompagné d'un message qui spécifie les modifications apportées. Il est possible de revenir en arrière avec un **checkout**.
+
+Git comprend de nombreux outils très intéressant pour la gestion de versions que vous utiliserez par la suite.
+
+#### Git Hub
+
+Afin de saugarder vos projets en ligne, de les partager et de collaborer avec d'autres personnes, un réseau social a été conçu pour héberger vos projets  qui se nomme **Git Hub** (tout comme Facebook ou LinkedIn). Ce dernier est un réseau social tout comme Facebook, google ou LinkedIn.  On retrouve deux mots dans Git Hub. Il y a tout d'abord Git qui exprime la gestion de version  et ensuite hub qui exprime le reseau. Il s'agit donc d'un réseau social qui permet de collaborer sur des projets.
+
+Lorsque l'on travaille seul tout en utilisant le reseau social l'évolution de notre projet va ressembler à l'arbre ci-dessous: 
+
+![Représentation l'arbre de Git Hub](images/github.png)
+
+On réalise un envoi **push** losrque l'on souhaite envoyer sur le réseau social l'état dans lequel le projet se trouve. De ce fait plusieurs comite peuvent être envoyé avec un seul **push** sur le réseau.
+
+L'avantage de **Git Hub** ne réside pas vraiment dans la posibilité de réaliser une sauvegarde en ligne mais réside dans la possibilité de collaborer avec d'autres personnes présent sur ce réseau comme l'illustre la figure ci-dessous. 
+
+Deux scientifiques (les boules bleues et les boules vertes) collabore sur un même projet que l'on apelle **dépot** ( **repository** en anglais ) lorsqu'il est en ligne. Le premier chercheur (boule bleue) va initier le dépot et réaliser un push pour le placer sur le réseau. Son collaborateur (boule verte) va **cloner** (**clone** en anglais) le dépot sur son ordinateur afin d'y travailler également en local. Après avoir fait progresser le travail, il réalise également un **push** sur le réseau. Le premier scientifique avant de travailler à nouveau sur le projet va réaliser un **pull** afin d'obtenir en local l'ensemble des modifications fournie par ses collaborateurs. 
+
+![Représentation l'arbre de Git Hub](images/github1.png)
+
+Vous venez d'apprendre différents mots technique indispensable pour une bonne compréhension de git et github
+
+- **repository**
+
+- **commit**
+
+- **clone**
+
+- **push**
+
+- **pull**
+
+Ceci n'est q'une rapide explication de ces deux programmes retrouve un tutoriel détaillé au lien suivant 
+
+> TODO tuto sur git et github
+
+##### Pour en savoir plus 
+
+- <https://openclassrooms.com/fr/courses/1233741-gerez-vos-codes-source-avec-git>
+
+- <https://www.codebuilder.fr/blog/developpement-collaboratif-logiciels-gestion-versions/>
+- <https://blog.axopen.com/2017/02/git-comprendre-la-gestion-de-versions/>
+
+- <https://git-scm.com/>
+
+- <http://www.lsv.fr/~hirschi/pdfs/git.pdf>
+
+- <https://www.christopheducamp.com/2013/12/15/github-pour-nuls-partie-1/>
+
+#### Git Hub Classroom
+
+**Git Hub Classroom** est une extension de Git Hub qui s'emploie pour les utilisateurs comme Git Hub. Vous serez amené à cloner des dépots, modifier des dépots pour réaliser des commit,...  Le tout va être suivi pour des administrateurs. Différents exercices vous seront proposés via ce programme. 
+
+Par exemple, le projet initial pour réaliser votre site web se trouve sur ce programme.
+
+##### Pour en savoir plus ...
+
+- <https://fr.linkedin.com/pulse/r%C3%A9volutionner-lenseignement-avec-github-classroom-antoine-caron> 
 
 ### Markdown
 
-Afin de compléter votre site en vous focalisant uniquement sur le fond et non la forme, vous allez employer le language `Markdown`. Ce language a été mis au point afin de négliger la mise en forme et de revenir au fondamental de l'écriture le fond. 
+Afin de compléter votre site en vous focalisant uniquement sur le fond et non la forme, vous allez employer le language `Markdown`. Ce language a été mis au point afin de négliger la mise en forme et de revenir au fondamental de l'écriture le fond.
 
-Son avantage principal réside dans sa simplicité d'apprentissage. 
+Son avantage principal réside dans sa simplicité d'apprentissage. Quels sont les commandes et instructions indispensables lorsque l'on rédige un rapport ?  Des titres et sous-titres, mise en évidence (mise en italiques ou mise en gras), des listes,... Il ne faut au final que très peu de commandes que pour réaliser un rapport de qualité avec une mise en page minimaliste et épurée. 
 
 > TODO ajouter image avec markdonw le rendu après avoir été compilé. cheatsheet, ....
 
-## Gestionnaire de version
+Avec les quelques instructions présent dans le document [aide-mémoire](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) (**Cheatsheet**) de Rstudio vous aurez appréhender ce language.
 
 
+#### Pour en savoir plus...
 
-## A vous de jouer 
+- <https://daringfireball.net/projects/markdown/>
+
+- <http://www.boiteaoutils.info/2013/02/ecrire-tout-simplement-introduction/>
+
+- <https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/>
+
+- <https://blog.genma.fr/?Le-Markdown-comme-langage-d-ecriture-universel>
+
+- <https://openclassrooms.com/fr/courses/1304236-redigez-en-markdown>
+
+- <https://dolys.fr/forums/topic/comment-ecrire-confortablement-professionnellement-markdown/>
+
+
+### A vous de jouer 
+
+Maintenant qu'une brèce explication des différents outils vous a été fait, lancez vous dans la création de votre site web professionnel. 
+
+- Créer votre propre compte git hub
+
+- Rejoignez l'exercice relatif à  la création de votre site web sur **Git Hub Classroom**.
+
 
 
 

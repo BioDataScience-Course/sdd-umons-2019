@@ -131,7 +131,7 @@ iris <- data::read(data_example("iris.csv.zip"))
 La fonction read() est également capable d'importer des fichiers en lignes. 
 
 ```{r}
-ble <- data::read("http://tinyurl.com/Biostat-Ble", type = "csv")
+#ble <- data::read("http://tinyurl.com/Biostat-Ble", type = "csv") # requiert une connexion internet 
 ```
 
 >TODO Utiliser la fonction employer la doc de la fonction
