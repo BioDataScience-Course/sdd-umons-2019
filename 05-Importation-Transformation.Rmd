@@ -1,19 +1,11 @@
 # Importation/transformation des données {#import}
 
-```{r setup}
-knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
+```{r setup, echo=FALSE, message=FALSE, results='hide', include=FALSE}
 SciViews::R
-library(knitr)
-library(chart)
 library(ggpubr)
-library(flow)
-library(data)
-
 nf <- data::read("flights", package = "nycflights13", lang = "fr")
 iris <- data::read("iris", package = "datasets", lang = "fr")
-
 #ub <- data::read("urchin_bio", package = "data", lang = "fr")
-
 urchin <- data::read("urchin_bio", package = "data")
 ```
 
@@ -34,14 +26,13 @@ Vos objectifs pour ce module sont :
 
 - Savoir remanier des données afin d'extraire l'information importante d'un jeu de données.
 
-## Prérequis
 
 Si ce n'est déjà fait, vous devez avoir réaliser le module 1 ainsi que les modules liés à la visualisation des données.
 
 
 ## Importation des données
 
-Afin de réaliser l'analyse de vos résultat vous devez commencer par importer correctement vos données. Pour ce faire, la fonction pouvant vous apporter la solution est la fonction `read()` du package `data`
+Afin de réaliser l'analyse de vos résultats vous devez commencer par importer correctement vos données. Pour ce faire, la fonction pouvant vous apporter la solution est la fonction `read()` du package `data.io`
 
 Vos données peuvent provenir de plusieurs endroits :
 
@@ -52,13 +43,21 @@ Vos données peuvent provenir de plusieurs endroits :
 
 En effet, les packages que l'on peut assimiler à des boites à outils dans R sont pour certain composé de jeu de données. La fonction `read() permet de les importer.
 
-```{r, echo=TRUE}
+```{r}
+# Importation de données provenant d'un package
 is <- data::read("iris", package = "datasets", lang = "fr")
 
 ub <- data::read("urchin_bio", package = "data", lang = "fr")
 ```
 
 La fonction `read()` requiert comme premier argument le nom du jeu de données (e.g. "iris" ou "urchin_bio"), suivi de l'argument `package` (e.g. "datasets", ou "data"), suivi de l'argument `lang` (e.g. "fr") qui définit la langue d'intérêt.  
+
+L'instruction ci-dessous permet d'obtenir une liste de l'ensemble des jeux de données présent dans un package.
+
+```{r}
+#read(package = "data.io")
+```
+
 
 ### Données encodées manuellement
 
@@ -134,7 +133,6 @@ La fonction read() est également capable d'importer des fichiers en lignes.
 #ble <- data::read("http://tinyurl.com/Biostat-Ble", type = "csv") # requiert une connexion internet 
 ```
 
->TODO Utiliser la fonction employer la doc de la fonction
 
 ## Type de variables
 

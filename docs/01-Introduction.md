@@ -51,15 +51,15 @@ Il y a 25 ans, Pas d'internet, pas de smartphone. Que feraient-ils sans smartpho
 
 Vous pouvez maintenant avoir un aperçu de l'importance d'avoir des outils performants afin d'appréhender les données dont le nombre croit de manière exponentielle. Pour ce cours de sciences des données,  plusieurs outils puissants sont mis à votre disposition (Vous trouverez sur l'hyperlien suivant, un poster présentant la philosophie du cours <https://github.com/BioDataScience-Course/RencontresRRennes2018>)
 
-## Création de son propre site web professionnel 
+## Création de son propre site web professionnel {#site}
 
-De nos jours, un nombre important de données sont collectées \ref{donnees} sur nous. A la fin de vos études, vous serez amené à chercher un travail. Ce dernier peut se trouver dans le mileu de la recherche universitaire, dans la recherche en entreprise ou encore dans les métiers de l'éco-conseils. Cependant, tous les recruteurs utilisent actuellement les données que l'on a semé sur le net afin de réaliser un profil dès plus détaillés sur nous. 
+De nos jours, un nombre important de données sont collectées sur nous. A la fin de vos études, vous serez amené à chercher un travail. Ce dernier peut se trouver dans le mileu de la recherche universitaire, dans la recherche en entreprise ou encore dans les métiers de l'éco-conseils. Cependant, tous les recruteurs utilisent actuellement les données que l'on a semé sur le net afin de réaliser un profil dès plus détaillés sur nous. 
 
 Les réseaux sociaux sont une mine d'or sur nos habitudes de vie comme Facebook, Twitter ou encore Instagram. On peut parler de l'image numérique d'une personne. Afin de mettre l'accent sur les compétences professionnels, de plus en plus de personnes utilisent des réseaux plus profesionnels comme LinkedIn ou encore des sites webs personnels professionels (par exemple : <http://phgrosjean.sciviews.org/>, <http://www.guyliann.be/>).
 
 Dans le cadre de ce premier module, vous allez réaliser votre premier site professionnel et entièrement gratuit. Afin de mener à bien ce premier projet, divers outils vont vous être proposés.
 
-### Une machine virtuelle
+### Machine virtuelle
 
 La SciViews Box est une machine virtuelle complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, ensuite écrire des rapports ou des documents prêts à publication et enfin collaborer avec d'autres chercheurs.
 
@@ -223,11 +223,14 @@ Avec les quelques instructions présent dans le document [aide-mémoire](https:/
 
 ### A vous de jouer 
 
-Maintenant qu'une brèce explication des différents outils vous a été fait, lancez vous dans la création de votre site web professionnel. 
+Maintenant qu'une brève explication des différents outils vous a été fait, lancez vous dans la création de votre site web professionnel. 
 
 - Créer votre propre compte git hub
 
 - Rejoignez l'exercice relatif à  la création de votre site web sur **Git Hub Classroom**.
+
+- Modifiez pas à pas le projet afin d'obtenir votre site web perso 
+
 
 
 

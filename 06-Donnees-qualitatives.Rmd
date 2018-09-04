@@ -3,7 +3,7 @@
 Variables de type `factor`/`ordered`, transformation, découpage en classes, tableau de contigence. Choix des variables à mesurer, biométrie humaine.
 
 
-```{r setup}
+```{r setup, echo=FALSE, message=FALSE, results='hide', include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
 SciViews::R
 library(knitr)

@@ -1,3 +1,0 @@
-# Point de départ
-
-Juste pour tester...
