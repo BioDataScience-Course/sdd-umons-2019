@@ -10,7 +10,7 @@ biblio-style: apalike
 link-citations: yes
 github-repo: biodatascience-course/sdd-umons
 url: 'http\://biodatascience-course.sciviews.org/sdd-umons/'
-description: "Tutoriel interactif pour la science des données avec R & SciViews::R."
+description: "Tutoriel interactif pour la science des données avec R & SciViews-R."
 cover-image: "images/front-cover.png"
 ---
 
