@@ -25,43 +25,45 @@ Un template `blogdown` sera fourni dans Github Classroom. Il sera également exp
 - Début de module suivant (participation cotée): réexpliquer avec ses propres mots git + Github.
 
 
-## Comment le monde était il y a 25 ans ? {#donnees}
+## Comment le monde était-il y a 25 ans ? {#donnees}
 
-Il y a 25 ans, Pas d'internet, pas de smartphone. Que feraient-ils sans smartphone.
+Il y a 25 ans, pas d'internet, pas de smartphone. Essayez d'imaginer ce que serait votre vie aujourd'hui si ces outils qui font partie de votre quatidien n'existaient pas.
 
 - Les révolutions indistrielles:
     * 1770 (1756) révolution 1: mécanisation
     * 1870 révolution 2: maîtrise de l'énergie
     * 1970 (1979) révolution 3: informatique
-    * 1990 révolution 4: internet (1990 Web, 1992 ISOC = Internet society, 1993 = premuer browser web)
+    * 1990 révolution 4: internet (1990 Web, 1992 ISOC = Internet society, 1993 = premier navigateur web)
     * 2000 révolution 5: numérique. GAFA = Google - Apple - Facebook - Amazon + Microsoft = GAFAM aux USA et BATX en Chine = Baidu - Alibaba - Tencent - Xiaomi. Aussi NATU = Netflix - Airbnb - Tesla - Uber.
     2010 révolution 6: NBIC = nanotechnologies - biotechnologies - informatique - sciences cognitives.
-    2020 = date prévue pour que l'ordinateur ait la même puissane de traitement de l'information que le cerveau humain
-    2030 = transhumanisme: ordinateur plus puissant que l'homme et le remplaçant.
+    2020 = date prévue pour que l'ordinateur ait la même puissance de traitement de l'information que le cerveau humain
+    2030 = transhumanisme: ordinateur plus puissant que l'homme et le remplacera probablement dans de nombreuses tâches.
 
-- Valeur estimée des données et informations mises à disposition par les utilisateurs du net: 1000 milliards de dollar par an (écrire en chiffres)!
+- Valeur estimée des données et informations mises à disposition par les utilisateurs du net: 1000 milliards de dollar par an (écrivez ce nombre en chiffres pour vous donner une meilleure idée de ce que cela représente)!
 
-- En 2020, quantité d'information ajoutée sur le net: 1000 milliards de milliards par semaine (écrire en chiffre aussi)
+- En 2020, quantité d'information ajoutée sur le net: 1000 milliards de milliards par semaine (écrivez ce nombre en chiffres également).
 
-- Comparaison de puissance de traitement du cerveau humain _versus_ l'ordinateur: 89 milliards de neurones, mais travail en multitâche alors qu'un processeur est monotâche => difficile à comparer. Une étude a montré en 2017 que l'un des 5 ordinateurs les plus puissants a été capable de simuler le fonctionnement d'environ 1% du cerveau humain en 1 sec. Il lui a fallu 40 min de calcul pour y arriver. Intel estime que l'évolution permettra d'égaler le cerveau humain en terme de vitesse de traitement vers 2020.
+- Comparaison de puissance de traitement du cerveau humain _versus_ un ordinateur: 89 milliards de neurones, mais travail en multitâche alors qu'un processeur est monotâche => difficile à comparer. Une étude a montré en 2017 que l'un des 5 ordinateurs les plus puissants a été capable de simuler le fonctionnement d'environ 1% du cerveau humain en 1 sec. Il lui a fallu 40 min de calcul pour y arriver. Intel estime que l'évolution permettra d'égaler le cerveau humain en terme de vitesse de traitement vers 2020.
 
-- Consommation du supercalculateur: en mégawatts, alors que le cerveau humain consomme 12-13W seulement!
+- Consommation électrique du supercalculateur: se mesure en mégawatts, alors que le cerveau humain consomme 12-13W seulement!
 
 - "Le **transhumanisme** est une approche interdisciplinaire qui nous amène à comprendre et à évaluer les avenues qui nous permettrons de surmonter nos limites biologiques par les progrès technologiques. Les transhumanistes cherchent à développer les possibilités techniques afin que les gens vivent plus longtemps et ..."
 
 Vous pouvez maintenant avoir un aperçu de l'importance d'avoir des outils performants afin d'appréhender les données dont le nombre croit de manière exponentielle. Pour ce cours de sciences des données,  plusieurs outils puissants sont mis à votre disposition (Vous trouverez sur l'hyperlien suivant, un poster présentant la philosophie du cours <https://github.com/BioDataScience-Course/RencontresRRennes2018>)
 
+
 ## Création de son propre site web professionnel {#site}
 
-De nos jours, un nombre important de données sont collectées sur nous. A la fin de vos études, vous serez amené à chercher un travail. Ce dernier peut se trouver dans le mileu de la recherche universitaire, dans la recherche en entreprise ou encore dans les métiers de l'éco-conseils. Cependant, tous les recruteurs utilisent actuellement les données que l'on a semé sur le net afin de réaliser un profil dès plus détaillés sur nous. 
+De nos jours, un nombre important de données sont collectées sur nous. A la fin de vos études, vous serez amenés à rechercher un travail (dans le milieu de la recherche universitaire, dans la recherche en entreprise, dans les métiers de l'éco-conseils, etc.). Cependant, tous les recruteurs utilisent actuellement les données que l'on a semé sur le net afin de réaliser un profil détaillés sur nous. Il est donc de votre intérêt d'avoir un profil sur Internet le meilleur possible. Nous allons vous y aider !
 
 Les réseaux sociaux sont une mine d'or sur nos habitudes de vie comme Facebook, Twitter ou encore Instagram. On peut parler de l'image numérique d'une personne. Afin de mettre l'accent sur les compétences professionnels, de plus en plus de personnes utilisent des réseaux plus profesionnels comme LinkedIn ou encore des sites webs personnels professionels (par exemple : <http://phgrosjean.sciviews.org/>, <http://www.guyliann.be/>).
 
-Dans le cadre de ce premier module, vous allez réaliser votre premier site professionnel et entièrement gratuit. Afin de mener à bien ce premier projet, divers outils vont vous être proposés.
+Dans le cadre de ce premier module, vous allez réaliser votre premier site professionnel (contenant également une section "blog" que vous pourez alimenter, entre autres, avec vos considérations concernant vos cours, les analyse de données, et autres). Ce site sera immédiatement disponible sur le web et ce, de manière entièrement gratuite! Afin de mener à bien ce premier projet, divers outils vous seront nécessaires. Ces outils seront complétés plus trd par d'autres pour que vous ayez une boite à outils complète pour vos futures analyses de données professionnelles.
+
 
 ### Machine virtuelle
 
-La SciViews Box est une machine virtuelle complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, ensuite écrire des rapports ou des documents prêts à publication et enfin collaborer avec d'autres chercheurs.
+La **SciViews Box** est une machine virtuelle (un ordinateur complet, mais totalement indépendant du matériel -le hardware- et qui peut être déployé sur pratiquement n'importe quel ordinateur physique). Cette SciViews Box est complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, et ensuite écrire des rapports ou d'autres documents prêts à publication ou à présentation. Elle vous servira également à collaborer avec d'autres chercheurs qui peuvent facilement utiliser exactement la même machine virtuelle (aspect reproductible de vos analyses).
 
 ![Logo de la SciViews box](images/svBox-256.png)
 
@@ -69,15 +71,16 @@ Etant préconfigurée, son installation est relativement facile et rapide.
 
 > Inserer un lien vers les autoinstalleurs de la machine virtuelle, les tutoriels d'installation,.... <https://github.com/BioDataScience-Course/tutorials/tree/master/docs/01_Installation> (qui est actuellement sur un projet privé)
 
-> TODO revoir le tutoriel afin qu'il corresponde avec les nouvautées proposées dans la version 2019 de la svbox <https://github.com/BioDataScience-Course/tutorials/tree/master/docs/02_prise_en_main> (qui est actuellement sur un projet privé)
+> TODO revoir le tutoriel afin qu'il corresponde avec les nouvautés proposées dans la version 2018 de la svbox <https://github.com/BioDataScience-Course/tutorials/tree/master/docs/02_prise_en_main> (qui est actuellement sur un projet privé)
 
-### R studio
 
-R Studio est l'outil au sein de la machine virtuelle que vous allez utilisez le plus fréquement durant ces cours. Il sert d'éditeur de texte, d'éditeur de graphique, ... Cette une interface à plusieurs outils mais principalment à R un programme que nous verrons par la suite. 
+### RStudio
 
-> TODO tutoriels introduction Rstudio
+RStudio est l'outil au sein de la SciViews Box que vous allez utilisez le plus fréquement durant ce cours. Il fournit un environnement complet et optimisé pour réaliser vos analyses, vos graphiques et vos rapports. RStudio travaille main dans la main avec le logiciel R qui effectue l'ensemble des traitements. **TODO: améliorer cette description!**
 
-Rstudio a été conçu afin de travailler en projet. Un projet portera sur une thématique ou sur une expérience précise. Ce dernier va contenir l'ensemble des fichiers relatif à la thématique comme par exemple toutes les informations, fichiers, images, de son propre site web personnel profesionnel. Le projet permet de configurer un environnement de travail pour cette thématique que l'on peut sauvegarder et recharger par la suite. Un bon projet sera transportable afin que des collaborateur puisse utiliser notre environnement de travail sur un autre ordinateur. 
+> TODO tutoriels introduction RStudio
+
+RStudio a été conçu afin de travailler en projet. Un projet portera sur une thématique ou sur une expérience précise. Ce dernier va contenir l'ensemble des fichiers relatif à la thématique comme par exemple toutes les informations, fichiers, images, de son propre site web personnel profesionnel. Le projet permet de configurer un environnement de travail pour cette thématique que l'on peut sauvegarder et recharger par la suite. Un bon projet sera transportable afin que des collaborateur puisse utiliser notre environnement de travail sur un autre ordinateur. 
 
 > TODO tutoriels création d'un projet
 
