@@ -4,6 +4,7 @@ Variables de type `factor`/`ordered`, transformation, découpage en classes, tab
 
 
 
+<<<<<<< HEAD
 ```r
 knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
 SciViews::R
@@ -63,6 +64,8 @@ library(flow)
 library(data)
 dm <- read("diamonds", package = "ggplot2")
 ```
+=======
+>>>>>>> 8ecd542bcd5890f627db0b5fa2d3ee96e2c0c721
 
 > Suite d'idée afin de rédiger le chapitre 6
 
