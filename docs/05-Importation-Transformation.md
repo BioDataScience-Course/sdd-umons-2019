@@ -1,74 +1,6 @@
 # Importation/transformation des données {#import}
 
 
-<<<<<<< HEAD
-```r
-knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
-SciViews::R
-```
-
-```
-## ── Attaching packages ──────────────────────────────────────────────────────────── SciViews::R 1.0.1 ──
-```
-
-```
-## ✔ SciViews  1.0.1       ✔ purrr     0.2.5  
-## ✔ chart     1.1.0       ✔ readr     1.1.1  
-## ✔ flow      1.0.0       ✔ tidyr     0.8.1  
-## ✔ data      1.0.0       ✔ tibble    1.4.2  
-## ✔ svMisc    1.1.0       ✔ ggplot2   3.0.0  
-## ✔ forcats   0.3.0       ✔ tidyverse 1.2.1  
-## ✔ stringr   1.3.1       ✔ lattice   0.20.35
-## ✔ dplyr     0.7.6       ✔ MASS      7.3.50
-```
-
-```
-## ── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ✖ dplyr::select() masks MASS::select()
-```
-
-```r
-library(knitr)
-library(chart)
-library(ggpubr)
-```
-
-```
-## Loading required package: magrittr
-```
-
-```
-## 
-## Attaching package: 'magrittr'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     set_names
-```
-
-```
-## The following object is masked from 'package:tidyr':
-## 
-##     extract
-```
-
-```r
-library(flow)
-library(data)
-
-nf <- data::read("flights", package = "nycflights13", lang = "fr")
-iris <- data::read("iris", package = "datasets", lang = "fr")
-
-#ub <- data::read("urchin_bio", package = "data", lang = "fr")
-
-urchin <- data::read("urchin_bio", package = "data")
-```
-=======
->>>>>>> 8ecd542bcd5890f627db0b5fa2d3ee96e2c0c721
 
 
 
@@ -78,7 +10,7 @@ urchin <- data::read("urchin_bio", package = "data")
 
 Vos objectifs pour ce module sont :
 
-- Savoir importer des données via la fonction read(), ainsi qu'appréhender ses arguments.
+- Savoir importer des données via la fonction `read()`, ainsi qu'appréhender ses arguments.
 
 - Appréhender les types de variables et l'importance d'encoder convenablement les variables.
 
@@ -104,12 +36,12 @@ En effet, les packages que l'on peut assimiler à des boites à outils dans R so
 
 ```r
 # Importation de données provenant d'un package
-is <- data::read("iris", package = "datasets", lang = "fr")
+is <- read("iris", package = "datasets", lang = "fr")
 
-ub <- data::read("urchin_bio", package = "data", lang = "fr")
+ub <- read("urchin_bio", package = "data.io", lang = "fr")
 ```
 
-La fonction `read()` requiert comme premier argument le nom du jeu de données (e.g. "iris" ou "urchin_bio"), suivi de l'argument `package` (e.g. "datasets", ou "data"), suivi de l'argument `lang` (e.g. "fr") qui définit la langue d'intérêt.  
+La fonction `read()` requiert comme premier argument le nom du jeu de données (e.g. `"iris"` ou `"urchin_bio"`), suivi de l'argument `package=` (e.g. `"datasets"`, ou `"data.io"`), suivi de l'argument `lang=` (e.g. `"fr"`) qui définit la langue d'intérêt.  
 
 L'instruction ci-dessous permet d'obtenir une liste de l'ensemble des jeux de données présent dans un package.
 
@@ -121,7 +53,7 @@ L'instruction ci-dessous permet d'obtenir une liste de l'ensemble des jeux de do
 
 ### Données encodées manuellement
 
-En effet, vous serez amené à encoder manuellement vos jeux de données dans un fichier au format "xlsx", "csv" ou encore "txt". La fonction `read()` permet de les importer. Vous devrez dans ce cas spécifier le chemin d'accès à votre fichier.
+En effet, vous serez amené à encoder manuellement vos jeux de données dans un fichier au format `"xlsx"`, `"csv"` ou encore `"txt"`. La fonction `read()` permet de les importer. Vous devrez dans ce cas spécifier le chemin d'accès à votre fichier.
 
 Le chemin d'accès à votre fichier peut s'écrire de diffférentes manières absolue ou bien de manière relative. Vous devez tant que possible employer des chemins relatifs. Les projets dans RStudio définissent un environnement de travail comme vu dans le module 1. Afin que ce projet soit portable, il est indisensable d'employer des chemins relatifs. 
 
@@ -186,7 +118,7 @@ La fonction read() est également capable d'importer les fichier comprimer ".zip
 
 
 ```r
-iris <- data::read(data_example("iris.csv.zip"))
+iris <- read(data_example("iris.csv.zip"))
 ```
 
 ```
@@ -204,7 +136,7 @@ La fonction read() est également capable d'importer des fichiers en lignes.
 
 
 ```r
-#ble <- data::read("http://tinyurl.com/Biostat-Ble", type = "csv") # requiert une connexion internet 
+#ble <- read("http://tinyurl.com/Biostat-Ble", type = "csv") # requiert une connexion internet 
 ```
 
 
@@ -212,7 +144,7 @@ La fonction read() est également capable d'importer des fichiers en lignes.
 
 
 ```r
-tg <- data::read("ToothGrowth", package = "datasets")
+tg <- read("ToothGrowth", package = "datasets")
 ```
 
 Prenez l'exemple de jeu de donnée portant sur la croissance des dents de cochon d'Inde (`ToothGrowth, du package `datasets`). Il est composé de 60 observations et de trois variables portant sur la longueur des dents (mm), le supplément administré (OJ jus d'orange ou VC vitamine C) et la dose administrée ( 0.5, 1 et 2 en mm/j). 
@@ -272,7 +204,7 @@ skimr::skim(tg)
 ##  n obs: 60 
 ##  n variables: 3 
 ## 
-## ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Variable type:factor ────────────────────────────────────────────────────────────────────────
 ##  variable missing complete  n n_unique
 ##      dose       0       60 60        3
 ##      supp       0       60 60        2
@@ -280,7 +212,7 @@ skimr::skim(tg)
 ##                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 ##  OJ: 30, VC: 30, NA: 0                              FALSE
 ## 
-## ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Variable type:numeric ───────────────────────────────────────────────────────────────────────
 ##  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 ##       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 ##      hist
@@ -300,7 +232,7 @@ Dans les graphiques a), vous pouvez observer que la dose a été employé comme 
 
 
 ```r
-tg <- data::read("ToothGrowth", package = "datasets")
+tg <- read("ToothGrowth", package = "datasets")
 
 a <- chart(tg, len ~ dose) +
   geom_boxplot() +
@@ -342,7 +274,7 @@ Partez du jeu de données portant sur la croissance des oursins, ce dernier cont
 
 
 ```r
-ub <- data::read("urchin_bio", package = "data", lang = "fr")
+ub <- read("urchin_bio", package = "data.io", lang = "fr")
 ```
 
 Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction `select()` et les fonctions d'aide à la selection (`?select_helpers`) peut vous apporter la solution à votre demande.
@@ -597,7 +529,7 @@ ggtexttable(a, theme = ttheme("lBlack"))
 
 
 ```r
-ub <- data::read("urchin_bio", package = "data", lang = "fr")
+ub <- read("urchin_bio", package = "data.io", lang = "fr")
 ```
 
 Lors de l'analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d'employer le **pipe**^[TODO] `%>.% qui permet de réaliser une suite d'intructions. 
@@ -630,7 +562,7 @@ ggtexttable(head(ub, n = 6), theme = ttheme("lBlack"))
 
 
 ```r
-ub1 <- data::read("urchin_bio", package = "data", lang = "fr")
+ub1 <- read("urchin_bio", package = "data.io", lang = "fr")
 ```
 
 Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 

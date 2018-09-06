@@ -4,68 +4,6 @@ Variables de type `factor`/`ordered`, transformation, découpage en classes, tab
 
 
 
-<<<<<<< HEAD
-```r
-knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
-SciViews::R
-```
-
-```
-## ── Attaching packages ──────────────────────────────────────────────────────────── SciViews::R 1.0.1 ──
-```
-
-```
-## ✔ SciViews  1.0.1       ✔ purrr     0.2.5  
-## ✔ chart     1.1.0       ✔ readr     1.1.1  
-## ✔ flow      1.0.0       ✔ tidyr     0.8.1  
-## ✔ data      1.0.0       ✔ tibble    1.4.2  
-## ✔ svMisc    1.1.0       ✔ ggplot2   3.0.0  
-## ✔ forcats   0.3.0       ✔ tidyverse 1.2.1  
-## ✔ stringr   1.3.1       ✔ lattice   0.20.35
-## ✔ dplyr     0.7.6       ✔ MASS      7.3.50
-```
-
-```
-## ── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ✖ dplyr::select() masks MASS::select()
-```
-
-```r
-library(knitr)
-library(chart)
-library(ggpubr)
-```
-
-```
-## Loading required package: magrittr
-```
-
-```
-## 
-## Attaching package: 'magrittr'
-```
-
-```
-## The following object is masked from 'package:purrr':
-## 
-##     set_names
-```
-
-```
-## The following object is masked from 'package:tidyr':
-## 
-##     extract
-```
-
-```r
-library(flow)
-library(data)
-dm <- read("diamonds", package = "ggplot2")
-```
-=======
->>>>>>> 8ecd542bcd5890f627db0b5fa2d3ee96e2c0c721
 
 > Suite d'idée afin de rédiger le chapitre 6
 

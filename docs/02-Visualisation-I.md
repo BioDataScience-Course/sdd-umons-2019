@@ -41,7 +41,7 @@ Les instructions de base afin de produire une nuage de point sont :
 
 ```r
 # Importation du jeu de données
-ub <- data::read("urchin_bio", package = "data.io")
+ub <- read("urchin_bio", package = "data.io")
 # Réalisation du graphique 
 chart(ub, formula = height ~ weight) +
   geom_point()

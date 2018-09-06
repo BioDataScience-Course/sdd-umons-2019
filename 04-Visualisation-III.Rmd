@@ -6,13 +6,13 @@ library(knitr)
 library(viridis)
 
 e_m <- data_frame(id = 1:345, e_mathaei = c(rep("black", times = 236), rep("purple" , times = 40), rep("brown", times = 35), rep("green", times = 34)))
-ToothGrowth <- read(file = "ToothGrowth", package = "datasets", lang = "fr")
-data("PlantGrowth")
-PlantGrowth <- read(file = "PlantGrowth", package = "datasets", lang = "fr")
+ToothGrowth <- read("ToothGrowth", package = "datasets", lang = "fr")
+#data("PlantGrowth")
+PlantGrowth <- read("PlantGrowth", package = "datasets", lang = "fr")
 iris <- read(file = "iris", package = "datasets", lang = "fr")
-ChickWeight <- read(file = "ChickWeight", package = "datasets", lang = "fr")
-urchin <- read(file = "urchin_bio", package = "data", lang = "fr")
-diamonds <- data::read(file = "diamonds", package = "ggplot2", lang = "fr")
+ChickWeight <- read("ChickWeight", package = "datasets", lang = "fr")
+urchin <- read(file = "urchin_bio", package = "data.io", lang = "fr")
+diamonds <- read(file = "diamonds", package = "ggplot2", lang = "fr")
 ```
 
 
@@ -242,7 +242,7 @@ fact <- c(rep(x = "a", times = 10), rep(x = "b", times = 1), rep(x = "c", times 
 error <- data_frame(fact = fact)
 chart(error, formula = ~ factor(1) %fill=% fact) +
   geom_bar(width = 1) + 
-  coord_polar("y", start=0) +
+  coord_polar("y", start = 0) +
   labs( x = "", y = "") +
   scale_fill_viridis(discrete = TRUE)
 ```

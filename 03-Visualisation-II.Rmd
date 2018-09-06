@@ -3,9 +3,9 @@
 ```{r setup, echo=FALSE, message=FALSE, results='hide', include=FALSE}
 SciViews::R
 library(viridis)
-iris <- data::read(file = "iris", package = "datasets", lang = "fr")
-zp <- data::read( file = "zooplankton", package = "data", lang = "fr")
-tg <- data::read(file = "ToothGrowth", package = "datasets", lang = "fr")
+iris <- read(file = "iris", package = "datasets", lang = "fr")
+zp <- read( file = "zooplankton", package = "data.io", lang = "fr")
+tg <- read(file = "ToothGrowth", package = "datasets", lang = "fr")
 ```
 
 Vos objectifs pour ce module sont:
@@ -44,7 +44,7 @@ Les instructions de base afin de produire un histogramme :
 
 ```{r, fig.cap="Instructions pour obtenir un histogramme."}
 # Importation du jeu de données
-zp <- data::read( file = "zooplankton", package = "data", lang = "fr")
+zp <- read( file = "zooplankton", package = "data.io", lang = "fr")
 # Réalisation du graphique
 chart(zp, formula = ~ size) +
   geom_histogram(bins = 50) 
@@ -90,7 +90,7 @@ g2 <- chart(d1, formula = ~ e) +
         axis.line.x = element_line(colour = "#a80039"),
         axis.line.y = element_line(colour = "#a80039"))
 
-e <- c1[c1$c >34 , ]
+e <- c1[c1$c > 34 , ]
 e1 <- as.data.frame(e)
 g3 <- chart(data = e1, formula = ~ e) +
   geom_histogram() +
@@ -226,7 +226,7 @@ Les instructions de base afin de produire un histogramme sont :
 
 ```{r, fig.cap="Instructions pour obtenir un graphique de densité."}
 # Importation du jeu de données
-zp <- data::read( file = "zooplankton", package = "data", lang = "fr")
+zp <- read( file = "zooplankton", package = "data.io", lang = "fr")
 # Réalisation du graphique
 chart(zp, formula = ~ size) +
   geom_density()
@@ -255,7 +255,7 @@ Les instructions de base afin de produire un diagramme en violon sont :
 
 ```{r, fig.cap="Instructions pour obtenir un diagramme en violon."}
 # Importation du jeu de données
-zp <- data::read( file = "zooplankton", package = "data", lang = "fr")
+zp <- read( file = "zooplankton", package = "data.io", lang = "fr")
 # Réduction du jeu de données 
 zp1 <- filter(zp, class %in% c("Annelid", "Calanoid", "Cyclopoid", "Decapod"))
 # Réalisation du graphique

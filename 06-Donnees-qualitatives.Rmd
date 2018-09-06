@@ -7,10 +7,7 @@ Variables de type `factor`/`ordered`, transformation, découpage en classes, tab
 knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
 SciViews::R
 library(knitr)
-library(chart)
 library(ggpubr)
-library(flow)
-library(data)
 dm <- read("diamonds", package = "ggplot2")
 ```
 
@@ -28,7 +25,7 @@ Vos objectifs pour ce module sont :
 
 
 ```{r}
-is <- data::read("iris", package = "datasets", lang = "fr")
+is <- read("iris", package = "datasets", lang = "fr")
 
 chart(is, formula = ~ sepal_length) +
   geom_histogram(bins = 40)
@@ -37,7 +34,7 @@ chart(is, formula = ~ sepal_length) +
 ## Tableaux de contingences
 
 ```{r}
-tg <- data::read("ToothGrowth", package = "datasets")
+tg <- read("ToothGrowth", package = "datasets")
 tg$dose <- factor(tg$dose, levels = c("0.5", "1", "2"), ordered = TRUE)
 ```
 
@@ -52,13 +49,13 @@ table(dm$cut, dm$color)
 
 
 ```{r}
-timolol <- data.frame(patient = c("sain", "malade", "sain",
-                                  "malade"),
-                      traitement = c("timolol", "timolol", "placebo", "placebo"),
-                      freq = c(44, 116, 19, 128))
-#Creation du tableau de contingence 
-timolol.Table <- xtabs(freq ~ patient + traitement, data =
-                          timolol)
+timolol <- data.frame(
+  traitement = c("timolol", "timolol", "placebo", "placebo"),
+  patient    = c("sain",    "malade",  "sain",    "malade"),
+  freq = c(44, 116, 19, 128)
+)
+# Creation du tableau de contingence 
+timolol.Table <- xtabs(freq ~ patient + traitement, data = timolol)
 timolol.Table
 ```
 

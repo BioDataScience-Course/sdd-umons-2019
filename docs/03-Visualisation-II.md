@@ -32,7 +32,7 @@ Les instructions de base afin de produire un histogramme :
 
 ```r
 # Importation du jeu de données
-zp <- data::read( file = "zooplankton", package = "data", lang = "fr")
+zp <- read( file = "zooplankton", package = "data.io", lang = "fr")
 # Réalisation du graphique
 chart(zp, formula = ~ size) +
   geom_histogram(bins = 50) 
@@ -180,7 +180,7 @@ Les instructions de base afin de produire un histogramme sont :
 
 ```r
 # Importation du jeu de données
-zp <- data::read( file = "zooplankton", package = "data", lang = "fr")
+zp <- read( file = "zooplankton", package = "data.io", lang = "fr")
 # Réalisation du graphique
 chart(zp, formula = ~ size) +
   geom_density()
@@ -208,7 +208,7 @@ Les instructions de base afin de produire un diagramme en violon sont :
 
 ```r
 # Importation du jeu de données
-zp <- data::read( file = "zooplankton", package = "data", lang = "fr")
+zp <- read( file = "zooplankton", package = "data.io", lang = "fr")
 # Réduction du jeu de données 
 zp1 <- filter(zp, class %in% c("Annelid", "Calanoid", "Cyclopoid", "Decapod"))
 # Réalisation du graphique
