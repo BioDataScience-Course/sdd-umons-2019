@@ -204,7 +204,7 @@ skimr::skim(tg)
 ##  n obs: 60 
 ##  n variables: 3 
 ## 
-## ── Variable type:factor ────────────────────────────────────────────────────────────────
+## ── Variable type:factor ─────────────────────────────────────────────────────────────────────────
 ##  variable missing complete  n n_unique
 ##      dose       0       60 60        3
 ##      supp       0       60 60        2
@@ -212,7 +212,7 @@ skimr::skim(tg)
 ##                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 ##  OJ: 30, VC: 30, NA: 0                              FALSE
 ## 
-## ── Variable type:numeric ───────────────────────────────────────────────────────────────
+## ── Variable type:numeric ────────────────────────────────────────────────────────────────────────
 ##  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 ##       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 ##      hist
@@ -616,7 +616,8 @@ tg %>.%
 ```
 
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" />
-####Pour en savoir plus 
+
+#### Pour en savoir plus 
 
 - [Customisation de tableau](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggtexttable.html)
 
