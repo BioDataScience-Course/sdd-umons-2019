@@ -154,12 +154,12 @@ Dans ce cours, nous utilisons **Git** et **Github** pour gérer les différentes
 
 ## Configuration
 
-Même si la SciViews Box est pré-configurée, vous allez avoir quelques étapes simples et rapides à réaliser pour être complètement opérationnel. Ces étapes sont détaillées ci-dessous.
+Même si la SciViews Box est pré-configurée, vous allez avoir quelques manipulations simples à réaliser pour être complètement opérationnel. Ces étapes sont détaillées ci-dessous. Nous en profiterons par la même occasion par nous familiariser avec quelques uns des outils logiciels que vous utiliserez plus tard, à commencer par le lanceur rapide SciViews Box.
 
 
 ### Lanceur SciViews Box
 
-L'application que vous venez d'installer est un **lanceur rapide** qui facilite le démarrage, la fermeture et la gestion de votre machine virtuelle SciViews Box 2018a. Lancez-là et vous verrez la fenêtre suivante:
+L'application que vous venez d'installer est un **lanceur rapide** qui facilite le démarrage, la fermeture et la gestion de votre machine virtuelle SciViews Box 2018a. Démarrez-là et vous verrez la fenêtre suivante:
 
 ![](images/annexe1/svbox-launcher-comment.png)
 
@@ -171,7 +171,11 @@ Le message en rouge n'apparait pas systématiquement. Il signale des éléments 
 <p>Cette dernière étape est importante! Ne cliquez pas <code>No</code> ici, sous peine de ne pas avoir une machine virtuelle configurée comme celle de vos collègues!</p>
 </div>
 
-Le mot de passe vous sera redemandé, et ensuite, l'installation se poursuivra. A la fin, vous verrez la fenêtre du configurateur de la SciViews Box apparaître.
+Le mot de passe vous sera redemandé, et ensuite, l'installation se poursuivra. Elle pourra prendre plusieurs minutes. Soyez patient. Vous pourrez ouvrir la fenêtre du terminal où s'opère le travail pour en suivre la progression, si vous le souhaitez.
+
+![](images/annexe1/svbox-install_terminal.png)
+
+A la fin vous verrez la fenêtre du configurateur de la SciViews Box apparaître.
 
 
 ### Configurateur de la Box
@@ -202,7 +206,7 @@ Les trois boutons à gauche en bas servent à choisir le stylage des fenêtres, 
 
 ![](images/annexe1/svbox-config4.png)
 
-C'est ici que vous pourrez la paramétrer au mieux pour qu'elle vous plaise visuellement. A noter que, si vous double-cliquez sur les entrées dans les boites de dialogue de configuration, vous allez pour **prévisualiser** l'effet en live. Utile pour apprécier le rendu avant de faire son choix!
+C'est ici que vous pourrez la paramétrer au mieux pour qu'elle vous plaise visuellement. A noter que, si vous double-cliquez sur les entrées dans les boites de dialogue de configuration, vous allez pouvoir **prévisualiser** l'effet en live. Utile pour apprécier le rendu avant de faire son choix!
 
 La zone en bas à droite permet de modifier le mot de passe.
 
@@ -218,7 +222,7 @@ La zone en haut à droite permet de configurer votre compte Git.
 
 ![](images/annexe1/svbox-config6.png)
 
-Comme vous allez utiliser Git et Github de manière intensive tout au long de ce cours, **veuillez configurer cette partie du système correctement d'amblée!** Les trois boutons du bas proposent de s'enregistrer sur trois systèmes distants d'hébergement de dépôts Git (si vous ne savez pas ce que c'est, imaginez juste que c'est là que vous allez pouvoir entreposer de manière sûre tous vos projets!): **Github**, **Gitlab** ou ***Bitbucket**. Tous trois ont des avantages et des inconvénients, et ils proposent tous des utilisations gratuites dans certains cas.
+Comme vous allez utiliser Git et Github de manière intensive tout au long de ce cours, **veuillez configurer cette partie du système correctement d'amblée!** Les trois boutons du bas proposent de s'enregistrer sur trois systèmes distants d'hébergement de dépôts Git (si vous ne savez pas ce que c'est, imaginez juste que c'est là que vous allez pouvoir entreposer de manière sûre tous vos projets!): **Github**, **Gitlab** ou **Bitbucket**. Tous trois ont des avantages et des inconvénients, et ils proposent tous des utilisations gratuites dans certains cas.
 
 <div class="note">
 <p>Durant nos cours de Science des Données à l'UMONS, nous utiliserons <strong>Github</strong>. Cette utilisation sera gratuite pour vous, et vous allez pouvoir déjà commencer à construire <strong>votre identité professionnelle sur le Net</strong> par son intermédiaire. Donc, enregistrez-vous de manière sérieuse. Choisissez un login représentatif de vos nom et prénom, pas un truc louffoque ou rigolo sur le moment, mais que vous regretterez plus tard, sachant que votre login ne pourra <strong>pas</strong> être changé ensuite!</p>
@@ -228,7 +232,7 @@ Vous allez donc vous créer un compte sur Github en cliquant sur le bouton corre
 
 ![](images/annexe1/github-login.png)
 
-Une fois enregistré sur le site de Github, reportez votre login et votre adresse email dans le configurateur de la SciViews Box, pour que Git puisse vous identifier correctement en local^[A la première utilisation de Git à l'intérieur du logiciel **RStudio**, votre login et votre mot de passe vous sera également redemandé. De même, vous devrez également fournir ces informations dans Github Desktop et la première fois que vous naviguerai vers https://github.com depuis le navigateur Web de votre PC hôte. Mais ensuite, vous accèderez immédiatement au service.].
+Une fois enregistré sur le site de Github, reportez votre login et votre adresse email dans le configurateur de la SciViews Box, pour que Git puisse vous identifier correctement en local^[A la première utilisation de Git à l'intérieur du logiciel **RStudio**, votre login et votre mot de passe vous seront également redemandés. De même, vous devrez également fournir ces informations dans **Github Desktop** et la première fois que vous naviguerez vers https://github.com depuis le navigateur Web de votre PC hôte. Mais ensuite, vous accèderez immédiatement au service.].
 
 ![](images/annexe1/svbox-config7.png)
 
@@ -236,14 +240,39 @@ Une fois tout ceci effectué vous pourrez cliquer sur le bouton `OK` de la fenê
 
 ![](images/annexe1/svbox-config-reboot.png)
 
-**Vous avez terminé la configuration de votre SciViews Box. Cependant, nous allons encore effectuer quelques petites opérations qui vous faciliterons la vie, et nous vous expliquerons par la même occasion comment accéder aux fichiers respectifs de la machine virtuelle et du système hôte dans la section suivante.**
+**Bravo! Vous avez terminé l'installation et la configuration de votre SciViews Box. Cependant, nous allons encore effectuer quelques petites opérations qui vous faciliterons la vie, et nous vous expliquerons par la même occasion comment accéder aux fichiers respectifs de la machine virtuelle et du système hôte dans la section suivante.**
 
 
 ### Accès aux fichiers
 
+Le disque physique de votre ordinateur hôte, et le disque virtuel de la SciViews Box sont deux choses différentes. Cela signifie que vous avez, en réalité deux ordinateurs et deux disques indépendants. Donc, vous n'accédez **pas** aux fichiers d'une machine à partir de l'autre^[Le presse-papier est synchronisé entre les deux machines pour le texte qui y est copié.]. Ce n'est pas pratique, et ce n'est pas vrai pour un dossier particuler nommé **shared**.
+
 ![](images/annexe1/svbox-diagram.svg)
 
+Ce dossier **shared** est synchronisé en temps réel entre les deux systèmes. C'est donc l'endroit idéal pour échanger des données et pour faire collaborer vos deux machines. Inutile de préciser, donc, que nous travaillerons essentiellement à l'intérieur de ce dossier. Un sous-dossier, nommé **projects** sera utilisé pour héberger toutes nos analyses. Il est donc primordial d'y accéder facilement à la fois depuis l'ordinateur hôte et depuis la SciViews Box. Vous allez donc apprendre à retrouver ce dossier **projects** facilement.
 
-### Finalisation de l'installation de la SciViews Box
+Sur votre **ordinateur hôte**, ce dossier est un peu difficile à trouver en naviguant dans l'explorateur de fichiers (ou le finder sur le Mac). Pour cette raison, le lanceur rapide propose un bouton pour y accéder plus facilement.
 
 
+Une fois dans le dossier **shared**, nous vous conseillons d'épingler le sous-dossier **projects** dans les raccourcis rapides de votre explorateur de fichiers. Voici comment faire sous Windows et sous MacOS. 
+
+\BeginKnitrBlock{win}<div class="win">Sous Windows, cliquez bouton droit sur **projects**, et sélectionnez "épingler dans Accès rapide".
+
+![](images/annexe1/pin-projects-win.gif)
+</div>\EndKnitrBlock{win}
+
+\BeginKnitrBlock{mac}<div class="mac">TODO...
+</div>\EndKnitrBlock{mac}
+
+Dans la **SciViews Box**, ce dossier est accessible depuis deux endroits: `/media/sf_shared` et `~/shared` (`~` représente le répertoire de l'utilisateur, c'est-à-dire `/home/sv`). Ici aussi vous pouvez épingler votre dossier **projects** pour en facilter l'accès:
+
+\BeginKnitrBlock{svbox}<div class="svbox">Les deux moyens d'accéder au dossier **projects** dans la SciViews Box et comment l'épingler sur le côté.
+
+![](images/annexe1/pin-projects-svbox.gif)
+</div>\EndKnitrBlock{svbox}
+
+**A retenir:** le dossier **shared** et ses sous-dossiers comme **projects** sont considérés un peu comme des dossiers réseau par la SciViews Box. Cela implique que certaines fonctions du système de fichiers n'y sont pas accessibles. Parmi celles-ci, la **poubelle**. Donc, vous ne pourrez qu'effacer complètement des items en cliquant bouton droit et sélectionnant 'Delete' dans le menu contextuel dans le gestionnaire de fichiers. Si vous essayer de placer des fichiers ou dossiers depuis **shared** dans la poubelle de la SciViews Box, cela vous sera refusé (voir copie d'écran ci-dessous). _Par contre, cela fonctionne très bien depuis l'ordinateur hôte._
+
+![](images/annexe1/shared_no-trash.png)
+
+Un tout dernier point concernant les ordinateurs de la salle de T.P. de l'UMONS. Pour des questions de performance, la machine virtuelle SciViews Box, et le dossier **shared** ne sont **pas** sur votre compte, mais directement sur le disque de l'ordinateur. Cela signifie qu'ils ne sont pas transportables vers un autre ordinateur. Vous pouvez créer une copie de **shared** dans **mes documents** ou sur une clé USB pour les transporter vers un autre ordinateur... mais nous verrons que cela n'est pas nécessaire pour tout ce que vous stockerez sur Github. En effet, vous avez accès à ces contenus depuis n'importe où via n'importe quelle connexion internet.
