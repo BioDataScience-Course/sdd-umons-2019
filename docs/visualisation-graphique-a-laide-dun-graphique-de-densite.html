@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-18">
+<meta name="date" content="2018-09-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -209,12 +209,16 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
 <li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-fonction-de-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la fonction de virtualisation dans l’ordinateur</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html"><i class="fa fa-check"></i><b>A.2</b> Installation des logiciels nécessaires</a><ul>
-<li class="chapter" data-level="A.2.1" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
-<li class="chapter" data-level="A.2.2" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
-<li class="chapter" data-level="A.2.3" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
+<li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
+<li class="chapter" data-level="A.2.2" data-path="installation.html"><a href="installation.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
+<li class="chapter" data-level="A.2.3" data-path="installation.html"><a href="installation.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a></li>
+<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
+<li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.2</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#finalisation-de-linstallation-de-la-sciviews-box"><i class="fa fa-check"></i><b>A.3.3</b> Finalisation de l’installation de la SciViews Box</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
@@ -242,11 +246,11 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="visualisation-graphique-a-laide-dun-graphique-de-densite" class="section level2">
 <h2><span class="header-section-number">3.2</span> Visualisation graphique à l’aide d’un graphique de densité</h2>
-<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l’histogramme. Il ne s’agit plus de représenter un dénombrement comme l’histogramme le fait mais une <strong>probabilité</strong><a href="#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a> d’obtenir une valeur parmi un échantillon aléatoire. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a></p>
+<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l’histogramme. Il ne s’agit plus de représenter un dénombrement comme l’histogramme le fait mais une <strong>probabilité</strong><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> d’obtenir une valeur parmi un échantillon aléatoire. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></p>
 <div class="figure"><span id="fig:unnamed-chunk-8"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A) Histogramme  et B) graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A. Histogramme  et B. graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
 <p class="caption">
-Figure 3.4: A) Histogramme et B) graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton analysé par analyse d’image.
+Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton analysé par analyse d’image.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphique de densité sont (ici mis en évidence en couleur) :</p>
@@ -263,16 +267,16 @@ zp &lt;-<span class="st"> </span><span class="kw">read</span>( <span class="dt">
 <div class="figure"><span id="fig:unnamed-chunk-9"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="Instructions pour obtenir un graphique de densité." width="672" />
 <p class="caption">
-Figure 3.5: Instructions pour obtenir un graphique de densité.
+Figure 3.9: Instructions pour obtenir un graphique de densité.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée ( dataframe, zp), ainsi que la formule à employer ~ VAR (size). Pour réaliser un graphique de densité vous devez ajouter la seconde fonction <code>geom_density()</code>.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="12">
-<li id="fn12"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref12">↩</a></p></li>
-<li id="fn13"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref13">↩</a></p></li>
+<ol start="7">
+<li id="fn7"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref7">↩</a></p></li>
+<li id="fn8"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref8">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

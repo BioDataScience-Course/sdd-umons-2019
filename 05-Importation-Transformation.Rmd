@@ -1,6 +1,7 @@
 # Importation/transformation des données {#import}
 
-```{r setup, echo=FALSE, message=FALSE, results='hide', include=FALSE}
+```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
+knitr::opts_chunk$set(comment = '#')
 SciViews::R
 library(ggpubr)
 nf <- read("flights", package = "nycflights13", lang = "fr")
@@ -15,7 +16,6 @@ urchin <- read("urchin_bio", package = "data.io")
 #Un exemple de jeu de données est présenté à la Table \@ref(tab:exemple-tab).
 #knitr::kable(head(iris, 20), caption = 'Un exemple de tableau.',booktabs = TRUE)
 ```
-
 
 
 Vos objectifs pour ce module sont :

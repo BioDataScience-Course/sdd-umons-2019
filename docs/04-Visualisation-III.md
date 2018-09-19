@@ -129,7 +129,7 @@ mean(x)
 ```
 
 ```
-## [1] 63.36364
+# [1] 63.36364
 ```
 
 En partant d'un jeu de données, comme celui ci dessous
@@ -190,8 +190,8 @@ chart(tg, formula = len ~ supp) +
 ```
 
 ```
-## Warning: Computation failed in `stat_summary()`:
-## could not find function "mean_sd"
+# Warning: Computation failed in `stat_summary()`:
+# could not find function "mean_sd"
 ```
 
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" width="672" />
@@ -337,7 +337,7 @@ sort(x)
 ```
 
 ```
-##  [1]   1  26  53  55  60  68  71  78  82  83 120
+#  [1]   1  26  53  55  60  68  71  78  82  83 120
 ```
 
 Le premier descripteur des 5 nombres est la médiane qui se situe à la moitié des observations.
@@ -348,7 +348,7 @@ median(x)
 ```
 
 ```
-## [1] 68
+# [1] 68
 ```
 
 Le premier quartile sera la valeur au milieu des 50% des données inférieurs à la médiane et le troisième quartile est la valeur centrale sur les 50% des données supérieurs à la médiane. La valeur manimale étant la valeur la plus petite et la valeurs maximale étant la valeur la plus élevée.
@@ -360,7 +360,7 @@ fivenum(x)
 ```
 
 ```
-## [1]   1  54  68  80 120
+# [1]   1  54  68  80 120
 ```
 
 Vous pouvez réprésenter ce vecteur via une boite de dispersion

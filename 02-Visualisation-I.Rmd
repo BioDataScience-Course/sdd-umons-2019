@@ -1,7 +1,7 @@
 # Visualisation I {#visu1}
 
-```{r setup, echo=FALSE, message= FALSE, warning= FALSE, results='hide'}
-
+```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
+knitr::opts_chunk$set(comment = '#')
 SciViews::R
 
 ub <- read(file = "urchin_bio", package = "data.io", lang = "fr")
@@ -192,6 +192,7 @@ La rédaction respecte une multitude de règles dont en voici quelques unes. Un 
 Pour des travaux de plus grandes ampleurs comme les travaux de fin d'études, le schéma ci-dessus est adapté en y ajoutant généralement une partie remerciement en début de manuscrit.
 
 La rédaction de travaux s'appuye toujours sur une recherche bibliographique au préalable. Cependant, il est capital d'insérer convenablement les sources du travail au sein de la bibliographie afin d'éviter le **plagiat** volontaire ou involontaire. Il existe une multitude de programme permettant la gestion d'une bibliographie comme [Mendeley](https://www.mendeley.com/), [Zotero](https://www.zotero.org/) ou encore [Endnote](https://endnote.com/) 
+
 
 ### Pour en savoir plus...
 

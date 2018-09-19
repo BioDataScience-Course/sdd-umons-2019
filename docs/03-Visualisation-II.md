@@ -10,8 +10,6 @@ Vos objectifs pour ce module sont:
 
 Si ce n'est déjà fait, vous devez avoir réaliser le module précédent.
 
-
-
 ## Visualisation graphique à l'aide d'un histogramme
 
 Lors d'une expérience vous souhaitez visualiser la façon dont vos données s'étale sur un axe (On parle de **distribution**^[TODO] en statistique) pour l'une des vairables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va découper en plusieurs **classes**^[TODO] la variable étudiée.
@@ -44,7 +42,7 @@ chart(zp, formula = ~ size) +
 </div>
 
 ```r
-## bins permet de préciser le nombre de classes souhaitées
+# bins permet de préciser le nombre de classes souhaitées
 ```
 
 
@@ -54,8 +52,8 @@ La fonction `chart()` requiert comme argument le jeu de donnée (dataframe, zp),
 Vous pouvez décripter votre histogramme sur base des **modes**^[todo] et de la **symétrie**^[TODO] de ces derniers. Les modes les plus fréquents sont unimodal, bimodal ou multimodal. 
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Histogrammes montrant les modes et symétries : a) histogramme unimodal et symétrique, b) histogramme bimodal et asymétrique, c) histogramme unimodal et asymétrique, d) histogramme multimodal et symétrique." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Histogrammes montrant les modes et symétries : a) histogramme unimodal et symétrique, b) histogramme bimodal et asymétrique, c) histogramme unimodal et asymétrique, d) histogramme multimodal et symétrique.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-3)Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique.</p>
 </div>
 
 
@@ -85,15 +83,14 @@ ggpubr::ggarrange(a,b,c,d,labels = "AUTO", font.label = list(size = 14, align = 
 ```
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Piège de l'histogramme. A) histogramme initiale montrant la répartition des tailles au sein d'organismes planctoniques. B, C, D) Histogramme A en modifiant le nombres de classes " width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Piège de l'histogramme. A) histogramme initiale montrant la répartition des tailles au sein d'organismes planctoniques. B, C, D) Histogramme A en modifiant le nombres de classes </p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Piège de l'histogramme. A. histogramme initiale montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Histogramme A en modifiant le nombres de classes " width="672" />
+<p class="caption">(\#fig:unnamed-chunk-4)Piège de l'histogramme. A. histogramme initiale montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Histogramme A en modifiant le nombres de classes </p>
 </div>
-
 
 
 #### Utilisation des snippets
 
-Rstudio permet d'ajouter des snippets^[Suite d'instruction préenregistré dasn Rstudio servant d'aide lors de l'analyse de données.] afin de faciliter l'apprentissage des suites d'instruction pour analyser des données sur R. Sciviews fournit une succession de snippets que vous pouvez retrouver dans l'aide mémoire^[TODO]
+RStudio permet d'ajouter des snippets^[Suite d'instruction préenregistré dasn Rstudio servant d'aide lors de l'analyse de données.] afin de faciliter l'apprentissage des suites d'instruction pour analyser des données sur R. Sciviews fournit une succession de snippets que vous pouvez retrouver dans l'aide mémoire^[TODO]
 
 ```
 ... # ouverture des sciviews snippets
@@ -115,12 +112,12 @@ chart(is, ~ sepal_length %fill=% species) +
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+# `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Histogramme de la longeur des sépales de 3 espèces d'iris." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Histogramme de la longeur des sépales de 3 espèces d'iris.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-5)Histogramme de la longueur des sépales de 3 espèces d'iris.</p>
 </div>
 
 La premières astuces est d'employer préférentiellement les `facets` au lieu de l'argument `fill`.
@@ -132,12 +129,12 @@ chart(is, ~ sepal_length | species) +
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+# `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Histogramme de la longeur des sépales de 3 espèces d'iris en employant les facets comme argument pour discriminer les espèces." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)Histogramme de la longeur des sépales de 3 espèces d'iris en employant les facets comme argument pour discriminer les espèces.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facets comme argument pour discriminer les espèces." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-6)Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facets comme argument pour discriminer les espèces.</p>
 </div>
 
 [Simon Jackson](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2) propose une seconde solution combinant les facets et l'argument fill. Il faut ensuite ajouter par derriere un histogramme ne tenant pas compte de la variable facteur comme proposé ci-dessous.
@@ -151,8 +148,8 @@ chart(is, formula = ~ sepal_width %fill=% species | species) +
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+# `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+# `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 <div class="figure">
@@ -166,8 +163,8 @@ chart(is, formula = ~ sepal_width %fill=% species | species) +
 L'histogramme n'est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l'histogramme. Il ne s'agit plus de représenter un dénombrement comme l'histogramme le fait mais une **probabilité**^[TODO] d'obtenir une valeur parmi un échantillon aléatoire. Le passage d'un histogramme vers un graphe de densité se base sur une **estimation par noyaux gaussien**^[TODO]
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A) Histogramme  et B) graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-8)A) Histogramme  et B) graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A. Histogramme  et B. graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-8)A. Histogramme  et B. graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image.</p>
 </div>
 
 Les éléments indispensables à la compréhension d'un graphique de densité sont (ici mis en évidence en couleur) : 
@@ -250,8 +247,8 @@ chart(zp, formula = size~ class) +
 ```
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec l'ajout de la fonction coord_flip()." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-13)Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec l'ajout de la fonction coord_flip().</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec l'ajout de la fonction coord_flip." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-13)Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec l'ajout de la fonction coord_flip.</p>
 </div>
 
 Le package [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) propose une seconde solution basée sur le principe de graphique de densité avec la fonction geom_density_ridges()`. 
@@ -266,8 +263,8 @@ chart(zp, class ~ size) +
 ```
 
 <div class="figure">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-14-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec la fonction geom_density_ridges()." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-14)Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec la fonction geom_density_ridges().</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-14-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec la fonction geom_density_ridges." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-14)Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec la fonction geom_density_ridges.</p>
 </div>
 
 ## A vous de jouer !

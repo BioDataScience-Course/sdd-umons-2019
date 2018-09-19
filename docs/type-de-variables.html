@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-18">
+<meta name="date" content="2018-09-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -209,12 +209,16 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
 <li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-fonction-de-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la fonction de virtualisation dans l’ordinateur</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html"><i class="fa fa-check"></i><b>A.2</b> Installation des logiciels nécessaires</a><ul>
-<li class="chapter" data-level="A.2.1" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
-<li class="chapter" data-level="A.2.2" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
-<li class="chapter" data-level="A.2.3" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
+<li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
+<li class="chapter" data-level="A.2.2" data-path="installation.html"><a href="installation.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
+<li class="chapter" data-level="A.2.3" data-path="installation.html"><a href="installation.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a></li>
+<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
+<li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.2</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#finalisation-de-linstallation-de-la-sciviews-box"><i class="fa fa-check"></i><b>A.3.3</b> Finalisation de l’installation de la SciViews Box</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
@@ -271,23 +275,23 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu’une variable facteur simple.</p>
 <p>La fonction <code>skim()</code> du package <code>skimr</code> permet de visualiser le type de la variable et bien plus encore. Il fournit une visualisation différentes en fonction du type de la variable. Il propose par exemple un histogramme pour les variables numériques comme le montre le tableau ci-dessous</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">skimr<span class="op">::</span><span class="kw">skim</span>(tg)</code></pre></div>
-<pre><code>## Skim summary statistics
-##  n obs: 60 
-##  n variables: 3 
-## 
-## ── Variable type:factor ─────────────────────────────────────────────────────────────────────────
-##  variable missing complete  n n_unique
-##      dose       0       60 60        3
-##      supp       0       60 60        2
-##                                        top_counts ordered
-##                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
-##  OJ: 30, VC: 30, NA: 0                              FALSE
-## 
-## ── Variable type:numeric ────────────────────────────────────────────────────────────────────────
-##  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
-##       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
-##      hist
-##  ▃▅▃▅▃▇▂▂</code></pre>
+<pre><code># Skim summary statistics
+#  n obs: 60 
+#  n variables: 3 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique
+#      dose       0       60 60        3
+#      supp       0       60 60        2
+#                                        top_counts ordered
+#                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
+#  OJ: 30, VC: 30, NA: 0                              FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
+#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
+#      hist
+#  ▃▅▃▅▃▇▂▂</code></pre>
 <p>Avec une seule instruction, on obtient une quantité d’information sur notr jeu de données comme le nombre d’observation, le nombre de variables et un traitement spécifique pour chaque type de variable.</p>
 <p>Cet instruction permet de visualiser et d’appréhender le jeu de données mais ne doit pas figurer tel quel dans un rapport d’analyse.</p>
 <div id="pieges-et-astuces-10" class="section level3">
@@ -305,7 +309,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(tg, len <span clas
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;Dose administrée [mg/j]&quot;</span> , <span class="dt">y =</span> <span class="st">&quot; longueur des dents [mm]&quot;</span>)
 
 <span class="kw">ggarrange</span>(a,b, <span class="dt">labels =</span> <span class="st">&quot;auto&quot;</span>)</code></pre></div>
-<pre><code>## Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
+<pre><code># Warning: Continuous x aesthetic -- did you forget aes(group=...)?</code></pre>
 <p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" /></p>
 </div>
 </div>

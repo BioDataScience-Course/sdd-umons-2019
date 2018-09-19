@@ -19,12 +19,10 @@ cover-image: "images/front-cover.png"
 
 # Préambule {-}
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-knitr::opts_chunk$set(comment = "#!")
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = "#")
+# Automatically create a bib database for R packages
+knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
 ```
 
 

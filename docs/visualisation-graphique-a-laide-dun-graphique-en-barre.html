@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-18">
+<meta name="date" content="2018-09-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -209,12 +209,16 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
 <li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-fonction-de-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la fonction de virtualisation dans l’ordinateur</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html"><i class="fa fa-check"></i><b>A.2</b> Installation des logiciels nécessaires</a><ul>
-<li class="chapter" data-level="A.2.1" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
-<li class="chapter" data-level="A.2.2" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
-<li class="chapter" data-level="A.2.3" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
+<li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
+<li class="chapter" data-level="A.2.2" data-path="installation.html"><a href="installation.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
+<li class="chapter" data-level="A.2.3" data-path="installation.html"><a href="installation.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a></li>
+<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
+<li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.2</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#finalisation-de-linstallation-de-la-sciviews-box"><i class="fa fa-check"></i><b>A.3.3</b> Finalisation de l’installation de la SciViews Box</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
@@ -327,7 +331,7 @@ Figure 3.1:  Graphique en barre du dénombrement de quatre variaités d’oursin
 x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">71</span>, <span class="dv">55</span>, <span class="dv">68</span>, <span class="dv">78</span>, <span class="dv">60</span>, <span class="dv">83</span>, <span class="dv">120</span>, <span class="dv">82</span>, <span class="dv">53</span>, <span class="dv">26</span>)
 <span class="co"># Calcul  de la moyenne</span>
 <span class="kw">mean</span>(x)</code></pre></div>
-<pre><code>## [1] 63.36364</code></pre>
+<pre><code># [1] 63.36364</code></pre>
 <p>En partant d’un jeu de données, comme celui ci dessous</p>
 <table>
 <caption><span id="tab:unnamed-chunk-7">Tableau 4.1: </span>Tableau de données relatif à la croissance de dents de cochons d’Inde</caption>
@@ -402,8 +406,8 @@ Figure 3.5: Instructions pour obtenir un graphique en barre indiquant les moyenn
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(tg, <span class="dt">formula =</span> len <span class="op">~</span><span class="st"> </span>supp) <span class="op">+</span>
 <span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="dt">fun.y =</span> <span class="st">&quot;mean&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">fun.ymax =</span> <span class="st">&quot;mean_sd&quot;</span>)</code></pre></div>
-<pre><code>## Warning: Computation failed in `stat_summary()`:
-## could not find function &quot;mean_sd&quot;</code></pre>
+<pre><code># Warning: Computation failed in `stat_summary()`:
+# could not find function &quot;mean_sd&quot;</code></pre>
 <p><img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
 </div>
 <div id="representation-de-la-moyenne" class="section level5">

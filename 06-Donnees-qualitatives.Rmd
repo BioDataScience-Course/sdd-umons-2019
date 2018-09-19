@@ -1,15 +1,15 @@
 # Données qualitatives {#qualit}
 
-Variables de type `factor`/`ordered`, transformation, découpage en classes, tableau de contigence. Choix des variables à mesurer, biométrie humaine.
-
-
-```{r setup, echo=FALSE, message=FALSE, results='hide', include=FALSE}
-knitr::opts_chunk$set(echo=FALSE, results= 'hide', message=FALSE)
+```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
+knitr::opts_chunk$set(comment = '#', echo = FALSE, message = FALSE, results = 'hide')
 SciViews::R
 library(knitr)
 library(ggpubr)
 dm <- read("diamonds", package = "ggplot2")
 ```
+
+Variables de type `factor`/`ordered`, transformation, découpage en classes, tableau de contigence. Choix des variables à mesurer, biométrie humaine.
+
 
 > Suite d'idée afin de rédiger le chapitre 6
 

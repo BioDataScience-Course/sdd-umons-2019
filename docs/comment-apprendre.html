@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-18">
+<meta name="date" content="2018-09-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -209,12 +209,16 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
 <li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-fonction-de-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la fonction de virtualisation dans l’ordinateur</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html"><i class="fa fa-check"></i><b>A.2</b> Installation des logiciels nécessaires</a><ul>
-<li class="chapter" data-level="A.2.1" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
-<li class="chapter" data-level="A.2.2" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
-<li class="chapter" data-level="A.2.3" data-path="installation-des-logiciels-necessaires.html"><a href="installation-des-logiciels-necessaires.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
+<li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
+<li class="chapter" data-level="A.2.2" data-path="installation.html"><a href="installation.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
+<li class="chapter" data-level="A.2.3" data-path="installation.html"><a href="installation.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a></li>
+<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
+<li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.2</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#finalisation-de-linstallation-de-la-sciviews-box"><i class="fa fa-check"></i><b>A.3.3</b> Finalisation de l’installation de la SciViews Box</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
@@ -243,18 +247,18 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="comment-apprendre" class="section level2 unnumbered">
 <h2>Comment apprendre?</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fortunes<span class="op">::</span><span class="kw">fortune</span>(<span class="st">&quot;brain surgery&quot;</span>)</code></pre></div>
-<pre><code>#! 
-#! I wish to perform brain surgery this afternoon at 4pm and don&#39;t know where
-#! to start. My background is the history of great statistician sports
-#! legends but I am willing to learn. I know there are courses and numerous
-#! books on brain surgery but I don&#39;t have the time for those. Please direct
-#! me to the appropriate HowTos, and be on standby for solving any problem I
-#! may encounter while in the operating room. Some of you might ask for
-#! specifics of the case, but that would require my following the posting
-#! guide and spending even more time than I am already taking to write this
-#! note.
-#!    -- I. Ben Fooled (aka Frank Harrell)
-#!       R-help (April 1, 2005)</code></pre>
+<pre><code># 
+# I wish to perform brain surgery this afternoon at 4pm and don&#39;t know where
+# to start. My background is the history of great statistician sports
+# legends but I am willing to learn. I know there are courses and numerous
+# books on brain surgery but I don&#39;t have the time for those. Please direct
+# me to the appropriate HowTos, and be on standby for solving any problem I
+# may encounter while in the operating room. Some of you might ask for
+# specifics of the case, but that would require my following the posting
+# guide and spending even more time than I am already taking to write this
+# note.
+#    -- I. Ben Fooled (aka Frank Harrell)
+#       R-help (April 1, 2005)</code></pre>
 <p>Version courte: <strong>en pratiquant, en faisant des erreurs!</strong></p>
 <p>Version longue: aujourd’hui –et encore plus dans l’avenir– les données sont complexes et ne se manipulent plus simplement avec un tableur comme Microsoft Excel. Vous allez apprendre à maitriser des outils professionnels, ce qui sous-entend qu’ils sont très puissants mais aussi relativement complexes. La méthode d’apprentissage que nous vous proposons a pour objectif prioritaire de vous faciliter la tâche, quelles que soient vos aptitudes au départ. Envisagez votre voyage en science des données comme l’apprentissage d’une nouvelle langue. <strong>C’est en pratiquant, et en pratiquant encore sur le long terme que vous allez progresser.</strong> La formation s’étale sur quatre années, et est répartie en cinq cours de difficulté croissante pour vous aider dans cet apprentissage progressif et dans la durée. N’hésitez pas à expérimenter, tester, essayer des nouvelles idées (même au delà de ce qui sera demandé dans les exercices) et <strong>n’ayez pas peur de faire des erreurs</strong>. Vous en ferez, … beaucoup … <em>nous vous le souhaitons!</em> En fait, la meilleure manière d’apprendre, c’est justement en faisant des erreurs, et puis en mettant tout en oeuvre pour les comprendre et les corriger. Donc, si un message d’erreur, ou un “warning” apparait en rouge dans le logiciel, ne soyez pas intimidé. Prenez une bonne respiration, lisez-le attentivement, essayez de le comprendre, et au besoin faites-vous aider: la solution est sur le Net, ‘Google<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> est votre ami’!</p>
 </div>

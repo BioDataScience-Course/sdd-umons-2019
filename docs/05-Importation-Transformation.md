@@ -7,7 +7,6 @@
 
 
 
-
 Vos objectifs pour ce module sont :
 
 - Savoir importer des données via la fonction `read()`, ainsi qu'appréhender ses arguments.
@@ -122,14 +121,14 @@ iris <- read(data_example("iris.csv.zip"))
 ```
 
 ```
-## Parsed with column specification:
-## cols(
-##   Sepal.Length = col_double(),
-##   Sepal.Width = col_double(),
-##   Petal.Length = col_double(),
-##   Petal.Width = col_double(),
-##   Species = col_character()
-## )
+# Parsed with column specification:
+# cols(
+#   Sepal.Length = col_double(),
+#   Sepal.Width = col_double(),
+#   Petal.Length = col_double(),
+#   Petal.Width = col_double(),
+#   Species = col_character()
+# )
 ```
 
 La fonction read() est également capable d'importer des fichiers en lignes. 
@@ -200,23 +199,23 @@ skimr::skim(tg)
 ```
 
 ```
-## Skim summary statistics
-##  n obs: 60 
-##  n variables: 3 
-## 
-## ── Variable type:factor ─────────────────────────────────────────────────────────────────────────
-##  variable missing complete  n n_unique
-##      dose       0       60 60        3
-##      supp       0       60 60        2
-##                                        top_counts ordered
-##                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
-##  OJ: 30, VC: 30, NA: 0                              FALSE
-## 
-## ── Variable type:numeric ────────────────────────────────────────────────────────────────────────
-##  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
-##       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
-##      hist
-##  ▃▅▃▅▃▇▂▂
+# Skim summary statistics
+#  n obs: 60 
+#  n variables: 3 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique
+#      dose       0       60 60        3
+#      supp       0       60 60        2
+#                                        top_counts ordered
+#                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
+#  OJ: 30, VC: 30, NA: 0                              FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
+#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
+#      hist
+#  ▃▅▃▅▃▇▂▂
 ```
 Avec une seule instruction, on obtient une quantité d'information sur notr jeu de données comme le nombre d'observation, le nombre de variables et un traitement spécifique pour chaque type de variable. 
 
@@ -246,7 +245,7 @@ ggarrange(a,b, labels = "auto")
 ```
 
 ```
-## Warning: Continuous x aesthetic -- did you forget aes(group=...)?
+# Warning: Continuous x aesthetic -- did you forget aes(group=...)?
 ```
 
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" />

@@ -2,6 +2,11 @@
 
 # Introduction {#intro}
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(comment = "#")
+```
+
+
 **Contenu provisoire, à retravailler en fonction d'un canevas commun aux différents modules.**
 
 L'objectif de ce module est de motiver les étudiants pour apprendre les outils qui leur permettront de faire de la science des données. nous n'entrerons pas directement dans le vif du sujet, mais nous initierons une activité plus _ludique_, mais néanmoins utile et qui leur permettra de faire connaissance avec divers outils logiciels dont Git, Markdown, RStudio, Blogdown, ... Il s'agira de réaliser son propre **site web professionnel** avec `blogdown` et un dépôt Github.

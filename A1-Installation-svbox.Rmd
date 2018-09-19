@@ -57,7 +57,7 @@ Si vous n'arrivez pas à entrer dans le BIOS, ou à trouver l'entrée correspond
 **Si votre ordinateur est conforme aux spécifications ci-dessus, et si la virtualisation est activée, vous êtes maintenant prêt à installer la SciViews Box!**
 
 
-## Installation des logiciels nécessaires
+## Installation
 
 Vous allez devoir d'abord installer **[VirtualBox](http://www.virtualbox.org)**, un logiciel gratuit et libre qui se chargera de gérer votre machine virtuelle. Ensuite, vous installerez la SciViews Box en elle-même. Pour finir, vous aurez aussi besoin de **[Github Desktop](https://desktop.github.com)**.
 
@@ -134,14 +134,15 @@ Il est parfaitement possible d'installer la SciViews Box sous Linux. Cependant, 
 Dans ce cours, nous utiliserons Git et Github pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. [Github Desktop](https://desktop.github.com) facilite grandement la gestion de vos projets. Ce programme est très facile à installer: son téléchargement et le lancement de son installateur ne pose pas de problèmes particuliers. _Notez toutefois que ce programme n'est pas encore disponible pour Linux._
 
 
-## Prise en main rapide
+## Configuration
 
 Même si la SciViews Box est pré-configurée, vous allez avoir quelques étapes simples et rapides à réaliser pour être complètement opérationnel. Ces étapes sont détaillées ci-dessous.
 
 
-### Le lanceur SciViews Box
+### Lanceur SciViews Box
 
 L'application que vous venez d'installer est un lanceur rapide qui facilite le démarrage, la fermeture et la gestion de votre machine virtuelle SciViews Box 2018a. Démarrez-là et vous verrez la fenêtre suivante:
+
 
 
 ### Accès aux fichiers
