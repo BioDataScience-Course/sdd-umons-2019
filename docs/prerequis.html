@@ -53,46 +53,6 @@
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -207,7 +167,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
 <li class="chapter" data-level="A.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
 <li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-fonction-de-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la fonction de virtualisation dans l’ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation dans l’ordinateur</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -252,15 +212,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Il vous faut:</p>
 <ul>
 <li>Un ordinateur suffisamment puissant équipé d’un <strong>processeur Intel Core i5 ou i7, ou son équivalent AMD</strong>, récent si possible. Les tablettes et les machines basiques avec processeur Atom, par exemple, ne sont pas suffisantes. Idéalement, un processeur bi-coeur - bi-thread, ou quadri-coeur est souhaitable.</li>
-<li>Au moins <strong>4Go de mémoire vive</strong>. Le double, voire plus, est nécessaire pour analyser des gros jeux de données mais 4Go devraient suffire pour les analyses de tableaux de tailles plus modestes (dizaines de colonnes <em>versus</em> milliers de lignes couramment rnecontrés en biologie).</li>
+<li>Au moins <strong>4Go de mémoire vive</strong>. Le double, voire plus, est nécessaire pour analyser des gros jeux de données mais 4Go devraient suffire pour les analyses de tableaux de tailles plus modestes (tout de même comptant des dizaines de colonnes <em>versus</em> des milliers de lignes).</li>
 <li>Un <strong>disque dur rapide</strong> (un disque SSD est un plus), avec environ 20Go libres que vous pourrez consacrer à la SciViews Box.</li>
 <li>Une carte graphique de bonne qualité, mais qui n’a pas besoin d’être une bête de course, et un écran confortable. Une résolution de 1024x768 est un strict minimum.</li>
 <li>Un <strong>système d’exploitation récent, et si possible, 64bit</strong>: Linux tel Debian 8 (Jessie) ou 9 (Stretch), Ubuntu 16.04 Xenial ou supérieur, …, Windows 7 ou plus, Mac OS X 10.10 Yosemite ou plus.</li>
-<li>Une <strong>connection Internet</strong> est souhaitable, voire indispensable, en fonction des fichiers d’installation que vous possédez déjà localement ou non.</li>
+<li>Une <strong>connection Internet</strong> est souhaitable, voire indispensable, en fonction des fichiers d’installation que vous possédez déjà localement ou non pour l’installation. Elle se révèlera également nécessaire à l’utilisation.</li>
 </ul>
 </div>
-<div id="activation-de-la-fonction-de-virtualisation-dans-lordinateur" class="section level3">
-<h3><span class="header-section-number">A.1.2</span> Activation de la fonction de virtualisation dans l’ordinateur</h3>
+<div id="activation-de-la-virtualisation-dans-lordinateur" class="section level3">
+<h3><span class="header-section-number">A.1.2</span> Activation de la virtualisation dans l’ordinateur</h3>
 <p>La virtualisation fait appel à un jeu d’instructions disponible sur pratiquement tous les processeurs modernes (Intel VT-x ou AMD-v). Malheureusement, elle est désactivée par défaut sur quasi tous les PC (mais les Macs sont, eux, configurés correctement en sortie d’usine). Tant que ces instructions de virtualisation ne seront pas activées, le programme d’installation de la SciViews Box va bloquer avec le message suivant:</p>
 <div class="figure">
 <img src="images/annexe1/msg_no-virtualization.png" />
@@ -271,11 +231,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 <img src="images/annexe1/msg_no-virtualization2.png" />
 
 </div>
-<p>Pour activer ce jeu d’instructions, il faut aller dans le <strong>BIOS</strong>, c’est-à-dire, le petit programme qui démarre votre ordinateur. Il n’y a malheureusement pas de recette unique car chaque constructeur a sa propre façon de faire. De plus, l’endroit où il faut aller dans les menus de configuration diffère aussi d’un ordinateur à l’autre. Cependant, la procédure générale est la suivante:</p>
+<p>Pour activer ce jeu d’instructions, il faut aller dans le <strong>BIOS</strong>, c’est-à-dire, le petit programme qui démarre votre ordinateur. Il n’y a malheureusement pas de recette unique car chaque constructeur a sa propre façon de faire. De plus, l’endroit où il faut aller dans les menus de configuration du BIOS diffère aussi d’un ordinateur à l’autre. Cependant, la procédure générale est la suivante:</p>
 <ul>
 <li>Redémarrer l’ordinateur,</li>
 <li>Au tout début du démarrage, il faut appuyer sur une touche ou une combinaison de touches (par exemple, <code>DEL</code>, <code>F2</code>, …). Restez à l’affût d’un message furtif qui l’indique à l’écran,</li>
-<li>Une fois entré dans le BIOS, repérez l’entrée correspondant au jeu d’instructions de virtualisation. Vous aurez plus de chances en regardant dans le menu relatif au processeur, ou dans les options avancées. Recherchez une entrée de type “Virtualisation”, “Intel Virtual Technology”, ou “Instructions AMD-v”. Activez cette entrée (cela n’aura aucun effet sur les logiciels que vous avez installés jusqu’ici et qui n’utilisent pas cette fonction),</li>
+<li>Une fois entré dans le BIOS, repérez l’entrée correspondant au jeu d’instructions de virtualisation. Vous aurez plus de chances en regardant dans le menu relatif au processeur, ou dans les options avancées. Recherchez une entrée de type “Virtualisation”, “Intel Virtual Technology”, ou “Instructions AMD-v”. Activez cette option (cela n’aura aucun effet sur les logiciels que vous avez installés jusqu’ici et qui n’utilisent pas cette fonction),</li>
 <li>Sortez du BIOS en sauvegardant les modifications (suivez les instructions à l’écran),</li>
 <li>Redémarrez l’ordinateur.</li>
 </ul>
@@ -284,7 +244,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 
 </div>
 <p>Si vous n’arrivez pas à entrer dans le BIOS, ou à trouver l’entrée correspondante dans celui-ci, rechercher “BIOS Virtualization” accompagné de la marque et du modèle de votre ordinateur dans votre moteur de recherche internet favori. Vous y trouverez certainement des instructions plus précises relatives à votre ordinateur. <a href="https://www.tactig.com/enable-intel-vt-x-amd-virtualization-pc-vmware-virtualbox/">Ce site</a> liste quelques uns de raccourcis claviers à utiliser en fonction de la marque des ordinateurs pour entrer dans le BIOS.</p>
-<p><strong>Si votre ordinateur est conforme aux spécifications ci-dessus, et si la virtualisation est activée, vous êtes maintenant prêt à installer la SciViews Box!</strong></p>
+<blockquote>
+<p>Dans le cas où vous n’arrivez pas à activer la virtualisation sur votre PC, vous pouvez toujours installer une version 32-bit de la SciViews Box en mode d’émulation logicielle de VirtualBox. Dans ce cas, votre box tournera plus lentement et vous n’aurez pas la possibilité d’utiliser plus d’un seul coeur processeur, mais au moins, vous pourrez quand même l’utiliser. La version 64-bit “complète” se nomme <code>svbox2018a</code>. La version 32-bit est <code>svbox2018b</code>. Si vous optez pour cette dernière, adaptez l’intitulé de la machine ou des fichiers (<code>a</code>-&gt; <code>b</code>) dans la suite de ce tutoriel.</p>
+</blockquote>
+<p><strong>Si votre ordinateur est conforme aux spécifications ci-dessus, et si la virtualisation est activée, vous êtes maintenant prêt à installer votre SciViews Box!</strong></p>
 </div>
 </div>
 <div id="disqus_thread"></div>
