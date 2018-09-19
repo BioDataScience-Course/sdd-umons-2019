@@ -128,11 +128,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
-<li class="chapter" data-level="2.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Visualisation graphique à l’aide du nuage de points</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.1</b> Pièges et Astuces</a></li>
-<li class="chapter" data-level="2.1.2" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#video-a-faire"><i class="fa fa-check"></i><b>2.1.2</b> Vidéo, A faire</a></li>
-<li class="chapter" data-level="2.1.3" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.3</b> A vous de jouer !</a></li>
-<li class="chapter" data-level="2.1.4" data-path="visualisation-graphique-a-laide-du-nuage-de-points.html"><a href="visualisation-graphique-a-laide-du-nuage-de-points.html#pour-en-savoir-plus-4"><i class="fa fa-check"></i><b>2.1.4</b> Pour en savoir plus…</a></li>
+<li class="chapter" data-level="2.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Graphique en nuage de points</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.1</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#video-a-faire"><i class="fa fa-check"></i><b>2.1.2</b> Vidéo, A faire</a></li>
+<li class="chapter" data-level="2.1.3" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.3</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.1.4" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pour-en-savoir-plus-4"><i class="fa fa-check"></i><b>2.1.4</b> Pour en savoir plus…</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Intégration des graphiques dans un rapport: R Markdown</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#pieges-et-astuces-1"><i class="fa fa-check"></i><b>2.2.1</b> Pièges et astuces</a></li>
@@ -207,7 +207,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
 <li class="chapter" data-level="A.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
 <li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-fonction-de-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la fonction de virtualisation dans l’ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation dans l’ordinateur</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -246,11 +246,11 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="visualisation-graphique-a-laide-dun-graphique-de-densite" class="section level2">
 <h2><span class="header-section-number">3.2</span> Visualisation graphique à l’aide d’un graphique de densité</h2>
-<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l’histogramme. Il ne s’agit plus de représenter un dénombrement comme l’histogramme le fait mais une <strong>probabilité</strong><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> d’obtenir une valeur parmi un échantillon aléatoire. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></p>
+<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l’histogramme. Il ne s’agit plus de représenter un dénombrement comme l’histogramme le fait mais une <strong>probabilité</strong><a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a> d’obtenir une valeur parmi un échantillon aléatoire. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a></p>
 <div class="figure"><span id="fig:unnamed-chunk-8"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A. Histogramme  et B. graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
 <p class="caption">
-Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton analysé par analyse d’image.
+Figure 3.4: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton analysé par analyse d’image.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphique de densité sont (ici mis en évidence en couleur) :</p>
@@ -267,16 +267,16 @@ zp &lt;-<span class="st"> </span><span class="kw">read</span>( <span class="dt">
 <div class="figure"><span id="fig:unnamed-chunk-9"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="Instructions pour obtenir un graphique de densité." width="672" />
 <p class="caption">
-Figure 3.9: Instructions pour obtenir un graphique de densité.
+Figure 3.5: Instructions pour obtenir un graphique de densité.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée ( dataframe, zp), ainsi que la formule à employer ~ VAR (size). Pour réaliser un graphique de densité vous devez ajouter la seconde fonction <code>geom_density()</code>.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="7">
-<li id="fn7"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref7">↩</a></p></li>
-<li id="fn8"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref8">↩</a></p></li>
+<ol start="13">
+<li id="fn13"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref13">↩</a></p></li>
+<li id="fn14"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref14">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

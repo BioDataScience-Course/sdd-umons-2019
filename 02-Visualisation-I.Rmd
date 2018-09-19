@@ -21,15 +21,24 @@ Vos objectifs pour ce module sont:
 
 Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L'ensemble de ces outils a été abordé lors de la création de votre site profesionnel et personnel du module \@ref(intro).
 
-## Visualisation graphique à l'aide du nuage de points
+
+## Graphique en nuage de points
 
 Découvrez les premiers rudiments de R afin de réaliser par la suite vos premiers graphiques.
 
-![](images/hex_BioDataScience.png){width="15%"}
-Lancez votre machine virtuelle, ouvrez Rstudio puis lancez l'instruction suivante
-`BioDataScience::run("02a_r_decouverte")` (package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience)).
+```{block2, type='bdd'}
+Dans la fenêtre console de RStudio, entrez l'instruction suivante pour ouvrir le tutoriel de découverte de R:
 
-Maintenant que vous avez appris deux/trois principes dans R, vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
+    BioDataScience::run("02a_r_decouverte")
+
+([BioDataScience](https://github.com/BioDataScience-Course/BioDataScience) est un package R spécialement développé pour ces cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice \@ref(svbox)).
+```
+
+Maintenant que vous avez appris deux ou trois principes de base dans R, vous allez pouvoir réaliser des graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique, vous pouvez exprimer cela sous la forme d'une **formule**^[Dans R, une **formule** permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable `x` sur l'axe des abscisses et la variable `y` sur l'axe des ordonnées.]
+
+$$y \sim x$$
+
+que l'on peut lire "y en fonction de x".
 
 ```{r, echo=FALSE, results= 'hide', message=FALSE, fig.cap= "Points essentiels d'un nuage de points. \\label{np_intro}"}
 chart(ub,formula = height ~  weight) + 

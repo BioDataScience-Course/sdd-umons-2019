@@ -16,19 +16,26 @@ Vos objectifs pour ce module sont:
 
 Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L'ensemble de ces outils a été abordé lors de la création de votre site profesionnel et personnel du module \@ref(intro).
 
-## Visualisation graphique à l'aide du nuage de points
+
+## Graphique en nuage de points
 
 Découvrez les premiers rudiments de R afin de réaliser par la suite vos premiers graphiques.
 
-![](images/hex_BioDataScience.png){width="15%"}
-Lancez votre machine virtuelle, ouvrez Rstudio puis lancez l'instruction suivante
-`BioDataScience::run("02a_r_decouverte")` (package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience)).
+\BeginKnitrBlock{bdd}<div class="bdd">Dans la fenêtre console de RStudio, entrez l'instruction suivante pour ouvrir le tutoriel de découverte de R:
 
-Maintenant que vous avez appris deux/trois principes dans R, vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique. On peut exprimer cette relation dans R sous la forme de  $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ quantitative \ en \ fonction \ de \ Variable \ quantitative$$ 
+    BioDataScience::run("02a_r_decouverte")
+
+([BioDataScience](https://github.com/BioDataScience-Course/BioDataScience) est un package R spécialement développé pour ces cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice \@ref(svbox)).</div>\EndKnitrBlock{bdd}
+
+Maintenant que vous avez appris deux ou trois principes de base dans R, vous allez pouvoir réaliser des graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique, vous pouvez exprimer cela sous la forme d'une **formule**^[Dans R, une **formule** permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable `x` sur l'axe des abscisses et la variable `y` sur l'axe des ordonnées.]
+
+$$y \sim x$$
+
+que l'on peut lire "y en fonction de x".
 
 <div class="figure">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-1-1.svg" alt="Points essentiels d'un nuage de points. \label{np_intro}" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-1)Points essentiels d'un nuage de points. \label{np_intro}</p>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" alt="Points essentiels d'un nuage de points. \label{np_intro}" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-2)Points essentiels d'un nuage de points. \label{np_intro}</p>
 </div>
 
 Les éléments indispensables à la compréhension d'un nuage de points sont mis en évidence dans la figure ci dessus (ici mis en évidence en couleur) : 
@@ -48,8 +55,8 @@ chart(ub, formula = height ~ weight) +
 ```
 
 <div class="figure">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" alt="Instructions pour obtenir un nuage de point." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-2)Instructions pour obtenir un nuage de point.</p>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="Instructions pour obtenir un nuage de point." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-3)Instructions pour obtenir un nuage de point.</p>
 </div>
 
 
@@ -86,8 +93,8 @@ ggpubr::ggarrange(a,b,c,d,labels = "AUTO", font.label = list(size = 14, align = 
 ```
 
 <div class="figure">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y.</p>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-4-1.svg" alt="Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-4)Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y.</p>
 </div>
 
 
@@ -114,8 +121,8 @@ ggpubr::ggarrange(a,b,labels = "AUTO", font.label = list(size = 14, align = "hv"
 ```
 
 <div class="figure">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-4-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d'oursins violets " width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d'oursins violets </p>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-5-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d'oursins violets " width="672" />
+<p class="caption">(\#fig:unnamed-chunk-5)A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d'oursins violets </p>
 </div>
 
 #### Utilisation des snippets
