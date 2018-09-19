@@ -103,8 +103,9 @@ Losque tout est installé, vous avez une nouvelle icône sur votre bureau. Pours
 
 ![](images/annexe1/svbox_install_desktop_icon.png)
 
-En option, vous pouvez ancrer le programme dans la barre de tâche. Il sera plus facilement accessible (voir ci-dessous).
+En option, vous pouvez épingler le programme dans la barre des tâches. Il sera plus facilement accessible (voir ci-dessous).
 
+![](images/annexe1/pin-in-taskbar.gif)
 
 #### Installation sur un Mac
 
