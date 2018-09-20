@@ -2,7 +2,7 @@
 
 
 
-**Vos objectifs pour ce module sont :**
+#### Objectifs : {-}
 
 - Découvrir --et vous émerveiller de--  ce que l'on peut faire avec le [logiciel R](http://www.r-project.org) [@R-base]
 
@@ -14,152 +14,172 @@
 
 - Comparer de manière critique un workflow 'classique' en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown; prendre conscience de l'énorme potentiel de R
 
-<div class="note">
-<p>Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L'ensemble de ces outils a été abordé lors de la création de votre site professionnel et personnel du module @ref(intro).</p>
-</div>
+
+#### Prérequis : {-}
+
+Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L'ensemble de ces outils a été abordé lors de la création de votre site professionnel et personnel du module \@ref(intro).
+
+Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques.
+
+\BeginKnitrBlock{bdd}<div class="bdd">Démarrez la SciViews Box et RStudio. Dans la fenêtre console de RStudio, entrez l'instruction suivante pour ouvrir le tutoriel de découverte de R:
+
+    BioDataScience::run("02a_r_decouverte")
+
+([BioDataScience](https://github.com/BioDataScience-Course/BioDataScience) est un package R spécialement développé pour ce cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice \@ref(svbox)).</div>\EndKnitrBlock{bdd}
 
 
 ## Graphique en nuage de points
 
-Découvrez les premiers rudiments de R afin de réaliser par la suite vos premiers graphiques.
-
-\BeginKnitrBlock{bdd}<div class="bdd">Dans la fenêtre console de RStudio, entrez l'instruction suivante pour ouvrir le tutoriel de découverte de R:
-
-    BioDataScience::run("02a_r_decouverte")
-
-([BioDataScience](https://github.com/BioDataScience-Course/BioDataScience) est un package R spécialement développé pour ces cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice \@ref(svbox)).</div>\EndKnitrBlock{bdd}
-
-Maintenant que vous avez appris deux ou trois principes de base dans R, vous allez pouvoir réaliser des graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique, vous pouvez exprimer cela sous la forme d'une **formule**^[Dans R, une **formule** permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable `x` sur l'axe des abscisses et la variable `y` sur l'axe des ordonnées.]
+Dès que vous vous sentez familiarisé avec les principes de base de R, vous allez pouvoir réaliser assez rapidement des beaux graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d'une autre variable numérique, vous pouvez exprimer cela sous la forme d'une **formule**^[Dans R, une **formule** permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable _x_ sur l'axe des abscisses et la variable _y_ sur l'axe des ordonnées.]
 
 $$y \sim x$$
 
-que l'on peut lire "y en fonction de x".
+que l'on peut lire "y en fonction de x". Pour les deux variables numériques _x_ et _y_, la représentation graphique la plus classique est le **nuage de points** (voir Fig. \@ref(fig:first-scatterplot) pour un exemple).
 
 <div class="figure">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="Points essentiels d'un nuage de points. \label{np_intro}" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Points essentiels d'un nuage de points. \label{np_intro}</p>
+<img src="02-Visualisation-I_files/figure-html/first-scatterplot-1.svg" alt="Exemple de graphique en nuage de points. Des éléments essentiels sont ici mis en évidence en couleurs. \label{np_intro}" width="672" />
+<p class="caption">(\#fig:first-scatterplot)Exemple de graphique en nuage de points. Des éléments essentiels sont ici mis en évidence en couleurs. \label{np_intro}</p>
 </div>
 
-Les éléments indispensables à la compréhension d'un nuage de points sont mis en évidence dans la figure ci dessus (ici mis en évidence en couleur) : 
+Les éléments indispensables à la compréhension d'un nuage de points sont mis en évidence à la Fig. \@ref(fig:first-scatterplot) : 
 
-- Les axes avec les graduations (en rouge)
-- les labels et les unités des axes (en bleu)
+- Les axes avec les graduations (en rouge),
+- les labels et les unités des axes (en bleu).
 
-Les instructions de base afin de produire une nuage de point sont :
+Les instructions dans R pour produire un tel nuage de point sont :
 
 
 ```r
+# Chargement de SciViews::R
+SciViews::R
 # Importation du jeu de données
-ub <- read("urchin_bio", package = "data.io")
+(urchin <- read("urchin_bio", package = "data.io", lang = "fr"))
+```
+
+```
+# # A tibble: 421 x 19
+#    origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#    <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+#  1 Fishe…       9.9      10.2    5               NA  0.522       0.478
+#  2 Fishe…      10.5      10.6    5.7             NA  0.642       0.589
+#  3 Fishe…      10.8      10.8    5.2             NA  0.734       0.677
+#  4 Fishe…       9.6       9.3    4.6             NA  0.370       0.344
+#  5 Fishe…      10.4      10.7    4.8             NA  0.610       0.559
+#  6 Fishe…      10.5      11.1    5               NA  0.610       0.551
+#  7 Fishe…      11        11      5.2             NA  0.672       0.605
+#  8 Fishe…      11.1      11.2    5.7             NA  0.703       0.628
+#  9 Fishe…       9.4       9.2    4.6             NA  0.413       0.375
+# 10 Fishe…      10.1       9.5    4.7             NA  0.449       0.398
+# # ... with 411 more rows, and 12 more variables: integuments <dbl>,
+# #   dry_integuments <dbl>, digestive_tract <dbl>,
+# #   dry_digestive_tract <dbl>, gonads <dbl>, dry_gonads <dbl>,
+# #   skeleton <dbl>, lantern <dbl>, test <dbl>, spines <dbl>,
+# #   maturity <int>, sex <fct>
+```
+
+```r
 # Réalisation du graphique 
-chart(ub, formula = height ~ weight) +
+chart(urchin, height ~ weight) +
   geom_point()
 ```
 
-<div class="figure">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-4-1.svg" alt="Instructions pour obtenir un nuage de point." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Instructions pour obtenir un nuage de point.</p>
-</div>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" width="672" />
 
 
-La fonction `chart()` requiert comme argument le jeu de donnée ( dataframe, ub), ainsi que la formule à employer YNUM (height) ~ XNUM (weight). Pour réaliser une nuage de point vous devez ajouter la seconde fonction `geom_point()`.
+La fonction `chart()` requiert comme argument le jeu de donnée (`urchin`, c'est un objet `dataframe` ou `tibble` dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom des variables que vous voulez sur l'axe des ordonnées à gauche et des abscisses à droite de la formule. Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter `height` en fonction de `weight`, la hauteir en fonction de la masse des oursins. Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons les métérialiser sur le graphique. Pour un nuage de points, nous voulons les représenter sous forme de ... points ! Donc, nous devons ajouter la fonction `geom_point()` pour indiquer cela.
 
 
 ### Pièges et Astuces
 
 #### Modifications des échelles d'un graphiques
 
-Vous devez être vigilant lors de la réalisation d'un nuage de point particulièrement sur les ranges de valeurs présentés sur vos axes. 
+Vous devez être vigilant lors de la réalisation d'un nuage de point particulièrement sur l'étendue des valeurs présentées sur vos axes. Vous devez utilisez votre expertise de biologistes pour vous posez les deux questions suivantes :
 
-Vous devez utilisez votre expertise de biologistes pour vous posez les deux questions suivantes :
+- Est ce que l'axe représente des valeurs plausibles de hauteurs et de masses de ces oursins apparetenant à l'espèce *Paracentrotus lividus* ?
 
-- Est ce que l'axe représente des valeurs plausibles de hauteurs et de masses de *P. lividus* ?
+- Quels est la précision des mesures effectuées ?
 
-- Quels est la précision de mesures effectués ?
+Dans certains cas, la forme du nuage de points peut être distendu par la présence de valeurs aberrantes. Ce n'est pas le cas ici, mais nous pouvons le simuler en distandant artificiellement soit l'axe X, soit l'axe Y, soit les deux :
 
 
 ```r
-# Réalisation du graphique ci-dessus
-a <- chart(ub,formula = height ~  weight) + 
+A <- chart(urchin, height ~  weight) + 
   geom_point() +
-  theme(text = element_text(size = 10)) # reduction des labels
+  theme(text = element_text(size = 10)) # Réduction des labels
 # Modification des échelles
-b <- a + scale_x_continuous(limits = c(0,500))
-
-c <- a + scale_x_continuous(limits = c(-100, 120))
-
-d <- a + scale_x_continuous(limits = c(-400, 400)) +
-  scale_y_continuous(limits = c(-400, 400))
+B <- A + scale_x_continuous(limits = c(0, 500))
+C <- A + scale_x_continuous(limits = c(-100, 120))
+D <- A + scale_x_continuous(limits = c(-400, 400)) + scale_y_continuous(limits = c(-400, 400))
 # Assemblage des graphiques
-ggpubr::ggarrange(a,b,c,d,labels = "AUTO", font.label = list(size = 14, align = "hv"))
+combine_charts(list(A, B, C, D), font.label = list(size = 14, align = "hv"))
 ```
 
 <div class="figure">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-5-1.svg" alt="Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y.</p>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="Piège du nuage de points. A) graphique initialemontrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification de l'échelle de l'axe X et de l'axe Y." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-3)Piège du nuage de points. A) graphique initialemontrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification de l'échelle de l'axe X et de l'axe Y.</p>
 </div>
 
 
-#### Application de transformations mathématiques sur les données
+#### Transformations des données
 
-Vous avez la possiblité d'appliquer une transformation des données (il est même conseillé de le faire) afin qu'elle soit plus facilement analysable comme en alignant les point d'un nuage de point le long d'une droite (On parle de **linéarisation**^[TODO def] des données en statistiques). 
-
-Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, ..
-
-Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :
-
-$p′ = \arcsin \sqrt{p}$
+Vous avez la possibilité d'appliquer une transformation de vos données (il est même conseillé de le faire) afin qu'elles soient plus facilement analysables. Par exemple, il est possible d'utiliser des fonctions de puissance, racines, logarithmes, exponentielles^[Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée : $p′ = \arcsin \sqrt{p}$.] pour modifier l'apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d'analyser statistiquement des données qui s'alignent le long d'une droite). 
 
 
 ```r
-# Réalisation du graphique de la hauteur en fonction du poids
-a <- chart(ub,formula = height ~  weight) + 
+# Réalisation du graphique de la hauteur en fonction de la masse
+A <- chart(urchin, height ~  weight) + 
   geom_point()
-# Application du logarithme sur les deux variables étudiées
-b <- chart(ub,formula = log(height) ~  log(weight)) + 
+# Application du logarithme sur les deux variables représentées
+B <- chart(urchin, log(height) ~  log(weight)) + 
   geom_point()
 # Assemblage des graphiques
-ggpubr::ggarrange(a,b,labels = "AUTO", font.label = list(size = 14, align = "hv"))
+combine_charts(list(A, B), font.label = list(size = 14, align = "hv"))
 ```
 
 <div class="figure">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-6-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d'oursins violets " width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d'oursins violets </p>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-4-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-4)A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins</p>
 </div>
+
 
 #### Utilisation des snippets
 
-Rstudio permet d'ajouter des snippets^[Suite d'instruction préenregistré dasn Rstudio servant d'aide lors de l'analyse de données.] afin de faciliter l'apprentissage des suites d'instruction pour analyser des données sur R. Sciviews fournit une succession de snippets que vous pouvez retrouver dans l'aide mémoire^[TODO]
+RStudio permet de récupérer rapidement des instructions à partir d'une banque de solutions toutes prêtes. Cela s'appelle des **snippets**. Vous avez une série de snippets disponibles dans la SciViews Box. Cela qui vous permet de réaliser un graphique en nuage de poinsts s'appelle `.cbxy`. Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci :
 
 ```
-... # ouverture des sciviews snippets
+chart(data = DF, YNUM ~ XNUM) +
+  geom_point()
 ```
 
-### Vidéo, A faire
+Vous avez aussi à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/)).
 
-Vous trouverez une vidéo ci-dessous illustrant l'utilisation du nuage de point dans R sur un jeu de données portant sur la croissance des oursins.
+
+### Le nuage de points en vidéo
+
+Vous trouverez une vidéo ci-dessous vous expliquant la création du nuage de points dans R sur ce jeu de données mais analysant d'autres variables.
 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
-Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphique. Soyez curieux et regardez la section **A vous de jouer** ci-dessous. 
+Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphiques. Soyez curieux et expérimentez par vous-même ! 
 
-Vous avez à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/))
+
 
 ### A vous de jouer !
 
-![](images/hex_BioDataScience.png){width="15%"}
-Lancez votre machine virtuelle, ouvrez Rstudio puis lancez l'instruction suivante
-`BioDataScience::run("02b_nuage_points")` (package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience)).
+\BeginKnitrBlock{bdd}<div class="bdd">Lancez votre SciViews Box, ouvrez RStudio puis dans sa fenêtre console, entrez l'instruction suivante, suivie de la touche `entrée` pour lancer le tutorial "learnR" concernant les nuages de points.
 
-Les instructions que vous employez dans un learnR peuvent être employée dans un script d'analyse. Sur base des jeux de données `urchin_bio`, explorez différents graphiques en nuage de point. Assignment ClassRoom avec /R et un script.
+    BioDataScience::run("02b_nuage_points")
+</div>\EndKnitrBlock{bdd}
 
-Inspirez vous de script présent dans le projet que vous venez de clonez. Faites une attention toute particulière à l'écriture d'un script. Il contient un titre , une date de la dernière mise à jour, le nom de l'auteur , un ensemble de commentaires permettant l'organisation de ce script.
+Les instructions que vous employez dans un learnR peuvent être employée dans un script d'analyse. Sur base du jeux de données `urchin_bio`, explorez différents graphiques en nuages de points. Assignment ClassRoom avec R et un script.
+
+Inspirez vous de script présent dans le projet que vous venez de clonez. Faites une attention toute particulière à l'écriture d'un script. Il contient un titre , une date de la dernière mise à jour, le nom de l'auteur, un ensemble de commentaires permettant l'organisation de ce script.
 
 Réalisez votre propre script et réalisez les graphiques suivants :
 
 - Représentez la variation de la hauteur en fonction de la masse des oursins
 
-- Représentez la variation du parties solides en fonction du poids immergés des oursins
+- Représentez la variation des parties solides en fonction du poids immergés des oursins
 
 - Explorez par vous même le jeu de données `urchin_bio` qui contient pas moins de 19 variables que vous pouvez tentez d'associer graphiquement. Réalisez au moins 5 graphiques différents.
 
@@ -174,7 +194,7 @@ Réalisez votre propre script et réalisez les graphiques suivants :
 
 - [R Graphics Cookbook - Chapter 5: Scatter Plots](https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots). Un chapitre d'un livre en anglais sur l'utilisation du nuage de point.
 
-- [geom_point()](http://ggplot2.tidyverse.org/reference/geom_point.html). La fiche technique de la fonction proposée par tidyverse.
+- [geom_point()](http://ggplot2.tidyverse.org/reference/geom_point.html). La fiche technique de la fonction.
 
 
 ## Intégration des graphiques dans un rapport: R Markdown

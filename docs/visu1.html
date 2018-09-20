@@ -130,7 +130,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Graphique en nuage de points</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.1</b> Pièges et Astuces</a></li>
-<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#video-a-faire"><i class="fa fa-check"></i><b>2.1.2</b> Vidéo, A faire</a></li>
+<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.2</b> Le nuage de points en vidéo</a></li>
 <li class="chapter" data-level="2.1.3" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.3</b> A vous de jouer !</a></li>
 <li class="chapter" data-level="2.1.4" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pour-en-savoir-plus-4"><i class="fa fa-check"></i><b>2.1.4</b> Pour en savoir plus…</a></li>
 </ul></li>
@@ -205,9 +205,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
-<li class="chapter" data-level="A.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+<li class="chapter" data-level="A.1" data-path="prerequis-1.html"><a href="prerequis-1.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-1.html"><a href="prerequis-1.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-1.html"><a href="prerequis-1.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -246,7 +246,8 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="visu1" class="section level1">
 <h1><span class="header-section-number">Module 2</span> Visualisation I</h1>
-<p><strong>Vos objectifs pour ce module sont :</strong></p>
+<div id="objectifs" class="section level4 unnumbered">
+<h4>Objectifs :</h4>
 <ul>
 <li><p>Découvrir –et vous émerveiller de– ce que l’on peut faire avec le <a href="http://www.r-project.org">logiciel R</a> <span class="citation">(R Core Team <a href="#ref-R-base">2018</a>)</span></p></li>
 <li><p>Savoir réaliser différentes variantes d’un graphique en nuage de points dans R avec la fonction <code>chart()</code></p></li>
@@ -254,10 +255,18 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li><p>Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez</p></li>
 <li><p>Comparer de manière critique un workflow ‘classique’ en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown; prendre conscience de l’énorme potentiel de R</p></li>
 </ul>
-<div class="note">
-<p>
-Si ce n’est déjà fait, vous devez installer et vous familiariser avec la ‘SciViews Box’, RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L’ensemble de ces outils a été abordé lors de la création de votre site professionnel et personnel du module <span class="citation">(<span class="citeproc-not-found" data-reference-id="ref"><strong>???</strong></span>)</span>(intro).
-</p>
+</div>
+<div id="prerequis" class="section level4 unnumbered">
+<h4>Prérequis :</h4>
+<p>Si ce n’est déjà fait, vous devez installer et vous familiariser avec la ‘SciViews Box’, RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L’ensemble de ces outils a été abordé lors de la création de votre site professionnel et personnel du module <a href="intro.html#intro">1</a>.</p>
+<p>Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques.</p>
+
+<div class="bdd">
+<p>Démarrez la SciViews Box et RStudio. Dans la fenêtre console de RStudio, entrez l’instruction suivante pour ouvrir le tutoriel de découverte de R:</p>
+<pre><code>BioDataScience::run(&quot;02a_r_decouverte&quot;)</code></pre>
+(<a href="https://github.com/BioDataScience-Course/BioDataScience">BioDataScience</a> est un package R spécialement développé pour ce cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice <a href="svbox.html#svbox">A</a>).
+</div>
+
 </div> 
 </div>
 <h3>Références</h3>
