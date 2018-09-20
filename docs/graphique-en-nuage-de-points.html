@@ -254,11 +254,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 (<a href="https://github.com/BioDataScience-Course/BioDataScience">BioDataScience</a> est un package R spécialement développé pour ces cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice <a href="svbox.html#svbox">A</a>).
 </div>
 
-<p>Maintenant que vous avez appris deux ou trois principes de base dans R, vous allez pouvoir réaliser des graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique, vous pouvez exprimer cela sous la forme d’une <strong>formule</strong><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+<p>Maintenant que vous avez appris deux ou trois principes de base dans R, vous allez pouvoir réaliser des graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique, vous pouvez exprimer cela sous la forme d’une <strong>formule</strong><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
 <p><span class="math display">\[y \sim x\]</span></p>
 <p>que l’on peut lire “y en fonction de x”.</p>
-<div class="figure"><span id="fig:unnamed-chunk-2"></span>
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" alt="Points essentiels d'un nuage de points. \label{np_intro}" width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="Points essentiels d'un nuage de points. \label{np_intro}" width="672" />
 <p class="caption">
 Figure 2.1: Points essentiels d’un nuage de points. 
 </p>
@@ -274,8 +274,8 @@ ub &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&
 <span class="co"># Réalisation du graphique </span>
 <span class="kw">chart</span>(ub, <span class="dt">formula =</span> height <span class="op">~</span><span class="st"> </span>weight) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-3"></span>
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="Instructions pour obtenir un nuage de point." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-4-1.svg" alt="Instructions pour obtenir un nuage de point." width="672" />
 <p class="caption">
 Figure 2.2: Instructions pour obtenir un nuage de point.
 </p>
@@ -304,8 +304,8 @@ d &lt;-<span class="st"> </span>a <span class="op">+</span><span class="st"> </s
 <span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">400</span>, <span class="dv">400</span>))
 <span class="co"># Assemblage des graphiques</span>
 ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(a,b,c,d,<span class="dt">labels =</span> <span class="st">&quot;AUTO&quot;</span>, <span class="dt">font.label =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">align =</span> <span class="st">&quot;hv&quot;</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-4"></span>
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-4-1.svg" alt="Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y." width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-5-1.svg" alt="Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe x. C) Graphique A avec une seconde modification de l'axe x. D) Graphique A avec modification de l'echelle de l'axe x et de l'axe Y." width="672" />
 <p class="caption">
 Figure 2.3: Piège du nuage de points. A) graphique initiale montrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l’échelle de l’axe x. C) Graphique A avec une seconde modification de l’axe x. D) Graphique A avec modification de l’echelle de l’axe x et de l’axe Y.
 </p>
@@ -313,7 +313,7 @@ Figure 2.3: Piège du nuage de points. A) graphique initiale montrant la variati
 </div>
 <div id="application-de-transformations-mathematiques-sur-les-donnees" class="section level4">
 <h4><span class="header-section-number">2.1.1.2</span> Application de transformations mathématiques sur les données</h4>
-<p>Vous avez la possiblité d’appliquer une transformation des données (il est même conseillé de le faire) afin qu’elle soit plus facilement analysable comme en alignant les point d’un nuage de point le long d’une droite (On parle de <strong>linéarisation</strong><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> des données en statistiques).</p>
+<p>Vous avez la possiblité d’appliquer une transformation des données (il est même conseillé de le faire) afin qu’elle soit plus facilement analysable comme en alignant les point d’un nuage de point le long d’une droite (On parle de <strong>linéarisation</strong><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> des données en statistiques).</p>
 <p>Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, ..</p>
 <p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :</p>
 <p><span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span></p>
@@ -325,8 +325,8 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(ub,<span class="dt
 <span class="st">  </span><span class="kw">geom_point</span>()
 <span class="co"># Assemblage des graphiques</span>
 ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(a,b,<span class="dt">labels =</span> <span class="st">&quot;AUTO&quot;</span>, <span class="dt">font.label =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">align =</span> <span class="st">&quot;hv&quot;</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-5"></span>
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-5-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d'oursins violets " width="672" />
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-6-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d'oursins violets " width="672" />
 <p class="caption">
 Figure 2.4: A) Variation de la hauteur [mm] en fonction de la masse [g] d’oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] d’oursins violets
 </p>
@@ -334,7 +334,7 @@ Figure 2.4: A) Variation de la hauteur [mm] en fonction de la masse [g] d’ours
 </div>
 <div id="utilisation-des-snippets" class="section level4">
 <h4><span class="header-section-number">2.1.1.3</span> Utilisation des snippets</h4>
-<p>Rstudio permet d’ajouter des snippets<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> afin de faciliter l’apprentissage des suites d’instruction pour analyser des données sur R. Sciviews fournit une succession de snippets que vous pouvez retrouver dans l’aide mémoire<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a></p>
+<p>Rstudio permet d’ajouter des snippets<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> afin de faciliter l’apprentissage des suites d’instruction pour analyser des données sur R. Sciviews fournit une succession de snippets que vous pouvez retrouver dans l’aide mémoire<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p>
 <pre><code>... # ouverture des sciviews snippets</code></pre>
 </div>
 </div>
@@ -370,11 +370,11 @@ Figure 2.4: A) Variation de la hauteur [mm] en fonction de la masse [g] d’ours
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <code>x</code> sur l’axe des abscisses et la variable <code>y</code> sur l’axe des ordonnées.<a href="graphique-en-nuage-de-points.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>TODO def<a href="graphique-en-nuage-de-points.html#fnref4">↩</a></p></li>
-<li id="fn5"><p>Suite d’instruction préenregistré dasn Rstudio servant d’aide lors de l’analyse de données.<a href="graphique-en-nuage-de-points.html#fnref5">↩</a></p></li>
-<li id="fn6"><p>TODO<a href="graphique-en-nuage-de-points.html#fnref6">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <code>x</code> sur l’axe des abscisses et la variable <code>y</code> sur l’axe des ordonnées.<a href="graphique-en-nuage-de-points.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>TODO def<a href="graphique-en-nuage-de-points.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Suite d’instruction préenregistré dasn Rstudio servant d’aide lors de l’analyse de données.<a href="graphique-en-nuage-de-points.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>TODO<a href="graphique-en-nuage-de-points.html#fnref4">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

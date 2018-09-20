@@ -7,7 +7,7 @@ SciViews::R
 ub <- read(file = "urchin_bio", package = "data.io", lang = "fr")
 ```
 
-Vos objectifs pour ce module sont:
+**Vos objectifs pour ce module sont :**
 
 - Découvrir --et vous émerveiller de--  ce que l'on peut faire avec le [logiciel R](http://www.r-project.org) [@R-base]
 
@@ -19,7 +19,9 @@ Vos objectifs pour ce module sont:
 
 - Comparer de manière critique un workflow 'classique' en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown; prendre conscience de l'énorme potentiel de R
 
-Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L'ensemble de ces outils a été abordé lors de la création de votre site profesionnel et personnel du module \@ref(intro).
+```{block, type='note'}
+Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L'ensemble de ces outils a été abordé lors de la création de votre site professionnel et personnel du module \@ref(intro).
+```
 
 
 ## Graphique en nuage de points
