@@ -5,27 +5,13 @@
 
 
 
-**Contenu provisoire, à retravailler en fonction d'un canevas commun aux différents modules.**
-
-L'objectif de ce module est de motiver les étudiants pour apprendre les outils qui leur permettront de faire de la science des données. nous n'entrerons pas directement dans le vif du sujet, mais nous initierons une activité plus _ludique_, mais néanmoins utile et qui leur permettra de faire connaissance avec divers outils logiciels dont Git, Markdown, RStudio, Blogdown, ... Il s'agira de réaliser son propre **site web professionnel** avec `blogdown` et un dépôt Github.
-
-Les acquis recherchés ici sont:
+Vos objectifs pour ce module sont:
 
 - Appréhender ce qu'est la science des données et les (bio)statistiques.
+
 - S'initier à des outils de base (SciViews Box, RStudio, Markdown, git, Github).
+
 - Se sensibiliser à l'importance d'une présence web au niveau professionnel.
-
-Un template `blogdown` sera fourni dans Github Classroom. Il sera également expliqué qu'un "bookdown" collectif sera créé, et pourra être complété par les étudiants avec du matériel qu'ils créeront eux-mêmes, ou des liens vers des sites intéressants qu'ils découvriront au cours de leur apprentissage. Concernant ces éléments concrets, un débriefing sera prévu concernant la participation au "bookdown" au module #11.
-
-**Idées provisoires:**
-
-- Fournir un document qui explique comment on passe du document R Markdown à la version finale, grâce à **knitr** [@R-knitr; @xie2015].
-
-- **Présentation 1h**, installation de SciViews Box sur les machines du labo et présentation de RStudio + projet + un document markdown + ajouter git et montrer l'intérêt, suivi d'une "install party" (temps prévu après le cours), quelques jours où ils ont à digérer la matière, voir Markdown et créer un compte Github, 2h pour créer le site web blogdown.
-
-- Ensuite, il faut du matériel qui présente git, github, clone, commit, push, pull, fetch, ... comme capsule à étudier après le cours
-
-- Début de module suivant (participation cotée): réexpliquer avec ses propres mots git + Github.
 
 
 ## Comment le monde était-il y a 25 ans ? {#donnees}
@@ -68,24 +54,41 @@ Dans le cadre de ce premier module, vous allez réaliser votre premier site prof
 
 La **SciViews Box** est une machine virtuelle (un ordinateur complet, mais totalement indépendant du matériel -le hardware- et qui peut être déployé sur pratiquement n'importe quel ordinateur physique). Cette SciViews Box est complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, et ensuite écrire des rapports ou d'autres documents prêts à publication ou à présentation. Elle vous servira également à collaborer avec d'autres chercheurs qui peuvent facilement utiliser exactement la même machine virtuelle (aspect reproductible de vos analyses).
 
+Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à l'installation et la configuration de la SciViews Box.
+
 ![Logo de la SciViews box](images/svBox-256.png)
 
 Etant préconfigurée, son installation est relativement facile et rapide.
 
-> Inserer un lien vers les autoinstalleurs de la machine virtuelle, les tutoriels d'installation,.... <https://github.com/BioDataScience-Course/tutorials/tree/master/docs/01_Installation> (qui est actuellement sur un projet privé)
-
-> TODO revoir le tutoriel afin qu'il corresponde avec les nouvautés proposées dans la version 2018 de la svbox <https://github.com/BioDataScience-Course/tutorials/tree/master/docs/02_prise_en_main> (qui est actuellement sur un projet privé)
-
+<div class="bdd">
+<p>Une fois logé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf</a></p>
+<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md</a></p>
+</div>
 
 ### RStudio
 
-RStudio est l'outil au sein de la SciViews Box que vous allez utilisez le plus fréquement durant ce cours. Il fournit un environnement complet et optimisé pour réaliser vos analyses, vos graphiques et vos rapports. RStudio travaille main dans la main avec le logiciel R qui effectue l'ensemble des traitements. **TODO: améliorer cette description!**
+RStudio est l'outil au sein de la SciViews Box que vous allez utilisez le plus fréquement durant ce cours. 
 
-> TODO tutoriels introduction RStudio
+![](images/sdd1_01/rstudio.gif)
 
-RStudio a été conçu afin de travailler en projet. Un projet portera sur une thématique ou sur une expérience précise. Ce dernier va contenir l'ensemble des fichiers relatif à la thématique comme par exemple toutes les informations, fichiers, images, de son propre site web personnel profesionnel. Le projet permet de configurer un environnement de travail pour cette thématique que l'on peut sauvegarder et recharger par la suite. Un bon projet sera transportable afin que des collaborateur puisse utiliser notre environnement de travail sur un autre ordinateur. 
+Il fournit un environnement complet et optimisé pour réaliser vos analyses, vos graphiques et vos rapports. RStudio travaille main dans la main avec le logiciel R qui effectue l'ensemble des traitements.
 
-> TODO tutoriels création d'un projet
+![](images/sdd1_01/rstudio_description_mod.png)
+
+Rstudio est divisé en 4 zones importantes (A-D) avec une barre d'outils général au dessus : 
+
+- A : Une zone d'édition 
+
+- B : Plusieurs onglets sont présents comme `Environement`, `History` ou encore `Connections`. Par exemple, les différents items (on parle d’objets) chargés en mémoire dans R se trouveront dans l'environnement (mais pour l’instant, il n’y a encore rien).
+
+- C : La `Console` étant le zone d'instruction où vous pouvez entrer des instructions dans R pour manipuler vos données
+
+- D : Plusieurs onglets sont présents comme `Files`, `Help` ou encore `Viewer`. 
+
+
+Des explications détaillées se trouvent dans l'annexe **TODO** dédiée à l'utilisation de R Studio.
+
+
 
 #### Pour en savoir plus ...
 

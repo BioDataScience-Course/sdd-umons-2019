@@ -53,46 +53,6 @@
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -246,31 +206,12 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Module 1</span> Introduction</h1>
-<p><strong>Contenu provisoire, à retravailler en fonction d’un canevas commun aux différents modules.</strong></p>
-<p>L’objectif de ce module est de motiver les étudiants pour apprendre les outils qui leur permettront de faire de la science des données. nous n’entrerons pas directement dans le vif du sujet, mais nous initierons une activité plus <em>ludique</em>, mais néanmoins utile et qui leur permettra de faire connaissance avec divers outils logiciels dont Git, Markdown, RStudio, Blogdown, … Il s’agira de réaliser son propre <strong>site web professionnel</strong> avec <code>blogdown</code> et un dépôt Github.</p>
-<p>Les acquis recherchés ici sont:</p>
+<p>Vos objectifs pour ce module sont:</p>
 <ul>
-<li>Appréhender ce qu’est la science des données et les (bio)statistiques.</li>
-<li>S’initier à des outils de base (SciViews Box, RStudio, Markdown, git, Github).</li>
-<li>Se sensibiliser à l’importance d’une présence web au niveau professionnel.</li>
-</ul>
-<p>Un template <code>blogdown</code> sera fourni dans Github Classroom. Il sera également expliqué qu’un “bookdown” collectif sera créé, et pourra être complété par les étudiants avec du matériel qu’ils créeront eux-mêmes, ou des liens vers des sites intéressants qu’ils découvriront au cours de leur apprentissage. Concernant ces éléments concrets, un débriefing sera prévu concernant la participation au “bookdown” au module #11.</p>
-<p><strong>Idées provisoires:</strong></p>
-<ul>
-<li><p>Fournir un document qui explique comment on passe du document R Markdown à la version finale, grâce à <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-R-knitr">2018</a>; Xie <a href="#ref-xie2015">2015</a>)</span>.</p></li>
-<li><p><strong>Présentation 1h</strong>, installation de SciViews Box sur les machines du labo et présentation de RStudio + projet + un document markdown + ajouter git et montrer l’intérêt, suivi d’une “install party” (temps prévu après le cours), quelques jours où ils ont à digérer la matière, voir Markdown et créer un compte Github, 2h pour créer le site web blogdown.</p></li>
-<li><p>Ensuite, il faut du matériel qui présente git, github, clone, commit, push, pull, fetch, … comme capsule à étudier après le cours</p></li>
-<li><p>Début de module suivant (participation cotée): réexpliquer avec ses propres mots git + Github.</p></li>
+<li><p>Appréhender ce qu’est la science des données et les (bio)statistiques.</p></li>
+<li><p>S’initier à des outils de base (SciViews Box, RStudio, Markdown, git, Github).</p></li>
+<li><p>Se sensibiliser à l’importance d’une présence web au niveau professionnel.</p></li>
 </ul> 
-</div>
-<h3>Références</h3>
-<div id="refs" class="references">
-<div id="ref-R-knitr">
-<p>Xie, Yihui. 2018. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://CRAN.R-project.org/package=knitr" class="uri">https://CRAN.R-project.org/package=knitr</a>.</p>
-</div>
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a>.</p>
-</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
