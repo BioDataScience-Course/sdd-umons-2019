@@ -251,7 +251,7 @@ Le disque physique de votre ordinateur hôte, et le disque virtuel de la SciView
 
 Ce dossier **shared** est synchronisé en temps réel entre les deux systèmes. C'est donc l'endroit idéal pour échanger des données et pour faire collaborer vos deux machines. Inutile de préciser, donc, que nous travaillerons essentiellement à l'intérieur de ce dossier. Un sous-dossier, nommé **projects** sera utilisé pour héberger toutes nos analyses. Il est donc primordial d'y accéder facilement à la fois depuis l'ordinateur hôte et depuis la SciViews Box. Vous allez donc apprendre à retrouver ce dossier **projects** facilement.
 
-Sur votre **ordinateur hôte**, ce dossier est un peu difficile à trouver en naviguant dans l'explorateur de fichiers (ou le finder sur le Mac). Pour cette raison, le lanceur rapide propose un bouton pour y accéder plus facilement.
+Sur votre **ordinateur hôte**, ce dossier est un peu difficile à trouver en naviguant dans l'explorateur de fichiers (ou le Finder sur le Mac). Pour cette raison, le lanceur rapide propose un bouton pour y accéder plus facilement.
 
 
 Une fois dans le dossier **shared**, nous vous conseillons d'épingler le sous-dossier **projects** dans les raccourcis rapides de votre explorateur de fichiers. Voici comment faire sous Windows et sous MacOS. 
@@ -261,7 +261,9 @@ Une fois dans le dossier **shared**, nous vous conseillons d'épingler le sous-d
 ![](images/annexe1/pin-projects-win.gif)
 </div>\EndKnitrBlock{win}
 
-\BeginKnitrBlock{mac}<div class="mac">TODO...
+\BeginKnitrBlock{mac}<div class="mac">Sous MacOS, vous glissez-déposez **projects** dans la barre latérale du Finder.
+
+![](images/annexe1/svbox_mac-pin-projects.gif)
 </div>\EndKnitrBlock{mac}
 
 Dans la **SciViews Box**, ce dossier est accessible depuis deux endroits: `/media/sf_shared` et `~/shared` (`~` représente le répertoire de l'utilisateur, c'est-à-dire `/home/sv`). Ici aussi vous pouvez épingler votre dossier **projects** pour en facilter l'accès:

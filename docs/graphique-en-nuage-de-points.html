@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-19">
+<meta name="date" content="2018-09-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -207,7 +207,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
 <li class="chapter" data-level="A.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
 <li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-virtualisation-dans-lordinateur"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation dans l’ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -216,8 +216,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
 <li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
-<li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.2</b> Accès aux fichiers</a></li>
-<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#finalisation-de-linstallation-de-la-sciviews-box"><i class="fa fa-check"></i><b>A.3.3</b> Finalisation de l’installation de la SciViews Box</a></li>
+<li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#configurateur-de-la-box"><i class="fa fa-check"></i><b>A.3.2</b> Configurateur de la Box</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.3</b> Accès aux fichiers</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
@@ -254,7 +254,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 (<a href="https://github.com/BioDataScience-Course/BioDataScience">BioDataScience</a> est un package R spécialement développé pour ces cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice <a href="svbox.html#svbox">A</a>).
 </div>
 
-<p>Maintenant que vous avez appris deux ou trois principes de base dans R, vous allez pouvoir réaliser des graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique, vous pouvez exprimer cela sous la forme d’une <strong>formule</strong><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Maintenant que vous avez appris deux ou trois principes de base dans R, vous allez pouvoir réaliser des graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique, vous pouvez exprimer cela sous la forme d’une <strong>formule</strong><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
 <p><span class="math display">\[y \sim x\]</span></p>
 <p>que l’on peut lire “y en fonction de x”.</p>
 <div class="figure"><span id="fig:unnamed-chunk-2"></span>
@@ -313,7 +313,7 @@ Figure 2.3: Piège du nuage de points. A) graphique initiale montrant la variati
 </div>
 <div id="application-de-transformations-mathematiques-sur-les-donnees" class="section level4">
 <h4><span class="header-section-number">2.1.1.2</span> Application de transformations mathématiques sur les données</h4>
-<p>Vous avez la possiblité d’appliquer une transformation des données (il est même conseillé de le faire) afin qu’elle soit plus facilement analysable comme en alignant les point d’un nuage de point le long d’une droite (On parle de <strong>linéarisation</strong><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> des données en statistiques).</p>
+<p>Vous avez la possiblité d’appliquer une transformation des données (il est même conseillé de le faire) afin qu’elle soit plus facilement analysable comme en alignant les point d’un nuage de point le long d’une droite (On parle de <strong>linéarisation</strong><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> des données en statistiques).</p>
 <p>Vous pouvez utilisez la puissance, racine, logarithme, exponentielle, inverse, ..</p>
 <p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée :</p>
 <p><span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span></p>
@@ -334,7 +334,7 @@ Figure 2.4: A) Variation de la hauteur [mm] en fonction de la masse [g] d’ours
 </div>
 <div id="utilisation-des-snippets" class="section level4">
 <h4><span class="header-section-number">2.1.1.3</span> Utilisation des snippets</h4>
-<p>Rstudio permet d’ajouter des snippets<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> afin de faciliter l’apprentissage des suites d’instruction pour analyser des données sur R. Sciviews fournit une succession de snippets que vous pouvez retrouver dans l’aide mémoire<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p>
+<p>Rstudio permet d’ajouter des snippets<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a> afin de faciliter l’apprentissage des suites d’instruction pour analyser des données sur R. Sciviews fournit une succession de snippets que vous pouvez retrouver dans l’aide mémoire<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a></p>
 <pre><code>... # ouverture des sciviews snippets</code></pre>
 </div>
 </div>
@@ -370,11 +370,11 @@ Figure 2.4: A) Variation de la hauteur [mm] en fonction de la masse [g] d’ours
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <code>x</code> sur l’axe des abscisses et la variable <code>y</code> sur l’axe des ordonnées.<a href="graphique-en-nuage-de-points.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>TODO def<a href="graphique-en-nuage-de-points.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Suite d’instruction préenregistré dasn Rstudio servant d’aide lors de l’analyse de données.<a href="graphique-en-nuage-de-points.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>TODO<a href="graphique-en-nuage-de-points.html#fnref4">↩</a></p></li>
+<ol start="3">
+<li id="fn3"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <code>x</code> sur l’axe des abscisses et la variable <code>y</code> sur l’axe des ordonnées.<a href="graphique-en-nuage-de-points.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>TODO def<a href="graphique-en-nuage-de-points.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>Suite d’instruction préenregistré dasn Rstudio servant d’aide lors de l’analyse de données.<a href="graphique-en-nuage-de-points.html#fnref5">↩</a></p></li>
+<li id="fn6"><p>TODO<a href="graphique-en-nuage-de-points.html#fnref6">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
