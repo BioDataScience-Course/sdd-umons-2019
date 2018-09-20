@@ -191,7 +191,7 @@ chart(tg, formula = len ~ supp) +
 
 ```
 # Warning: Computation failed in `stat_summary()`:
-# could not find function "mean_sd"
+# impossible de trouver la fonction "mean_sd"
 ```
 
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" width="672" />
