@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-20">
+<meta name="date" content="2018-09-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -130,7 +130,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Graphique en nuage de points</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.1</b> Pièges et Astuces</a></li>
-<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#video-a-faire"><i class="fa fa-check"></i><b>2.1.2</b> Vidéo, A faire</a></li>
+<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.2</b> Le nuage de points en vidéo</a></li>
 <li class="chapter" data-level="2.1.3" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.3</b> A vous de jouer !</a></li>
 <li class="chapter" data-level="2.1.4" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pour-en-savoir-plus-4"><i class="fa fa-check"></i><b>2.1.4</b> Pour en savoir plus…</a></li>
 </ul></li>
@@ -205,9 +205,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
-<li class="chapter" data-level="A.1" data-path="prerequis.html"><a href="prerequis.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="prerequis.html"><a href="prerequis.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis.html"><a href="prerequis.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+<li class="chapter" data-level="A.1" data-path="prerequis-1.html"><a href="prerequis-1.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-1.html"><a href="prerequis-1.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-1.html"><a href="prerequis-1.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -269,7 +269,7 @@ Figure 3.1: Points essentiels d’un graphique en barre montrant le dénombremen
 <div class="figure"><span id="fig:unnamed-chunk-2"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-2-1.svg" alt="Instructions pour obtenir un graphique en bar." width="672" />
 <p class="caption">
-Figure 2.1: Instructions pour obtenir un graphique en bar.
+Figure 3.2: Instructions pour obtenir un graphique en bar.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée (dataframe, e_m), ainsi que la formule à employer ~factor(VAR). Pour réaliser un graphique en barre, vous devez ajouter la seconde fonction <code>geom_bar()</code>.</p>
@@ -308,7 +308,7 @@ Figure 2.3: A) Graphique en barre du dénombrement de l’occurence en fonction 
 <div class="figure"><span id="fig:unnamed-chunk-5"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt=" Graphique en barre du dénombrement de quatre variaités d'oursins. " width="672" />
 <p class="caption">
-Figure 2.4:  Graphique en barre du dénombrement de quatre variaités d’oursins.
+Figure 3.3:  Graphique en barre du dénombrement de quatre variaités d’oursins.
 </p>
 </div>
 </div>
@@ -379,7 +379,7 @@ x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</sp
 <div class="figure"><span id="fig:unnamed-chunk-8"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-8-1.svg" alt="Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur." width="672" />
 <p class="caption">
-Figure 3.4: Points essentiels d’un graphique en barre résumant les données numériques d’une variable facteur.
+Figure 3.6: Points essentiels d’un graphique en barre résumant les données numériques d’une variable facteur.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphe en barre sont (ici mis en évidence en couleur) :</p>
@@ -396,7 +396,7 @@ tg &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&
 <div class="figure"><span id="fig:unnamed-chunk-9"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-9-1.svg" alt="Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe." width="672" />
 <p class="caption">
-Figure 3.5: Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe.
+Figure 3.7: Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe.
 </p>
 </div>
 <div id="pieges-et-astuces-5" class="section level4">
@@ -407,7 +407,7 @@ Figure 3.5: Instructions pour obtenir un graphique en barre indiquant les moyenn
 <span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;bar&quot;</span>, <span class="dt">fun.y =</span> <span class="st">&quot;mean&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;errorbar&quot;</span>, <span class="dt">fun.ymax =</span> <span class="st">&quot;mean_sd&quot;</span>)</code></pre></div>
 <pre><code># Warning: Computation failed in `stat_summary()`:
-# impossible de trouver la fonction &quot;mean_sd&quot;</code></pre>
+# could not find function &quot;mean_sd&quot;</code></pre>
 <p><img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" width="672" /></p>
 </div>
 <div id="representation-de-la-moyenne" class="section level5">
@@ -423,7 +423,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(ToothGrowth, <span
 <div class="figure"><span id="fig:unnamed-chunk-11"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt=" moyenne de la croissance des dents de cochons d'inde en fonction du supplément admnistré (jus d'orange ou vitamine C." width="672" />
 <p class="caption">
-Figure 3.7:  moyenne de la croissance des dents de cochons d’inde en fonction du supplément admnistré (jus d’orange ou vitamine C.
+Figure 3.9:  moyenne de la croissance des dents de cochons d’inde en fonction du supplément admnistré (jus d’orange ou vitamine C.
 </p>
 </div>
 </div>

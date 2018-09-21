@@ -242,7 +242,28 @@ Une fois tout ceci effectué vous pourrez cliquer sur le bouton `OK` de la fenê
 
 ![](images/annexe1/svbox-config-reboot.png)
 
-**Bravo! Vous avez terminé l'installation et la configuration de votre SciViews Box. Cependant, nous allons encore effectuer quelques petites opérations qui vous faciliterons la vie, et nous vous expliquerons par la même occasion comment accéder aux fichiers respectifs de la machine virtuelle et du système hôte dans la section suivante.**
+
+### Installation des tutoriaux
+
+Nous allons maintenant installer les tutoriaux liés à ces cours de science des données biologiques. Vous allez apprendre par la même occasion comment ajouter des applications dans votre SciViews Box. Cela se fait en trois étapes:
+
+1) Télécharger l'installeur de l'application. Vous le trouverez à l'adresse http://go.sciviews.org/BioDataScience1. Assurez-vous de bien le charger dans le répertoire **Downloads** ou **Téléchargements** par défaut sur votre ordinateur^[Il pourra ainsi être replacé au bon endroit et exécuté dans la Box],
+
+2) Rentrez dans le lanceur rapide de la SciViews Box. Il repère l'autoinstalleur et le déplace dans le dossier partagé pour le rendre utilisable par la SciViews Box. Vous devez voir un message indiquant la disponibilité d'autoinstalleur(s). Votre fichier a également disparu du répertoire de téléchargement à ce stade,
+
+   ![](images/annexe1/autoinstall-message.png)
+
+3) Rentrez dans la SciViews Box depuis le lanceur. Si la Box était déjà active ou si elle est réveillée du mode veille, vous allez devoir vous délogger et relogger pour que l'installation démarre, ... sinon, vous allez voir directement le message suivant qui propose d'installer l'app (cliquez sur `Yes`, bien sûr, pour l'installer).
+
+    ![](images/annexe1/autoinstall-bdd-message.png)
+
+Si le message n'apparait pas, voici comment se délogger (**log out**).
+
+![](images/annexe1/svbox-exit.gif)
+
+Ensuite, entrez votre mot de passe comme d'habitude pour vous relogger... A ce moment, le message doit apparaitre, et l'installation doit se faire après avoir cliqué le bouton `Yes`.
+
+**Bravo! Vous avez terminé l'installation et la configuration de votre SciViews Box. Cependant, nous allons encore effectuer une petite opération qui vous facilitera la vie, et nous vous expliquerons par la même occasion comment accéder aux fichiers respectifs de la machine virtuelle et du système hôte dans la section suivante.**
 
 
 ### Accès aux fichiers
