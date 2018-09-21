@@ -217,7 +217,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
 <li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
 <li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#configurateur-de-la-box"><i class="fa fa-check"></i><b>A.3.2</b> Configurateur de la Box</a></li>
-<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.3</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#installation-des-tutoriaux"><i class="fa fa-check"></i><b>A.3.3</b> Installation des tutoriaux</a></li>
+<li class="chapter" data-level="A.3.4" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.4</b> Accès aux fichiers</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
@@ -252,10 +253,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-12"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
-Figure 3.10: Points essentiels d’un graphique en camembert montrant le dénombrement des niveaux d’une variable facteur.
+Figure 4.9: Points essentiels d’un graphique en camembert montrant le dénombrement des niveaux d’une variable facteur.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphe en camembert sont :</p>
@@ -269,10 +270,10 @@ Figure 3.10: Points essentiels d’un graphique en camembert montrant le dénomb
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-13"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.svg" alt="Instructions " width="672" />
 <p class="caption">
-Figure 3.11: Instructions
+Figure 4.10: Instructions
 </p>
 </div>
 <div id="pieges-et-astuces-6" class="section level3">
@@ -286,20 +287,20 @@ error &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span cla
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-14"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Piège d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
-Figure 3.12: Piège d’un graphique en camembert montrant le dénombrement des niveaux d’une variable facteur.
+Figure 4.11: Piège d’un graphique en camembert montrant le dénombrement des niveaux d’une variable facteur.
 </p>
 </div>
 <p>Sur base de ce graphique en barre, combien d’observations pour la lettre h comptez vous ?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(error, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(fact) <span class="op">%fill=%</span><span class="st"> </span>fact) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-15"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-15-1.svg" alt="Piège d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
-Figure 4.1: Piège d’un graphique en barre montrant le dénombrement des niveaux d’une variable facteur.
+Figure 4.12: Piège d’un graphique en barre montrant le dénombrement des niveaux d’une variable facteur.
 </p>
 </div>
 </div>

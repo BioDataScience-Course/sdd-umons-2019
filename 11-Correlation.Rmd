@@ -1,7 +1,7 @@
 # Corrélation {#correlation}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
-knitr::opts_chunk$set(comment = '#')
+knitr::opts_chunk$set(comment = '#', fig.align = "center")
 ```
 
 Suite ANOVA (ANOVA à deux facteurs) + correlation + graphes et tests. Restitution participation à l’élaboration du bookdown commun.

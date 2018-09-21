@@ -23,7 +23,7 @@ $$\sim variable \ facteur$$
 que l'on peut lire 
 
 $$\ en \ fonction \ de \ la \ variable \ facteur$$
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.svg" alt="Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-1)Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur.</p>
 </div>
@@ -41,7 +41,7 @@ chart(e_m, formula = ~ e_mathaei) +
   geom_bar()
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-2-1.svg" alt="Instructions pour obtenir un graphique en bar." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-2)Instructions pour obtenir un graphique en bar.</p>
 </div>
@@ -60,7 +60,7 @@ chart(diamonds, formula = ~ cut %fill=% clarity) +
   geom_bar()
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-3-1.svg" alt="Dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-3)Dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity.</p>
 </div>
@@ -78,7 +78,7 @@ c <- chart(diamonds, formula = ~ cut %fill=% clarity) +
 ggpubr::ggarrange(b, c, common.legend = TRUE, labels = "auto")
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="A) Graphique en barre du dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity avec  dodge comme valeur de l'argument position . B)  Graphique en barre du dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity avec  fill comme valeur de l'argument position" width="672" />
 <p class="caption">(\#fig:unnamed-chunk-4)A) Graphique en barre du dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity avec  dodge comme valeur de l'argument position . B)  Graphique en barre du dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity avec  fill comme valeur de l'argument position</p>
 </div>
@@ -94,7 +94,7 @@ chart(e_m, formula = ~ e_mathaei ) +
   coord_flip()
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt=" Graphique en barre du dénombrement de quatre variaités d'oursins. " width="672" />
 <p class="caption">(\#fig:unnamed-chunk-5) Graphique en barre du dénombrement de quatre variaités d'oursins. </p>
 </div>
@@ -149,7 +149,7 @@ Table: (\#tab:unnamed-chunk-7)Tableau de données relatif à la croissance de de
 Vous pouvez observez que ce jeu de données comprend trois variables avec une première variable portant sur le longueur des dents de cochons d'Inde, une seconde variable portant sur la supplémentation administrée ( VC, vitamine Cou OJ, jus d'orange) à ces derniers et enfin une troisième variable portant sur la dose administrée (0.5, 1, 2).
 
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-8-1.svg" alt="Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-8)Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur.</p>
 </div>
@@ -171,7 +171,7 @@ chart(tg, formula = len ~ supp) +
   stat_summary(geom = "bar", fun.y = "mean")
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-9-1.svg" alt="Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-9)Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe.</p>
 </div>
@@ -194,7 +194,7 @@ chart(tg, formula = len ~ supp) +
 # could not find function "mean_sd"
 ```
 
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ##### Représentation de la moyenne
@@ -212,7 +212,7 @@ b <- chart(ToothGrowth, formula = len ~ supp) +
 ggarrange(a,b, labels = "AUTO")
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt=" moyenne de la croissance des dents de cochons d'inde en fonction du supplément admnistré (jus d'orange ou vitamine C." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-11) moyenne de la croissance des dents de cochons d'inde en fonction du supplément admnistré (jus d'orange ou vitamine C.</p>
 </div>
@@ -242,7 +242,7 @@ chart(e_m, formula = ~ factor(0) %fill=% e_mathaei) +
   scale_fill_viridis(discrete = TRUE)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-12)Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
 </div>
@@ -264,7 +264,7 @@ chart(e_m, formula = ~ factor(0) %fill=% e_mathaei) +
   scale_fill_viridis(discrete = TRUE)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.svg" alt="Instructions " width="672" />
 <p class="caption">(\#fig:unnamed-chunk-13)Instructions </p>
 </div>
@@ -287,7 +287,7 @@ chart(error, formula = ~ factor(1) %fill=% fact) +
   scale_fill_viridis(discrete = TRUE)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Piège d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-14)Piège d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
 </div>
@@ -301,7 +301,7 @@ chart(error, formula = ~ factor(fact) %fill=% fact) +
   scale_fill_viridis(discrete = TRUE)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-15-1.svg" alt="Piège d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-15)Piège d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur.</p>
 </div>
@@ -365,14 +365,14 @@ fivenum(x)
 
 Vous pouvez réprésenter ce vecteur via une boite de dispersion
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-19-1.svg" alt="Nuage de points montrant la première étape de la construction d'une boite de dispersion." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-19)Nuage de points montrant la première étape de la construction d'une boite de dispersion.</p>
 </div>
 
 La boite de dispersion représente donc les 5 nombres. Vous observez cependant que certaine valeur ne se situe pas dans la boite de dispersion, il s'agit de valeurs extrêmes. Elles sont considérées comme extrêmes car elles sont éloignées de plus 1.5 fois l'espace inter-quartile (Q3- Q1). La boite de dispersion s'arrete donc aux dernières valeurs présente dans cet espace inter-quartile (IQR).
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-20-1.svg" alt="A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-20)A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A.</p>
 </div>
@@ -383,7 +383,7 @@ La boite de dispersion représente donc les 5 nombres. Vous observez cependant q
 
 La boite de dispersion ainsi que sa description sont proposée sur le graphique ci-dessous.
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.svg" alt="Points essentiels d'une boite de dispersion et sa description." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-22)Points essentiels d'une boite de dispersion et sa description.</p>
 </div>
@@ -399,7 +399,7 @@ chart(tg, formula = len ~ supp) +
   geom_boxplot()
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-23-1.svg" alt="Instructions pour obtenir une boite de dispersion." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-23)Instructions pour obtenir une boite de dispersion.</p>
 </div>
@@ -413,7 +413,7 @@ La fonction `chart()` requiert comme argument le jeu de donnée (dataframe, tg),
 
 Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d'observation qui se cache sous chaque boite de dispersion. En effet, une boite de dispersion ne comportant que 5 valeurs ou moins n'a que peut d'intérêt d'être avec cet outils graphique. 
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.svg" alt="Piège des boites de dispersion." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-24)Piège des boites de dispersion.</p>
 </div>
@@ -432,7 +432,7 @@ chart(formula = len ~ supp, data = tg) +
   stat_summary(fun.data = give_n, geom = "text", hjust = 0.5)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-25) Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée.</p>
 </div>
@@ -445,7 +445,7 @@ chart(formula = len ~ supp %fill=% as.ordered(dose), data = tg) +
                position = position_dodge(0.75))
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-26) Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée.</p>
 </div>
@@ -479,7 +479,7 @@ chart(ChickWeight, formula = weight ~ Time) +
   geom_point(alpha = 0.3)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-27-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-27)Nuage de point montrant la variation de la masse de poulets au cours du temps.</p>
 </div>
@@ -492,7 +492,7 @@ chart(ChickWeight, formula = weight ~ Time | Diet ) +
   geom_point(alpha = 0.3)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-28-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4)." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-28)Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4).</p>
 </div>
@@ -517,7 +517,7 @@ b <- chart(urchin, formula = weight ~ solid_parts %col=% origin) +
 ggpubr::ggarrange(a, b, common.legend = TRUE, legend = "bottom", align = "v")
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-29-1.svg" alt="A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-29)A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine.</p>
 </div>
@@ -552,7 +552,7 @@ chart(ub,formula = height ~ weight %col=% origin) +
         y = "Taille [mm]")
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-30-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique chart()." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-30)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique chart().</p>
 </div>
@@ -567,7 +567,7 @@ plot(urchin$weight, urchin$height, col = urchin$origin, ylab = "Taille [mm]", xl
 legend(x = 80, y = 10, legend = c("Farm", "Fishery"), col = c("Black", "Red"), pch = 1)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-31-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique  r de base." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-31)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique  r de base.</p>
 </div>
@@ -581,7 +581,7 @@ xyplot( height ~ weight, data = urchin, groups = origin,
         ylab = "Taille [mm]", xlab = "Poids immergé [g]", auto.key = TRUE)
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-32-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique lattice." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-32)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique lattice.</p>
 </div>
@@ -595,7 +595,7 @@ ggplot(data = urchin) +
   labs( x = "Poids immergé [g]", y = "Taille [mm]")
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-33-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique ggplot2." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-33)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique ggplot2.</p>
 </div>
@@ -622,7 +622,7 @@ Vous observez rapidement certaines similitudes entre `chart`, `ggplot2` et `latt
 
 ## A vous de jouer !
 
-![](images/hex_BioDataScience.png){width="15%"}
-Lancez votre machine virtuelle, ouvrez Rstudio puis lancez l'instruction suivante
-`BioDataScience::run("...")` (package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience)).
+\BeginKnitrBlock{bdd}<div class="bdd">Pour accéder au tutorial d'évaluation de vos compétences, ouvrez RStudio et entrez l'instruction suivante dans la fenêtre console :
 
+    BioDataScience::run("...")
+</div>\EndKnitrBlock{bdd}

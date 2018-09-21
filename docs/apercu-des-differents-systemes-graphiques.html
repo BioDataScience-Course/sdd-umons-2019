@@ -217,7 +217,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
 <li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
 <li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#configurateur-de-la-box"><i class="fa fa-check"></i><b>A.3.2</b> Configurateur de la Box</a></li>
-<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.3</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#installation-des-tutoriaux"><i class="fa fa-check"></i><b>A.3.3</b> Installation des tutoriaux</a></li>
+<li class="chapter" data-level="A.3.4" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.4</b> Accès aux fichiers</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
@@ -254,10 +255,10 @@ ub &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;Poids [g]&quot;</span>, 
         <span class="dt">y =</span> <span class="st">&quot;Taille [mm]&quot;</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-30"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-30"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-30-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique chart()." width="672" />
 <p class="caption">
-Figure 4.12: Nuage de point montrant la variation de la taille en fonction du poids d’oursins et de leur origine avec le système graphique chart().
+Figure 4.23: Nuage de point montrant la variation de la taille en fonction du poids d’oursins et de leur origine avec le système graphique chart().
 </p>
 </div>
 <p>Voici d’autres alternatives que sont</p>
@@ -266,10 +267,10 @@ Figure 4.12: Nuage de point montrant la variation de la taille en fonction du po
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(urchin<span class="op">$</span>weight, urchin<span class="op">$</span>height, <span class="dt">col =</span> urchin<span class="op">$</span>origin, <span class="dt">ylab =</span> <span class="st">&quot;Taille [mm]&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poids immergé [g]&quot;</span>)
 <span class="kw">legend</span>(<span class="dt">x =</span> <span class="dv">80</span>, <span class="dt">y =</span> <span class="dv">10</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Farm&quot;</span>, <span class="st">&quot;Fishery&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Black&quot;</span>, <span class="st">&quot;Red&quot;</span>), <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-31"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-31-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique  r de base." width="672" />
 <p class="caption">
-Figure 4.13: Nuage de point montrant la variation de la taille en fonction du poids d’oursins et de leur origine avec le système graphique r de base.
+Figure 4.24: Nuage de point montrant la variation de la taille en fonction du poids d’oursins et de leur origine avec le système graphique r de base.
 </p>
 </div>
 <ul>
@@ -278,10 +279,10 @@ Figure 4.13: Nuage de point montrant la variation de la taille en fonction du po
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_sciviews_lattice</span>()
 <span class="kw">xyplot</span>( height <span class="op">~</span><span class="st"> </span>weight, <span class="dt">data =</span> urchin, <span class="dt">groups =</span> origin, 
         <span class="dt">ylab =</span> <span class="st">&quot;Taille [mm]&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Poids immergé [g]&quot;</span>, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-32"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-32"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-32-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique lattice." width="672" />
 <p class="caption">
-Figure 4.14: Nuage de point montrant la variation de la taille en fonction du poids d’oursins et de leur origine avec le système graphique lattice.
+Figure 4.25: Nuage de point montrant la variation de la taille en fonction du poids d’oursins et de leur origine avec le système graphique lattice.
 </p>
 </div>
 <ul>
@@ -290,10 +291,10 @@ Figure 4.14: Nuage de point montrant la variation de la taille en fonction du po
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urchin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> weight, <span class="dt">y =</span> height, <span class="dt">color =</span> origin)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;Poids immergé [g]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Taille [mm]&quot;</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-33"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-33"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-33-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique ggplot2." width="672" />
 <p class="caption">
-Figure 4.15: Nuage de point montrant la variation de la taille en fonction du poids d’oursins et de leur origine avec le système graphique ggplot2.
+Figure 4.26: Nuage de point montrant la variation de la taille en fonction du poids d’oursins et de leur origine avec le système graphique ggplot2.
 </p>
 </div>
 <p>Vous observez rapidement certaines similitudes entre <code>chart</code>, <code>ggplot2</code> et <code>lattice</code>. En effet, la package <code>chart</code> a pour but premier de combiner les meilleures outils présents dans chacun des modes graphiques présentés ci-dessus.</p>

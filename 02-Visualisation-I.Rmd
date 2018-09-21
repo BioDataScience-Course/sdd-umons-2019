@@ -1,7 +1,7 @@
 # Visualisation I {#visu1}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
-knitr::opts_chunk$set(comment = '#')
+knitr::opts_chunk$set(comment = '#', fig.align = "center")
 SciViews::R
 
 ub <- read(file = "urchin_bio", package = "data.io", lang = "fr")
@@ -136,9 +136,7 @@ Vous avez aussi à votre disposition l'aide-mémoire sur la visualisation des do
 Vous trouverez une vidéo ci-dessous vous expliquant la création du nuage de points dans R sur ce jeu de données mais analysant d'autres variables.
 
 ```{r, echo=FALSE}
-library(htmltools)
-library(vembedr)
-embed_youtube(id = "-QzG3Xr202w", width = 600, height = 451)
+vembedr::embed_youtube("-QzG3Xr202w", width = 770, height = 433)
 ```
 
 Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphiques. Soyez curieux et expérimentez par vous-même ! 

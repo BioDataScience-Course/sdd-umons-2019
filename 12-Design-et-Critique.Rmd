@@ -1,7 +1,7 @@
 # Design expérimental & critique statistique {#design}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
-knitr::opts_chunk$set(comment = '#')
+knitr::opts_chunk$set(comment = '#', fig.align = "center")
 ```
 
 Design de l’expérience, choix du nombre de réplicas et puissance d’un test. Critique stat + "bad graphs" + pseudo-réplication. "Challenges" sur base de la critique statistique. Débriefing général.

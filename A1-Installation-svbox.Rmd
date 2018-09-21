@@ -2,7 +2,9 @@
 
 # Installation de la SciViews Box {#svbox}
 
-![](images/svBox-256.png)
+```{r echo=FALSE, out.width="256px", fig.align='right'}
+knitr::include_graphics('images/svBox-256.png')
+```
 
 La SciViews Box est une machine virtuelle (c'est-à-dire, l'équivalent d'un ordinateur complet, mais "dématérialisé" et utilisable à l'intérieur de n'importe quel autre ordinateur physique). Elle est spécialement configurée pour analyser des données et rédiger des documents scientifiques de manière professionnelle.
 
@@ -19,11 +21,11 @@ L'installation est simple, mais il y a quand même quelques pièges. Suivez le g
 
 ## Prérequis
 
-Avant d'installer la SciViews Box 2018, vérifiez que votre ordinateur répond aux conditions requises et qu'il est correctement configuré.
+> Avant d'installer la SciViews Box 2018, vérifiez que votre ordinateur répond aux conditions requises et qu'il est correctement configuré.
 
 ### Ordinateur
 
-Il vous faut:
+Il vous faut :
 
 - Un ordinateur suffisamment puissant équipé d'un **processeur Intel Core i5 ou i7, ou son équivalent AMD**, récent si possible. Les tablettes et les machines basiques avec processeur Atom, par exemple, ne sont pas suffisantes. Idéalement, un processeur bi-coeur - bi-thread, ou quadri-coeur est souhaitable.
 - Au moins **4Go de mémoire vive**. Le double, voire plus, est nécessaire pour analyser des gros jeux de données mais 4Go devraient suffire pour les analyses de tableaux de tailles plus modestes (tout de même comptant des dizaines de colonnes _versus_ des milliers de lignes).
@@ -37,11 +39,19 @@ Il vous faut:
 
 La virtualisation fait appel à un jeu d'instructions disponible sur pratiquement tous les processeurs modernes (Intel VT-x ou AMD-v). Malheureusement, elle est désactivée par défaut sur quasi tous les PC (mais les Macs sont, eux, configurés correctement en sortie d'usine). Tant que ces instructions de virtualisation ne seront pas activées, le programme d'installation de la SciViews Box va bloquer avec le message suivant:
 
+<center>
+
 ![](images/annexe1/msg_no-virtualization.png)
+
+</center>
 
 Même si vous arriviez à l'installer quand même, vous ne pourriez pas la démarrer, et verriez juste le message suivant (issu de la version précédente de la SciViews Box):
 
+<center>
+
 ![](images/annexe1/msg_no-virtualization2.png)
+
+</center>
 
 Pour activer ce jeu d'instructions, il faut aller dans le **BIOS**, c'est-à-dire, le petit programme qui démarre votre ordinateur. Il n'y a malheureusement pas de recette unique car chaque constructeur a sa propre façon de faire. De plus, l'endroit où il faut aller dans les menus de configuration du BIOS diffère aussi d'un ordinateur à l'autre. Cependant, la procédure générale est la suivante:
 
@@ -69,13 +79,21 @@ Vous allez devoir d'abord installer **[VirtualBox](http://www.virtualbox.org)**,
 ```
 
 
-### VirtualBox
+```{r echo=FALSE, out.width="128px", fig.align='right'}
+knitr::include_graphics('images/annexe1/virtualbox.png')
+```
 
-![](images/annexe1/virtualbox.png)
+### VirtualBox
 
 Récupérez l'installateur correspondant à votre système [ici](https://www.virtualbox.org/wiki/Downloads). L'installation avec tous les paramètres par défaut convient. Il se peut que vous voyiez un message vous indiquant que VirtualBox doit réinitialiser le réseau ou une autre ressource. Vérifiez que tous les documents en cours éventuels sont sauvegardés, et ensuite, vous pourrez continuer l'installation sans risques.
 
+<center>
+
 ![](images/annexe1/virtualbox_install_warning.png)
+
+</center>
+
+<br/>
 
 ```{block2, type='win'}
 De même, sous Windows, l'installateur de VirtualBox vous préviendra peut-être qu'il doit installer l'un ou l'autre périphérique. Vous pouvez également continuer sans craintes (précaution prise par Microsoft, mais ces périphériques fonctionnent bien).
@@ -90,25 +108,46 @@ De même, sous Windows, l'installateur de VirtualBox vous préviendra peut-être
 
 La procédure d'installation de la SciViews Box diffère selon le système d'exploitation. Reportez-vous à la sous-section correspondante pour **Windows**, **MacOS** ou **Linux**.
 
-#### Installation sous Windows
 
-![](images/block-win.png)
+```{r echo=FALSE, out.width="128px", fig.align='right'}
+knitr::include_graphics('images/block-win.png')
+```
+
+#### Installation sous Windows
 
 Chargez l'installateur [ici](http://go.sciviews.org/svbox2018a-win) ou, pour les étudiants de l'UMONS, récupérez-le depuis le disque `StudentTemp` de la salle informatique (sous-répertoire ` SDD\Software\SciViews Box 2018`). Pensez aussi à placer le fichier `svbox2018a.vdi.xz` dans le même répertoire que l'installateur `svbox2018a_win_setup.exe`. Sinon vous devrez le télécharger lors de l'installation (il pèse tout de même 2,9Gb)! Lancez l'installation. Vous verrez l'écran suivant (probablement en version française sur votre ordinateur). Vous pouvez cliquer 'Yes'/'Oui'. Il s'agit seulement d'une précaution de Microsoft lorsqu'il ne connait pas l'éditeur du programme à installer, comme c'est le cas ici.
 
+<center>
+
 ![](images/annexe1/svbox_install_warning.png)
+
+</center>
 
 Si le fichier `svbox2018a.vdi.xz` n'est pas présent dans le même répertoire que le programme d'installation, il est à présent téléchargé (cliquez sur "Details" pour suivre l'opération):
 
+<center>
+
 ![](images/annexe1/svbox_install_download.png)
+
+</center>
 
 Une fois le téléchargement terminé, l'installation se poursuit. Vous verrez ensuite qu'il y a encore une opération obligatoire à lancer: la décompression du disque virtuel de la SciViews Box (`svbox2018a.vdi`) via '7z'.
 
+<center>
+
 ![](images/annexe1/svbox_install_done.png)
+
+</center>
 
 En cliquant 'Finish', cette décompression démarre toute seule.
 
+<center>
+
 ![](images/annexe1/svbox_install_uncompress.png)
+
+</center>
+
+<br/>
 
 ```{block, type='warning'}
 N'interrompez surtout pas la décompression du disque virtuel! Sinon, votre SciViews Box ne pourra pas démarrer et vous devrez tout recommencer à zéro en désinstallant et réinstallant complètement l'application.
@@ -116,19 +155,34 @@ N'interrompez surtout pas la décompression du disque virtuel! Sinon, votre SciV
 
 Losque tout est installé, vous avez une nouvelle icône sur votre bureau. Poursuivez à la section suivante pour démarrer et paramétrer votre SciViews Box.
 
+<center>
+
 ![](images/annexe1/svbox_install_desktop_icon.png)
+
+</center>
 
 En option, vous pouvez épingler le nouveau programme dans la barre des tâches. Il sera plus facilement accessible (voir ci-dessous).
 
+<center>
+
 ![](images/annexe1/pin-in-taskbar.gif)
+
+</center>
+
+
+```{r echo=FALSE, out.width="128px", fig.align='right'}
+knitr::include_graphics('images/block-mac.png')
+```
 
 #### Installation sous MacOS
 
-![](images/block-mac.png)
-
 Chargez l'installateur [ici](http://go.sciviews.org/svbox2018a-mac) ou, pour les étudiants de l'UMONS, récupérez-le depuis le disque `StudentTemp` de la salle informatique (sous-répertoire ` SDD/Software/SciViews Box 2018`). Si vous le pouvez, placez le fichier `svbox2018a.vdi.xz` dans le dossier de téléchargements (`Téléchargements` ou `Downloads` selon la version de votre MacOS), sinon, ce fichier sera téléchargé au même emplacement (il pèse 2,9Gb)! Double-cliquez sur `svbox2018a_macos_setup.dmg`. Suivez simplement les instructions. 
 
+<center>
+
 ![](images/annexe1/svbox_mac-install.gif)
+
+</center>
 
 - Déplacez à la souris 'SciViews Box 2018a' vers le dossier 'Applications' dans la fenêtre de l'installeur (cette partie de l'installation est très rapide, donc, vous n'aurez peut-être pas l'impression que quelque chose se passe),
 - Ensuite, toujours dans cette fenêtre, double-cliquez sur le dossier 'Applications' et recherchez l'entrée 'SciViews Box 2018a'. Double-cliquez dessus,
@@ -136,23 +190,34 @@ Chargez l'installateur [ici](http://go.sciviews.org/svbox2018a-mac) ou, pour les
 
 Laissez l'installation se terminer. Cela peut prendre plusieurs minutes. En option, vous pouvez aussi accrocher le programme de manière permanente dans le "Dock" pour le lancer facilement depuis cet endroit. Cliquez bouton droit et dans le menu "Options", sélectionnez l'entrée "Garder dans le Dock".
 
+<center>
+
 ![](images/annexe1/svbox_mac-keep-in-dock.gif)
 
+</center>
+
+
+```{r echo=FALSE, out.width="128px", fig.align='right'}
+knitr::include_graphics('images/block-linux.png')
+```
 
 #### Installation sous Linux
-
-![](images/block-linux.png)
 
 Il est parfaitement possible d'installer la SciViews Box sous Linux. Cependant, un programme d'installation simplifié n'a pas encore été développé pour ce système. _Voyez au cas par cas avec vos enseignants pour qu'ils vous expliquent comment installer la SciViews Box manuellement sous Linux._
 
 
 ### Github Desktop
 
+<center>
+
 ![](images/annexe1/github-desktop-website.png)
+
+</center>
 
 Dans ce cours, nous utilisons **Git** et **Github** pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. [Github Desktop](https://desktop.github.com) facilite grandement la gestion de vos projets sous Git. Ce programme gratuit est très facile à installer: son téléchargement et le lancement de son installateur ne pose pas de problèmes particuliers. _Notez toutefois que ce programme n'est pas encore disponible pour Linux._
 
 **A présent, tous les ligiciels requis sont installés... Il ne reste plus que quelques petites opérations de configuration à réaliser. Voyez ceci à la section suivante.**
+
 
 ## Configuration
 
@@ -167,7 +232,13 @@ L'application que vous venez d'installer est un **lanceur rapide** qui facilite 
 
 Le message en rouge n'apparait pas systématiquement. Il signale des éléments importants. Ici, il indique que la configuration de la SciViews Box doit encore être faite, et pour cela, vous devez (1) **la démarrer** à l'aide du gros bouton en haut à gauche, (2) **vous logger** (mot de passe = **sv**), et (3) **répondre `Yes`** lorsqu'une boite de dialogue vous propose d'installer 'svbox2018a v1.0.0'.
 
+<center>
+
 ![](images/annexe1/autoinstall-question.png)
+
+</center>
+
+<br/>
 
 ```{block, type='warning'}
 Cette dernière étape est importante! Ne cliquez pas `No` ici, sous peine de ne pas avoir une machine virtuelle configurée comme celle de vos collègues!
@@ -175,20 +246,32 @@ Cette dernière étape est importante! Ne cliquez pas `No` ici, sous peine de ne
 
 Le mot de passe vous sera redemandé, et ensuite, l'installation se poursuivra. Elle pourra prendre plusieurs minutes. Soyez patient. Vous pourrez ouvrir la fenêtre du terminal où s'opère le travail pour en suivre la progression, si vous le souhaitez.
 
+<center>
+
 ![](images/annexe1/svbox-install_terminal.png)
+
+</center>
 
 A la fin vous verrez la fenêtre du configurateur de la SciViews Box apparaître.
 
 
 ### Configurateur de la Box
 
+<center>
+
 ![](images/annexe1/svbox-config1.png)
+
+</center>
 
 Prenez le temps de parcourir les différents éléments dans cette fenêtre^[Si jamais vous voulez retourner plus tard au configurateur de la SciViews Box, vous n'aurez qu'à cliquer sur son icône tout en haut à droite dans la barre supérieure.].
 
 La partie à gauche en haut concerne la **configuration du clavier**. En effet, la machine virtuelle utilisera votre clavier physique, mais elle n'a aucun moyen de déterminer de quel modèle il est. Vous allez donc l'indiquer maintenant. Utilisez la zone de texte intitulée `Test area (type here)`  pour vérifier que la machine virtuelle interprète correctement les touches de votre clavier. Pour le changer, cliquez sur le bouton `Change keyboard layout`. 
 
+<center>
+
 ![](images/annexe1/config-keyboard.png)
+
+</center>
 
 La boite de dialogue de sélection du clavier apparait. Elle propose des configurations différentes sous forme de représentations graphiques, avec les touches caractéristiques surlignées en jaune. Vous pouvez entrer les premières lettres du type de clavier pour aller directement à la configuration correspondante dans la liste (ex.: entrez `be` pour un clavier belge). Si votre clavier ne se trouve pas dans les templates les plus courants, configurez-le à l'aide du bouton `Other keyboard...`. Fermez cette fenêtre pour retourner au configurateur lorsque vous aurez fini.
 
@@ -232,7 +315,11 @@ Durant nos cours de Science des Données à l'UMONS, nous utiliserons **Github**
 
 Vous allez donc vous créer un compte sur Github en cliquant sur le bouton correspondant, et en indiquant un login et un mot de passe. **Nous vous demandons également d'utiliser expressément et uniquement votre adresse email UMONS ici : prénom.nom@student.umons.ac.be.** En effet, ce sera, pour nous, notre seul moyen de vous identifier sans erreur sur Github lorsque nous interviendrons pour vous conseiller et/ou pour corriger vos travaux.
 
+<center>
+
 ![](images/annexe1/github-login.png)
+
+</center>
 
 Une fois enregistré sur le site de Github, reportez votre login et votre adresse email dans le configurateur de la SciViews Box, pour que Git puisse vous identifier correctement en local^[A la première utilisation de Git à l'intérieur du logiciel **RStudio**, votre login et votre mot de passe vous seront également redemandés. De même, vous devrez également fournir ces informations dans **Github Desktop** et la première fois que vous naviguerez vers https://github.com depuis le navigateur Web de votre PC hôte. Mais ensuite, vous accèderez immédiatement au service.].
 
@@ -240,7 +327,11 @@ Une fois enregistré sur le site de Github, reportez votre login et votre adress
 
 Une fois tout ceci effectué vous pourrez cliquer sur le bouton `OK` de la fenêtre du configurateur SciViews Box. La machine virtuelle devra redémarrer pour appliquer toutes les modifications de manière durable. Cliquez également `OK` donc dans la boite de dialogue qui apparait ensuite (sinon, elle redémarrera toute seule après 30 sec) :
 
+<center>
+
 ![](images/annexe1/svbox-config-reboot.png)
+
+</center>
 
 
 ### Installation des tutoriaux
@@ -259,7 +350,11 @@ Nous allons maintenant installer les tutoriaux liés à ces cours de science des
 
 Si le message n'apparait pas, voici comment se délogger (**log out**).
 
+<center>
+
 ![](images/annexe1/svbox-exit.gif)
+
+</center>
 
 Ensuite, entrez votre mot de passe comme d'habitude pour vous relogger... A ce moment, le message doit apparaitre, et l'installation doit se faire après avoir cliqué le bouton `Yes`.
 
@@ -270,7 +365,11 @@ Ensuite, entrez votre mot de passe comme d'habitude pour vous relogger... A ce m
 
 Le disque physique de votre ordinateur hôte, et le disque virtuel de la SciViews Box sont deux choses différentes. Cela signifie que vous avez, en réalité deux ordinateurs et deux disques indépendants. Donc, vous n'accédez **pas** aux fichiers d'une machine à partir de l'autre^[Le presse-papier est synchronisé entre les deux machines pour le texte qui y est copié.]. Ce n'est pas pratique, et ce n'est pas vrai pour un dossier particuler nommé **shared**.
 
+<center>
+
 ![](images/annexe1/svbox-diagram.svg)
+
+</center>
 
 Ce dossier **shared** est synchronisé en temps réel entre les deux systèmes. C'est donc l'endroit idéal pour échanger des données et pour faire collaborer vos deux machines. Inutile de préciser, donc, que nous travaillerons essentiellement à l'intérieur de ce dossier. Un sous-dossier, nommé **projects** sera utilisé pour héberger toutes nos analyses. Il est donc primordial d'y accéder facilement à la fois depuis l'ordinateur hôte et depuis la SciViews Box. Vous allez donc apprendre à retrouver ce dossier **projects** facilement.
 
@@ -304,6 +403,10 @@ Les deux moyens d'accéder au dossier **projects** dans la SciViews Box et comme
 
 **A retenir:** le dossier **shared** et ses sous-dossiers comme **projects** sont considérés un peu comme des dossiers réseau par la SciViews Box. Cela implique que certaines fonctions du système de fichiers n'y sont pas accessibles. Parmi celles-ci, la **poubelle**. Donc, vous ne pourrez qu'effacer complètement des items en cliquant bouton droit et sélectionnant 'Delete' dans le menu contextuel dans le gestionnaire de fichiers. Si vous essayer de placer des fichiers ou dossiers depuis **shared** dans la poubelle de la SciViews Box, cela vous sera refusé (voir copie d'écran ci-dessous). _Par contre, cela fonctionne très bien depuis l'ordinateur hôte._
 
+<center>
+
 ![](images/annexe1/shared_no-trash.png)
+
+</center>
 
 Un tout dernier point concernant les ordinateurs de la salle de T.P. de l'UMONS. Pour des questions de performance, la machine virtuelle SciViews Box, et le dossier **shared** ne sont **pas** sur votre compte, mais directement sur le disque de l'ordinateur. Cela signifie qu'ils ne sont pas transportables vers un autre ordinateur. Vous pouvez créer une copie de **shared** dans **mes documents** ou sur une clé USB pour les transporter vers un autre ordinateur... mais nous verrons que cela n'est pas nécessaire pour tout ce que vous stockerez sur Github. En effet, vous avez accès à ces contenus depuis n'importe où via n'importe quelle connexion internet.

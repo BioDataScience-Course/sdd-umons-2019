@@ -1,7 +1,7 @@
 # Visualisation II {#visu2}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
-knitr::opts_chunk$set(comment = '#')
+knitr::opts_chunk$set(comment = '#', fig.align = "center")
 SciViews::R
 library(viridis)
 iris <- read(file = "iris", package = "datasets", lang = "fr")
@@ -294,10 +294,12 @@ chart(zp, class ~ size) +
 
 ## A vous de jouer !
 
-![](images/hex_BioDataScience.png){width="15%"}
+```{block2, type='bdd'}
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
 
-Lancez votre machine virtuelle, ouvrez Rstudio puis lancez l'instruction suivante
-`BioDataScience::run("...")` (package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience)).
+    BioDataScience::run("...")
 
+```
 
-Un squelette de projet RStudio vous a été fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le l'histogramme et le graphique de densité graphique que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres visualisations graphiques.
+Un squelette de projet RStudio vous a été fournit via une tâche Github Classroom, y compris une organisation des fichiers et des jeux de données types. Votre objectif est de comprendre les données proposées en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez l'histogramme et le graphique de densité que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres visualisations graphiques.
+

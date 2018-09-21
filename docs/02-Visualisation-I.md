@@ -36,7 +36,7 @@ $$y \sim x$$
 
 que l'on peut lire "y en fonction de x". Pour les deux variables numériques _x_ et _y_, la représentation graphique la plus classique est le **nuage de points** (voir Fig. \@ref(fig:first-scatterplot) pour un exemple).
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="02-Visualisation-I_files/figure-html/first-scatterplot-1.svg" alt="Exemple de graphique en nuage de points. Des éléments essentiels sont ici mis en évidence en couleurs. \label{np_intro}" width="672" />
 <p class="caption">(\#fig:first-scatterplot)Exemple de graphique en nuage de points. Des éléments essentiels sont ici mis en évidence en couleurs. \label{np_intro}</p>
 </div>
@@ -83,7 +83,7 @@ chart(urchin, height ~ weight) +
   geom_point()
 ```
 
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" width="672" />
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 La fonction `chart()` requiert comme argument le jeu de donnée (`urchin`, c'est un objet `dataframe` ou `tibble` dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom des variables que vous voulez sur l'axe des ordonnées à gauche et des abscisses à droite de la formule. Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter `height` en fonction de `weight`, la hauteir en fonction de la masse des oursins. Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons les métérialiser sur le graphique. Pour un nuage de points, nous voulons les représenter sous forme de ... points ! Donc, nous devons ajouter la fonction `geom_point()` pour indiquer cela.
@@ -114,7 +114,7 @@ D <- A + scale_x_continuous(limits = c(-400, 400)) + scale_y_continuous(limits =
 combine_charts(list(A, B, C, D), font.label = list(size = 14, align = "hv"))
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="Piège du nuage de points. A) graphique initialemontrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification de l'échelle de l'axe X et de l'axe Y." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-3)Piège du nuage de points. A) graphique initialemontrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification de l'échelle de l'axe X et de l'axe Y.</p>
 </div>
@@ -136,7 +136,7 @@ B <- chart(urchin, log(height) ~  log(weight)) +
 combine_charts(list(A, B), font.label = list(size = 14, align = "hv"))
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="02-Visualisation-I_files/figure-html/unnamed-chunk-4-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins" width="672" />
 <p class="caption">(\#fig:unnamed-chunk-4)A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins</p>
 </div>
@@ -158,7 +158,7 @@ Vous avez aussi à votre disposition l'aide-mémoire sur la visualisation des do
 
 Vous trouverez une vidéo ci-dessous vous expliquant la création du nuage de points dans R sur ce jeu de données mais analysant d'autres variables.
 
-<!--html_preserve--><iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="600" height="451" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
+<!--html_preserve--><iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
 Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphiques. Soyez curieux et expérimentez par vous-même ! 
 

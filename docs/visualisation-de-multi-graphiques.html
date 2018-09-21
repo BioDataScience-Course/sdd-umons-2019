@@ -217,7 +217,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
 <li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
 <li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#configurateur-de-la-box"><i class="fa fa-check"></i><b>A.3.2</b> Configurateur de la Box</a></li>
-<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.3</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#installation-des-tutoriaux"><i class="fa fa-check"></i><b>A.3.3</b> Installation des tutoriaux</a></li>
+<li class="chapter" data-level="A.3.4" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.4</b> Accès aux fichiers</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
@@ -255,19 +256,19 @@ ChickWeight &lt;-<span class="st"> </span><span class="kw">read</span>(<span cla
 <span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(ChickWeight, <span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>Time) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-27"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-27-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps." width="672" />
 <p class="caption">
-Figure 4.9: Nuage de point montrant la variation de la masse de poulets au cours du temps.
+Figure 4.20: Nuage de point montrant la variation de la masse de poulets au cours du temps.
 </p>
 </div>
 <p>Le graphique ci-dessus peut par exemple être simplifié avec les facets. L’information que l’on souhaite partager est la même mais les choix graphiques rendent sa lecture plus aisée. De plus, la fentre graphique a la même taille par défault que pour un seul graphique. De ce fait, réaliser de multiples graphiques peut rendre sa lecture impossible par une taille trop faible.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(ChickWeight, <span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet ) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-28"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-28-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4)." width="672" />
 <p class="caption">
-Figure 4.10: Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4).
+Figure 4.21: Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4).
 </p>
 </div>
 <p>Vous observez que les échelles en abscisse et en ordonnée sont similaires. Cela permet une meilleure comparaison.</p>
@@ -285,10 +286,10 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, <span clas
 <span class="st">  </span><span class="kw">geom_point</span>()
 <span class="co"># Combinaison des graphiques</span>
 ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(a, b, <span class="dt">common.legend =</span> <span class="ot">TRUE</span>, <span class="dt">legend =</span> <span class="st">&quot;bottom&quot;</span>, <span class="dt">align =</span> <span class="st">&quot;v&quot;</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-29"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-29"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-29-1.svg" alt="A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine." width="672" />
 <p class="caption">
-Figure 4.11: A) Nuage de point montrant la variation de la masse d’oursins en fonction de la taille et de leur origine. B) Nuage de point montrant la variation de la masse d’oursins en fonction de la masse des parties solides et de leur origine.
+Figure 4.22: A) Nuage de point montrant la variation de la masse d’oursins en fonction de la taille et de leur origine. B) Nuage de point montrant la variation de la masse d’oursins en fonction de la masse des parties solides et de leur origine.
 </p>
 </div>
 <p>Il existe d’autres fonctions permettant de combiner plusieurs graphiquescomme <a href="https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html"><code>plot_grid()</code></a> du package<code>cowplot</code>.</p>

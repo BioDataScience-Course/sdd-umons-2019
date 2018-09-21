@@ -1,7 +1,8 @@
 # Données qualitatives {#qualit}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
-knitr::opts_chunk$set(comment = '#', echo = FALSE, message = FALSE, results = 'hide')
+knitr::opts_chunk$set(comment = '#', fig.align = "center", echo = FALSE,
+  message = FALSE, results = 'hide')
 SciViews::R
 library(knitr)
 library(ggpubr)

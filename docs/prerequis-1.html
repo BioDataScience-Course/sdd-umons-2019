@@ -207,10 +207,12 @@
             <section class="normal" id="section-">
 <div id="prerequis-1" class="section level2">
 <h2><span class="header-section-number">A.1</span> Prérequis</h2>
+<blockquote>
 <p>Avant d’installer la SciViews Box 2018, vérifiez que votre ordinateur répond aux conditions requises et qu’il est correctement configuré.</p>
+</blockquote>
 <div id="ordinateur" class="section level3">
 <h3><span class="header-section-number">A.1.1</span> Ordinateur</h3>
-<p>Il vous faut:</p>
+<p>Il vous faut :</p>
 <ul>
 <li>Un ordinateur suffisamment puissant équipé d’un <strong>processeur Intel Core i5 ou i7, ou son équivalent AMD</strong>, récent si possible. Les tablettes et les machines basiques avec processeur Atom, par exemple, ne sont pas suffisantes. Idéalement, un processeur bi-coeur - bi-thread, ou quadri-coeur est souhaitable.</li>
 <li>Au moins <strong>4Go de mémoire vive</strong>. Le double, voire plus, est nécessaire pour analyser des gros jeux de données mais 4Go devraient suffire pour les analyses de tableaux de tailles plus modestes (tout de même comptant des dizaines de colonnes <em>versus</em> des milliers de lignes).</li>
@@ -223,15 +225,19 @@
 <div id="activation-de-la-virtualisation" class="section level3">
 <h3><span class="header-section-number">A.1.2</span> Activation de la virtualisation</h3>
 <p>La virtualisation fait appel à un jeu d’instructions disponible sur pratiquement tous les processeurs modernes (Intel VT-x ou AMD-v). Malheureusement, elle est désactivée par défaut sur quasi tous les PC (mais les Macs sont, eux, configurés correctement en sortie d’usine). Tant que ces instructions de virtualisation ne seront pas activées, le programme d’installation de la SciViews Box va bloquer avec le message suivant:</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/msg_no-virtualization.png" />
 
 </div>
+</center>
 <p>Même si vous arriviez à l’installer quand même, vous ne pourriez pas la démarrer, et verriez juste le message suivant (issu de la version précédente de la SciViews Box):</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/msg_no-virtualization2.png" />
 
 </div>
+</center>
 <p>Pour activer ce jeu d’instructions, il faut aller dans le <strong>BIOS</strong>, c’est-à-dire, le petit programme qui démarre votre ordinateur. Il n’y a malheureusement pas de recette unique car chaque constructeur a sa propre façon de faire. De plus, l’endroit où il faut aller dans les menus de configuration du BIOS diffère aussi d’un ordinateur à l’autre. Cependant, la procédure générale est la suivante:</p>
 <ul>
 <li>Redémarrer l’ordinateur,</li>

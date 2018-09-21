@@ -203,7 +203,7 @@ skimr::skim(tg)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -211,7 +211,7 @@ skimr::skim(tg)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -248,7 +248,7 @@ ggarrange(a,b, labels = "auto")
 # Warning: Continuous x aesthetic -- did you forget aes(group=...)?
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ## Transformation des données
@@ -302,7 +302,7 @@ u4 <- ggtexttable(head(ub4, n = 4), theme = ttheme("mGreen"))
 ggpubr::ggarrange(u1, u2, u3, u4, labels = "auto")
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
 <p class="caption">(\#fig:unnamed-chunk-15)a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4</p>
 </div>
@@ -321,7 +321,7 @@ a <- chart(ub2, formula = height ~ skeleton %col=% origin) +
 ggarrange(a,u2, labels = "auto", widths = c(2, 1))
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-16-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-16)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.</p>
 </div>
@@ -346,7 +346,7 @@ a <- chart(u, formula = height ~ skeleton %col=% origin ) +
 ggarrange(a,u2,labels = "auto", widths = c(2, 1))
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-18-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-18)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins.</p>
 </div>
@@ -375,7 +375,7 @@ a <- chart(u, formula = height ~ skeleton %col=% origin) +
 ggarrange(a,u2,labels = "auto", widths = c(2, 1))
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-20-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-20)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus.</p>
 </div>
@@ -401,7 +401,7 @@ a <- chart(u, formula = height ~ skeleton %col=% origin) +
 ggarrange(a, u2,labels = "auto", widths = c(2, 1))
 ```
 
-<div class="figure">
+<div class="figure" style="text-align: center">
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-22-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-22)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus.</p>
 </div>
@@ -475,7 +475,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 Cette fonction n'a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d'une ou plusieurs variable de type facteur.
@@ -491,7 +491,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -504,7 +504,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 #### Pièges et astuces
@@ -521,7 +521,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ### Pièges et astuces
@@ -556,7 +556,7 @@ ub <- select(ub, origin, solid_parts, test, v2_sqrt)
 ggtexttable(head(ub, n = 6), theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-31-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-31-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -582,7 +582,7 @@ ub1 %>.%
 ggtexttable(head(ub1, n = 6), theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 Le pipe est un outil très intéressant lors du résumé de données par une ou plusieurs variables facteurs.
@@ -597,7 +597,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -614,7 +614,7 @@ tg %>.%
            cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" />
 
 #### Pour en savoir plus 
 
@@ -646,7 +646,7 @@ chart(tg, formula = len ~ dose %fill=% dose) +
         axis.text = element_text(size = 14))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-36-1.svg" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 

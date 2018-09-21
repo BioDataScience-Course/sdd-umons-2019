@@ -1,7 +1,7 @@
 # Probabilités & distributions {#proba}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
-knitr::opts_chunk$set(comment = '#')
+knitr::opts_chunk$set(comment = '#', fig.align = "center")
 ```
 
 On part du paradoxe bayésien (effet d’un test de dépistage en fonction de la prévalence d’une maladie) -> probabilités et calculs de probabilités. Généralisation = lois de distributions. Distributions discrètes et continues. Principales lois de distributions et utilisation en pratique. Evaluation par les pairs d’un rapport réalisé jusqu’ici.

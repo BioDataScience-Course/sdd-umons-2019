@@ -3,7 +3,7 @@
 # Introduction {#intro}
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = "#")
+knitr::opts_chunk$set(comment = "#", fig.align = "center")
 ```
 
 
@@ -58,12 +58,12 @@ La **SciViews Box** est une machine virtuelle (un ordinateur complet, mais total
 
 Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à l'installation et la configuration de la SciViews Box.
 
-![Logo de la SciViews box](images/svBox-256.png)
-
-Etant préconfigurée, son installation est relativement facile et rapide.
+```{r echo=FALSE, out.width="256px", fig.cap="Logo de la SciViews Box"}
+knitr::include_graphics('images/svBox-256.png')
+```
 
 ```{block, type = 'bdd'}
-Une fois logé dans la machine virtuelle, réalisez l'activité : **Découverte de la machine virtuelle**
+Une fois loggé dans la machine virtuelle, réalisez l'activité : **Découverte de la machine virtuelle**
 <https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
@@ -72,7 +72,7 @@ Après avoir réalisé l'activité, un document récapitulatif est mis à votre 
 
 ### RStudio
 
-RStudio est l'outil au sein de la SciViews Box que vous allez utilisez le plus fréquement durant ce cours. 
+RStudio est l'outil au sein de la SciViews Box que vous allez utilisez le plus fréquemment durant ce cours. 
 
 ![](images/sdd1_01/rstudio.gif)
 

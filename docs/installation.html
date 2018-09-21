@@ -212,17 +212,17 @@
 Vous allez devoir d’abord installer <strong><a href="http://www.virtualbox.org">VirtualBox</a></strong>, un logiciel gratuit et libre qui se chargera de gérer votre machine virtuelle. Ensuite, vous installerez la <strong>SciViews Box</strong> en elle-même. Pour finir, vous aurez aussi besoin de <strong><a href="https://desktop.github.com">Github Desktop</a></strong>.
 </p>
 </div>
+<p><img src="images/annexe1/virtualbox.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
 <div id="virtualbox" class="section level3">
 <h3><span class="header-section-number">A.2.1</span> VirtualBox</h3>
-<div class="figure">
-<img src="images/annexe1/virtualbox.png" />
-
-</div>
 <p>Récupérez l’installateur correspondant à votre système <a href="https://www.virtualbox.org/wiki/Downloads">ici</a>. L’installation avec tous les paramètres par défaut convient. Il se peut que vous voyiez un message vous indiquant que VirtualBox doit réinitialiser le réseau ou une autre ressource. Vérifiez que tous les documents en cours éventuels sont sauvegardés, et ensuite, vous pourrez continuer l’installation sans risques.</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/virtualbox_install_warning.png" />
 
 </div>
+</center>
+<p><br/></p>
 
 <div class="win">
 <p>De même, sous Windows, l’installateur de VirtualBox vous préviendra peut-être qu’il doit installer l’un ou l’autre périphérique. Vous pouvez également continuer sans craintes (précaution prise par Microsoft, mais ces périphériques fonctionnent bien).</p>
@@ -240,85 +240,95 @@ Vous allez devoir d’abord installer <strong><a href="http://www.virtualbox.org
 
 </div>
 <p>La procédure d’installation de la SciViews Box diffère selon le système d’exploitation. Reportez-vous à la sous-section correspondante pour <strong>Windows</strong>, <strong>MacOS</strong> ou <strong>Linux</strong>.</p>
+<p><img src="images/block-win.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
 <div id="installation-sous-windows" class="section level4">
 <h4><span class="header-section-number">A.2.2.1</span> Installation sous Windows</h4>
-<div class="figure">
-<img src="images/block-win.png" />
-
-</div>
 <p>Chargez l’installateur <a href="http://go.sciviews.org/svbox2018a-win">ici</a> ou, pour les étudiants de l’UMONS, récupérez-le depuis le disque <code>StudentTemp</code> de la salle informatique (sous-répertoire <code>SDD\Software\SciViews Box 2018</code>). Pensez aussi à placer le fichier <code>svbox2018a.vdi.xz</code> dans le même répertoire que l’installateur <code>svbox2018a_win_setup.exe</code>. Sinon vous devrez le télécharger lors de l’installation (il pèse tout de même 2,9Gb)! Lancez l’installation. Vous verrez l’écran suivant (probablement en version française sur votre ordinateur). Vous pouvez cliquer ‘Yes’/‘Oui’. Il s’agit seulement d’une précaution de Microsoft lorsqu’il ne connait pas l’éditeur du programme à installer, comme c’est le cas ici.</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/svbox_install_warning.png" />
 
 </div>
+</center>
 <p>Si le fichier <code>svbox2018a.vdi.xz</code> n’est pas présent dans le même répertoire que le programme d’installation, il est à présent téléchargé (cliquez sur “Details” pour suivre l’opération):</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/svbox_install_download.png" />
 
 </div>
+</center>
 <p>Une fois le téléchargement terminé, l’installation se poursuit. Vous verrez ensuite qu’il y a encore une opération obligatoire à lancer: la décompression du disque virtuel de la SciViews Box (<code>svbox2018a.vdi</code>) via ‘7z’.</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/svbox_install_done.png" />
 
 </div>
+</center>
 <p>En cliquant ‘Finish’, cette décompression démarre toute seule.</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/svbox_install_uncompress.png" />
 
 </div>
+</center>
+<p><br/></p>
 <div class="warning">
 <p>
 N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre SciViews Box ne pourra pas démarrer et vous devrez tout recommencer à zéro en désinstallant et réinstallant complètement l’application.
 </p>
 </div>
 <p>Losque tout est installé, vous avez une nouvelle icône sur votre bureau. Poursuivez à la section suivante pour démarrer et paramétrer votre SciViews Box.</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/svbox_install_desktop_icon.png" />
 
 </div>
+</center>
 <p>En option, vous pouvez épingler le nouveau programme dans la barre des tâches. Il sera plus facilement accessible (voir ci-dessous).</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/pin-in-taskbar.gif" />
 
 </div>
+</center>
+<p><img src="images/block-mac.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
 </div>
 <div id="installation-sous-macos" class="section level4">
 <h4><span class="header-section-number">A.2.2.2</span> Installation sous MacOS</h4>
-<div class="figure">
-<img src="images/block-mac.png" />
-
-</div>
 <p>Chargez l’installateur <a href="http://go.sciviews.org/svbox2018a-mac">ici</a> ou, pour les étudiants de l’UMONS, récupérez-le depuis le disque <code>StudentTemp</code> de la salle informatique (sous-répertoire <code>SDD/Software/SciViews Box 2018</code>). Si vous le pouvez, placez le fichier <code>svbox2018a.vdi.xz</code> dans le dossier de téléchargements (<code>Téléchargements</code> ou <code>Downloads</code> selon la version de votre MacOS), sinon, ce fichier sera téléchargé au même emplacement (il pèse 2,9Gb)! Double-cliquez sur <code>svbox2018a_macos_setup.dmg</code>. Suivez simplement les instructions.</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/svbox_mac-install.gif" />
 
 </div>
+</center>
 <ul>
 <li>Déplacez à la souris ‘SciViews Box 2018a’ vers le dossier ‘Applications’ dans la fenêtre de l’installeur (cette partie de l’installation est très rapide, donc, vous n’aurez peut-être pas l’impression que quelque chose se passe),</li>
 <li>Ensuite, toujours dans cette fenêtre, double-cliquez sur le dossier ‘Applications’ et recherchez l’entrée ‘SciViews Box 2018a’. Double-cliquez dessus,</li>
 <li>Si vous avez chargé l’installateur depuis Internet, il se peut que votre Mac indique un message et vous empêche de l’ouvrir. Dans ce cas, il faut cliquer avec le bouton droit de la souris et selectionner “Ouvrir” dans le menu contextuel <strong>tout en maintenant la touche <code>ALT</code> enfoncée</strong>, et ensuite cliquer “Ouvrir” dans la boite qui s’affiche.</li>
 </ul>
 <p>Laissez l’installation se terminer. Cela peut prendre plusieurs minutes. En option, vous pouvez aussi accrocher le programme de manière permanente dans le “Dock” pour le lancer facilement depuis cet endroit. Cliquez bouton droit et dans le menu “Options”, sélectionnez l’entrée “Garder dans le Dock”.</p>
+<center>
 <div class="figure">
 <img src="images/annexe1/svbox_mac-keep-in-dock.gif" />
 
 </div>
+</center>
+<p><img src="images/block-linux.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
 </div>
 <div id="installation-sous-linux" class="section level4">
 <h4><span class="header-section-number">A.2.2.3</span> Installation sous Linux</h4>
-<div class="figure">
-<img src="images/block-linux.png" />
-
-</div>
 <p>Il est parfaitement possible d’installer la SciViews Box sous Linux. Cependant, un programme d’installation simplifié n’a pas encore été développé pour ce système. <em>Voyez au cas par cas avec vos enseignants pour qu’ils vous expliquent comment installer la SciViews Box manuellement sous Linux.</em></p>
 </div>
 </div>
 <div id="github-desktop" class="section level3">
 <h3><span class="header-section-number">A.2.3</span> Github Desktop</h3>
+<center>
 <div class="figure">
 <img src="images/annexe1/github-desktop-website.png" />
 
 </div>
+</center>
 <p>Dans ce cours, nous utilisons <strong>Git</strong> et <strong>Github</strong> pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. <a href="https://desktop.github.com">Github Desktop</a> facilite grandement la gestion de vos projets sous Git. Ce programme gratuit est très facile à installer: son téléchargement et le lancement de son installateur ne pose pas de problèmes particuliers. <em>Notez toutefois que ce programme n’est pas encore disponible pour Linux.</em></p>
 <p><strong>A présent, tous les ligiciels requis sont installés… Il ne reste plus que quelques petites opérations de configuration à réaliser. Voyez ceci à la section suivante.</strong></p>
 </div>

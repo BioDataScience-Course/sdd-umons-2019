@@ -56,18 +56,19 @@ La **SciViews Box** est une machine virtuelle (un ordinateur complet, mais total
 
 Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à l'installation et la configuration de la SciViews Box.
 
-![Logo de la SciViews box](images/svBox-256.png)
-
-Etant préconfigurée, son installation est relativement facile et rapide.
+<div class="figure" style="text-align: center">
+<img src="images/svBox-256.png" alt="Logo de la SciViews Box" width="256px" />
+<p class="caption">(\#fig:unnamed-chunk-1)Logo de la SciViews Box</p>
+</div>
 
 <div class="bdd">
-<p>Une fois logé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf</a></p>
+<p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf</a></p>
 <p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md</a></p>
 </div>
 
 ### RStudio
 
-RStudio est l'outil au sein de la SciViews Box que vous allez utilisez le plus fréquement durant ce cours. 
+RStudio est l'outil au sein de la SciViews Box que vous allez utilisez le plus fréquemment durant ce cours. 
 
 ![](images/sdd1_01/rstudio.gif)
 

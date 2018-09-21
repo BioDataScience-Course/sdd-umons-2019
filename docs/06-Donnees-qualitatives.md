@@ -18,7 +18,7 @@ Vos objectifs pour ce module sont :
 ## Découpage en classe
 
 
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-1-1.svg" width="672" />
+<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-1-1.svg" width="672" style="display: block; margin: auto;" />
 
 ## Tableaux de contingences
 

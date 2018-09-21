@@ -20,7 +20,7 @@ cover-image: "images/front-cover.png"
 # Préambule {-}
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(comment = "#")
+knitr::opts_chunk$set(comment = "#", fig.align = "center")
 # Automatically create a bib database for R packages
 knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
 ```

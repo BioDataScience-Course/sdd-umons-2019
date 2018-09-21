@@ -1,7 +1,7 @@
 # Visualisation III {#visu3}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
-knitr::opts_chunk$set(comment = '#')
+knitr::opts_chunk$set(comment = '#', fig.align = "center")
 SciViews::R
 library(knitr)
 library(viridis)
@@ -643,7 +643,9 @@ Vous observez rapidement certaines similitudes entre `chart`, `ggplot2` et `latt
 
 ## A vous de jouer !
 
-![](images/hex_BioDataScience.png){width="15%"}
-Lancez votre machine virtuelle, ouvrez Rstudio puis lancez l'instruction suivante
-`BioDataScience::run("...")` (package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience)).
+```{block2, type='bdd'}
+Pour accéder au tutorial d'évaluation de vos compétences, ouvrez RStudio et entrez l'instruction suivante dans la fenêtre console :
 
+    BioDataScience::run("...")
+
+```

@@ -217,7 +217,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
 <li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
 <li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#configurateur-de-la-box"><i class="fa fa-check"></i><b>A.3.2</b> Configurateur de la Box</a></li>
-<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.3</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#installation-des-tutoriaux"><i class="fa fa-check"></i><b>A.3.3</b> Installation des tutoriaux</a></li>
+<li class="chapter" data-level="A.3.4" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.4</b> Accès aux fichiers</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
@@ -274,10 +275,10 @@ u4 &lt;-<span class="st"> </span><span class="kw">ggtexttable</span>(<span class
 
 
 ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(u1, u2, u3, u4, <span class="dt">labels =</span> <span class="st">&quot;auto&quot;</span>)</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-15"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
 <p class="caption">
-Figure 4.1: a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4
+Figure 5.1: a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4
 </p>
 </div>
 </div>
@@ -288,10 +289,10 @@ Figure 4.1: a) Résumé de la sélection effectué ub1, b) Résumé de la sélec
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(ub2, <span class="dt">formula =</span> height <span class="op">~</span><span class="st"> </span>skeleton <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 <span class="kw">ggarrange</span>(a,u2, <span class="dt">labels =</span> <span class="st">&quot;auto&quot;</span>, <span class="dt">widths =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-16"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-16-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
 <p class="caption">
-Figure 5.1: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.
+Figure 5.2: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.
 </p>
 </div>
 <p>Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau.</p>
@@ -304,10 +305,10 @@ Figure 5.1: a) Nuage de points montrant la variation de la hauteur du test des o
 a &lt;-<span class="st"> </span><span class="kw">chart</span>(u, <span class="dt">formula =</span> height <span class="op">~</span><span class="st"> </span>skeleton <span class="op">%col=%</span><span class="st"> </span>origin ) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 <span class="kw">ggarrange</span>(a,u2,<span class="dt">labels =</span> <span class="st">&quot;auto&quot;</span>, <span class="dt">widths =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-18"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-18-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
 <p class="caption">
-Figure 5.2: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins.
+Figure 5.3: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins.
 </p>
 </div>
 <p>Vous pouvez utiliser une variable numérique pour filtrer les données.</p>
@@ -322,10 +323,10 @@ Figure 5.2: a) Nuage de points montrant la variation de la hauteur du test des o
 a &lt;-<span class="st"> </span><span class="kw">chart</span>(u, <span class="dt">formula =</span> height <span class="op">~</span><span class="st"> </span>skeleton <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 <span class="kw">ggarrange</span>(a,u2,<span class="dt">labels =</span> <span class="st">&quot;auto&quot;</span>, <span class="dt">widths =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-20"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-20-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
 <p class="caption">
-Figure 4.3: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur les tailles des individus.
+Figure 5.4: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur les tailles des individus.
 </p>
 </div>
 <p>Vous pouvez combiner différents filtres :</p>
@@ -338,10 +339,10 @@ Figure 4.3: a) Nuage de points montrant la variation de la hauteur du test des o
 a &lt;-<span class="st"> </span><span class="kw">chart</span>(u, <span class="dt">formula =</span> height <span class="op">~</span><span class="st"> </span>skeleton <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 <span class="kw">ggarrange</span>(a, u2,<span class="dt">labels =</span> <span class="st">&quot;auto&quot;</span>, <span class="dt">widths =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>))</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-22"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-22-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
 <p class="caption">
-Figure 4.4: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins et sur les tailles des individus.
+Figure 5.5: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins et sur les tailles des individus.
 </p>
 </div>
 <div id="pieges-et-astuces-11" class="section level4">
@@ -384,7 +385,7 @@ is &lt;- filter(iris, Species %in% c(&quot;setosa&quot;, &quot;virginica&quot;))
                <span class="st">&quot;médiane&quot;</span> =<span class="st"> </span><span class="kw">median</span>(len), 
                <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len))
 <span class="kw">ggtexttable</span>(a, <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Cette fonction n’a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d’une ou plusieurs variable de type facteur.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg &lt;-<span class="st"> </span><span class="kw">group_by</span>(tg, supp)
 
@@ -393,7 +394,7 @@ a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span clas
                <span class="st">&quot;médiane&quot;</span> =<span class="st"> </span><span class="kw">median</span>(len), 
                <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len))
 <span class="kw">ggtexttable</span>(a, <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg &lt;-<span class="st"> </span><span class="kw">group_by</span>(tg, supp, dose)
 
 a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span class="st">&quot;moyenne&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(len), 
@@ -401,7 +402,7 @@ a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span clas
                <span class="st">&quot;médiane&quot;</span> =<span class="st"> </span><span class="kw">median</span>(len), 
                <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len))
 <span class="kw">ggtexttable</span>(a, <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <div id="pieges-et-astuces-13" class="section level4">
 <h4><span class="header-section-number">5.3.4.1</span> Pièges et astuces</h4>
 <p>Tout comme lors de réalisation d’une boite de dispersion, vous devez être particulièrement vigilant ou nombre d’observation par sous groupe. Ajoutez à chaque tableau résumé des données, le nombre d’observation par sous-groupe.</p>
@@ -411,13 +412,13 @@ a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span clas
                <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len),
                <span class="st">&quot;observation&quot;</span> =<span class="st"> </span><span class="kw">n</span>())
 <span class="kw">ggtexttable</span>(a, <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="pieges-et-astuces-14" class="section level3">
 <h3><span class="header-section-number">5.3.5</span> Pièges et astuces</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div>
-<p>Lors de l’analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d’employer le <strong>pipe</strong><a href="references.html#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a> `%&gt;.% qui permet de réaliser une suite d’intructions.</p>
+<p>Lors de l’analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d’employer le <strong>pipe</strong><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> `%&gt;.% qui permet de réaliser une suite d’intructions.</p>
 <p>Vous pouvez calculer de nouvelles variables puis filtrer les lignes et enfin sélectionner des colonnes.</p>
 <p>Etape par étape, vous allez utiliser la fonction <code>mutate()</code>, puis <code>filter()</code> et enfin `select()</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1 =</span>  lantern <span class="op">+</span><span class="st"> </span>spines <span class="op">+</span><span class="st"> </span>test, 
@@ -431,7 +432,7 @@ ub &lt;-<span class="st"> </span><span class="kw">filter</span>(ub, height <span
 
 ub &lt;-<span class="st"> </span><span class="kw">select</span>(ub, origin, solid_parts, test, v2_sqrt)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggtexttable</span>(<span class="kw">head</span>(ub, <span class="dt">n =</span> <span class="dv">6</span>), <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-31-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-31-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub1 &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div>
 <p>Le pipe permet d’éviter certaine répétion afin de réaliser en cascade la suite des opérations. Vous devez être vigilant à la structure du pipe qui comprend le pipe <code>%&gt;.%</code>et le point au début des fonctions <code>.</code>. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub1 <span class="op">%&gt;.%</span>
@@ -446,7 +447,7 @@ ub &lt;-<span class="st"> </span><span class="kw">select</span>(ub, origin, soli
 
 <span class="co"># fonction pour afficher </span>
 <span class="kw">ggtexttable</span>(<span class="kw">head</span>(ub1, <span class="dt">n =</span> <span class="dv">6</span>), <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Le pipe est un outil très intéressant lors du résumé de données par une ou plusieurs variables facteurs.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg &lt;-<span class="st"> </span><span class="kw">group_by</span>(tg, supp, dose)
 a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span class="st">&quot;moyenne&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(len), 
@@ -454,7 +455,7 @@ a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span clas
                <span class="st">&quot;médiane&quot;</span> =<span class="st"> </span><span class="kw">median</span>(len), 
                <span class="st">&quot;maximum&quot;</span> =<span class="st"> </span><span class="kw">max</span>(len))
 <span class="kw">ggtexttable</span>(a, <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tg <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">group_by</span>(., supp, dose) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">summarise</span>(., <span class="st">&quot;moyenne&quot;</span> =<span class="st"> </span><span class="kw">mean</span>(len), 
@@ -466,7 +467,7 @@ a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span clas
              <span class="dt">tbody.style =</span> <span class="kw">tbody_style</span>(<span class="dt">fill =</span> <span class="kw">get_palette</span>(<span class="st">&quot;RdBu&quot;</span>, <span class="dv">6</span>))
            ), <span class="dt">rows =</span> <span class="ot">NULL</span>, 
            <span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;Supplément&quot;</span>, <span class="st">&quot;Dose&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Minimum&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Maximum&quot;</span>))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" /></p>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <div id="pour-en-savoir-plus-12" class="section level4">
 <h4><span class="header-section-number">5.3.5.1</span> Pour en savoir plus</h4>
 <ul>
@@ -477,8 +478,8 @@ a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span clas
 </div>
 <div class="footnotes">
 <hr />
-<ol start="12">
-<li id="fn12"><p>TODO<a href="transformation-des-donnees.html#fnref12">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>TODO<a href="transformation-des-donnees.html#fnref1">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

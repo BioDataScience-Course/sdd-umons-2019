@@ -217,7 +217,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
 <li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
 <li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#configurateur-de-la-box"><i class="fa fa-check"></i><b>A.3.2</b> Configurateur de la Box</a></li>
-<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.3</b> Accès aux fichiers</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#installation-des-tutoriaux"><i class="fa fa-check"></i><b>A.3.3</b> Installation des tutoriaux</a></li>
+<li class="chapter" data-level="A.3.4" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.4</b> Accès aux fichiers</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
@@ -247,10 +248,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="visualisation-graphique-a-laide-dun-diagramme-en-violon" class="section level2">
 <h2><span class="header-section-number">3.3</span> Visualisation graphique à l’aide d’un diagramme en violon</h2>
 <p>Le graphique de densité peut être représenté via un autre graphique qui sera d’autant plus intéressant que la variable facteur étudiée peut être discriminée par un grand nombre de niveaux différents. Il s’agit également d’une estimation se basant sur un histogramme via la méthode l’estimation par noyau gaussien.</p>
-<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-10-1.svg" alt="Ponts essentiels d'un diagramme en violon portant sur la distribution de la taille d'un échantillon de zooplancton en fonction de leurs classes analysé par analyse d'image." width="672" />
 <p class="caption">
-Figure 3.8: Ponts essentiels d’un diagramme en violon portant sur la distribution de la taille d’un échantillon de zooplancton en fonction de leurs classes analysé par analyse d’image.
+Figure 3.10: Ponts essentiels d’un diagramme en violon portant sur la distribution de la taille d’un échantillon de zooplancton en fonction de leurs classes analysé par analyse d’image.
 </p>
 </div>
 <p>Les instructions de base afin de produire un diagramme en violon sont :</p>
@@ -261,10 +262,10 @@ zp1 &lt;-<span class="st"> </span><span class="kw">filter</span>(zp, class <span
 <span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(zp1, <span class="dt">formula =</span> size<span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>()</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-11"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-11-1.svg" alt="Instructions pour obtenir un diagramme en violon." width="672" />
 <p class="caption">
-Figure 3.9: Instructions pour obtenir un diagramme en violon.
+Figure 3.11: Instructions pour obtenir un diagramme en violon.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée (dataframe, zp), ainsi que la formule à employer YVAR (size) ~ XVAR (class). Pour réaliser un graphique de densité vous devez ajouter la seconde fonction <code>geom_density()</code>.</p>
@@ -273,20 +274,20 @@ Figure 3.9: Instructions pour obtenir un diagramme en violon.
 <p>Lors de l’analyse de jeux de données , vous serez amené a réalisé un diagramme en violon pour une variable comprennant un grand nombre de niveaux. Cette opération peut avoir un rendu graphique plutôt décevant dont voici deux astuces pour l’éviter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(zp, <span class="dt">formula =</span> size<span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>() </code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-12"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-12-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique." width="672" />
 <p class="caption">
-Figure 3.10: Diagramme en violon montrant la densité de tailles des 17 classes d’organismes planctonique.
+Figure 3.12: Diagramme en violon montrant la densité de tailles des 17 classes d’organismes planctonique.
 </p>
 </div>
 <p>L’ensemble des niveaux de la variable class se chevauche. La fonction <code>coord_flip()</code> peut améliorer le rendu du graphique en le faisant basculer de 90°.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(zp, <span class="dt">formula =</span> size<span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-13"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec l'ajout de la fonction coord_flip." width="672" />
 <p class="caption">
-Figure 3.11: Diagramme en violon montrant la densité de tailles des 17 classes d’organismes planctonique avec l’ajout de la fonction coord_flip.
+Figure 3.13: Diagramme en violon montrant la densité de tailles des 17 classes d’organismes planctonique avec l’ajout de la fonction coord_flip.
 </p>
 </div>
 <p>Le package <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html">ggridges</a> propose une seconde solution basée sur le principe de graphique de densité avec la fonction geom_density_ridges()`.</p>
@@ -295,10 +296,10 @@ Figure 3.11: Diagramme en violon montrant la densité de tailles des 17 classes 
 <span class="co"># réalisation du graphiques</span>
 <span class="kw">chart</span>(zp, class <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_density_ridges</span>()</code></pre></div>
-<div class="figure"><span id="fig:unnamed-chunk-14"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-14-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctonique avec la fonction geom_density_ridges." width="672" />
 <p class="caption">
-Figure 3.12: Diagramme en violon montrant la densité de tailles des 17 classes d’organismes planctonique avec la fonction geom_density_ridges.
+Figure 3.14: Diagramme en violon montrant la densité de tailles des 17 classes d’organismes planctonique avec la fonction geom_density_ridges.
 </p>
 </div>
 </div>
