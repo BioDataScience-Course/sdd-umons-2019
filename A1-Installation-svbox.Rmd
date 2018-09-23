@@ -334,9 +334,9 @@ Une fois tout ceci effectué vous pourrez cliquer sur le bouton `OK` de la fenê
 </center>
 
 
-### Installation des tutoriaux
+### Installation des tutoriels {#install-tuto}
 
-Nous allons maintenant installer les tutoriaux liés à ces cours de science des données biologiques. Vous allez apprendre par la même occasion comment ajouter des applications dans votre SciViews Box. Cela se fait en trois étapes:
+Nous allons maintenant installer les tutoriels liés à ces cours de science des données biologiques. Vous allez apprendre par la même occasion comment ajouter des applications dans votre SciViews Box. Cela se fait en trois étapes:
 
 1) Télécharger l'installeur de l'application. Vous le trouverez à l'adresse http://go.sciviews.org/BioDataScience1. Assurez-vous de bien le charger dans le répertoire **Downloads** ou **Téléchargements** par défaut sur votre ordinateur^[Il pourra ainsi être replacé au bon endroit et exécuté dans la Box],
 

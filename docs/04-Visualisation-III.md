@@ -622,7 +622,7 @@ Vous observez rapidement certaines similitudes entre `chart`, `ggplot2` et `latt
 
 ## A vous de jouer !
 
-\BeginKnitrBlock{bdd}<div class="bdd">Pour accéder au tutorial d'évaluation de vos compétences, ouvrez RStudio et entrez l'instruction suivante dans la fenêtre console :
+\BeginKnitrBlock{bdd}<div class="bdd">Etudiez le tutoriel suivant :
 
     BioDataScience::run("...")
 </div>\EndKnitrBlock{bdd}

@@ -644,7 +644,7 @@ Vous observez rapidement certaines similitudes entre `chart`, `ggplot2` et `latt
 ## A vous de jouer !
 
 ```{block2, type='bdd'}
-Pour accéder au tutorial d'évaluation de vos compétences, ouvrez RStudio et entrez l'instruction suivante dans la fenêtre console :
+Etudiez le tutoriel suivant :
 
     BioDataScience::run("...")
 

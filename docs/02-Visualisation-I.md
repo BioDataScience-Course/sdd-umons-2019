@@ -19,13 +19,17 @@
 
 Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L'ensemble de ces outils a été abordé lors de la création de votre site professionnel et personnel du module \@ref(intro).
 
-Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques.
+Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels^[Reportez-vous à l'Appendice \@ref(learnr) pour apprendre à utiliser ces tutoriels.].
 
-\BeginKnitrBlock{bdd}<div class="bdd">Démarrez la SciViews Box et RStudio. Dans la fenêtre console de RStudio, entrez l'instruction suivante pour ouvrir le tutoriel de découverte de R:
+\BeginKnitrBlock{bdd}<div class="bdd">Démarrez la SciViews Box et RStudio. Dans la fenêtre **Console** de RStudio, entrez l'instruction suivante suivie de la touche `Entrée` pour ouvrir le tutoriel concernant les bases de R :
 
-    BioDataScience::run("02a_r_decouverte")
+    BioDataScience::run("02a_base")
 
-([BioDataScience](https://github.com/BioDataScience-Course/BioDataScience) est un package R spécialement développé pour ce cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice \@ref(svbox)).</div>\EndKnitrBlock{bdd}
+Ensuite, vous pouvez également parcourir le tutoriel qui vous permettra de découvrir R (cliquez dans la fenêtre **Console** de RStudio et appuyez sur la touche `ESC` pour reprendre la main dans R à la fin d'un tutoriel) :
+
+    BioDataScience::run("02b_decouverte")
+
+([BioDataScience](https://github.com/BioDataScience-Course/BioDataScience) est un package R spécialement développé pour ce cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice \@ref(install-tuto)).</div>\EndKnitrBlock{bdd}
 
 
 ## Graphique en nuage de points
@@ -166,9 +170,9 @@ Cette vidéo ne vous a montré que les principaux outils disponibles lors de la 
 
 ### A vous de jouer !
 
-\BeginKnitrBlock{bdd}<div class="bdd">Lancez votre SciViews Box, ouvrez RStudio puis dans sa fenêtre console, entrez l'instruction suivante, suivie de la touche `entrée` pour lancer le tutorial "learnR" concernant les nuages de points.
+\BeginKnitrBlock{bdd}<div class="bdd">Etudiez le tutoriel relatif aux graphiques en nuage de points :
 
-    BioDataScience::run("02b_nuage_points")
+    BioDataScience::run("02c_nuage_de_points")
 </div>\EndKnitrBlock{bdd}
 
 Les instructions que vous employez dans un learnR peuvent être employée dans un script d'analyse. Sur base du jeux de données `urchin_bio`, explorez différents graphiques en nuages de points. Assignment ClassRoom avec R et un script.
@@ -249,9 +253,11 @@ Un squelette de projet RStudio vous est fournit dans un dépôt Github Classroom
 
 ## Testez vos acquis
 
-Lancez votre machine virtuelle, ouvrez Rstudio puis lancez l'instruction suivante
-`BioDataScience::run("...")` (package en cours de développement sur [github](https://github.com/BioDataScience-Course/BioDataScience)).
+Le test des acquis à la fin d'un module (sauf pour le module 1) se fait toujours dans un tutoriel "learnr" qui sert à votre évaluation.
 
+\BeginKnitrBlock{bdd}<div class="bdd">Quand vous considérez que vous maîtrisez la matière de ce module, effectuez les exercices du tutoriel interactif de test :
 
+    BioDataScience::run("02d_test")
+</div>\EndKnitrBlock{bdd}
 
-
+TODO : indiquer ici comment l'étudiant peut suivre sa progression, et mettre plus de détails dans l'Appendice \@ref(learnr).

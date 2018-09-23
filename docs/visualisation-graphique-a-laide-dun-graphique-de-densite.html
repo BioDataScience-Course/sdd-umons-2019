@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-21">
+<meta name="date" content="2018-09-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -221,6 +221,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.3.4" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.4</b> Accès aux fichiers</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a></li>
+<li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
 <li><a href="http://biodatascience-course.sciviews.org">Site Web du cours</a></li>
@@ -247,11 +249,11 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="visualisation-graphique-a-laide-dun-graphique-de-densite" class="section level2">
 <h2><span class="header-section-number">3.2</span> Visualisation graphique à l’aide d’un graphique de densité</h2>
-<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l’histogramme. Il ne s’agit plus de représenter un dénombrement comme l’histogramme le fait mais une <strong>probabilité</strong><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> d’obtenir une valeur parmi un échantillon aléatoire. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a></p>
+<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l’histogramme. Il ne s’agit plus de représenter un dénombrement comme l’histogramme le fait mais une <strong>probabilité</strong><a href="references.html#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> d’obtenir une valeur parmi un échantillon aléatoire. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="references.html#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a></p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A. Histogramme  et B. graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
 <p class="caption">
-Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton analysé par analyse d’image.
+Figure 3.5: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton analysé par analyse d’image.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphique de densité sont (ici mis en évidence en couleur) :</p>
@@ -268,16 +270,16 @@ zp &lt;-<span class="st"> </span><span class="kw">read</span>( <span class="dt">
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="Instructions pour obtenir un graphique de densité." width="672" />
 <p class="caption">
-Figure 3.9: Instructions pour obtenir un graphique de densité.
+Figure 3.6: Instructions pour obtenir un graphique de densité.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée ( dataframe, zp), ainsi que la formule à employer ~ VAR (size). Pour réaliser un graphique de densité vous devez ajouter la seconde fonction <code>geom_density()</code>.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="7">
-<li id="fn7"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref7">↩</a></p></li>
-<li id="fn8"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref8">↩</a></p></li>
+<ol start="10">
+<li id="fn10"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref10">↩</a></p></li>
+<li id="fn11"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref11">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
