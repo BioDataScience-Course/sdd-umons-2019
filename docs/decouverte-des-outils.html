@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Science des données biologiques, UMONS</title>
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Science des données biologiques, UMONS" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
+  <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="github-repo" content="biodatascience-course/sdd-umons" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
+  
+  <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+
+
+<meta name="date" content="2018-09-24">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="donnees.html">
+<link rel="next" href="site.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Science des données biologiques (cours UMONS)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préambule</a><ul>
+<li class="chapter" data-level="" data-path="vue-generale-du-cours.html"><a href="vue-generale-du-cours.html"><i class="fa fa-check"></i>Vue générale du cours</a></li>
+<li class="chapter" data-level="" data-path="materiel-pedagogique.html"><a href="materiel-pedagogique.html"><i class="fa fa-check"></i>Matériel pédagogique</a></li>
+<li class="chapter" data-level="" data-path="comment-apprendre.html"><a href="comment-apprendre.html"><i class="fa fa-check"></i>Comment apprendre?</a></li>
+<li class="chapter" data-level="" data-path="evaluation.html"><a href="evaluation.html"><i class="fa fa-check"></i>Evaluation</a></li>
+</ul></li>
+<li class="part"><span><b>I Cours I: visualisation et inférence</b></span></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="donnees.html"><a href="donnees.html"><i class="fa fa-check"></i><b>1.1</b> Comment le monde était-il y a 25 ans ?</a></li>
+<li class="chapter" data-level="1.2" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html"><i class="fa fa-check"></i><b>1.2</b> Découverte des outils</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html#machine-virtuelle"><i class="fa fa-check"></i><b>1.2.1</b> Machine virtuelle</a></li>
+<li class="chapter" data-level="1.2.2" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html#rstudio"><i class="fa fa-check"></i><b>1.2.2</b> RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html#markdown"><i class="fa fa-check"></i><b>1.2.3</b> Markdown</a></li>
+<li class="chapter" data-level="1.2.4" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html#gestionnaire-de-version"><i class="fa fa-check"></i><b>1.2.4</b> Gestionnaire de version</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="site.html"><a href="site.html"><i class="fa fa-check"></i><b>1.3</b> Site web professionnel</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="site.html"><a href="site.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>1.3.1</b> A vous de jouer</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
+<li class="chapter" data-level="2.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Graphique en nuage de points</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.1</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.2</b> Le nuage de points en vidéo</a></li>
+<li class="chapter" data-level="2.1.3" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.3</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.1.4" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pour-en-savoir-plus-4"><i class="fa fa-check"></i><b>2.1.4</b> Pour en savoir plus…</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Intégration des graphiques dans un rapport: R Markdown</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#pieges-et-astuces-1"><i class="fa fa-check"></i><b>2.2.1</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="2.2.2" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#pour-en-savoir-plus-5"><i class="fa fa-check"></i><b>2.2.2</b> Pour en savoir plus…</a></li>
+<li class="chapter" data-level="2.2.3" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#a-vous-de-jouer-2"><i class="fa fa-check"></i><b>2.2.3</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="testez-vos-acquis.html"><a href="testez-vos-acquis.html"><i class="fa fa-check"></i><b>2.3</b> Testez vos acquis</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visu2.html"><a href="visu2.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a><ul>
+<li class="chapter" data-level="3.1" data-path="visualisation-graphique-a-laide-dun-histogramme.html"><a href="visualisation-graphique-a-laide-dun-histogramme.html"><i class="fa fa-check"></i><b>3.1</b> Visualisation graphique à l’aide d’un histogramme</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="visualisation-graphique-a-laide-dun-histogramme.html"><a href="visualisation-graphique-a-laide-dun-histogramme.html#pieges-et-astuces-2"><i class="fa fa-check"></i><b>3.1.1</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="visualisation-graphique-a-laide-dun-graphique-de-densite.html"><a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html"><i class="fa fa-check"></i><b>3.2</b> Visualisation graphique à l’aide d’un graphique de densité</a></li>
+<li class="chapter" data-level="3.3" data-path="visualisation-graphique-a-laide-dun-diagramme-en-violon.html"><a href="visualisation-graphique-a-laide-dun-diagramme-en-violon.html"><i class="fa fa-check"></i><b>3.3</b> Visualisation graphique à l’aide d’un diagramme en violon</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="visualisation-graphique-a-laide-dun-diagramme-en-violon.html"><a href="visualisation-graphique-a-laide-dun-diagramme-en-violon.html#pieges-et-astuces-3"><i class="fa fa-check"></i><b>3.3.1</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="a-vous-de-jouer-3.html"><a href="a-vous-de-jouer-3.html"><i class="fa fa-check"></i><b>3.4</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visu3.html"><a href="visu3.html"><i class="fa fa-check"></i><b>4</b> Visualisation III</a><ul>
+<li class="chapter" data-level="4.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><i class="fa fa-check"></i><b>4.1</b> Visualisation graphique à l’aide d’un graphique en barre</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html#representation-dun-denombration-dobservations-par-facteur"><i class="fa fa-check"></i><b>4.1.1</b> Représentation d’un dénombration d’observations par facteur</a></li>
+<li class="chapter" data-level="4.1.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-barre.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-barre.html#representation-dune-valeur-moyenne-a-laide-dun-graphe-en-barre."><i class="fa fa-check"></i><b>4.1.2</b> Représentation d’une valeur moyenne à l’aide d’un graphe en barre.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.2</b> Visualisation graphique à l’aide d’un graphique en camembert</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pieges-et-astuces-6"><i class="fa fa-check"></i><b>4.2.1</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="4.2.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pour-en-savoir-plus-8"><i class="fa fa-check"></i><b>4.2.2</b> Pour en savoir plus</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><i class="fa fa-check"></i><b>4.3</b> Visualisation graphique à l’aide de la boite de dispersion</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html#pieges-et-astuces-7"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="4.3.2" data-path="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html"><a href="visualisation-graphique-a-laide-de-la-boite-de-dispersion.html#pour-en-savoir-plus-9"><i class="fa fa-check"></i><b>4.3.2</b> Pour en savoir plus !</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html"><i class="fa fa-check"></i><b>4.4</b> Visualisation de multi-graphiques</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#facets"><i class="fa fa-check"></i><b>4.4.1</b> Facets</a></li>
+<li class="chapter" data-level="4.4.2" data-path="visualisation-de-multi-graphiques.html"><a href="visualisation-de-multi-graphiques.html#ggarrange"><i class="fa fa-check"></i><b>4.4.2</b> <code>ggarrange()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="apercu-des-differents-systemes-graphiques.html"><a href="apercu-des-differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Aperçu des différents systèmes graphiques</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="apercu-des-differents-systemes-graphiques.html"><a href="apercu-des-differents-systemes-graphiques.html#pour-en-savoir-plus-11"><i class="fa fa-check"></i><b>4.5.1</b> Pour en savoir plus</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="a-vous-de-jouer-4.html"><a href="a-vous-de-jouer-4.html"><i class="fa fa-check"></i><b>4.6</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>5</b> Importation/transformation des données</a><ul>
+<li class="chapter" data-level="5.1" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html"><i class="fa fa-check"></i><b>5.1</b> Importation des données</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#donnees-provenant-dun-package"><i class="fa fa-check"></i><b>5.1.1</b> Données provenant d’un package</a></li>
+<li class="chapter" data-level="5.1.2" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#donnees-encodees-manuellement"><i class="fa fa-check"></i><b>5.1.2</b> Données encodées manuellement</a></li>
+<li class="chapter" data-level="5.1.3" data-path="importation-des-donnees.html"><a href="importation-des-donnees.html#pieges-et-astuces-9"><i class="fa fa-check"></i><b>5.1.3</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.2</b> Type de variables</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="type-de-variables.html"><a href="type-de-variables.html#pieges-et-astuces-10"><i class="fa fa-check"></i><b>5.2.1</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html"><i class="fa fa-check"></i><b>5.3</b> Transformation des données</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#select"><i class="fa fa-check"></i><b>5.3.1</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#filter"><i class="fa fa-check"></i><b>5.3.2</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.3.3" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#mutate"><i class="fa fa-check"></i><b>5.3.3</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.3.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#summarise"><i class="fa fa-check"></i><b>5.3.4</b> <code>summarise()</code></a></li>
+<li class="chapter" data-level="5.3.5" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#pieges-et-astuces-14"><i class="fa fa-check"></i><b>5.3.5</b> Pièges et astuces</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>5.4</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a><ul>
+<li class="chapter" data-level="6.1" data-path="decoupage-en-classe.html"><a href="decoupage-en-classe.html"><i class="fa fa-check"></i><b>6.1</b> Découpage en classe</a></li>
+<li class="chapter" data-level="6.2" data-path="tableaux-de-contingences.html"><a href="tableaux-de-contingences.html"><i class="fa fa-check"></i><b>6.2</b> Tableaux de contingences</a></li>
+<li class="chapter" data-level="6.3" data-path="acquisition-de-donnees-scientifiques.html"><a href="acquisition-de-donnees-scientifiques.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données scientifiques</a></li>
+<li class="chapter" data-level="6.4" data-path="a-vous-de-jouer-6.html"><a href="a-vous-de-jouer-6.html"><i class="fa fa-check"></i><b>6.4</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a></li>
+<li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
+<li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
+<li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
+<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
+<li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
+<li class="chapter" data-level="A.1" data-path="prerequis-1.html"><a href="prerequis-1.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-1.html"><a href="prerequis-1.html#ordinateur"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-1.html"><a href="prerequis-1.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
+<li class="chapter" data-level="A.2.1" data-path="installation.html"><a href="installation.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
+<li class="chapter" data-level="A.2.2" data-path="installation.html"><a href="installation.html#sciviews-box"><i class="fa fa-check"></i><b>A.2.2</b> SciViews Box</a></li>
+<li class="chapter" data-level="A.2.3" data-path="installation.html"><a href="installation.html#github-desktop"><i class="fa fa-check"></i><b>A.2.3</b> Github Desktop</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
+<li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
+<li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#configurateur-de-la-box"><i class="fa fa-check"></i><b>A.3.2</b> Configurateur de la Box</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#install-tuto"><i class="fa fa-check"></i><b>A.3.3</b> Installation des tutoriels</a></li>
+<li class="chapter" data-level="A.3.4" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.4</b> Accès aux fichiers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a><ul>
+<li class="chapter" data-level="B.1" data-path="rstudio-1.html"><a href="rstudio-1.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
+<li class="divider"></li>
+<li><a href="http://biodatascience-course.sciviews.org">Site Web du cours</a></li>
+<li><a href="https://github.com/BioDataScience-Course">Site Github du cours</a></li>
+<br/>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Science des données biologiques, UMONS</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="decouverte-des-outils" class="section level2">
+<h2><span class="header-section-number">1.2</span> Découverte des outils</h2>
+<p>La science des données est complexe et requiert d’employer des outils performants. Nous avons sélectionné ces outils pour vous.</p>
+<div id="machine-virtuelle" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Machine virtuelle</h3>
+<p>La <strong>SciViews Box</strong> est une machine virtuelle (un ordinateur complet, mais totalement indépendant du matériel -le hardware- et qui peut être déployé sur pratiquement n’importe quel ordinateur physique). Cette SciViews Box est complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, et ensuite écrire des rapports ou d’autres documents prêts à publication ou à présentation. Elle vous servira également à collaborer avec d’autres chercheurs qui peuvent facilement utiliser exactement la même machine virtuelle (aspect reproductible de vos analyses).</p>
+<p>Des explications détaillées se trouvent dans l’annexe <a href="svbox.html#svbox">A</a> dédiée à l’installation et la configuration de la SciViews Box.</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="images/svBox-256.png" alt="Logo de la SciViews Box" width="256px" />
+<p class="caption">
+Figure 1.1: Logo de la SciViews Box
+</p>
+</div>
+<div class="bdd">
+<p>
+Une fois loggé dans la machine virtuelle, réalisez l’activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf</a>
+</p>
+<p>
+Après avoir réalisé l’activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md</a>
+</p>
+</div>
+</div>
+<div id="rstudio" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> RStudio</h3>
+<p>RStudio est l’outil au sein de la SciViews Box que vous allez utiliser le plus fréquemment durant ce cours.</p>
+<div class="figure">
+<img src="images/sdd1_01/rstudio.gif" />
+
+</div>
+<p>Il fournit un environnement complet et optimisé pour réaliser vos analyses, vos graphiques et vos rapports. RStudio travaille main dans la main avec le logiciel R qui effectue l’ensemble des traitements.</p>
+<div class="figure">
+<img src="images/sdd1_01/rstudio_description_mod.png" />
+
+</div>
+<p>Rstudio est divisé en 4 zones importantes (A-D) avec une barre d’outils général au dessus :</p>
+<ul>
+<li><p>A : Une zone d’édition</p></li>
+<li><p>B : Plusieurs onglets sont présents comme <code>Environement</code>, <code>History</code> ou encore <code>Connections</code>. Par exemple, les différents items (on parle d’objets) chargés en mémoire dans R se trouveront dans l’environnement (mais pour l’instant, il n’y a encore rien).</p></li>
+<li><p>C : La <code>Console</code> étant le zone d’instruction où vous pouvez entrer des instructions dans R pour manipuler vos données</p></li>
+<li><p>D : Plusieurs onglets sont présents comme <code>Files</code>, <code>Help</code> ou encore <code>Viewer</code>.</p></li>
+</ul>
+<p>Des explications détaillées se trouvent dans l’annexe <a href="prise.html#prise">B</a> dédiée à l’utilisation de R Studio.</p>
+<div id="pour-en-savoir-plus" class="section level4">
+<h4><span class="header-section-number">1.2.2.1</span> Pour en savoir plus …</h4>
+<ul>
+<li><p><a href="https://www.rstudio.com/">RStudio</a>. Site de Rstudio comprennant un ensemble de ressource en anglais afin d’appréhender RStudio.</p></li>
+<li><p><a href="https://quanti.hypotheses.org/488/">RStudio, un environnement de développement pour R</a>. Site proposant une brève explication de RStudio en français.</p></li>
+<li><p><a href="https://elementr.hypotheses.org/237">RStudio : sa vie, son oeuvre, ses ressources</a>. Site proposant une explication de RStudio en français.</p></li>
+</ul>
+</div>
+</div>
+<div id="markdown" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Markdown</h3>
+<p>Afin de réaliser vos analyses dans RStudio, nous employons le language <code>Markdown</code> dnas la zone d’édition. Ce language a été mis au point afin de négliger la mise en forme et de revenir au fondamental de l’écriture le fond.</p>
+<div class="figure">
+<img src="images/sdd1_01/markdown.gif" />
+
+</div>
+<p>Son avantage principal réside dans sa simplicité d’apprentissage. Quels sont les commandes et instructions indispensables lorsque l’on rédige un rapport ? Des titres et sous-titres, mise en évidence (mise en italiques ou mise en gras), des listes,… Il ne faut au final que très peu de commandes que pour réaliser un rapport de qualité avec une mise en page minimaliste et épurée.</p>
+<p>Avec les quelques instructions présent dans le document <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">aide-mémoire</a> (<strong>Cheatsheet</strong>) de Rstudio vous aurez appréhender ce language.</p>
+<p>Après avoir rédiger votre document, vous devez cliquer sur <code>Preview</code>.</p>
+<div class="bdd">
+<p>
+Une fois loggé dans la machine virtuelle, réalisez l’activité : <strong>Découverte de rstudio et rmarkdown</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_markdown.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_markdown.pdf</a>
+</p>
+<p>
+Après avoir réalisé l’activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_markdown.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_markdown.md</a>
+</p>
+</div>
+<div id="pour-en-savoir-plus-1" class="section level4">
+<h4><span class="header-section-number">1.2.3.1</span> Pour en savoir plus…</h4>
+<ul>
+<li><p><a href="https://daringfireball.net/projects/markdown/">Markdown</a>. Explication en anglais de l’intérêt d’employer markdown ainsi que la syntax à employer.</p></li>
+<li><p><a href="https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/">Un guide pour bien commencer avec markdown</a>. Explication détaillée en français sur le language markdown</p></li>
+<li><p><a href="https://blog.genma.fr/?Le-Markdown-comme-langage-d-ecriture-universel">Le Markdown comme langage d’écriture universel ?</a>.</p></li>
+<li><p><a href="https://openclassrooms.com/fr/courses/1304236-redigez-en-markdown">Rédigez en Markdown !</a></p></li>
+<li><p><a href="https://dolys.fr/forums/topic/comment-ecrire-confortablement-professionnellement-markdown/">Comment écrire confortablement et professionnellement ? Le markdown !</a>. Utilisation de Markdown afin de revenir à l’essence de la rédaction.</p></li>
+<li><p><a href="http://www.boiteaoutils.info/2013/02/ecrire-tout-simplement-introduction/">Écrire tout simplement – Introduction à Markdown</a>. Explication en français des raisons de l’utilisation de markdown.</p></li>
+</ul>
+</div>
+</div>
+<div id="gestionnaire-de-version" class="section level3">
+<h3><span class="header-section-number">1.2.4</span> Gestionnaire de version</h3>
+<p>Lors de la rédaction de travaux comme par exemple lors de l’écriture d’un travail de fin d’étude ou d’un rapport assez important. On se retrouve rapidement avec plusieurs fichiers correspondant à des états d’avancements de ce dernier :</p>
+<ul>
+<li>TFE_final</li>
+<li>TFE_final1</li>
+<li>TFE_final2</li>
+<li>TFE_final3</li>
+<li>TFE_final…</li>
+<li>TFE_final99</li>
+</ul>
+<p>Lors de différents essais, on va avoir tendance à tout garder dans différents fichiers afin de ne rien supprimer d’important. Cette pratique bien que très courante comporte le gros désavantage de prendre énormément de place sur le disque de votre ordinateur et de n’être pas pratique. Les questions suivantes peuvent se poser :</p>
+<p>Que se cache t’il dans la version TFE_final 2 ? Après 1 mois sans travailler sur ce projet, seriez vous capable de specifier la différence entre le fichier TFE_final 2 et le TFE_final3 ?</p>
+<p>Et cela peut encore se compliquer lorsque plusieurs personnes collaborent sur un même projet. Ils vont devoir s’envoyer par mail tous les fichiers, avec chacun y apportant ses idées.</p>
+<ul>
+<li>TFE_final</li>
+<li>TFE_final1</li>
+<li>TFE_final1_jacques</li>
+<li>TFE_final1_pierre</li>
+<li>TFE_final2</li>
+<li>TFE_final2_jules</li>
+<li>TFE_final…</li>
+<li>TFE_final99</li>
+</ul>
+<p>Dans quel fichier se trouve la dernière version de chaque personne ayant collaboré sur le projet ? Une petit peu dans chaque fichier.</p>
+<p>Différentes avancées ont été réalisées pour améliorer le travail collaboratif comme :</p>
+<ul>
+<li>L’utilisation de partage de fichiers en ligne ( <a href="https://www.dropbox.com/business/landing-t68fl?_tk=sem_b_goog&amp;_camp=sem-b-goog-emea-be-fre-exact-restructure&amp;_kw=dropbox%7Ce&amp;_ad=244691468861%7C1t1%7Cc&amp;gclid=CjwKCAjwzenbBRB3EiwAItS-u3vb9iSK6F4MFnw3oWaEq0gwxQk74_ekOASIah0P-9u_pYFis8hxFxoCdOIQAvD_BwE">Dropbox</a>, <a href="https://www.google.com/drive/">Google Drive</a>, <a href="https://onedrive.live.com/about/fr-be/">One Drive</a>)</li>
+</ul>
+<p>Il en est fini le temps où l’on s’envoyait un dossier comprenend chacune des avancées par mails. Cette option ne règle toujours pas le problème de collaboration sur le même fichier.</p>
+<ul>
+<li>L’utilisation de programme d’édition collaboratif et en temps réel ( <a href="http://etherpad.org/">etherpad</a>, <a href="https://www.google.com/intl/fr_be/docs/about/">Google Drive - Docs</a>, <a href="https://gobby.github.io/">Gobby</a> ).</li>
+</ul>
+<p>Il est possible de travailler en même temps sur un même fichier d’édition. Cette option ne règle pas le problème du retour en arrière. Lorsqu’une modification a été réalisée l’ancienne version est tout simplement écrasée. Il est donc impossible de revenir dessus.</p>
+<ul>
+<li>La meilleur combinaison pour gérer ses versions et collaborer : <a href="https://git-scm.com/"><em>Git</em></a> et <a href="https://github.com/">Git Hub</a></li>
+</ul>
+<p>Ces outils ont l’étiquette d’être des outils fait par et pour des geeks. Cependant, ils permettent de gérer et collaborer de manière efficace sur un même projet contenant du code ou non.</p>
+<div id="git" class="section level4">
+<h4><span class="header-section-number">1.2.4.1</span> Git</h4>
+<p>La gestion de versions est gérée par <em>Git</em>. Cet outil va remplacer les nombreuses copies d’un même fichier par une sorte d’arbre que l’on peut représenter schématiquement comme ci-dessous :</p>
+<div class="figure">
+<img src="images/git1.png" alt="Représentation de la gestion de fichiers via Git" />
+<p class="caption">Représentation de la gestion de fichiers via Git</p>
+</div>
+<p>Comme vous pouvez le voir ci-dessus, on peut suivre la progression de notre projet via les boules bleues. Chaque boule représente l’état de notre projet lorsque l’on a décidé de l’enregistrer. Pour envoyer une nouvelle version de votre projet, vous réalisez un <strong>commit</strong> qui sera accompagné d’un message qui spécifie les modifications apportées. Il est possible de revenir en arrière avec un <strong>checkout</strong>.</p>
+<p>Git comprend de nombreux outils très intéressant pour la gestion de versions que vous utiliserez par la suite.</p>
+</div>
+<div id="git-hub" class="section level4">
+<h4><span class="header-section-number">1.2.4.2</span> Git Hub</h4>
+<p>Afin de saugarder vos projets en ligne, de les partager et de collaborer avec d’autres personnes, un réseau social a été conçu pour héberger vos projets qui se nomme <strong>Git Hub</strong> (tout comme Facebook ou LinkedIn). Ce dernier est un réseau social tout comme Facebook, google ou LinkedIn. On retrouve deux mots dans Git Hub. Il y a tout d’abord Git qui exprime la gestion de version et ensuite hub qui exprime le reseau. Il s’agit donc d’un réseau social qui permet de collaborer sur des projets.</p>
+<p>Lorsque l’on travaille seul tout en utilisant le reseau social l’évolution de notre projet va ressembler à l’arbre ci-dessous:</p>
+<div class="figure">
+<img src="images/github.png" alt="Représentation l’arbre de Git Hub" />
+<p class="caption">Représentation l’arbre de Git Hub</p>
+</div>
+<p>On réalise un envoi <strong>push</strong> losrque l’on souhaite envoyer sur le réseau social l’état dans lequel le projet se trouve. De ce fait plusieurs comite peuvent être envoyé avec un seul <strong>push</strong> sur le réseau.</p>
+<p>L’avantage de <strong>Git Hub</strong> ne réside pas vraiment dans la posibilité de réaliser une sauvegarde en ligne mais réside dans la possibilité de collaborer avec d’autres personnes présent sur ce réseau comme l’illustre la figure ci-dessous.</p>
+<p>Deux scientifiques (les boules bleues et les boules vertes) collabore sur un même projet que l’on apelle <strong>dépot</strong> ( <strong>repository</strong> en anglais ) lorsqu’il est en ligne. Le premier chercheur (boule bleue) va initier le dépot et réaliser un push pour le placer sur le réseau. Son collaborateur (boule verte) va <strong>cloner</strong> (<strong>clone</strong> en anglais) le dépot sur son ordinateur afin d’y travailler également en local. Après avoir fait progresser le travail, il réalise également un <strong>push</strong> sur le réseau. Le premier scientifique avant de travailler à nouveau sur le projet va réaliser un <strong>pull</strong> afin d’obtenir en local l’ensemble des modifications fournie par ses collaborateurs.</p>
+<div class="figure">
+<img src="images/github1.png" alt="Représentation l’arbre de Git Hub" />
+<p class="caption">Représentation l’arbre de Git Hub</p>
+</div>
+<p>Vous venez d’apprendre différents mots technique indispensable pour une bonne compréhension de git et github</p>
+<ul>
+<li><p><strong>repository</strong></p></li>
+<li><p><strong>commit</strong></p></li>
+<li><p><strong>clone</strong></p></li>
+<li><p><strong>push</strong></p></li>
+<li><p><strong>pull</strong></p></li>
+</ul>
+<p>Ceci n’est qu’une rapide explication de ces deux programmes retrouve un tutoriel détaillé au lien suivant</p>
+<blockquote>
+<p>TODO tuto sur git et github</p>
+</blockquote>
+<div id="pour-en-savoir-plus-2" class="section level5">
+<h5><span class="header-section-number">1.2.4.2.1</span> Pour en savoir plus</h5>
+<ul>
+<li><p><a href="https://openclassrooms.com/fr/courses/1233741-gerez-vos-codes-source-avec-git">Gérez vos codes source avec Git</a>. Explication en français sur l’utilisation de Git.</p></li>
+<li><p><a href="https://www.codebuilder.fr/blog/developpement-collaboratif-logiciels-gestion-versions/">Quel logiciel de gestion de versions devriez-vous utiliser ?</a>. Explication en français sur l’utilisation des logiels de gestion de versions.</p></li>
+<li><p><a href="https://blog.axopen.com/2017/02/git-comprendre-la-gestion-de-versions/">Git: comprendre la gestion de versions</a>. Explication en français sur l’utilisation de Git.</p></li>
+<li><p><a href="https://git-scm.com/">Git</a>. Site en anglais comprendant toute la document de Git.</p></li>
+<li><p><a href="http://www.lsv.fr/~hirschi/pdfs/git.pdf" class="uri">http://www.lsv.fr/~hirschi/pdfs/git.pdf</a></p></li>
+<li><p><a href="https://www.christopheducamp.com/2013/12/15/github-pour-nuls-partie-1/" class="uri">https://www.christopheducamp.com/2013/12/15/github-pour-nuls-partie-1/</a></p></li>
+</ul>
+</div>
+</div>
+<div id="git-hub-classroom" class="section level4">
+<h4><span class="header-section-number">1.2.4.3</span> Git Hub Classroom</h4>
+<p><strong>Git Hub Classroom</strong> est une extension de Git Hub qui s’emploie pour les utilisateurs comme Git Hub. Vous serez amené à cloner des dépots, modifier des dépots pour réaliser des commit,… Le tout va être suivi pour des administrateurs. Différents exercices vous seront proposés via ce programme.</p>
+<p>Par exemple, le projet initial pour réaliser votre site web se trouve sur ce programme.</p>
+<div id="pour-en-savoir-plus-3" class="section level5">
+<h5><span class="header-section-number">1.2.4.3.1</span> Pour en savoir plus …</h5>
+<ul>
+<li><a href="https://fr.linkedin.com/pulse/r%C3%A9volutionner-lenseignement-avec-github-classroom-antoine-caron">https://fr.linkedin.com/pulse/r%C3%A9volutionner-lenseignement-avec-github-classroom-antoine-caron</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sddb.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="donnees.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="site.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/01-Introduction.Rmd",
+"text": "Editer"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

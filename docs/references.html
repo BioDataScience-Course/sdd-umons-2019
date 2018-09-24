@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-23">
+<meta name="date" content="2018-09-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -119,12 +119,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="part"><span><b>I Cours I: visualisation et inférence</b></span></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="donnees.html"><a href="donnees.html"><i class="fa fa-check"></i><b>1.1</b> Comment le monde était-il y a 25 ans ?</a></li>
-<li class="chapter" data-level="1.2" data-path="site.html"><a href="site.html"><i class="fa fa-check"></i><b>1.2</b> Création de son propre site web professionnel</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="site.html"><a href="site.html#machine-virtuelle"><i class="fa fa-check"></i><b>1.2.1</b> Machine virtuelle</a></li>
-<li class="chapter" data-level="1.2.2" data-path="site.html"><a href="site.html#rstudio"><i class="fa fa-check"></i><b>1.2.2</b> RStudio</a></li>
-<li class="chapter" data-level="1.2.3" data-path="site.html"><a href="site.html#gestionnaire-de-version"><i class="fa fa-check"></i><b>1.2.3</b> Gestionnaire de version</a></li>
-<li class="chapter" data-level="1.2.4" data-path="site.html"><a href="site.html#markdown"><i class="fa fa-check"></i><b>1.2.4</b> Markdown</a></li>
-<li class="chapter" data-level="1.2.5" data-path="site.html"><a href="site.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>1.2.5</b> A vous de jouer</a></li>
+<li class="chapter" data-level="1.2" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html"><i class="fa fa-check"></i><b>1.2</b> Découverte des outils</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html#outils-utilises"><i class="fa fa-check"></i><b>1.2.1</b> Outils utilisés</a></li>
+<li class="chapter" data-level="1.2.2" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html#site"><i class="fa fa-check"></i><b>1.2.2</b> Site web professionnel</a></li>
+<li class="chapter" data-level="1.2.3" data-path="decouverte-des-outils.html"><a href="decouverte-des-outils.html#a-vous-de-jouer"><i class="fa fa-check"></i><b>1.2.3</b> A vous de jouer</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
@@ -217,7 +215,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="A.3" data-path="configuration.html"><a href="configuration.html"><i class="fa fa-check"></i><b>A.3</b> Configuration</a><ul>
 <li class="chapter" data-level="A.3.1" data-path="configuration.html"><a href="configuration.html#lanceur-sciviews-box"><i class="fa fa-check"></i><b>A.3.1</b> Lanceur SciViews Box</a></li>
 <li class="chapter" data-level="A.3.2" data-path="configuration.html"><a href="configuration.html#configurateur-de-la-box"><i class="fa fa-check"></i><b>A.3.2</b> Configurateur de la Box</a></li>
-<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#installation-des-tutoriaux"><i class="fa fa-check"></i><b>A.3.3</b> Installation des tutoriaux</a></li>
+<li class="chapter" data-level="A.3.3" data-path="configuration.html"><a href="configuration.html#install-tuto"><i class="fa fa-check"></i><b>A.3.3</b> Installation des tutoriels</a></li>
 <li class="chapter" data-level="A.3.4" data-path="configuration.html"><a href="configuration.html#acces-aux-fichiers"><i class="fa fa-check"></i><b>A.3.4</b> Accès aux fichiers</a></li>
 </ul></li>
 </ul></li>
@@ -263,22 +261,23 @@ code > span. { color: #1f1c1b; } /* Normal */
 <hr />
 <ol>
 <li id="fn1"><p>Il existe tout de même des outils plus pointus pour obtenir de l’aide sur le logiciel R comme <a href="https://rseek.org">rseek.org</a>, <a href="https://www.rdocumentation.org">rdocumentation.org</a> ou <a href="https://rdrr.io">rdrr.io</a>. Rien ne sert de chercher ’R’ dans Goggle.<a href="materiel-pedagogique.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <em>x</em> sur l’axe des abscisses et la variable <em>y</em> sur l’axe des ordonnées.<a href="graphique-en-nuage-de-points.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée : <span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span>.<a href="graphique-en-nuage-de-points.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref4">↩</a></p></li>
+<li id="fn2"><p>Reportez-vous à l’Appendice <a href="learnr.html#learnr">C</a> pour apprendre à utiliser ces tutoriels.<a href="visu1.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <em>x</em> sur l’axe des abscisses et la variable <em>y</em> sur l’axe des ordonnées.<a href="graphique-en-nuage-de-points.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée : <span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span>.<a href="graphique-en-nuage-de-points.html#fnref4">↩</a></p></li>
 <li id="fn5"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref5">↩</a></p></li>
-<li id="fn6"><p>todo<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref6">↩</a></p></li>
-<li id="fn7"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref7">↩</a></p></li>
-<li id="fn8"><p>Suite d’instruction préenregistré dasn Rstudio servant d’aide lors de l’analyse de données.<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref8">↩</a></p></li>
-<li id="fn9"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref9">↩</a></p></li>
-<li id="fn10"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref10">↩</a></p></li>
+<li id="fn6"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref6">↩</a></p></li>
+<li id="fn7"><p>todo<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref7">↩</a></p></li>
+<li id="fn8"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref8">↩</a></p></li>
+<li id="fn9"><p>Suite d’instruction préenregistré dasn Rstudio servant d’aide lors de l’analyse de données.<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref9">↩</a></p></li>
+<li id="fn10"><p>TODO<a href="visualisation-graphique-a-laide-dun-histogramme.html#fnref10">↩</a></p></li>
 <li id="fn11"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref11">↩</a></p></li>
-<li id="fn12"><p>TODO<a href="transformation-des-donnees.html#fnref12">↩</a></p></li>
-<li id="fn13"><p>Si jamais vous voulez retourner plus tard au configurateur de la SciViews Box, vous n’aurez qu’à cliquer sur son icône tout en haut à droite dans la barre supérieure.<a href="configuration.html#fnref13">↩</a></p></li>
-<li id="fn14"><p>Le Mac définit ses raccourcis claviers différemment du PC. Outre l’inversion de l’utilisation des touches <code>Ctrl</code> et <code>Cmd</code>, le Mac possède deux touches <code>Alt</code>, une à gauche et une à droite. Le PC a, par contre, deux touches correspondantes, mais celle de droite est nommée <code>Alt Gr</code>. Ces touches jouent des rôles différents: raccourcis claviers pour <code>Alt</code> et accès aux touches de niveau 3 et 4 pour <code>Alt Gr</code>. <strong>Pour les utilisateurs Mac, notez que vos deux touches <code>Alt</code> ont des rôles différents dans la SciViews Box comme pour un clavier PC.</strong> Enfin, VirtualBox réserve une touche clavier à son propre usage. Par défaut, c’est la touche <code>Cmd</code> ou <code>Win</code> de droite. <strong>Il est déconseillé de modifier ce choix car toutes les autres touches sont indispensables dans la SciViews box!</strong><a href="configuration.html#fnref14">↩</a></p></li>
-<li id="fn15"><p>A la première utilisation de Git à l’intérieur du logiciel <strong>RStudio</strong>, votre login et votre mot de passe vous seront également redemandés. De même, vous devrez également fournir ces informations dans <strong>Github Desktop</strong> et la première fois que vous naviguerez vers <a href="https://github.com" class="uri">https://github.com</a> depuis le navigateur Web de votre PC hôte. Mais ensuite, vous accèderez immédiatement au service.<a href="configuration.html#fnref15">↩</a></p></li>
-<li id="fn16"><p>Il pourra ainsi être replacé au bon endroit et exécuté dans la Box<a href="configuration.html#fnref16">↩</a></p></li>
-<li id="fn17"><p>Le presse-papier est synchronisé entre les deux machines pour le texte qui y est copié.<a href="configuration.html#fnref17">↩</a></p></li>
+<li id="fn12"><p>TODO<a href="visualisation-graphique-a-laide-dun-graphique-de-densite.html#fnref12">↩</a></p></li>
+<li id="fn13"><p>TODO<a href="transformation-des-donnees.html#fnref13">↩</a></p></li>
+<li id="fn14"><p>Si jamais vous voulez retourner plus tard au configurateur de la SciViews Box, vous n’aurez qu’à cliquer sur son icône tout en haut à droite dans la barre supérieure.<a href="configuration.html#fnref14">↩</a></p></li>
+<li id="fn15"><p>Le Mac définit ses raccourcis claviers différemment du PC. Outre l’inversion de l’utilisation des touches <code>Ctrl</code> et <code>Cmd</code>, le Mac possède deux touches <code>Alt</code>, une à gauche et une à droite. Le PC a, par contre, deux touches correspondantes, mais celle de droite est nommée <code>Alt Gr</code>. Ces touches jouent des rôles différents: raccourcis claviers pour <code>Alt</code> et accès aux touches de niveau 3 et 4 pour <code>Alt Gr</code>. <strong>Pour les utilisateurs Mac, notez que vos deux touches <code>Alt</code> ont des rôles différents dans la SciViews Box comme pour un clavier PC.</strong> Enfin, VirtualBox réserve une touche clavier à son propre usage. Par défaut, c’est la touche <code>Cmd</code> ou <code>Win</code> de droite. <strong>Il est déconseillé de modifier ce choix car toutes les autres touches sont indispensables dans la SciViews box!</strong><a href="configuration.html#fnref15">↩</a></p></li>
+<li id="fn16"><p>A la première utilisation de Git à l’intérieur du logiciel <strong>RStudio</strong>, votre login et votre mot de passe vous seront également redemandés. De même, vous devrez également fournir ces informations dans <strong>Github Desktop</strong> et la première fois que vous naviguerez vers <a href="https://github.com" class="uri">https://github.com</a> depuis le navigateur Web de votre PC hôte. Mais ensuite, vous accèderez immédiatement au service.<a href="configuration.html#fnref16">↩</a></p></li>
+<li id="fn17"><p>Il pourra ainsi être replacé au bon endroit et exécuté dans la Box<a href="configuration.html#fnref17">↩</a></p></li>
+<li id="fn18"><p>Le presse-papier est synchronisé entre les deux machines pour le texte qui y est copié.<a href="configuration.html#fnref18">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

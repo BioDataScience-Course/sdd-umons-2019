@@ -4,8 +4,7 @@
 
 
 
-
-Vos objectifs pour ce module sont:
+#### Objectifs : {-}
 
 - Appréhender ce qu'est la science des données et les (bio)statistiques.
 
@@ -41,14 +40,8 @@ Il y a 25 ans, pas d'internet, pas de smartphone. Essayez d'imaginer ce que sera
 Vous pouvez maintenant avoir un aperçu de l'importance d'avoir des outils performants afin d'appréhender les données dont le nombre croit de manière exponentielle. Pour ce cours de sciences des données,  plusieurs outils puissants sont mis à votre disposition (Vous trouverez sur l'hyperlien suivant, un poster présentant la philosophie du cours <https://github.com/BioDataScience-Course/RencontresRRennes2018>)
 
 
-## Création de son propre site web professionnel {#site}
-
-De nos jours, un nombre important de données sont collectées sur nous. A la fin de vos études, vous serez amenés à rechercher un travail (dans le milieu de la recherche universitaire, dans la recherche en entreprise, dans les métiers de l'éco-conseils, etc.). Cependant, tous les recruteurs utilisent actuellement les données que l'on a semé sur le net afin de réaliser un profil détaillés sur nous. Il est donc de votre intérêt d'avoir un profil sur Internet le meilleur possible. Nous allons vous y aider !
-
-Les réseaux sociaux sont une mine d'or sur nos habitudes de vie comme Facebook, Twitter ou encore Instagram. On peut parler de l'image numérique d'une personne. Afin de mettre l'accent sur les compétences professionnels, de plus en plus de personnes utilisent des réseaux plus profesionnels comme LinkedIn ou encore des sites webs personnels professionels (par exemple : <http://phgrosjean.sciviews.org/>, <http://www.guyliann.be/>).
-
-Dans le cadre de ce premier module, vous allez réaliser votre premier site professionnel (contenant également une section "blog" que vous pourez alimenter, entre autres, avec vos considérations concernant vos cours, les analyse de données, et autres). Ce site sera immédiatement disponible sur le web et ce, de manière entièrement gratuite! Afin de mener à bien ce premier projet, divers outils vous seront nécessaires. Ces outils seront complétés plus trd par d'autres pour que vous ayez une boite à outils complète pour vos futures analyses de données professionnelles.
-
+## Découverte des outils
+La science des données est complexe et requiert d'employer des outils performants. Nous avons sélectionné ces outils pour vous.
 
 ### Machine virtuelle
 
@@ -68,7 +61,7 @@ Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à
 
 ### RStudio
 
-RStudio est l'outil au sein de la SciViews Box que vous allez utilisez le plus fréquemment durant ce cours. 
+RStudio est l'outil au sein de la SciViews Box que vous allez utiliser le plus fréquemment durant ce cours. 
 
 ![](images/sdd1_01/rstudio.gif)
 
@@ -86,16 +79,46 @@ Rstudio est divisé en 4 zones importantes (A-D) avec une barre d'outils génér
 
 - D : Plusieurs onglets sont présents comme `Files`, `Help` ou encore `Viewer`. 
 
-
-Des explications détaillées se trouvent dans l'annexe **TODO** dédiée à l'utilisation de R Studio.
-
-
+Des explications détaillées se trouvent dans l'annexe \@ref(prise) dédiée à l'utilisation de R Studio.
 
 #### Pour en savoir plus ...
 
-- <https://quanti.hypotheses.org/488/>
+- [RStudio](https://www.rstudio.com/). Site de Rstudio comprennant un ensemble de ressource en anglais afin d'appréhender RStudio.
 
-- <https://elementr.hypotheses.org/237>
+- [RStudio, un environnement de développement pour R](https://quanti.hypotheses.org/488/). Site proposant une brève explication de RStudio en français.
+
+- [RStudio : sa vie, son oeuvre, ses ressources](https://elementr.hypotheses.org/237). Site proposant une explication de RStudio en français.
+
+### Markdown
+
+Afin de réaliser vos analyses dans RStudio, nous employons le language `Markdown` dnas la zone d'édition. Ce language a été mis au point afin de négliger la mise en forme et de revenir au fondamental de l'écriture le fond.
+
+![](images/sdd1_01/markdown.gif)
+
+Son avantage principal réside dans sa simplicité d'apprentissage. Quels sont les commandes et instructions indispensables lorsque l'on rédige un rapport ?  Des titres et sous-titres, mise en évidence (mise en italiques ou mise en gras), des listes,... Il ne faut au final que très peu de commandes que pour réaliser un rapport de qualité avec une mise en page minimaliste et épurée. 
+
+Avec les quelques instructions présent dans le document [aide-mémoire](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) (**Cheatsheet**) de Rstudio vous aurez appréhender ce language.
+
+Après avoir rédiger votre document, vous devez cliquer sur `Preview`.
+
+<div class="bdd">
+<p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de rstudio et rmarkdown</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_markdown.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_markdown.pdf</a></p>
+<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_markdown.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_markdown.md</a></p>
+</div>
+
+#### Pour en savoir plus...
+
+- [Markdown](https://daringfireball.net/projects/markdown/). Explication en anglais de l'intérêt d'employer markdown ainsi que la syntax à employer.
+
+- [Un guide pour bien commencer avec markdown](https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/). Explication détaillée en français sur le language markdown
+
+- [Le Markdown comme langage d’écriture universel ?](https://blog.genma.fr/?Le-Markdown-comme-langage-d-ecriture-universel). 
+
+- [Rédigez en Markdown !](https://openclassrooms.com/fr/courses/1304236-redigez-en-markdown)
+
+- [Comment écrire confortablement et professionnellement ? Le markdown !](https://dolys.fr/forums/topic/comment-ecrire-confortablement-professionnellement-markdown/). Utilisation de Markdown afin de revenir à l'essence de la rédaction.
+
+- [Écrire tout simplement – Introduction à Markdown](http://www.boiteaoutils.info/2013/02/ecrire-tout-simplement-introduction/). Explication en français des raisons de l'utilisation de markdown.
 
 ### Gestionnaire de version 
 
@@ -178,18 +201,20 @@ Vous venez d'apprendre différents mots technique indispensable pour une bonne c
 
 - **pull**
 
-Ceci n'est q'une rapide explication de ces deux programmes retrouve un tutoriel détaillé au lien suivant 
+Ceci n'est qu'une rapide explication de ces deux programmes retrouve un tutoriel détaillé au lien suivant 
 
 > TODO tuto sur git et github
 
 ##### Pour en savoir plus 
 
-- <https://openclassrooms.com/fr/courses/1233741-gerez-vos-codes-source-avec-git>
+- [Gérez vos codes source avec Git ](https://openclassrooms.com/fr/courses/1233741-gerez-vos-codes-source-avec-git). Explication en français sur l'utilisation de Git. 
 
-- <https://www.codebuilder.fr/blog/developpement-collaboratif-logiciels-gestion-versions/>
-- <https://blog.axopen.com/2017/02/git-comprendre-la-gestion-de-versions/>
+- [Quel logiciel de gestion de versions devriez-vous utiliser ?](https://www.codebuilder.fr/blog/developpement-collaboratif-logiciels-gestion-versions/). Explication en français sur l'utilisation des logiels de gestion de versions.
 
-- <https://git-scm.com/>
+- [Git: comprendre la gestion de versions](https://blog.axopen.com/2017/02/git-comprendre-la-gestion-de-versions/). Explication en français sur l'utilisation de Git.
+
+
+- [Git](https://git-scm.com/). Site en anglais comprendant toute la document de Git.
 
 - <http://www.lsv.fr/~hirschi/pdfs/git.pdf>
 
@@ -205,41 +230,19 @@ Par exemple, le projet initial pour réaliser votre site web se trouve sur ce pr
 
 - <https://fr.linkedin.com/pulse/r%C3%A9volutionner-lenseignement-avec-github-classroom-antoine-caron> 
 
-### Markdown
 
-Afin de compléter votre site en vous focalisant uniquement sur le fond et non la forme, vous allez employer le language `Markdown`. Ce language a été mis au point afin de négliger la mise en forme et de revenir au fondamental de l'écriture le fond.
+## Site web professionnel {#site}
 
-Son avantage principal réside dans sa simplicité d'apprentissage. Quels sont les commandes et instructions indispensables lorsque l'on rédige un rapport ?  Des titres et sous-titres, mise en évidence (mise en italiques ou mise en gras), des listes,... Il ne faut au final que très peu de commandes que pour réaliser un rapport de qualité avec une mise en page minimaliste et épurée. 
+De nos jours, un nombre important de données sont collectées sur nous. A la fin de vos études, vous serez amenés à rechercher un travail (dans le milieu de la recherche universitaire, dans la recherche en entreprise, dans les métiers de l'éco-conseils, etc.). Cependant, tous les recruteurs utilisent actuellement les données que l'on a semé sur le net afin de réaliser un profil détaillés sur nous. Il est donc de votre intérêt d'avoir un profil sur Internet le meilleur possible. Nous allons vous y aider !
 
-> TODO ajouter image avec markdonw le rendu après avoir été compilé. cheatsheet, ....
+Les réseaux sociaux sont une mine d'or sur nos habitudes de vie comme Facebook, Twitter ou encore Instagram. On peut parler de l'image numérique d'une personne. Afin de mettre l'accent sur les compétences professionnels, de plus en plus de personnes utilisent des réseaux plus profesionnels comme LinkedIn ou encore des sites webs personnels professionels (par exemple : <http://phgrosjean.sciviews.org/>, <http://www.guyliann.be/>).
 
-Avec les quelques instructions présent dans le document [aide-mémoire](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) (**Cheatsheet**) de Rstudio vous aurez appréhender ce language.
-
-
-#### Pour en savoir plus...
-
-- <https://daringfireball.net/projects/markdown/>
-
-- <http://www.boiteaoutils.info/2013/02/ecrire-tout-simplement-introduction/>
-
-- <https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/>
-
-- <https://blog.genma.fr/?Le-Markdown-comme-langage-d-ecriture-universel>
-
-- <https://openclassrooms.com/fr/courses/1304236-redigez-en-markdown>
-
-- <https://dolys.fr/forums/topic/comment-ecrire-confortablement-professionnellement-markdown/>
-
+Dans le cadre de ce premier module, vous allez réaliser votre premier site professionnel (contenant également une section "blog" que vous pourez alimenter, entre autres, avec vos considérations concernant vos cours, les analyse de données, et autres). Ce site sera immédiatement disponible sur le web et ce, de manière entièrement gratuite! Afin de mener à bien ce premier projet, divers outils vous seront nécessaires. Ces outils seront complétés plus trd par d'autres pour que vous ayez une boite à outils complète pour vos futures analyses de données professionnelles.
 
 ### A vous de jouer 
 
 Maintenant qu'une brève explication des différents outils vous a été fait, lancez vous dans la création de votre site web professionnel. 
 
-- Créer votre propre compte git hub
-
-- Rejoignez l'exercice relatif à  la création de votre site web sur **Git Hub Classroom**.
-
-- Modifiez pas à pas le projet afin d'obtenir votre site web perso 
 
 
 
