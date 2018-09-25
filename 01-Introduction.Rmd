@@ -95,7 +95,7 @@ Des explications détaillées se trouvent dans l'annexe \@ref(prise) dédiée à
 
 ### Markdown
 
-Afin de réaliser vos analyses dans RStudio, nous employons le language `Markdown` dnas la zone d'édition. Ce language a été mis au point afin de négliger la mise en forme et de revenir au fondamental de l'écriture le fond.
+Afin de réaliser vos analyses dans RStudio, nous employons le language `Markdown` dans la zone d'édition. Ce language a été mis au point afin de séparer  la mise en forme et le fond. Ce language a la volontée de revenir au fondamental de l'écriture, le fond.
 
 ![](images/sdd1_01/markdown.gif)
 
