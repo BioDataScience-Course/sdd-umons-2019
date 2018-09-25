@@ -8,13 +8,13 @@ Sélectionnez le raccourci **RStudio** dans le dock. Un login vers RStudio appar
 
 - Username : **sv**
 - Password : **sv**
-- Cochez éventuellement **Stay signed in** pour éviter de devoir réentrer ces informations continuellement
+- Cochez éventuellement **Stay signed in** pour éviter de devoir réentrer ces informations continuellement : 
 
-![](images/annexeb/rstudio1.png)
+![](images/annexe_a2/rstudio1.png)
 
 RStudio s'ouvre. C'est votre interface de travail à partir de laquelle vous allez piloter **R**. La fenêtre principale comporte différents éléments :
 
-![](images/annexeb/rstudio2.png)
+![](images/annexe_a2/rstudio2.png)
 
 - Une barre de menu et une barre d'outils générale en haut 
 - Un panneau à gauche intitulée **Console** où vous pouvez entrer des instructions dans **R** pour manipuler vos données
@@ -23,19 +23,19 @@ RStudio s'ouvre. C'est votre interface de travail à partir de laquelle vous all
 
 Pour l'instant, aucun document de travail n'est encore ouvert. Pour en créer un, ou ouvrir un document existant, vous utilisez le menu **Files**, ou encore, le premier bouton de la barre d'outils générale :
 
-![](images/annexeb/rstudio3.png)
+![](images/annexe_a2/rstudio3.png)
 
 Le menu **Session** permet d'interagir directement avec **R** qui est lancé automatiquement en arrière plan dès que RStudio est ouvert. Par exemple, il est possible de relancer **R** à partir d'une entrée dans ce menu :
 
-![](images/annexeb/rstudio4.png)
+![](images/annexe_a2/rstudio4.png)
 
 Le menu **Help** propose différentes possibilités pour accéder à la documentation de **R** ou de **RStudio**. Les **aide-mémoires** ("cheatsheets" en anglais) sont très pratiques lors de l'apprentissage. Nous conseillons de les imprimer et de les consulter régulièrement.
 
-![](images/annexeb/rstudio5.png)
+![](images/annexe_a2/rstudio5.png)
 
 Le dernier bouton de la barre d'outils générale, intitulé **Projects** permet d'ouvrir, fermer, et gérer les projets RStudio.
 
-![](images/annexeb/rstudio6.png)
+![](images/annexe_a2/rstudio6.png)
 
 Vous avez maintenant repéré les éléments fondamentaux de l'interface de RStudio.
 
