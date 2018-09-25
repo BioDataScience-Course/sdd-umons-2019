@@ -2,7 +2,7 @@
 
 Cette annexe comprend une description détaillée des différents outils utilisés dans la cadre de cette formation. 
 
-## RStudio
+## RStudio {#rs}
 
 Sélectionnez le raccourci **RStudio** dans le dock. Un login vers RStudio apparaît. Il faut y entrer les informations suivantes :
 
@@ -16,12 +16,12 @@ RStudio s'ouvre. C'est votre interface de travail à partir de laquelle vous all
 
 ![](images/annexeb/rstudio2.png)
 
-- Une barre de menu et une barre d'outils générale en haut (encadré bleu)
+- Une barre de menu et une barre d'outils générale en haut 
 - Un panneau à gauche intitulée **Console** où vous pouvez entrer des instructions dans **R** pour manipuler vos données
 - Un panneau à droite en hautavec plusieurs onglets, dont **Environnement** qui vous indique les différents items (on parle d'**objets**) chargés en mémoire dans **R** (mais pour l’instant, il n'y a encore rien).
 - Un panneau en bas à droite comportant lui aussi plusieurs onglets. Vous devriez voir le contenu de **Files** au démarrage, un explorateur de fichiers simplifié relatif au contexte de travail actuel dans RStudio.
 
-Pour l'instant, aucun document de travail n'est encore ouvert. Pour en créer un, ou ouvrir un document existant, vous utilisez le menu **Files**, ou encore, le premier bouton de la barre d'outils générale (encadré en bleu ci-dessous) :
+Pour l'instant, aucun document de travail n'est encore ouvert. Pour en créer un, ou ouvrir un document existant, vous utilisez le menu **Files**, ou encore, le premier bouton de la barre d'outils générale :
 
 ![](images/annexeb/rstudio3.png)
 
