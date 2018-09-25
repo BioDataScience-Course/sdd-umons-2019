@@ -57,7 +57,7 @@ knitr::include_graphics('images/svBox-256.png')
 
 ```{block, type = 'bdd'}
 Une fois loggé dans la machine virtuelle, réalisez l'activité : **Découverte de la machine virtuelle**
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_sv_box.pdf>
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/sdd1_01_sv_box.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
 <https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md>
@@ -109,7 +109,7 @@ Après avoir rédiger votre document, vous devez cliquer sur `Preview`.
 
 ```{block, type = 'bdd'}
 Une fois loggé dans la machine virtuelle, réalisez l'activité : **Découverte de rstudio et rmarkdown**
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/2018/sdd1_01_markdown.pdf>
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/sdd1_01_markdown.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
 <https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_markdown.md>
@@ -233,11 +233,6 @@ Ceci n'est qu'une rapide explication de ces deux programmes, retrouve une explic
 **Git Hub Classroom** est une extension de Git Hub qui s'emploie pour les utilisateurs comme Git Hub. Vous serez amené à cloner des dépots, modifier des dépots pour réaliser des commit,...  Le tout va être suivi pour des administrateurs. Différents exercices vous seront proposés via ce programme. 
 
 Par exemple, le projet initial pour réaliser votre site web se trouve sur ce programme.
-
-##### Pour en savoir plus ...
-
-- <https://fr.linkedin.com/pulse/r%C3%A9volutionner-lenseignement-avec-github-classroom-antoine-caron> 
-
 
 ## Site web professionnel {#site}
 
