@@ -195,27 +195,7 @@ La fonction `skim()` du package `skimr` permet de visualiser le type de la varia
 
 
 ```r
-skimr::skim(tg)
-```
-
-```
-# Skim summary statistics
-#  n obs: 60 
-#  n variables: 3 
-# 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────
-#  variable missing complete  n n_unique
-#      dose       0       60 60        3
-#      supp       0       60 60        2
-#                                        top_counts ordered
-#                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
-#  OJ: 30, VC: 30, NA: 0                              FALSE
-# 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────
-#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
-#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
-#      hist
-#  ▃▅▃▅▃▇▂▂
+#skimr::skim(tg)
 ```
 Avec une seule instruction, on obtient une quantité d'information sur notr jeu de données comme le nombre d'observation, le nombre de variables et un traitement spécifique pour chaque type de variable. 
 

@@ -2,6 +2,8 @@
 
 Cette annexe comprend une description détaillée des différents outils utilisés dans la cadre de cette formation. 
 
+Passez à la section suivante pour découvrir les outils. (ex: B.1 RStudio)
+
 ## RStudio {#rs}
 
 Sélectionnez le raccourci **RStudio** dans le dock. Un login vers RStudio apparaît. Il faut y entrer les informations suivantes :

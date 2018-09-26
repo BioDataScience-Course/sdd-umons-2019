@@ -184,7 +184,7 @@ La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. 
 La fonction `skim()` du package `skimr` permet de visualiser le type de la variable et bien plus encore. Il fournit une visualisation différentes en fonction du type de la variable. Il propose par exemple un histogramme pour les variables numériques comme le montre le tableau ci-dessous
 
 ```{r, echo = TRUE}
-skimr::skim(tg)
+#skimr::skim(tg)
 ```
 Avec une seule instruction, on obtient une quantité d'information sur notr jeu de données comme le nombre d'observation, le nombre de variables et un traitement spécifique pour chaque type de variable. 
 
