@@ -37,33 +37,21 @@ Les learnr qui vont seront proposé tout au long de votre formation seront compo
 
 Vous retrouvez d'ailleurs cette structure en haut à gauche de ce dernier. Chaque page du tutoriel est importante et implique vitre attention. 
 
-![](images/annexe_a3/learnr3.png)
-
-La section préambule n'est présente que dans le premier tutoriel afin de renvoeyer vers cette annexe. 
-
 - Objectifs
 
 Cette section va détailler l'ensemble des notions que vous allez devoir maitriser durant ce tutoriel. Dans le cadre de ce premier tutoriel, l'unique objectif de ce tutoriel est donc de découvrir les bases du language R. 
 
-![](images/annexe_a3/learnr4.png)
-
-
 - Introduction
 
-Cette section va vous replacer dans le contexte du tutoriel interactif avec un rappel succinct des notions théoriques indispensables afin de répondre à la série d'exercices. L'exemple ci-dessous propose une vidéo Youtube à ce sujet. 
-
-![](images/annexe_a3/learnr5.png)
-
+Cette section va vous replacer dans le contexte du tutoriel interactif avec un rappel succinct des notions théoriques indispensables afin de répondre à la série d'exercices. 
 
 - Une serie d'exercices 
 
 Cette section peut être de longueurs très variables en fonction de la difficulté des notions à appréhender.
 
-![](images/annexe_a3/learnr6.png)
-
 Il est possible d'obtenir des zones de codes R afin de rentrer ces instructions pour répondre à la question. Pour exécuter ces instructions, il faut cliquer sur `Run Code` et pour soumettre sa réponse `Submit Answer`.
 
-![](images/annexe_a3/learnr1.gif)
+![](images/annexe_a3/learnr2.gif)
 
 - Conclusion
 
@@ -74,5 +62,6 @@ Cette section termine ce tutoriel et propose de laisser des commentaires avec l'
 En retournant dans RStudio, vous devez terminer le tutoriel en utilisant `esc` ou `ctrl-c`. 
 
 ![](images/annexe_a3/learnr9.png)
+
 
 

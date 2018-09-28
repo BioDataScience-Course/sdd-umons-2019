@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-26">
+<meta name="date" content="2018-09-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -130,11 +130,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
-<li class="chapter" data-level="2.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Graphique en nuage de points</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.1</b> Pièges et Astuces</a></li>
-<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.2</b> Le nuage de points en vidéo</a></li>
-<li class="chapter" data-level="2.1.3" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.3</b> A vous de jouer !</a></li>
-<li class="chapter" data-level="2.1.4" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pour-en-savoir-plus-3"><i class="fa fa-check"></i><b>2.1.4</b> Pour en savoir plus…</a></li>
+<li class="chapter" data-level="2.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Nuage de points</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.1</b> Le nuage de points en vidéo</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.2</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nuage-de-points.html"><a href="nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.3</b> Pièges et Astuces</a></li>
+<li class="chapter" data-level="2.1.4" data-path="nuage-de-points.html"><a href="nuage-de-points.html#pour-en-savoir-plus-3"><i class="fa fa-check"></i><b>2.1.4</b> Pour en savoir plus…</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Intégration des graphiques dans un rapport: R Markdown</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html#pieges-et-astuces-1"><i class="fa fa-check"></i><b>2.2.1</b> Pièges et astuces</a></li>
@@ -226,9 +226,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a><ul>
 <li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a><ul>
-<li class="chapter" data-level="C.1" data-path="pour-en-savoir-plus-12.html"><a href="pour-en-savoir-plus-12.html"><i class="fa fa-check"></i><b>C.1</b> Pour en savoir plus …</a></li>
-</ul></li>
+<li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
 <li><a href="http://biodatascience-course.sciviews.org">Site Web du cours</a></li>
@@ -290,7 +288,7 @@ Figure 3.1: Instructions pour obtenir un graphique en bar.
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-3-1.svg" alt="Dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity." width="672" />
 <p class="caption">
-Figure 2.2: Dénombrement de l’occurence en fonction de la variable facteur cut et de la variable clarity.
+Figure 3.2: Dénombrement de l’occurence en fonction de la variable facteur cut et de la variable clarity.
 </p>
 </div>
 <p>Il existe d’autres solutions en utilisant la valeur <code>dodge</code> ou <code>fill</code> pour l’argument <code>position</code>.</p>
@@ -304,7 +302,7 @@ ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(b, c, <span cl
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="A) Graphique en barre du dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity avec  dodge comme valeur de l'argument position . B)  Graphique en barre du dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity avec  fill comme valeur de l'argument position" width="672" />
 <p class="caption">
-Figure 2.3: A) Graphique en barre du dénombrement de l’occurence en fonction de la variable facteur cut et de la variable clarity avec dodge comme valeur de l’argument position . B) Graphique en barre du dénombrement de l’occurence en fonction de la variable facteur cut et de la variable clarity avec fill comme valeur de l’argument position
+Figure 3.3: A) Graphique en barre du dénombrement de l’occurence en fonction de la variable facteur cut et de la variable clarity avec dodge comme valeur de l’argument position . B) Graphique en barre du dénombrement de l’occurence en fonction de la variable facteur cut et de la variable clarity avec fill comme valeur de l’argument position
 </p>
 </div>
 </div>
@@ -317,7 +315,7 @@ Figure 2.3: A) Graphique en barre du dénombrement de l’occurence en fonction 
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt=" Graphique en barre du dénombrement de quatre variaités d'oursins. " width="672" />
 <p class="caption">
-Figure 3.2:  Graphique en barre du dénombrement de quatre variaités d’oursins.
+Figure 2.2:  Graphique en barre du dénombrement de quatre variaités d’oursins.
 </p>
 </div>
 </div>

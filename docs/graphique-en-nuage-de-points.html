@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-26">
+<meta name="date" content="2018-09-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -131,9 +131,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Graphique en nuage de points</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.1</b> Pièges et Astuces</a></li>
-<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.2</b> Le nuage de points en vidéo</a></li>
-<li class="chapter" data-level="2.1.3" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.3</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.1.1" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.1</b> Le nuage de points en vidéo</a></li>
+<li class="chapter" data-level="2.1.2" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.2</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="2.1.3" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.3</b> Pièges et Astuces</a></li>
 <li class="chapter" data-level="2.1.4" data-path="graphique-en-nuage-de-points.html"><a href="graphique-en-nuage-de-points.html#pour-en-savoir-plus-3"><i class="fa fa-check"></i><b>2.1.4</b> Pour en savoir plus…</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="integration-des-graphiques-dans-un-rapport-r-markdown.html"><a href="integration-des-graphiques-dans-un-rapport-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Intégration des graphiques dans un rapport: R Markdown</a><ul>
@@ -226,9 +226,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a><ul>
 <li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a><ul>
-<li class="chapter" data-level="C.1" data-path="pour-en-savoir-plus-12.html"><a href="pour-en-savoir-plus-12.html"><i class="fa fa-check"></i><b>C.1</b> Pour en savoir plus …</a></li>
-</ul></li>
+<li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
 <li><a href="http://biodatascience-course.sciviews.org">Site Web du cours</a></li>
@@ -255,7 +253,7 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="graphique-en-nuage-de-points" class="section level2">
 <h2><span class="header-section-number">2.1</span> Graphique en nuage de points</h2>
-<p>Dès que vous vous sentez familiarisé avec les principes de base de R, vous allez pouvoir réaliser assez rapidement des beaux graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique, vous pouvez exprimer cela sous la forme d’une <strong>formule</strong><a href="references.html#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+<p>Dès que vous vous sentez familiarisé avec les principes de base de R, vous allez pouvoir réaliser assez rapidement des beaux graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique, vous pouvez exprimer cela sous la forme d’une <strong>formule</strong><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
 <p><span class="math display">\[y \sim x\]</span></p>
 <p>que l’on peut lire “y en fonction de x”. Pour les deux variables numériques <em>x</em> et <em>y</em>, la représentation graphique la plus classique est le <strong>nuage de points</strong> (voir Fig. <a href="graphique-en-nuage-de-points.html#fig:first-scatterplot">2.1</a> pour un exemple).</p>
 <div class="figure" style="text-align: center"><span id="fig:first-scatterplot"></span>
@@ -297,10 +295,24 @@ SciViews<span class="op">::</span>R
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée (<code>urchin</code>, c’est un objet <code>dataframe</code> ou <code>tibble</code> dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom des variables que vous voulez sur l’axe des ordonnées à gauche et des abscisses à droite de la formule. Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter <code>height</code> en fonction de <code>weight</code>, la hauteir en fonction de la masse des oursins. Jusqu’ici, nous avons spécifié <em>ce que</em> nous voulons représenter, mais pas encore <em>comment</em> (sous quelle apparence), nous voulons les métérialiser sur le graphique. Pour un nuage de points, nous voulons les représenter sous forme de … points ! Donc, nous devons ajouter la fonction <code>geom_point()</code> pour indiquer cela.</p>
+<div id="le-nuage-de-points-en-video" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Le nuage de points en vidéo</h3>
+<p>Vous trouverez une vidéo ci-dessous vous expliquant la création du nuage de points dans R sur ce jeu de données mais analysant d’autres variables.</p>
+<iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
+<p>Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphiques. Soyez curieux et expérimentez par vous-même !</p>
+</div>
+<div id="a-vous-de-jouer-1" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> A vous de jouer !</h3>
+
+<div class="bdd">
+Dans la fenêtre <strong>Console</strong> de RStudio, entrez l’instruction suivante suivie de la touche <code>Entrée</code> pour ouvrir le tutoriel concernant le nuage de points : BioDataScience::run(“02c_nuage_de_points”) N’oubliez pas d’appuyer sur la touche <code>ESC</code> pour reprendre la main dans R à la fin d’un tutoriel)
+</div>
+
+</div>
 <div id="pieges-et-astuces" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Pièges et Astuces</h3>
+<h3><span class="header-section-number">2.1.3</span> Pièges et Astuces</h3>
 <div id="modifications-des-echelles-dun-graphiques" class="section level4">
-<h4><span class="header-section-number">2.1.1.1</span> Modifications des échelles d’un graphiques</h4>
+<h4><span class="header-section-number">2.1.3.1</span> Modifications des échelles d’un graphiques</h4>
 <p>Vous devez être vigilant lors de la réalisation d’un nuage de point particulièrement sur l’étendue des valeurs présentées sur vos axes. Vous devez utilisez votre expertise de biologistes pour vous posez les deux questions suivantes :</p>
 <ul>
 <li><p>Est ce que l’axe représente des valeurs plausibles de hauteurs et de masses de ces oursins apparetenant à l’espèce <em>Paracentrotus lividus</em> ?</p></li>
@@ -316,16 +328,16 @@ C &lt;-<span class="st"> </span>A <span class="op">+</span><span class="st"> </s
 D &lt;-<span class="st"> </span>A <span class="op">+</span><span class="st"> </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">400</span>, <span class="dv">400</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">400</span>, <span class="dv">400</span>))
 <span class="co"># Assemblage des graphiques</span>
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(A, B, C, D), <span class="dt">font.label =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">align =</span> <span class="st">&quot;hv&quot;</span>))</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-3-1.svg" alt="Piège du nuage de points. A) graphique initialemontrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification de l'échelle de l'axe X et de l'axe Y." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-5-1.svg" alt="Piège du nuage de points. A) graphique initialemontrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification de l'échelle de l'axe X et de l'axe Y." width="672" />
 <p class="caption">
 Figure 2.2: Piège du nuage de points. A) graphique initialemontrant la variation de la hauteur [mm] en fonction de la masse [g] B) graphique A avec la modification de l’échelle de l’axe X. C) Graphique A avec une seconde modification de l’axe X. D) Graphique A avec modification de l’échelle de l’axe X et de l’axe Y.
 </p>
 </div>
 </div>
 <div id="transformations-des-donnees" class="section level4">
-<h4><span class="header-section-number">2.1.1.2</span> Transformations des données</h4>
-<p>Vous avez la possibilité d’appliquer une transformation de vos données (il est même conseillé de le faire) afin qu’elles soient plus facilement analysables. Par exemple, il est possible d’utiliser des fonctions de puissance, racines, logarithmes, exponentielles<a href="references.html#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> pour modifier l’apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d’analyser statistiquement des données qui s’alignent le long d’une droite).</p>
+<h4><span class="header-section-number">2.1.3.2</span> Transformations des données</h4>
+<p>Vous avez la possibilité d’appliquer une transformation de vos données (il est même conseillé de le faire) afin qu’elles soient plus facilement analysables. Par exemple, il est possible d’utiliser des fonctions de puissance, racines, logarithmes, exponentielles<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> pour modifier l’apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d’analyser statistiquement des données qui s’alignent le long d’une droite).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique de la hauteur en fonction de la masse</span>
 A &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, height <span class="op">~</span><span class="st">  </span>weight) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()
@@ -334,35 +346,19 @@ B &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, <span clas
 <span class="st">  </span><span class="kw">geom_point</span>()
 <span class="co"># Assemblage des graphiques</span>
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(A, B), <span class="dt">font.label =</span> <span class="kw">list</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">align =</span> <span class="st">&quot;hv&quot;</span>))</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-4-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-6-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins" width="672" />
 <p class="caption">
 Figure 2.3: A) Variation de la hauteur [mm] en fonction de la masse [g] d’oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins
 </p>
 </div>
 </div>
 <div id="utilisation-des-snippets" class="section level4">
-<h4><span class="header-section-number">2.1.1.3</span> Utilisation des snippets</h4>
+<h4><span class="header-section-number">2.1.3.3</span> Utilisation des snippets</h4>
 <p>RStudio permet de récupérer rapidement des instructions à partir d’une banque de solutions toutes prêtes. Cela s’appelle des <strong>snippets</strong>. Vous avez une série de snippets disponibles dans la SciViews Box. Cela qui vous permet de réaliser un graphique en nuage de poinsts s’appelle <code>.cbxy</code>. Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci :</p>
 <pre><code>chart(data = DF, YNUM ~ XNUM) +
   geom_point()</code></pre>
 <p>Vous avez aussi à votre disposition l’aide-mémoire sur la visualisation des données (<a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Data Visualization Cheat Sheet</strong></a>).</p>
-</div>
-</div>
-<div id="le-nuage-de-points-en-video" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Le nuage de points en vidéo</h3>
-<p>Vous trouverez une vidéo ci-dessous vous expliquant la création du nuage de points dans R sur ce jeu de données mais analysant d’autres variables.</p>
-<iframe src="https://www.youtube.com/embed/-QzG3Xr202w" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
-<p>Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphiques. Soyez curieux et expérimentez par vous-même !</p>
-</div>
-<div id="a-vous-de-jouer-1" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> A vous de jouer !</h3>
-
-<div class="bdd">
-<p>Etudiez le tutoriel relatif aux graphiques en nuage de points :</p>
-<pre><code>BioDataScience::run(&quot;02c_nuage_de_points&quot;)</code></pre>
-</div>
-
 <p>Les instructions que vous employez dans un learnR peuvent être employée dans un script d’analyse. Sur base du jeux de données <code>urchin_bio</code>, explorez différents graphiques en nuages de points. Assignment ClassRoom avec R et un script.</p>
 <p>Inspirez vous de script présent dans le projet que vous venez de clonez. Faites une attention toute particulière à l’écriture d’un script. Il contient un titre , une date de la dernière mise à jour, le nom de l’auteur, un ensemble de commentaires permettant l’organisation de ce script.</p>
 <p>Réalisez votre propre script et réalisez les graphiques suivants :</p>
@@ -371,6 +367,7 @@ Figure 2.3: A) Variation de la hauteur [mm] en fonction de la masse [g] d’ours
 <li><p>Représentez la variation des parties solides en fonction du poids immergés des oursins</p></li>
 <li><p>Explorez par vous même le jeu de données <code>urchin_bio</code> qui contient pas moins de 19 variables que vous pouvez tentez d’associer graphiquement. Réalisez au moins 5 graphiques différents.</p></li>
 </ul>
+</div>
 </div>
 <div id="pour-en-savoir-plus-3" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> Pour en savoir plus…</h3>
@@ -385,9 +382,9 @@ Figure 2.3: A) Variation de la hauteur [mm] en fonction de la masse [g] d’ours
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <em>x</em> sur l’axe des abscisses et la variable <em>y</em> sur l’axe des ordonnées.<a href="graphique-en-nuage-de-points.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée : <span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span>.<a href="graphique-en-nuage-de-points.html#fnref4">↩</a></p></li>
+<ol start="2">
+<li id="fn2"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <em>x</em> sur l’axe des abscisses et la variable <em>y</em> sur l’axe des ordonnées.<a href="graphique-en-nuage-de-points.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée : <span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span>.<a href="graphique-en-nuage-de-points.html#fnref3">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
