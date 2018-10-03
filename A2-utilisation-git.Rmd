@@ -43,3 +43,6 @@ Vous avez maintenant repéré les éléments fondamentaux de l'interface de RStu
 
 _A ce stade vous pouvez vous familiariser avec la cheatsheet relative à l'IDE RStudio. Vous verrez qu'il y a beaucoup de fonctionnalités accessibles à partir de la fenêtre principale de RStudio. Ne vous laissez pas intimider : vous les apprendrez progressivement au fur et à mesure de l'utilisation du logiciel._
 
+### Projet dans RStudio {#rs_projet}
+
+TODO

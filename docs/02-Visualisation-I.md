@@ -171,21 +171,28 @@ chart(data = DF, YNUM ~ XNUM) +
   geom_point()
 ```
 
-Vous avez aussi à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/)).
+Vous avez à votre disposition un ensemble de snippet que vous pouvez retrouvez dans l'aide mémoire sur [**SciViews**](https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf).
+
+Vous avez également à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/)).
 
 ### A vous de jouer !
 
-\BeginKnitrBlock{bdd}<div class="bdd">Les instructions que vous employez dans un learnR peuvent être employée dans un script d'analyse. Sur base du jeux de données `urchin_bio`, explorez différents graphiques en nuages de points. Assignment ClassRoom avec R et un script.
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **individuel**. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier `project`.
 
-Inspirez vous de script présent dans le projet que vous venez de clonez. Faites une attention toute particulière à l'écriture d'un script. Il contient un titre , une date de la dernière mise à jour, le nom de l'auteur, un ensemble de commentaires permettant l'organisation de ce script.
+Cette nouvelle tâche qui vous est demandée vous propose d'employer un projet RStudio \@ref(rs_projet)
 
-Réalisez votre propre script et réalisez les graphiques suivants :
+\BeginKnitrBlock{bdd}<div class="bdd">Les instructions que vous employez dans un learnR peuvent être employée dans un script d'analyse. Sur base du jeux de données `urchin_bio`, explorez différents graphiques en nuages de points. 
 
-- Représentez la variation de la hauteur en fonction de la masse des oursins
+Utilisez l'URL suivant qui va vous donner accès à votre tâche.
 
-- Représentez la variation des parties solides en fonction du poids immergés des oursins
+- <https://classroom.github.com/a/eYrXLy_u>
+</div>\EndKnitrBlock{bdd}
 
-- Explorez par vous même le jeu de données `urchin_bio` qui contient pas moins de 19 variables que vous pouvez tentez d'associer graphiquement. Réalisez au moins 5 graphiques différents.</div>\EndKnitrBlock{bdd}
+Inspirez vous de script présent dans le dépôt sdd1_iris. Vous devez commencer par faire un fork du dépôt puis de faire un clone du dépôt sur votre ordinateur en local. 
+
+- <https://github.com/BioDataScience-Course/sdd1_iris>
+
+Faites une attention toute particulière à l'écriture d'un script. Il contient un titre , une date de la dernière mise à jour, le nom de l'auteur, un ensemble de commentaires permettant l'organisation de ce script.
 
 ### Pour en savoir plus...
 
@@ -206,7 +213,6 @@ Réalisez votre propre script et réalisez les graphiques suivants :
     BioDataScience::run("02d_np_challenge")
 
 N'oubliez pas d'appuyer sur la touche `ESC` pour reprendre la main dans R à la fin d'un tutoriel)</div>\EndKnitrBlock{bdd}
-
 
 ## Intégration des graphiques dans un rapport: R Markdown
 

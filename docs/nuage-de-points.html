@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-09-28">
+<meta name="date" content="2018-10-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -226,7 +226,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a><ul>
-<li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a></li>
+<li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a><ul>
+<li class="chapter" data-level="B.1.1" data-path="rs.html"><a href="rs.html#rs_projet"><i class="fa fa-check"></i><b>B.1.1</b> Projet dans RStudio</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
@@ -362,23 +364,28 @@ Figure 2.3: A) Variation de la hauteur [mm] en fonction de la masse [g] d’ours
 <p>RStudio permet de récupérer rapidement des instructions à partir d’une banque de solutions toutes prêtes. Cela s’appelle des <strong>snippets</strong>. Vous avez une série de snippets disponibles dans la SciViews Box. Cela qui vous permet de réaliser un graphique en nuage de poinsts s’appelle <code>.cbxy</code>. Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci :</p>
 <pre><code>chart(data = DF, YNUM ~ XNUM) +
   geom_point()</code></pre>
-<p>Vous avez aussi à votre disposition l’aide-mémoire sur la visualisation des données (<a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Data Visualization Cheat Sheet</strong></a>).</p>
+<p>Vous avez à votre disposition un ensemble de snippet que vous pouvez retrouvez dans l’aide mémoire sur <a href="https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf"><strong>SciViews</strong></a>.</p>
+<p>Vous avez également à votre disposition l’aide-mémoire sur la visualisation des données (<a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Data Visualization Cheat Sheet</strong></a>).</p>
 </div>
 </div>
 <div id="a-vous-de-jouer-2" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> A vous de jouer !</h3>
+<p>Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom <a href="decouverte-des-outils.html#classroom">1.2.4.3</a>. Cette tâche est un travail <strong>individuel</strong>. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier <code>project</code>.</p>
+<p>Cette nouvelle tâche qui vous est demandée vous propose d’employer un projet RStudio @ref(rs_projet)</p>
 
 <div class="bdd">
-<p>Les instructions que vous employez dans un learnR peuvent être employée dans un script d’analyse. Sur base du jeux de données <code>urchin_bio</code>, explorez différents graphiques en nuages de points. Assignment ClassRoom avec R et un script.</p>
-<p>Inspirez vous de script présent dans le projet que vous venez de clonez. Faites une attention toute particulière à l’écriture d’un script. Il contient un titre , une date de la dernière mise à jour, le nom de l’auteur, un ensemble de commentaires permettant l’organisation de ce script.</p>
-<p>Réalisez votre propre script et réalisez les graphiques suivants :</p>
+<p>Les instructions que vous employez dans un learnR peuvent être employée dans un script d’analyse. Sur base du jeux de données <code>urchin_bio</code>, explorez différents graphiques en nuages de points.</p>
+<p>Utilisez l’URL suivant qui va vous donner accès à votre tâche.</p>
 <ul>
-<li><p>Représentez la variation de la hauteur en fonction de la masse des oursins</p></li>
-<li><p>Représentez la variation des parties solides en fonction du poids immergés des oursins</p></li>
-<li>Explorez par vous même le jeu de données <code>urchin_bio</code> qui contient pas moins de 19 variables que vous pouvez tentez d’associer graphiquement. Réalisez au moins 5 graphiques différents.
-</div>
-</li>
+<li><a href="https://classroom.github.com/a/eYrXLy_u" class="uri">https://classroom.github.com/a/eYrXLy_u</a></li>
 </ul>
+</div>
+
+<p>Inspirez vous de script présent dans le dépôt sdd1_iris. Vous devez commencer par faire un fork du dépôt puis de faire un clone du dépôt sur votre ordinateur en local.</p>
+<ul>
+<li><a href="https://github.com/BioDataScience-Course/sdd1_iris" class="uri">https://github.com/BioDataScience-Course/sdd1_iris</a></li>
+</ul>
+<p>Faites une attention toute particulière à l’écriture d’un script. Il contient un titre , une date de la dernière mise à jour, le nom de l’auteur, un ensemble de commentaires permettant l’organisation de ce script.</p>
 </div>
 <div id="pour-en-savoir-plus-3" class="section level3">
 <h3><span class="header-section-number">2.1.5</span> Pour en savoir plus…</h3>
