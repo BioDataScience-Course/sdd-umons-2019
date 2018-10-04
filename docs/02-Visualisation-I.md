@@ -194,6 +194,8 @@ Inspirez vous de script présent dans le dépôt sdd1_iris. Vous devez commencer
 
 Faites une attention toute particulière à l'écriture d'un script. Il contient un titre , une date de la dernière mise à jour, le nom de l'auteur, un ensemble de commentaires permettant l'organisation de ce script.
 
+Des explications détaillées se trouvent dans l'annexe \@ref(script) dédiée aux R scripts.
+
 ### Pour en savoir plus...
 
 - [Visualisation des données dans R for Data Science](http://r4ds.had.co.nz/data-visualisation.html). Chapitre du livre portant sur la visualisation des données
@@ -216,9 +218,11 @@ N'oubliez pas d'appuyer sur la touche `ESC` pour reprendre la main dans R à la 
 
 ## Intégration des graphiques dans un rapport: R Markdown
 
-Un fichier R Markdown est un fichier terminant par l'extension `.rmd`. Il provient de la combinaison du language markdown appris durant le premier module et le code appris durant la première partie de ce module 2.
+Un fichier R Markdown est un fichier terminant par l'extension `.Rmd`. Il provient de la combinaison du language markdown appris durant le premier module et le code appris durant la première partie de ce module 2. 
 
-> TODO ADD PICTURE 
+![](images/annexe_a2/rmd.gif)
+
+Des explications détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R Markdown.
 
 ### Pièges et astuces
 

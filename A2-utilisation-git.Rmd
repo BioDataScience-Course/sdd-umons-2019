@@ -43,7 +43,7 @@ Vous avez maintenant repéré les éléments fondamentaux de l'interface de RStu
 
 _A ce stade vous pouvez vous familiariser avec la cheatsheet relative à l'IDE RStudio. Vous verrez qu'il y a beaucoup de fonctionnalités accessibles à partir de la fenêtre principale de RStudio. Ne vous laissez pas intimider : vous les apprendrez progressivement au fur et à mesure de l'utilisation du logiciel._
 
-### Projet dans RStudio {#rs_projet}
+### Projet dans RStudio {#rs_projet} 
 
 Un projet dans RStudio est un outil proposé par RStudio afin d'organiser son travail. Un projet va regrouper l'ensemble des **jeux de données**, des **raports**, des **présentations**, des **scripts** d'une **analyse**
 
@@ -197,7 +197,7 @@ _A noter que si le fichier se trouve déjà dans le répertoire actif, le chemin
 
 Nulle part dans ce chemin relatif n’apparaît le nom du répertoire de projet, ni d'aucun autre répertoire parent. Ainsi, il est possible de renommer ou déplacer le projet sans casser la référence relative à n'importe quel fichier à l'intérieur de ce projet. Donc, en utilisant uniquement des références relatives, **le projet reste parfaitement portable**.
 
-### Rscripts dans RStudio
+### Rscripts dans RStudio {#script}
 
 Le script R est un fichier dont l'extension est `.R`. Il permet d'écrire dans un document structuré une suite d'instruction exécutable par le programme R 
 
@@ -235,7 +235,7 @@ Un script R doit être organisé de manière cohérente afin d'être exécutable
 
 Notez que les instructions exécutées dans le script sont envoyées dans la console R.
 
-### Rmarkdown/R Notebook dans RStudio
+### Rmarkdown/R Notebook dans RStudio {#Rmd}
 
 Le document R Notebook  est un fichier dont l'extension est `.Rmd`. Il combine à la fois des instructions R et le language markdown. le R Notebook ne vous permet pas de visualiser directement le résultat final d'un rapport d'analyse^[Les systèmes d'édition professionnels dissocient en effet le fond de la forme : vous rédiger d'abord le contenu, et ensuite, vous indiquer le style à lui appliquer.
 
@@ -308,11 +308,3 @@ Le rapport est rapidement généré avec un rendu simple et professionnel. Ce ra
 Notez que sur la droite du bouton `Preview`, vous avez accès à un menu déroulant qui vous donne la possibilité de générer vos rapports en différents formats.
 
 ![](images/annexe_a2/rmd6.png)
-
-## Git
-
-TODO
-
-## Git Hub 
-
-TODO
