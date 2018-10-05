@@ -309,3 +309,11 @@ Le rapport est rapidement généré avec un rendu simple et professionnel. Ce ra
 Notez que sur la droite du bouton `Preview`, vous avez accès à un menu déroulant qui vous donne la possibilité de générer vos rapports en différents formats.
 
 ![](images/annexe_a2/rmd6.png)
+
+## Github 
+
+TODO
+
+## Github Classroom
+
+TODO
