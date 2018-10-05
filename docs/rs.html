@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-04">
+<meta name="date" content="2018-10-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -277,7 +277,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <ul>
 <li>Une barre de menu et une barre d’outils générale en haut</li>
 <li>Un panneau à gauche intitulée <strong>Console</strong> où vous pouvez entrer des instructions dans <strong>R</strong> pour manipuler vos données</li>
-<li>Un panneau à droite en hautavec plusieurs onglets, dont <strong>Environnement</strong> qui vous indique les différents items (on parle d’<strong>objets</strong>) chargés en mémoire dans <strong>R</strong> (mais pour l’instant, il n’y a encore rien).</li>
+<li>Un panneau à droite en haut qui comprend plusieurs onglets, dont <strong>Environnement</strong> qui vous indique les différents items (on parle d’<strong>objets</strong>) chargés en mémoire dans <strong>R</strong> (mais pour l’instant, il n’y a encore rien).</li>
 <li>Un panneau en bas à droite comportant lui aussi plusieurs onglets. Vous devriez voir le contenu de <strong>Files</strong> au démarrage, un explorateur de fichiers simplifié relatif au contexte de travail actuel dans RStudio.</li>
 </ul>
 <p>Pour l’instant, aucun document de travail n’est encore ouvert. Pour en créer un, ou ouvrir un document existant, vous utilisez le menu <strong>Files</strong>, ou encore, le premier bouton de la barre d’outils générale :</p>
@@ -304,14 +304,14 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p><em>A ce stade vous pouvez vous familiariser avec la cheatsheet relative à l’IDE RStudio. Vous verrez qu’il y a beaucoup de fonctionnalités accessibles à partir de la fenêtre principale de RStudio. Ne vous laissez pas intimider : vous les apprendrez progressivement au fur et à mesure de l’utilisation du logiciel.</em></p>
 <div id="rs_projet" class="section level3">
 <h3><span class="header-section-number">B.1.1</span> Projet dans RStudio</h3>
-<p>Un projet dans RStudio est un outil proposé par RStudio afin d’organiser son travail. Un projet va regrouper l’ensemble des <strong>jeux de données</strong>, des <strong>raports</strong>, des <strong>présentations</strong>, des <strong>scripts</strong> d’une <strong>analyse</strong></p>
+<p>Un projet dans RStudio est un outil proposé par RStudio afin d’organiser son travail. Un projet va regrouper l’ensemble des <strong>jeux de données</strong>, des <strong>rapports</strong>, des <strong>présentations</strong>, des <strong>scripts</strong> d’une <strong>analyse</strong></p>
 <p><strong>La question est de savoir qu’est ce qu’une analyse:</strong></p>
 <p>Une analyse d’un point de vue scientifique (et dans notre cas pour la biologie) est une <strong>expérience</strong>.</p>
 <div class="figure">
 <img src="images/annexe_a2/project1.png" />
 
 </div>
-<p>Notez en que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l’onglet <strong>Console</strong> (<code>~/Shared/Projects/mon_premier_projet/</code>), et que l’onglet <strong>Files</strong> affiche son contenu. Un fichier <code>mon_premier_projet.Rproj</code> y est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet<a href="references.html#fn19" class="footnoteRef" id="fnref19"><sup>19</sup></a>. C’est aussi une excellente façon de repérer qu’un répertoire est la base d’un projet RStudio, en repérant ce fameux fichier <code>.Rproj</code>.</p>
+<p>Notez en que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l’onglet <strong>Console</strong> (<code>~/Shared/Projects/mon_premier_projet/</code>), et que l’onglet <strong>Files</strong> affiche son contenu. Un fichier <code>mon_premier_projet.Rproj</code> y est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. C’est aussi une excellente façon de repérer qu’un répertoire est la base d’un projet RStudio, en repérant ce fameux fichier <code>.Rproj</code>.</p>
 <div id="creation-dun-projet" class="section level4">
 <h4><span class="header-section-number">B.1.1.1</span> Création d’un projet</h4>
 <p>Creez votre premier projet en suivant les 4 étapes suivantes</p>
@@ -331,7 +331,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <img src="images/annexe_a2/project_create.gif" />
 
 </div>
-<p>Pour créer un nouveau project (<strong>Nex Project…</strong>), ouvrir un projet existant (<strong>Open Project…</strong>) ou encore fermer un projet (<strong>Close Project</strong>) , toutes ces otpions sont présentes dans le menu déroulant de la fonction <strong>Project</strong>. Vous remarquez également que les derniers projets employés sont placés sous les trois options citées ci-dessus.</p>
+<p>Pour créer un nouveau project (<strong>New Project…</strong>), ouvrir un projet existant (<strong>Open Project…</strong>) ou encore fermer un projet (<strong>Close Project</strong>) , toutes ces otpions sont présentes dans le menu déroulant de la fonction <strong>Project</strong>. Vous remarquez également que les derniers projets employés sont placés sous les trois options citées ci-dessus.</p>
 <div class="figure">
 <img src="images/annexe_a2/project.png" />
 
@@ -348,7 +348,7 @@ code > span. { color: #1f1c1b; } /* Normal */
           Projet test.Rproj    # Fichier de configuration du projet créé par RStudio
           .gitignore           # Fichier relatif à la gestion de version </code></pre>
 <p>Vous devez maintenant structurer votre projet afin d’avoir différents répertoires pour organiser au mieux le travail. Ceci concerne à la fois les données et les rapports d’analyse en lien avec ce projet.</p>
-<p>Cliquez sur le bouton <strong>New Folder</strong> dans la barre d’outils de l’onglet <strong>Files</strong> et appelez ce nouveau dossier <code>data</code>. Puis créez également <code>reports</code> de la même manière. et <code>R</code> de la même manière Vous pouvez faire cela depuis RStudio, mais aussi depuis le système hôte si c’est plus confortable pour vous.</p>
+<p>Cliquez sur le bouton <strong>New Folder</strong> dans la barre d’outils de l’onglet <strong>Files</strong> et appelez ce nouveau dossier <code>data</code>. Ajoutez égalemnt le dossier <code>reports</code>et <code>R</code>. Vous pouvez faire cela depuis RStudio, mais aussi depuis le système hôte si c’est plus confortable pour vous.</p>
 <pre><code>/home
   /sv
     /Shared
@@ -399,7 +399,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul>
 <p>Le répertoire utilisateur <code>/home/&lt;user&gt;</code> est différent sous MacOS (il s’appelle <code>/Users/&lt;user&gt;</code>) et sous Windows (il se nomme généralement <code>C:\Users\&lt;user&gt;</code>). Comme c’est un répertoire clé, et qu’il est impossible d’écrire un chemin absolu qui soit le même partout, il existe un raccourcis: le “tilde” (<code>~</code>) qui signifie “mon répertoire utilisateur”. Ainsi, vous pouvez aussi accéder à votre jeu de données “Oursins” comme ceci :</p>
 <pre><code>~/shared/projects/projet_test/data/datasets.csv</code></pre>
-<p>Ce chemin d’accès est déjà plus “portable” d’un système à l’autre et d’un utilisateur à l’autre. Il est donc à préférer. Notez que sous R, vous devez doubler les backslashs sous Windows (<code>~\\Documents\\...</code>). Ce n’est ni très esthétique, ni compatible avec les deux autres systèmes. Heureusement, R comprend aussi le slash comme séparateur sous Windows, de sorte que la même syntaxe peut être utilisée partout ! <em>Nous vous conseillons donc d’utiliser aussi systématiquement les slashs sous Windows dans R ou RStudio.</em> Si cette façon d’écrire le chemin d’accès est compatible entre les trois systèmes d’exploitation, elle ne permet toujours pas de déplacer ou de renommer notre projet.</p>
+<p>Ce chemin d’accès est déjà plus “portable” d’un système à l’autre et d’un utilisateur à l’autre. Il est donc à préférer. Notez que sous R, vous devez doubler les backslashs sous Windows (<code>~\\Documents\\...</code>). Ce n’est ni très esthétique, ni compatible avec les deux autres systèmes. Heureusement, R comprend aussi le slash comme séparateur sous Windows, de sorte que la même syntaxe peut être utilisée partout ! <strong>Nous vous conseillons donc d’utiliser aussi systématiquement les slashs sous Windows dans R ou RStudio.</strong> Si cette façon d’écrire le chemin d’accès est compatible entre les trois systèmes d’exploitation, elle ne permet toujours pas de déplacer ou de renommer notre projet.</p>
 <p>L’utilisation d’un <strong>chemin relatif</strong> permet de définir la position d’un fichier par rapport à un autre dossier qui est dit le <strong>répertoire actif</strong>. A titre d’exemple, nous voulons faire référence au jeu de données <code>datasets.csv</code> depuis notre rapport <code>rapport_test.Rmd</code>.</p>
 <p>Demandez-vous d’abord quel est le <strong>répertoire actif</strong>. Pour un fichier R Markdown ou R Notebook, c’est facile, c’est le dossier qui contient ce fichier. Dans la console R, cela peut varier selon le contexte. Si vous avez ouvert un projet, c’est le répertoire de base du projet par défaut, mais cela peut être modifié. <strong>Le répertoire actif pour R est toujours indiqué en gris à côté de l’onglet Console dans RStudio.</strong> Vous pouvez aussi interroger R à l’aide de l’instruction <code>getwd()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
@@ -450,11 +450,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 
 </div>
 <p>Il existe deux méthodes afin d’exécuter une ligne d’instruction via le bouton <code>Run</code> en haut à droite de la fenêtre d’édition ou via le raccourci clavier <code>ctrl+Enter</code> (<code>cmd+enter</code> sous mac).</p>
-<p>Un script R doit être organisé de manière cohérente afin d’être exécutable de ahut en bas. Dans l’exemple ci-dessus, on commence par:</p>
+<p>Un script R doit être organisé de manière cohérente afin d’être exécutable de haut en bas. Dans l’exemple ci-dessus, on commence par:</p>
 <ul>
 <li><p><strong>Étape 1.</strong> Importer les principaux outils avec l’instruction <code>Sciviews::R</code>.</p></li>
 <li><p><strong>Étape 2.</strong> Utiliser l’instruction <code>urchin &lt;- read(&quot;urchin_bio&quot;, package = &quot;data.io&quot;)</code> pour importer le jeu de données urchin_bio provenant du package data.io et l’assigner à urchin. On retrouve à présent urchin dans l’environnement global (<code>Global environment</code>) de RStudio.</p></li>
-<li><p><strong>Étape 3.</strong> <code>.?urchin</code> et View(urchin) donnent des renseignemnts sur le jeu de données en renvoyant vers la page d’aide du jeu de données et vers le tableau du jeu de données.</p></li>
+<li><p><strong>Étape 3.</strong> <code>.?urchin</code> et <code>View(urchin)</code> donnent des renseignements sur le jeu de données en renvoyant vers la page d’aide du jeu de données et vers le tableau du jeu de données.</p></li>
 <li><p><strong>Étape 4.</strong> Réaliser des graphiques avec la fonction <code>chart()</code></p></li>
 </ul>
 <p>Notez que les instructions exécutées dans le script sont envoyées dans la console R.</p>
@@ -462,12 +462,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div id="Rmd" class="section level3">
 <h3><span class="header-section-number">B.1.3</span> Rmarkdown/R Notebook dans RStudio</h3>
-<p>Le document R Notebook est un fichier dont l’extension est <code>.Rmd</code>. Il combine à la fois des instructions R et le language markdown. le R Notebook ne vous permet pas de visualiser directement le résultat final d’un rapport d’analyse^[Les systèmes d’édition professionnels dissocient en effet le fond de la forme : vous rédiger d’abord le contenu, et ensuite, vous indiquer le style à lui appliquer.</p>
+<p>Le document R Notebook est un fichier dont l’extension est <code>.Rmd</code>. Il combine à la fois des instructions R et le language markdown. le R Notebook ne vous permet pas de visualiser directement le résultat final d’un rapport d’analyse<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
 <div class="figure">
 <img src="images/annexe_a2/rmd.gif" />
 
 </div>
-<p>Tout comme les intructions dans un Rscript doivent être exécuté avec le bouton <code>run</code></p>
+<p>Tout comme les intructions dans un Rscript doivent être exécuté avec le bouton <code>run</code>, les instructions sont exécutées avec le bouton run.</p>
 <p>En détails, le fichier R Markdown / R Notebook présent dans la fenêtre d’édition de RStudio se structure de la manière suivante :</p>
 <ul>
 <li>Le préambule</li>
@@ -487,7 +487,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>La première partie du document est appelé le <strong>préambule</strong>. Il est nécessairement situé au tout début du document et est balisé à l’aide de trois tirets <code>---</code> au début et à la fin isolés sur leurs propres lignes. Le préambule comporte un ensemble de consignes pour la mise en forme générale du document. C’est donc là que nous indiquerons comment nous voulons réaliser notre rapport final. Nous pouvons aussi y indiquer un titre, le ou les auteurs, la date, …</p>
 <p>Le reste du document R Notebook est subdivisé en zones successives sur fond noir et zones sur fond gris clair.</p>
 <ul>
-<li>Les zones sur fond blanc sont des parties Markdown où vous pouvez écrire votre texte.</li>
+<li>Les zones sur fond noir sont des parties Markdown où vous pouvez écrire votre texte.</li>
 <li>Les zones sur fond gris clair sont appelées des <strong>chunks</strong>. Elles contiennent des instructions qui vont être interprétées pour réaliser un calcul, un graphique, etc. Dans le document final, les chunks seront remplacés par le résultat du calcul. Ces chunks sont balisés en entrée par trois tirets inclinés à droite suivis d’accolades contenant des instructions relatives au programme à utiliser, par exemple, <code>```{r}</code> pour des chunks faisant appel au logiciel <strong>R</strong>, et sont terminées par trois tirets inclinés à droite (<code>```</code>).</li>
 </ul>
 <p>Dans les parties sur fond noir, les zones Markdown, vous pouvez ajouter des balises qui permettront de formater votre texte dans la version finale de votre rapport. Par exemple, un ou plusieurs dièses (plus communément connu par sont appellation en anglais : “hastag”) en début de ligne suivi d’un espace indique que la suite correspond à un titre. Titre de niveau 1 avec un seul dièse, de niveau 2 avec deux dièses, et ainsi de suite jusqu’à 6 niveaux possibles. Dans la capture d’écran ci-dessous, nous avons remplacé tout le contenu du R Notebook (à part le préambule) par une série de titres de niveau 1 correspondant à la structure générale d’un rapport scientifique :</p>
@@ -501,7 +501,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul>
 <div id="creation-dun-r-notebook" class="section level4">
 <h4><span class="header-section-number">B.1.3.1</span> Création d’un R Notebook</h4>
-<p>Vous avez à votre disposition deuxméthodes pour ouvrir un nouveau R Notebook dans R studio sur l’illustration ci-dessous.</p>
+<p>Vous avez à votre disposition deux méthodes pour ouvrir un nouveau R Notebook dans R studio sur l’illustration ci-dessous.</p>
 <div class="figure">
 <img src="images/annexe_a2/rmd2.gif" />
 
@@ -524,7 +524,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li>Exécuter la/les ligne(s) d’instruction sélectionnée(s) : <code>Run Selected Line(s)</code></li>
 <li>Exécuter le chunk : <code>Run Current Chunk</code></li>
 <li>Exécuter tous les chunk précédents : <code>Run All Chunk Above</code></li>
-<li>Redémarer la console R et Exécuter tous les chunks: <code>Restrat R and Run All Chunks</code></li>
+<li>Redémarer la console R et Exécuter tous les chunks: <code>Restart R and Run All Chunks</code></li>
 <li>…</li>
 </ul>
 <div class="figure">
@@ -536,7 +536,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <img src="images/annexe_a2/rmd5.png" />
 
 </div>
-<p>Le rapport est rapidement généré avec un rendu simple et professionnel. Ce rapport fournit d’une part le texte que vous avez écrit, les résultats que vous avez écrit mais également les instructions que vous avez employé pour obtenir ces résultats. Vous donnez par cette pratique la possibilité de comprendre plus aisément vos analyses.</p>
+<p>Le rapport est rapidement généré avec un rendu simple et professionnel. Ce rapport fournit d’une part le texte que vous avez écrit, les résultats que vous avez écrit mais également les instructions que vous avez employée pour obtenir ces résultats. Vous donnez par cette pratique la possibilité de comprendre plus aisément vos analyses.</p>
 <div class="figure">
 <img src="images/annexe_a2/rmd7.gif" />
 
@@ -553,8 +553,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <!-- </div> -->
 <div class="footnotes">
 <hr />
-<ol start="19">
-<li id="fn19"><p>N’éditer <strong>jamais</strong> à la main un fichier <code>.Rproj</code>. Laisser RStudio s’en occuper tout seul.<a href="rs.html#fnref19">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>N’éditer <strong>jamais</strong> à la main un fichier <code>.Rproj</code>. Laisser RStudio s’en occuper tout seul.<a href="rs.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Les systèmes d’édition professionnels dissocient en effet le fond de la forme : vous rédiger d’abord le contenu, et ensuite, vous indiquer le style à lui appliquer.<a href="rs.html#fnref2">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

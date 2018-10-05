@@ -20,7 +20,7 @@ RStudio s'ouvre. C'est votre interface de travail à partir de laquelle vous all
 
 - Une barre de menu et une barre d'outils générale en haut 
 - Un panneau à gauche intitulée **Console** où vous pouvez entrer des instructions dans **R** pour manipuler vos données
-- Un panneau à droite en hautavec plusieurs onglets, dont **Environnement** qui vous indique les différents items (on parle d'**objets**) chargés en mémoire dans **R** (mais pour l’instant, il n'y a encore rien).
+- Un panneau à droite en haut qui comprend plusieurs onglets, dont **Environnement** qui vous indique les différents items (on parle d'**objets**) chargés en mémoire dans **R** (mais pour l’instant, il n'y a encore rien).
 - Un panneau en bas à droite comportant lui aussi plusieurs onglets. Vous devriez voir le contenu de **Files** au démarrage, un explorateur de fichiers simplifié relatif au contexte de travail actuel dans RStudio.
 
 Pour l'instant, aucun document de travail n'est encore ouvert. Pour en créer un, ou ouvrir un document existant, vous utilisez le menu **Files**, ou encore, le premier bouton de la barre d'outils générale :
@@ -45,7 +45,7 @@ _A ce stade vous pouvez vous familiariser avec la cheatsheet relative à l'IDE R
 
 ### Projet dans RStudio {#rs_projet} 
 
-Un projet dans RStudio est un outil proposé par RStudio afin d'organiser son travail. Un projet va regrouper l'ensemble des **jeux de données**, des **raports**, des **présentations**, des **scripts** d'une **analyse**
+Un projet dans RStudio est un outil proposé par RStudio afin d'organiser son travail. Un projet va regrouper l'ensemble des **jeux de données**, des **rapports**, des **présentations**, des **scripts** d'une **analyse**
 
 **La question est de savoir qu'est ce qu'une analyse:**
 
@@ -76,7 +76,7 @@ Creez votre premier projet en suivant les 4 étapes suivantes
 
 ![](images/annexe_a2/project_create.gif)
 
-Pour créer un nouveau project (**Nex Project...**), ouvrir un projet existant (**Open Project...**) ou encore fermer un projet (**Close Project**) , toutes ces otpions sont présentes dans le menu déroulant de la fonction **Project**. Vous remarquez également que les derniers projets employés sont placés sous les trois options citées ci-dessus. 
+Pour créer un nouveau project (**New Project...**), ouvrir un projet existant (**Open Project...**) ou encore fermer un projet (**Close Project**) , toutes ces otpions sont présentes dans le menu déroulant de la fonction **Project**. Vous remarquez également que les derniers projets employés sont placés sous les trois options citées ci-dessus. 
 
 
 ![](images/annexe_a2/project.png)
@@ -98,7 +98,7 @@ Le répertoire `projects` contient  maintenant un projet RStudio intitulé `test
 
 Vous devez maintenant structurer votre projet afin d'avoir différents répertoires pour organiser au mieux le travail. Ceci concerne à la fois les données et les rapports d'analyse en lien avec ce projet.
 
-Cliquez sur le bouton **New Folder** dans la barre d'outils de l'onglet **Files** et appelez ce nouveau dossier `data`. Puis créez également `reports` de la même manière. et `R` de la même manière Vous pouvez faire cela depuis RStudio, mais aussi depuis le système hôte si c'est plus confortable pour vous. 
+Cliquez sur le bouton **New Folder** dans la barre d'outils de l'onglet **Files** et appelez ce nouveau dossier `data`. Ajoutez égalemnt le dossier `reports`et `R`.  Vous pouvez faire cela depuis RStudio, mais aussi depuis le système hôte si c'est plus confortable pour vous. 
 
 ```
 /home
@@ -166,7 +166,7 @@ Le répertoire utilisateur `/home/<user>` est différent sous MacOS (il s'appell
 ~/shared/projects/projet_test/data/datasets.csv
 ```
 
-Ce chemin d'accès est déjà plus "portable" d'un système à l'autre et d'un utilisateur à l'autre. Il est donc à préférer. Notez que sous R, vous devez doubler les backslashs sous Windows (`~\\Documents\\...`). Ce n'est ni très esthétique, ni compatible avec les deux autres systèmes. Heureusement, R comprend aussi le slash comme séparateur sous Windows, de sorte que la même syntaxe peut être utilisée partout ! _Nous vous conseillons donc d'utiliser aussi systématiquement les slashs sous Windows dans R ou RStudio._ Si cette façon d'écrire le chemin d'accès est compatible entre les trois systèmes d'exploitation, elle ne permet toujours pas de déplacer ou de renommer notre projet.
+Ce chemin d'accès est déjà plus "portable" d'un système à l'autre et d'un utilisateur à l'autre. Il est donc à préférer. Notez que sous R, vous devez doubler les backslashs sous Windows (`~\\Documents\\...`). Ce n'est ni très esthétique, ni compatible avec les deux autres systèmes. Heureusement, R comprend aussi le slash comme séparateur sous Windows, de sorte que la même syntaxe peut être utilisée partout ! **Nous vous conseillons donc d'utiliser aussi systématiquement les slashs sous Windows dans R ou RStudio.** Si cette façon d'écrire le chemin d'accès est compatible entre les trois systèmes d'exploitation, elle ne permet toujours pas de déplacer ou de renommer notre projet.
 
 L'utilisation d'un **chemin relatif** permet de définir la position d'un fichier par rapport à un autre dossier qui est dit le **répertoire actif**. A titre d'exemple, nous voulons faire référence au jeu de données `datasets.csv` depuis notre rapport `rapport_test.Rmd`.
 
@@ -223,13 +223,13 @@ Un R script est un document exploitable par le programme R. Ce dernier va interp
 
 Il existe deux méthodes afin d'exécuter une ligne d'instruction  via le bouton `Run` en haut à droite de la fenêtre d'édition ou via le raccourci clavier `ctrl+Enter` (`cmd+enter` sous mac).
 
-Un script R doit être organisé de manière cohérente afin d'être exécutable de ahut en bas. Dans l'exemple ci-dessus, on commence par:
+Un script R doit être organisé de manière cohérente afin d'être exécutable de haut en bas. Dans l'exemple ci-dessus, on commence par:
 
 - **Étape 1.** Importer les principaux outils avec l'instruction `Sciviews::R`.
 
 - **Étape 2.** Utiliser l'instruction `urchin <- read("urchin_bio", package = "data.io")` pour importer le jeu de données urchin_bio provenant du package data.io et  l'assigner à urchin. On retrouve à présent urchin dans l'environnement global (`Global environment`) de RStudio. 
 
-- **Étape 3.** `.?urchin` et View(urchin) donnent des renseignemnts sur le jeu de données en renvoyant vers la page d'aide du jeu de données et vers le tableau du jeu de données.
+- **Étape 3.** `.?urchin` et `View(urchin)` donnent des renseignements sur le jeu de données en renvoyant vers la page d'aide du jeu de données et vers le tableau du jeu de données.
 
 - **Étape 4.** Réaliser des graphiques avec la fonction `chart()`
 
@@ -237,12 +237,12 @@ Notez que les instructions exécutées dans le script sont envoyées dans la con
 
 ### Rmarkdown/R Notebook dans RStudio {#Rmd}
 
-Le document R Notebook  est un fichier dont l'extension est `.Rmd`. Il combine à la fois des instructions R et le language markdown. le R Notebook ne vous permet pas de visualiser directement le résultat final d'un rapport d'analyse^[Les systèmes d'édition professionnels dissocient en effet le fond de la forme : vous rédiger d'abord le contenu, et ensuite, vous indiquer le style à lui appliquer.
+Le document R Notebook  est un fichier dont l'extension est `.Rmd`. Il combine à la fois des instructions R et le language markdown. le R Notebook ne vous permet pas de visualiser directement le résultat final d'un rapport d'analyse^[Les systèmes d'édition professionnels dissocient en effet le fond de la forme : vous rédiger d'abord le contenu, et ensuite, vous indiquer le style à lui appliquer.]
 
 
 ![](images/annexe_a2/rmd.gif)
 
-Tout comme les intructions dans un Rscript doivent être exécuté avec le bouton `run`
+Tout comme les intructions dans un Rscript doivent être exécuté avec le bouton `run`, les instructions sont exécutées avec le bouton run. 
 
 En détails, le fichier R Markdown / R Notebook présent dans la fenêtre d'édition de RStudio se structure de la manière suivante :
 
@@ -258,7 +258,7 @@ La première partie du document est appelé le **préambule**. Il est nécessair
 
 Le reste du document R Notebook est subdivisé en zones successives sur fond noir et zones sur fond gris clair.
 
-- Les zones sur fond blanc sont des parties Markdown où vous pouvez écrire votre texte.
+- Les zones sur fond noir sont des parties Markdown où vous pouvez écrire votre texte.
 - Les zones sur fond gris clair sont appelées des **chunks**. Elles contiennent des instructions qui vont être interprétées pour réaliser un calcul, un graphique, etc. Dans le document final, les chunks seront remplacés par le résultat du calcul. Ces chunks sont balisés en entrée par trois tirets inclinés à droite suivis d'accolades contenant des instructions relatives au programme à utiliser, par exemple, ```` ```{r} ```` pour des chunks faisant appel au logiciel **R**, et sont terminées par trois tirets inclinés à droite (```` ``` ````).
 
 Dans les parties sur fond noir, les zones Markdown, vous pouvez ajouter des balises qui permettront de formater votre texte dans la version finale de votre rapport. Par exemple, un ou plusieurs dièses (plus communément connu par sont appellation en anglais : "hastag") en début de ligne suivi d'un espace indique que la suite correspond à un titre. Titre de niveau 1 avec un seul dièse, de niveau 2 avec deux dièses, et ainsi de suite jusqu'à 6 niveaux possibles. Dans la capture d'écran ci-dessous, nous avons remplacé tout le contenu du R Notebook (à part le préambule) par une série de titres de niveau 1 correspondant à la structure générale d'un rapport scientifique : 
@@ -272,7 +272,7 @@ Dans les parties sur fond noir, les zones Markdown, vous pouvez ajouter des bali
 
 #### Création d'un R Notebook
 
-Vous avez à votre disposition deuxméthodes pour ouvrir un nouveau R Notebook dans R studio sur l'illustration ci-dessous. 
+Vous avez à votre disposition deux méthodes pour ouvrir un nouveau R Notebook dans R studio sur l'illustration ci-dessous. 
 
 ![](images/annexe_a2/rmd2.gif)
 
@@ -291,7 +291,7 @@ L'onglet `Run` propose plusieurs actions intéressantes :
 - Exécuter la/les ligne(s) d'instruction sélectionnée(s) : `Run Selected Line(s)`
 - Exécuter le chunk : `Run Current Chunk`
 - Exécuter tous les chunk précédents : `Run All Chunk Above` 
-- Redémarer la console R et Exécuter tous les chunks: `Restrat R and Run All Chunks` 
+- Redémarer la console R et Exécuter tous les chunks: `Restart R and Run All Chunks` 
 - ...
 
 ![](images/annexe_a2/rmd4.png)
@@ -300,7 +300,7 @@ Aprés la phase d'édition du texte et des intructions dans les chunks, vous pou
 
 ![](images/annexe_a2/rmd5.png)
 
-Le rapport est rapidement généré avec un rendu simple et professionnel. Ce rapport fournit d'une part le texte que vous avez écrit, les résultats que vous avez écrit mais également les instructions que vous avez employé pour obtenir ces résultats. Vous donnez par cette pratique la possibilité de comprendre plus aisément vos analyses.
+Le rapport est rapidement généré avec un rendu simple et professionnel. Ce rapport fournit d'une part le texte que vous avez écrit, les résultats que vous avez écrit mais également les instructions que vous avez employée pour obtenir ces résultats. Vous donnez par cette pratique la possibilité de comprendre plus aisément vos analyses.
 
 ![](images/annexe_a2/rmd7.gif)
 
