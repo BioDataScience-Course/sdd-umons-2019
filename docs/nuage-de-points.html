@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-05">
+<meta name="date" content="2018-10-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -234,10 +234,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="B.2" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>B.2</b> Github</a></li>
 <li class="chapter" data-level="B.3" data-path="github-classroom.html"><a href="github-classroom.html"><i class="fa fa-check"></i><b>B.3</b> Github Classroom</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a><ul>
-<li class="chapter" data-level="C.1" data-path="organisation.html"><a href="organisation.html"><i class="fa fa-check"></i><b>C.1</b> Organisation</a></li>
-<li class="chapter" data-level="C.2" data-path="nom-des-especes.html"><a href="nom-des-especes.html"><i class="fa fa-check"></i><b>C.2</b> Nom des espèces</a></li>
-<li class="chapter" data-level="C.3" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i><b>C.3</b> Bibliographie</a></li>
+<li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a></li>
+<li class="chapter" data-level="D" data-path="redaction-scientifique.html"><a href="redaction-scientifique.html"><i class="fa fa-check"></i><b>D</b> Rédaction scientifique</a><ul>
+<li class="chapter" data-level="D.1" data-path="organisation.html"><a href="organisation.html"><i class="fa fa-check"></i><b>D.1</b> Organisation</a></li>
+<li class="chapter" data-level="D.2" data-path="nom-des-especes.html"><a href="nom-des-especes.html"><i class="fa fa-check"></i><b>D.2</b> Nom des espèces</a></li>
+<li class="chapter" data-level="D.3" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i><b>D.3</b> Bibliographie</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
@@ -265,7 +266,7 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="nuage-de-points" class="section level2">
 <h2><span class="header-section-number">2.1</span> Nuage de points</h2>
-<p>Dès que vous vous sentez familiarisé avec les principes de base de R, vous allez pouvoir réaliser assez rapidement des beaux graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique, vous pouvez exprimer cela sous la forme d’une <strong>formule</strong><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<p>Dès que vous vous sentez familiarisé avec les principes de base de R, vous allez pouvoir réaliser assez rapidement des beaux graphiques. Par exemple, si vous souhaitez représenter une variable numérique en fonction d’une autre variable numérique, vous pouvez exprimer cela sous la forme d’une <strong>formule</strong><a href="references.html#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
 <p><span class="math display">\[y \sim x\]</span></p>
 <p>que l’on peut lire “y en fonction de x”. Pour les deux variables numériques <em>x</em> et <em>y</em>, la représentation graphique la plus classique est le <strong>nuage de points</strong> (voir Fig. <a href="nuage-de-points.html#fig:first-scatterplot">2.1</a> pour un exemple).</p>
 <div class="figure" style="text-align: center"><span id="fig:first-scatterplot"></span>
@@ -351,7 +352,7 @@ Figure 2.2: Piège du nuage de points. A) graphique initialemontrant la variatio
 </div>
 <div id="transformations-des-donnees" class="section level4">
 <h4><span class="header-section-number">2.1.3.2</span> Transformations des données</h4>
-<p>Vous avez la possibilité d’appliquer une transformation de vos données (il est même conseillé de le faire) afin qu’elles soient plus facilement analysables. Par exemple, il est possible d’utiliser des fonctions de puissance, racines, logarithmes, exponentielles<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> pour modifier l’apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d’analyser statistiquement des données qui s’alignent le long d’une droite).</p>
+<p>Vous avez la possibilité d’appliquer une transformation de vos données (il est même conseillé de le faire) afin qu’elles soient plus facilement analysables. Par exemple, il est possible d’utiliser des fonctions de puissance, racines, logarithmes, exponentielles<a href="references.html#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> pour modifier l’apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d’analyser statistiquement des données qui s’alignent le long d’une droite).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique de la hauteur en fonction de la masse</span>
 A &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, height <span class="op">~</span><span class="st">  </span>weight) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()
@@ -419,9 +420,9 @@ N’oubliez pas d’appuyer sur la touche <code>ESC</code> pour reprendre la mai
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <em>x</em> sur l’axe des abscisses et la variable <em>y</em> sur l’axe des ordonnées.<a href="nuage-de-points.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée : <span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span>.<a href="nuage-de-points.html#fnref3">↩</a></p></li>
+<ol start="3">
+<li id="fn3"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <em>x</em> sur l’axe des abscisses et la variable <em>y</em> sur l’axe des ordonnées.<a href="nuage-de-points.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée : <span class="math inline">\(p′ = \arcsin \sqrt{p}\)</span>.<a href="nuage-de-points.html#fnref4">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
