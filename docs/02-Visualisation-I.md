@@ -245,8 +245,20 @@ L'écriture d'un rapport d'analyse scientifique doit respecter certaines convent
 
 ### A vous de jouer !
 
+- Utilisation de R Notebook
 
-Un squelette de projet RStudio vous est fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres visualisations graphiques.
+\BeginKnitrBlock{bdd}<div class="bdd">
+Employez le projet sdd1_urchin_bio que vous avez obtenu via le lien GitHub Classroom dans la première partie de ce module. 
+
+Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres visualisations graphiques.</div>\EndKnitrBlock{bdd}
+
+- Workflow "classique" en biologie (Microsoft Excel et Word) comparé à R et R Markdown
+
+\BeginKnitrBlock{bdd}<div class="bdd">Comparez le workflow classique en biologie et R - R Markdown en suivant les explications suivantes :
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_02/exercises/sdd1_02_worflow.md>
+  
+Les jeux de données sont disponibles sur Moodle ou à l'url suivant : 
+<https://github.com/BioDataScience-Course/sdd_lesson/tree/master/sdd1_02/data></div>\EndKnitrBlock{bdd}
 
 ## Testez vos acquis
 
