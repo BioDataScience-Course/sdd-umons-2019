@@ -55,9 +55,12 @@ Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à
 </div>
 
 <div class="bdd">
-<p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/sdd1_01_sv_box.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/sdd1_01_sv_box.pdf</a></p>
-<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md</a></p>
+<p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_sv_box.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_sv_box.pdf</a></p>
+<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.md</a></p>
 </div>
+
+Des explications détaillées se trouvent dans l'annexe \@ref(svbox_use) dédiée à l'utilisation de la SciViews Box.
+
 
 ### RStudio
 
@@ -104,8 +107,8 @@ Vous avez à votre disposition deux aide-mémoires afin d'appréhender ce langua
 Après avoir rédiger votre document, vous devez cliquer sur `Preview`.
 
 <div class="bdd">
-<p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de rstudio et rmarkdown</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/sdd1_01_markdown.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/sdd1_01_markdown.pdf</a></p>
-<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_markdown.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_markdown.md</a></p>
+<p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de rstudio et rmarkdown</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_markdown.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_markdown.pdf</a></p>
+<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.md</a></p>
 </div>
 
 #### Pour en savoir plus...

@@ -57,11 +57,14 @@ knitr::include_graphics('images/svBox-256.png')
 
 ```{block, type = 'bdd'}
 Une fois loggé dans la machine virtuelle, réalisez l'activité : **Découverte de la machine virtuelle**
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/sdd1_01_sv_box.pdf>
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_sv_box.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_svbox.md>
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.md>
 ```
+
+Des explications détaillées se trouvent dans l'annexe \@ref(svbox_use) dédiée à l'utilisation de la SciViews Box.
+
 
 ### RStudio
 
@@ -109,10 +112,10 @@ Après avoir rédiger votre document, vous devez cliquer sur `Preview`.
 
 ```{block, type = 'bdd'}
 Une fois loggé dans la machine virtuelle, réalisez l'activité : **Découverte de rstudio et rmarkdown**
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/presentation/sdd1_01_markdown.pdf>
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_markdown.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/preparation/sdd1_01_markdown.md>
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.md>
 ```
 
 #### Pour en savoir plus...

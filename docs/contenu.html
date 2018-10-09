@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="prerequis-1.html">
-<link rel="next" href="configuration.html">
+<link rel="prev" href="organisation.html">
+<link rel="next" href="nom-des-especes.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -197,8 +197,17 @@
 <li class="chapter" data-level="C" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>C</b> Tutoriels “learnr”</a></li>
 <li class="chapter" data-level="D" data-path="redaction-scientifique.html"><a href="redaction-scientifique.html"><i class="fa fa-check"></i><b>D</b> Rédaction scientifique</a><ul>
 <li class="chapter" data-level="D.1" data-path="organisation.html"><a href="organisation.html"><i class="fa fa-check"></i><b>D.1</b> Organisation</a></li>
-<li class="chapter" data-level="D.2" data-path="nom-des-especes.html"><a href="nom-des-especes.html"><i class="fa fa-check"></i><b>D.2</b> Nom des espèces</a></li>
-<li class="chapter" data-level="D.3" data-path="bibliographie.html"><a href="bibliographie.html"><i class="fa fa-check"></i><b>D.3</b> Bibliographie</a></li>
+<li class="chapter" data-level="D.2" data-path="contenu.html"><a href="contenu.html"><i class="fa fa-check"></i><b>D.2</b> Contenu</a><ul>
+<li class="chapter" data-level="D.2.1" data-path="contenu.html"><a href="contenu.html#tables-des-matieres"><i class="fa fa-check"></i><b>D.2.1</b> Tables des matières</a></li>
+<li class="chapter" data-level="D.2.2" data-path="contenu.html"><a href="contenu.html#introduction"><i class="fa fa-check"></i><b>D.2.2</b> Introduction</a></li>
+<li class="chapter" data-level="D.2.3" data-path="contenu.html"><a href="contenu.html#but"><i class="fa fa-check"></i><b>D.2.3</b> But</a></li>
+<li class="chapter" data-level="D.2.4" data-path="contenu.html"><a href="contenu.html#materiel-methodes"><i class="fa fa-check"></i><b>D.2.4</b> Matériel &amp; méthodes</a></li>
+<li class="chapter" data-level="D.2.5" data-path="contenu.html"><a href="contenu.html#resultats"><i class="fa fa-check"></i><b>D.2.5</b> Résultats</a></li>
+<li class="chapter" data-level="D.2.6" data-path="contenu.html"><a href="contenu.html#discussion"><i class="fa fa-check"></i><b>D.2.6</b> Discussion</a></li>
+<li class="chapter" data-level="D.2.7" data-path="contenu.html"><a href="contenu.html#conclusion-perspective"><i class="fa fa-check"></i><b>D.2.7</b> Conclusion &amp; perspective</a></li>
+<li class="chapter" data-level="D.2.8" data-path="contenu.html"><a href="contenu.html#bibliographie"><i class="fa fa-check"></i><b>D.2.8</b> Bibliographie</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="nom-des-especes.html"><a href="nom-des-especes.html"><i class="fa fa-check"></i><b>D.3</b> Nom des espèces</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
@@ -224,132 +233,84 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation" class="section level2">
-<h2><span class="header-section-number">A.2</span> Installation</h2>
-<div class="note">
-<p>
-Vous allez devoir d’abord installer <strong><a href="http://www.virtualbox.org">VirtualBox</a></strong>, un logiciel gratuit et libre qui se chargera de gérer votre machine virtuelle. Ensuite, vous installerez la <strong>SciViews Box</strong> en elle-même. Pour finir, vous aurez aussi besoin de <strong><a href="https://desktop.github.com">Github Desktop</a></strong>.
-</p>
-</div>
-<p><img src="images/annexe1/virtualbox.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
-<div id="virtualbox" class="section level3">
-<h3><span class="header-section-number">A.2.1</span> VirtualBox</h3>
-<p>Récupérez l’installateur correspondant à votre système <a href="https://www.virtualbox.org/wiki/Downloads">ici</a>. L’installation avec tous les paramètres par défaut convient. Il se peut que vous voyiez un message vous indiquant que VirtualBox doit réinitialiser le réseau ou une autre ressource. Vérifiez que tous les documents en cours éventuels sont sauvegardés, et ensuite, vous pourrez continuer l’installation sans risques.</p>
-<center>
+<div id="contenu" class="section level2">
+<h2><span class="header-section-number">D.2</span> Contenu</h2>
+<p>Le rapport sert à restituer de façon synthétique une expérience, ses résultats et les interprétations pouvant être faites. Il faut garder à l’esprit qu’un lecteur n’ayant jamais entendu parler de cette expérience doit comprendre l’intégralité du rapport.</p>
+<div id="tables-des-matieres" class="section level3">
+<h3><span class="header-section-number">D.2.1</span> Tables des matières</h3>
+<p>La table des matières est d’une importance capitale afin de présenter la structure de votre rapport aux lecteurs. Heureusement, il n’est pas nécessaire de l’écrire manuellement. La table des matières est générée automatiquement dans un rapport R Markdown.</p>
+<p>L’instruction à ajouter dans le préambule du document R Notebook afin d’obtenir une table des matières est <code>toc: yes</code> .</p>
 <div class="figure">
-<img src="images/annexe1/virtualbox_install_warning.png" />
+<img src="images/annexe_a4/table_contents.png" />
 
 </div>
-</center>
-<p><br/></p>
-
-<div class="win">
-<p>De même, sous Windows, l’installateur de VirtualBox vous préviendra peut-être qu’il doit installer l’un ou l’autre périphérique. Vous pouvez également continuer sans craintes (précaution prise par Microsoft, mais ces périphériques fonctionnent bien).</p>
+<p>L’instruction à ajouter en plus de <code>toc: yes</code> dans le préambule du document R Notebook afin d’obtenir une table des matières numéri est <code>number_sections: yes</code> .</p>
 <div class="figure">
-<img src="images/annexe1/virtualbox_install_device.png" />
+<img src="images/annexe_a4/table_contents2.png" />
 
 </div>
-</div>
-
-</div>
-<div id="sciviews-box" class="section level3">
-<h3><span class="header-section-number">A.2.2</span> SciViews Box</h3>
+<p>Il est également possible de modifier ces paramètres dans les paramètres de sortie du document comme le montre l’image ci-dessous.</p>
 <div class="figure">
-<img src="images/annexe1/svbox_screenshot.png" />
+<img src="images/annexe_a4/table_contents.gif" />
 
 </div>
-<p>La procédure d’installation de la SciViews Box diffère selon le système d’exploitation. Reportez-vous à la sous-section correspondante pour <strong>Windows</strong>, <strong>MacOS</strong> ou <strong>Linux</strong>.</p>
-<p><img src="images/block-win.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
-<div id="installation-sous-windows" class="section level4">
-<h4><span class="header-section-number">A.2.2.1</span> Installation sous Windows</h4>
-<p>Chargez l’installateur <a href="http://go.sciviews.org/svbox2018a-win">ici</a> ou, pour les étudiants de l’UMONS, récupérez-le depuis le disque <code>StudentTemp</code> de la salle informatique (sous-répertoire <code>SDD\Software\SciViews Box 2018</code>). Pensez aussi à placer le fichier <code>svbox2018a.vdi.xz</code> dans le même répertoire que l’installateur <code>svbox2018a_win_setup.exe</code>. Sinon vous devrez le télécharger lors de l’installation (il pèse tout de même 2,9Gb)! Lancez l’installation. Vous verrez l’écran suivant (probablement en version française sur votre ordinateur). Vous pouvez cliquer ‘Yes’/‘Oui’. Il s’agit seulement d’une précaution de Microsoft lorsqu’il ne connait pas l’éditeur du programme à installer, comme c’est le cas ici.</p>
-<center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_warning.png" />
-
 </div>
-</center>
-<p>Si le fichier <code>svbox2018a.vdi.xz</code> n’est pas présent dans le même répertoire que le programme d’installation, il est à présent téléchargé (cliquez sur “Details” pour suivre l’opération):</p>
-<center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_download.png" />
-
-</div>
-</center>
-<p>Une fois le téléchargement terminé, l’installation se poursuit. Vous verrez ensuite qu’il y a encore une opération obligatoire à lancer: la décompression du disque virtuel de la SciViews Box (<code>svbox2018a.vdi</code>) via ‘7z’.</p>
-<center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_done.png" />
-
-</div>
-</center>
-<p>En cliquant ‘Finish’, cette décompression démarre toute seule.</p>
-<center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_uncompress.png" />
-
-</div>
-</center>
-<p><br/></p>
-<div class="warning">
-<p>
-N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre SciViews Box ne pourra pas démarrer et vous devrez tout recommencer à zéro en désinstallant et réinstallant complètement l’application.
-</p>
-</div>
-<p>Losque tout est installé, vous avez une nouvelle icône sur votre bureau. Poursuivez à la section suivante pour démarrer et paramétrer votre SciViews Box.</p>
-<center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_desktop_icon.png" />
-
-</div>
-</center>
-<p>En option, vous pouvez épingler le nouveau programme dans la barre des tâches. Il sera plus facilement accessible (voir ci-dessous).</p>
-<center>
-<div class="figure">
-<img src="images/annexe1/pin-in-taskbar.gif" />
-
-</div>
-</center>
-<p><img src="images/block-mac.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
-</div>
-<div id="installation-sous-macos" class="section level4">
-<h4><span class="header-section-number">A.2.2.2</span> Installation sous MacOS</h4>
-<p>Chargez l’installateur <a href="http://go.sciviews.org/svbox2018a-mac">ici</a> ou, pour les étudiants de l’UMONS, récupérez-le depuis le disque <code>StudentTemp</code> de la salle informatique (sous-répertoire <code>SDD/Software/SciViews Box 2018</code>). Si vous le pouvez, placez le fichier <code>svbox2018a.vdi.xz</code> dans le dossier de téléchargements (<code>Téléchargements</code> ou <code>Downloads</code> selon la version de votre MacOS), sinon, ce fichier sera téléchargé au même emplacement (il pèse 2,9Gb)! Double-cliquez sur <code>svbox2018a_macos_setup.dmg</code>. Suivez simplement les instructions.</p>
-<center>
-<div class="figure">
-<img src="images/annexe1/svbox_mac-install.gif" />
-
-</div>
-</center>
+<div id="introduction" class="section level3">
+<h3><span class="header-section-number">D.2.2</span> Introduction</h3>
+<p>L’introduction d’un rapport d’analyse (ou d’un mémoire) a pour principal objectif de replacer l’expérience réalisée dans son contexte.</p>
+<p>La règle la plus importante est qu’<strong>un lecteur n’ayant jamais entendu parler de cette expérience doit comprendre l’intégralité du rapport.</strong></p>
+<p>L’introduction doit donc permettre de :</p>
 <ul>
-<li>Déplacez à la souris ‘SciViews Box 2018a’ vers le dossier ‘Applications’ dans la fenêtre de l’installeur (cette partie de l’installation est très rapide, donc, vous n’aurez peut-être pas l’impression que quelque chose se passe),</li>
-<li>Ensuite, toujours dans cette fenêtre, double-cliquez sur le dossier ‘Applications’ et recherchez l’entrée ‘SciViews Box 2018a’. Double-cliquez dessus,</li>
-<li>Si vous avez chargé l’installateur depuis Internet, il se peut que votre Mac indique un message et vous empêche de l’ouvrir. Dans ce cas, il faut cliquer avec le bouton droit de la souris et selectionner “Ouvrir” dans le menu contextuel <strong>tout en maintenant la touche <code>ALT</code> enfoncée</strong>, et ensuite cliquer “Ouvrir” dans la boite qui s’affiche.</li>
+<li>Remettre l’expérience dans son contexte,</li>
+<li>Décrire l’organisme étudié
+<ul>
+<li>description de l’organisme, distribution géographique, biotope,…</li>
+</ul></li>
 </ul>
-<p>Laissez l’installation se terminer. Cela peut prendre plusieurs minutes. En option, vous pouvez aussi accrocher le programme de manière permanente dans le “Dock” pour le lancer facilement depuis cet endroit. Cliquez bouton droit et dans le menu “Options”, sélectionnez l’entrée “Garder dans le Dock”.</p>
-<center>
-<div class="figure">
-<img src="images/annexe1/svbox_mac-keep-in-dock.gif" />
-
+<p>Notez que l’ajout d’images ou d’une carte de distribution est un plus dans la lecture d’une introduction.</p>
 </div>
-</center>
-<p><img src="images/block-linux.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
+<div id="but" class="section level3">
+<h3><span class="header-section-number">D.2.3</span> But</h3>
+<p>Le but permet de synthétiser la question posée durant cette expérience en fonction du contexte de l’expérience expliqué dans l’introduction.</p>
 </div>
-<div id="installation-sous-linux" class="section level4">
-<h4><span class="header-section-number">A.2.2.3</span> Installation sous Linux</h4>
-<p>Il est parfaitement possible d’installer la SciViews Box sous Linux. Cependant, un programme d’installation simplifié n’a pas encore été développé pour ce système. <em>Voyez au cas par cas avec vos enseignants pour qu’ils vous expliquent comment installer la SciViews Box manuellement sous Linux.</em></p>
+<div id="materiel-methodes" class="section level3">
+<h3><span class="header-section-number">D.2.4</span> Matériel &amp; méthodes</h3>
+<p>Le matériel &amp; méthodes permettent de décrire les aspects techniques de l’expérience comme le matériel employé et les méthodes employées afin d’acquérir les données.</p>
+<p>Cette section est également le lieu des descriptions des méthodes d’analyse employées, des programmes utilisés,…</p>
 </div>
+<div id="resultats" class="section level3">
+<h3><span class="header-section-number">D.2.5</span> Résultats</h3>
+<p>Les résultats vont généralement contenir 2 parties :</p>
+<ul>
+<li>Description des données : exploration des données récoltées (avec graphiques et/ou estimateurs statistiques)</li>
+<li>Application des outils statistiques pertinents pour répondre à la question posée</li>
+</ul>
 </div>
-<div id="github-desktop" class="section level3">
-<h3><span class="header-section-number">A.2.3</span> Github Desktop</h3>
-<center>
-<div class="figure">
-<img src="images/annexe1/github-desktop-website.png" />
-
+<div id="discussion" class="section level3">
+<h3><span class="header-section-number">D.2.6</span> Discussion</h3>
+<p>Cette section comprend l’interprétation biologique des résultats. En effet, il est d’une importance capitale d’avoir un regard critique sur les résultats obtenus.</p>
+<p>Exemple :</p>
+<ul>
+<li>Variation du pH de l’eau de mer de 8 à 6</li>
+</ul>
+<p>Lors de la mesure des paramètres physicochimiques de l’eau de mer, une étude monitore le pH avec différents instruments et propose le graphique suivant :</p>
+<p><img src="A4-redaction_files/figure-html/unnamed-chunk-1-1.svg" width="672" /></p>
+<p>Vous observez que deux unités différentes sont étudiées (A0 et B0) et que 5 instruments différents sont employés.</p>
+<p>Ce graphique vous semble pertinent ? Aucune information qui y figure ne vous choque ?</p>
+<p>Si ce n’est pas le cas, il faut encore exercer votre oeil de biologiste. La sonde pH sur le graphique propose une valeur de pH proche de 6.5 alors que les autres instruments sont entre 7.2 et 8.</p>
+<p><strong>Nous sommes donc passé d’un pH légérement basique à un pH acide. Les organismes présents dans les aquariums serait mort à cette valeur de pH.</strong></p>
+<p>Elle est également le lieu de comparaison avec d’autres études dans le domaine, de la critique du design expérimental,…</p>
 </div>
-</center>
-<p>Dans ce cours, nous utilisons <strong>Git</strong> et <strong>Github</strong> pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. <a href="https://desktop.github.com">Github Desktop</a> facilite grandement la gestion de vos projets sous Git. Ce programme gratuit est très facile à installer: son téléchargement et le lancement de son installateur ne pose pas de problèmes particuliers. <em>Notez toutefois que ce programme n’est pas encore disponible pour Linux.</em></p>
-<p><strong>A présent, tous les ligiciels requis sont installés… Il ne reste plus que quelques petites opérations de configuration à réaliser. Voyez ceci à la section suivante.</strong></p>
+<div id="conclusion-perspective" class="section level3">
+<h3><span class="header-section-number">D.2.7</span> Conclusion &amp; perspective</h3>
+<p>Cette section va tenir une sorte de résumé de notre expérience par rapport à au but de cette dernière et proposer des perspectives afin de continuer la recherche sur cette thématique.</p>
+</div>
+<div id="bibliographie" class="section level3">
+<h3><span class="header-section-number">D.2.8</span> Bibliographie</h3>
+<p>La rédaction de travaux s’appuye toujours sur une recherche bibliographique au préalable. Cependant, il est capital d’insérer convenablement les sources du travail au sein de la section bibliographie afin d’éviter le <strong>plagiat</strong> volontaire ou involontaire. Il existe une multitude de programme permettant la gestion d’une bibliographie comme <a href="https://www.mendeley.com/">Mendeley</a>, <a href="https://www.zotero.org/">Zotero</a> ou encore <a href="https://endnote.com/">Endnote</a>.</p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles">Citer ses sources dans un rapport R Notebook</a> : page en anglais présentant la manière d’introduire une bibliographie dans un rapport R Notebook.</li>
+</ul>
 </div>
 </div>
 <div id="disqus_thread"></div>
@@ -377,8 +338,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="prerequis-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="configuration.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="organisation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nom-des-especes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -408,7 +369,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/A1-Installation-svbox.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/A4-redaction.Rmd",
 "text": "Editer"
 },
 "download": null,

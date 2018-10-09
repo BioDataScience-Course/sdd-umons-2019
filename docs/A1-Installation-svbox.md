@@ -393,7 +393,7 @@ Dans la **SciViews Box**, ce dossier est accessible depuis deux endroits: `/medi
 
 Un tout dernier point concernant les ordinateurs de la salle de T.P. de l'UMONS. Pour des questions de performance, la machine virtuelle SciViews Box, et le dossier **shared** ne sont **pas** sur votre compte, mais directement sur le disque de l'ordinateur. Cela signifie qu'ils ne sont pas transportables vers un autre ordinateur. Vous pouvez créer une copie de **shared** dans **mes documents** ou sur une clé USB pour les transporter vers un autre ordinateur... mais nous verrons que cela n'est pas nécessaire pour tout ce que vous stockerez sur Github. En effet, vous avez accès à ces contenus depuis n'importe où via n'importe quelle connexion internet.
 
-## Utilisation 
+## Utilisation {#svbox_use}
 
 Une fois votre machine virtuelle configurée, vous vous trouvez confronté à cet écran qui ressemble à votre bureau d’ordinateur hôte. 
 
