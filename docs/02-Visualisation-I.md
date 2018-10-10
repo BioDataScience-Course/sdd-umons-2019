@@ -89,7 +89,7 @@ chart(urchin, height ~ weight) +
 
 <img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" width="672" style="display: block; margin: auto;" />
 
-La fonction `chart()` requiert comme argument le jeu de donnée (`urchin`, c'est un objet `dataframe` ou `tibble` dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom des variables que vous voulez sur l'axe des ordonnées à gauche et des abscisses à droite de la formule. Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter `height` en fonction de `weight`, la hauteir en fonction de la masse des oursins. Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons les métérialiser sur le graphique. Pour un nuage de points, nous voulons les représenter sous forme de ... points ! Donc, nous devons ajouter la fonction `geom_point()` pour indiquer cela.
+La fonction `chart()` requiert comme argument le jeu de donnée (`urchin`, c'est un objet `dataframe` ou `tibble` dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom des variables que vous voulez sur l'axe des ordonnées à gauche et des abscisses à droite de la formule. Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter `height` en fonction de `weight`, la hauteur en fonction de la masse des oursins. Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons les matérialiser sur le graphique. Pour un nuage de points, nous voulons les représenter sous forme de ... points ! Donc, nous devons ajouter la fonction `geom_point()` pour indiquer cela.
 
 
 ### Le nuage de points en vidéo
@@ -253,6 +253,8 @@ Employez le projet sdd1_urchin_bio que vous avez obtenu via le lien GitHub Class
 Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres visualisations graphiques.</div>\EndKnitrBlock{bdd}
 
 - Workflow "classique" en biologie (Microsoft Excel et Word) comparé à R et R Markdown
+
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier `project`.
 
 \BeginKnitrBlock{bdd}<div class="bdd">Comparez le workflow classique en biologie et R - R Markdown en suivant les explications suivantes :
   
