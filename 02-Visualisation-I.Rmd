@@ -7,7 +7,8 @@ SciViews::R
 ub <- read(file = "urchin_bio", package = "data.io", lang = "fr")
 ```
 
-#### Objectifs : {-}
+
+#### Objectifs {-}
 
 - Découvrir --et vous émerveiller de--  ce que l'on peut faire avec le [logiciel R](http://www.r-project.org) [@R-base]
 
@@ -20,7 +21,7 @@ ub <- read(file = "urchin_bio", package = "data.io", lang = "fr")
 - Comparer de manière critique un workflow 'classique' en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown; prendre conscience de l'énorme potentiel de R
 
 
-#### Prérequis : {-}
+#### Prérequis {-}
 
 Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio et Markdown . Vous devez aussi maitriser les bases de git et de Github (avoir un compte Github, savoir clôner un dépôt localement, travailler avec Github Desktop pour faire ses commits, push et pull). L'ensemble de ces outils a été abordé lors de la création de votre site professionnel et personnel du module \@ref(intro).
 
@@ -102,6 +103,7 @@ Dans la fenêtre **Console** de RStudio, entrez l'instruction suivante suivie de
 N'oubliez pas d'appuyer sur la touche `ESC` pour reprendre la main dans R à la fin d'un tutoriel)
 ```
 
+
 ### Pièges et Astuces
 
 #### Modifications des échelles d'un graphiques
@@ -127,7 +129,7 @@ combine_charts(list(A, B, C, D), font.label = list(size = 14, align = "hv"))
 ```
 
 
-#### Transformations des données
+#### Transformation des données
 
 Vous avez la possibilité d'appliquer une transformation de vos données (il est même conseillé de le faire) afin qu'elles soient plus facilement analysables. Par exemple, il est possible d'utiliser des fonctions de puissance, racines, logarithmes, exponentielles^[Pour les proportions (p) ou les pourcentages (%) (valeurs bornées entre 0 et 1 ou 0 et 100%, la transformation arcsin est souvent utilisée : $p′ = \arcsin \sqrt{p}$.] pour modifier l'apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d'analyser statistiquement des données qui s'alignent le long d'une droite). 
 
@@ -145,108 +147,111 @@ combine_charts(list(A, B), font.label = list(size = 14, align = "hv"))
 
 #### Utilisation des snippets
 
-RStudio permet de récupérer rapidement des instructions à partir d'une banque de solutions toutes prêtes. Cela s'appelle des **snippets**. Vous avez une série de snippets disponibles dans la SciViews Box. Cela qui vous permet de réaliser un graphique en nuage de poinsts s'appelle `.cbxy`. Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci :
+RStudio permet de récupérer rapidement des instructions à partir d'une banque de solutions toutes prêtes. Cela s'appelle des **snippets**. Vous avez une série de snippets disponibles dans la SciViews Box. Celui qui vous permet de réaliser un graphique en nuage de points s'appelle `.cbxy` (pour **c**hart -> **b**ivariate -> *xy**-plot). Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci :
 
 ```
 chart(data = DF, YNUM ~ XNUM) +
   geom_point()
 ```
 
-Vous avez à votre disposition un ensemble de snippet que vous pouvez retrouvez dans l'aide mémoire sur [**SciViews**](https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf).
+Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver dans l'aide-mémoire sur [**SciViews**](https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf).
 
 Vous avez également à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/)).
 
+
 ### A vous de jouer !
 
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **individuel**. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier `project`.
-
-Cette nouvelle tâche qui vous est demandée vous propose d'employer un projet RStudio \@ref(rs_projet)
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **individuel**. Une fois votre assignation réalisée, faites un clone de votre dépôt et placez-le dans le dossier `projects`. Vous aurez alors un nouveau projet RStudio \@ref(rs_projet)
 
 ```{block2, type='bdd'}
-Les instructions que vous employez dans un learnR peuvent être employée dans un script d'analyse. Sur base du jeux de données `urchin_bio`, explorez différents graphiques en nuages de points. 
+Les instructions que vous employez dans un learnR peuvent être employées également dans un script d'analyse. Sur base du jeu de données `urchin_bio`, explorez différents graphiques en nuages de points. 
 
-Utilisez l'URL suivant qui va vous donner accès à votre tâche.
+Utilisez l'URL suivante pour accéder à votre tâche.
 
 - <https://classroom.github.com/a/eYrXLy_u>
 
 ```
 
-Inspirez vous de script présent dans le dépôt sdd1_iris. Vous devez commencer par faire un fork du dépôt puis de faire un clone du dépôt sur votre ordinateur en local. 
+Inspirez-vous du script dans le dépôt `sdd1_iris`. Vous devez commencer par faire un "fork" du dépôt, puis un clone sur votre ordinateur en local pour pouvoir l'utiliser. 
 
 - <https://github.com/BioDataScience-Course/sdd1_iris>
 
-Faites une attention toute particulière à l'écriture d'un script. Il contient un titre , une date de la dernière mise à jour, le nom de l'auteur, un ensemble de commentaires permettant l'organisation de ce script.
+Prêtez une attention toute particulière à l'organisation d'un script R. En plus des instructions R, il contient aussi sous forme de commentaires, un titre , la date de la dernière mise à jour, le nom de l'auteur, et des sections qui organisent de façon claire le contenu du script.
 
-Des explications détaillées se trouvent dans l'annexe \@ref(script) dédiée aux R scripts.
+A ce sujet, vous trouverez des explications détaillées se trouvent dans l'annexe \@ref(script) dédiée aux scripts R.
+
 
 ### Pour en savoir plus...
 
 - [Visualisation des données dans R for Data Science](http://r4ds.had.co.nz/data-visualisation.html). Chapitre du livre portant sur la visualisation des données
 
-- [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutorial en français portant sur l'utilisation d'un nuage de point avec le package `ggplot2` et la fonction `geom_point()`.
+- [ggplot2 nuage de point](http://www.sthda.com/french/wiki/ggplot2-nuage-de-points-guide-de-d-marrage-rapide-logiciel-r-et-visualisation-de-donn-es#nuage-de-points-simples). Tutoriel en français portant sur l'utilisation d'un nuage de points avec le package `ggplot2` et la fonction `geom_point()`.
 
 - [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/). Un livre sur les fondamentaux de la visualisation graphique.
 
-- [R Graphics Cookbook - Chapter 5: Scatter Plots](https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots). Un chapitre d'un livre en anglais sur l'utilisation du nuage de point.
+- [R Graphics Cookbook - Chapter 5: Scatter Plots](https://rpubs.com/escott8908/RGC_Ch5_Scatter_Plots). Un chapitre d'un livre en anglais sur l'utilisation du nuage de points.
 
 - [geom_point()](http://ggplot2.tidyverse.org/reference/geom_point.html). La fiche technique de la fonction.
+
 
 ### A vous de jouer !
 
 ```{block2, type='bdd'}
-Dans la fenêtre **Console** de RStudio, entrez l'instruction suivante suivie de la touche `Entrée` pour ouvrir le tutoriel concernant le nuage de points :
+Dans la fenêtre **Console** de RStudio, entrez l'instruction suivante et puis appuyez sur la touche `Entrée` pour ouvrir le tutoriel concernant le nuage de points :
 
     BioDataScience::run("02d_np_challenge")
 
 N'oubliez pas d'appuyer sur la touche `ESC` pour reprendre la main dans R à la fin d'un tutoriel)
 ```
 
+
 ## Intégration des graphiques dans un rapport: R Markdown
 
-Un fichier R Markdown est un fichier terminant par l'extension `.Rmd`. Il provient de la combinaison du language markdown appris durant le premier module et le code appris durant la première partie de ce module 2. 
+Un fichier R Markdown est un fichier avec une extension `.Rmd`. Il permet de combiner le langage Markdown que vous avez déjà abordé au premier module avec du code R, tel que celui utilisé dans la première partie de ce module 2. 
 
 ![](images/annexe_a2/rmd.gif)
 
-Des explications détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R Markdown.
+Des explications détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R Markdown. De plus, l'écriture d'un rapport d'analyse scientifique doit respecter certaines conventions que vous pouvez retrouvez dans l'annexe \@ref(redaction_scientifique).
 
-L'écriture d'un rapport d'analyse scientifique doit respecter certaines conventions que vous pouvez retrouvez dans l'annexe \@ref(redaction_scientifique).
 
 ### Pour en savoir plus...
 
-- [What is R Markdown?](https://rmarkdown.rstudio.com/lesson-1.html). Video en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).
+- [What is R Markdown?](https://rmarkdown.rstudio.com/lesson-1.html). Vidéo en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).
 
-- [Introduction to R Markdown](https://rmarkdown.rstudio.com/articles_intro.html). Tutorial en anglais, par RStudio, les concepteurs de R Markdown,
+- [Introduction to R Markdown](https://rmarkdown.rstudio.com/articles_intro.html). Tutoriel en anglais, par RStudio, les concepteurs de R Markdown,
 
-- Aide mémoire R Markdown: dans les menus RStudio `Help -> Cheatsheets -> R Markdown Cheat Sheet`
+- Aide-mémoire R Markdown: dans les menus de RStudio : `Help -> Cheatsheets -> R Markdown Cheat Sheet`
 
-- Référence rapide à Markdown: dans les menus RStudio `Help -> Markdown Quick Reference`
+- Référence rapide à Markdown : dans les menus RStudio `Help -> Markdown Quick Reference`
 
 - [Introduction à R Markdown](https://rstudio-pubs-static.s3.amazonaws.com/32239_0956f02cef24443abd9525551368ef12.html#6). Présentation en français par Agrocampus Ouest - Rennes.
 
 - [Le langage R Markdown](https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/RMarkdown.pdf). Introduction en français concise, mais relativement complète.
 
-
 - https://rworkshop.uni.lu/lectures/lecture04_rmarkdown.html#12
+
 
 ### A vous de jouer !
 
-- Utilisation de R Notebook
+- Utilisation de R Notebook, une forme flexible de R Markdown.
 
 ```{block2, type='bdd'}
 
-Employez le projet sdd1_urchin_bio que vous avez obtenu via le lien GitHub Classroom dans la première partie de ce module. 
+Employez le projet `sdd1_urchin_bio` que vous avez obtenu via le lien GitHub Classroom dans la première partie de ce module. 
 
-Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres visualisations graphiques.
+Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres formes de visualisations graphiques.
+
 ```
 
 - Workflow "classique" en biologie (Microsoft Excel et Word) comparé à R et R Markdown
 
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier `project`.
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faites un clone de votre dépôt et placez-le dans le dossier `projects`.
 
 ```{block2, type='bdd'}
-Comparez le workflow classique en biologie et R - R Markdown en suivant les explications suivantes :
+
+Comparez le workflow classique en biologie via Microsoft Office avec l'utilisation de R - R Markdown en suivant les explications suivantes :
   
-Utilisez l'URL suivant qui va vous donner accès à votre tâche.
+L'URL suivant qui va vous donner accès à votre tâche.
 
 - <https://classroom.github.com/g/2Cii2dws>
 

@@ -55,8 +55,8 @@ Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à
 </div>
 
 <div class="bdd">
-<p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_sv_box.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_sv_box.pdf</a></p>
-<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.md</a></p>
+<p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_svbox.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_svbox.pdf</a></p>
+<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.Rmd" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.Rmd</a></p>
 </div>
 
 Des explications détaillées se trouvent dans l'annexe \@ref(svbox_use) dédiée à l'utilisation de la SciViews Box.
@@ -86,6 +86,7 @@ Des explications détaillées se trouvent dans l'annexe \@ref(rs) dédiée à l'
 
 Vous avez à votre disposition un aide-mémoire afin d'appréhender cette interface [RStudio IDE Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf). 
 
+
 #### Pour en savoir plus ...
 
 - [RStudio](https://www.rstudio.com/). Site de Rstudio comprennant un ensemble de ressource en anglais afin d'appréhender RStudio.
@@ -93,6 +94,7 @@ Vous avez à votre disposition un aide-mémoire afin d'appréhender cette interf
 - [RStudio, un environnement de développement pour R](https://quanti.hypotheses.org/488/). Site proposant une brève explication de RStudio en français.
 
 - [RStudio : sa vie, son oeuvre, ses ressources](https://elementr.hypotheses.org/237). Site proposant une explication de RStudio en français.
+
 
 ### Markdown
 
@@ -108,8 +110,9 @@ Après avoir rédiger votre document, vous devez cliquer sur `Preview`.
 
 <div class="bdd">
 <p>Une fois loggé dans la machine virtuelle, réalisez l'activité : <strong>Découverte de rstudio et rmarkdown</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_markdown.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_markdown.pdf</a></p>
-<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.md</a></p>
+<p>Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.Rmd" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.Rmd</a></p>
 </div>
+
 
 #### Pour en savoir plus...
 
@@ -224,11 +227,13 @@ Ceci n'est qu'une rapide explication de ces deux programmes, retrouve une explic
 
 - <https://www.christopheducamp.com/2013/12/15/github-pour-nuls-partie-1/>
 
+
 #### Git Hub Classroom {#classroom}
 
 **Git Hub Classroom** est une extension de Git Hub qui s'emploie pour les utilisateurs comme Git Hub. Vous serez amené à cloner des dépots, modifier des dépots pour réaliser des commit,...  Le tout va être suivi pour des administrateurs. Différents exercices vous seront proposés via ce programme. 
 
 Par exemple, le projet initial pour réaliser votre site web se trouve sur ce programme.
+
 
 ## Site web professionnel {#site}
 
@@ -238,13 +243,9 @@ Les réseaux sociaux sont une mine d'or sur nos habitudes de vie comme Facebook,
 
 Dans le cadre de ce premier module, vous allez réaliser votre premier site professionnel (contenant également une section "blog" que vous pourrez alimenter, entre autres, avec vos considérations concernant vos cours, les analyse de données, et autres). Ce site sera immédiatement disponible sur le web et ce, de manière entièrement gratuite! Afin de mener à bien ce premier projet, divers outils vous seront nécessaires. Ces outils seront complétés plus trd par d'autres pour que vous ayez une boite à outils complète pour vos futures analyses de données professionnelles.
 
+
 ### A vous de jouer 
 
 <div class="bdd">
 <p>Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre site web professionnel via l'addresse suivante : <a href="https://github.com/BioDataScience-Course/blogdown.source" class="uri">https://github.com/BioDataScience-Course/blogdown.source</a></p>
 </div>
-
-
-
-
-
