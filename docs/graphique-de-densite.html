@@ -185,12 +185,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="5.2" data-path="type-de-variables.html"><a href="type-de-variables.html"><i class="fa fa-check"></i><b>5.2</b> Type de variables</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="type-de-variables.html"><a href="type-de-variables.html#pieges-et-astuces-9"><i class="fa fa-check"></i><b>5.2.1</b> Pièges et astuces</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html"><i class="fa fa-check"></i><b>5.3</b> Transformation des données</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#select"><i class="fa fa-check"></i><b>5.3.1</b> <code>select()</code></a></li>
-<li class="chapter" data-level="5.3.2" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#filter"><i class="fa fa-check"></i><b>5.3.2</b> <code>filter()</code></a></li>
-<li class="chapter" data-level="5.3.3" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#mutate"><i class="fa fa-check"></i><b>5.3.3</b> <code>mutate()</code></a></li>
-<li class="chapter" data-level="5.3.4" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#summarise"><i class="fa fa-check"></i><b>5.3.4</b> <code>summarise()</code></a></li>
-<li class="chapter" data-level="5.3.5" data-path="transformation-des-donnees.html"><a href="transformation-des-donnees.html#pieges-et-astuces-13"><i class="fa fa-check"></i><b>5.3.5</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="5.3" data-path="transformation-des-donnees-1.html"><a href="transformation-des-donnees-1.html"><i class="fa fa-check"></i><b>5.3</b> Transformation des données</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="transformation-des-donnees-1.html"><a href="transformation-des-donnees-1.html#select"><i class="fa fa-check"></i><b>5.3.1</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="transformation-des-donnees-1.html"><a href="transformation-des-donnees-1.html#filter"><i class="fa fa-check"></i><b>5.3.2</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.3.3" data-path="transformation-des-donnees-1.html"><a href="transformation-des-donnees-1.html#mutate"><i class="fa fa-check"></i><b>5.3.3</b> <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.3.4" data-path="transformation-des-donnees-1.html"><a href="transformation-des-donnees-1.html#summarise"><i class="fa fa-check"></i><b>5.3.4</b> <code>summarise()</code></a></li>
+<li class="chapter" data-level="5.3.5" data-path="transformation-des-donnees-1.html"><a href="transformation-des-donnees-1.html#pieges-et-astuces-13"><i class="fa fa-check"></i><b>5.3.5</b> Pièges et astuces</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="a-vous-de-jouer-8.html"><a href="a-vous-de-jouer-8.html"><i class="fa fa-check"></i><b>5.4</b> A vous de jouer !</a></li>
 </ul></li>
@@ -275,11 +275,11 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="graphique-de-densite" class="section level2">
 <h2><span class="header-section-number">3.2</span> Graphique de densité</h2>
-<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se base sur l’histogramme. Il ne s’agit plus de représenter un dénombrement comme l’histogramme le fait mais une <strong>probabilité</strong><a href="references.html#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> d’obtenir une valeur parmi un échantillon aléatoire. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="references.html#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a></p>
+<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se présente un peu comme un histogramme lissé. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="A. Histogramme  et B. graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton analysé par analyse d'image." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="A. Histogramme et B. graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image." width="672" />
 <p class="caption">
-Figure 3.5: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton analysé par analyse d’image.
+Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton étudié par analyse d’image.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphique de densité sont (ici mis en évidence en couleur) :</p>
@@ -287,7 +287,7 @@ Figure 3.5: A. Histogramme et B. graphique de densité montrant la distribution 
 <li>Les axes avec les graduations (en rouge)</li>
 <li>les labels et unité des axes (en bleu)</li>
 </ul>
-<p>Les instructions de base afin de produire un histogramme sont :</p>
+<p>Les instructions de base afin de produire un graphique de densité sont :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
 (zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>( <span class="dt">file =</span> <span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
 <pre><code># # A tibble: 1,262 x 20
@@ -312,16 +312,15 @@ Figure 3.5: A. Histogramme et B. graphique de densité montrant la distribution 
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-10-1.svg" alt="Instructions pour obtenir un graphique de densité." width="672" />
 <p class="caption">
-Figure 3.6: Instructions pour obtenir un graphique de densité.
+Figure 3.9: Instructions pour obtenir un graphique de densité.
 </p>
 </div>
-<p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée ( dataframe, zp), ainsi que la formule à employer ~ VAR (size). Pour réaliser un graphique de densité vous devez ajouter la seconde fonction <code>geom_density()</code>.</p>
+<p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée ( dataframe, <code>zooplankton</code>), ainsi que la formule à employer (<code>~ size</code>). Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction <code>geom_density()</code>.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="9">
-<li id="fn9"><p>TODO<a href="graphique-de-densite.html#fnref9">↩</a></p></li>
-<li id="fn10"><p>TODO<a href="graphique-de-densite.html#fnref10">↩</a></p></li>
+<ol start="5">
+<li id="fn5"><p>TODO<a href="graphique-de-densite.html#fnref5">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
