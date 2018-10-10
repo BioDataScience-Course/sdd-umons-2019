@@ -255,18 +255,8 @@ Votre objectif est de comprendre les données proposées, en utilisant des visua
 - Workflow "classique" en biologie (Microsoft Excel et Word) comparé à R et R Markdown
 
 \BeginKnitrBlock{bdd}<div class="bdd">Comparez le workflow classique en biologie et R - R Markdown en suivant les explications suivantes :
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_02/exercises/sdd1_02_worflow.md>
   
-Les jeux de données sont disponibles sur Moodle ou à l'url suivant : 
-<https://github.com/BioDataScience-Course/sdd_lesson/tree/master/sdd1_02/data></div>\EndKnitrBlock{bdd}
+Utilisez l'URL suivant qui va vous donner accès à votre tâche.
 
-## Testez vos acquis
-
-Le test des acquis à la fin d'un module (sauf pour le module 1) se fait toujours dans un tutoriel "learnr" qui sert à votre évaluation.
-
-\BeginKnitrBlock{bdd}<div class="bdd">Quand vous considérez que vous maîtrisez la matière de ce module, effectuez les exercices du tutoriel interactif de test :
-
-    BioDataScience::run("02d_test")
+- <https://classroom.github.com/g/2Cii2dws>
 </div>\EndKnitrBlock{bdd}
-
-TODO : indiquer ici comment l'étudiant peut suivre sa progression, et mettre plus de détails dans l'Appendice \@ref(learnr).
