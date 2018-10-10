@@ -17,24 +17,25 @@ diamonds <- read(file = "diamonds", package = "ggplot2", lang = "fr")
 ```
 
 
-Vos objectif durant ce module sont :
+Vos objectif dans ce module sont :
 
-- Savoir réaliser différents graphiques comme  le graphique en barre, le graphique en camembert ou encore la boite de dispersion, dans R avec la fonction `chart()`
+- Savoir réaliser différents graphiques comme le graphique en barre, le graphique en camembert ou encore la boite de dispersion, dans R avec la fonction `chart()`
 
-- Savoir réaliser différentes variantes de plusieurs graphiques sur une fenêtre graphique. 
+- Arranger différents graphiques dans une figure unique. 
 
-- Découvrir différents systèmes graphiques (graphiques de base, Lattice, ggplot2) et comparaison avec `chart()`
+- Découvrir différents systèmes graphiques (graphiques de base, lattice, ggplot2) et comparaison avec `chart()`
 
-Si ce n'est déjà fait, vous devez avoir réaliser le module 1 & 2.
+Si ce n'est déjà fait, vous devez avoir réaliser les module 2 & 3.
+
 
 ## Visualisation graphique à l'aide d'un graphique en barre
 
 ### Représentation d'un dénombration d'observations par facteur
 
-Vous souhaitez représenter une dénombrement des différentes niveaux d'une variables facteurs. On peux exprimer dans R sous la forme
+Vous souhaitez représenter une dénombrement des différentes niveaux d'une variables facteur. On peux l'exprimer dans R sous la forme :
 
 $$\sim variable \ facteur$$
-que l'on peut lire 
+que l'on peut lire :
 
 $$\ en \ fonction \ de \ la \ variable \ facteur$$
 ```{r , fig.cap= "Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur.", echo = FALSE, message= FALSE}
@@ -49,35 +50,35 @@ chart(e_m, formula = ~ e_mathaei) +
         axis.line.x = element_line(colour = "#a80039"),
         axis.line.y = element_line(colour = "#a80039"))
 ```
+
 Les éléments indispensables à la compréhension d'un graphique en barre sont (ici mis en évidence en couleur) : 
 
 - les axes avec les graduations (en rouge)
 - le label en x  (en bleu)
 - les niveaux de la variable facteur
 
-Les instructions de base afin de produire un graphique en barre :
+Les instructions de base afin de produire un graphique en barre sont :
 
-```{r, fig.cap="Instructions pour obtenir un graphique en bar."}
+```{r, fig.cap="Instructions pour obtenir un graphique en barres."}
 chart(e_m, formula = ~ e_mathaei) +
   geom_bar()
 ```
 
-
-La fonction `chart()` requiert comme argument le jeu de donnée (dataframe, e_m), ainsi que la formule à employer ~factor(VAR). Pour réaliser un graphique en barre, vous devez ajouter la seconde fonction `geom_bar()`.
+La fonction `chart()` requiert comme argument le jeu de données (`dataframe`, `e_m`), ainsi que la formule à employer `~factor(VAR)`. Pour réaliser un graphique en barre, vous devez utiliser ensuite la fonction `geom_bar()`.
 
 
 #### Représentation d'un dénombrement d'observations par plusieurs facteurs
 
-Différentes représentation sont possible pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l'argument  `position` a pour valeur `stack`.
+Différentes représentations sont possibles pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l'argument `position` a pour valeur `stack`.
 
-```{r, fig.cap= "Dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity."}
+```{r, fig.cap= "Dénombrement de l'occurence en fonction de la variable facteur `cut` et de la variable `clarity` du jeu de données `diamonds`."}
 chart(diamonds, formula = ~ cut %fill=% clarity) +
   geom_bar()
 ```
 
 Il existe d'autres solutions en utilisant la valeur `dodge` ou `fill` pour l'argument `position`.
 
-```{r, fig.cap= "A) Graphique en barre du dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity avec  dodge comme valeur de l'argument position . B)  Graphique en barre du dénombrement de l'occurence en fonction de la variable facteur cut et de la variable clarity avec  fill comme valeur de l'argument position"}
+```{r, fig.cap= 'A) Graphique en barres (variable facteur `cut` et variable `clarity` avec `position = "dodge"`. B) Idem avec `position = "fill"`'}
 
 b <- chart(diamonds, formula = ~ cut %fill=% clarity) +
   geom_bar( position = "dodge")
@@ -85,19 +86,21 @@ b <- chart(diamonds, formula = ~ cut %fill=% clarity) +
 c <- chart(diamonds, formula = ~ cut %fill=% clarity) +
   geom_bar( position = "fill")
 
-ggpubr::ggarrange(b, c, common.legend = TRUE, labels = "auto")
+ggarrange(b, c, common.legend = TRUE, labels = "auto")
 ```
+
 
 #### Pièges et Astuces
 
-L'oeil humain perçoit plus distinctement les différences de tailles horizontales que verticales. Avec la fonction `coord_flip()` ajouté à votre graphique, vous pouvez ajouter une rotation des axes.
+L'oeil humain perçoit plus distinctement les différences de tailles horizontales que verticales. Avec la fonction `coord_flip()` ajouté à votre graphique, vous pouvez effectuer une rotation des axes.
 
-```{r , fig.cap= " Graphique en barre du dénombrement de quatre variaités d'oursins. "}
+```{r , fig.cap= " Graphique en barre du dénombrement de quatre variétés d'oursins. "}
 chart(e_m, formula = ~ e_mathaei ) +
   geom_bar() +
   coord_flip()
 ```
- 
+
+
 #### Pour en savoir plus 
 
 - http://www.sthda.com/french/wiki/ggplot2-barplots-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees
@@ -107,29 +110,31 @@ chart(e_m, formula = ~ e_mathaei ) +
 - http://ggplot.yhathq.com/docs/geom_bar.html
 
 
-### Représentation d'une valeur moyenne à l'aide d'un graphe en barre. 
+### Représentation d'une valeur moyenne à l'aide d'un graphe en barre
 
-Le graphique en barre peut etre employé afin de résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer un nombre d'occurence d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ numérique \ en \ fonction \ de \ Variable \ facteur$$ 
+Le graphique en barres peut être employé afin de résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les occurences d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ numérique \ en \ fonction \ de \ Variable \ facteur$$ 
 
-Prenez les chiffres suivants :
+Considérez l'échantillon suivant :
 
 ```
 1, 71, 55, 68, 78, 60, 83, 120, 82 ,53, 26
 ```
+
 Calculez la moyenne sur base de la formule de la moyenne $$\overline{y} = \sum_{i = 1}^n \frac{y_i}{n}$$
 
 
 ```{r}
-# création du vecteur
+# Création du vecteur
 x <- c(1, 71, 55, 68, 78, 60, 83, 120, 82, 53, 26)
+
 # Calcul  de la moyenne
 mean(x)
 ```
 
-En partant d'un jeu de données, comme celui ci dessous
+En partant d'un jeu de données, comme celui ci dessous :
 
 ```{r, echo = FALSE}
-kable(ToothGrowth[c(1,15,30, 31, 45, 60),], caption = "Tableau de données relatif à la croissance de dents de cochons d'Inde")
+kable(ToothGrowth[c(1, 15, 30, 31, 45, 60),], caption = "Tableau de données relatif à la croissance de dents de cochons d'Inde")
 ```
 
 Vous pouvez observez que ce jeu de données comprend trois variables avec une première variable portant sur le longueur des dents de cochons d'Inde, une seconde variable portant sur la supplémentation administrée ( VC, vitamine Cou OJ, jus d'orange) à ces derniers et enfin une troisième variable portant sur la dose administrée (0.5, 1, 2).
