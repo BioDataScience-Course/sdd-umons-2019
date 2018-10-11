@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-10">
+<meta name="date" content="2018-10-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -229,7 +229,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a><ul>
 <li class="chapter" data-level="B.1.1" data-path="rs.html"><a href="rs.html#rs_projet"><i class="fa fa-check"></i><b>B.1.1</b> Projet dans RStudio</a></li>
 <li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Rscripts dans RStudio</a></li>
-<li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> Rmarkdown/R Notebook dans RStudio</a></li>
+<li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook dans RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="B.2" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>B.2</b> Github</a></li>
 <li class="chapter" data-level="B.3" data-path="github-classroom.html"><a href="github-classroom.html"><i class="fa fa-check"></i><b>B.3</b> Github Classroom</a></li>
@@ -294,21 +294,21 @@ x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</sp
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-19-1.svg" alt="Nuage de points montrant la première étape de la construction d'une boite de dispersion." width="672" />
 <p class="caption">
-Figure 4.13: Nuage de points montrant la première étape de la construction d’une boite de dispersion.
+Figure 4.2: Nuage de points montrant la première étape de la construction d’une boite de dispersion.
 </p>
 </div>
 <p>La boite de dispersion représente donc les 5 nombres. Vous observez cependant que certaine valeur ne se situe pas dans la boite de dispersion, il s’agit de valeurs extrêmes. Elles sont considérées comme extrêmes car elles sont éloignées de plus 1.5 fois l’espace inter-quartile (Q3- Q1). La boite de dispersion s’arrete donc aux dernières valeurs présente dans cet espace inter-quartile (IQR).</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-20-1.svg" alt="A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A." width="672" />
 <p class="caption">
-Figure 4.14: A) Nuage de points montrant la construction d’une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A.
+Figure 4.3: A) Nuage de points montrant la construction d’une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A.
 </p>
 </div>
 <p>La boite de dispersion ainsi que sa description sont proposée sur le graphique ci-dessous.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.svg" alt="Points essentiels d'une boite de dispersion et sa description." width="672" />
 <p class="caption">
-Figure 4.15: Points essentiels d’une boite de dispersion et sa description.
+Figure 4.4: Points essentiels d’une boite de dispersion et sa description.
 </p>
 </div>
 <p>Les instructions de base afin de produire une boite de dispersion sont :</p>
@@ -320,7 +320,7 @@ tg &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-23-1.svg" alt="Instructions pour obtenir une boite de dispersion." width="672" />
 <p class="caption">
-Figure 4.16: Instructions pour obtenir une boite de dispersion.
+Figure 4.5: Instructions pour obtenir une boite de dispersion.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée (dataframe, tg), ainsi que la formule à employer YNUM (len) ~ XFACTOR (supp). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction <code>geom_boxplot()</code>.</p>
@@ -332,7 +332,7 @@ Figure 4.16: Instructions pour obtenir une boite de dispersion.
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.svg" alt="Piège des boites de dispersion." width="672" />
 <p class="caption">
-Figure 4.17: Piège des boites de dispersion.
+Figure 4.6: Piège des boites de dispersion.
 </p>
 </div>
 <p>La boite de dispersion “a” ne contient que 4 observations ce qui peut être totalement masqué par l’utilisation de boite de dispersion.</p>
@@ -347,7 +347,7 @@ Figure 4.17: Piège des boites de dispersion.
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée." width="672" />
 <p class="caption">
-Figure 4.18:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation administrée.
+Figure 4.7:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation administrée.
 </p>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">formula =</span> len <span class="op">~</span><span class="st"> </span>supp <span class="op">%fill=%</span><span class="st"> </span><span class="kw">as.ordered</span>(dose), <span class="dt">data =</span> tg) <span class="op">+</span>
@@ -357,7 +357,7 @@ Figure 4.18:  Boite de dispersion portant sur la croissance de dents de cochon d
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée." width="672" />
 <p class="caption">
-Figure 4.19:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation et la dose administrée.
+Figure 4.8:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation et la dose administrée.
 </p>
 </div>
 </div>
