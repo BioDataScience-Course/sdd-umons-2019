@@ -12,6 +12,19 @@
 - Gérer des conflits dans GitHub
 
 
+####  A vous de jouer ! {-}
+
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier `projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs_projet)
+
+\BeginKnitrBlock{bdd}<div class="bdd">Un projet sur le zooplancton provenant de Madagascar est mis à votre dispositon. 
+Utilisez l'URL suivant qui va vous donner accès à votre tâche. Cette tâche est un travail individuel. **Cette tache est un travail en binome**
+
+- <https://classroom.github.com/g/7Ji4Aj9G>
+</div>\EndKnitrBlock{bdd}
+
+
+Employez le projet sur la biométrie des oursins et sur le zooplancton pour découvrir les nouveaux outils graphiques décrits dans ce module. 
+
 #### Prérequis {-}
 
 Si ce n'est déjà fait, vous devez avoir réaliser les modules précédents.
@@ -22,8 +35,8 @@ Si ce n'est déjà fait, vous devez avoir réaliser les modules précédents.
 Lors d'une expérience vous souhaitez visualiser la façon dont vos données s'étalent sur un axe (on parle de **distribution**^[TODO] en statistique) pour l'une des variables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va découper en plusieurs **classes**^[TODO] une variable numérique.
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-1-1.svg" alt="Histogramme montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-1)Histogramme montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.svg" alt="Histogramme montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-2)Histogramme montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image.</p>
 </div>
 
 Les éléments indispensables à la compréhension d'un histogramme sont (ici mis en évidence en couleur)
@@ -65,8 +78,8 @@ chart(zooplankton, formula = ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.svg" alt="Instructions pour obtenir un histogramme." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-2)Instructions pour obtenir un histogramme.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Instructions pour obtenir un histogramme." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-3)Instructions pour obtenir un histogramme.</p>
 </div>
 
 ```r
@@ -78,10 +91,9 @@ La fonction `chart()` requiert comme argument le jeu de donnée (`zooplankton`, 
 Vous pouvez décrypter votre histogramme sur base des **modes**^[TODO] et de la **symétrie**^[TODO] de ces derniers. Les modes les plus fréquents sont unimodal, bimodal ou multimodal. 
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-4)Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique.</p>
 </div>
-
 
 ### Pièges et astuces
 
@@ -110,8 +122,8 @@ ggarrange(a, b, c, d, labels = "AUTO", font.label = list(size = 14, align = "hv"
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Piège de l'histogramme. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Histogramme A en modifiant le nombres de classes." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Piège de l'histogramme. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Histogramme A en modifiant le nombres de classes.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Piège de l'histogramme. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Histogramme A en modifiant le nombres de classes." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-5)Piège de l'histogramme. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Histogramme A en modifiant le nombres de classes.</p>
 </div>
 
 Comme vous pouvez le voir ci-dessus, le changement du nombre de classes peut modifier complètement la perception des données via l'histogramme.
@@ -172,8 +184,8 @@ chart(iris, ~ sepal_length %fill=% species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Histogramme de la longueur des sépales de 3 espèces d'iris.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-6)Histogramme de la longueur des sépales de 3 espèces d'iris.</p>
 </div>
 
 La fonction `chart()` requiert comme argument le jeu de donnée (`iris`, c'est un objet `dataframe` ou `tibble` dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom de la variable que vous voulez sur l'axe des abscisses à droite de la formule. Parmi toutes ces variables, nous avons choisi ici de représenter `sepal_length`. L'intérieur des barres est colorée (`%fill=%`) pour différencier les 3 espèces de ce jeu de données sur base de la variable `species`. Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons les matérialiser sur le graphique. Pour un histogramme, nous devons ajouter la fonction `geom_histogram()` pour indiquer cela. La fonction `scale_fill_viridis_d()` permet d'obtenir des couleurs harmonieuses.
@@ -191,8 +203,8 @@ chart(iris, ~ sepal_length | species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facets pour séparer les espèces." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facets pour séparer les espèces.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facets pour séparer les espèces." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-7)Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facets pour séparer les espèces.</p>
 </div>
 
 L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`.
@@ -213,23 +225,9 @@ chart(iris, formula = ~ sepal_width %fill=% species | species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.svg" alt="Histogramme de la longeur des sépales de 3 espèces d'iris en employant la solution de Simon Jackson." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-7)Histogramme de la longeur des sépales de 3 espèces d'iris en employant la solution de Simon Jackson.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="Histogramme de la longeur des sépales de 3 espèces d'iris en employant la solution de Simon Jackson." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-8)Histogramme de la longeur des sépales de 3 espèces d'iris en employant la solution de Simon Jackson.</p>
 </div>
-
-
-###  A vous de jouer !
-
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier `projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs_projet)
-
-\BeginKnitrBlock{bdd}<div class="bdd">
-Un projet sur la croissance des dents de cochon d'Inde est mis à votre disposition. Sur base du jeux de données `ToothGrowth`, explorez différents graphiques. 
-
-Utilisez l'URL suivant qui va vous donner accès à votre tâche.
-
-- <TODO>
-</div>\EndKnitrBlock{bdd}
-
 
 ## Graphique de densité
 

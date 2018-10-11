@@ -3,7 +3,7 @@
 
 
 
-Vos objectif dans ce module sont :
+#### Objectifs {-}
 
 - Savoir réaliser différents graphiques comme le graphique en barre, le graphique en camembert ou encore la boite de dispersion, dans R avec la fonction `chart()`
 
@@ -11,12 +11,15 @@ Vos objectif dans ce module sont :
 
 - Découvrir différents systèmes graphiques (graphiques de base, lattice, ggplot2) et comparaison avec `chart()`
 
+
+#### Prérequis {-}
+
 Si ce n'est déjà fait, vous devez avoir réaliser les module 2 & 3.
 
 
-## Visualisation graphique à l'aide d'un graphique en barre
+## Graphique en barre
 
-### Représentation d'un dénombration d'observations par facteur
+### Dénombrement d'observations par facteur
 
 Vous souhaitez représenter une dénombrement des différentes niveaux d'une variables facteur. On peux l'exprimer dans R sous la forme :
 
@@ -51,7 +54,7 @@ chart(e_m, formula = ~ e_mathaei) +
 La fonction `chart()` requiert comme argument le jeu de données (`dataframe`, `e_m`), ainsi que la formule à employer `~factor(VAR)`. Pour réaliser un graphique en barre, vous devez utiliser ensuite la fonction `geom_bar()`.
 
 
-#### Représentation d'un dénombrement d'observations par plusieurs facteurs
+#### Dénombrement d'observations par plusieurs facteurs
 
 Différentes représentations sont possibles pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l'argument `position` a pour valeur `stack`.
 
@@ -111,7 +114,7 @@ chart(e_m, formula = ~ e_mathaei ) +
 - http://ggplot.yhathq.com/docs/geom_bar.html
 
 
-### Représentation d'une valeur moyenne à l'aide d'un graphe en barre
+### Valeur moyenne à l'aide d'un graphe en barre
 
 Le graphique en barres peut être employé afin de résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les occurences d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ numérique \ en \ fonction \ de \ Variable \ facteur$$ 
 
@@ -185,7 +188,7 @@ chart(tg, formula = len ~ supp) +
 #### Pièges et astuces
 
 
-##### Représentation de la moyenne et des barres d'erreurs
+##### Moyenne et des barres d'erreurs
 
 
 ```r
@@ -202,7 +205,7 @@ chart(tg, formula = len ~ supp) +
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" width="672" style="display: block; margin: auto;" />
 
 
-##### Représentation de la moyenne
+##### Moyenne
 
 Le graphe en barre est un graphique très répandu dans le domaine scientifique malgré le grand nombre d'arguments contre lui que vous pouvez lire dans la section `Pour en savoir plus`. L'un des arguments le plus important est la faible information qu'il apporte.
 
@@ -322,7 +325,7 @@ chart(error, formula = ~ factor(fact) %fill=% fact) +
 
 - http://www.perceptualedge.com/articles/08-21-07.pdf
 
-## Visualisation graphique à l'aide de la boite de dispersion
+## Boite de dispersion
 
 Vous souhaitez représenter graphiquement cette fois un résumé d'une variable numérique tout en gardant un maximum d'information. La boite de dispersion est l'un des outils pouvant vous apporter la solution. Cette dernière va représenter graphiquement 5 descripteurs appelés les 5 nombres.
 
@@ -467,7 +470,7 @@ chart(formula = len ~ supp %fill=% as.ordered(dose), data = tg) +
 - https://chemicalstatistician.wordpress.com/2013/08/12/exploratory-data-analysis-the-5-number-summary-two-different-methods-in-r-2/
 
 
-## Visualisation de multi-graphiques
+## Multi-graphiques
 
 Lorsque vous souhaitez représenter plusieurs graphiques sur une seule fenêtre graphique plusieurs fonctions sont à votre disposition. Il faut tout d'abord distinguer deux types de multi-graphiques. Soit il s'agit d'un seul graphique que vous souhaitez subdiviser par rapport à une ou deux  variables facteurs. Soit il s'agit de graphiques indépendants que vous souhaitez représenter sur le même fenêtre graphique. Dans le premier cas, la fonction `facet_grid()` du package `ggplot2` peut être employé. Dans le second cas, la fonction `plot_grid()` du package `cowplot` est l'une des alternatives possibles.
 
@@ -542,7 +545,7 @@ Il existe d'autres fonctions permettant de combiner plusieurs graphiquescomme [`
 - http://www.sthda.com/english/rpkgs/ggpubr/reference/ggarrange.html 
 
 
-## Aperçu des différents systèmes graphiques
+## Différents systèmes graphiques
 
 Depuis le début, l'ensemble des graphiques que nous vous avons proposé utilise la fonction `chart()` du package `chart`. Cependant, il ne s'agit pas du seul outil permettant de réaliser des graphiques dans R. 
 

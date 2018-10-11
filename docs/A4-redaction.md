@@ -4,7 +4,7 @@
 
 La rédaction scientifique respecte un certain caneva expliqué dans cette annexe. 
 
-###### Pour en savoir plus...
+#### Pour en savoir plus... {-}
 
 - [Recherche documentaire et aide à la création (ReDAC)](https://moodle.umons.ac.be/enrol/index.php?id=5). L'Université de Mons met à disposition de ses étudiants un cours en ligne afin de trouver un maximum de renseignements sur la rédaction de rapports scientifiques.
 

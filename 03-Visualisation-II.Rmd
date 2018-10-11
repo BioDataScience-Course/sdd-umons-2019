@@ -19,6 +19,21 @@ toothgrowth <- read(file = "ToothGrowth", package = "datasets", lang = "fr")
 - Gérer des conflits dans GitHub
 
 
+####  A vous de jouer ! {-}
+
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier `projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs_projet)
+
+```{block2, type='bdd'}
+Un projet sur le zooplancton provenant de Madagascar est mis à votre dispositon. 
+Utilisez l'URL suivant qui va vous donner accès à votre tâche. Cette tâche est un travail individuel. **Cette tache est un travail en binome**
+
+- <https://classroom.github.com/g/7Ji4Aj9G>
+
+```
+
+
+Employez le projet sur la biométrie des oursins et sur le zooplancton pour découvrir les nouveaux outils graphiques décrits dans ce module. 
+
 #### Prérequis {-}
 
 Si ce n'est déjà fait, vous devez avoir réaliser les modules précédents.
@@ -123,7 +138,6 @@ ggarrange(g1, g2, g3, g4)
 rm(g1, g2, g3, g4, c1, c, f, e1, e, d1, g, d)
 ```
 
-
 ### Pièges et astuces
 
 #### Nombres de classes d'un histogramme
@@ -202,22 +216,6 @@ chart(iris, formula = ~ sepal_width %fill=% species | species) +
   geom_histogram(show.legend = FALSE) + # show.legend = FALSE permet de cacher la légende, si cette denrière n'est pas informative.
   scale_fill_viridis_d()
 ```
-
-
-###  A vous de jouer !
-
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faite un clone de votre dépôt et placer le dans le dossier `projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs_projet)
-
-```{block2, type='bdd'}
-
-Un projet sur la croissance des dents de cochon d'Inde est mis à votre disposition. Sur base du jeux de données `ToothGrowth`, explorez différents graphiques. 
-
-Utilisez l'URL suivant qui va vous donner accès à votre tâche.
-
-- <TODO>
-
-```
-
 
 ## Graphique de densité
 
