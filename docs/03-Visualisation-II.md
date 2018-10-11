@@ -19,8 +19,9 @@ Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Class
 \BeginKnitrBlock{bdd}<div class="bdd">Un projet sur le zooplancton provenant de Madagascar est mis à votre dispositon. 
 Utilisez l'URL suivant qui va vous donner accès à votre tâche. Cette tâche est un travail individuel. **Cette tache est un travail en binome**
 
-- <TODO>
+- <https://classroom.github.com/g/7Ji4Aj9G>
 </div>\EndKnitrBlock{bdd}
+
 
 Employez le projet sur la biométrie des oursins et sur le zooplancton pour découvrir les nouveaux outils graphiques décrits dans ce module. 
 
