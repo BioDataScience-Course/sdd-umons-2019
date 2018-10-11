@@ -237,14 +237,14 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="D" data-path="redaction-scientifique.html"><a href="redaction-scientifique.html"><i class="fa fa-check"></i><b>D</b> Rédaction scientifique</a><ul>
 <li class="chapter" data-level="D.1" data-path="organisation.html"><a href="organisation.html"><i class="fa fa-check"></i><b>D.1</b> Organisation</a></li>
 <li class="chapter" data-level="D.2" data-path="contenu.html"><a href="contenu.html"><i class="fa fa-check"></i><b>D.2</b> Contenu</a><ul>
-<li class="chapter" data-level="D.2.1" data-path="contenu.html"><a href="contenu.html#tables-des-matieres"><i class="fa fa-check"></i><b>D.2.1</b> Tables des matières</a></li>
+<li class="chapter" data-level="D.2.1" data-path="contenu.html"><a href="contenu.html#table-des-matieres"><i class="fa fa-check"></i><b>D.2.1</b> Table des matières</a></li>
 <li class="chapter" data-level="D.2.2" data-path="contenu.html"><a href="contenu.html#introduction"><i class="fa fa-check"></i><b>D.2.2</b> Introduction</a></li>
 <li class="chapter" data-level="D.2.3" data-path="contenu.html"><a href="contenu.html#but"><i class="fa fa-check"></i><b>D.2.3</b> But</a></li>
 <li class="chapter" data-level="D.2.4" data-path="contenu.html"><a href="contenu.html#materiel-methodes"><i class="fa fa-check"></i><b>D.2.4</b> Matériel &amp; méthodes</a></li>
 <li class="chapter" data-level="D.2.5" data-path="contenu.html"><a href="contenu.html#resultats"><i class="fa fa-check"></i><b>D.2.5</b> Résultats</a></li>
 <li class="chapter" data-level="D.2.6" data-path="contenu.html"><a href="contenu.html#discussion"><i class="fa fa-check"></i><b>D.2.6</b> Discussion</a></li>
-<li class="chapter" data-level="D.2.7" data-path="contenu.html"><a href="contenu.html#conclusion-perspective"><i class="fa fa-check"></i><b>D.2.7</b> Conclusion &amp; perspective</a></li>
-<li class="chapter" data-level="D.2.8" data-path="contenu.html"><a href="contenu.html#bibliographie"><i class="fa fa-check"></i><b>D.2.8</b> Bibliographie</a></li>
+<li class="chapter" data-level="D.2.7" data-path="contenu.html"><a href="contenu.html#conclusions-perspectives"><i class="fa fa-check"></i><b>D.2.7</b> Conclusion(s) &amp; perspective(s)</a></li>
+<li class="chapter" data-level="D.2.8" data-path="contenu.html"><a href="contenu.html#bibliographie-ou-references"><i class="fa fa-check"></i><b>D.2.8</b> Bibliographie (ou références)</a></li>
 </ul></li>
 <li class="chapter" data-level="D.3" data-path="nom-des-especes.html"><a href="nom-des-especes.html"><i class="fa fa-check"></i><b>D.3</b> Nom des espèces</a></li>
 </ul></li>
@@ -274,21 +274,74 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="contenu" class="section level2">
 <h2><span class="header-section-number">D.2</span> Contenu</h2>
-<p>Le rapport sert à restituer de façon synthétique une expérience, ses résultats et les interprétations pouvant être faites. Il faut garder à l’esprit qu’un lecteur n’ayant jamais entendu parler de cette expérience doit comprendre l’intégralité du rapport.</p>
-<div id="tables-des-matieres" class="section level3">
-<h3><span class="header-section-number">D.2.1</span> Tables des matières</h3>
-<p>La table des matières est d’une importance capitale afin de présenter la structure de votre rapport aux lecteurs. Heureusement, il n’est pas nécessaire de l’écrire manuellement. La table des matières est générée automatiquement dans un rapport R Markdown.</p>
-<p>L’instruction à ajouter dans le préambule du document R Notebook afin d’obtenir une table des matières est <code>toc: yes</code> .</p>
+<p>Le rapport sert à restituer de façon synthétique les résultats d’une étude scientifique, et les interprétations. Le tout est remis dans le contexte de la bibliographie existante en la synthétisant dans l’introduction et en comparant les résultats avec d’autres études connexes dans la discussion. Il faut garder à l’esprit qu’un lecteur doit comprendre l’intégralité du rapport avec un minimum de connaissances <em>a priori</em> sur l’étude réalisée, mais avec des connaissances générales dans la spécialité. Donc, un rapport sur un sujet biologique est adressé à un lecteur biologiste pour lequel il ne faut pas rappeler les concepts de base dans sa discipline. Par contre, il faut expliquer avec suffisamment de détails comment l’étude a été réalisée dans la section “matériel et méthodes”.</p>
+<p>En général, les phrases sont simples, directes, courtes et précises (veuillez à utiliser le vocabulaire adéquat et les termes justes). Les explications sont, autant que possible, linéaires. Evitez les renvois dans différentes autres parties du rapoort, si ce n’est pour rappeler un élément évoqué plus haut, ou pour se référer à une figure ou une table. A ce sujet, les figures (dont les images, photos, schémas et graphiques) sont numérotées (Figure 1, Figure 2, …) et accompagnées d’une légende en dessous d’elles. La figure et sa légende doivent être compréhensibles telles quelles. Dans le texte, vous pourrez alors vous référer à la figure, par exemple: “Tel phénomène est observable (voir Fig. 3)”, ou “La Fig. 4 montre …”. idem pour les tableaux qui sont également numérotés (Tableau 1, Tableau 2, …) et légendés, mais <em>au dessus</em> du tableau. Les règles de lisibilité du tableau + légende et de renvoi vers les tableaux sont identiques que pour les figures. Les équations peuvent aussi être numérotées et des renvois de type (eq. 5) peuvent être utilisées. Enfin, toute affirmation doit être soit démontrées dans le rapport, ou amendées d’une citation vers un autre document scientifique qui la démontre. La partie bibliographie regroupe la liste de tous les documents qui sont ainsi cités à la fin du rapport.</p>
+<p>Veuillez à respecter les notations propres au système métrique international, les abbrévations usuelles dans la discipline, et le droit d’auteur et les licenses si vous voulez citer un passage ou reprendre une illustration provenant d’un autre auteur. Enfin, en vue de rendre le document parfaitement reproductible, vous pouvez indiquer dans les annexes où trouver la source (le document <code>.Rmd</code>) et les données analysées. Vous pouvez également terminer avec un chunk qui renseigne de l’état du système R utilisé, y compris l’ensemble des packages annexes employés. Ce chunk, présenté en annexe, contiendra l’instruction <code>utils::sessionInfo()</code>, ou mieux : <code>xfun::session_info()</code> (version courte) ou <code>devtools::session_info()</code> (version longue). Par exemple :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xfun<span class="op">::</span><span class="kw">session_info</span>()</code></pre></div>
+<pre><code>## R version 3.4.4 (2018-03-15)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS  10.14
+## 
+## Locale: en_US.UTF-8 / en_US.UTF-8 / en_US.UTF-8 / C / en_US.UTF-8 / en_US.UTF-8
+## 
+## Package version:
+##   acepack_1.4.1       anytime_0.3.1       assertthat_0.2.0   
+##   backports_1.1.2     base64enc_0.1-3     BH_1.66.0.1        
+##   bindr_0.1.1         bindrcpp_0.2.2      bookdown_0.7       
+##   broom_0.5.0         callr_3.0.0         cellranger_1.1.0   
+##   chart_1.2.0         checkmate_1.8.5     cli_1.0.0          
+##   clipr_0.4.1         cluster_2.0.7-1     codetools_0.2-15   
+##   colorspace_1.3-2    compiler_3.4.4      cowplot_0.9.3      
+##   crayon_1.3.4        curl_3.2            data.io_1.2.0      
+##   data.table_1.11.4   datasets_3.4.4      DBI_1.0.0          
+##   dbplyr_1.2.2        digest_0.6.17       dplyr_0.7.6        
+##   ellipse_0.4.1       evaluate_0.11       fansi_0.3.0        
+##   flow_1.1.0          forcats_0.3.0       foreign_0.8-71     
+##   Formula_1.2-3       fs_1.2.6            ggplot2_2.2.1      
+##   ggplotify_0.0.3     ggpubr_0.1.8        ggrepel_0.8.0      
+##   ggsci_2.9           ggsignif_0.4.0      glue_1.3.0         
+##   graphics_3.4.4      grDevices_3.4.4     grid_3.4.4         
+##   gridExtra_2.3       gridGraphics_0.3-0  gtable_0.2.0       
+##   haven_1.1.2         highr_0.7           Hmisc_4.1-1        
+##   hms_0.4.2           htmlTable_1.12      htmltools_0.3.6    
+##   htmlwidgets_1.2     httr_1.3.1          igraph_1.2.2       
+##   jsonlite_1.5        knitr_1.20          labeling_0.3       
+##   lattice_0.20-35     latticeExtra_0.6-28 lazyeval_0.2.1     
+##   lubridate_1.7.4     magrittr_1.5        markdown_0.8       
+##   MASS_7.3-50         Matrix_1.2-14       methods_3.4.4      
+##   mime_0.5            modelr_0.1.2        munsell_0.5.0      
+##   nlme_3.1-137        nnet_7.3-12         nycflights13_1.0.0 
+##   openssl_1.0.2       pillar_1.3.0        pkgconfig_2.0.2    
+##   plogr_0.2.0         plyr_1.8.4          polynom_1.3.9      
+##   processx_3.2.0      proto_1.0.0         pryr_0.1.4         
+##   ps_1.1.0            purrr_0.2.5         R6_2.2.2           
+##   RApiDatetime_0.0.3  RColorBrewer_1.1-2  Rcpp_0.12.18       
+##   readr_1.1.1         readxl_1.1.0        rematch_1.0.1      
+##   reprex_0.2.1        reshape2_1.4.3      rlang_0.2.2.9001   
+##   rmarkdown_1.10      rpart_4.1-13        rprojroot_1.3-2    
+##   rstudioapi_0.7      rvcheck_0.1.0       rvest_0.3.2        
+##   scales_1.0.0        SciViews_1.1.0      selectr_0.4.1      
+##   splines_3.4.4       stats_3.4.4         stringi_1.2.4      
+##   stringr_1.3.1       survival_2.42-6     svMisc_1.1.0       
+##   tibble_1.4.2        tidyr_0.8.1         tidyselect_0.2.4   
+##   tidyverse_1.2.1     tinytex_0.8         tools_3.4.4        
+##   tsibble_0.5.2       utf8_1.1.4          utils_3.4.4        
+##   viridis_0.5.1       viridisLite_0.3.0   whisker_0.3.2      
+##   withr_2.1.2         xfun_0.3            xml2_1.2.0         
+##   yaml_2.2.0</code></pre>
+<div id="table-des-matieres" class="section level3">
+<h3><span class="header-section-number">D.2.1</span> Table des matières</h3>
+<p>La table des matières est d’une importance capitale pour un long document (mais facultative pour un plus court rapport) afin de présenter la structure de votre oeuvre aux lecteurs. Heureusement, il n’est pas nécessaire de l’écrire manuellement. La table des matières est générée automatiquement dans un rapport R Markdown. L’instruction à ajouter dans le préambule du document R Notebook afin d’obtenir une table des matières est <code>toc: yes</code> (ne l’encodez pas directement, mais sélectionnez l’option <code>Include table of contents</code> dans les options de formattage du document accessibles à partir du bouton engrenage à droite de <code>Preview</code> ou <code>Knit</code> -&gt; <code>Output Options...</code>). Lorsque vous fermerez cette boite de dialogue de configuration, l’entrée <em>ad hoc</em> sera ajoutée pour vous dans le prambule.</p>
 <div class="figure">
 <img src="images/annexe_a4/table_contents.png" />
 
 </div>
-<p>L’instruction à ajouter en plus de <code>toc: yes</code> dans le préambule du document R Notebook afin d’obtenir une table des matières numéri est <code>number_sections: yes</code> .</p>
+<p>Vous pouvez aussi choisir de numéroter vos titres automatiquement. L’instruction à ajouter en plus de <code>toc: yes</code> dans le préambule du document R Notebook afin d’obtenir une table des matières avec des titres numéroté est <code>number_sections: yes</code>. Encore une fois, passez par la boite de dialogue de configuration, et cochez-y l’entrée <code>Number section headings</code>.</p>
 <div class="figure">
 <img src="images/annexe_a4/table_contents2.png" />
 
 </div>
-<p>Il est également possible de modifier ces paramètres dans les paramètres de sortie du document comme le montre l’image ci-dessous.</p>
+<p>Voyez l’animation ci-dessous pour accéder à la boite de dialogue de configuration du document R Markdown/R Notebook.</p>
 <div class="figure">
 <img src="images/annexe_a4/table_contents.gif" />
 
@@ -296,9 +349,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div id="introduction" class="section level3">
 <h3><span class="header-section-number">D.2.2</span> Introduction</h3>
-<p>L’introduction d’un rapport d’analyse (ou d’un mémoire) a pour principal objectif de replacer l’expérience réalisée dans son contexte.</p>
-<p>La règle la plus importante est qu’<strong>un lecteur n’ayant jamais entendu parler de cette expérience doit comprendre l’intégralité du rapport.</strong></p>
-<p>L’introduction doit donc permettre de :</p>
+<p>L’introduction d’un rapport (ou d’un mémoire) a pour principal objectif de replacer l’étude scientifique réalisée dans son contexte. La règle la plus importante est qu’<strong>un lecteur n’ayant jamais entendu parler de cette étude doit comprendre l’intégralité du rapport.</strong> L’introduction doit donc permettre de :</p>
 <ul>
 <li>Remettre l’expérience dans son contexte,</li>
 <li>Décrire l’organisme étudié
@@ -306,16 +357,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li>description de l’organisme, distribution géographique, biotope,…</li>
 </ul></li>
 </ul>
-<p>Notez que l’ajout d’images ou d’une carte de distribution est un plus dans la lecture d’une introduction.</p>
+<p>Notez que l’ajout d’images ou d’une carte de distribution est un plus dans l’introduction.</p>
 </div>
 <div id="but" class="section level3">
 <h3><span class="header-section-number">D.2.3</span> But</h3>
-<p>Le but permet de synthétiser la question posée durant cette expérience en fonction du contexte de l’expérience expliqué dans l’introduction.</p>
+<p>Le but permet de synthétiser la question posée dans cette étude en fonction du contexte de l’expérience expliqué dans l’introduction.</p>
 </div>
 <div id="materiel-methodes" class="section level3">
 <h3><span class="header-section-number">D.2.4</span> Matériel &amp; méthodes</h3>
-<p>Le matériel &amp; méthodes permettent de décrire les aspects techniques de l’expérience comme le matériel employé et les méthodes employées afin d’acquérir les données.</p>
-<p>Cette section est également le lieu des descriptions des méthodes d’analyse employées, des programmes utilisés,…</p>
+<p>Le matériel &amp; méthodes permettent de décrire les aspects techniques de l’étude comme le matériel employé et les méthodes utilisées (protocole) afin d’acquérir les données. Cette section est également le lieu de descriptions des méthodes statistiques utilisées pour analyser ces données, des programmes informatiques utilisés, …</p>
 </div>
 <div id="resultats" class="section level3">
 <h3><span class="header-section-number">D.2.5</span> Résultats</h3>
@@ -327,28 +377,25 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div id="discussion" class="section level3">
 <h3><span class="header-section-number">D.2.6</span> Discussion</h3>
-<p>Cette section comprend l’interprétation biologique des résultats. En effet, il est d’une importance capitale d’avoir un regard critique sur les résultats obtenus.</p>
+<p>Cette section comprend l’interprétation biologique des résultats et les remettre dans un contexte plus général, notamment en les comparant à des observations connexes réalisées pr d’autres auteurs scientifiques. Il est d’une importance capitale d’avoir un regard critique sur les résultats obtenus. Cette mise en contexte aide en ce sens.</p>
 <p>Exemple :</p>
 <ul>
 <li>Variation du pH de l’eau de mer de 8 à 6</li>
 </ul>
-<p>Lors de la mesure des paramètres physicochimiques de l’eau de mer, une étude monitore le pH avec différents instruments et propose le graphique suivant :</p>
-<p><img src="A4-redaction_files/figure-html/unnamed-chunk-1-1.svg" width="672" /></p>
-<p>Vous observez que deux unités différentes sont étudiées (A0 et B0) et que 5 instruments différents sont employés.</p>
-<p>Ce graphique vous semble pertinent ? Aucune information qui y figure ne vous choque ?</p>
-<p>Si ce n’est pas le cas, il faut encore exercer votre oeil de biologiste. La sonde pH sur le graphique propose une valeur de pH proche de 6.5 alors que les autres instruments sont entre 7.2 et 8.</p>
-<p><strong>Nous sommes donc passé d’un pH légérement basique à un pH acide. Les organismes présents dans les aquariums serait mort à cette valeur de pH.</strong></p>
-<p>Elle est également le lieu de comparaison avec d’autres études dans le domaine, de la critique du design expérimental,…</p>
+<p>Lors de la mesure des paramètres physico-chimiques de l’eau de mer, une étude suit le pH avec différents instruments et propose le graphique suivant :</p>
+<p><img src="A4-redaction_files/figure-html/unnamed-chunk-2-1.svg" width="672" /></p>
+<p>Vous observez que les eaux de deux aquariums différents sont mesurées (les aquariums nommés A0 et B0) et que cinq instruments différents sont employés. Ce graphique vous semble-t-il pertinent ? Aucune information qui y figure ne vous choque ? Si ce n’est pas le cas, il faut encore exercer votre oeil de biologiste. La sonde pH sur le graphique propose une valeur de pH proche de 6.5 alors que les autres instruments indiquent des valeurs de pH comprises entre 7.2 et 8.</p>
+<p><strong>Nous sommes donc passés d’un pH légérement basique, classique en eau de mer, à un pH acide inhabituel. Les organismes présents dans les aquariums serait mort à cette valeur de pH.</strong></p>
 </div>
-<div id="conclusion-perspective" class="section level3">
-<h3><span class="header-section-number">D.2.7</span> Conclusion &amp; perspective</h3>
-<p>Cette section va tenir une sorte de résumé de notre expérience par rapport à au but de cette dernière et proposer des perspectives afin de continuer la recherche sur cette thématique.</p>
+<div id="conclusions-perspectives" class="section level3">
+<h3><span class="header-section-number">D.2.7</span> Conclusion(s) &amp; perspective(s)</h3>
+<p>Cette section va résumer les principaux résultats à retenir de notre étude et, éventuellement, proposer des perspectives afin de poursuivre la recherche dans cette thématique.</p>
 </div>
-<div id="bibliographie" class="section level3">
-<h3><span class="header-section-number">D.2.8</span> Bibliographie</h3>
-<p>La rédaction de travaux s’appuye toujours sur une recherche bibliographique au préalable. Cependant, il est capital d’insérer convenablement les sources du travail au sein de la section bibliographie afin d’éviter le <strong>plagiat</strong> volontaire ou involontaire. Il existe une multitude de programme permettant la gestion d’une bibliographie comme <a href="https://www.mendeley.com/">Mendeley</a>, <a href="https://www.zotero.org/">Zotero</a> ou encore <a href="https://endnote.com/">Endnote</a>.</p>
+<div id="bibliographie-ou-references" class="section level3">
+<h3><span class="header-section-number">D.2.8</span> Bibliographie (ou références)</h3>
+<p>La rédaction de travaux s’appuye toujours sur une recherche bibliographique au préalable. Cependant, il est capital d’insérer convenablement les sources du travail au sein de la section bibliographie afin d’éviter le <strong>plagiat</strong> volontaire ou involontaire. Il existe une multitude de programmes permettant la gestion d’une bibliographie comme <a href="https://www.mendeley.com/">Mendeley</a>, <a href="https://www.zotero.org/">Zotero</a> ou encore <a href="https://endnote.com/">Endnote</a>.</p>
 <ul>
-<li><a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles">Citer ses sources dans un rapport R Notebook</a> : page en anglais présentant la manière d’introduire une bibliographie dans un rapport R Notebook.</li>
+<li>Pour générer correctement ses références bibliographiques dans un document R Markdown/R Notebook, <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citation_styles">consulter ceci</a>. Il s’agit d’un manuel en anglais de RStudio qui explique comment faire dans le détail.</li>
 </ul>
 </div>
 </div>
