@@ -36,7 +36,7 @@ En général, les phrases sont simples, directes, courtes et précises (veuillez
 
 Veuillez à respecter les notations propres au système métrique international, les abbrévations usuelles dans la discipline, et le droit d'auteur et les licenses si vous voulez citer un passage ou reprendre une illustration provenant d'un autre auteur. Enfin, en vue de rendre le document parfaitement reproductible, vous pouvez indiquer dans les annexes où trouver la source (le document `.Rmd`) et les données analysées. Vous pouvez également terminer avec un chunk qui renseigne de l'état du système R utilisé, y compris l'ensemble des packages annexes employés. Ce chunk, présenté en annexe, contiendra l'instruction `utils::sessionInfo()`, ou mieux : `xfun::session_info()` (version courte) ou `devtools::session_info()` (version longue). Par exemple :
 
-```{r}
+```{r, comment=NA}
 xfun::session_info()
 ```
 

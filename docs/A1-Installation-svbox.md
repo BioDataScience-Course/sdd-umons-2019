@@ -70,6 +70,96 @@ Si vous n'arrivez pas à entrer dans le BIOS, ou à trouver l'entrée correspond
 **Si votre ordinateur est conforme aux spécifications ci-dessus, et si la virtualisation est activée, vous êtes maintenant prêt à installer votre SciViews Box!**
 
 
+### Conseils pour acheter un laptop
+
+> Attention : cette analyse est réalisée en octobre 2018. Le matériel informatique et les prix changent constamment, et les informations seront rapidement obsolètes. Les lignes directrices devraient, cependant rester valables à l'avenir pour utiliser la SciViews Box 2018.
+
+Le choix d'un laptop (ordinateur portable) dépend naturellement de son utilisation. Pour l'analyse des données, il faut un ordinateur suffisamment puissant en calcul (processeur, mémoire vive, disque dur), mais la carte graphique ne doit pas être ultra-rapide, sauf si les calculs GPU sont prévus dessus. Ainsi, les tablettes, chromebooks et la plupart des laptops de bureautique ne sont pas assez puissants.
+
+Dans le choix de votre laptop, il faut tout d'abord vous demander si vous voulez un ordinateur pour **apprendre** à traiter des données sur des petits tableaux, et que vous prévoyez changer dans 1 ou 2 ans, ou si vous voulez investir sur plus long terme. Naturellement, le prix sera un critère fondamental, également.
+
+
+#### Caractéristiques requises
+
+La puissance d'un ordinateur est un tout entre le processeur, la mémoire vive, le disque dur, la carte graphique, etc. Donc, avant tout, il est préférable d'avoir une **configuration homogène**. Rien ne sert d'investir dans le processeur le plus puissant si le disque dur et la mémoire vive ne sont pas à la hauteur, par exemple. Voici quelques pistes...
+
+##### Processeur
+
+La puissance du processeur est primordiale. Idéalement, il faut un processeur rapide et multitâche. Chez Intel, les Core i7 forment le haut de gamme dans les processeurs mobiles. Chez AMD les Ryzen 5, par exemple, conviennent très bien. Encore une fois, du haut de gamme. En dessous, _certains_ Intel Core i5 conviennent, mais d'autres sont trop lents, et à la limite, quelques uns des Intel Core i3 les plus puissants pourraient convenir également. Pas facile, donc, de s'y retrouver dans les centaines de modèles existants.
+
+Comment déterminer si un processeur a une puissance de calcul et de gestion multitâche suffisante ? Voici quelques critères :
+
+- Ne descendez pas en dessous de 4 "threads" (calculs pouvant être réalisés en parallèle). Certains processeurs sont capable de gérer 2 threads pour chaque coeur. Donc, le minimum est deux coeurs "multithreads" capables de gérer quatre threads en tout. Sinon, les processeurs 4 coeurs sont fréquents aujourd'hui. Donc, 4 coeurs/4threads, c'est très bien, et à partir de 4 coeurs/8 threads, c'est parfait.
+
+- La vitesse de calcul était, un temps, proportionnelle à la vitesse du processeur exprimée en GHz. **Ce n'est plus vrai aujourd'hui.** Donc, ne vous fiez qu'à des tests de vitesse processeur fiables. Si on utilise le **[CPUMark](https://www.cpubenchmark.net)**, prenez comme référence la puissance de calcul des ordinateurs de votre salle de travaux pratiques. A la salle "Pentagone", les ordinateurs sont équipés d'Intel Core i5-6400T @ 2.20Ghz. Ce sont des processeurs 4 coeurs/4 threads avec un CPUMark de 5596. Aux salles "Escher" et "Turing", ce sont des processeurs Intel Core i5-4590 @ 3.30Ghz, également 4 coeurs/4 threads affichant un CPUMark de 7295. **Donc, vérifiez le CPUMark du processeur du laptop que vous convoitez et ne descendez pas en dessous de la puissance des machine "Pentagone", soit pas moins de 5000 CPUMark our un travail confortable... mais un CPUMark supérieur ou égal à 3500 pourrait encore convenir.** Pour vous aidez, vous pouvez partir de [cette page](https://www.cpubenchmark.net/compare/Intel-i5-4590-vs-Intel-i5-6400T/2234vs2668) qui permet de comparer directement votre processeur candidat à ceux des salles de travaux pratiques de l'UMONS.
+
+
+##### Mémoire vive
+
+Il vous faut suffisamment de mémoire pour la partager entre la machine hôte et la machine virtuelle, et garder assez de resources pour ouvrir des tableaux (moyennement) volumineux. Donc, **visez 8Go de mémoire vive** si possible. Pas moins de 4Go, et plus vous en avez, mieux c'est. Il existe des configurations laptops à 16Go. C'est utile !
+
+
+##### Disque dur
+
+Ici, vous devrez peut-être faire un choix entre espace de stockage et vitesse du disque. En effet, les disques mécaniques classiques font maintenant facilement 1To, ce qui est confortable. Par contre, ils sont plus lents que les disques SSD qui sont à privilégier. Mais ces derniers sont de capacité moindre (dans des gammes de prix raisonnables), généralement 128Go ou 256Go. Des configurations plus haut de gamme combinent deux disques : un SSD rapide pour le système et un disque de 500Go ou 1To classique pour les données. **C'est l'idéal.**
+
+
+##### Carte graphique et écran
+
+La qualité de la carte graphique est moins importante ici. La plupart des configurations actuelles conviennent. Voyez plutôt la taille (et donc, le poids) du laptop. Voulez-vous un PC de 13 ou 14 pouces plus compact et transportable, ou un 15 à 17 pouces plus confortable, mais plus lourd? Pour la résolution d'écran, ne descendez pas en dessous de 1400x900 pixels, et vérifiez visuellement si la qualité de l'écran vous convient.
+
+
+##### Wifi et accessoires
+
+Une bonne connexion Wifi sera nécessaire pour vous connecter à Internet. La norme WiFi 802.11ac est idéale. Enfin, vérifiez les connexions proposées : USB rapide (3.0, 3.1 ou C), Thunderbold, DisplayPort, HDMI, etc. pour connecter des périphériques et de écrans externes, lecteur de cartes éventuel, etc.
+
+
+#### Quelques configurations possibles (octobre 2018)
+
+A titre d'exemples, voici quelques configurations qui conviennent.
+
+
+##### Configurations minimales
+
+Evitez autant que possible de descendre en dessous de celles-ci (mais si vous possédez déjà un PC, faites un essai et décidez par vous-même si vous pouvez ou non l'utiliser de manière confortable). Il vaut mieux privilégier un petit disque dur SSD rapide qu'un gros disque plus lent. En effet, il est toujours possible d'ajouter un disque dur externe en USB 3.0 plus tard pour stocker les grosses données comme les images et les vidéos.
+
+| Modèle                      | Processeur (c/t/cpumark) | Mémoire | Disque     | Graphique    | Ecran            | Poids  | Prix |
+|-----------------------------|--------------------------|---------|------------|--------------|------------------|--------|------|
+| Lenovo IdeaPad 320S-14IKB   | Core i3-7100U (2/4/3798) | 8Go     | SSD 128Go  | Intel HD620  | 14'' (1920x1080) | 1.7kg  | 600€ |
+| Acer Swift 3 SF314-54-31DR  | Core i3-8130U (2/4/5061) | 4Go     | SSD 256Go  | Intel HD620  | 14'' (1920x1080) | 1.45kg | 600€ |
+
+Dans un budget de 600€, une concession est nécessaire. Le Lenovo a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu juste. L'Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n'a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c'est quand même fort juste. Donc votre préférence ira si possible plutôt vers une configuration du type Acer ci-dessus^[Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d'autres constructeurs aussi !].
+
+
+##### Configurations correctes
+
+Ici, vous êtes nettement plus confortable : processeur rapide **et** 8Go de mémoire vive **et** double disque (un petit rapide et un plus gros mais plus lent). Ces laptops sont parfaits pour le cours de science des données biologiques et pour bien d'autres tâches dans le cadre de vos études.
+
+| Modèle                      | Processeur (c/t/cpumark)   | Mémoire | Disque              | Graphique      | Ecran              | Poids  | Prix  |
+|-----------------------------|----------------------------|---------|---------------------|----------------|--------------------|--------|-------|
+| Medion S6625                | Core i5-8250U (2/4/7667)   | 8Go     | SSD 128Go + HDD 1To | GeForce 940MX  | 15.6'' (1920x1080) | 2kg    | 800€  |
+| Acer Aspire3 A315-41-R163   | Ryzen 5 2500U (4/8/10000?) | 16Go    | SSD 256Go + HDD 1To | Radeon Vega 8  | 15.6'' (1920x1080) | 2.3kg  | 800€  |
+| MacBook Pro 13''            | Core i5-8259U (2/4/10938)  | 8Go     | SSD 128Go           | Intel Iris+640 | 13'' (2560x1600)   | 1.4kg  | 1500€ |
+
+Le Medion est représentatif de ce créneau. Vous combinez un bon processeur, 8Go RAM, deux disques durs, une carte graphique accélérée et un bon écran pour un poids raisonable. L'Acer est une vraie bonne affaire : grâce à un processeur AMD qui intègre le coprocesseur graphique rapide, vous avez la possibilité d'avoir une excellente configuration à prix serré.
+
+Nous avons aussi inclu le premier MacBook Pro 13'' à titre de comparaison : il est presque 2 fois plus cher. Même si son écran est incomparablement meilleur et son processeur ultra-rapide, pour ce prix, vous n'avez qu'un disque de 128Go (ajoutez encore 250€ pour un disque de 256Go) combiné à 8Go de RAM (+240€ pour 16Go RAM). Les MacBook Air et MacBook 12'' conviennent aussi, mais attention à leurs processeurs quand même un peu juste pour de l'analyse de données. Si possible, restez dans la gamme MacBook Pro en laptops Apple. Attention aussi au prix des adaptateurs supplémentaires souvent indispensable pour les produits Apple !
+
+
+##### Configurations sans concessions
+
+Un budget plus large permet d'acquérir un laptop de course qui sera utile pendant des années, et même pour un travail lourd plus tard... Dans ces configurations, pas de concessions. On veut un processeur i7 à 6 coeurs ou équivalent, 16Go de RAM, un disque SSD d'au moins 256Go, ou mieux deux disques, une carte graphique rapide et un excellent écran.
+
+| Modèle                      | Processeur (c/t/cpumark)   | Mémoire | Disque              | Graphique         | Ecran              | Poids  | Prix  |
+|-----------------------------|----------------------------|---------|---------------------|-------------------|--------------------|--------|-------|
+| MSI GF63 8RD-051BE          | Core i7-8750H (6/12/12548) | 16Go    | SSD 256Go + HDD 1To | GeForce GTX1050Ti | 15.6'' (1920x1080) | 1.86kg | 1350€ |
+| MacBook Pro 15''            | Core i7-8750H (6/12/12548) | 16Go    | SSD 256Go           | Radeon Pro 555X   | 15.4'' (2880x1800) | 1.83kg | 2800€ |
+
+Le MSI est un PC dit "gamer". Tous les laptops dans cette catégorie sont très rapides... et conviennent parfaitement bien pour la science des données, y compris pour les calculs GPU. A titre de comparaison, l'équivalent chez Apple est également présenté (MacBook Pro 15'' "premier prix"). Ce dernier est à nouveau deux fois plus cher. Même si son écran est incomparable, il ne possède qu'un seul disque de 256Go et il faut encore rajouter 240€ pour avoir un disque de 512Go, certes SSD très rapide.
+
+**Voilà ! En espérant que ceci pourra vous aider au mieux dans le choix de votre outil informatique...***
+
+
 ## Installation
 
 <div class="note">
