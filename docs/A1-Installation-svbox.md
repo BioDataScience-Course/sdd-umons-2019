@@ -157,7 +157,7 @@ Un budget plus large permet d'acquérir un laptop de course qui sera utile penda
 
 Le MSI est un PC dit "gamer". Tous les laptops dans cette catégorie sont très rapides... et conviennent parfaitement bien pour la science des données, y compris pour les calculs GPU. A titre de comparaison, l'équivalent chez Apple est également présenté (MacBook Pro 15'' "premier prix"). Ce dernier est à nouveau deux fois plus cher. Même si son écran est incomparable, il ne possède qu'un seul disque de 256Go et il faut encore rajouter 240€ pour avoir un disque de 512Go, certes SSD très rapide.
 
-**Voilà ! En espérant que ceci pourra vous aider au mieux dans le choix de votre outil informatique...***
+**Voilà ! En espérant que ceci pourra vous aider au mieux dans le choix de votre outil informatique...**
 
 
 ## Installation
