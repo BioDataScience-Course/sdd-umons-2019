@@ -23,16 +23,26 @@ L'installation est simple, mais il y a quand même quelques pièges. Suivez le g
 
 > Avant d'installer la SciViews Box 2018, vérifiez que votre ordinateur répond aux conditions requises et qu'il est correctement configuré.
 
+
 ### Ordinateur
 
-Il vous faut :
+La SciViews Box 2018, et la Science des Données en général, nécessitent un ordinateur ayant une puissance de calcul suffisante. Les tablettes et autres chromebooks sont donc exclus (sauf à être utilisés comme simples browsers web avec les calculs déportés sur un serveur, voir par exemple [Chromebook Data Science](https://simplystatistics.org/2018/10/01/chromebook-data-science-an-online-data-science-program-for-anyone-with-a-web-browser/)). Si l'utilisation d'un serveur est une bonne idée pour l'apprentissage, ce n'est pas une solution sur le long terme pour tout le monde. En effet, vous êtes et restez dépendant du serveur que l'on a bien voulu configurer et partager avec vous (sera-t-il encore disponible après votre cours, par exemple ?). La solution proposée avec la SciViews Box vous rend complètement **autonome** dès le départ. Le choix d'un ordinateur ayant une capacité de calcul suffisante n'est pas aisé et les disparités en matière de performances sont énormes, voir [NovaBench CPU score](https://novabench.com/parts/cpu).
 
-- Un ordinateur suffisamment puissant équipé d'un **processeur Intel Core i5 ou i7, ou son équivalent AMD**, récent si possible. Les tablettes et les machines basiques avec processeur Atom, par exemple, ne sont pas suffisantes. Idéalement, un processeur bi-coeur - bi-thread, ou quadri-coeur est souhaitable.
-- Au moins **4Go de mémoire vive**. Le double, voire plus, est nécessaire pour analyser des gros jeux de données mais 4Go devraient suffire pour les analyses de tableaux de tailles plus modestes (tout de même comptant des dizaines de colonnes _versus_ des milliers de lignes).
-- Un **disque dur rapide** (un disque SSD est un plus), avec environ 20Go libres que vous pourrez consacrer à la SciViews Box.
-- Une carte graphique de bonne qualité, mais qui n'a pas besoin d'être une bête de course, et un écran confortable. Une résolution de 1024x768 est un strict minimum.
-- Un **système d'exploitation récent, et si possible, 64bit**: Linux tel Debian 8 (Jessie) ou 9 (Stretch), Ubuntu 16.04 Xenial ou supérieur, ..., Windows 7 ou plus, Mac OS X 10.10 Yosemite ou plus.
-- Une **connection Internet** est souhaitable, voire indispensable, en fonction des fichiers d'installation que vous possédez déjà localement ou non pour l'installation. Elle se révèlera également nécessaire à l'utilisation.
+```{block, type='info'}
+La **configuration de référence** est la suivante, avec un [score global Novabench](https://novabench.com/results) de 1000 :
+
+- Processeur : à 2 coeurs / 4 threads d'une vitesse de calcul suffisante ([score CPU Novabench](https://novabench.com/parts/cpu) d'environ 700).
+- Mémoire vive : 8Go avec un score RAM Novabench de 200.
+- Disque dur : disque rapide SSD de 256Go ([score disque Novabench](https://novabench.com/parts/storage) d'environ 100 avec vitesse d'écriture >= 250Mo/s et vitesse de lecture >= 600Mo/s).
+- Affichage : 1920x1080. La plupart des cartes graphiques ou des coprocesseurs graphiques intégrés conviennent (pas besoin d'une bête de course si vos calculs ne nécessitent pas des instructions GPU, en tous cas). Comme base, nous considèrerons un [score GPU NovaBench](https://novabench.com/parts/gpu) d'environ 200 qui correspond au processeur graphique intégré Intel HD 620.
+- Réseau : Wifi à la norme 802.11ac.
+- Connectique : USB 3.0 ou C pour ajouter des périphériques, HDMI ou DisplayPort pour connecter un écran externe, et une prise casque pour visionner des vidéos sans déranger les voisins.
+- Système d'exploitation : récent et si possible 64-bit. Windows 7 ou plus convient (mais pensez à mettre-à-jour vers Windows 10), MacOS 10.10 Yosemite ou plus, ou un Linux tel Debian 8 (Jessie) ou 9 (Stretch), Ubuntu 16.04 Xenial ou supérieur, ...
+```
+
+Pour une **configuration de base**, vous pouvez aller jusqu'à diviser les scores Novabench et les valeurs (nombre de coeurs CPU, taille de la mémoire vive et du disque) par deux, et pour une **configuration performante**, multipliez-les par deux, et ajoutez-y une carte graphique Nvidia performante et un second disque de 1To pour stocker des gros jeux de données. Un "laptop" (ordinateur portable) est mieux, mais si vous n'avez pas besoin d'une solution nomade, un "desktop" convient aussi et est plus modulable. Pour tester votre système, nous vous proposons donc d'utiliser le logiciel gratuit pour un usage personnel [Novabench](https://novabench.com/download#personal). Vous obtiendrez un rapport (voir ci-dessous) que vous pourrez comparer à la configuration de référence :
+
+![](images/annexe_a1/novabench.png)
 
 
 ### Activation de la virtualisation
@@ -72,94 +82,82 @@ Dans le cas où vous n'arrivez pas à activer la virtualisation sur votre PC, vo
 **Si votre ordinateur est conforme aux spécifications ci-dessus, et si la virtualisation est activée, vous êtes maintenant prêt à installer votre SciViews Box!**
 
 
-### Conseils pour acheter un laptop
+### Conseils pour acheter un ordinateur
+
+Si vous suivez les directives ci-dessus, vous ne pourrez pas vous tromper. Mais comme vous n'aurez probablement pas la possibilité de tester les ordinateurs avec Novabench avant l'achat, voici quelques exemples de configurations types et leur coûts approximatifs.
 
 > Attention : cette analyse est réalisée en octobre 2018. Le matériel informatique et les prix changent constamment, et les informations seront rapidement obsolètes. Les lignes directrices devraient, cependant rester valables à l'avenir pour utiliser la SciViews Box 2018.
 
-Le choix d'un laptop (ordinateur portable) dépend naturellement de son utilisation. Pour l'analyse des données, il faut un ordinateur suffisamment puissant en calcul (processeur, mémoire vive, disque dur), mais la carte graphique ne doit pas être ultra-rapide, sauf si les calculs GPU sont prévus dessus. Ainsi, les tablettes, chromebooks et la plupart des laptops de bureautique ne sont pas assez puissants.
+L'élément le plus important étant la vitesse de calcul du processeur, obtenez la référence du processeur de l'ordinateur que vous convoitez et recherchez-le [ici](https://novabench.com/parts/cpu). Comparer alors son score à notre configuration de référence, et faites-en de même pour les autres caractéristiques (mémoire vive, type et taille du disque dur, etc.)
 
-Dans le choix de votre laptop, il faut tout d'abord vous demander si vous voulez un ordinateur pour **apprendre** à traiter des données sur des petits tableaux, et que vous prévoyez changer dans 1 ou 2 ans, ou si vous voulez investir sur plus long terme. Naturellement, le prix sera un critère fondamental, également.
+Prenez aussi comme référence les ordinateurs de votre salle de travaux pratiques. A l'UMONS, dans la salle "Pentagone", les ordinateurs sont équipés d'Intel Core i5-6400T @ 2.20Ghz. Ce sont des processeurs 4 coeurs/4 threads avec un score CPU Novabench de 511. Ils possèdent également 8Go de mémoire vive, un disque dur SDD avec 190Go dédiés à Windows 10 64-bit, et un processeur graphique intégré qui affiche 1920x1080 pixels à l'écran. Aux salles "Escher" et "Turing", ce sont des processeurs Intel Core i5-4590 @ 3.30Ghz, également 4 coeurs/4 threads affichant un score CPU Novabench de 515. Le reste de leurs configurations est similaire à celle des ordinateurs "Pentagone". **Vous pouvez également vous baser sur d'autres tests, les CPUMarks et comparer le processeur de l'ordinateur que vous voulez acheter avec les scores de vos machines des salles de travaux pratiques à partir de [cette page](https://www.cpubenchmark.net/compare/Intel-i5-4590-vs-Intel-i5-6400T/2234vs2668).**
 
+Dans le choix de votre ordinateur, il faut tout d'abord vous demander si vous voulez un ordinateur pour **apprendre** à traiter des données sur des petits tableaux, et que vous prévoyez changer dans 1 ou 2 ans (dans ce cas, une configuration de base convient), ou si vous voulez investir sur plus long terme. Visez alors plus haut. Naturellement, le prix sera un critère fondamental, également^[Renseignez-vous au niveau des services étudiants à l'UMONS et à l'AGE : des aides existent pour les étudiants boursiers qui souhaitent acquérir un ordinateur dans le cadre de leurs études.].
 
-#### Caractéristiques requises
+Justification des besoins :
 
-La puissance d'un ordinateur est un tout entre le processeur, la mémoire vive, le disque dur, la carte graphique, etc. Donc, avant tout, il est préférable d'avoir une **configuration homogène**. Rien ne sert d'investir dans le processeur le plus puissant si le disque dur et la mémoire vive ne sont pas à la hauteur, par exemple. Voici quelques pistes...
+- **Processeur :** l'élément le plus important. Un processeur puissant et multitâche est indispensable. Il vous faut au moins 2 coeurs et 4 threads (selon les modèles, chaque coeur peut gérer une seule tâche -ou "thread" en anglais- ou deux). Un processeur 4 coeurs/4 threads est encore mieux, et à partir de 4 coeurs/8 threads, c'est parfait. Pour la vitesse de calcul, comme indiqué plus haut, un score CPU Novabench de 700 ou mieux, ou un CPUMark de 7000 ou mieux doit être visé pour une configuration de référence ou performante. Avec un score moitié moindre, c'est encore un processeur utilisable, mais ne descendez pas en dessous pour une configuration de base.
 
-##### Processeur
+- **Mémoire vive :** il vous faut suffisamment de mémoire pour la partager entre la machine hôte et la machine virtuelle, et garder assez de resources pour ouvrir des tableaux (moyennement) volumineux. Donc, **visez 8Go de mémoire vive** si possible. Pas moins de 4Go, et plus vous en avez, mieux c'est. Il existe des configurations laptops à 16Go. C'est utile !
 
-La puissance du processeur est primordiale. Idéalement, il faut un processeur rapide et multitâche. Chez Intel, les Core i7 forment le haut de gamme dans les processeurs mobiles. Chez AMD les Ryzen 5, par exemple, conviennent très bien. Encore une fois, du haut de gamme. En dessous, _certains_ Intel Core i5 conviennent, mais d'autres sont trop lents, et à la limite, quelques uns des Intel Core i3 les plus puissants pourraient convenir également. Pas facile, donc, de s'y retrouver dans les centaines de modèles existants.
+- **Disque dur :** ici, vous devrez peut-être faire un choix entre espace de stockage et vitesse du disque. En effet, les disques mécaniques classiques font maintenant facilement 1To, ce qui est confortable. Par contre, ils sont plus lents que les disques SSD qui sont à privilégier. Mais ces derniers sont de capacité moindre (dans des gammes de prix raisonnables), généralement 128Go ou 256Go. Des configurations plus haut de gamme combinent deux disques : un SSD rapide pour le système et un disque de 1To classique pour les données. **C'est l'idéal.** Si vous investissez dans un ordinateur ayant un disque dur SSD rapide mais pas assez gros pour contenir vos nombreux fichiers, photos, vidéos, morceaux de musique, etc., vous pourrez toujours compléter votre configuration avec un **disque dur de 1To externe** USB 3.0 pour une cinquantaine d'euros. Pensez aussi à investir dans une **clé USB de 8 ou 16Gb** pour transférer vos données. Faites attention de bien choisir un **modèle USB 3.0** reconnaissable à son connecteur bleu, infiniment plus rapide qu'un modèle USB 2.0. Il vous en coutera une dizaine d'euros.
 
-Comment déterminer si un processeur a une puissance de calcul et de gestion multitâche suffisante ? Voici quelques critères :
+- **Carte graphique et écran :** la qualité de la carte graphique est moins importante ici. La plupart des configurations actuelles conviennent. Voyez plutôt la taille (et donc, le poids) qui est un critère important pour un ordinateur portable. Voulez-vous un PC de 13 ou 14 pouces plus compact et transportable, ou un 15 à 17 pouces plus confortable, mais plus lourd? Pour la résolution d'écran, ne descendez pas en dessous de 1400x900 pixels pour un travail confortable (RStudio affiche plusieurs fenêtres côte-à-côte), et vérifiez visuellement si la qualité de l'écran vous convient.
 
-- Ne descendez pas en dessous de 4 "threads" (calculs pouvant être réalisés en parallèle). Certains processeurs sont capable de gérer 2 threads pour chaque coeur. Donc, le minimum est deux coeurs "multithreads" capables de gérer quatre threads en tout. Sinon, les processeurs 4 coeurs sont fréquents aujourd'hui. Donc, 4 coeurs/4threads, c'est très bien, et à partir de 4 coeurs/8 threads, c'est parfait.
+- **Wifi et accessoires:** une bonne connexion Wifi sera nécessaire pour vous connecter à Internet. La norme WiFi 802.11ac est idéale. Enfin, vérifiez les connexions proposées : USB rapide (3.0, 3.1 ou C), Thunderbold, DisplayPort, HDMI, etc. pour connecter des périphériques et de écrans externes, lecteur de cartes éventuel, etc.
 
-- La vitesse de calcul était, un temps, proportionnelle à la vitesse du processeur exprimée en GHz. **Ce n'est plus vrai aujourd'hui.** Donc, ne vous fiez qu'à des tests de vitesse processeur fiables. Si on utilise le **[CPUMark](https://www.cpubenchmark.net)**, prenez comme référence la puissance de calcul des ordinateurs de votre salle de travaux pratiques. A la salle "Pentagone", les ordinateurs sont équipés d'Intel Core i5-6400T @ 2.20Ghz. Ce sont des processeurs 4 coeurs/4 threads avec un CPUMark de 5596. Aux salles "Escher" et "Turing", ce sont des processeurs Intel Core i5-4590 @ 3.30Ghz, également 4 coeurs/4 threads affichant un CPUMark de 7295. **Donc, vérifiez le CPUMark du processeur du laptop que vous convoitez et ne descendez pas en dessous de la puissance des machine "Pentagone", soit pas moins de 5000 CPUMark our un travail confortable... mais un CPUMark supérieur ou égal à 3500 pourrait encore convenir.** Pour vous aidez, vous pouvez partir de [cette page](https://www.cpubenchmark.net/compare/Intel-i5-4590-vs-Intel-i5-6400T/2234vs2668) qui permet de comparer directement votre processeur candidat à ceux des salles de travaux pratiques de l'UMONS.
+**D'autres critères comme la qualité de construction, la robustesse, la qualité du clavier et du trackpad éventuel, l'autonomie pour un portable, ... sont importants.** Pensez à consulter les tests détaillés effectués par des pros avant de vous décider, par exemple, [les numériques](https://www.lesnumeriques.com) en français, [PCMag](https://www.pcmag.com/article2/0,2817,1623917,00.asp) ou [techradar](https://www.techradar.com) en anglais.
 
-
-##### Mémoire vive
-
-Il vous faut suffisamment de mémoire pour la partager entre la machine hôte et la machine virtuelle, et garder assez de resources pour ouvrir des tableaux (moyennement) volumineux. Donc, **visez 8Go de mémoire vive** si possible. Pas moins de 4Go, et plus vous en avez, mieux c'est. Il existe des configurations laptops à 16Go. C'est utile !
+Voici quelques configurations types qui conviennent, volontairement choisies chez différents constructeurs pour ne privilégier personne. Dans le cadre de vos études, vous allez certainement vouloir emporter votre ordinateur avec vous partout. Nous vous présentons donc des ordinateurs portables de moins de 2kg, plus adaptés à cet usage.
 
 
-##### Disque dur
+#### Configurations de base
 
-Ici, vous devrez peut-être faire un choix entre espace de stockage et vitesse du disque. En effet, les disques mécaniques classiques font maintenant facilement 1To, ce qui est confortable. Par contre, ils sont plus lents que les disques SSD qui sont à privilégier. Mais ces derniers sont de capacité moindre (dans des gammes de prix raisonnables), généralement 128Go ou 256Go. Des configurations plus haut de gamme combinent deux disques : un SSD rapide pour le système et un disque de 500Go ou 1To classique pour les données. **C'est l'idéal.**
+Evitez autant que possible de descendre en dessous de celles-ci. Dites-vous bien que ces machines sont estampillées "bureautique", et sont trop juste pour analyser des gros jeux de données, mais elles peuvent convenir à la rigueur dans le cadre du cours de science des données biologiques. Si vous possédez déjà un PC, faites un bilan avec [Novabench](https://novabench.com/download#personal) et décidez par vous-même si vous pouvez ou non l'utiliser de manière confortable, éventuellement en installant la SciViews Box 2018 et en testant ainsi directement. Les options existent aussi pour "booster" un ordinateur un peu juste : ajout de mémoire vive et/ou remplacement du disque dur par un disque SSD rapide.
 
-
-##### Carte graphique et écran
-
-La qualité de la carte graphique est moins importante ici. La plupart des configurations actuelles conviennent. Voyez plutôt la taille (et donc, le poids) du laptop. Voulez-vous un PC de 13 ou 14 pouces plus compact et transportable, ou un 15 à 17 pouces plus confortable, mais plus lourd? Pour la résolution d'écran, ne descendez pas en dessous de 1400x900 pixels, et vérifiez visuellement si la qualité de l'écran vous convient.
-
-
-##### Wifi et accessoires
-
-Une bonne connexion Wifi sera nécessaire pour vous connecter à Internet. La norme WiFi 802.11ac est idéale. Enfin, vérifiez les connexions proposées : USB rapide (3.0, 3.1 ou C), Thunderbold, DisplayPort, HDMI, etc. pour connecter des périphériques et de écrans externes, lecteur de cartes éventuel, etc.
-
-
-#### Quelques configurations possibles (octobre 2018)
-
-A titre d'exemples, voici quelques configurations qui conviennent.
-
-
-##### Configurations minimales
-
-Evitez autant que possible de descendre en dessous de celles-ci (mais si vous possédez déjà un PC, faites un essai et décidez par vous-même si vous pouvez ou non l'utiliser de manière confortable). Il vaut mieux privilégier un petit disque dur SSD rapide qu'un gros disque plus lent. En effet, il est toujours possible d'ajouter un disque dur externe en USB 3.0 plus tard pour stocker les grosses données comme les images et les vidéos.
-
-| Modèle                      | Processeur (c/t/cpumark) | Mémoire | Disque     | Graphique    | Ecran            | Poids  | Prix |
+| Modèle                      | Processeur [c/t] (nova/cpu) | Mémoire | Disque     | Graphique    | Ecran            | Poids  | Prix |
 |-----------------------------|--------------------------|---------|------------|--------------|------------------|--------|------|
-| Lenovo IdeaPad 320S-14IKB   | Core i3-7100U (2/4/3798) | 8Go     | SSD 128Go  | Intel HD620  | 14'' (1920x1080) | 1.7kg  | 600€ |
-| Acer Swift 3 SF314-54-31DR  | Core i3-8130U (2/4/5061) | 4Go     | SSD 256Go  | Intel HD620  | 14'' (1920x1080) | 1.45kg | 600€ |
+| [Lenovo IdeaPad 320S-14IKB](https://www.lesnumeriques.com/ordinateur-portable/lenovo-ideapad-320s-14ikbr-p44207/test.html)   | Core i3-7100U [2/4] (406/3798) | 8Go     | SSD 128Go  | Intel HD620  | 14'' (1920x1080) | 1.7kg  | 500€ |
+| [Acer Swift 3](https://www.lesnumeriques.com/ordinateur-portable/acer-swift-3-sf314-51-357v-p37401/test.html)  | Core i3-8130U [2/4] (579/5061) | 4Go     | SSD 256Go  | Intel HD620  | 14'' (1920x1080) | 1.45kg | 600€ |
 
-Dans un budget de 600€, une concession est nécessaire. Le Lenovo a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu juste. L'Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n'a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c'est quand même fort juste. Donc votre préférence ira si possible plutôt vers une configuration du type Acer ci-dessus^[Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d'autres constructeurs aussi !].
+Avec un budget de 500€-600€, des concessions sont nécessaires. A titre d'exemple, nous reprenons deux configurations ici. Le Lenovo choisi a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu juste. L'Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n'a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c'est quand même fort juste. Donc votre préférence ira si possible plutôt vers une configuration du type Acer Swift 3 ci-dessus^[Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d'autres constructeurs aussi !]. Des versions avec processeur Core i5 et 8Go de mémoire existent. Elles sont parfaites, ... mais le prix les alignent presque avec nos configurations de référence ci-dessous. Vous verrez aussi dans les tests que ces machines ne sont pas irréprochables, mais il faut mettre les "défauts" relevés en regard du prix très contenu, et relativiser. Pour la science des données, nous privilégierons des ordinateurs plus rapides, quitte a être un peu moins bien cotés dans les tests sur la qualité de l'écran (comme l'Acer, par exemple).
 
 
-##### Configurations correctes
+#### Configurations de référence
 
-Ici, vous êtes nettement plus confortable : processeur rapide **et** 8Go de mémoire vive **et** double disque (un petit rapide et un plus gros mais plus lent). Ces laptops sont parfaits pour le cours de science des données biologiques et pour bien d'autres tâches dans le cadre de vos études.
+Avec un budget un peu plus élevé, vous êtes nettement plus confortable : processeur assez rapide **et** 8Go de mémoire vive **et** disque SSD de 256Go. Ces laptops sont parfaits pour le cours de science des données biologiques et pour bien d'autres tâches dans le cadre de vos études.
 
-| Modèle                      | Processeur (c/t/cpumark)   | Mémoire | Disque              | Graphique      | Ecran              | Poids  | Prix  |
+| Modèle                      | Processeur [c/t] (nova/cpu)   | Mémoire | Disque              | Graphique      | Ecran              | Poids  | Prix  |
 |-----------------------------|----------------------------|---------|---------------------|----------------|--------------------|--------|-------|
-| Medion S6625                | Core i5-8250U (2/4/7667)   | 8Go     | SSD 128Go + HDD 1To | GeForce 940MX  | 15.6'' (1920x1080) | 2kg    | 800€  |
-| Acer Aspire3 A315-41-R163   | Ryzen 5 2500U (4/8/10000?) | 16Go    | SSD 256Go + HDD 1To | Radeon Vega 8  | 15.6'' (1920x1080) | 2.3kg  | 800€  |
-| MacBook Pro 13''            | Core i5-8259U (2/4/10938)  | 8Go     | SSD 128Go           | Intel Iris+640 | 13'' (2560x1600)   | 1.4kg  | 1500€ |
+| [HP Pavilion X360](https://www.lesnumeriques.com/ordinateur-portable/hp-pavilion-x360-2017-p38655/test.html)                | Core i5-8250U [2/4] (801/7667)   | 8Go     | SSD 256Go | GeForce MX130  | 14'' (1920x1080) | 1.6kg    | 900€  |
+| [Acer Swift 5](https://www.lesnumeriques.com/ordinateur-portable/acer-swift-5-p40705/test.html)   | Core i5-8250U [2/4] (801/7667) | 8Go    | SSD 256Go   | Intel HD620  | 14'' (1920x1080) | 0.97kg  | 900€  |
+| [MacBook Pro 13''](https://www.lesnumeriques.com/ordinateur-portable/apple-macbook-pro-13-pouces-2017-avec-touch-bar-p44179/test.html)            | Core i5-8259U [2/4] (???/10938)  | 8Go     | SSD 256Go           | Intel Iris+640 | 13'' (2560x1600)   | 1.4kg  | 1750€ |
 
-Le Medion est représentatif de ce créneau. Vous combinez un bon processeur, 8Go RAM, deux disques durs, une carte graphique accélérée et un bon écran pour un poids raisonable. L'Acer est une vraie bonne affaire : grâce à un processeur AMD qui intègre le coprocesseur graphique rapide, vous avez la possibilité d'avoir une excellente configuration à prix serré.
+Le HP Pavilion est un bon portable à écran tactile représentatif de ce créneau (pour les modèles les plus puissants de la gamme en tous cas). Vous combinez un bon processeur, 8Go RAM, un disque dur rapide de 256Go, une carte graphique accélérée et un bon écran pour un poids raisonnable. L'Acer Swift 5 est repris ici pour son poids plume et ses résultats excellents aux tests. Un autre très bon exemple de machine portable qui convient parfaitement pour la science des données.
 
-Nous avons aussi inclu le premier MacBook Pro 13'' à titre de comparaison : il est presque 2 fois plus cher. Même si son écran est incomparablement meilleur et son processeur ultra-rapide, pour ce prix, vous n'avez qu'un disque de 128Go (ajoutez encore 250€ pour un disque de 256Go) combiné à 8Go de RAM (+240€ pour 16Go RAM). Les MacBook Air et MacBook 12'' conviennent aussi, mais attention à leurs processeurs quand même un peu juste pour de l'analyse de données. Si possible, restez dans la gamme MacBook Pro en laptops Apple. Attention aussi au prix des adaptateurs supplémentaires souvent indispensable pour les produits Apple !
+Nous avons aussi inclu le premier MacBook Pro en version disque de 256Go à titre de comparaison (testé en version 2017) : il est plus cher. Même si son écran est incomparablement meilleur et son processeur très rapide. Les MacBook Air et MacBook 12'' conviennent aussi, mais attention à leurs processeurs quand même un peu juste pour de l'analyse de données. Si possible, restez dans la gamme MacBook Pro en laptops Apple. Attention aussi au prix des adaptateurs supplémentaires souvent indispensable pour les produits Apple !
 
 
-##### Configurations sans concessions
+#### Configurations performantes
 
-Un budget plus large permet d'acquérir un laptop de course qui sera utile pendant des années, et même pour un travail lourd plus tard... Dans ces configurations, pas de concessions. On veut un processeur i7 à 6 coeurs ou équivalent, 16Go de RAM, un disque SSD d'au moins 256Go, ou mieux deux disques, une carte graphique rapide et un excellent écran.
+Un budget plus large permet d'acquérir un laptop de course qui sera utile pendant des années, et même pour un travail lourd plus tard... Dans ces configurations, pas de concessions. On veut un processeur i7 à 4 ou 6 coeurs ou équivalent, 16Go de RAM, un disque SSD d'au moins 512Go, ou mieux deux disques, une carte graphique rapide (sauf sur les ultra-portables) et un excellent écran.
 
-| Modèle                      | Processeur (c/t/cpumark)   | Mémoire | Disque              | Graphique         | Ecran              | Poids  | Prix  |
+| Modèle                      | Processeur [c/t] (nova/cpu)   | Mémoire | Disque              | Graphique         | Ecran              | Poids  | Prix  |
 |-----------------------------|----------------------------|---------|---------------------|-------------------|--------------------|--------|-------|
-| MSI GF63 8RD-051BE          | Core i7-8750H (6/12/12548) | 16Go    | SSD 256Go + HDD 1To | GeForce GTX1050Ti | 15.6'' (1920x1080) | 1.86kg | 1350€ |
-| MacBook Pro 15''            | Core i7-8750H (6/12/12548) | 16Go    | SSD 256Go           | Radeon Pro 555X   | 15.4'' (2880x1800) | 1.83kg | 2800€ |
+| [MSI GF63](https://www.lesnumeriques.com/ordinateur-portable/msi-gf63-p44711/test.html)          | Core i7-8750H [6/12] (1400/12548) | 16Go    | SSD 256Go + HDD 1To | GeForce GTX1050Ti | 15.6'' (1920x1080) | 1.86kg | 1300€ |
+| [Dell XPS 13 9370](https://www.lesnumeriques.com/ordinateur-portable/xps-13-2018-p42431/test.html)            | Core i7-8550U [4/8] (837/8327) | 16Go    | SSD 512Go           | Intel HD620   | 13.3'' (1920x1080) | 1.1kg | 1400€ |
+| [Asus ZenBook Flip](https://www.lesnumeriques.com/ordinateur-portable/asus-zenbook-flip-ux561u-p43837/test.html)            | Core i7-8550U [4/8] (837/8327) | 16Go    | SSD 512Go           | Intel HD400   | 13.3'' (1920x1080) | 1.1kg | 1600€ |
+| [MacBook Pro 15''](https://www.lesnumeriques.com/ordinateur-portable/macbook-pro-15-2017-p39735/test.html)            | Core i7-8750H [6/12] (1400/12548) | 16Go    | SSD 512Go           | Radeon Pro 555X   | 15.4'' (2880x1800) | 1.83kg | 3000€ |
 
-Le MSI est un PC dit "gamer". Tous les laptops dans cette catégorie sont très rapides... et conviennent parfaitement bien pour la science des données, y compris pour les calculs GPU. A titre de comparaison, l'équivalent chez Apple est également présenté (MacBook Pro 15'' "premier prix"). Ce dernier est à nouveau deux fois plus cher. Même si son écran est incomparable, il ne possède qu'un seul disque de 256Go et il faut encore rajouter 240€ pour avoir un disque de 512Go, certes SSD très rapide.
+Le MSI est un PC dit "gamer". Tous les laptops dans cette catégorie sont très rapides... et conviennent parfaitement bien pour la science des données, **y compris pour les calculs GPU**. Chez MSI, un modèle comme le GS65 Stealth obtient le label de meilleur "gamer laptop 2018" (chez [techradar](https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361)) et des modèles similaires sont très bien placés ailleurs. Mais nous préférons le GF63 moins cher car équipé d'une carte graphique un cran en dessous, et du coup, mieux positionné en rapport qualité/prix pour les sciences des données. Il est aussi nettement moins lourd. Chez Asus (ROG) et Lenovo entre autres, des machines quasi-équivalentes existent aussi. Attention : d'autres configurations de "laptops gamers" sont lourdes et elles chauffent beaucoup.
 
-**Voilà ! En espérant que ceci pourra vous aider au mieux dans le choix de votre outil informatique...**
+Dans la catégorie **ultraportable**, on trouve aussi diverses machines plus puissantes. Le **Dell XPS 13** de 13'' est l'un des mieux classés systématiquement dans les tests un peu partout et représentatif de ce type d'ordinateurs ultra-compacts, légers, mais très performants. Poids plume oblige, on a un processeur moins puissant que sur un PC gamer (vérifiez qu'il soit suffisamment performant sur le modèle choisi, en effet, il existe plusieurs processeurs i5 et même i7 trop lents) et une carte graphique plus basique (pas grave). Choisissez un modèle avec 16Go de RAM et au moins 256Go de disque dur. Le nouveau **Huawei Matebook X Pro** est une splendide machine ultraportable avec un magnifique écran de 3000x2000 pixels (excusez du peu !), mais il n'est pas repris ici, car pas encore facilement disponible au moment de la rédaction de cette section. Il est toutefois commercialisé aux USA et en Angleterre à un prix avoisinant les 1500€... restez à l'affût.
+
+Toujours dans les ultraportables, vous trouverez aussi les **convertibles**. Ceux équipés d'un écran tactile et qui peuvent se "retourner" pour s'utiliser comme une tablette haut de gamme. Les ordinateurs de type **Microsoft Surface** en sont les représentants emblématiques, mais les tests nous conduisent aussi vers l'**Asus Zenbook Flip** comme l'un des meilleurs (et assurément, un excellent rapport qualité/prix). Ici, on trouve des versions en 13'' et en 15'' mais toujours très portables et puissantes. De très bonnes machines pour analyser ses données !
+
+A titre de comparaison, l'équivalent chez Apple est également présenté (le MacBook Pro 15''). Ce dernier est à nouveau deux fois plus cher. Mais son écran est incomparable, sa finition est impeccable, et il tourne sous MacOS naturellement pour les afficionados ! Il n'a pas encore été testé chez "les numériques", mais [voici le test du modèle 2017](https://www.lesnumeriques.com/ordinateur-portable/macbook-pro-15-2017-p39735/test.html).
+
+**Voilà ! En espérant que ceci pourra vous aider au mieux dans le choix de votre outil informatique.**
 
 
 ## Installation
