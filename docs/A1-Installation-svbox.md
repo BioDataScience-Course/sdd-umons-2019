@@ -29,7 +29,7 @@ La SciViews Box 2018, et la Science des Données en général, nécessitent un o
 <div class="info">
 <p>La <strong>configuration de référence</strong> est la suivante, avec un <a href="https://novabench.com/results">score global Novabench</a> de 1000 :</p>
 <ul>
-<li>Processeur : à 2 coeurs / 4 threads d'une vitesse de calcul suffisante (<a href="https://novabench.com/parts/cpu?all=true">score CPU Novabench</a> d'environ 700).</li>
+<li>Processeur : à 2 ou 4 coeurs / 4 threads d'une vitesse de calcul suffisante (<a href="https://novabench.com/parts/cpu?all=true">score CPU Novabench</a> d'environ 700).</li>
 <li>Mémoire vive : 8Go avec un score RAM Novabench de 200.</li>
 <li>Disque dur : disque rapide SSD de 256Go (<a href="https://novabench.com/parts/storage">score disque Novabench</a> d'environ 100 avec vitesse d'écriture &gt;= 250Mo/s et vitesse de lecture &gt;= 600Mo/s).</li>
 <li>Affichage : 1920x1080. La plupart des cartes graphiques ou des coprocesseurs graphiques intégrés conviennent (pas besoin d'une bête de course si vos calculs ne nécessitent pas des instructions GPU, en tous cas). Comme base, nous considèrerons un <a href="https://novabench.com/parts/gpu?all=true">score GPU NovaBench</a> d'environ 200 qui correspond au processeur graphique intégré Intel HD 620.</li>
