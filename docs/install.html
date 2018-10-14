@@ -348,6 +348,16 @@ N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre Sc
 <h4><span class="header-section-number">A.2.2.3</span> Installation sous Linux</h4>
 <p>Il est parfaitement possible d’installer la SciViews Box sous Linux. Cependant, un programme d’installation simplifié n’a pas encore été développé pour ce système. <em>Voyez au cas par cas avec vos enseignants pour qu’ils vous expliquent comment installer la SciViews Box manuellement sous Linux.</em></p>
 </div>
+<div id="migration-et-desinstallation" class="section level4">
+<h4><span class="header-section-number">A.2.2.4</span> Migration et désinstallation</h4>
+<p>Le disque dur virtuel de la SciViews Box est un fichier volumineux de plus de 10Go. L’installeur fait en sorte qu’il soit partagé entre plusieurs utilisateurs de l’ordinateur, et qu’il reste inchangé au cours de son utilisation. Ainsi, VirtualBox enregistrera dans vos dossiers personnels un fichier qui stocke les différences par rapport à l’état de départ de la Box. Il est donc possible de <strong>désinstaller partiellement</strong> la SciViews Box 2018 sans rien perdre. Pour cela, il suffit de désinstaller l’application (sous Windows, allez dans le panneau de configuration -&gt; Applications -&gt; SciViews Box 2018 -&gt; Désinstaller ; sous MacOS déplacez simplement l’application <code>SciViews box 2018a</code> depuis le dossier <code>Applications</code> vers la corbeille). Vous récupèrerez immédiatement près de 11Go d’espace disque. VirtualBox ne pourra plus démarrer la Box, naturellement, mais <em>conservera vos données</em>. Si besoin, vous pourrez réinstaller simplement l’application <code>SciViews Box 2018a</code> pour retrouver votre Box en l’état.</p>
+<p>Une désinstallation complète nécessite d’aller <strong>d’abord</strong> supprimer la machine virtuelle dans VirtualBox (clic bouton droit et sélection de <code>Supprimer...</code>) pour <em>tous</em> les utilisateurs qui ont créé une Box <em>avant</em> de désinstaller l’application principale comme ci-dessus.</p>
+<p>Si vous avez des projets créés avec des SciViews Box antérieures, deux solutions existent :</p>
+<ol style="list-style-type: decimal">
+<li><p>Gardez-les tel quels. Faites éventuellement une désinstallation partielle de la Box. Vous pourrez toujours revenir plus tard sur ces projets après réinstallation.</p></li>
+<li><p>Migrez-les vers la nouvelle SciViews Box. Copiez vos projets depuis le répertoire <code>shared</code> de l’ancienne Box vers celui de la nouvelle. Dans ce cas, vous devrez <strong>vérifier</strong> que votre code fonctionne toujours sous la nouvelle Box, et l’adapter éventuellement.</p></li>
+</ol>
+</div>
 </div>
 <div id="github-desktop" class="section level3">
 <h3><span class="header-section-number">A.2.3</span> Github Desktop</h3>
@@ -357,7 +367,7 @@ N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre Sc
 
 </div>
 </center>
-<p>Dans ce cours, nous utilisons <strong>Git</strong> et <strong>Github</strong> pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. <a href="https://desktop.github.com">Github Desktop</a> facilite grandement la gestion de vos projets sous Git. Ce programme gratuit est très facile à installer: son téléchargement et le lancement de son installateur ne pose pas de problèmes particuliers. <em>Notez toutefois que ce programme n’est pas encore disponible pour Linux.</em></p>
+<p>Dans ce cours, nous utilisons <strong>Git</strong> et <strong>Github</strong> pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. <a href="https://desktop.github.com">Github Desktop</a> facilite grandement la gestion de vos projets sous Git. Ce programme gratuit est très facile à installer : son téléchargement et le lancement de son installeur ne pose pas de problèmes particuliers. <em>Notez toutefois que ce programme n’est pas encore disponible pour Linux.</em></p>
 <p><strong>A présent, tous les ligiciels requis sont installés… Il ne reste plus que quelques petites opérations de configuration à réaliser. Voyez ceci à la section suivante.</strong></p>
 </div>
 </div>

@@ -117,14 +117,17 @@ Voici quelques configurations types qui conviennent, volontairement choisies che
 
 #### Configurations de base
 
-Evitez autant que possible de descendre en dessous de celles-ci. Dites-vous bien que ces machines sont estampillées "bureautique", et sont trop juste pour analyser des gros jeux de données, mais elles peuvent convenir à la rigueur dans le cadre du cours de science des données biologiques. Si vous possédez déjà un PC, faites un bilan avec [Novabench](https://novabench.com/download#personal) et décidez par vous-même si vous pouvez ou non l'utiliser de manière confortable, éventuellement en installant la SciViews Box 2018 et en testant ainsi directement. Les options existent aussi pour "booster" un ordinateur un peu juste : ajout de mémoire vive et/ou remplacement du disque dur par un disque SSD rapide.
+Evitez autant que possible de descendre en dessous de celles-ci. Dites-vous bien que ces machines sont estampillées "bureautique", et sont trop juste pour analyser des gros jeux de données, mais elles peuvent convenir parfaitement dans le cadre du cours de science des données biologiques. Si vous possédez déjà un PC, faites un bilan avec [Novabench](https://novabench.com/download#personal) et décidez par vous-même si vous pouvez ou non l'utiliser de manière confortable, éventuellement en installant la SciViews Box 2018 et en testant ainsi directement. Les options existent aussi pour "booster" un ordinateur un peu juste : ajout de mémoire vive et/ou remplacement du disque dur par un disque SSD rapide.
 
 | Modèle                      | Processeur [c/t] (nova/cpu) | Mémoire | Disque     | Graphique    | Ecran            | Poids  | Prix |
 |-----------------------------|--------------------------|---------|------------|--------------|------------------|--------|------|
 | [Lenovo IdeaPad 320S-14IKB](https://www.lesnumeriques.com/ordinateur-portable/lenovo-ideapad-320s-14ikbr-p44207/test.html)   | Core i3-7100U [2/4] (406/3798) | 8Go     | SSD 128Go  | Intel HD620  | 14'' (1920x1080) | 1.7kg  | 500€ |
 | [Acer Swift 3](https://www.lesnumeriques.com/ordinateur-portable/acer-swift-3-sf314-51-357v-p37401/test.html)  | Core i3-8130U [2/4] (579/5061) | 4Go     | SSD 256Go  | Intel HD620  | 14'' (1920x1080) | 1.45kg | 600€ |
+| [MacBook Air](https://www.lesnumeriques.com/ordinateur-portable/apple-macbook-air-13-3-2016-p40639/test.html)  | Core i5-5350U [2/4] (363/3358) | 8Go     | SSD 128Go  | Intel HD6000  | 13.3'' (1440x900) | 1.35kg | 1000€ |
 
-Avec un budget de 500€-600€, des concessions sont nécessaires. A titre d'exemple, nous reprenons deux configurations ici. Le Lenovo choisi a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu juste. L'Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n'a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c'est quand même fort juste. Donc votre préférence ira si possible plutôt vers une configuration du type Acer Swift 3 ci-dessus^[Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d'autres constructeurs aussi !]. Des versions avec processeur Core i5 et 8Go de mémoire existent. Elles sont parfaites, ... mais le prix les alignent presque avec nos configurations de référence ci-dessous. Vous verrez aussi dans les tests que ces machines ne sont pas irréprochables, mais il faut mettre les "défauts" relevés en regard du prix très contenu, et relativiser. Pour la science des données, nous privilégierons des ordinateurs plus rapides, quitte a être un peu moins bien cotés dans les tests sur la qualité de l'écran (comme l'Acer, par exemple).
+Avec un budget de 500€-600€, des concessions sont nécessaires. A titre d'exemple, nous reprenons deux configurations sous Windows ici. Le Lenovo choisi a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu juste. L'Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n'a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c'est quand même fort juste sous Windows 10 qui est déjà très gourmand en espace disque à la base. Donc votre préférence ira si possible plutôt vers une configuration du type Acer Swift 3 ci-dessus^[Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d'autres constructeurs aussi !]. Des versions avec processeur Core i5 et 8Go de mémoire existent. Elles sont parfaites, ... mais le prix les alignent presque avec nos configurations de référence ci-dessous. Vous verrez aussi dans les tests que ces machines ne sont pas irréprochables, mais il faut mettre les "défauts" relevés en regard du prix très contenu, et relativiser. Pour la science des données, nous privilégierons des ordinateurs plus rapides, quitte a être un peu moins bien cotés dans les tests sur la qualité de l'écran (comme l'Acer, par exemple).
+
+Du côté Mac portables, nous avons le MacBook 12'' et le MacBook Air, présenté ici. Ils sont beaucoup plus chers, mais ce sont des ordinateurs durables et bien finis qui se revendent très bien. Dans les deux cas, le processeur (même si Core i5, ou i7) est fort juste et est plus à l'aise en bureautique. Pour analyser des petits jeux de données, ça fonctionne quand même bien. Ici aussi, des concessions sont nécessaires sur la capacité du disque dur pour tirer le prix à ... 1000€ tout de même ! Mais comme le MacBook Air existe depuis 2015 quasiment inchangé, vous pouvez trouver en occasion des modèles à prix équivalent aux deux autres machines, **mais faites attention à éviter les modèles anciens à processeurs lents qui se vendent encore, et qui ne sont pas assez puissants !** Un modèle avec un disque de 256Go existe aussi. Attention aussi : même si ce modèle vieilli bien, il est quand même en fin de vie. Ca a un impact sur la revente.
 
 
 #### Configurations de référence
@@ -137,9 +140,9 @@ Avec un budget un peu plus élevé, vous êtes nettement plus confortable : proc
 | [Acer Swift 5](https://www.lesnumeriques.com/ordinateur-portable/acer-swift-5-p40705/test.html)   | Core i5-8250U [2/4] (801/7667) | 8Go    | SSD 256Go   | Intel HD620  | 14'' (1920x1080) | 0.97kg  | 900€  |
 | [MacBook Pro 13''](https://www.lesnumeriques.com/ordinateur-portable/apple-macbook-pro-13-pouces-2017-avec-touch-bar-p44179/test.html)            | Core i5-8259U [2/4] (???/10938)  | 8Go     | SSD 256Go           | Intel Iris+640 | 13'' (2560x1600)   | 1.4kg  | 1600€ |
 
-Le HP Pavilion est un bon portable à écran tactile représentatif de ce créneau (pour les modèles les plus puissants de la gamme en tous cas). Vous combinez un bon processeur, 8Go RAM, un disque dur rapide de 256Go, une carte graphique accélérée et un bon écran pour un poids raisonnable. L'Acer Swift 5 est repris ici pour son poids plume et ses résultats excellents aux tests. Un autre très bon exemple de machine portable qui convient parfaitement pour la science des données.
+Le HP Pavilion est un portable à écran tactile représentatif de ce créneau (pour les modèles les plus puissants de la gamme en tous cas). Vous combinez un bon processeur, 8Go RAM, un disque dur rapide de 256Go, une carte graphique accélérée et un écran correct pour l'usage prévu pour un poids raisonnable. L'Acer Swift 5 est repris ici pour son poids plume et ses résultats excellents aux tests, mais sa carte graphique est en retrait par rapport au HP (élément secondaire). Un autre très bon exemple de machine portable qui convient parfaitement pour la science des données. Vivement conseillé, donc.
 
-Nous avons aussi inclu le premier MacBook Pro en version disque de 256Go à titre de comparaison (testé en version 2017) : il est plus cher. Même si son écran est incomparablement meilleur et son processeur très rapide. Les MacBook Air et MacBook 12'' conviennent aussi, mais attention à leurs processeurs quand même un peu juste pour de l'analyse de données. Si possible, restez dans la gamme MacBook Pro en laptops Apple. Attention aussi au prix des adaptateurs supplémentaires souvent indispensable pour les produits Apple ! **N'oubliez pas de demander votre remise "éducation", sur présentation de votre carte d'étudiant** (le tarif indiqué tient compte de cette remise).
+Nous avons aussi inclu le premier MacBook Pro en version disque de 256Go à titre de comparaison (testé en version 2017) : il est plus cher mais à ce prix, vous avez tout de même un écran incomparablement meilleur, un processeur très rapide et une valeur à la revente bien plus haute. Chez Apple, restez dans la gamme MacBook Pro en laptops. Les processeurs des autres modèles les font tous entrer dans la catégorie de base. Attention aussi au prix des adaptateurs supplémentaires souvent indispensables pour les produits Apple ! **N'oubliez pas de demander votre remise "éducation", sur présentation de votre carte d'étudiant** (le tarif indiqué tient compte de cette remise).
 
 
 #### Configurations performantes
@@ -159,7 +162,7 @@ Dans la catégorie **ultraportable**, on trouve aussi diverses machines plus pui
 
 Toujours dans les ultraportables, vous trouverez aussi les **convertibles**. Ceux équipés d'un écran tactile et qui peuvent se "retourner" pour s'utiliser comme une tablette haut de gamme. Les ordinateurs de type **Microsoft Surface** en sont les représentants emblématiques, mais les tests nous conduisent aussi vers l'**Asus Zenbook Flip** comme l'un des meilleurs (et assurément, un excellent rapport qualité/prix). Ici, on trouve des versions en 13'' et en 15'' mais toujours très portables et puissantes. De très bonnes machines pour analyser ses données !
 
-A titre de comparaison, l'équivalent chez Apple est également présenté (le MacBook Pro 15'', avec option disque de 512Go et remise "éducation"). Ce dernier est à nouveau beaucoup plus cher. Mais son écran est incomparable, sa finition est impeccable, et il tourne sous MacOS naturellement pour les afficionados ! Il n'a pas encore été testé chez "les numériques", mais [voici le test du modèle 2017](https://www.lesnumeriques.com/ordinateur-portable/macbook-pro-15-2017-p39735/test.html). **C'est une excellente machine. Malheureusement, la tendance est au minimalisme pour la connectique : du USB-C et c'est tout. Cela oblige à acheter et à transporter des connecteurs supplémentaires.** Les anciennes générations de MacBook Pro, "pré touch bar" se trouvent encore dans le marché de l'occasion à des prix proches de PC équivalents sous Windows. Ils sont un peu moins performants que les nouveaux, mais restent excellents, ... et possèdent beaucoup plus de connecteurs intégrés (de bonnes affaires, donc).
+A titre de comparaison, l'équivalent chez Apple est également présenté (le MacBook Pro 15'', avec option disque de 512Go et remise "éducation"). Ce dernier est à nouveau beaucoup plus cher. Mais son écran est incomparable, sa finition est impeccable, et il tourne sous MacOS naturellement pour les afficionados ! Le modèle 2018 à 6 coeurs n'a pas encore été testé chez "les numériques", mais [voici le test du modèle 2017](https://www.lesnumeriques.com/ordinateur-portable/macbook-pro-15-2017-p39735/test.html). **C'est une excellente machine. Malheureusement, la tendance est au minimalisme pour la connectique : du USB-C et c'est tout. Cela oblige à acheter et à transporter des connecteurs supplémentaires.** Les anciennes générations de MacBook Pro, "pré touch bar" se trouvent encore dans le marché de l'occasion à des prix proches de PC équivalents sous Windows. Ils sont un peu moins performants que les nouveaux, mais restent excellents, ... et possèdent beaucoup plus de connecteurs intégrés (de bonnes affaires, donc).
 
 **Voilà ! En espérant que ceci pourra vous aider au mieux dans le choix de votre outil informatique.**
 
@@ -258,6 +261,7 @@ En option, vous pouvez épingler le nouveau programme dans la barre des tâches.
 
 <img src="images/block-mac.png" width="128px" style="display: block; margin: auto 0 auto auto;" />
 
+
 #### Installation sous MacOS
 
 Chargez l'installateur [ici](http://go.sciviews.org/svbox2018a-mac) ou, pour les étudiants de l'UMONS, récupérez-le depuis le disque `StudentTemp` de la salle informatique (sous-répertoire ` SDD/Software/SciViews Box 2018`). Si vous le pouvez, placez le fichier `svbox2018a.vdi.xz` dans le dossier de téléchargements (`Téléchargements` ou `Downloads` selon la version de votre MacOS), sinon, ce fichier sera téléchargé au même emplacement (il pèse 2,9Gb)! Double-cliquez sur `svbox2018a_macos_setup.dmg`. Suivez simplement les instructions. 
@@ -283,9 +287,23 @@ Laissez l'installation se terminer. Cela peut prendre plusieurs minutes. En opti
 
 <img src="images/block-linux.png" width="128px" style="display: block; margin: auto 0 auto auto;" />
 
+
 #### Installation sous Linux
 
 Il est parfaitement possible d'installer la SciViews Box sous Linux. Cependant, un programme d'installation simplifié n'a pas encore été développé pour ce système. _Voyez au cas par cas avec vos enseignants pour qu'ils vous expliquent comment installer la SciViews Box manuellement sous Linux._
+
+
+#### Migration et désinstallation
+
+Le disque dur virtuel de la SciViews Box est un fichier volumineux de plus de 10Go. L'installeur fait en sorte qu'il soit partagé entre plusieurs utilisateurs de l'ordinateur, et qu'il reste inchangé au cours de son utilisation. Ainsi, VirtualBox enregistrera dans vos dossiers personnels un fichier qui stocke les différences par rapport à l'état de départ de la Box. Il est donc possible de **désinstaller partiellement** la SciViews Box 2018 sans rien perdre. Pour cela, il suffit de désinstaller l'application (sous Windows, allez dans le panneau de configuration -> Applications -> SciViews Box 2018 -> Désinstaller ; sous MacOS déplacez simplement l'application `SciViews box 2018a` depuis le dossier `Applications` vers la corbeille). Vous récupèrerez immédiatement près de 11Go d'espace disque. VirtualBox ne pourra plus démarrer la Box, naturellement, mais _conservera vos données_. Si besoin, vous pourrez réinstaller simplement l'application `SciViews Box 2018a` pour retrouver votre Box en l'état.
+
+Une désinstallation complète nécessite d'aller **d'abord** supprimer la machine virtuelle dans VirtualBox (clic bouton droit et sélection de `Supprimer...`) pour _tous_ les utilisateurs qui ont créé une Box _avant_ de désinstaller l'application principale comme ci-dessus.
+
+Si vous avez des projets créés avec des SciViews Box antérieures, deux solutions existent :
+
+1. Gardez-les tel quels. Faites éventuellement une désinstallation partielle de la Box. Vous pourrez toujours revenir plus tard sur ces projets après réinstallation.
+
+2. Migrez-les vers la nouvelle SciViews Box. Copiez vos projets depuis le répertoire `shared` de l'ancienne Box vers celui de la nouvelle. Dans ce cas, vous devrez **vérifier** que votre code fonctionne toujours sous la nouvelle Box, et l'adapter éventuellement.
 
 
 ### Github Desktop
@@ -296,7 +314,7 @@ Il est parfaitement possible d'installer la SciViews Box sous Linux. Cependant, 
 
 </center>
 
-Dans ce cours, nous utilisons **Git** et **Github** pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. [Github Desktop](https://desktop.github.com) facilite grandement la gestion de vos projets sous Git. Ce programme gratuit est très facile à installer: son téléchargement et le lancement de son installateur ne pose pas de problèmes particuliers. _Notez toutefois que ce programme n'est pas encore disponible pour Linux._
+Dans ce cours, nous utilisons **Git** et **Github** pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. [Github Desktop](https://desktop.github.com) facilite grandement la gestion de vos projets sous Git. Ce programme gratuit est très facile à installer : son téléchargement et le lancement de son installeur ne pose pas de problèmes particuliers. _Notez toutefois que ce programme n'est pas encore disponible pour Linux._
 
 **A présent, tous les ligiciels requis sont installés... Il ne reste plus que quelques petites opérations de configuration à réaliser. Voyez ceci à la section suivante.**
 
