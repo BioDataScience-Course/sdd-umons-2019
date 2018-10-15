@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html">
+<link rel="prev" href="graphique-en-camembert.html">
 <link rel="next" href="multi-graphiques.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -158,9 +158,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.1.1" data-path="graphique-en-barre.html"><a href="graphique-en-barre.html#denombrement-dobservations-par-facteur"><i class="fa fa-check"></i><b>4.1.1</b> Dénombrement d’observations par facteur</a></li>
 <li class="chapter" data-level="4.1.2" data-path="graphique-en-barre.html"><a href="graphique-en-barre.html#valeur-moyenne-a-laide-dun-graphe-en-barre"><i class="fa fa-check"></i><b>4.1.2</b> Valeur moyenne à l’aide d’un graphe en barre</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.2</b> Visualisation graphique à l’aide d’un graphique en camembert</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.2.1</b> Pièges et astuces</a></li>
-<li class="chapter" data-level="4.2.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pour-en-savoir-plus-7"><i class="fa fa-check"></i><b>4.2.2</b> Pour en savoir plus</a></li>
+<li class="chapter" data-level="4.2" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.2</b> Graphique en camembert</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.2.1</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="4.2.2" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html#pour-en-savoir-plus-7"><i class="fa fa-check"></i><b>4.2.2</b> Pour en savoir plus</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html"><i class="fa fa-check"></i><b>4.3</b> Boite de dispersion</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pieges-et-astuces-6"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et Astuces</a></li>
@@ -294,21 +294,21 @@ x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</sp
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-19-1.svg" alt="Nuage de points montrant la première étape de la construction d'une boite de dispersion." width="672" />
 <p class="caption">
-Figure 4.1: Nuage de points montrant la première étape de la construction d’une boite de dispersion.
+Figure 4.13: Nuage de points montrant la première étape de la construction d’une boite de dispersion.
 </p>
 </div>
 <p>La boite de dispersion représente donc les 5 nombres. Vous observez cependant que certaine valeur ne se situe pas dans la boite de dispersion, il s’agit de valeurs extrêmes. Elles sont considérées comme extrêmes car elles sont éloignées de plus 1.5 fois l’espace inter-quartile (Q3- Q1). La boite de dispersion s’arrete donc aux dernières valeurs présente dans cet espace inter-quartile (IQR).</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-20-1.svg" alt="A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A." width="672" />
 <p class="caption">
-Figure 4.2: A) Nuage de points montrant la construction d’une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A.
+Figure 4.14: A) Nuage de points montrant la construction d’une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A.
 </p>
 </div>
 <p>La boite de dispersion ainsi que sa description sont proposée sur le graphique ci-dessous.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.svg" alt="Points essentiels d'une boite de dispersion et sa description." width="672" />
 <p class="caption">
-Figure 4.3: Points essentiels d’une boite de dispersion et sa description.
+Figure 4.15: Points essentiels d’une boite de dispersion et sa description.
 </p>
 </div>
 <p>Les instructions de base afin de produire une boite de dispersion sont :</p>
@@ -320,7 +320,7 @@ tg &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-23-1.svg" alt="Instructions pour obtenir une boite de dispersion." width="672" />
 <p class="caption">
-Figure 4.4: Instructions pour obtenir une boite de dispersion.
+Figure 4.16: Instructions pour obtenir une boite de dispersion.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée (dataframe, tg), ainsi que la formule à employer YNUM (len) ~ XFACTOR (supp). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction <code>geom_boxplot()</code>.</p>
@@ -332,7 +332,7 @@ Figure 4.4: Instructions pour obtenir une boite de dispersion.
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.svg" alt="Piège des boites de dispersion." width="672" />
 <p class="caption">
-Figure 4.5: Piège des boites de dispersion.
+Figure 4.17: Piège des boites de dispersion.
 </p>
 </div>
 <p>La boite de dispersion “a” ne contient que 4 observations ce qui peut être totalement masqué par l’utilisation de boite de dispersion.</p>
@@ -347,7 +347,7 @@ Figure 4.5: Piège des boites de dispersion.
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée." width="672" />
 <p class="caption">
-Figure 4.6:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation administrée.
+Figure 4.18:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation administrée.
 </p>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">formula =</span> len <span class="op">~</span><span class="st"> </span>supp <span class="op">%fill=%</span><span class="st"> </span><span class="kw">as.ordered</span>(dose), <span class="dt">data =</span> tg) <span class="op">+</span>
@@ -357,7 +357,7 @@ Figure 4.6:  Boite de dispersion portant sur la croissance de dents de cochon d�
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée." width="672" />
 <p class="caption">
-Figure 4.7:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation et la dose administrée.
+Figure 4.19:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation et la dose administrée.
 </p>
 </div>
 </div>
@@ -397,7 +397,7 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphique-en-camembert.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="multi-graphiques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

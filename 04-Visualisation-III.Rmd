@@ -211,7 +211,7 @@ ggarrange(a,b, labels = "AUTO")
 
 - http://emdbolker.wikidot.com/blog%3Adynamite
 
-## Visualisation graphique à l'aide d'un graphique en camembert
+## Graphique en camembert
 
 Le graphique en camembert va vous permettre de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barre. 
 
