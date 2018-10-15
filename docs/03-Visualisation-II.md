@@ -364,10 +364,12 @@ chart(zooplankton, class ~ size) +
 
 ## A vous de jouer !
 
+Terminez ce module en vérifiant que vous avez acquis l'ensemble des notions de ce module.
+
 \BeginKnitrBlock{bdd}<div class="bdd">
 Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
 
-    BioDataScience::run("...")
+    BioDataScience::run("03a_test")
 </div>\EndKnitrBlock{bdd}
 
-Un squelette de projet RStudio vous a été fournit via une tâche Github Classroom, y compris une organisation des fichiers et des jeux de données types. Votre objectif est de comprendre les données proposées en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez l'histogramme et le graphique de densité que vous venez d'étudier bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres formes de visualisations graphiques.
+
