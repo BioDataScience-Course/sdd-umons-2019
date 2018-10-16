@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-15">
+<meta name="date" content="2018-10-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -158,9 +158,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.1.1" data-path="graphique-en-barre.html"><a href="graphique-en-barre.html#denombrement-dobservations-par-facteur"><i class="fa fa-check"></i><b>4.1.1</b> Dénombrement d’observations par facteur</a></li>
 <li class="chapter" data-level="4.1.2" data-path="graphique-en-barre.html"><a href="graphique-en-barre.html#valeur-moyenne-a-laide-dun-graphe-en-barre"><i class="fa fa-check"></i><b>4.1.2</b> Valeur moyenne à l’aide d’un graphe en barre</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.2</b> Visualisation graphique à l’aide d’un graphique en camembert</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.2.1</b> Pièges et astuces</a></li>
-<li class="chapter" data-level="4.2.2" data-path="visualisation-graphique-a-laide-dun-graphique-en-camembert.html"><a href="visualisation-graphique-a-laide-dun-graphique-en-camembert.html#pour-en-savoir-plus-7"><i class="fa fa-check"></i><b>4.2.2</b> Pour en savoir plus</a></li>
+<li class="chapter" data-level="4.2" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.2</b> Graphique en camembert</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.2.1</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="4.2.2" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html#pour-en-savoir-plus-7"><i class="fa fa-check"></i><b>4.2.2</b> Pour en savoir plus</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html"><i class="fa fa-check"></i><b>4.3</b> Boite de dispersion</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pieges-et-astuces-6"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et Astuces</a></li>
@@ -275,11 +275,11 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="graphique-de-densite" class="section level2">
 <h2><span class="header-section-number">3.2</span> Graphique de densité</h2>
-<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se présente un peu comme un histogramme lissé. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le graphique de densité qui se présente un peu comme un histogramme lissé. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="references.html#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a></p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="A. Histogramme et B. graphique de densité montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image." width="672" />
 <p class="caption">
-Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton étudié par analyse d’image.
+Figure 3.6: A. Histogramme et B. graphique de densité montrant la distribution de la taille d’un échantillon de zooplancton étudié par analyse d’image.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphique de densité sont (ici mis en évidence en couleur) :</p>
@@ -312,15 +312,15 @@ Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution 
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-10-1.svg" alt="Instructions pour obtenir un graphique de densité." width="672" />
 <p class="caption">
-Figure 3.9: Instructions pour obtenir un graphique de densité.
+Figure 3.7: Instructions pour obtenir un graphique de densité.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée ( dataframe, <code>zooplankton</code>), ainsi que la formule à employer (<code>~ size</code>). Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction <code>geom_density()</code>.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="5">
-<li id="fn5"><p>TODO<a href="graphique-de-densite.html#fnref5">↩</a></p></li>
+<ol start="9">
+<li id="fn9"><p>TODO<a href="graphique-de-densite.html#fnref9">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
