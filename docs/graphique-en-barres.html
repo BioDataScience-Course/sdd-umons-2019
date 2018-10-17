@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="graphique-en-camembert.html">
-<link rel="next" href="multi-graphiques.html">
+<link rel="prev" href="visu3.html">
+<link rel="next" href="graphique-en-camembert.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -273,118 +273,235 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="boite-de-dispersion" class="section level2">
-<h2><span class="header-section-number">4.3</span> Boite de dispersion</h2>
-<p>Vous souhaitez représenter graphiquement cette fois un résumé d’une variable numérique tout en gardant un maximum d’information. La boite de dispersion est l’un des outils pouvant vous apporter la solution. Cette dernière va représenter graphiquement 5 descripteurs appelés les 5 nombres.</p>
-<p>Prenez les chiffres suivants :</p>
-<pre><code>1, 71, 55, 68, 78, 60, 83, 120, 82 ,53, 26</code></pre>
-<p>ordonnez les de manière croissante</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># création du vecteur</span>
-x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">71</span>, <span class="dv">55</span>, <span class="dv">68</span>, <span class="dv">78</span>, <span class="dv">60</span>, <span class="dv">83</span>, <span class="dv">120</span>, <span class="dv">82</span>, <span class="dv">53</span>, <span class="dv">26</span>)
-<span class="co"># ordonner le vecteur</span>
-<span class="kw">sort</span>(x)</code></pre></div>
-<pre><code>#  [1]   1  26  53  55  60  68  71  78  82  83 120</code></pre>
-<p>Le premier descripteur des 5 nombres est la médiane qui se situe à la moitié des observations.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(x)</code></pre></div>
-<pre><code># [1] 68</code></pre>
-<p>Le premier quartile sera la valeur au milieu des 50% des données inférieures à la médiane et le troisième quartile est la valeur centrale sur les 50% des données supérieures à la médiane. La valeur manimale étant la valeur la plus petite et la valeur maximale étant la valeur la plus élevée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fivenum</span>(x)</code></pre></div>
-<pre><code># [1]   1  54  68  80 120</code></pre>
-<p>Vous pouvez réprésenter ce vecteur via une boite de dispersion</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-21"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-21-1.svg" alt="Nuage de points montrant la première étape de la construction d'une boite de dispersion." width="672" />
+<div id="graphique-en-barres" class="section level2">
+<h2><span class="header-section-number">4.1</span> Graphique en barres</h2>
+<div id="denombrement-dobservations-par-facteur" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Dénombrement d’observations par facteur</h3>
+<p>Vous souhaitez représenter une dénombrement des différents niveaux d’une variable facteur. On peut l’exprimer dans R sous la forme :</p>
+<p><span class="math display">\[\sim variable \ facteur\]</span> que l’on peut lire :</p>
+<span class="math display">\[\ en \ fonction \ de \ la \ variable \ facteur\]</span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.svg" alt="Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
-Figure 4.15: Nuage de points montrant la première étape de la construction d’une boite de dispersion.
+Figure 4.1: Points essentiels d’un graphique en barre montrant le dénombrement des niveaux d’une variable facteur.
 </p>
 </div>
-<p>La boite de dispersion représente donc les 5 nombres. Vous observez cependant que certaine valeur ne se situe pas dans la boite de dispersion, il s’agit de valeurs extrêmes. Elles sont considérées comme extrêmes car elles sont éloignées de plus 1.5 fois l’espace inter-quartile (Q3- Q1). La boite de dispersion s’arrête donc aux dernières valeurs présente dans cet espace inter-quartile (IQR).</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.svg" alt="A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A." width="672" />
-<p class="caption">
-Figure 4.16: A) Nuage de points montrant la construction d’une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A.
-</p>
-</div>
-<p>La boite de dispersion ainsi que sa description sont proposée sur le graphique ci-dessous.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.svg" alt="Points essentiels d'une boite de dispersion et sa description." width="672" />
-<p class="caption">
-Figure 4.17: Points essentiels d’une boite de dispersion et sa description.
-</p>
-</div>
-<p>Les instructions de base afin de produire une boite de dispersion sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique </span>
-<span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt="Instructions pour obtenir une boite de dispersion." width="672" />
-<p class="caption">
-Figure 4.18: Instructions pour obtenir une boite de dispersion.
-</p>
-</div>
-<p>La fonction <code>chart()</code> requiert comme argument le jeu de données (dataframe, copepoda), ainsi que la formule à employer YNUM (size) ~ XFACTOR (class). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction <code>geom_boxplot()</code>.</p>
-<div id="pieges-et-astuces-6" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> Pièges et Astuces</h3>
-<div id="nombre-dobservations-par-boite-de-disperion" class="section level4">
-<h4><span class="header-section-number">4.3.1.1</span> Nombre d’observations par boite de disperion</h4>
-<p>Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d’observation qui se cache sous chaque boite de dispersion. En effet, une boite de dispersion ne comportant que 5 valeurs ou moins n’a que peu d’intérêt d’être avec cet outils graphique.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt="Piège des boites de dispersion." width="672" />
-<p class="caption">
-Figure 4.19: Piège des boites de dispersion.
-</p>
-</div>
-<p>La boite de dispersion “a” ne contient que 4 observations ce qui peut être totalement masqué par l’utilisation de boites de dispersion.</p>
-<p>Une des solutions permettant de connaitre graphiquement la nombre d’observations par boite est de l’ajouter au-dessus de chaque boite avec la fonction <code>give_n()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">give_n &lt;-<span class="st"> </span><span class="cf">function</span>(x){
-  <span class="kw">return</span>(<span class="kw">c</span>(<span class="dt">y =</span> <span class="kw">max</span>(x)<span class="op">*</span><span class="fl">1.20</span>, <span class="dt">label =</span> <span class="kw">length</span>(x))) 
-}
-
-<span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> give_n, <span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">hjust =</span> <span class="fl">0.5</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-27-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée." width="672" />
-<p class="caption">
-Figure 4.20:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation administrée.
-</p>
-</div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Importation du jeu de données ToothGrowth</span>
-(toothgrowth &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ToothGrowth&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang  =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
-<pre><code># # A tibble: 60 x 3
-#      len supp   dose
-#    &lt;dbl&gt; &lt;fct&gt; &lt;dbl&gt;
-#  1   4.2 VC      0.5
-#  2  11.5 VC      0.5
-#  3   7.3 VC      0.5
-#  4   5.8 VC      0.5
-#  5   6.4 VC      0.5
-#  6  10   VC      0.5
-#  7  11.2 VC      0.5
-#  8  11.2 VC      0.5
-#  9   5.2 VC      0.5
-# 10   7   VC      0.5
-# # ... with 50 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># réalisation graphique</span>
-<span class="kw">chart</span>(toothgrowth, <span class="dt">formula =</span> len <span class="op">~</span><span class="st"> </span>supp <span class="op">%fill=%</span><span class="st"> </span><span class="kw">as.ordered</span>(dose)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> give_n, <span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">hjust =</span> <span class="fl">0.5</span>, 
-               <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.75</span>))</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-28-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée." width="672" />
-<p class="caption">
-Figure 4.21:  Boite de dispersion portant sur la croissance de dents de cochon d’Inde en fonction de la supplémentation et la dose administrée.
-</p>
-</div>
-</div>
-</div>
-<div id="pour-en-savoir-plus-8" class="section level3">
-<h3><span class="header-section-number">4.3.2</span> Pour en savoir plus !</h3>
+<p>Les éléments indispensables à la compréhension d’un graphique en barres sont (ici mis en évidence en couleur) :</p>
 <ul>
-<li><p><a href="http://www.sthda.com/french/wiki/ggplot2-box-plot-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees" class="uri">http://www.sthda.com/french/wiki/ggplot2-box-plot-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees</a></p></li>
-<li><p><a href="https://plot.ly/ggplot2/box-plots/" class="uri">https://plot.ly/ggplot2/box-plots/</a></p></li>
-<li><p><a href="http://www.r-graph-gallery.com/265-grouped-boxplot-with-ggplot2/" class="uri">http://www.r-graph-gallery.com/265-grouped-boxplot-with-ggplot2/</a></p></li>
-<li><p><a href="https://chemicalstatistician.wordpress.com/2013/08/12/exploratory-data-analysis-the-5-number-summary-two-different-methods-in-r-2/" class="uri">https://chemicalstatistician.wordpress.com/2013/08/12/exploratory-data-analysis-the-5-number-summary-two-different-methods-in-r-2/</a></p></li>
+<li>les axes avec les graduations (en rouge)</li>
+<li>le label en x (en bleu)</li>
+<li>les niveaux de la variable facteur</li>
 </ul>
+<p>Les instructions de base afin de produire un graphique en barres sont :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
+(zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>( <span class="dt">file =</span> <span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
+<pre><code># # A tibble: 1,262 x 20
+#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
+#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
+# # ... with 1,252 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
+# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
+# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réduction du jeu de données </span>
+(copepoda &lt;-<span class="st"> </span><span class="kw">filter</span>(zooplankton, class <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Calanoid&quot;</span>, <span class="st">&quot;Cyclopoid&quot;</span>,  <span class="st">&quot;Harpacticoid&quot;</span>,  <span class="st">&quot;Poecilostomatoid&quot;</span>)))</code></pre></div>
+<pre><code># # A tibble: 535 x 20
+#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
+#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
+#  2 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
+#  3 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
+#  4 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
+#  5 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
+#  6 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
+#  7 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
+#  8 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
+#  9 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
+# 10 0.725 0.412      7.14 1.90  0.802 0.655 0.209 0.008 0.004 0.732   0.202
+# # ... with 525 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
+# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
+# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
+<span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-2-1.svg" alt="Instructions pour obtenir un graphique en barres." width="672" />
+<p class="caption">
+Figure 4.2: Instructions pour obtenir un graphique en barres.
+</p>
+</div>
+<p>La fonction <code>chart()</code> requiert comme argument le jeu de données (<code>dataframe</code>, <code>copepoda</code>), ainsi que la formule à employer <code>~ XVAR (class)</code>. Pour réaliser un graphique en barres, vous devez utiliser ensuite la fonction <code>geom_bar()</code>.</p>
+<div id="denombrement-par-plusieurs-facteurs" class="section level4">
+<h4><span class="header-section-number">4.1.1.1</span> Dénombrement par plusieurs facteurs</h4>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#importation des données biometry</span>
+(biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang=</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
+<pre><code># # A tibble: 395 x 7
+#    gender day_birth  weight height wrist year_measure   age
+#    &lt;fct&gt;  &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
+#  1 M      1995-03-11     69    182  15           2013    18
+#  2 M      1998-04-03     74    190  16           2013    15
+#  3 M      1967-04-04     83    185  17.5         2013    46
+#  4 M      1994-02-10     60    175  15           2013    19
+#  5 W      1990-12-02     48    167  14           2013    23
+#  6 W      1994-07-15     52    179  14           2013    19
+#  7 W      1971-03-03     72    167  15.5         2013    42
+#  8 W      1997-06-24     74    180  16           2013    16
+#  9 M      1972-10-26    110    189  19           2013    41
+# 10 M      1945-03-15     82    160  18           2013    68
+# # ... with 385 more rows</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># conversion de la variable year_measure de numérique à facteur</span>
+biometry<span class="op">$</span>year_measure &lt;-<span class="st"> </span><span class="kw">as.factor</span>(biometry<span class="op">$</span>year_measure)
+<span class="kw">attr</span>(biometry<span class="op">$</span>year_measure, <span class="st">&quot;label&quot;</span>) &lt;-<span class="st"> &quot;Année de la mesure&quot;</span></code></pre></div>
+<p>Différentes représentations sont possibles pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l’argument <code>position</code> a pour valeur <code>stack</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>gender) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()
+
+b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()
+
+<span class="kw">ggarrange</span>(a,b, <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement du individus homme et femme dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesures." width="672" />
+<p class="caption">
+Figure 4.3: Dénombrement du individus homme et femme dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesures.
+</p>
+</div>
+<p>Il existe d’autres solutions en utilisant la valeur <code>dodge</code> ou <code>fill</code> pour l’argument <code>position</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;stack&quot;</span>)
+b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)
+c &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)
+<span class="kw">ggarrange</span>(a, b, c, <span class="dt">common.legend =</span> <span class="ot">TRUE</span>, <span class="dt">labels =</span> <span class="st">&quot;AUTO&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement du individus homme et femme dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesures." width="672" />
+<p class="caption">
+Figure 4.4: Dénombrement du individus homme et femme dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesures.
+</p>
+</div>
+<p>Soyez vigilant à la différence entre l’argument <strong>stack</strong> et l’argument <strong>fill</strong> qui malgré un rendu semblable ont l’axe des ordonnées qui diffère.</p>
+</div>
+<div id="pieges-et-astuces-3" class="section level4">
+<h4><span class="header-section-number">4.1.1.2</span> Pièges et Astuces</h4>
+<div id="reordonner-la-variable-facteur-par-frequence" class="section level5">
+<h5><span class="header-section-number">4.1.1.2.1</span> Réordonner la variable facteur par fréquence</h5>
+<p>Vous pouvez avoir le souhait d’ordonner votre variable facteur afin d’améliorer le rendu visuel de votre graphique. Vous pouvez employer la fonction <code>fct_infreq()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">fct_infreq</span>(class)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-6-1.svg" alt="Dénombrement des classes de copépodes du jeu de données zooplankton." width="672" />
+<p class="caption">
+Figure 4.5: Dénombrement des classes de copépodes du jeu de données zooplankton.
+</p>
+</div>
+</div>
+<div id="rotation-du-graphique-en-barre" class="section level5">
+<h5><span class="header-section-number">4.1.1.2.2</span> Rotation du graphique en barre</h5>
+<p>Lorsque les niveaux dans la variable étudiée sont trop nombreux, la légende en abscisse risque de se chevaucher.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(zooplankton, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-7-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
+<p class="caption">
+Figure 4.6: Dénombrement des classes du jeu de données zooplankton.
+</p>
+</div>
+<p>Avec la fonction <code>coord_flip()</code> ajoutée à votre graphique, vous pouvez effectuer une rotation des axes. De plus, l’oeil humain perçoit plus distinctement les différences de tailles horizontales que verticales.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(zooplankton, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-8-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
+<p class="caption">
+Figure 4.7: Dénombrement des classes du jeu de données zooplankton.
+</p>
+</div>
+</div>
+</div>
+<div id="pour-en-savoir-plus-5" class="section level4">
+<h4><span class="header-section-number">4.1.1.3</span> Pour en savoir plus</h4>
+<ul>
+<li><p><a href="http://www.sthda.com/french/wiki/ggplot2-barplots-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees" class="uri">http://www.sthda.com/french/wiki/ggplot2-barplots-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees</a></p></li>
+<li><p><a href="http://ggplot2.tidyverse.org/reference/geom_bar.html" class="uri">http://ggplot2.tidyverse.org/reference/geom_bar.html</a></p></li>
+<li><p><a href="http://ggplot.yhathq.com/docs/geom_bar.html" class="uri">http://ggplot.yhathq.com/docs/geom_bar.html</a></p></li>
+</ul>
+</div>
+</div>
+<div id="valeur-moyenne-a-laide-dun-graphe-en-barres" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Valeur moyenne à l’aide d’un graphe en barres</h3>
+<p>Le graphique en barres peut être employé afin de résumer des données numériques via la moyenne. Il ne s’agit plus de dénombrer les occurrences d’une variable facteur mais de résumer des données numériques en fonction d’une variable facteur. On peut exprimer cette relation dans R sous la forme de <span class="math display">\[y \sim x\]</span> que l’on peut lire : <span class="math display">\[y \ en \ fonction \ de \ x\]</span> ou encore <span class="math display">\[Variable \ numérique \ en \ fonction \ de \ Variable \ facteur\]</span></p>
+<p>Considérez l’échantillon suivant :</p>
+<pre><code>1, 71, 55, 68, 78, 60, 83, 120, 82 ,53, 26</code></pre>
+<p>Calculez la moyenne sur base de la formule de la moyenne <span class="math display">\[\overline{y} = \sum_{i = 1}^n \frac{y_i}{n}\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Création du vecteur</span>
+x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">71</span>, <span class="dv">55</span>, <span class="dv">68</span>, <span class="dv">78</span>, <span class="dv">60</span>, <span class="dv">83</span>, <span class="dv">120</span>, <span class="dv">82</span>, <span class="dv">53</span>, <span class="dv">26</span>)
+
+<span class="co"># Calcul  de la moyenne</span>
+<span class="kw">mean</span>(x)</code></pre></div>
+<pre><code># [1] 63.36364</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" alt="Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur." width="672" />
+<p class="caption">
+Figure 4.8: Points essentiels d’un graphique en barre résumant les données numériques d’une variable facteur.
+</p>
+</div>
+<p>Les éléments indispensables à la compréhension d’un graphe en barres sont (ici mis en évidence en couleur) :</p>
+<ul>
+<li>les axes avec les graduations (en rouge)</li>
+<li>les labels et unités des axes (en bleu)</li>
+</ul>
+<p>Les instructions de base afin de produire ce graphe en barres sont :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
+<span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">fun.y =</span> <span class="st">&quot;mean&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe." width="672" />
+<p class="caption">
+Figure 4.9: Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe.
+</p>
+</div>
+<div id="pieges-et-astuces-4" class="section level4">
+<h4><span class="header-section-number">4.1.2.1</span> Pièges et astuces</h4>
+<div id="moyenne" class="section level5">
+<h5><span class="header-section-number">4.1.2.1.1</span> Moyenne</h5>
+<p>Le graphe en barre est un graphique très répandu dans le domaine scientifique malgré le grand nombre d’arguments contre lui que vous pouvez lire dans la section <code>Pour en savoir plus</code>. L’un des arguments le plus important est la faible information qu’il apporte.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">fun.y =</span> <span class="st">&quot;mean&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">45</span>, <span class="dt">vjust =</span> <span class="dv">1</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))
+
+b &lt;-<span class="st"> </span><span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="dt">fun.y =</span> <span class="st">&quot;mean&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span> <span class="dv">45</span>, <span class="dt">vjust =</span> <span class="dv">1</span>, <span class="dt">hjust =</span> <span class="dv">1</span>))
+
+<span class="kw">ggarrange</span>(a,b, <span class="dt">labels =</span> <span class="st">&quot;AUTO&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes." width="672" />
+<p class="caption">
+Figure 4.10: Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes.
+</p>
+</div>
+<p>Comme vous pouvez le voir ci-dessus, un graphique de type nuage de point peut représenter la valeur moyenne avec tout autant d’intérêt que le graphique en barres.</p>
+</div>
+</div>
+<div id="pour-en-savoir-plus-6" class="section level4">
+<h4><span class="header-section-number">4.1.2.2</span> Pour en savoir plus</h4>
+<ul>
+<li><p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3148365/" class="uri">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3148365/</a></p></li>
+<li><p><a href="https://www.r-bloggers.com/dynamite-plots-in-r/" class="uri">https://www.r-bloggers.com/dynamite-plots-in-r/</a></p></li>
+<li><p><a href="https://pablomarin-garcia.blogspot.com/2010/02/why-dynamite-plots-are-bad.html" class="uri">https://pablomarin-garcia.blogspot.com/2010/02/why-dynamite-plots-are-bad.html</a></p></li>
+<li><p><a href="http://biostat.mc.vanderbilt.edu/wiki/pub/Main/TatsukiRcode/Poster3.pdf" class="uri">http://biostat.mc.vanderbilt.edu/wiki/pub/Main/TatsukiRcode/Poster3.pdf</a></p></li>
+<li><p><a href="http://emdbolker.wikidot.com/blog%3Adynamite">http://emdbolker.wikidot.com/blog%3Adynamite</a></p></li>
+</ul>
+</div>
 </div>
 </div>
 <div id="disqus_thread"></div>
@@ -412,8 +529,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="graphique-en-camembert.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="multi-graphiques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="visu3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphique-en-camembert.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

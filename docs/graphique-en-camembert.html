@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="graphique-en-barre.html">
+<link rel="prev" href="graphique-en-barres.html">
 <link rel="next" href="boite-de-dispersion.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -154,9 +154,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="3.4" data-path="a-vous-de-jouer-6.html"><a href="a-vous-de-jouer-6.html"><i class="fa fa-check"></i><b>3.4</b> A vous de jouer !</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="visu3.html"><a href="visu3.html"><i class="fa fa-check"></i><b>4</b> Visualisation III</a><ul>
-<li class="chapter" data-level="4.1" data-path="graphique-en-barre.html"><a href="graphique-en-barre.html"><i class="fa fa-check"></i><b>4.1</b> Graphique en barre</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="graphique-en-barre.html"><a href="graphique-en-barre.html#denombrement-dobservations-par-facteur"><i class="fa fa-check"></i><b>4.1.1</b> Dénombrement d’observations par facteur</a></li>
-<li class="chapter" data-level="4.1.2" data-path="graphique-en-barre.html"><a href="graphique-en-barre.html#valeur-moyenne-a-laide-dun-graphe-en-barre"><i class="fa fa-check"></i><b>4.1.2</b> Valeur moyenne à l’aide d’un graphe en barre</a></li>
+<li class="chapter" data-level="4.1" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html"><i class="fa fa-check"></i><b>4.1</b> Graphique en barres</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html#denombrement-dobservations-par-facteur"><i class="fa fa-check"></i><b>4.1.1</b> Dénombrement d’observations par facteur</a></li>
+<li class="chapter" data-level="4.1.2" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html#valeur-moyenne-a-laide-dun-graphe-en-barres"><i class="fa fa-check"></i><b>4.1.2</b> Valeur moyenne à l’aide d’un graphe en barres</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.2</b> Graphique en camembert</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.2.1</b> Pièges et astuces</a></li>
@@ -201,7 +201,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a></li>
 <li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
-<li class="chapter" data-level="9" data-path="graphique-en-barre.html"><a href="graphique-en-barre.html#moyenne"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
+<li class="chapter" data-level="9" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html#moyenne"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
 <li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
 <li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
 <li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a></li>
@@ -275,7 +275,7 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="graphique-en-camembert" class="section level2">
 <h2><span class="header-section-number">4.2</span> Graphique en camembert</h2>
-<p>Le graphique en camembert va vous permettre de visualiser un dénombrement d’observations par facteur, tout comme le graphique en barre.</p>
+<p>Le graphique en camembert va vous permettre de visualiser un dénombrement d’observations par facteur, tout comme le graphique en barres.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span>
@@ -307,7 +307,7 @@ Figure 4.12: Instructions pour obtenir un graphique en cammenbet.
 <div id="pieges-et-astuces-5" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Pièges et astuces</h3>
 <p>Le graphique en camembert est un graphique également fortement répandu. Cependant, l’oeil humain perçoit avec plus de précision les différences de formes que les différences d’angles. Un grand nombre de niveaux dans une variable facteur va avoir pour effet de remplir. De ce fait, il est donc déconseillé d’employer le graphique en camembert</p>
-<p>Partons d’un exemple fictif, combien d’observations pour la lettre h comptez vous ?</p>
+<p>Partons d’un exemple fictif, combien d’observations pour la lettre h comptez-vous ?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">error &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">index =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">348</span>, <span class="dt">fact =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;a&quot;</span>, <span class="dt">times =</span> <span class="dv">10</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">times =</span> <span class="dv">1</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">times =</span> <span class="dv">1</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;d&quot;</span>, <span class="dt">times =</span> <span class="dv">50</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;e&quot;</span>, <span class="dt">times =</span> <span class="dv">2</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;f&quot;</span>, <span class="dt">times =</span> <span class="dv">78</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;g&quot;</span>, <span class="dt">times =</span> <span class="dv">101</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;h&quot;</span>, <span class="dt">times =</span> <span class="dv">25</span>) , <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">times =</span> <span class="dv">31</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">times =</span> <span class="dv">49</span>)))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(error, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>fact) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
@@ -320,14 +320,14 @@ Figure 4.12: Instructions pour obtenir un graphique en cammenbet.
 Figure 4.13: Piège d’un graphique en camembert montrant le dénombrement des niveaux d’une variable facteur.
 </p>
 </div>
-<p>Sur base de ce graphique en barre, combien d’observations pour la lettre h comptez vous ?</p>
+<p>Sur base de ce graphique en barres, combien d’observations pour la lettre h comptez-vous ?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(error, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(fact) <span class="op">%fill=%</span><span class="st"> </span>fact) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-17-1.svg" alt="Piège d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-17-1.svg" alt="Dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
-Figure 4.14: Piège d’un graphique en barre montrant le dénombrement des niveaux d’une variable facteur.
+Figure 4.14: Dénombrement des niveaux d’une variable facteur.
 </p>
 </div>
 </div>
@@ -366,7 +366,7 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="graphique-en-barre.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphique-en-barres.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="boite-de-dispersion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

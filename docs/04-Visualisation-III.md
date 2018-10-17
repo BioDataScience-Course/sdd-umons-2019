@@ -5,7 +5,7 @@
 
 #### Objectifs {-}
 
-- Savoir réaliser différents graphiques comme le graphique en barre, le graphique en camembert ou encore la boite de dispersion, dans R avec la fonction `chart()`
+- Savoir réaliser différents graphiques comme le graphique en barres, le graphique en camembert ou encore la boîte de dispersion, dans R avec la fonction `chart()`
 
 - Arranger différents graphiques dans une figure unique. 
 
@@ -17,11 +17,11 @@
 Si ce n'est déjà fait, vous devez avoir réaliser les module 2 & 3.
 
 
-## Graphique en barre
+## Graphique en barres
 
 ### Dénombrement d'observations par facteur
 
-Vous souhaitez représenter une dénombrement des différentes niveaux d'une variables facteur. On peux l'exprimer dans R sous la forme :
+Vous souhaitez représenter une dénombrement des différents niveaux d'une variable facteur. On peut l'exprimer dans R sous la forme :
 
 $$\sim variable \ facteur$$
 que l'on peut lire :
@@ -32,13 +32,13 @@ $$\ en \ fonction \ de \ la \ variable \ facteur$$
 <p class="caption">(\#fig:unnamed-chunk-1)Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur.</p>
 </div>
 
-Les éléments indispensables à la compréhension d'un graphique en barre sont (ici mis en évidence en couleur) : 
+Les éléments indispensables à la compréhension d'un graphique en barres sont (ici mis en évidence en couleur) : 
 
 - les axes avec les graduations (en rouge)
 - le label en x  (en bleu)
 - les niveaux de la variable facteur
 
-Les instructions de base afin de produire un graphique en barre sont :
+Les instructions de base afin de produire un graphique en barres sont :
 
 
 ```r
@@ -100,7 +100,7 @@ chart(copepoda, formula = ~ class) +
 <p class="caption">(\#fig:unnamed-chunk-2)Instructions pour obtenir un graphique en barres.</p>
 </div>
 
-La fonction `chart()` requiert comme argument le jeu de donnée (`dataframe`, `copepoda`), ainsi que la formule à employer ` ~ XVAR (class)`. Pour réaliser un graphique en barre, vous devez utiliser ensuite la fonction `geom_bar()`.
+La fonction `chart()` requiert comme argument le jeu de données (`dataframe`, `copepoda`), ainsi que la formule à employer ` ~ XVAR (class)`. Pour réaliser un graphique en barres, vous devez utiliser ensuite la fonction `geom_bar()`.
 
 #### Dénombrement par plusieurs facteurs
 
@@ -190,7 +190,7 @@ chart(copepoda, formula = ~ fct_infreq(class)) +
 
 ##### Rotation du graphique en barre
 
-Lorsque le nombre de niveau dans la variable étudiée sont importantes, la légende en abscisse risque de se chevauffer.
+Lorsque les niveaux dans la variable étudiée sont trop nombreux, la légende en abscisse risque de se chevaucher.
 
 
 ```r
@@ -203,7 +203,7 @@ chart(zooplankton, formula = ~ class) +
 <p class="caption">(\#fig:unnamed-chunk-7)Dénombrement des classes du jeu de données zooplankton.</p>
 </div>
 
-Avec la fonction `coord_flip()` ajouté à votre graphique, vous pouvez effectuer une rotation des axes. De plus, l'oeil humain perçoit plus distinctement les différences de tailles horizontales que verticales. 
+Avec la fonction `coord_flip()` ajoutée à votre graphique, vous pouvez effectuer une rotation des axes. De plus, l'oeil humain perçoit plus distinctement les différences de tailles horizontales que verticales. 
 
 
 ```r
@@ -213,8 +213,8 @@ chart(zooplankton, formula = ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-8-1.svg" alt=" Graphique en barre du dénombrement de quatre variétés d'oursins. " width="672" />
-<p class="caption">(\#fig:unnamed-chunk-8) Graphique en barre du dénombrement de quatre variétés d'oursins. </p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-8-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-8)Dénombrement des classes du jeu de données zooplankton.</p>
 </div>
 
 
@@ -227,9 +227,9 @@ chart(zooplankton, formula = ~ class) +
 - http://ggplot.yhathq.com/docs/geom_bar.html
 
 
-### Valeur moyenne à l'aide d'un graphe en barre
+### Valeur moyenne à l'aide d'un graphe en barres
 
-Le graphique en barres peut être employé afin de résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les occurences d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ numérique \ en \ fonction \ de \ Variable \ facteur$$ 
+Le graphique en barres peut être employé afin de résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les occurrences d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ numérique \ en \ fonction \ de \ Variable \ facteur$$ 
 
 Considérez l'échantillon suivant :
 
@@ -260,13 +260,13 @@ mean(x)
 <p class="caption">(\#fig:unnamed-chunk-10)Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur.</p>
 </div>
 
-Les éléments indispensables à la compréhension d'un graphe en barre sont (ici mis en évidence en couleur) : 
+Les éléments indispensables à la compréhension d'un graphe en barres sont (ici mis en évidence en couleur) : 
 
 - les axes avec les graduations (en rouge)
 - les labels et unités des axes (en bleu) 
 
 
-Les instructions de base afin de produire ce graphe en barre sont :
+Les instructions de base afin de produire ce graphe en barres sont :
 
 
 ```r
@@ -276,8 +276,8 @@ chart(copepoda, formula = size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-11)Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-11)Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe.</p>
 </div>
 
 #### Pièges et astuces
@@ -300,11 +300,11 @@ ggarrange(a,b, labels = "AUTO")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Comparaison entre le graphique en barre et le nuage de point montrant tous les deux la taille moyenne en fonction des classes de copépodes." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-12)Comparaison entre le graphique en barre et le nuage de point montrant tous les deux la taille moyenne en fonction des classes de copépodes.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-12)Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes.</p>
 </div>
 
-Comme vous pouvez le voir si dessus, un graphique de type nuage de point peut représenter la valeur moyenne avec tout autant d'intéret que le graphique en barre. 
+Comme vous pouvez le voir ci-dessus, un graphique de type nuage de point peut représenter la valeur moyenne avec tout autant d'intérêt que le graphique en barres. 
 
 #### Pour en savoir plus 
 
@@ -320,7 +320,7 @@ Comme vous pouvez le voir si dessus, un graphique de type nuage de point peut re
 
 ## Graphique en camembert
 
-Le graphique en camembert va vous permettre de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barre. 
+Le graphique en camembert va vous permettre de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barres. 
 
 
 ```r
@@ -362,7 +362,7 @@ chart(copepoda, formula = ~ factor(0) %fill=% class) +
 
 Le graphique en camembert est un graphique également fortement répandu. Cependant, l'oeil humain perçoit avec plus de précision les différences de formes que les différences d'angles. Un grand nombre de niveaux dans une variable facteur va avoir pour effet de remplir. De ce fait, il est donc déconseillé d'employer le graphique en camembert  
 
-Partons d'un exemple fictif, combien d'observations pour la lettre h comptez vous ? 
+Partons d'un exemple fictif, combien d'observations pour la lettre h comptez-vous ? 
 
 
 ```r
@@ -384,7 +384,7 @@ chart(error, formula = ~ factor(0) %fill=% fact) +
 <p class="caption">(\#fig:unnamed-chunk-16)Piège d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
 </div>
 
-Sur base de ce graphique en barre, combien d'observations pour la lettre h comptez vous ?
+Sur base de ce graphique en barres, combien d'observations pour la lettre h comptez-vous ?
 
 
 ```r
@@ -394,8 +394,8 @@ chart(error, formula = ~ factor(fact) %fill=% fact) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-17-1.svg" alt="Piège d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-17)Piège d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-17-1.svg" alt="Dénombrement des niveaux d'une variable facteur." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-17)Dénombrement des niveaux d'une variable facteur.</p>
 </div>
 
 ### Pour en savoir plus 
@@ -443,8 +443,7 @@ median(x)
 # [1] 68
 ```
 
-Le premier quartile sera la valeur au milieu des 50% des données inférieurs à la médiane et le troisième quartile est la valeur centrale sur les 50% des données supérieurs à la médiane. La valeur manimale étant la valeur la plus petite et la valeurs maximale étant la valeur la plus élevée.
-
+Le premier quartile sera la valeur au milieu des 50% des données inférieures à la médiane et le troisième quartile est la valeur centrale sur les 50% des données supérieures à la médiane. La valeur manimale étant la valeur la plus petite et la valeur maximale étant la valeur la plus élevée.
 
 
 ```r
@@ -462,7 +461,7 @@ Vous pouvez réprésenter ce vecteur via une boite de dispersion
 <p class="caption">(\#fig:unnamed-chunk-21)Nuage de points montrant la première étape de la construction d'une boite de dispersion.</p>
 </div>
 
-La boite de dispersion représente donc les 5 nombres. Vous observez cependant que certaine valeur ne se situe pas dans la boite de dispersion, il s'agit de valeurs extrêmes. Elles sont considérées comme extrêmes car elles sont éloignées de plus 1.5 fois l'espace inter-quartile (Q3- Q1). La boite de dispersion s'arrete donc aux dernières valeurs présente dans cet espace inter-quartile (IQR).
+La boite de dispersion représente donc les 5 nombres. Vous observez cependant que certaine valeur ne se situe pas dans la boite de dispersion, il s'agit de valeurs extrêmes. Elles sont considérées comme extrêmes car elles sont éloignées de plus 1.5 fois l'espace inter-quartile (Q3- Q1). La boite de dispersion s'arrête donc aux dernières valeurs présente dans cet espace inter-quartile (IQR).
 
 <div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.svg" alt="A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A." width="672" />
@@ -493,13 +492,13 @@ chart(copepoda, formula = size ~ class) +
 </div>
 
 
-La fonction `chart()` requiert comme argument le jeu de donnée (dataframe, copepoda), ainsi que la formule à employer YNUM (size) ~ XFACTOR (class). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction `geom_boxplot()`.
+La fonction `chart()` requiert comme argument le jeu de données (dataframe, copepoda), ainsi que la formule à employer YNUM (size) ~ XFACTOR (class). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction `geom_boxplot()`.
 
 ### Pièges et Astuces
 
 #### Nombre d'observations par boite de disperion
 
-Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d'observation qui se cache sous chaque boite de dispersion. En effet, une boite de dispersion ne comportant que 5 valeurs ou moins n'a que peut d'intérêt d'être avec cet outils graphique. 
+Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d'observation qui se cache sous chaque boite de dispersion. En effet, une boite de dispersion ne comportant que 5 valeurs ou moins n'a que peu d'intérêt d'être avec cet outils graphique. 
 
 <div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt="Piège des boites de dispersion." width="672" />
@@ -508,7 +507,7 @@ Lors de la réalisation de boites de dispersion, vous devez être vigilant au no
 
 La boite de dispersion "a" ne contient que 4 observations ce qui peut être totalement masqué par l'utilisation de boites de dispersion.
 
-Une des solutions permettant de connaitre graphiquement la nombre d'observations par boite est de l'ajouter au dessus de chaque boite avec la fonction `give_n()`
+Une des solutions permettant de connaitre graphiquement la nombre d'observations par boite est de l'ajouter au-dessus de chaque boite avec la fonction `give_n()`.
 
 
 ```r
@@ -575,11 +574,11 @@ chart(toothgrowth, formula = len ~ supp %fill=% as.ordered(dose)) +
 
 ## Multi-graphiques
 
-Lorsque vous souhaitez représenter plusieurs graphiques sur une seule fenêtre graphique plusieurs fonctions sont à votre disposition. Il faut tout d'abord distinguer deux types de multi-graphiques. Soit il s'agit d'un seul graphique que vous souhaitez subdiviser par rapport à une ou deux  variables facteurs. Soit il s'agit de graphiques indépendants que vous souhaitez représenter sur le même fenêtre graphique. Dans le premier cas, la fonction `facet_grid()` du package `ggplot2` peut être employé. Dans le second cas, la fonction `plot_grid()` du package `cowplot` est l'une des alternatives possibles.
+Lorsque vous souhaitez représenter plusieurs graphiques sur une seule fenêtre graphique plusieurs fonctions sont à votre disposition. Il faut tout d'abord distinguer deux types de multi-graphiques. Soit il s'agit d'un seul graphique que vous souhaitez subdiviser par rapport à une ou des variables facteurs. Soit il s'agit de graphiques indépendants que vous souhaitez représenter sur la même fenêtre graphique. Dans le premier cas, la fonction `facet_grid()` du package `ggplot2` peut être employé. Dans le second cas, la fonction `plot_grid()` du package `cowplot` est l'une des alternatives possibles.
 
 ### Facets
 
-L'une des règles les plus importantes que vous devez impérativement garder à l'eprit lors de la réalisation de vos graphiques est *la simplicité*. Plus votre graphique va contenir d'information au plus il sera compliqué à décoder par un collaborateur. 
+L'une des règles les plus importantes que vous devez impérativement garder à l'esprit lors de la réalisation de vos graphiques est *la simplicité*. Plus votre graphique va contenir d'information au plus il sera compliqué à décoder par un collaborateur. 
 
 
 ```r
@@ -615,7 +614,7 @@ chart(ChickWeight, formula = weight ~ Time) +
 <p class="caption">(\#fig:unnamed-chunk-29)Nuage de point montrant la variation de la masse de poulets au cours du temps.</p>
 </div>
 
-Le graphique ci-dessus peut par exemple être simplifié avec les facets. L'information que l'on souhaite partager est la même mais les choix graphiques rendent sa lecture plus aisée. De plus, la fentre graphique a la même taille par défault que pour un seul graphique. De ce fait, réaliser de multiples graphiques peut rendre sa lecture impossible par une taille trop faible.
+Le graphique ci-dessus peut par exemple être simplifié avec les facets. L'information que l'on souhaite partager est la même mais les choix graphiques rendent sa lecture plus aisée. De plus, la fenêtre graphique a la même taille par défaut que pour un seul graphique. De ce fait, réaliser de multiples graphiques peut rendre sa lecture impossible par une taille trop faible.
 
 
 ```r
@@ -775,9 +774,16 @@ Vous observez rapidement certaines similitudes entre `chart`, `ggplot2` et `latt
 
 ## A vous de jouer !
 
-- **Proposez 5 graphiques inédits (qui n'ont pas été vu dans le module 2, 3 et 4) dans vos différents projets **
+Proposez 5 graphiques inédits (qui n'ont pas été vu dans le module 2, 3 et 4) dans vos différents projets 
 
-- Terminez ce module en vérifiant que vous avez acquis l'ensemble des notions de ce module.
+Employez par exemple les liens suivants pour vous inspirer
+
+- <https://www.r-graph-gallery.com>
+
+- <http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html>
+
+
+Terminez ce module en vérifiant que vous avez acquis l'ensemble des notions de ce module.
 
 \BeginKnitrBlock{bdd}<div class="bdd">
 Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
