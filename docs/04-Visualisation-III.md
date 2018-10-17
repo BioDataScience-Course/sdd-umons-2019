@@ -253,26 +253,11 @@ mean(x)
 # [1] 63.36364
 ```
 
-En partant d'un jeu de données, comme celui ci dessous :
-
-
-Table: (\#tab:unnamed-chunk-10)Tableau de données relatif à la croissance de dents de cochons d'Inde
-
-  len  supp    dose
------  -----  -----
-  4.2  VC       0.5
- 22.5  VC       1.0
- 29.5  VC       2.0
- 15.2  OJ       0.5
- 20.0  OJ       1.0
- 23.0  OJ       2.0
-
-Vous pouvez observez que ce jeu de données comprend trois variables avec une première variable portant sur le longueur des dents de cochons d'Inde, une seconde variable portant sur la supplémentation administrée ( VC, vitamine Cou OJ, jus d'orange) à ces derniers et enfin une troisième variable portant sur la dose administrée (0.5, 1, 2).
 
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-11)Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" alt="Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-10)Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur.</p>
 </div>
 
 Les éléments indispensables à la compréhension d'un graphe en barre sont (ici mis en évidence en couleur) : 
@@ -291,10 +276,9 @@ chart(copepoda, formula = size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-12)Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-11)Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe.</p>
 </div>
-
 
 #### Pièges et astuces
 
@@ -305,18 +289,22 @@ Le graphe en barre est un graphique très répandu dans le domaine scientifique 
 
 ```r
 a <- chart(copepoda, formula = size ~ class) +
-  stat_summary(geom = "col", fun.y = "mean")
+  stat_summary(geom = "col", fun.y = "mean") +
+  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust = 1))
 
 b <- chart(copepoda, formula = size ~ class) +
-  stat_summary(geom = "point", fun.y = "mean")
+  stat_summary(geom = "point", fun.y = "mean") +
+  theme(axis.text.x = element_text(angle= 45, vjust = 1, hjust = 1))
 
 ggarrange(a,b, labels = "AUTO")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.svg" alt="TODO" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-13)TODO</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Comparaison entre le graphique en barre et le nuage de point montrant tous les deux la taille moyenne en fonction des classes de copépodes." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-12)Comparaison entre le graphique en barre et le nuage de point montrant tous les deux la taille moyenne en fonction des classes de copépodes.</p>
 </div>
+
+Comme vous pouvez le voir si dessus, un graphique de type nuage de point peut représenter la valeur moyenne avec tout autant d'intéret que le graphique en barre. 
 
 #### Pour en savoir plus 
 
@@ -336,7 +324,7 @@ Le graphique en camembert va vous permettre de visualiser un dénombrement d'obs
 
 
 ```r
-chart(e_m, formula = ~ factor(0) %fill=% e_mathaei) +
+chart(copepoda, formula = ~ factor(0) %fill=% class) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
   theme_void() +
@@ -344,8 +332,8 @@ chart(e_m, formula = ~ factor(0) %fill=% e_mathaei) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-14)Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.svg" alt="Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-13)Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
 </div>
 
 Les éléments indispensables à la compréhension d'un graphe en camembert sont : 
@@ -357,7 +345,7 @@ Les instructions de base afin de produire ce graphe en camembert sont :
 
 
 ```r
-chart(e_m, formula = ~ factor(0) %fill=% e_mathaei) +
+chart(copepoda, formula = ~ factor(0) %fill=% class) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0)+
   labs( x = "", y = "") + 
@@ -366,8 +354,8 @@ chart(e_m, formula = ~ factor(0) %fill=% e_mathaei) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-15-1.svg" alt="Instructions " width="672" />
-<p class="caption">(\#fig:unnamed-chunk-15)Instructions </p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Instructions pour obtenir un graphique en cammenbet." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-14)Instructions pour obtenir un graphique en cammenbet.</p>
 </div>
 
 ### Pièges et astuces
@@ -377,10 +365,13 @@ Le graphique en camembert est un graphique également fortement répandu. Cepend
 Partons d'un exemple fictif, combien d'observations pour la lettre h comptez vous ? 
 
 
+```r
+error <- data_frame(index = 1:348, fact = c(rep(x = "a", times = 10), rep(x = "b", times = 1), rep(x = "c", times = 1), rep(x = "d", times = 50), rep(x = "e", times = 2), rep(x = "f", times = 78), rep(x = "g", times = 101), rep(x = "h", times = 25) , rep(x = "i", times = 31), rep(x = "j", times = 49)))
+```
+
+
 
 ```r
-fact <- c(rep(x = "a", times = 10), rep(x = "b", times = 1), rep(x = "c", times = 1), rep(x = "d", times = 50), rep(x = "e", times = 2), rep(x = "f", times = 78), rep(x = "g", times = 101), rep(x = "h", times = 25) , rep(x = "i", times = 31), rep(x = "j", times = 49))
-error <- data_frame(fact = fact)
 chart(error, formula = ~ factor(0) %fill=% fact) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
@@ -480,8 +471,6 @@ La boite de dispersion représente donc les 5 nombres. Vous observez cependant q
 
 
 
-
-
 La boite de dispersion ainsi que sa description sont proposée sur le graphique ci-dessous.
 
 <div class="figure" style="text-align: center">
@@ -493,10 +482,8 @@ Les instructions de base afin de produire une boite de dispersion sont :
 
 
 ```r
-# Importation des données
-tg <- read("ToothGrowth", package = "datasets")
 # Réalisation du graphique 
-chart(tg, formula = len ~ supp) +
+chart(copepoda, formula = size ~ class) +
   geom_boxplot()
 ```
 
@@ -506,7 +493,7 @@ chart(tg, formula = len ~ supp) +
 </div>
 
 
-La fonction `chart()` requiert comme argument le jeu de donnée (dataframe, tg), ainsi que la formule à employer YNUM (len) ~ XFACTOR (supp). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction `geom_boxplot()`.
+La fonction `chart()` requiert comme argument le jeu de donnée (dataframe, copepoda), ainsi que la formule à employer YNUM (size) ~ XFACTOR (class). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction `geom_boxplot()`.
 
 ### Pièges et Astuces
 
@@ -519,16 +506,17 @@ Lors de la réalisation de boites de dispersion, vous devez être vigilant au no
 <p class="caption">(\#fig:unnamed-chunk-26)Piège des boites de dispersion.</p>
 </div>
 
-La boite de dispersion "a" ne contient que 4 observations ce qui peut être totalement masqué par l'utilisation de boite de dispersion.
+La boite de dispersion "a" ne contient que 4 observations ce qui peut être totalement masqué par l'utilisation de boites de dispersion.
 
 Une des solutions permettant de connaitre graphiquement la nombre d'observations par boite est de l'ajouter au dessus de chaque boite avec la fonction `give_n()`
+
 
 ```r
 give_n <- function(x){
   return(c(y = max(x)*1.20, label = length(x))) 
 }
 
-chart(formula = len ~ supp, data = tg) +
+chart(copepoda, formula = size ~ class) +
   geom_boxplot() + 
   stat_summary(fun.data = give_n, geom = "text", hjust = 0.5)
 ```
@@ -540,7 +528,30 @@ chart(formula = len ~ supp, data = tg) +
 
 
 ```r
-chart(formula = len ~ supp %fill=% as.ordered(dose), data = tg) +
+#Importation du jeu de données ToothGrowth
+(toothgrowth <- read("ToothGrowth", package = "datasets", lang  = "fr"))
+```
+
+```
+# # A tibble: 60 x 3
+#      len supp   dose
+#    <dbl> <fct> <dbl>
+#  1   4.2 VC      0.5
+#  2  11.5 VC      0.5
+#  3   7.3 VC      0.5
+#  4   5.8 VC      0.5
+#  5   6.4 VC      0.5
+#  6  10   VC      0.5
+#  7  11.2 VC      0.5
+#  8  11.2 VC      0.5
+#  9   5.2 VC      0.5
+# 10   7   VC      0.5
+# # ... with 50 more rows
+```
+
+```r
+# réalisation graphique
+chart(toothgrowth, formula = len ~ supp %fill=% as.ordered(dose)) +
   geom_boxplot() +
   stat_summary(fun.data = give_n, geom = "text", hjust = 0.5, 
                position = position_dodge(0.75))
@@ -550,7 +561,6 @@ chart(formula = len ~ supp %fill=% as.ordered(dose), data = tg) +
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-28-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-28) Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée.</p>
 </div>
-
 
 ### Pour en savoir plus ! 
 
@@ -574,7 +584,27 @@ L'une des règles les plus importantes que vous devez impérativement garder à 
 
 ```r
 # Importation des données
-ChickWeight <- read(file = "ChickWeight", package = "datasets", lang = "fr")
+(ChickWeight <- read(file = "ChickWeight", package = "datasets", lang = "fr"))
+```
+
+```
+# # A tibble: 578 x 4
+#    weight  Time Chick Diet 
+#     <dbl> <dbl> <ord> <fct>
+#  1     42     0 1     1    
+#  2     51     2 1     1    
+#  3     59     4 1     1    
+#  4     64     6 1     1    
+#  5     76     8 1     1    
+#  6     93    10 1     1    
+#  7    106    12 1     1    
+#  8    125    14 1     1    
+#  9    149    16 1     1    
+# 10    171    18 1     1    
+# # ... with 568 more rows
+```
+
+```r
 # Réalisation du graphique
 chart(ChickWeight, formula = weight ~ Time) +
   geom_point(alpha = 0.3)
@@ -602,7 +632,7 @@ Vous observez que les échelles en abscisse et en ordonnée sont similaires. Cel
 
 ### `ggarrange()`
 
-La fonctions `ggarrange()` du package `ggpubr` permet de combiner plusieurs graphiques.
+La fonction `ggarrange()` permet de combiner plusieurs graphiques.
 
 
 ```r
@@ -615,7 +645,7 @@ a <- chart(urchin, formula = weight ~ height %col=% origin) +
 b <- chart(urchin, formula = weight ~ solid_parts %col=% origin) +
   geom_point()
 # Combinaison des graphiques
-ggpubr::ggarrange(a, b, common.legend = TRUE, legend = "bottom", align = "v")
+ggarrange(a, b, common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
@@ -645,12 +675,34 @@ Depuis le début, l'ensemble des graphiques que nous vous avons proposé utilise
 
 ```r
 # Importation des données
-ub <- read("urchin_bio", package = "data.io")
+(urchin <- read("urchin_bio", package = "data.io"))
+```
+
+```
+# # A tibble: 421 x 19
+#    origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#    <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+#  1 Fishe…       9.9      10.2    5               NA  0.522       0.478
+#  2 Fishe…      10.5      10.6    5.7             NA  0.642       0.589
+#  3 Fishe…      10.8      10.8    5.2             NA  0.734       0.677
+#  4 Fishe…       9.6       9.3    4.6             NA  0.370       0.344
+#  5 Fishe…      10.4      10.7    4.8             NA  0.610       0.559
+#  6 Fishe…      10.5      11.1    5               NA  0.610       0.551
+#  7 Fishe…      11        11      5.2             NA  0.672       0.605
+#  8 Fishe…      11.1      11.2    5.7             NA  0.703       0.628
+#  9 Fishe…       9.4       9.2    4.6             NA  0.413       0.375
+# 10 Fishe…      10.1       9.5    4.7             NA  0.449       0.398
+# # ... with 411 more rows, and 12 more variables: integuments <dbl>,
+# #   dry_integuments <dbl>, digestive_tract <dbl>,
+# #   dry_digestive_tract <dbl>, gonads <dbl>, dry_gonads <dbl>,
+# #   skeleton <dbl>, lantern <dbl>, test <dbl>, spines <dbl>,
+# #   maturity <int>, sex <fct>
+```
+
+```r
 # Réalisation du graphique
-chart(ub,formula = height ~ weight %col=% origin) + 
-  geom_point() +
-  labs( x = "Poids [g]", 
-        y = "Taille [mm]")
+chart(urchin,formula = height ~ weight %col=% origin) + 
+  geom_point() 
 ```
 
 <div class="figure" style="text-align: center">
@@ -723,13 +775,14 @@ Vous observez rapidement certaines similitudes entre `chart`, `ggplot2` et `latt
 
 ## A vous de jouer !
 
+- **Proposez 5 graphiques inédits (qui n'ont pas été vu dans le module 2, 3 et 4) dans vos différents projets **
+
 - Terminez ce module en vérifiant que vous avez acquis l'ensemble des notions de ce module.
 
 \BeginKnitrBlock{bdd}<div class="bdd">
 Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
 
-    BioDataScience::run("03a_test")
+    BioDataScience::run("....")
 </div>\EndKnitrBlock{bdd}
 
 
-- **Proposez 5 graphiques inédits (qui n'ont pas été vu dans le module 2, 3 et 4) dans vos différents projets **

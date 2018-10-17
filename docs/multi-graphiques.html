@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-16">
+<meta name="date" content="2018-10-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -280,8 +280,22 @@ code > span. { color: #1f1c1b; } /* Normal */
 <h3><span class="header-section-number">4.4.1</span> Facets</h3>
 <p>L’une des règles les plus importantes que vous devez impérativement garder à l’eprit lors de la réalisation de vos graphiques est <em>la simplicité</em>. Plus votre graphique va contenir d’information au plus il sera compliqué à décoder par un collaborateur.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données</span>
-ChickWeight &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="dt">file =</span> <span class="st">&quot;ChickWeight&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
-<span class="co"># Réalisation du graphique</span>
+(ChickWeight &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="dt">file =</span> <span class="st">&quot;ChickWeight&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
+<pre><code># # A tibble: 578 x 4
+#    weight  Time Chick Diet 
+#     &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;fct&gt;
+#  1     42     0 1     1    
+#  2     51     2 1     1    
+#  3     59     4 1     1    
+#  4     64     6 1     1    
+#  5     76     8 1     1    
+#  6     93    10 1     1    
+#  7    106    12 1     1    
+#  8    125    14 1     1    
+#  9    149    16 1     1    
+# 10    171    18 1     1    
+# # ... with 568 more rows</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(ChickWeight, <span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>Time) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-29"></span>
@@ -303,7 +317,7 @@ Figure 4.23: Nuage de point montrant la variation de la masse de poulets au cour
 </div>
 <div id="ggarrange" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> <code>ggarrange()</code></h3>
-<p>La fonctions <code>ggarrange()</code> du package <code>ggpubr</code> permet de combiner plusieurs graphiques.</p>
+<p>La fonction <code>ggarrange()</code> permet de combiner plusieurs graphiques.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données</span>
 ub &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
 <span class="co"># Réalisation des graphiques</span>
@@ -313,7 +327,7 @@ a &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, <span clas
 b &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, <span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>solid_parts <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 <span class="co"># Combinaison des graphiques</span>
-ggpubr<span class="op">::</span><span class="kw">ggarrange</span>(a, b, <span class="dt">common.legend =</span> <span class="ot">TRUE</span>, <span class="dt">legend =</span> <span class="st">&quot;bottom&quot;</span>, <span class="dt">align =</span> <span class="st">&quot;v&quot;</span>)</code></pre></div>
+<span class="kw">ggarrange</span>(a, b, <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-31-1.svg" alt="A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine." width="672" />
 <p class="caption">

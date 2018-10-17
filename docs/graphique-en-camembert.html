@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-16">
+<meta name="date" content="2018-10-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -276,13 +276,13 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="graphique-en-camembert" class="section level2">
 <h2><span class="header-section-number">4.2</span> Graphique en camembert</h2>
 <p>Le graphique en camembert va vous permettre de visualiser un dénombrement d’observations par facteur, tout comme le graphique en barre.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(e_m, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>e_mathaei) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.svg" alt="Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
 Figure 4.11: Points essentiels d’un graphique en camembert montrant le dénombrement des niveaux d’une variable facteur.
 </p>
@@ -292,25 +292,24 @@ Figure 4.11: Points essentiels d’un graphique en camembert montrant le dénomb
 <li>les niveaux de la variable facteur</li>
 </ul>
 <p>Les instructions de base afin de produire ce graphe en camembert sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(e_m, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>e_mathaei) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(copepoda, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-15"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-15-1.svg" alt="Instructions " width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Instructions pour obtenir un graphique en cammenbet." width="672" />
 <p class="caption">
-Figure 4.12: Instructions
+Figure 4.12: Instructions pour obtenir un graphique en cammenbet.
 </p>
 </div>
 <div id="pieges-et-astuces-5" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Pièges et astuces</h3>
 <p>Le graphique en camembert est un graphique également fortement répandu. Cependant, l’oeil humain perçoit avec plus de précision les différences de formes que les différences d’angles. Un grand nombre de niveaux dans une variable facteur va avoir pour effet de remplir. De ce fait, il est donc déconseillé d’employer le graphique en camembert</p>
 <p>Partons d’un exemple fictif, combien d’observations pour la lettre h comptez vous ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fact &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;a&quot;</span>, <span class="dt">times =</span> <span class="dv">10</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">times =</span> <span class="dv">1</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">times =</span> <span class="dv">1</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;d&quot;</span>, <span class="dt">times =</span> <span class="dv">50</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;e&quot;</span>, <span class="dt">times =</span> <span class="dv">2</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;f&quot;</span>, <span class="dt">times =</span> <span class="dv">78</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;g&quot;</span>, <span class="dt">times =</span> <span class="dv">101</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;h&quot;</span>, <span class="dt">times =</span> <span class="dv">25</span>) , <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">times =</span> <span class="dv">31</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">times =</span> <span class="dv">49</span>))
-error &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">fact =</span> fact)
-<span class="kw">chart</span>(error, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>fact) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">error &lt;-<span class="st"> </span><span class="kw">data_frame</span>(<span class="dt">index =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">348</span>, <span class="dt">fact =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;a&quot;</span>, <span class="dt">times =</span> <span class="dv">10</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">times =</span> <span class="dv">1</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">times =</span> <span class="dv">1</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;d&quot;</span>, <span class="dt">times =</span> <span class="dv">50</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;e&quot;</span>, <span class="dt">times =</span> <span class="dv">2</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;f&quot;</span>, <span class="dt">times =</span> <span class="dv">78</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;g&quot;</span>, <span class="dt">times =</span> <span class="dv">101</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;h&quot;</span>, <span class="dt">times =</span> <span class="dv">25</span>) , <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">times =</span> <span class="dv">31</span>), <span class="kw">rep</span>(<span class="dt">x =</span> <span class="st">&quot;j&quot;</span>, <span class="dt">times =</span> <span class="dv">49</span>)))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(error, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>fact) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>

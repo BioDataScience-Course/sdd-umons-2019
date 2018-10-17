@@ -176,13 +176,6 @@ x <- c(1, 71, 55, 68, 78, 60, 83, 120, 82, 53, 26)
 mean(x)
 ```
 
-En partant d'un jeu de données, comme celui ci dessous :
-
-```{r, echo = FALSE}
-kable(ToothGrowth[c(1, 15, 30, 31, 45, 60),], caption = "Tableau de données relatif à la croissance de dents de cochons d'Inde")
-```
-
-Vous pouvez observez que ce jeu de données comprend trois variables avec une première variable portant sur le longueur des dents de cochons d'Inde, une seconde variable portant sur la supplémentation administrée ( VC, vitamine Cou OJ, jus d'orange) à ces derniers et enfin une troisième variable portant sur la dose administrée (0.5, 1, 2).
 
 
 ```{r, fig.cap= "Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur.", echo = FALSE}
@@ -207,12 +200,10 @@ Les éléments indispensables à la compréhension d'un graphe en barre sont (ic
 Les instructions de base afin de produire ce graphe en barre sont :
 
 ```{r, fig.cap="Instructions pour obtenir un graphique en barre indiquant les moyennes par groupe."}
-
 # Réalisation du graphique
 chart(copepoda, formula = size ~ class) +
   stat_summary(geom = "col", fun.y = "mean")
 ```
-
 
 #### Pièges et astuces
 
@@ -220,15 +211,19 @@ chart(copepoda, formula = size ~ class) +
 
 Le graphe en barre est un graphique très répandu dans le domaine scientifique malgré le grand nombre d'arguments contre lui que vous pouvez lire dans la section `Pour en savoir plus`. L'un des arguments le plus important est la faible information qu'il apporte.
 
-```{r, fig.cap="TODO"}
+```{r, fig.cap="Comparaison entre le graphique en barre et le nuage de point montrant tous les deux la taille moyenne en fonction des classes de copépodes."}
 a <- chart(copepoda, formula = size ~ class) +
-  stat_summary(geom = "col", fun.y = "mean")
+  stat_summary(geom = "col", fun.y = "mean") +
+  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust = 1))
 
 b <- chart(copepoda, formula = size ~ class) +
-  stat_summary(geom = "point", fun.y = "mean")
+  stat_summary(geom = "point", fun.y = "mean") +
+  theme(axis.text.x = element_text(angle= 45, vjust = 1, hjust = 1))
 
 ggarrange(a,b, labels = "AUTO")
 ```
+
+Comme vous pouvez le voir si dessus, un graphique de type nuage de point peut représenter la valeur moyenne avec tout autant d'intéret que le graphique en barre. 
 
 #### Pour en savoir plus 
 
@@ -247,7 +242,7 @@ ggarrange(a,b, labels = "AUTO")
 Le graphique en camembert va vous permettre de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barre. 
 
 ```{r, fig.cap= "Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur."}
-chart(e_m, formula = ~ factor(0) %fill=% e_mathaei) +
+chart(copepoda, formula = ~ factor(0) %fill=% class) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
   theme_void() +
@@ -261,8 +256,8 @@ Les éléments indispensables à la compréhension d'un graphe en camembert sont
 
 Les instructions de base afin de produire ce graphe en camembert sont :
 
-```{r, fig.cap= "Instructions "}
-chart(e_m, formula = ~ factor(0) %fill=% e_mathaei) +
+```{r, fig.cap= "Instructions pour obtenir un graphique en cammenbet."}
+chart(copepoda, formula = ~ factor(0) %fill=% class) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0)+
   labs( x = "", y = "") + 
@@ -276,16 +271,18 @@ Le graphique en camembert est un graphique également fortement répandu. Cepend
 
 Partons d'un exemple fictif, combien d'observations pour la lettre h comptez vous ? 
 
+```{r}
+
+error <- data_frame(index = 1:348, fact = c(rep(x = "a", times = 10), rep(x = "b", times = 1), rep(x = "c", times = 1), rep(x = "d", times = 50), rep(x = "e", times = 2), rep(x = "f", times = 78), rep(x = "g", times = 101), rep(x = "h", times = 25) , rep(x = "i", times = 31), rep(x = "j", times = 49)))
+```
+
 
 ```{r, fig.cap= "Piège d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur."}
-fact <- c(rep(x = "a", times = 10), rep(x = "b", times = 1), rep(x = "c", times = 1), rep(x = "d", times = 50), rep(x = "e", times = 2), rep(x = "f", times = 78), rep(x = "g", times = 101), rep(x = "h", times = 25) , rep(x = "i", times = 31), rep(x = "j", times = 49))
-error <- data_frame(fact = fact)
 chart(error, formula = ~ factor(0) %fill=% fact) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
   labs( x = "", y = "") +
   scale_fill_viridis(discrete = TRUE)
-
 ```
 
 Sur base de ce graphique en barre, combien d'observations pour la lettre h comptez vous ?
@@ -485,8 +482,6 @@ ggplot_box_legend <- function(family = "serif"){
 }
 ```
 
-
-
 La boite de dispersion ainsi que sa description sont proposée sur le graphique ci-dessous.
 
 ```{r, fig.cap= "Points essentiels d'une boite de dispersion et sa description." , echo = FALSE}
@@ -504,15 +499,13 @@ ggarrange(a,b)
 Les instructions de base afin de produire une boite de dispersion sont :
 
 ```{r, fig.cap="Instructions pour obtenir une boite de dispersion."}
-# Importation des données
-tg <- read("ToothGrowth", package = "datasets")
 # Réalisation du graphique 
-chart(tg, formula = len ~ supp) +
+chart(copepoda, formula = size ~ class) +
   geom_boxplot()
 ```
 
 
-La fonction `chart()` requiert comme argument le jeu de donnée (dataframe, tg), ainsi que la formule à employer YNUM (len) ~ XFACTOR (supp). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction `geom_boxplot()`.
+La fonction `chart()` requiert comme argument le jeu de donnée (dataframe, copepoda), ainsi que la formule à employer YNUM (size) ~ XFACTOR (class). Pour réaliser une boite de dispersion vous devez ajouter la seconde fonction `geom_boxplot()`.
 
 ### Pièges et Astuces
 
@@ -533,26 +526,30 @@ chart(error, formula = value ~ fac) +
   geom_point(color = "red") 
 ```
 
-La boite de dispersion "a" ne contient que 4 observations ce qui peut être totalement masqué par l'utilisation de boite de dispersion.
+La boite de dispersion "a" ne contient que 4 observations ce qui peut être totalement masqué par l'utilisation de boites de dispersion.
 
 Une des solutions permettant de connaitre graphiquement la nombre d'observations par boite est de l'ajouter au dessus de chaque boite avec la fonction `give_n()`
+
 ```{r, fig.cap= " Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée."}
 give_n <- function(x){
   return(c(y = max(x)*1.20, label = length(x))) 
 }
 
-chart(formula = len ~ supp, data = tg) +
+chart(copepoda, formula = size ~ class) +
   geom_boxplot() + 
   stat_summary(fun.data = give_n, geom = "text", hjust = 0.5)
 ```
 
 ```{r, fig.cap= " Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée."}
-chart(formula = len ~ supp %fill=% as.ordered(dose), data = tg) +
+
+#Importation du jeu de données ToothGrowth
+(toothgrowth <- read("ToothGrowth", package = "datasets", lang  = "fr"))
+# réalisation graphique
+chart(toothgrowth, formula = len ~ supp %fill=% as.ordered(dose)) +
   geom_boxplot() +
   stat_summary(fun.data = give_n, geom = "text", hjust = 0.5, 
                position = position_dodge(0.75))
 ```
-
 
 ### Pour en savoir plus ! 
 
@@ -575,7 +572,7 @@ L'une des règles les plus importantes que vous devez impérativement garder à 
 
 ```{r, fig.cap= "Nuage de point montrant la variation de la masse de poulets au cours du temps."}
 # Importation des données
-ChickWeight <- read(file = "ChickWeight", package = "datasets", lang = "fr")
+(ChickWeight <- read(file = "ChickWeight", package = "datasets", lang = "fr"))
 # Réalisation du graphique
 chart(ChickWeight, formula = weight ~ Time) +
   geom_point(alpha = 0.3)
@@ -592,7 +589,7 @@ Vous observez que les échelles en abscisse et en ordonnée sont similaires. Cel
 
 ### `ggarrange()`
 
-La fonctions `ggarrange()` du package `ggpubr` permet de combiner plusieurs graphiques.
+La fonction `ggarrange()` permet de combiner plusieurs graphiques.
 
 ```{r , fig.cap= "A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine."}
 # Importation des données
@@ -604,7 +601,7 @@ a <- chart(urchin, formula = weight ~ height %col=% origin) +
 b <- chart(urchin, formula = weight ~ solid_parts %col=% origin) +
   geom_point()
 # Combinaison des graphiques
-ggpubr::ggarrange(a, b, common.legend = TRUE, legend = "bottom", align = "v")
+ggarrange(a, b, common.legend = TRUE)
 ```
 
 Il existe d'autres fonctions permettant de combiner plusieurs graphiquescomme [`plot_grid()`](https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html) du package`cowplot`.
@@ -628,12 +625,10 @@ Depuis le début, l'ensemble des graphiques que nous vous avons proposé utilise
 
 ```{r, fig.cap= "Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique chart()."}
 # Importation des données
-ub <- read("urchin_bio", package = "data.io")
+(urchin <- read("urchin_bio", package = "data.io"))
 # Réalisation du graphique
-chart(ub,formula = height ~ weight %col=% origin) + 
-  geom_point() +
-  labs( x = "Poids [g]", 
-        y = "Taille [mm]")
+chart(urchin,formula = height ~ weight %col=% origin) + 
+  geom_point() 
 ```
 
 Voici d'autres alternatives que sont 
@@ -683,15 +678,16 @@ Vous observez rapidement certaines similitudes entre `chart`, `ggplot2` et `latt
 
 ## A vous de jouer !
 
+- **Proposez 5 graphiques inédits (qui n'ont pas été vu dans le module 2, 3 et 4) dans vos différents projets **
+
 - Terminez ce module en vérifiant que vous avez acquis l'ensemble des notions de ce module.
 
 ```{block2, type='bdd'}
 
 Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
 
-    BioDataScience::run("03a_test")
+    BioDataScience::run("....")
 
 ```
 
 
-- **Proposez 5 graphiques inédits (qui n'ont pas été vu dans le module 2, 3 et 4) dans vos différents projets **
