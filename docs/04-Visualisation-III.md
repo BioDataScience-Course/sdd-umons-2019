@@ -328,7 +328,7 @@ chart(copepoda, formula = ~ factor(0) %fill=% class) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
   theme_void() +
-  scale_fill_viridis(discrete = TRUE)
+  scale_fill_viridis_d()
 ```
 
 <div class="figure" style="text-align: center">
@@ -350,7 +350,7 @@ chart(copepoda, formula = ~ factor(0) %fill=% class) +
   coord_polar("y", start = 0)+
   labs( x = "", y = "") + 
   theme_void() +
-  scale_fill_viridis(discrete = TRUE)
+  scale_fill_viridis_d()
 ```
 
 <div class="figure" style="text-align: center">
@@ -376,7 +376,7 @@ chart(error, formula = ~ factor(0) %fill=% fact) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
   labs( x = "", y = "") +
-  scale_fill_viridis(discrete = TRUE)
+  scale_fill_viridis_d()
 ```
 
 <div class="figure" style="text-align: center">
@@ -390,7 +390,7 @@ Sur base de ce graphique en barres, combien d'observations pour la lettre h comp
 ```r
 chart(error, formula = ~ factor(fact) %fill=% fact) +
   geom_bar(width = 1) +
-  scale_fill_viridis(discrete = TRUE)
+  scale_fill_viridis_d()
 ```
 
 <div class="figure" style="text-align: center">

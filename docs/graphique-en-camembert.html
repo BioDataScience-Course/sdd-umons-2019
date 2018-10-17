@@ -280,7 +280,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.svg" alt="Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
@@ -297,7 +297,7 @@ Figure 4.11: Points essentiels d’un graphique en camembert montrant le dénomb
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>)<span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Instructions pour obtenir un graphique en cammenbet." width="672" />
 <p class="caption">
@@ -313,7 +313,7 @@ Figure 4.12: Instructions pour obtenir un graphique en cammenbet.
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-16"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-16-1.svg" alt="Piège d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
@@ -323,7 +323,7 @@ Figure 4.13: Piège d’un graphique en camembert montrant le dénombrement des 
 <p>Sur base de ce graphique en barres, combien d’observations pour la lettre h comptez-vous ?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(error, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(fact) <span class="op">%fill=%</span><span class="st"> </span>fact) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-17"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-17-1.svg" alt="Dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">

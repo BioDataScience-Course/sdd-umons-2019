@@ -4,7 +4,7 @@
 knitr::opts_chunk$set(comment = '#', fig.align = "center")
 SciViews::R
 library(knitr)
-library(viridis)
+#library(viridis)
 
 # Import Dataset
 zooplankton <- read("zooplankton", package = "data.io", lang = "fr")
@@ -246,7 +246,7 @@ chart(copepoda, formula = ~ factor(0) %fill=% class) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
   theme_void() +
-  scale_fill_viridis(discrete = TRUE)
+  scale_fill_viridis_d()
 ```
 
 Les éléments indispensables à la compréhension d'un graphe en camembert sont : 
@@ -262,7 +262,7 @@ chart(copepoda, formula = ~ factor(0) %fill=% class) +
   coord_polar("y", start = 0)+
   labs( x = "", y = "") + 
   theme_void() +
-  scale_fill_viridis(discrete = TRUE)
+  scale_fill_viridis_d()
 ```
 
 ### Pièges et astuces
@@ -282,7 +282,7 @@ chart(error, formula = ~ factor(0) %fill=% fact) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
   labs( x = "", y = "") +
-  scale_fill_viridis(discrete = TRUE)
+  scale_fill_viridis_d()
 ```
 
 Sur base de ce graphique en barres, combien d'observations pour la lettre h comptez-vous ?
@@ -290,7 +290,7 @@ Sur base de ce graphique en barres, combien d'observations pour la lettre h comp
 ```{r, fig.cap= "Dénombrement des niveaux d'une variable facteur."}
 chart(error, formula = ~ factor(fact) %fill=% fact) +
   geom_bar(width = 1) +
-  scale_fill_viridis(discrete = TRUE)
+  scale_fill_viridis_d()
 ```
 
 ### Pour en savoir plus 
