@@ -201,7 +201,7 @@ Prêtez une attention toute particulière à l'organisation d'un script R. En pl
 N'oubliez pas de vous enregistrer (login GitHub et email UMONS) au début, et d'appuyer sur la touche `ESC` pour reprendre la main dans R à la fin d'un tutoriel.</div>\EndKnitrBlock{bdd}
 
 
-## Intégration des graphiques dans un rapport: R Markdown
+## Graphiques dans R Markdown
 
 Un fichier R Markdown est un fichier avec une extension `.Rmd`. Il permet de combiner le langage Markdown que vous avez déjà abordé au premier module avec du code R, tel que celui utilisé dans la première partie de ce module 2. 
 

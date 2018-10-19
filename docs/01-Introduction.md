@@ -13,7 +13,7 @@
 - Se sensibiliser à l'importance d'une présence web au niveau professionnel.
 
 
-## Comment le monde était-il y a 25 ans ? {#donnees}
+## Le monde il y a 25 ans {#donnees}
 
 Il y a 25 ans, pas d'internet, pas de smartphone. Essayez d'imaginer ce que serait votre vie aujourd'hui si ces outils qui font partie de votre quotidien n'existaient pas.
 
@@ -42,6 +42,7 @@ Vous pouvez maintenant avoir un aperçu de l'importance d'avoir des outils perfo
 
 ## Découverte des outils
 La science des données est complexe et requiert d'employer des outils performants. Nous avons sélectionné ces outils pour vous.
+
 
 ### Machine virtuelle
 

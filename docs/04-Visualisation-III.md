@@ -5,45 +5,47 @@
 
 #### Objectifs {-}
 
-- Savoir réaliser différents graphiques comme le graphique en barres, le graphique en camembert ou encore la boîte de dispersion, dans R avec la fonction `chart()`
+- Savoir réaliser différents graphiques pour représenter des variables facteurs comme le graphique en barres, ou le graphique en camembert dans R avec la fonction `chart()`
 
-- Arranger différents graphiques dans une figure unique. 
+- Comprendre et utiliser la boîte de dispersion pour _synthétiser_ la distribution de données numériques 
 
-- Découvrir différents systèmes graphiques (graphiques de base, lattice, ggplot2) et comparaison avec `chart()`
+- Arranger différents graphiques dans une figure unique
+
+- Découvrir différents systèmes graphiques (graphiques de base, lattice, ggplot2) et les comparer entre eux
 
 
 #### Prérequis {-}
 
-Si ce n'est déjà fait, vous devez avoir réaliser les module 2 & 3.
+Assurez-vous de bien maîtriser les notions relatives à la représentation graphiques vues jusqu'ici dans les modules \@ref(visu1) et \@ref(visu2).
 
 
 ## Graphique en barres
 
 ### Dénombrement d'observations par facteur
 
-Vous souhaitez représenter une dénombrement des différents niveaux d'une variable facteur. On peut l'exprimer dans R sous la forme :
+Le graphique en barres est très similaire à l'histogramme, si ce n'est que l'on ne part pas d'une variable numérique découpée en classes, mais d'une variable facteur dont les observations sont donc déjà réparties en un (petit) nombre de classes distinctes. La question du nombre et/ou de l'intervalle des classes ne se pose donc plus ici. Par défaut, les barres seront séparées les unes des autres par un petit espace vide pour bien indiquer visuellement qu'il n'y a pas continuité entre les classes (dans l'histogramme, les barres sont accolées les unes aux autres pour matérialiser justement cette continuité).
+
+La formule que vous utiliserez, ici encore, ne fait appel qu'à une seule variable et s'écrira donc :
 
 $$\sim variable \ facteur$$
-que l'on peut lire :
 
-$$\ en \ fonction \ de \ la \ variable \ facteur$$
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.svg" alt="Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-1)Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.svg" alt="Exemple d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-1)Exemple d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs.</p>
 </div>
 
-Les éléments indispensables à la compréhension d'un graphique en barres sont (ici mis en évidence en couleur) : 
+Outre les barres elles-mêmes, prêtez toujours attention aux élements suivants du graphique (ici mis en évidence en couleurs) :
 
 - les axes avec les graduations (en rouge)
-- le label en x  (en bleu)
-- les niveaux de la variable facteur
+- les niveaux de la variable facteur (en rouge également)
+- le label des axes (en bleu)
 
-Les instructions de base afin de produire un graphique en barres sont :
+Les instructions dans R pour produire un graphique en barres à l'aide de la fonction `chart()` sont :
 
 
 ```r
 # Importation du jeu de données
-(zooplankton <- read( file = "zooplankton", package = "data.io", lang = "fr"))
+(zooplankton <- read("zooplankton", package = "data.io", lang = "fr"))
 ```
 
 ```
@@ -67,7 +69,8 @@ Les instructions de base afin de produire un graphique en barres sont :
 
 ```r
 # Réduction du jeu de données 
-(copepoda <- filter(zooplankton, class %in% c("Calanoid", "Cyclopoid",  "Harpacticoid",  "Poecilostomatoid")))
+(copepoda <- filter(zooplankton,
+  class %in% c("Calanoid", "Cyclopoid",  "Harpacticoid",  "Poecilostomatoid")))
 ```
 
 ```
@@ -91,7 +94,7 @@ Les instructions de base afin de produire un graphique en barres sont :
 
 ```r
 # Réalisation du graphique
-chart(copepoda, formula = ~ class) +
+chart(data = copepoda, ~ class) +
   geom_bar()
 ```
 
@@ -100,14 +103,15 @@ chart(copepoda, formula = ~ class) +
 <p class="caption">(\#fig:unnamed-chunk-2)Instructions pour obtenir un graphique en barres.</p>
 </div>
 
-La fonction `chart()` requiert comme argument le jeu de données (`dataframe`, `copepoda`), ainsi que la formule à employer ` ~ XVAR (class)`. Pour réaliser un graphique en barres, vous devez utiliser ensuite la fonction `geom_bar()`.
+La fonction `geom_bar()` se charge d'ajouter les barres verticales dans le graphique. La hauteur de ces barres correspond au nombre d'observations rencontrées dans le jeu de données pour chaque niveau (ou classe, ou groupe) de la variable facteur représentée.
+
 
 #### Dénombrement par plusieurs facteurs
 
 
 ```r
-#importation des données biometry
-(biometry <- read("biometry", package = "BioDataScience", lang= "fr"))
+# Importation des données biometry
+(biometry <- read("biometry", package = "BioDataScience", lang = "fr"))
 ```
 
 ```
@@ -128,58 +132,63 @@ La fonction `chart()` requiert comme argument le jeu de données (`dataframe`, `
 ```
 
 ```r
-# conversion de la variable year_measure de numérique à facteur
+# Conversion de la variable year_measure de numérique à facteur
 biometry$year_measure <- as.factor(biometry$year_measure)
-attr(biometry$year_measure, "label") <- "Année de la mesure"
+label(biometry$year_measure) <- "Année de la mesure"
 ```
 
-Différentes représentations sont possibles pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l'argument `position` a pour valeur `stack`.
+Différentes représentations sont possibles pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l'argument `position =` a pour valeur par défaut `stack` (donc, lorsque cet argument n'est pas précisé dans `geom_bar()`).
 
 
 ```r
-a <- chart(biometry, formula = ~ gender) +
+a <- chart(data = biometry, ~ gender) +
   geom_bar()
 
-b <- chart(biometry, formula = ~ gender %fill=% year_measure) +
-  geom_bar()
+b <- chart(data = biometry, ~ gender %fill=% year_measure) +
+  geom_bar() +
+  scale_fill_viridis_d()
 
-ggarrange(a,b, common.legend = TRUE)
+combine_charts(list(a, b), common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement du individus homme et femme dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesures." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Dénombrement du individus homme et femme dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesures.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement des hommes et des femmes dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-4)Dénombrement des hommes et des femmes dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure.</p>
 </div>
 
-Il existe d'autres solutions en utilisant la valeur `dodge` ou `fill` pour l'argument `position`.
+Il existe d'autres options en utilisant la valeur `dodge` ou `fill` pour l'argument `position =`.
 
 
 ```r
-a <- chart(biometry, formula = ~ gender %fill=% year_measure) +
-  geom_bar(position = "stack")
-b <- chart(biometry, formula = ~ gender %fill=% year_measure) +
-  geom_bar(position = "dodge")
-c <- chart(biometry, formula = ~ gender %fill=% year_measure) +
-  geom_bar(position = "fill")
-ggarrange(a, b, c, common.legend = TRUE, labels = "AUTO")
+a <- chart(data = biometry, ~ gender %fill=% year_measure) +
+  geom_bar(position = "stack") +
+  scale_fill_viridis_d()
+b <- chart(data = biometry, ~ gender %fill=% year_measure) +
+  geom_bar(position = "dodge") +
+  scale_fill_viridis_d()
+c <- chart(data = biometry, ~ gender %fill=% year_measure) +
+  geom_bar(position = "fill") +
+  scale_fill_viridis_d()
+combine_charts(list(a, b, c), common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement du individus homme et femme dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesures." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Dénombrement du individus homme et femme dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesures.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement des hommes et des femmes dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-5)Dénombrement des hommes et des femmes dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure.</p>
 </div>
 
-Soyez vigilant à la différence entre l'argument **stack** et l'argument **fill** qui malgré un rendu semblable ont l'axe des ordonnées qui diffère.
+Soyez vigilant à la différence entre l'argument `position = stack` et `position = fill` qui malgré un rendu semblable ont l'axe des ordonnées qui diffère (dans le cas de `fill`, il s'agit de la proportion par rapport au total qui est représentée).
+
 
 #### Pièges et Astuces
 
 ##### Réordonner la variable facteur par fréquence
 
-Vous pouvez avoir le souhait d'ordonner votre variable facteur afin d'améliorer le rendu visuel de votre graphique. Vous pouvez employer la fonction `fct_infreq()`. 
+Vous pouvez avoir le souhait d'ordonner votre variable facteur afin d'améliorer le rendu visuel de votre graphique. Pour cela, vous pouvez employer la fonction `fct_infreq()`. 
 
 
 ```r
-chart(copepoda, formula = ~ fct_infreq(class)) +
+chart(data = copepoda, ~ fct_infreq(class)) +
   geom_bar()
 ```
 
@@ -190,12 +199,26 @@ chart(copepoda, formula = ~ fct_infreq(class)) +
 
 ##### Rotation du graphique en barre
 
-Lorsque les niveaux dans la variable étudiée sont trop nombreux, la légende en abscisse risque de se chevaucher.
+Lorsque les niveaux dans la variable étudiée sont trop nombreux, la légende en abscisse risque de se chevaucher, comme dans la Fig. \@ref(fig:barchart1)
 
 
 ```r
-chart(zooplankton, formula = ~ class) +
+chart(data = zooplankton, ~ class) +
   geom_bar()
+```
+
+<div class="figure" style="text-align: center">
+<img src="04-Visualisation-III_files/figure-html/barchart1-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
+<p class="caption">(\#fig:barchart1)Dénombrement des classes du jeu de données zooplankton.</p>
+</div>
+
+Avec la fonction `coord_flip()` ajoutée à votre graphique, vous pouvez effectuer une rotation des axes pour obtenir un **graphique en barres horizontales**. De plus, l'oeil humain perçoit plus distinctement les différences de longueurs horizontales que verticales. Donc, de ce point de vue, le graphe en barres horizontal est considéré comme meilleur que le graphe en barres verticales. 
+
+
+```r
+chart(data = zooplankton, ~ class) +
+  geom_bar() +
+  coord_flip()
 ```
 
 <div class="figure" style="text-align: center">
@@ -203,48 +226,41 @@ chart(zooplankton, formula = ~ class) +
 <p class="caption">(\#fig:unnamed-chunk-7)Dénombrement des classes du jeu de données zooplankton.</p>
 </div>
 
-Avec la fonction `coord_flip()` ajoutée à votre graphique, vous pouvez effectuer une rotation des axes. De plus, l'oeil humain perçoit plus distinctement les différences de tailles horizontales que verticales. 
-
-
-```r
-chart(zooplankton, formula = ~ class) +
-  geom_bar() +
-  coord_flip()
-```
-
-<div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-8-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-8)Dénombrement des classes du jeu de données zooplankton.</p>
-</div>
-
 
 #### Pour en savoir plus 
 
-- http://www.sthda.com/french/wiki/ggplot2-barplots-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees
+- [Graphes en barres à l'aide de ggplot2](http://www.sthda.com/french/wiki/ggplot2-barplots-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees). Un tutoriel en français utilisant la fonction `ggplot()`. L'annotation des barres est également présentée.
 
-- http://ggplot2.tidyverse.org/reference/geom_bar.html
+- [Page d'aide de la fonction `geom_bar()`](http://ggplot2.tidyverse.org/reference/geom_bar.html) en anglais.
 
-- http://ggplot.yhathq.com/docs/geom_bar.html
+- [Autres exemples de graphes en barres](http://ggplot.yhathq.com/docs/geom_bar.html) à l'aide de ``ggplot()`.
 
 
-### Valeur moyenne à l'aide d'un graphe en barres
+### Valeurs moyennes à l'aide d'un graphe en barres
 
-Le graphique en barres peut être employé afin de résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les occurrences d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de $$y \sim x$$ que l'on peut lire : $$y \ en \ fonction \ de \ x$$ ou encore $$Variable \ numérique \ en \ fonction \ de \ Variable \ facteur$$ 
+Le graphique en barres peut être employé pour résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les occurrences d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de
 
-Considérez l'échantillon suivant :
+$$y \sim x$$
+
+que l'on peut lire :
+
+$$y \ en \ fonction \ de \ x$$
+
+Avec _y_ une variable numérique et _x_ une variable facteur. Considérez l'échantillon suivant :
 
 ```
 1, 71, 55, 68, 78, 60, 83, 120, 82 ,53, 26
 ```
 
-Calculez la moyenne sur base de la formule de la moyenne $$\overline{y} = \sum_{i = 1}^n \frac{y_i}{n}$$
+Calculez la moyenne sur base de la formule de la moyenne
+
+$$\overline{y} = \sum_{i = 1}^n \frac{y_i}{n}$$
 
 
 
 ```r
 # Création du vecteur
 x <- c(1, 71, 55, 68, 78, 60, 83, 120, 82, 53, 26)
-
 # Calcul  de la moyenne
 mean(x)
 ```
@@ -253,70 +269,31 @@ mean(x)
 # [1] 63.36364
 ```
 
-
-
-<div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" alt="Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-10)Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur.</p>
-</div>
-
-Les éléments indispensables à la compréhension d'un graphe en barres sont (ici mis en évidence en couleur) : 
-
-- les axes avec les graduations (en rouge)
-- les labels et unités des axes (en bleu) 
-
-
-Les instructions de base afin de produire ce graphe en barres sont :
+Les instructions pour produire ce graphe en barres à l'aide de `chart()` sont :
 
 
 ```r
 # Réalisation du graphique
-chart(copepoda, formula = size ~ class) +
+chart(data = copepoda, size ~ class) +
   stat_summary(geom = "col", fun.y = "mean")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-11)Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-9-1.svg" alt="Graphique en barres représentant les moyennes par groupe." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-9)Graphique en barres représentant les moyennes par groupe.</p>
 </div>
 
-#### Pièges et astuces
+Ici, nous faisons appel à une autre famille de fonctions : celles qui effectuent des calculs sur les données avant de les représenter graphiquement.
 
-##### Moyenne
+\BeginKnitrBlock{warning}<div class="warning">Le graphe en barres pour représenter les moyennes est très répandu dans le domaine scientifique malgré le grand nombre d'arguments en sa défaveur et que vous pouvez lire dans la section **pour en savoir plus** ci-dessous. L'un des arguments le plus important est la faible information qu'il véhicule puisque l'ensemble des données n'est plus représentée que par une valeur (la moyenne) pour chaque niveau de la variable facteur. Pour un petit nombre d'observations, il vaut mieux toutes les représenter à l'aide d'un nuage de points. Si le nombre d'observation devient très grand (dizianes ou plus), le graphique en boites de dispersion est plus indiqué (voir plus loin dans ce module).</div>\EndKnitrBlock{warning}
 
-Le graphe en barre est un graphique très répandu dans le domaine scientifique malgré le grand nombre d'arguments contre lui que vous pouvez lire dans la section `Pour en savoir plus`. L'un des arguments le plus important est la faible information qu'il apporte.
-
-
-```r
-a <- chart(copepoda, formula = size ~ class) +
-  stat_summary(geom = "col", fun.y = "mean") +
-  theme(axis.text.x = element_text(angle=45, vjust = 1, hjust = 1))
-
-b <- chart(copepoda, formula = size ~ class) +
-  stat_summary(geom = "point", fun.y = "mean") +
-  theme(axis.text.x = element_text(angle= 45, vjust = 1, hjust = 1))
-
-ggarrange(a,b, labels = "AUTO")
-```
-
-<div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-12)Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes.</p>
-</div>
-
-Comme vous pouvez le voir ci-dessus, un graphique de type nuage de point peut représenter la valeur moyenne avec tout autant d'intérêt que le graphique en barres. 
 
 #### Pour en savoir plus 
 
-- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3148365/ 
+- [Beware of dynamite](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/TatsukiRcode/Poster3.pdf). Démonstration de l'impact d'un graphe en barres pour représenter la moyenne (et l'écart type) = graphique en "dynamite".
 
-- https://www.r-bloggers.com/dynamite-plots-in-r/
+- [Dynamite plots : unmitigated evil?](http://emdbolker.wikidot.com/blog%3Adynamite) Une autre comparaison du graphe en dynamite avec des représentations alternatives qui montre que le premier peut avoir quand même quelques avantages dans des situations particulières.
 
-- https://pablomarin-garcia.blogspot.com/2010/02/why-dynamite-plots-are-bad.html
-
-- http://biostat.mc.vanderbilt.edu/wiki/pub/Main/TatsukiRcode/Poster3.pdf 
-
-- http://emdbolker.wikidot.com/blog%3Adynamite
 
 ## Graphique en camembert
 
@@ -324,7 +301,7 @@ Le graphique en camembert va vous permettre de visualiser un dénombrement d'obs
 
 
 ```r
-chart(copepoda, formula = ~ factor(0) %fill=% class) +
+chart(data = copepoda, ~ factor(0) %fill=% class) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
   theme_void() +
@@ -332,82 +309,46 @@ chart(copepoda, formula = ~ factor(0) %fill=% class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.svg" alt="Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-13)Points essentiels d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Exemple de graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-11)Exemple de graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
 </div>
 
-Les éléments indispensables à la compréhension d'un graphe en camembert sont : 
+Ce graphique est plus difficile à réaliser à l'aide de `chart()` ou `ggplot()`. En fait, il faut ruser ici, et l'auteur du package **ggplot2** n'avait tout simplement pas l'intention d'ajouter ce type de graphique dans la panoplie proposée. En effet, il faut savoir que l'oeil humain est nettement moins bon pour repérer des angles que pour comparer des longueurs. **Donc, le diagramme en barres est souvent meilleur pour comparer des dénombrements par classes.** Mais d'une part, le graphique en camembert est (malheureusement) un graphique très répandu et il faut savoir l'interpréter, et d'autre part, il peut s'avérer quand même utile dans certaines situations. Notez l'utilisation de la fonction `theme_void()` qui crée un graphique sans axes.
 
-- les niveaux de la variable facteur 
-
-
-Les instructions de base afin de produire ce graphe en camembert sont :
-
-
-```r
-chart(copepoda, formula = ~ factor(0) %fill=% class) +
-  geom_bar(width = 1) + 
-  coord_polar("y", start = 0)+
-  labs( x = "", y = "") + 
-  theme_void() +
-  scale_fill_viridis_d()
-```
-
-<div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Instructions pour obtenir un graphique en cammenbet." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-14)Instructions pour obtenir un graphique en cammenbet.</p>
-</div>
 
 ### Pièges et astuces
 
-Le graphique en camembert est un graphique également fortement répandu. Cependant, l'oeil humain perçoit avec plus de précision les différences de formes que les différences d'angles. Un grand nombre de niveaux dans une variable facteur va avoir pour effet de remplir. De ce fait, il est donc déconseillé d'employer le graphique en camembert  
-
-Partons d'un exemple fictif, combien d'observations pour la lettre h comptez-vous ? 
-
-
-```r
-error <- data_frame(index = 1:348, fact = c(rep(x = "a", times = 10), rep(x = "b", times = 1), rep(x = "c", times = 1), rep(x = "d", times = 50), rep(x = "e", times = 2), rep(x = "f", times = 78), rep(x = "g", times = 101), rep(x = "h", times = 25) , rep(x = "i", times = 31), rep(x = "j", times = 49)))
-```
+Partons d'un exemple fictif pour vous convaincre qu'un graphique en barres est souvent plus lisible qu'un graphique en camembert. Combien d'observations comptez-vous pour la lettre **h** ? 
 
 
 
-```r
-chart(error, formula = ~ factor(0) %fill=% fact) +
-  geom_bar(width = 1) + 
-  coord_polar("y", start = 0) +
-  labs( x = "", y = "") +
-  scale_fill_viridis_d()
-```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-16-1.svg" alt="Piège d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-16)Piège d'un graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.svg" alt="Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-13)Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider).</p>
 </div>
 
-Sur base de ce graphique en barres, combien d'observations pour la lettre h comptez-vous ?
-
-
-```r
-chart(error, formula = ~ factor(fact) %fill=% fact) +
-  geom_bar(width = 1) +
-  scale_fill_viridis_d()
-```
+Maintenant, effectuez le même exercice sur base d'un graphique en barres, combien d'observations pour la lettre **h** ?
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-17-1.svg" alt="Dénombrement des niveaux d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-17)Dénombrement des niveaux d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Dénombrement des niveaux d'une variable facteur sur un graphique en barres." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-14)Dénombrement des niveaux d'une variable facteur sur un graphique en barres.</p>
 </div>
+
+Dans ce dernier cas, c'est bien plus facile : il y a effectivement 24 observations relatives à la lettre **h**.
+
 
 ### Pour en savoir plus 
 
 
-- http://www.sthda.com/french/wiki/ggplot2-graphique-en-camembert-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees
+- [Graphique en camembert à l'aide de la fonction `ggplot()`](http://www.sthda.com/french/wiki/ggplot2-graphique-en-camembert-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees). Explications en français des différentes étapes pour passer d'un graphique en barres à un graphique en camembert avec **ggplot2**.
 
-- https://dataparkblog.wordpress.com/2017/09/24/diagramme-en-camembert-avec-r-et-ggplot/
+- [Autre explication](https://dataparkblog.wordpress.com/2017/09/24/diagramme-en-camembert-avec-r-et-ggplot/) en français, également accompagnée d'informations sur les bonnes pratiques en matière de graphique en camembert.
 
-- https://www.displayr.com/why-pie-charts-are-better-than-bar-charts/
+- [Save the pies for dessert](http://www.perceptualedge.com/articles/08-21-07.pdf) est une démonstration détaillée des méfaits du graphique en camembert (le graphique en camembert, un graphique puant ? Pourrait-on peut-être titrer en français).
 
-- http://www.perceptualedge.com/articles/08-21-07.pdf
+- [Les côtés positifs du graphe en camembert](https://www.displayr.com/why-pie-charts-are-better-than-bar-charts/) sont mis en évidence dans ce document (en anglais).
+
 
 ## Boite de dispersion
 
@@ -457,15 +398,15 @@ fivenum(x)
 Vous pouvez réprésenter ce vecteur via une boite de dispersion
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-21-1.svg" alt="Nuage de points montrant la première étape de la construction d'une boite de dispersion." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-21)Nuage de points montrant la première étape de la construction d'une boite de dispersion.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-18-1.svg" alt="Nuage de points montrant la première étape de la construction d'une boite de dispersion." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-18)Nuage de points montrant la première étape de la construction d'une boite de dispersion.</p>
 </div>
 
 La boite de dispersion représente donc les 5 nombres. Vous observez cependant que certaine valeur ne se situe pas dans la boite de dispersion, il s'agit de valeurs extrêmes. Elles sont considérées comme extrêmes car elles sont éloignées de plus 1.5 fois l'espace inter-quartile (Q3- Q1). La boite de dispersion s'arrête donc aux dernières valeurs présente dans cet espace inter-quartile (IQR).
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.svg" alt="A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-22)A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-19-1.svg" alt="A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-19)A) Nuage de points montrant la construction d'une boite de dispersion avec les 5 nombres représentés par des lignes noires. B) Boite de dispersion obtenue par rapport à la partie A.</p>
 </div>
 
 
@@ -473,8 +414,8 @@ La boite de dispersion représente donc les 5 nombres. Vous observez cependant q
 La boite de dispersion ainsi que sa description sont proposée sur le graphique ci-dessous.
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.svg" alt="Points essentiels d'une boite de dispersion et sa description." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-24)Points essentiels d'une boite de dispersion et sa description.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-21-1.svg" alt="Points essentiels d'une boite de dispersion et sa description." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-21)Points essentiels d'une boite de dispersion et sa description.</p>
 </div>
 
 Les instructions de base afin de produire une boite de dispersion sont :
@@ -487,8 +428,8 @@ chart(copepoda, formula = size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt="Instructions pour obtenir une boite de dispersion." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-25)Instructions pour obtenir une boite de dispersion.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.svg" alt="Instructions pour obtenir une boite de dispersion." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-22)Instructions pour obtenir une boite de dispersion.</p>
 </div>
 
 
@@ -501,8 +442,8 @@ La fonction `chart()` requiert comme argument le jeu de données (dataframe, cop
 Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d'observation qui se cache sous chaque boite de dispersion. En effet, une boite de dispersion ne comportant que 5 valeurs ou moins n'a que peu d'intérêt d'être avec cet outils graphique. 
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt="Piège des boites de dispersion." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-26)Piège des boites de dispersion.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-23-1.svg" alt="Piège des boites de dispersion." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-23)Piège des boites de dispersion.</p>
 </div>
 
 La boite de dispersion "a" ne contient que 4 observations ce qui peut être totalement masqué par l'utilisation de boites de dispersion.
@@ -521,8 +462,8 @@ chart(copepoda, formula = size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-27-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-27) Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-24) Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation administrée.</p>
 </div>
 
 
@@ -557,8 +498,8 @@ chart(toothgrowth, formula = len ~ supp %fill=% as.ordered(dose)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-28-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-28) Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt=" Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-25) Boite de dispersion portant sur la croissance de dents de cochon d'Inde en fonction de la supplémentation et la dose administrée.</p>
 </div>
 
 ### Pour en savoir plus ! 
@@ -610,8 +551,8 @@ chart(ChickWeight, formula = weight ~ Time) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-29-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-29)Nuage de point montrant la variation de la masse de poulets au cours du temps.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-26)Nuage de point montrant la variation de la masse de poulets au cours du temps.</p>
 </div>
 
 Le graphique ci-dessus peut par exemple être simplifié avec les facets. L'information que l'on souhaite partager est la même mais les choix graphiques rendent sa lecture plus aisée. De plus, la fenêtre graphique a la même taille par défaut que pour un seul graphique. De ce fait, réaliser de multiples graphiques peut rendre sa lecture impossible par une taille trop faible.
@@ -623,8 +564,8 @@ chart(ChickWeight, formula = weight ~ Time | Diet ) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-30-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-30)Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4).</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-27-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-27)Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4).</p>
 </div>
 
 Vous observez que les échelles en abscisse et en ordonnée sont similaires. Cela permet une meilleure comparaison.
@@ -648,8 +589,8 @@ ggarrange(a, b, common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-31-1.svg" alt="A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-31)A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-28-1.svg" alt="A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-28)A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine.</p>
 </div>
 
 Il existe d'autres fonctions permettant de combiner plusieurs graphiquescomme [`plot_grid()`](https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html) du package`cowplot`.
@@ -705,8 +646,8 @@ chart(urchin,formula = height ~ weight %col=% origin) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-32-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique chart()." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-32)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique chart().</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-29-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique chart()." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-29)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique chart().</p>
 </div>
 
 Voici d'autres alternatives que sont 
@@ -720,8 +661,8 @@ legend(x = 80, y = 10, legend = c("Farm", "Fishery"), col = c("Black", "Red"), p
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-33-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique  r de base." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-33)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique  r de base.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-30-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique  r de base." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-30)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique  r de base.</p>
 </div>
 
 - lattice
@@ -734,8 +675,8 @@ xyplot( height ~ weight, data = urchin, groups = origin,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-34-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique lattice." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-34)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique lattice.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-31-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique lattice." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-31)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique lattice.</p>
 </div>
 
 - ggplot2
@@ -748,8 +689,8 @@ ggplot(data = urchin) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-35-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique ggplot2." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-35)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique ggplot2.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-32-1.svg" alt="Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique ggplot2." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-32)Nuage de point montrant la variation de la taille en fonction du poids d'oursins et de leur origine avec le système graphique ggplot2.</p>
 </div>
 
 Vous observez rapidement certaines similitudes entre `chart`, `ggplot2` et `lattice`. En effet, la package `chart` a pour but premier de combiner les meilleures outils présents dans chacun des modes graphiques présentés ci-dessus. 
