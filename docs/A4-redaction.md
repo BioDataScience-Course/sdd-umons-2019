@@ -42,9 +42,9 @@ xfun::session_info()
 ```
 R version 3.4.4 (2018-03-15)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS High Sierra 10.13.4
+Running under: macOS  10.14
 
-Locale: fr_BE.UTF-8 / fr_BE.UTF-8 / fr_BE.UTF-8 / C / fr_BE.UTF-8 / fr_BE.UTF-8
+Locale: en_US.UTF-8 / en_US.UTF-8 / en_US.UTF-8 / C / en_US.UTF-8 / en_US.UTF-8
 
 Package version:
   acepack_1.4.1       anytime_0.3.1       assertthat_0.2.0   
@@ -58,7 +58,7 @@ Package version:
   data.table_1.11.4   datasets_3.4.4      DBI_1.0.0          
   dbplyr_1.2.2        digest_0.6.18       dplyr_0.7.6        
   ellipse_0.4.1       evaluate_0.12       fansi_0.3.0        
-  flow_1.0.0          forcats_0.3.0       foreign_0.8-71     
+  flow_1.1.0          forcats_0.3.0       foreign_0.8-71     
   Formula_1.2-3       fs_1.2.6            ggplot2_2.2.1      
   ggplotify_0.0.3     ggpubr_0.1.8        ggrepel_0.8.0      
   ggsci_2.9           ggsignif_0.4.0      glue_1.3.0         
@@ -87,7 +87,7 @@ Package version:
   stringr_1.3.1       survival_2.42-6     svMisc_1.1.0       
   tibble_1.4.2        tidyr_0.8.1         tidyselect_0.2.4   
   tidyverse_1.2.1     tinytex_0.8         tools_3.4.4        
-  tsibble_0.5.1       utf8_1.1.4          utils_3.4.4        
+  tsibble_0.5.2       utf8_1.1.4          utils_3.4.4        
   viridis_0.5.1       viridisLite_0.3.0   whisker_0.3.2      
   withr_2.1.2         xfun_0.3            xml2_1.2.0         
   yaml_2.2.0         

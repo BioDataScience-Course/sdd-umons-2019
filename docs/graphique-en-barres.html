@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-17">
+<meta name="date" content="2018-10-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -283,7 +283,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.svg" alt="Points essentiels d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur." width="672" />
 <p class="caption">
-Figure 4.1: Points essentiels d’un graphique en barre montrant le dénombrement des niveaux d’une variable facteur.
+Figure 1.1: Points essentiels d’un graphique en barre montrant le dénombrement des niveaux d’une variable facteur.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphique en barres sont (ici mis en évidence en couleur) :</p>
@@ -335,7 +335,7 @@ Figure 4.1: Points essentiels d’un graphique en barre montrant le dénombremen
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-2-1.svg" alt="Instructions pour obtenir un graphique en barres." width="672" />
 <p class="caption">
-Figure 4.2: Instructions pour obtenir un graphique en barres.
+Figure 3.1: Instructions pour obtenir un graphique en barres.
 </p>
 </div>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de données (<code>dataframe</code>, <code>copepoda</code>), ainsi que la formule à employer <code>~ XVAR (class)</code>. Pour réaliser un graphique en barres, vous devez utiliser ensuite la fonction <code>geom_bar()</code>.</p>
@@ -371,7 +371,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, <span cl
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement du individus homme et femme dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesures." width="672" />
 <p class="caption">
-Figure 4.3: Dénombrement du individus homme et femme dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesures.
+Figure 3.3: Dénombrement du individus homme et femme dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesures.
 </p>
 </div>
 <p>Il existe d’autres solutions en utilisant la valeur <code>dodge</code> ou <code>fill</code> pour l’argument <code>position</code>.</p>
@@ -385,7 +385,7 @@ c &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, <span cl
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement du individus homme et femme dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesures." width="672" />
 <p class="caption">
-Figure 4.4: Dénombrement du individus homme et femme dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesures.
+Figure 2.2: Dénombrement du individus homme et femme dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesures.
 </p>
 </div>
 <p>Soyez vigilant à la différence entre l’argument <strong>stack</strong> et l’argument <strong>fill</strong> qui malgré un rendu semblable ont l’axe des ordonnées qui diffère.</p>
@@ -400,7 +400,7 @@ Figure 4.4: Dénombrement du individus homme et femme dans l’étude sur l’ob
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-6-1.svg" alt="Dénombrement des classes de copépodes du jeu de données zooplankton." width="672" />
 <p class="caption">
-Figure 4.5: Dénombrement des classes de copépodes du jeu de données zooplankton.
+Figure 2.3: Dénombrement des classes de copépodes du jeu de données zooplankton.
 </p>
 </div>
 </div>
@@ -412,7 +412,7 @@ Figure 4.5: Dénombrement des classes de copépodes du jeu de données zooplankt
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-7-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
 <p class="caption">
-Figure 4.6: Dénombrement des classes du jeu de données zooplankton.
+Figure 3.4: Dénombrement des classes du jeu de données zooplankton.
 </p>
 </div>
 <p>Avec la fonction <code>coord_flip()</code> ajoutée à votre graphique, vous pouvez effectuer une rotation des axes. De plus, l’oeil humain perçoit plus distinctement les différences de tailles horizontales que verticales.</p>
@@ -422,7 +422,7 @@ Figure 4.6: Dénombrement des classes du jeu de données zooplankton.
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-8-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
 <p class="caption">
-Figure 4.7: Dénombrement des classes du jeu de données zooplankton.
+Figure 3.5: Dénombrement des classes du jeu de données zooplankton.
 </p>
 </div>
 </div>
@@ -451,7 +451,7 @@ x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</sp
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-10-1.svg" alt="Points essentiels d'un graphique en barre résumant les données numériques d'une variable facteur." width="672" />
 <p class="caption">
-Figure 4.8: Points essentiels d’un graphique en barre résumant les données numériques d’une variable facteur.
+Figure 3.7: Points essentiels d’un graphique en barre résumant les données numériques d’une variable facteur.
 </p>
 </div>
 <p>Les éléments indispensables à la compréhension d’un graphe en barres sont (ici mis en évidence en couleur) :</p>
@@ -466,7 +466,7 @@ Figure 4.8: Points essentiels d’un graphique en barre résumant les données n
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe." width="672" />
 <p class="caption">
-Figure 4.9: Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe.
+Figure 3.8: Instructions pour obtenir un graphique en barres indiquant les moyennes par groupe.
 </p>
 </div>
 <div id="pieges-et-astuces-4" class="section level4">
@@ -486,7 +486,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(copepoda, <span cl
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-12-1.svg" alt="Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes." width="672" />
 <p class="caption">
-Figure 4.10: Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes.
+Figure 3.9: Comparaison entre le graphique en barres et le nuage de points montrant tous les deux la taille moyenne en fonction des classes de copépodes.
 </p>
 </div>
 <p>Comme vous pouvez le voir ci-dessus, un graphique de type nuage de point peut représenter la valeur moyenne avec tout autant d’intérêt que le graphique en barres.</p>
