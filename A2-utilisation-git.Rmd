@@ -45,7 +45,7 @@ Vous avez maintenant repéré les éléments fondamentaux de l'interface de RStu
 _A ce stade vous pouvez vous familiariser avec l'a cheatsheet'aide-mémoire relatif à l'IDE RStudio. Vous verrez qu'il y a beaucoup de fonctionnalités accessibles à partir de la fenêtre principale de RStudio. Ne vous laissez pas intimider : vous les apprendrez progressivement au fur et à mesure de l'utilisation du logiciel._
 
 
-### Projet dans RStudio {#rs_projet} 
+### Projet dans RStudio {#rs-projet} 
 
 Un projet sert, dans RStudio, à organiser son travail. Un projet va regrouper l'ensemble des **jeux de données**, des **rapports**, des **présentations**, des **scripts** d'une **analyse** généralement en raltion avec une ou plusieurs expériences ou observations réalisés sur le terrain ou en laboratoire.
 

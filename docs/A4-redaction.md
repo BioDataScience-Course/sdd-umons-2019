@@ -1,4 +1,4 @@
-# Rédaction scientifique {#redaction_scientifique}
+# Rédaction scientifique {#redaction-scientifique}
 
 
 
