@@ -47,8 +47,8 @@ $$y \sim x$$
 que l'on peut lire "y en fonction de x". Pour les deux variables numériques _x_ et _y_, la représentation graphique la plus classique est le **nuage de points** (voir Fig. \@ref(fig:first-scatterplot) pour un exemple).
 
 ```{r first-scatterplot, echo=FALSE, results='hide', message=FALSE, fig.cap="Exemple de graphique en nuage de points. Des éléments essentiels sont ici mis en évidence en couleurs (voir texte). \\label{np_intro}"}
-urchin <- read(file = "urchin_bio", package = "data.io", lang = "fr")
-chart(urchin, formula = height ~  weight) + 
+urchin <- read("urchin_bio", package = "data.io", lang = "fr")
+chart(data = urchin, height ~  weight) + 
   geom_point() +
   labs( x = "Label de l'axe x  + [Unité]", 
         y = "Label de l'axe y + [Unité]") +
@@ -74,11 +74,11 @@ SciViews::R
 # Importation du jeu de données
 (urchin <- read("urchin_bio", package = "data.io", lang = "fr"))
 # Réalisation du graphique 
-chart(urchin, height ~ weight) +
+chart(data = urchin, height ~ weight) +
   geom_point()
 ```
 
-La fonction `chart()` n'est pas accessible dans R de base, mais l'extension chargée via l'instruction `SciViews::R` rend cette fonction disponible. Elle requiert comme argument le jeu de donnée (`urchin`, c'est un objet `dataframe` ou `tibble` dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom des variables que vous voulez sur l'axe des ordonnées à gauche et des abscisses à droite de la formule, les deux membres étant séparés par un "tilde" (`~`). Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter `height` en fonction de `weight`, la hauteur en fonction de la masse des oursins. Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons les matérialiser sur le graphique. Pour un nuage de points, nous voulons les représenter sous forme de ... points ! Donc, nous devons ajouter la fonction `geom_point()` pour indiquer cela.
+La fonction `chart()` n'est pas accessible dans R de base, mais l'extension chargée via l'instruction `SciViews::R` rend cette fonction disponible. Elle requiert comme argument le jeu de donnée (`data = urchin`, c'est un objet `dataframe` ou `tibble` dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom des variables que vous voulez sur l'axe des ordonnées à gauche et des abscisses à droite de la formule, les deux membres étant séparés par un "tilde" (`~`). Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter `height` en fonction de `weight`, la hauteur en fonction de la masse des oursins. Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons les matérialiser sur le graphique. Pour un nuage de points, nous voulons les représenter sous forme de ... points ! Donc, nous devons ajouter la fonction `geom_point()` pour indiquer cela.
 
 
 ### Le nuage de points en vidéo
@@ -116,7 +116,7 @@ Vous devez être vigilant lors de la réalisation d'un nuage de point particuli�
 Dans certains cas, la forme du nuage de points peut être distendu par la présence de valeurs aberrantes. Ce n'est pas le cas ici, mais nous pouvons le simuler en distandant artificiellement soit l'axe X, soit l'axe Y, soit les deux :
 
 ```{r, echo=FALSE, fig.cap="Piège du nuage de points. A) graphique initial montrant la variation de la hauteur [mm] en fonction de la masse [g]. B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification simultanée des deux axes."}
-A <- chart(urchin, height ~  weight) + 
+A <- chart(data = urchin, height ~  weight) + 
   geom_point() +
   theme(text = element_text(size = 10)) # Réduction des labels
 # Modification des échelles

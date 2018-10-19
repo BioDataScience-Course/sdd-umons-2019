@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="histogramme.html">
-<link rel="next" href="diagramme-en-violon.html">
+<link rel="prev" href="diagramme-en-violon.html">
+<link rel="next" href="visu3.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -273,56 +273,18 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graphique-de-densite" class="section level2">
-<h2><span class="header-section-number">3.2</span> Graphique de densité</h2>
-<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le <strong>graphique de densité</strong> qui se présente un peu comme un histogramme lissé. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image." width="672" />
-<p class="caption">
-Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d’image.
-</p>
+<div id="a-vous-de-jouer-4" class="section level2">
+<h2><span class="header-section-number">3.4</span> A vous de jouer !</h2>
+<p>Reprenez vos différents projets et étudiez la distribution de variables numériques de différentes manières. Terminez ce module en vérifiant que vous avez bien compris les notions apprises jusqu’ici.</p>
+
+<div class="bdd">
+<p>Ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;03a_test&quot;)</code></pre>
 </div>
-<p>Comme pour les autres graphiques, veuillez à soigner les indications qui permettent d’interpréter le graphique. Outre la courbe de densité, il faut :</p>
-<ul>
-<li>Les axes avec les graduations (en rouge)</li>
-<li>les labels des axes, et l’unité pour l’axe des abscisses (en bleu)</li>
-</ul>
-<p>Les instructions en R pour produire un graphique de densité avec la fonction <code>chart()</code> sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
-(zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
-<pre><code># # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
-#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# # ... with 1,252 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
-# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
-# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
-<span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_density</span>()</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="Distribution des tailles au sein de l'échantillon de zooplancton." width="672" />
-<p class="caption">
-Figure 3.9: Distribution des tailles au sein de l’échantillon de zooplancton.
-</p>
+
+
 </div>
-<p>Ici, nous utilisons donc la fonction <code>geom_density()</code>.</p>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="7">
-<li id="fn7"><p>L’opération effectuée pour passer d’un histogramme à une courbe de densité consiste effectivement à lisser les pics plus ou moins fort dans l’histogramme de départ.<a href="graphique-de-densite.html#fnref7">↩</a></p></li>
-</ol>
-</div>
+<!-- </div> -->
 <div id="disqus_thread"></div>
 <script>
 
@@ -348,8 +310,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="histogramme.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="diagramme-en-violon.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="diagramme-en-violon.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="visu3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
