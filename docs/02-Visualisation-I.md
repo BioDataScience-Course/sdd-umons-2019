@@ -88,7 +88,10 @@ chart(data = urchin, height ~ weight) +
   geom_point()
 ```
 
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" width="672" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-2-1.svg" alt="Taille (hauteur du test) d'oursins en fonction de leur masse." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-2)Taille (hauteur du test) d'oursins en fonction de leur masse.</p>
+</div>
 
 La fonction `chart()` n'est pas accessible dans R de base, mais l'extension chargée via l'instruction `SciViews::R` rend cette fonction disponible. Elle requiert comme argument le jeu de donnée (`data = urchin`, c'est un objet `dataframe` ou `tibble` dans le langage de R), ainsi que la formule à employer dans laquelle vous avez indiqué le nom des variables que vous voulez sur l'axe des ordonnées à gauche et des abscisses à droite de la formule, les deux membres étant séparés par un "tilde" (`~`). Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter `height` en fonction de `weight`, la hauteur en fonction de la masse des oursins. Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons les matérialiser sur le graphique. Pour un nuage de points, nous voulons les représenter sous forme de ... points ! Donc, nous devons ajouter la fonction `geom_point()` pour indiquer cela.
 
@@ -136,18 +139,19 @@ Vous avez la possibilité d'appliquer une transformation de vos données (il est
 
 ```r
 # Réalisation du graphique de la hauteur en fonction de la masse
-A <- chart(urchin, height ~  weight) + 
+a <- chart(urchin, height ~  weight) + 
   geom_point()
 # Application du logarithme sur les deux variables représentées
-B <- chart(urchin, log(height) ~  log(weight)) + 
-  geom_point()
+b <- chart(urchin, log10(height) ~  log10(weight)) + 
+  geom_point() +
+  labs(x = "log(Masse totale [g])", y = "log(Hauteur du test [mm])")
 # Assemblage des graphiques
-combine_charts(list(A, B), font.label = list(size = 14, align = "hv"))
+combine_charts(list(a, b))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-6-1.svg" alt="A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins.</p>
+<img src="02-Visualisation-I_files/figure-html/unnamed-chunk-6-1.svg" alt="A) Hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Logarithme en base 10 de la hauteur [mm] en fonction du logarithme en base 10 de la masse [g] de ces mêmes oursins." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-6)A) Hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Logarithme en base 10 de la hauteur [mm] en fonction du logarithme en base 10 de la masse [g] de ces mêmes oursins.</p>
 </div>
 
 

@@ -34,8 +34,8 @@ Pour réaliser les exercices dans ce module, vous devez être capables de travai
 Lors d'une expérience vous souhaitez visualiser la façon dont vos données s'étalent sur un axe (on parle de **distribution**^[La **distribution** des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d'une variable s'observent.] en statistique) pour l'une des variables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va découper en plusieurs **classes**^[Une variable numérique est **découpée en classes** en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.] une variable numérique.
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.svg" alt="Histogramme montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-2)Histogramme montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.svg" alt="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-2)Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton.</p>
 </div>
 
 Outre l'histogramme lui-même, représenté par des barres de hauteur équivalentes au nombre de fois que les observations ont été réalisées dans les différentes classes, les éléments suivants sont également indispensables à la compréhension du graphique (ici mis en évidence en couleur)
@@ -77,8 +77,8 @@ chart(data = zooplankton, ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Instructions pour obtenir un histogramme." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Instructions pour obtenir un histogramme.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Distribution des tailles au sein d'un échantillon de zooplancton" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-3)Distribution des tailles au sein d'un échantillon de zooplancton</p>
 </div>
 
 ```r
@@ -179,8 +179,8 @@ chart(data = iris, ~ sepal_length %fill=% species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Histogramme de la longueur des sépales de 3 espèces d'iris.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Distribution des longueurs de sépales de trois espèces d'iris." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-5)Distribution des longueurs de sépales de trois espèces d'iris.</p>
 </div>
 
 Ici, nous avons tracé un histogramme unique, mais en prenant soin de colorier les barres en fonction de l'espèce. la formule fait toujours intervenir la variable numérique à découper en classes à la droite du tilde `~`, ici `sepal_length`, mais nous y avons ajouté une directive supplémentaire pour indiquer que le remplissage des barres (`%fill=%`) doit se faire en fonction du contenu de la variable `species`.
@@ -195,13 +195,11 @@ chart(data = iris, ~ sepal_length | species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facettes pour séparer les espèces." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facettes pour séparer les espèces.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-6)Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces).</p>
 </div>
 
-L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`. Cela rend la lecture plus aisée.
-
-Une seconde solution combine les facets avec `|` et l'argument `%fill=%`^[Astuce proposée [ici](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2).]. Il faut ensuite ajouter par derriere un histogramme grisé de l'ensemble des données.
+L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec `|` et l'argument `%fill=%`^[Astuce proposée [ici](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2).]. Il faut ensuite ajouter par derriere un histogramme grisé de l'ensemble des données.
 
 
 ```r
@@ -215,8 +213,8 @@ chart(data = iris, ~ sepal_length %fill=% species | species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.svg" alt="Histogramme de la longueur des sépales de 3 espèces d'iris avec facttes et histogrammes complets d'arrière plan en grisé." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-7)Histogramme de la longueur des sépales de 3 espèces d'iris avec facttes et histogrammes complets d'arrière plan en grisé.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.svg" alt="Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-7)Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans).</p>
 </div>
 
 Vous découvrez sans doute que les graphiques réalisables avec R sont modulables à souhait en ajoutant une série d'instructions successives qui créent autant de couches superposées dans le graphique. Cette approche permet de réaliser quasiment une infinité de graphiques différents en combinant seulement quelques dizaines d'instructions. Pour s'y retrouver, les fonctions qui ajoutent des couches commencent toutes par `geom_`, et celles qui manipulent les couleurs par `scale_`, par exemple. Vous découvrirez encore d'autres fonctions graphiques plus loin.
@@ -319,8 +317,8 @@ chart(data = zooplankton, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-11-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-11)Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-11-1.svg" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-11)Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon).</p>
 </div>
 
 La fonction `coord_flip()` permute les axes. Ainsi les labels ne se chevauchent plus sur l'axe des ordonnées.
@@ -333,11 +331,11 @@ chart(data = zooplankton, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-12-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques avec l'ajout de la fonction `coord_flip()`." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-12)Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques avec l'ajout de la fonction `coord_flip()`.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-12-1.svg" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-12)Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`).</p>
 </div>
 
-Le package [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) propose une seconde solution basée sur le principe de graphique de densité avec la fonction `geom_density_ridges()`. **Attention : remarquez que la notation est ici inverse du diagramme en violon, soit `XFACT (class) ~ YNUM (size)` !** 
+Le package [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) propose une seconde solution basée sur le principe de graphique de densité avec la fonction `geom_density_ridges()` qui crée un graphique en lignes de crêtes. **Attention : remarquez que la notation est ici inverse du diagramme en violon, soit `XFACT (class) ~ YNUM (size)` !** 
 
 
 ```r
@@ -346,8 +344,8 @@ chart(data = zooplankton, class ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.svg" alt="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques avec la fonction geom_density_ridges." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-13)Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques avec la fonction geom_density_ridges.</p>
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.svg" alt="Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-13)Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes).</p>
 </div>
 
 

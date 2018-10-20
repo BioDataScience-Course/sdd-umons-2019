@@ -68,7 +68,7 @@ Les éléments indispensables à la compréhension d'un graphique en nuage de po
 
 Les instructions dans R pour produire un tel nuage de point sont :
 
-```{r}
+```{r, fig.cap="Taille (hauteur du test) d'oursins en fonction de leur masse."}
 # Chargement de SciViews::R
 SciViews::R
 # Importation du jeu de données
@@ -116,15 +116,16 @@ Vous devez être vigilant lors de la réalisation d'un nuage de point particuli�
 Dans certains cas, la forme du nuage de points peut être distendu par la présence de valeurs aberrantes. Ce n'est pas le cas ici, mais nous pouvons le simuler en distandant artificiellement soit l'axe X, soit l'axe Y, soit les deux :
 
 ```{r, echo=FALSE, fig.cap="Piège du nuage de points. A) graphique initial montrant la variation de la hauteur [mm] en fonction de la masse [g]. B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification simultanée des deux axes."}
-A <- chart(data = urchin, height ~  weight) + 
+a <- chart(data = urchin, height ~  weight) + 
   geom_point() +
   theme(text = element_text(size = 10)) # Réduction des labels
 # Modification des échelles
-B <- A + scale_x_continuous(limits = c(0, 500))
-C <- A + scale_x_continuous(limits = c(-100, 120))
-D <- A + scale_x_continuous(limits = c(-400, 400)) + scale_y_continuous(limits = c(-400, 400))
+b <- a + scale_x_continuous(limits = c(0, 500))
+c <- a + scale_x_continuous(limits = c(-100, 120))
+d <- a + scale_x_continuous(limits = c(-400, 400)) +
+         scale_y_continuous(limits = c(-400, 400))
 # Assemblage des graphiques
-combine_charts(list(A, B, C, D), font.label = list(size = 14, align = "hv"))
+combine_charts(list(a, b, c, d))
 ```
 
 
@@ -132,15 +133,16 @@ combine_charts(list(A, B, C, D), font.label = list(size = 14, align = "hv"))
 
 Vous avez la possibilité d'appliquer une transformation de vos données (il est même conseillé de le faire) afin qu'elles soient plus facilement analysables. Par exemple, il est possible d'utiliser des fonctions de puissance, racines, logarithmes, exponentielles^[Pour les proportions (`prop`) ou les pourcentages (`perc`) (valeurs bornées entre 0 et 1 ou 0 et 100%) la transformation arcsin est souvent utilisée : $prop′ = \arcsin \sqrt{prop}$ ou $perc′ = \arcsin \sqrt{perc / 100}$.] pour modifier l'apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d'analyser statistiquement des données qui s'alignent le long d'une droite). Par exemple, sur nos données de hauteurs et masses d'oursins, la transformation double-log (log(x) *et* log(Y)) fonctionne très bien pour rendre le nuage de points plus linéaire :
 
-```{r, fig.cap = "A) Variation de la hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Variation du logarithme népérien de la hauteur [mm] en fonction du logarithme népérien de la masse [g] de ces mêmes oursins."}
+```{r, fig.cap = "A) Hauteur [mm] en fonction de la masse [g] d'oursins violets. B) Logarithme en base 10 de la hauteur [mm] en fonction du logarithme en base 10 de la masse [g] de ces mêmes oursins."}
 # Réalisation du graphique de la hauteur en fonction de la masse
-A <- chart(urchin, height ~  weight) + 
+a <- chart(urchin, height ~  weight) + 
   geom_point()
 # Application du logarithme sur les deux variables représentées
-B <- chart(urchin, log(height) ~  log(weight)) + 
-  geom_point()
+b <- chart(urchin, log10(height) ~  log10(weight)) + 
+  geom_point() +
+  labs(x = "log(Masse totale [g])", y = "log(Hauteur du test [mm])")
 # Assemblage des graphiques
-combine_charts(list(A, B), font.label = list(size = 14, align = "hv"))
+combine_charts(list(a, b))
 ```
 
 

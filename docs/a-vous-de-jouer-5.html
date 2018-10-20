@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="differents-systemes-graphiques.html">
+<link rel="prev" href="differents-moteurs-graphiques.html">
 <link rel="next" href="import.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -166,12 +166,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.3.1" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et Astuces</a></li>
 <li class="chapter" data-level="4.3.2" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pour-en-savoir-plus-8"><i class="fa fa-check"></i><b>4.3.2</b> Pour en savoir plus !</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="multi-graphiques.html"><a href="multi-graphiques.html"><i class="fa fa-check"></i><b>4.4</b> Multi-graphiques</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="multi-graphiques.html"><a href="multi-graphiques.html#facets"><i class="fa fa-check"></i><b>4.4.1</b> Facets</a></li>
-<li class="chapter" data-level="4.4.2" data-path="multi-graphiques.html"><a href="multi-graphiques.html#ggarrange"><i class="fa fa-check"></i><b>4.4.2</b> <code>ggarrange()</code></a></li>
+<li class="chapter" data-level="4.4" data-path="figures-composees.html"><a href="figures-composees.html"><i class="fa fa-check"></i><b>4.4</b> Figures composées</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="figures-composees.html"><a href="figures-composees.html#facettes"><i class="fa fa-check"></i><b>4.4.1</b> Facettes</a></li>
+<li class="chapter" data-level="4.4.2" data-path="figures-composees.html"><a href="figures-composees.html#graphiques-assembles"><i class="fa fa-check"></i><b>4.4.2</b> Graphiques assemblés</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="differents-systemes-graphiques.html"><a href="differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents systèmes graphiques</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="differents-systemes-graphiques.html"><a href="differents-systemes-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.1</b> Pour en savoir plus</a></li>
+<li class="chapter" data-level="4.5" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents moteurs graphiques</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#ggplot2"><i class="fa fa-check"></i><b>4.5.1</b> ggplot2</a></li>
+<li class="chapter" data-level="4.5.2" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#lattice"><i class="fa fa-check"></i><b>4.5.2</b> lattice</a></li>
+<li class="chapter" data-level="4.5.3" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#graphiques-de-base"><i class="fa fa-check"></i><b>4.5.3</b> Graphiques de base</a></li>
+<li class="chapter" data-level="4.5.4" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.4</b> Pour en savoir plus</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>4.6</b> A vous de jouer !</a></li>
 </ul></li>
@@ -275,13 +278,12 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="a-vous-de-jouer-5" class="section level2">
 <h2><span class="header-section-number">4.6</span> A vous de jouer !</h2>
-<p>Proposez 5 graphiques inédits (qui n’ont pas été vu dans le module 2, 3 et 4) dans vos différents projets</p>
-<p>Employez par exemple les liens suivants pour vous inspirer</p>
+<p>Proposez cinq graphiques inédits (qui n’ont pas été vu jusqu’ici) dans vos différents projets. Employez par exemple les liens suivants pour vous inspirer :</p>
 <ul>
 <li><p><a href="https://www.r-graph-gallery.com" class="uri">https://www.r-graph-gallery.com</a></p></li>
 <li><p><a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html" class="uri">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</a></p></li>
 </ul>
-<p>Terminez ce module en vérifiant que vous avez acquis l’ensemble des notions de ce module.</p>
+<p>Terminez ce module en vérifiant que vous avez acquis l’ensemble des notions abordées.</p>
 
 <div class="bdd">
 <p>Ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
@@ -316,7 +318,7 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="differents-systemes-graphiques.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="differents-moteurs-graphiques.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="import.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

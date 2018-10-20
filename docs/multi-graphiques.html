@@ -298,8 +298,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(ChickWeight, <span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>Time) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps." width="672" />
 <p class="caption">
 Figure 4.19: Nuage de point montrant la variation de la masse de poulets au cours du temps.
 </p>
@@ -307,8 +307,8 @@ Figure 4.19: Nuage de point montrant la variation de la masse de poulets au cour
 <p>Le graphique ci-dessus peut par exemple être simplifié avec les facets. L’information que l’on souhaite partager est la même mais les choix graphiques rendent sa lecture plus aisée. De plus, la fenêtre graphique a la même taille par défaut que pour un seul graphique. De ce fait, réaliser de multiples graphiques peut rendre sa lecture impossible par une taille trop faible.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(ChickWeight, <span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet ) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.3</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-27-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4)." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt="Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4)." width="672" />
 <p class="caption">
 Figure 4.20: Nuage de point montrant la variation de la masse de poulets au cours du temps en fonction de la supplémention (1-4).
 </p>
@@ -319,17 +319,18 @@ Figure 4.20: Nuage de point montrant la variation de la masse de poulets au cour
 <h3><span class="header-section-number">4.4.2</span> <code>ggarrange()</code></h3>
 <p>La fonction <code>ggarrange()</code> permet de combiner plusieurs graphiques.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données</span>
-ub &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
+urchin &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
 <span class="co"># Réalisation des graphiques</span>
 a &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, <span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>height <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 
 b &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, <span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>solid_parts <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()
+
 <span class="co"># Combinaison des graphiques</span>
 <span class="kw">ggarrange</span>(a, b, <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-28-1.svg" alt="A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-27"></span>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-27-1.svg" alt="A) Nuage de point montrant la variation de la masse d'oursins en fonction de la taille  et de leur origine. B) Nuage de point montrant la variation de la masse d'oursins en fonction de la masse des parties solides et de leur origine." width="672" />
 <p class="caption">
 Figure 4.21: A) Nuage de point montrant la variation de la masse d’oursins en fonction de la taille et de leur origine. B) Nuage de point montrant la variation de la masse d’oursins en fonction de la masse des parties solides et de leur origine.
 </p>

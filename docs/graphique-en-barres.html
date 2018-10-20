@@ -166,12 +166,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.3.1" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et Astuces</a></li>
 <li class="chapter" data-level="4.3.2" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pour-en-savoir-plus-8"><i class="fa fa-check"></i><b>4.3.2</b> Pour en savoir plus !</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="multi-graphiques.html"><a href="multi-graphiques.html"><i class="fa fa-check"></i><b>4.4</b> Multi-graphiques</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="multi-graphiques.html"><a href="multi-graphiques.html#facets"><i class="fa fa-check"></i><b>4.4.1</b> Facets</a></li>
-<li class="chapter" data-level="4.4.2" data-path="multi-graphiques.html"><a href="multi-graphiques.html#ggarrange"><i class="fa fa-check"></i><b>4.4.2</b> <code>ggarrange()</code></a></li>
+<li class="chapter" data-level="4.4" data-path="figures-composees.html"><a href="figures-composees.html"><i class="fa fa-check"></i><b>4.4</b> Figures composées</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="figures-composees.html"><a href="figures-composees.html#facettes"><i class="fa fa-check"></i><b>4.4.1</b> Facettes</a></li>
+<li class="chapter" data-level="4.4.2" data-path="figures-composees.html"><a href="figures-composees.html#graphiques-assembles"><i class="fa fa-check"></i><b>4.4.2</b> Graphiques assemblés</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="differents-systemes-graphiques.html"><a href="differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents systèmes graphiques</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="differents-systemes-graphiques.html"><a href="differents-systemes-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.1</b> Pour en savoir plus</a></li>
+<li class="chapter" data-level="4.5" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents moteurs graphiques</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#ggplot2"><i class="fa fa-check"></i><b>4.5.1</b> ggplot2</a></li>
+<li class="chapter" data-level="4.5.2" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#lattice"><i class="fa fa-check"></i><b>4.5.2</b> lattice</a></li>
+<li class="chapter" data-level="4.5.3" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#graphiques-de-base"><i class="fa fa-check"></i><b>4.5.3</b> Graphiques de base</a></li>
+<li class="chapter" data-level="4.5.4" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.4</b> Pour en savoir plus</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>4.6</b> A vous de jouer !</a></li>
 </ul></li>
@@ -281,9 +284,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>La formule que vous utiliserez, ici encore, ne fait appel qu’à une seule variable et s’écrira donc :</p>
 <p><span class="math display">\[\sim variable \ facteur\]</span></p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-1"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.svg" alt="Exemple d'un graphique en barre montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.svg" alt="Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs." width="672" />
 <p class="caption">
-Figure 4.1: Exemple d’un graphique en barre montrant le dénombrement des niveaux d’une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs.
+Figure 4.1: Exemple d’un graphique en barres montrant le dénombrement des niveaux d’une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs.
 </p>
 </div>
 <p>Outre les barres elles-mêmes, prêtez toujours attention aux élements suivants du graphique (ici mis en évidence en couleurs) :</p>
@@ -332,11 +335,12 @@ Figure 4.1: Exemple d’un graphique en barre montrant le dénombrement des nive
 # #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> copepoda, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Dénombrement&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-2-1.svg" alt="Instructions pour obtenir un graphique en barres." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-2-1.svg" alt="Abondances de quatres types de copépodes dans un échantillon de zooplancton." width="672" />
 <p class="caption">
-Figure 4.2: Instructions pour obtenir un graphique en barres.
+Figure 4.2: Abondances de quatres types de copépodes dans un échantillon de zooplancton.
 </p>
 </div>
 <p>La fonction <code>geom_bar()</code> se charge d’ajouter les barres verticales dans le graphique. La hauteur de ces barres correspond au nombre d’observations rencontrées dans le jeu de données pour chaque niveau (ou classe, ou groupe) de la variable facteur représentée.</p>
@@ -363,37 +367,45 @@ biometry<span class="op">$</span>year_measure &lt;-<span class="st"> </span><spa
 <span class="kw">label</span>(biometry<span class="op">$</span>year_measure) &lt;-<span class="st"> &quot;Année de la mesure&quot;</span></code></pre></div>
 <p>Différentes représentations sont possibles pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l’argument <code>position =</code> a pour valeur par défaut <code>stack</code> (donc, lorsque cet argument n’est pas précisé dans <code>geom_bar()</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_bar</span>()
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Dénombrement&quot;</span>)
 
 b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Dénombrement&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()
 
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement des hommes et des femmes dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement des hommes (M) et des femmes (W) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B)." width="672" />
 <p class="caption">
-Figure 4.3: Dénombrement des hommes et des femmes dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesure.
+Figure 4.3: Dénombrement des hommes (M) et des femmes (W) dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesure pour (B).
 </p>
 </div>
 <p>Il existe d’autres options en utilisant la valeur <code>dodge</code> ou <code>fill</code> pour l’argument <code>position =</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;stack&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()
+
 b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()
+
 c &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Fractions&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()
+
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b, c), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement des hommes et des femmes dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement des hommes (M) et des femmes (W) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations)." width="672" />
 <p class="caption">
-Figure 4.4: Dénombrement des hommes et des femmes dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesure.
+Figure 4.4: Dénombrement des hommes (M) et des femmes (W) dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesure (différentes présentations).
 </p>
 </div>
-<p>Soyez vigilant à la différence entre l’argument <code>position = stack</code> et <code>position = fill</code> qui malgré un rendu semblable ont l’axe des ordonnées qui diffère (dans le cas de <code>fill</code>, il s’agit de la proportion par rapport au total qui est représentée).</p>
+<p>Soyez vigilant à la différence entre l’argument <code>position = stack</code> et <code>position = fill</code> qui malgré un rendu semblable ont l’axe des ordonnées qui diffère (dans le cas de <code>fill</code>, il s’agit de la <strong>fraction</strong> par rapport au total qui est représentée, et non pas des effectifs absolus dénombrés).</p>
 </div>
 <div id="pieges-et-astuces-3" class="section level4">
 <h4><span class="header-section-number">4.1.1.2</span> Pièges et Astuces</h4>
@@ -401,7 +413,8 @@ Figure 4.4: Dénombrement des hommes et des femmes dans l’étude sur l’obés
 <h5><span class="header-section-number">4.1.1.2.1</span> Réordonner la variable facteur par fréquence</h5>
 <p>Vous pouvez avoir le souhait d’ordonner votre variable facteur afin d’améliorer le rendu visuel de votre graphique. Pour cela, vous pouvez employer la fonction <code>fct_infreq()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> copepoda, <span class="op">~</span><span class="st"> </span><span class="kw">fct_infreq</span>(class)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Classe&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Abondance&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-6-1.svg" alt="Dénombrement des classes de copépodes du jeu de données zooplankton." width="672" />
 <p class="caption">
@@ -413,7 +426,8 @@ Figure 4.5: Dénombrement des classes de copépodes du jeu de données zooplankt
 <h5><span class="header-section-number">4.1.1.2.2</span> Rotation du graphique en barre</h5>
 <p>Lorsque les niveaux dans la variable étudiée sont trop nombreux, la légende en abscisse risque de se chevaucher, comme dans la Fig. <a href="graphique-en-barres.html#fig:barchart1">4.6</a></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_bar</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Dénombrement&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:barchart1"></span>
 <img src="04-Visualisation-III_files/figure-html/barchart1-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
 <p class="caption">
@@ -423,11 +437,12 @@ Figure 4.6: Dénombrement des classes du jeu de données zooplankton.
 <p>Avec la fonction <code>coord_flip()</code> ajoutée à votre graphique, vous pouvez effectuer une rotation des axes pour obtenir un <strong>graphique en barres horizontales</strong>. De plus, l’oeil humain perçoit plus distinctement les différences de longueurs horizontales que verticales. Donc, de ce point de vue, le graphe en barres horizontal est considéré comme meilleur que le graphe en barres verticales.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Dénombrement&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-7-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-7-1.svg" alt="Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales)." width="672" />
 <p class="caption">
-Figure 4.7: Dénombrement des classes du jeu de données zooplankton.
+Figure 4.7: Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales).
 </p>
 </div>
 </div>
@@ -457,13 +472,12 @@ x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</sp
 <span class="kw">mean</span>(x)</code></pre></div>
 <pre><code># [1] 63.36364</code></pre>
 <p>Les instructions pour produire ce graphe en barres à l’aide de <code>chart()</code> sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
-<span class="kw">chart</span>(<span class="dt">data =</span> copepoda, size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> copepoda, size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">fun.y =</span> <span class="st">&quot;mean&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-9-1.svg" alt="Graphique en barres représentant les moyennes par groupe." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-9-1.svg" alt="Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique." width="672" />
 <p class="caption">
-Figure 4.8: Graphique en barres représentant les moyennes par groupe.
+Figure 4.8: Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique.
 </p>
 </div>
 <p>Ici, nous faisons appel à une autre famille de fonctions : celles qui effectuent des calculs sur les données avant de les représenter graphiquement.</p>

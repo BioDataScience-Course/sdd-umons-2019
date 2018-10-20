@@ -38,7 +38,7 @@ Pour réaliser les exercices dans ce module, vous devez être capables de travai
 
 Lors d'une expérience vous souhaitez visualiser la façon dont vos données s'étalent sur un axe (on parle de **distribution**^[La **distribution** des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d'une variable s'observent.] en statistique) pour l'une des variables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va découper en plusieurs **classes**^[Une variable numérique est **découpée en classes** en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.] une variable numérique.
 
-```{r, fig.cap="Histogramme montrant la distribution de la taille d'un échantillon de zooplancton étudié par analyse d'image.", echo=FALSE, message=FALSE, warning=FALSE}
+```{r, fig.cap="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton.", echo=FALSE, message=FALSE, warning=FALSE}
 zooplankton <- read("zooplankton", package = "data.io", lang = "fr")
 chart(data = zooplankton, ~ size) +
   geom_histogram(bins = 50) +
@@ -58,7 +58,7 @@ Outre l'histogramme lui-même, représenté par des barres de hauteur équivalen
 
 Les instructions dans R afin de produire un histogramme à l'aide de la fonction `chart()` sont :
 
-```{r, fig.cap="Instructions pour obtenir un histogramme."}
+```{r, fig.cap="Distribution des tailles au sein d'un échantillon de zooplancton"}
 # Importation du jeu de données
 (zooplankton <- read("zooplankton", package = "data.io", lang = "fr"))
 # Réalisation du graphique
@@ -144,7 +144,7 @@ Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver
 
 Lors de l'analyse de jeux de données, vous serez amené à réaliser un histogramme par facteur (c'est-à-dire, en fonction de différents niveau d'une variable représentant des groupes). Par exemple, dans un jeu de données sur des fleurs d'iris, la variable `species` représente l'espèce d'iris étudiée (trois espèces différentes : *I. setosa*, *I. versicolor* et *I. virginica*).
 
-```{r, fig.cap= "Histogramme de la longueur des sépales de 3 espèces d'iris."}
+```{r, fig.cap= "Distribution des longueurs de sépales de trois espèces d'iris."}
 # Importation du jeu de données
 (iris <- read("iris", package = "datasets", lang = "fr"))
 # Réalisation de l'histogramme par facteur
@@ -158,17 +158,15 @@ Ici, nous avons tracé un histogramme unique, mais en prenant soin de colorier l
 
 Nous avons ici un bon exemple d'histogramme multimodal lié à la présence de trois sous-groupes (les trois espèces différentes) au sein d'un jeu de données unique. Le rendu du graphique n'est pas optimal. Voici deux astuces pour l'améliorer. La premières consiste à représenter trois histogrammes séparés, mais rassemblés dans une même figure. Pour cela, nous utilisons des **facettes** (`facets`) au lieu de l'argument `%fill=%`. Dans `chart()`, les facettes peuvent être spécifiées an utilisant l'opérateur `|` dans la formule.
 
-```{r , fig.cap= "Histogramme de la longueur des sépales de 3 espèces d'iris en employant les facettes pour séparer les espèces."}
+```{r , fig.cap= "Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)."}
 chart(data = iris, ~ sepal_length | species) +
   geom_histogram(bins = 25) +
   ylab("Occurences")
 ```
 
-L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`. Cela rend la lecture plus aisée.
+L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec `|` et l'argument `%fill=%`^[Astuce proposée [ici](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2).]. Il faut ensuite ajouter par derriere un histogramme grisé de l'ensemble des données.
 
-Une seconde solution combine les facets avec `|` et l'argument `%fill=%`^[Astuce proposée [ici](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2).]. Il faut ensuite ajouter par derriere un histogramme grisé de l'ensemble des données.
-
-```{r, fig.cap= "Histogramme de la longueur des sépales de 3 espèces d'iris avec facttes et histogrammes complets d'arrière plan en grisé."}
+```{r, fig.cap= "Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans)."}
 nbins <- 25
 chart(data = iris, ~ sepal_length %fill=% species | species) +
   # histogramme d'arrière plan en gris ne tenant pas compte de la variable species
@@ -266,22 +264,22 @@ Ici, la formule fournie à `chart()` indique la variable numérique à représen
 
 Parfois, les labels sur l'axe des abscisses d'un diagramme en violon apparaissent trop rapprochés et se chevauchent, comme ci-dessous.
 
-```{r, fig.cap="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques."}
+```{r, fig.cap="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon)."}
 chart(data = zooplankton, size ~ class) +
   geom_violin() 
 ```
 
 La fonction `coord_flip()` permute les axes. Ainsi les labels ne se chevauchent plus sur l'axe des ordonnées.
 
-```{r, fig.cap="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques avec l'ajout de la fonction `coord_flip()`."}
+```{r, fig.cap="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`)."}
 chart(data = zooplankton, size ~ class) +
   geom_violin() +
   coord_flip()
 ```
 
-Le package [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) propose une seconde solution basée sur le principe de graphique de densité avec la fonction `geom_density_ridges()`. **Attention : remarquez que la notation est ici inverse du diagramme en violon, soit `XFACT (class) ~ YNUM (size)` !** 
+Le package [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) propose une seconde solution basée sur le principe de graphique de densité avec la fonction `geom_density_ridges()` qui crée un graphique en lignes de crêtes. **Attention : remarquez que la notation est ici inverse du diagramme en violon, soit `XFACT (class) ~ YNUM (size)` !** 
 
-```{r, fig.cap="Diagramme en violon montrant la densité de tailles des 17 classes d'organismes planctoniques avec la fonction geom_density_ridges.", message=FALSE}
+```{r, fig.cap="Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes).", message=FALSE}
 chart(data = zooplankton, class ~ size) +
   ggridges::geom_density_ridges()
 ```
