@@ -7,7 +7,7 @@ Passez à la section suivante pour découvrir les outils. (ex: B.1 RStudio).
 
 ## RStudio {#rs}
 
-Sélectionnez le raccourci **RStudio** dans le dock. Un login vers RStudio apparaît. Il faut y entrer les informations suivantes :
+Sélectionnez l'icône **RStudio** dans le dock (cercle bleu avec un R blanc au centre). Un login vers RStudio apparaît. Il faut y entrer les informations suivantes :
 
 - Username : **sv**
 - Password : **sv**
@@ -20,7 +20,7 @@ RStudio s'ouvre. C'est votre interface de travail à partir de laquelle vous all
 ![](images/annexe_a2/rstudio2.png)
 
 - Une barre de menu et une barre d'outils générale en haut 
-- Un panneau à gauche intitulée **Console** où vous pouvez entrer des instructions dans **R** pour manipuler vos données
+- Un panneau à gauche intitulé **Console** où vous pouvez entrer des instructions dans **R** pour manipuler vos données
 - Un panneau à droite en haut qui comprend plusieurs onglets, dont **Environnement** qui vous indique les différents items (on parle d'**objets**) chargés en mémoire dans **R** (mais pour l’instant, il n'y a encore rien).
 - Un panneau en bas à droite comportant lui aussi plusieurs onglets. Vous devriez voir le contenu de **Files** au démarrage, un explorateur de fichiers simplifié relatif au contexte de travail actuel dans RStudio.
 
@@ -42,21 +42,21 @@ Le dernier bouton de la barre d'outils générale, intitulé **Project** permet 
 
 Vous avez maintenant repéré les éléments fondamentaux de l'interface de RStudio.
 
-_A ce stade vous pouvez vous familiariser avec l'a cheatsheet'aide-mémoire relatif à l'IDE RStudio. Vous verrez qu'il y a beaucoup de fonctionnalités accessibles à partir de la fenêtre principale de RStudio. Ne vous laissez pas intimider : vous les apprendrez progressivement au fur et à mesure de l'utilisation du logiciel._
+_A ce stade vous pouvez vous familiariser avec l'aide-mémoire relatif à l'IDE RStudio. Vous verrez qu'il y a beaucoup de fonctionnalités accessibles à partir de la fenêtre principale de RStudio. Ne vous laissez pas intimider : vous les apprendrez progressivement au fur et à mesure de l'utilisation du logiciel._
 
 
 ### Projet dans RStudio {#rs-projet} 
 
-Un projet sert, dans RStudio, à organiser son travail. Un projet va regrouper l'ensemble des **jeux de données**, des **rapports**, des **présentations**, des **scripts** d'une **analyse** généralement en raltion avec une ou plusieurs expériences ou observations réalisés sur le terrain ou en laboratoire.
+Un projet sert, dans RStudio, à organiser son travail. Un projet va regrouper l'ensemble des **jeux de données**, des **rapports**, des **présentations**, des **scripts** d'une **analyse** généralement en relation avec une ou plusieurs expériences ou observations réalisés sur le terrain ou en laboratoire. Voici à quoi ressemble l'interface de RStudio lorsque vous ouvrez un projet :
 
 ![](images/annexe_a2/project1.png)
 
-Notez en que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l'onglet **Console** (`~/shared/projects/mon_premier_projet/`), et que l'onglet **Files** affiche son contenu. Un fichier `mon_premier_projet.Rproj` y  est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet^[N'éditer **jamais** à la main un fichier `.Rproj`. Laisser RStudio s'en occuper tout seul.]. C'est aussi une excellente façon de repérer qu'un répertoire est la base d'un projet RStudio, en repérant ce fameux fichier `.Rproj`.
+Notez que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l'onglet **Console** (`~/shared/projects/mon_premier_projet/` dans l'exemple), et que l'onglet **Files** affiche son contenu. Un fichier `mon_premier_projet.Rproj` y  est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet^[N'éditer **jamais** à la main un fichier `.Rproj`. Laisser RStudio s'en occuper tout seul.]. C'est aussi une excellente façon de repérer qu'un répertoire est la base d'un projet RStudio, en repérant ce fameux fichier `.Rproj`.
 
 
 #### Création d'un projet
 
-Créez votre premier projet en suivant les 4 étapes suivantes :
+Créez votre premier projet en suivant les quatre étapes suivantes :
 
 - **Étape 1.**  Dans RStudio, Sélectionnez le bouton tout à droite dans la barre d'outils générale de RStudio qui ouvre un menu contextuel relatif aux projets. Sélectionnez y l'entrée `New Project...`.
 
@@ -68,11 +68,16 @@ Créez votre premier projet en suivant les 4 étapes suivantes :
     + Nommez le projet : `Directory name`. Indiquez ici `project_test`
     + Indiquez où vous voulez le placer : `Create project as subdirectory of`. Sélectionnez le sous-dossier `projects` dans le dossier `shared` partagé entre la SciViews Box et la machine hôte.
     + Sélectionnez `Create a git repository`
-    + Désélectionnez `Use packrat with this project`(il est important de ne pas sélectionner packrat, sous peine de dupliquer de nombreux packages R dans votre projet)
+    + Désélectionnez `Use packrat with this project`(**il est important de ne pas sélectionner packrat, sous peine de dupliquer de nombreux packages R dans votre projet**)
 
 Vous utilisez aussi le menu spécial projet pour créer un nouveau projet (`New Project...`), ouvrir un projet existant (`Open Project...`) ou encore fermer un projet (`Close Project`). Vous remarquez également que les derniers projets employés sont placés sous les trois options citées ci-dessus afin d'y accéder plus rapidement.
 
+
 ![](images/annexe_a2/project.png)
+
+```{block2, type='warning'}
+**Un projet ne doit bien sûr être créé qu'une seule fois !** Une fois les étapes ci-dessus effectuées, vous retournez simplement à votre projet en ouvrant le menu contextuel projets et en sélectionnant votre projet dans la liste. S'il n'y apparait pas, choisissez `Open Project...` et sélectionnez le fichier `.Rproj` relatif à votre projet. Ne créez bien évidemment **jamais** de projet à l'intérieur des dossiers d'un autre projet, surtout si vous utilisez Git. Sinon, RStudio va s'emméler les pinceaux !
+```
 
 
 #### Organisation d'un projet
@@ -91,7 +96,7 @@ Le répertoire `projects` contient maintenant un projet RStudio intitulé `proje
 
 Vous devez maintenant structurer votre projet afin d'avoir différents sous-répertoires pour organiser au mieux le travail. Ceci concerne à la fois les données et les rapports d'analyse en lien avec ce projet.
 
-Cliquez sur le bouton `New Folder` dans la barre d'outils de l'onglet **`Files`** et appelez ce nouveau dossier `data`. Ajoutez égalemnt le dossier `analysis` et `R`. Vous pouvez faire cela depuis RStudio, mais aussi depuis le système hôte si c'est plus confortable pour vous.
+Cliquez sur le bouton `New Folder` dans la barre d'outils de l'onglet **`Files`** et appelez ce nouveau dossier `data`. Ajoutez également les dossiers `analysis` et `R`. Vous pouvez faire cela depuis RStudio, mais aussi depuis le système hôte si c'est plus confortable pour vous.
 
 ```
 /home
@@ -110,7 +115,7 @@ Vous obtenez donc un projet configuré de la manière suivante :
 
 ![](images/annexe_a2/project_orga.png)
 
-L'organisation cohérente d'un projet est indispensable pour le bon fonctionnement et la clarté d'un projet.
+L'organisation cohérente d'un projet est indispensable pour le bon fonctionnement et la clarté de vos analyses de données.
 
 
 #### Chemins relatifs dans un projet
@@ -119,7 +124,7 @@ L'utilisation d'un projet permet de structurer de manière cohérente son travai
 
 Un projet RStudio pourra être qualifié de portable s'il est possible de déplacer son répertoire de base et tout ce qu'il contient (ou le renommer) sans que les analyses qu'il contient n'en soient affectées. Ceci est utile pour copier, par exemple, le projet d'un PC à un autre, ou si vous décidez de restructurer vos fichiers sur le disque dur.
 
-- La première règle est de placer tous les fichiers nécessaires dans le répertoire du projet ou dans un sous-dossier. C'est ce que nous venons de faire plus haut.
+- La première règle est de placer tous les fichiers nécessaires dans le dossier du projet ou dans un sous-dossier. C'est ce que nous venons de faire plus haut.
 
 - La seconde règle est de référencer les différents fichiers au sein du projet avec des **chemins relatifs**. Nous allons maintenant apprendre à faire cela.
 
@@ -192,29 +197,29 @@ _A noter que si le fichier se trouve déjà dans le répertoire actif, le chemin
 Nulle part dans ce chemin relatif n’apparaît le nom du répertoire de projet, ni d'aucun autre répertoire parent. Ainsi, il est possible de renommer ou déplacer le projet sans casser la référence relative à n'importe quel fichier à l'intérieur de ce projet. Donc, en utilisant uniquement des références relatives, **le projet reste parfaitement portable**.
 
 
-### Rscripts dans RStudio {#script}
+### Scripts R dans RStudio {#script}
 
-Le script R est un fichier dont l'extension est `.R`. Il permet d'écrire dans un document structuré une suite d'instruction exécutable par le programme R.
+Un script R est une suite d'instructions qui peuvent être interprétées pour effectuer nos analyses. Ce script est stocké dans un fichier dont l'extension est `.R`, et que l'on placera de préférence dans le sous-dossier `R` de notre projet.
 
 ![](images/annexe_a2/rscript.png)
 
-Un script R s'ouvrent dans la fenêtre d'édition de RStudio. Les parties de texte précédées d'un dièse (`#`) sont des commentaires. Ils ne sont jamais exécutés, mais ils permettent de structurer et d'expliquer le contenu de ce document (ou bien d'empêcher l'exécution d'instructions).
+Un script R s'ouvre dans la fenêtre d'édition de RStudio. Les parties de texte précédées d'un dièse (`#`) sont des commentaires. Ils ne sont jamais exécutés, mais ils permettent de structurer et d'expliquer le contenu du document (ou bien d'empêcher temporairement l'exécution d'instructions).
 
 ![](images/annexe_a2/rscript1.png)
 
-Afin d'organiser au mieux un script, il est indispensable de commencer par l'ajout du titre, de l'auteur, de la date, ... L'utilisation de sections comme à la ligne 6 est vivement conseillé. Ces sections sont créée à l'aide de l'entrée de menu `Code` -> `Insert Section...`. Elles sont reprises dans le bas de la fenêtre édition pour une navigation rapide dans le script.
+Afin de bien documenter vos scripts, Commencez-les toujours par quelques lignes de commentaires qui contiennent un titre, le nom du ou des auteurs, la date, un copyright éventuel, ... L'utilisation de sections comme à la ligne 6 ci-dessus est vivement conseillée. Ces sections sont créée à l'aide de l'entrée de menu `Code` -> `Insert Section...` dans RStudio. Elles sont reprises dans le bas de la fenêtre édition pour une navigation rapide dans le script.
 
 
-#### Création d'un Rscript
+#### Création d'un script R
 
-Vous avez à votre disposition plusieurs méthodes pour ouvrir un nouveau script R dans RStudio, dont deux vous sont montrés dans l'animation ci-dessous. 
+Vous avez à votre disposition plusieurs méthodes pour ouvrir un nouveau script R dans RStudio, dont deux vous sont montrées dans l'animation ci-dessous. 
 
 ![](images/annexe_a2/rscript1.gif)
 
 
 #### Utilisation d'un script R
 
-Un script R est un document natif de R. Ce dernier va interpreter les intructions qui compose le script et qui ne sont pas précédé d'un dièse lorsqu'on les exécutent (par exemple en cliquant sur `Run` dans la barre d'outils de la fenêtre d'édition, ou via le raccourci clavier `Ctrl+Enter` ou `Cmd+Enter` sur MacOS).
+Un script R est un document natif de R. Ce dernier va interpréter les intructions qui compose le script et qui ne sont pas précédées d'un dièse (cliquez sur `Run` dans la barre d'outils de la fenêtre d'édition, ou utilisez le raccourci clavier `Ctrl+Enter` ou `Cmd+Enter` sur MacOS pour exécuter des instructions).
 
 ![](images/annexe_a2/rscript.gif)
 
@@ -228,7 +233,7 @@ Un script R doit être organisé de manière cohérente afin d'être exécutable
 
 - **Étape 4.** Réaliser des graphiques avec la fonction `chart()`.
 
-Notez que les instructions exécutées dans le script sont envoyées dans la fenêtre `Console`en bas à gauche.
+Notez que les instructions exécutées dans le script sont envoyées dans la fenêtre `Console` en bas à gauche.
 
 
 ### R Markdown/R Notebook dans RStudio {#Rmd}
@@ -237,11 +242,11 @@ Un document R Markdown est un fichier dont l'extension est `.Rmd`. Il combine à
 
 ![](images/annexe_a2/rmd.gif)
 
-Tout comme les intructions dans un script R doivent être également exécutées lors de la réalisation du rapport. Une forme spéciale de document R Markdown est le **R Notebook**. Ce dernier est un peu un intermédiaire entre un script R et un R Markdown. Il se présente comme ce dernier, mais vous pouvez également exécuter le code qu'il contient ligne par ligne comme dans un script.
+Tout comme dans un script R, les intructions doivent être également exécutées lors de la réalisation du rapport. Une forme spéciale de document R Markdown est le **R Notebook**. Ce dernier est un peu un intermédiaire entre un script R et un R Markdown. Il se présente de manière très similaire à ce dernier, mais vous pouvez également exécuter le code qu'il contient ligne par ligne comme dans un script.
 
 Un document R Markdown / R Notebook se structure de la manière suivante :
 
-- un préambule
+- Un préambule
 - Des zones d'édition
     + Le language employé est le Markdown
 - Des zones de code R
@@ -249,18 +254,18 @@ Un document R Markdown / R Notebook se structure de la manière suivante :
 
 ![](images/annexe_a2/rmd1.png)
 
-Le **préambule** est nécessairement situé au tout début du document et est balisé à l'aide de trois tirets `---` sans rien d'autre sur une ligne au début et à la fin. Le préambule comporte un ensemble d'entrées de type `nom: valeur` qui configuerent le document ou la façon dont il sera compilé en rapport final. Nous pouvons y indiquer le titre principal, le ou les auteurs, la date, ...
+Le **préambule** est nécessairement situé au tout début du document et est balisé à l'aide de trois tirets `---` sans rien d'autre sur une ligne au début et à la fin. Le préambule comporte un ensemble d'entrées de type `nom: valeur` qui configurent le document ou la façon dont il sera compilé en rapport final. Nous pouvons y indiquer le titre principal, le ou les auteurs, la date, ...
 
 Le reste du document R Markdown est subdivisé en zones successives de texte et de code R (les fameux "chunks") contrastés sur des fond de couleurs différentes dans RStudio.
 
 - Les zones de texte des parties Markdown où vous pouvez écrire votre prose.
-- Les **chunks** contiennent des instructions qui vont être interprétées pour réaliser un calcul, un graphique, un tableau, etc. Le résultat de ce traitement sera placé à cet endroit dans le rapport final. Ces chunks sont balisés en entrée par trois apostrophes inverses suivies d'accolades contenant des instructions relatives au programme à utiliser, par exemple, ```` ```{r} ```` pour des chunks faisant appel au logiciel **R**, et sont terminées par trois apostrophes inverses (```` ``` ````).
+- Les **chunks** contiennent des instructions qui vont être interprétées pour réaliser un calcul, un graphique, un tableau, etc. Le résultat de ce traitement sera placé à cet endroit dans le rapport final. Ces chunks sont balisés en entrée par trois apostrophes inverses suivies d'accolades contenant des instructions relatives au programme à utiliser, par exemple, ```` ```{r} ```` pour des chunks faisant appel au logiciel **R**, et sont terminés par trois apostrophes inverses (```` ``` ````).
 
 Dans les zones Markdown, vous pouvez ajouter des balises qui permettront de formater votre texte dans la version finale de votre rapport. Par exemple, un ou plusieurs dièses (plus communément connu par sont appellation en anglais : "hastag") en début de ligne suivi d'un espace indique que la suite correspond à un titre. Titre de niveau 1 avec un seul dièse, de niveau 2 avec deux dièses, et ainsi de suite jusqu'à 6 niveaux possibles. Dans la capture d'écran ci-dessous, nous avons remplacé tout le contenu par défaut d'un R Notebook (à part le préambule) par une série de titres de niveau 1 correspondant à la structure générale d'un rapport scientifique : 
 
 - Introduction
 - Objectif
-- Matériels et méthodes
+- Matériel et méthodes
 - Résultats
 - Discussion
 - Conclusions
@@ -275,12 +280,12 @@ Vous avez à votre disposition deux méthodes pour ouvrir un nouveau R Notebook 
 
 #### Utilisation d'un R Markdown/Notebook
 
-**Afin de visualiser les résultats des chunks dans votre rapport final, Vous devez veiller à exécuter chaque chunks dans l'ordre dans un R Notebook**. Ceci n'est pas nécessaire dans un R Markdown, mais dans ce cas, tous les chunks sont systématiquement recompilés à chaque génération de rapport, ce ui peut être pénible si les calculs sont longs.
+**Afin de visualiser les résultats des chunks dans votre rapport final, Vous devez veiller à exécuter chaque chunks dans l'ordre dans un R Notebook**. Ceci n'est pas nécessaire dans un R Markdown, mais dans ce cas, tous les chunks sont systématiquement recompilés à chaque génération de rapport, ce qui peut être pénible si les calculs sont longs.
 
 Pour exécuter un chunk, vous pouvez :
 
-- cliquer sur le bouton "play", sous forme d'une flèche verte pointant vers la droite, situé en hut à droite du chunk
-- cliquer sur `Run` et sélectionner `Run Current Chunk` dans le menu qui apparait
+- cliquer sur le bouton "play", sous forme d'une flèche verte pointant vers la droite, situé en haut à droite du chunk
+- cliquer sur `Run` et sélectionner `Run Current Chunk` dans le menu déroulant qui apparait
 - Employer le raccourci clavier `Ctrl+Shift+Enter`
 
 ![](images/annexe_a2/rmd3.gif)
@@ -288,7 +293,7 @@ Pour exécuter un chunk, vous pouvez :
 Le bouton `Run` propose plusieurs actions intéressantes :
 
 - Exécuter la/les ligne(s) d'instruction sélectionnée(s) : `Run Selected Line(s)`
-- Exécuter le chunk : `Run Current Chunk`
+- Exécuter le chunk en entier : `Run Current Chunk`
 - Exécuter tous les chunk précédents : `Run All Chunk Above` 
 - Redémarer la console R et exécuter tous les chunks: `Restart R and Run All Chunks`. **Cette action est particulière intéressante pour s'assurer que le document est réellement reproductible !**
 - ...
@@ -299,7 +304,7 @@ Aprés la phase d'édition du texte (et des intructions dans les chunks pour un 
 
 ![](images/annexe_a2/rmd5.png)
 
-Le rapport est rapidement généré avec un rendu simple et professionnel. Par défaut, ce rapport présente le texte que vous avez écrit, avec les résultats que vous choisi de générer via R, mais également les instructions que vous avez employée pour obtenir ces résultats. Ceci permet de mieux comprendre, directement dans le rapport, comment tout cela a été calculé. Il est possible de cacher le code (dans un docuent généré depuis un Notebook R), ou d'indiquer une directive de compilation dans les chunks pour éviter que le code ne s'imprime dans le rapport final. Voyez les options en cliquant sur le petit engrenage à côté de la flèche verte en haut à droite du chunk. Consultez l'aide-mémoire de R Markdown accessible à partir du menu RStudio `Help` -> `Cheatsheets` -> `R Markdown Reference Guide`, voir **chunk options** p.2-3.
+Le rapport est rapidement généré avec un rendu simple et professionnel. Par défaut, ce rapport présente le texte que vous avez écrit, avec les résultats que vous avez choisi de générer via R, mais également les instructions que vous avez employée pour obtenir ces résultats. Ceci permet de mieux comprendre, directement dans le rapport, comment tout cela a été calculé. Il est possible de cacher le code (dans un document généré depuis un Notebook R), ou d'indiquer une directive de compilation dans les chunks pour éviter que le code ne s'imprime dans le rapport final. Voyez les options en cliquant sur le petit engrenage à côté de la flèche verte en haut à droite du chunk. Consultez l'aide-mémoire de R Markdown accessible à partir du menu RStudio `Help` -> `Cheatsheets` -> `R Markdown Reference Guide`, voir **chunk options** p.2-3 pour plus d'informations sur les nombreuses options disponibles.
 
 Par exemple, en ajoutant la directive `echo=FALSE` dans la balise d'entrée d'un chunk (```` ```{r, echo=FALSE} ````), on empèche d'imprimer le code de ce chunk dans le rapport.
 
@@ -307,7 +312,7 @@ Par exemple, en ajoutant la directive `echo=FALSE` dans la balise d'entrée d'un
 
 Notez que sur la droite du bouton `Preview` ou `Knit`, vous avez un autre bouton représenté par un petit engrenage. Il donne accès à un menu déroulant qui vous donne la possibilité de modifier la façon de générer vos rapports. L'entrée tout en bas `Output Options...` permet de paramétrer la présentation du rapport.
 
-Si vous cliquez sur la petite flèche noire pointant vrs le bas juste après `Preview` ou `Knit`, vous avez un autre menu déroulant qui donne accès aux différents formats possibles : HTML? PDF, Word, etc. Essayez les différentes options pour visualier comment votre rapport se présente dans les différents cas.
+Si vous cliquez sur la petite flèche noire pointant vrs le bas juste après `Preview` ou `Knit`, vous avez un autre menu déroulant qui donne accès aux différents formats possibles : HTML, PDF, Word, etc. Essayez les différentes options pour visualiser comment votre rapport se présente dans les différents formats.
 
 ![](images/annexe_a2/rmd6.png)
 
