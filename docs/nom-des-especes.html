@@ -166,12 +166,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.3.1" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et Astuces</a></li>
 <li class="chapter" data-level="4.3.2" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pour-en-savoir-plus-8"><i class="fa fa-check"></i><b>4.3.2</b> Pour en savoir plus !</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="multi-graphiques.html"><a href="multi-graphiques.html"><i class="fa fa-check"></i><b>4.4</b> Multi-graphiques</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="multi-graphiques.html"><a href="multi-graphiques.html#facets"><i class="fa fa-check"></i><b>4.4.1</b> Facets</a></li>
-<li class="chapter" data-level="4.4.2" data-path="multi-graphiques.html"><a href="multi-graphiques.html#ggarrange"><i class="fa fa-check"></i><b>4.4.2</b> <code>ggarrange()</code></a></li>
+<li class="chapter" data-level="4.4" data-path="figures-composees.html"><a href="figures-composees.html"><i class="fa fa-check"></i><b>4.4</b> Figures composées</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="figures-composees.html"><a href="figures-composees.html#facettes"><i class="fa fa-check"></i><b>4.4.1</b> Facettes</a></li>
+<li class="chapter" data-level="4.4.2" data-path="figures-composees.html"><a href="figures-composees.html#graphiques-assembles"><i class="fa fa-check"></i><b>4.4.2</b> Graphiques assemblés</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="differents-systemes-graphiques.html"><a href="differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents systèmes graphiques</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="differents-systemes-graphiques.html"><a href="differents-systemes-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.1</b> Pour en savoir plus</a></li>
+<li class="chapter" data-level="4.5" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents moteurs graphiques</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#ggplot2"><i class="fa fa-check"></i><b>4.5.1</b> ggplot2</a></li>
+<li class="chapter" data-level="4.5.2" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#lattice"><i class="fa fa-check"></i><b>4.5.2</b> lattice</a></li>
+<li class="chapter" data-level="4.5.3" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#graphiques-de-base"><i class="fa fa-check"></i><b>4.5.3</b> Graphiques de base</a></li>
+<li class="chapter" data-level="4.5.4" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.4</b> Pour en savoir plus</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>4.6</b> A vous de jouer !</a></li>
 </ul></li>
@@ -228,7 +231,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a><ul>
 <li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a><ul>
 <li class="chapter" data-level="B.1.1" data-path="rs.html"><a href="rs.html#rs-projet"><i class="fa fa-check"></i><b>B.1.1</b> Projet dans RStudio</a></li>
-<li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Rscripts dans RStudio</a></li>
+<li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Scripts R dans RStudio</a></li>
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook dans RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> Github</a></li>
@@ -275,12 +278,13 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="nom-des-especes" class="section level2">
 <h2><span class="header-section-number">D.3</span> Nom des espèces</h2>
-<p>Le nom complet d’une espèce en biologie suit une convention particulière, propre à la nomenclature binomiale de Linné) que vous devez appliquer dans tous vos travaux. Partons de l’exemple de l’oursin violet. Il s’agit ici du <strong>nom vernaculaire</strong> en français. Mais ce nom n’est pas assez préci pour être utilisé seul dans un travail scientifique. En effet, d’une part, le nom vernaculaire d’une espèce change d’une langue à la’autre, mais peut aussi varier d’une région géographique à l’aoutre, ou prie, peut désiger plusieurs espèces différentes. Seul le <strong>nom latin</strong> fait référence ! Une espèce est classée de la manière suivante (Les niveaux de classification les plus importants sont mis en gras) :</p>
+<p>Le nom complet d’une espèce en biologie suit une convention particulière, propre à la nomenclature binomiale de Linné) que vous devez appliquer dans tous vos travaux. Partons de l’exemple de l’oursin violet. Il s’agit ici du <strong>nom vernaculaire</strong> en français. Mais ce nom n’est pas assez précis pour être utilisé seul dans un travail scientifique. En effet, le nom vernaculaire d’une espèce change d’une langue à l’autre. Il peut aussi varier d’une région géographique à l’autre, ou pire, il peut désigner des espèces différentesselon les endroits. Seul le <strong>nom latin</strong> fait référence ! Une espèce est classée de la manière suivante (Les niveaux de classification les plus importants sont mis en gras) :</p>
 <ul>
 <li><strong>Règne</strong> : Animalia</li>
-<li>Sous-Embranchement : Echinozoa</li>
 <li><strong>Embranchement</strong> : Echinodermata</li>
+<li>Sous-Embranchement : Echinozoa</li>
 <li><strong>Classe</strong> : Echinoidea</li>
+<li>Sous-classe : Euechinoidea</li>
 <li>Super-ordre : Echinacea</li>
 <li><strong>Ordre</strong> : Camarodonta</li>
 <li>Infra-ordre : Echinidae</li>
@@ -292,11 +296,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 <ul>
 <li><em>Paracentrotus lividus</em></li>
 </ul>
-<p>En toute riguer, il faut aussi associer le <strong>nom du naturaliste</strong> qui a nommé et décrit l’espèce et l’année de la publication de la description (on parle de diagnose en biologie), et ce, uniquement la première fois qu’on cite cette espèce dans notre rapport.</p>
+<p>En toute rigueur, il faut aussi associer le <strong>nom du naturaliste</strong> qui a nommé et décrit l’espèce et l’année de la publication de la description (on parle de diagnose en biologie), et ce, uniquement la première fois qu’on cite cette espèce dans notre rapport.</p>
 <ul>
 <li><em>Paracentrotus lividus</em> Lamarck 1816</li>
 </ul>
-<p>Lors de la première citation de l’espèce étudiée dans un rapport, il est indispensable de spécifier le nom latin complet de l’espèce (genre espèce) qui pourra être éventuellement abbrégé par la suite en indiquant la première lettre du genre. Dans l’exemple, on pourra écrire ensuite <em>P. lividus</em> (pour autant que cela ne prette pas à confusion, bien sûr).</p>
+<p>Lors de la première citation d’une espèce, et certainement dans le titre ou le résumé, il est indispensable de spécifier le nom latin complet de l’espèce (genre espèce) qui pourra être éventuellement abbrégé par la suite en indiquant la première lettre du genre. Dans l’exemple cité, on pourra écrire ensuite <em>P. lividus</em> (pour autant que cela ne prête pas à confusion, bien sûr).</p>
 
 </div>
 <!-- </div> -->
