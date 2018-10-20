@@ -2,11 +2,11 @@
 
 En complément de ce syllabus, vous allez utiliser également des tutoriels interactifs construits avec [learnr](https://rstudio.github.io/learnr/index.html). Si ce n'est déjà fait, commencez par installer ces tutoriels dans votre SciViews Box (voir \@ref(install-tuto)).
 
-Lors de l'écriture de l'instruction ci-dessous dans la console de RStudio
+Entrez l'instruction ci-dessous dans la fenêtre **Console** de RStudio suivie de la touche `Entrée` :
 
     BioDataScience::run()
 
-La liste des tutoriels vous est proposée (ces tutoriels comme tous les autres outils pédagogiques sont en cours de développement): 
+La liste des tutoriels vous est proposée (notez que ces tutoriels comme les autres outils pédagogiques sont encore en cours de développement, mais plusieurs vous seront disponibles): 
 
     1: 02a_base
     2: 02b_decouverte
@@ -16,9 +16,9 @@ La liste des tutoriels vous est proposée (ces tutoriels comme tous les autres o
 
 ![](images/annexe_a3/learnr.gif)
 
-Entrez le numéro correspondant au tutoriel que vous voulez exécuter et un document interactif apparait. Par exemple, en entrant `1` suivi de la touche `Enter`, vous êtes redirigé vers le tutoriel concernant les base de R intitulé `02a_base`.  
+Entrez le numéro correspondant au tutoriel que vous voulez exécuter et un document interactif apparait. Par exemple, en entrant `1` suivi de la touche `Entrée`, vous êtes redirigé vers le tutoriel concernant les base de R et intitulé `02a_base`.
 
-La première chose à vérifier à l'ouverture du tutoriel interactif est le nom d'utilisateur (équivalent à votre **username** dans Github) et votre adresse email (adresse email associée à votre compte Github). En effet, votre progression est enregistrée, mais cela ne peut se réaliser que si vous renseignez ces données correctement avant de travailler dans le tutoriel "learnr".
+La première chose à vérifier à l'ouverture du tutoriel interactif est le nom d'utilisateur (équivalent à votre **username** dans Github) et votre adresse email (adresse email associée à votre compte Github ou de votre compte d'étudiant). En effet, votre progression sera enregistrée, mais cela ne peut se faire que si vous renseignez ces données correctement avant de travailler dans le tutoriel "learnr".
 
 ![](images/annexe_a3/learnr2.png)
 
@@ -26,18 +26,18 @@ Le learnr est un outil pédagogique mis au point afin de proposer des tutoriaux 
 
 - Objectif
 - Introduction
-- Une série d'exercice
+- Une série d'exercices
 - Conclusion
 
-Vous retrouvez d'ailleurs cette structure en haut à gauche de ce dernier. Chaque page du tutoriel est importante et implique votre attention. 
+Vous retrouvez d'ailleurs cette structure en haut à gauche de ce dernier. Chaque page du tutoriel est importante et nécessite votre attention. 
 
 - Objectifs
 
-Cette section va détailler l'ensemble des notions que vous allez apprendre à maitriser durant ce tutoriel. Dans le cadre de ce premier tutoriel, l'unique objectif de ce tutoriel est donc de découvrir les bases du language R. 
+Cette section va détailler l'ensemble des notions que vous allez apprendre à maitriser durant ce tutoriel. Dans le cadre de ce premier tutoriel, l'objectif est de découvrir les bases du language R. 
 
 - Introduction
 
-Cette section va vous replacer dans le contexte du tutoriel interactif avec un rappel succinct des notions théoriques indispensables afin de répondre à la série d'exercices. **Cette section ne remplace pas les autres matériels pédagogiques qui vous sont proposés.** Vous devez travailler dans l'ordre proposé dans le mrésent manuel au sein de chaque module pour vous préparer correction au learnr de test en fin de section. 
+Cette section va vous replacer dans le contexte du tutoriel interactif avec un rappel succinct des notions théoriques indispensables afin de répondre à la série d'exercices. **Cette section ne remplace pas les autres matériels pédagogiques qui vous sont proposés.** Vous devez travailler dans l'ordre proposé dans le présent manuel au sein de chaque module pour vous préparer correction au learnr de test en fin de section. 
 
 - Une serie d'exercices
 
