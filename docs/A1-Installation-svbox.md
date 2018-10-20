@@ -8,7 +8,7 @@ La SciViews Box est une machine virtuelle (c'est-à-dire, l'équivalent d'un ord
 
 <iframe width="770" height="433" src="http://www.youtube.com/embed/yIVXjl4SwVo?rel=0" frameborder="0" allowfullscreen></iframe>
 
-Dans notre cas, le logiciel de gestion de la machine virtuelle, l'hyperviseur, est **VirtualBox**. C'est un logiciel gratuit qui existe pour Windows, MacOS et la plupart des systèmes Linux. L'avantage d'utiliser une machine virtuelle dans le contexte qui nous concerne ici est double:
+Dans notre cas, le logiciel de gestion de la machine virtuelle, l'hyperviseur, est **VirtualBox**. C'est un logiciel gratuit qui existe pour Windows, MacOS et la plupart des systèmes Linux. L'avantage d'utiliser une machine virtuelle dans le contexte qui nous concerne ici est double :
 
 1) Elle est **complètement pré-configurée et pré-testée**.
 
@@ -507,19 +507,19 @@ Un tout dernier point concernant les ordinateurs de la salle de T.P. de l'UMONS.
 
 ## Utilisation {#svbox_use}
 
-Une fois votre machine virtuelle configurée, vous vous trouvez confronté à cet écran qui ressemble à votre bureau d’ordinateur hôte. 
+Une fois votre machine virtuelle configurée, vous vous trouvez confronté à cet écran qui montre le fond d'écran et un ensemble d'items par dessus. Nous l'appellerons le bureau de la SciViews Box. 
 
 ![](images/annexe_a1/desktop.png)
 
-Cette machine virtuelle utilise le système d'exploitation linux. Vous pouvez accèder au application présent sur cette machine dans l'onglet `Application`. Ce dernir offre un menu déroulant avec l'ensemble des applications disponibles. Ces applications sont rangé en dossier  tel que `Favorites`, `Recently Used` , `All`, ...
+Cette machine virtuelle utilise le système d'exploitation Linux. Vous pouvez accèder au application présentes sur cette machine à partir du menu `Applications` en haut à gauche du bureau. Ce dernier offre un menu déroulant avec l'ensemble des applications disponibles. Ces applications sont rangé en dossier  tel que `Favorites`, `Recently Used` , `All`, ...
 
 ![](images/annexe_a1/sv_app.gif)
 
-Le "dock" en bas permet de lancer des applications rapidement (accès rapide) et d'accéder aux fenêtres des applications en cours d'exécution tel que RStudio, Jupyter, Spyder,...
+Le "dock" en bas du bureau permet de lancer des applications rapidement et d'accéder aux fenêtres des applications en cours d'exécution tel que RStudio, Jupyter, Spyder,...
 
 ![](images/annexe_a1/sv_bar.png)
 
-Pour accèder à vos dossiers, il suffit de cliquer sur l'onglet `Home` que l'on retrouve également dans le dock.
+Pour accèder à vos dossiers et fichiers, il suffit de cliquer sur l'icône en forme de dossier avec une image de petite maison que l'on retrouve également dans le dock.
 
 ![](images/annexe_a1/sv_home.gif)
 
