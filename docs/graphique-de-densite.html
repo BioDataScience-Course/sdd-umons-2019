@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-19">
+<meta name="date" content="2018-10-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -171,7 +171,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.4.2" data-path="figures-composees.html"><a href="figures-composees.html#graphiques-assembles"><i class="fa fa-check"></i><b>4.4.2</b> Graphiques assemblés</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents moteurs graphiques</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.1</b> Pour en savoir plus</a></li>
+<li class="chapter" data-level="4.5.1" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#ggplot2"><i class="fa fa-check"></i><b>4.5.1</b> ggplot2</a></li>
+<li class="chapter" data-level="4.5.2" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#lattice"><i class="fa fa-check"></i><b>4.5.2</b> lattice</a></li>
+<li class="chapter" data-level="4.5.3" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#graphiques-de-base"><i class="fa fa-check"></i><b>4.5.3</b> Graphiques de base</a></li>
+<li class="chapter" data-level="4.5.4" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.4</b> Pour en savoir plus</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>4.6</b> A vous de jouer !</a></li>
 </ul></li>
@@ -228,7 +231,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a><ul>
 <li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a><ul>
 <li class="chapter" data-level="B.1.1" data-path="rs.html"><a href="rs.html#rs-projet"><i class="fa fa-check"></i><b>B.1.1</b> Projet dans RStudio</a></li>
-<li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Rscripts dans RStudio</a></li>
+<li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Scripts R dans RStudio</a></li>
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook dans RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> Github</a></li>
@@ -275,11 +278,11 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="graphique-de-densite" class="section level2">
 <h2><span class="header-section-number">3.2</span> Graphique de densité</h2>
-<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le <strong>graphique de densité</strong> qui se présente un peu comme un histogramme lissé. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a></p>
+<p>L’histogramme n’est pas le seul outil à votre disposition. Vous pouvez également employer le <strong>graphique de densité</strong> qui se présente un peu comme un histogramme lissé. Le passage d’un histogramme vers un graphe de densité se base sur une <strong>estimation par noyaux gaussien</strong><a href="references.html#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a></p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image." width="672" />
 <p class="caption">
-Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d’image.
+Figure 3.5: A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d’image.
 </p>
 </div>
 <p>Comme pour les autres graphiques, veuillez à soigner les indications qui permettent d’interpréter le graphique. Outre la courbe de densité, il faut :</p>
@@ -312,15 +315,15 @@ Figure 3.8: A. Histogramme et B. graphique de densité montrant la distribution 
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="Distribution des tailles au sein de l'échantillon de zooplancton." width="672" />
 <p class="caption">
-Figure 3.9: Distribution des tailles au sein de l’échantillon de zooplancton.
+Figure 3.6: Distribution des tailles au sein de l’échantillon de zooplancton.
 </p>
 </div>
 <p>Ici, nous utilisons donc la fonction <code>geom_density()</code>.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="7">
-<li id="fn7"><p>L’opération effectuée pour passer d’un histogramme à une courbe de densité consiste effectivement à lisser les pics plus ou moins fort dans l’histogramme de départ.<a href="graphique-de-densite.html#fnref7">↩</a></p></li>
+<ol start="11">
+<li id="fn11"><p>L’opération effectuée pour passer d’un histogramme à une courbe de densité consiste effectivement à lisser les pics plus ou moins fort dans l’histogramme de départ.<a href="graphique-de-densite.html#fnref11">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

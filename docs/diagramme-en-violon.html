@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-19">
+<meta name="date" content="2018-10-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -171,7 +171,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.4.2" data-path="figures-composees.html"><a href="figures-composees.html#graphiques-assembles"><i class="fa fa-check"></i><b>4.4.2</b> Graphiques assemblés</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents moteurs graphiques</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.1</b> Pour en savoir plus</a></li>
+<li class="chapter" data-level="4.5.1" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#ggplot2"><i class="fa fa-check"></i><b>4.5.1</b> ggplot2</a></li>
+<li class="chapter" data-level="4.5.2" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#lattice"><i class="fa fa-check"></i><b>4.5.2</b> lattice</a></li>
+<li class="chapter" data-level="4.5.3" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#graphiques-de-base"><i class="fa fa-check"></i><b>4.5.3</b> Graphiques de base</a></li>
+<li class="chapter" data-level="4.5.4" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.4</b> Pour en savoir plus</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>4.6</b> A vous de jouer !</a></li>
 </ul></li>
@@ -228,7 +231,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a><ul>
 <li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a><ul>
 <li class="chapter" data-level="B.1.1" data-path="rs.html"><a href="rs.html#rs-projet"><i class="fa fa-check"></i><b>B.1.1</b> Projet dans RStudio</a></li>
-<li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Rscripts dans RStudio</a></li>
+<li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Scripts R dans RStudio</a></li>
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook dans RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> Github</a></li>
@@ -279,7 +282,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="figure" style="text-align: center"><span id="fig:violin-plot"></span>
 <img src="03-Visualisation-II_files/figure-html/violin-plot-1.svg" alt="Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton." width="672" />
 <p class="caption">
-Figure 3.10: Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton.
+Figure 3.7: Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton.
 </p>
 </div>
 <p>Les instructions en R pour produire un diagramme en violon à l’aide de la fonction <code>chart()</code> sont :</p>
@@ -294,10 +297,10 @@ zooplankton_sub &lt;-<span class="st"> </span><span class="kw">filter</span>(zoo
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-10-1.svg" alt="Distribution des tailles pour 4 groupes taxonomiques de zooplancton." width="672" />
 <p class="caption">
-Figure 3.11: Distribution des tailles pour 4 groupes taxonomiques de zooplancton.
+Figure 3.8: Distribution des tailles pour 4 groupes taxonomiques de zooplancton.
 </p>
 </div>
-<p>Ici, la formule fournie à <code>chart()</code> indique la variable numérique à représenter par une graphe de densité <em>dans le terme de gauche</em>, et la variable facteur qui découpe l’échantillon en classes <em>à droite</em> : <code>YNUM (size) ~ XFACT (class)</code>. Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction <code>geom_violin()</code>. Vous pouvez aussi utiliser <code>%fill=%</code> pour colorer vos différents graphes en fonction de la variable facteur également, comme dans la Fig. <a href="diagramme-en-violon.html#fig:violin-plot">3.10</a>.</p>
+<p>Ici, la formule fournie à <code>chart()</code> indique la variable numérique à représenter par une graphe de densité <em>dans le terme de gauche</em>, et la variable facteur qui découpe l’échantillon en classes <em>à droite</em> : <code>YNUM (size) ~ XFACT (class)</code>. Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction <code>geom_violin()</code>. Vous pouvez aussi utiliser <code>%fill=%</code> pour colorer vos différents graphes en fonction de la variable facteur également, comme dans la Fig. <a href="diagramme-en-violon.html#fig:violin-plot">3.7</a>.</p>
 <div id="pieges-et-astuces-2" class="section level3">
 <h3><span class="header-section-number">3.3.1</span> Pièges et astuces</h3>
 <p>Parfois, les labels sur l’axe des abscisses d’un diagramme en violon apparaissent trop rapprochés et se chevauchent, comme ci-dessous.</p>
@@ -306,7 +309,7 @@ Figure 3.11: Distribution des tailles pour 4 groupes taxonomiques de zooplancton
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-11-1.svg" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon)." width="672" />
 <p class="caption">
-Figure 3.12: Distribution de tailles des 17 classes d’organismes planctoniques (diagramme en violon).
+Figure 3.9: Distribution de tailles des 17 classes d’organismes planctoniques (diagramme en violon).
 </p>
 </div>
 <p>La fonction <code>coord_flip()</code> permute les axes. Ainsi les labels ne se chevauchent plus sur l’axe des ordonnées.</p>
@@ -316,7 +319,7 @@ Figure 3.12: Distribution de tailles des 17 classes d’organismes planctoniques
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-12-1.svg" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`)." width="672" />
 <p class="caption">
-Figure 3.13: Distribution de tailles des 17 classes d’organismes planctoniques (diagramme en violon avec l’ajout de la fonction <code>coord_flip()</code>).
+Figure 3.10: Distribution de tailles des 17 classes d’organismes planctoniques (diagramme en violon avec l’ajout de la fonction <code>coord_flip()</code>).
 </p>
 </div>
 <p>Le package <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html">ggridges</a> propose une seconde solution basée sur le principe de graphique de densité avec la fonction <code>geom_density_ridges()</code> qui crée un graphique en lignes de crêtes. <strong>Attention : remarquez que la notation est ici inverse du diagramme en violon, soit <code>XFACT (class) ~ YNUM (size)</code> !</strong></p>
@@ -325,7 +328,7 @@ Figure 3.13: Distribution de tailles des 17 classes d’organismes planctoniques
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.svg" alt="Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes)." width="672" />
 <p class="caption">
-Figure 3.14: Distribution des tailles des 17 classes d’organismes planctoniques (sous forme de graphique en lignes de crêtes).
+Figure 3.11: Distribution des tailles des 17 classes d’organismes planctoniques (sous forme de graphique en lignes de crêtes).
 </p>
 </div>
 </div>

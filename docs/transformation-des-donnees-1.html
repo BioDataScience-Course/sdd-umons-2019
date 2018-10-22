@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-19">
+<meta name="date" content="2018-10-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -166,12 +166,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="4.3.1" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pieges-et-astuces-5"><i class="fa fa-check"></i><b>4.3.1</b> Pièges et Astuces</a></li>
 <li class="chapter" data-level="4.3.2" data-path="boite-de-dispersion.html"><a href="boite-de-dispersion.html#pour-en-savoir-plus-8"><i class="fa fa-check"></i><b>4.3.2</b> Pour en savoir plus !</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="multi-graphiques.html"><a href="multi-graphiques.html"><i class="fa fa-check"></i><b>4.4</b> Multi-graphiques</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="multi-graphiques.html"><a href="multi-graphiques.html#facets"><i class="fa fa-check"></i><b>4.4.1</b> Facets</a></li>
-<li class="chapter" data-level="4.4.2" data-path="multi-graphiques.html"><a href="multi-graphiques.html#ggarrange"><i class="fa fa-check"></i><b>4.4.2</b> <code>ggarrange()</code></a></li>
+<li class="chapter" data-level="4.4" data-path="figures-composees.html"><a href="figures-composees.html"><i class="fa fa-check"></i><b>4.4</b> Figures composées</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="figures-composees.html"><a href="figures-composees.html#facettes"><i class="fa fa-check"></i><b>4.4.1</b> Facettes</a></li>
+<li class="chapter" data-level="4.4.2" data-path="figures-composees.html"><a href="figures-composees.html#graphiques-assembles"><i class="fa fa-check"></i><b>4.4.2</b> Graphiques assemblés</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="differents-systemes-graphiques.html"><a href="differents-systemes-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents systèmes graphiques</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="differents-systemes-graphiques.html"><a href="differents-systemes-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.1</b> Pour en savoir plus</a></li>
+<li class="chapter" data-level="4.5" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html"><i class="fa fa-check"></i><b>4.5</b> Différents moteurs graphiques</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#ggplot2"><i class="fa fa-check"></i><b>4.5.1</b> ggplot2</a></li>
+<li class="chapter" data-level="4.5.2" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#lattice"><i class="fa fa-check"></i><b>4.5.2</b> lattice</a></li>
+<li class="chapter" data-level="4.5.3" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#graphiques-de-base"><i class="fa fa-check"></i><b>4.5.3</b> Graphiques de base</a></li>
+<li class="chapter" data-level="4.5.4" data-path="differents-moteurs-graphiques.html"><a href="differents-moteurs-graphiques.html#pour-en-savoir-plus-10"><i class="fa fa-check"></i><b>4.5.4</b> Pour en savoir plus</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="a-vous-de-jouer-5.html"><a href="a-vous-de-jouer-5.html"><i class="fa fa-check"></i><b>4.6</b> A vous de jouer !</a></li>
 </ul></li>
@@ -228,7 +231,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="B" data-path="prise.html"><a href="prise.html"><i class="fa fa-check"></i><b>B</b> Prise en main</a><ul>
 <li class="chapter" data-level="B.1" data-path="rs.html"><a href="rs.html"><i class="fa fa-check"></i><b>B.1</b> RStudio</a><ul>
 <li class="chapter" data-level="B.1.1" data-path="rs.html"><a href="rs.html#rs-projet"><i class="fa fa-check"></i><b>B.1.1</b> Projet dans RStudio</a></li>
-<li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Rscripts dans RStudio</a></li>
+<li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Scripts R dans RStudio</a></li>
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook dans RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> Github</a></li>
@@ -336,7 +339,7 @@ a &lt;-<span class="st"> </span><span class="kw">chart</span>(u, <span class="dt
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-18"></span>
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-18-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
 <p class="caption">
-Figure 4.3: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins.
+Figure 5.3: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur l’orgine des oursins.
 </p>
 </div>
 <p>Vous pouvez utiliser une variable numérique pour filtrer les données.</p>
@@ -354,7 +357,7 @@ a &lt;-<span class="st"> </span><span class="kw">chart</span>(u, <span class="dt
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-20"></span>
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-20-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
 <p class="caption">
-Figure 5.3: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur les tailles des individus.
+Figure 5.4: a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l’application d’un filtre sur les tailles des individus.
 </p>
 </div>
 <p>Vous pouvez combiner différents filtres :</p>
@@ -446,7 +449,7 @@ a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span clas
 <div id="pieges-et-astuces-12" class="section level3">
 <h3><span class="header-section-number">5.3.5</span> Pièges et astuces</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div>
-<p>Lors de l’analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d’employer le <strong>pipe</strong><a href="references.html#fn12" class="footnoteRef" id="fnref12"><sup>12</sup></a> `%&gt;.% qui permet de réaliser une suite d’intructions.</p>
+<p>Lors de l’analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d’employer le <strong>pipe</strong><a href="references.html#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> `%&gt;.% qui permet de réaliser une suite d’intructions.</p>
 <p>Vous pouvez calculer de nouvelles variables puis filtrer les lignes et enfin sélectionner des colonnes.</p>
 <p>Etape par étape, vous allez utiliser la fonction <code>mutate()</code>, puis <code>filter()</code> et enfin `select()</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ub &lt;-<span class="st"> </span><span class="kw">mutate</span>(ub, <span class="dt">v1 =</span>  lantern <span class="op">+</span><span class="st"> </span>spines <span class="op">+</span><span class="st"> </span>test, 
@@ -506,8 +509,8 @@ a &lt;-<span class="st"> </span><span class="kw">summarise</span>(tg, <span clas
 </div>
 <div class="footnotes">
 <hr />
-<ol start="12">
-<li id="fn12"><p>TODO<a href="transformation-des-donnees-1.html#fnref12">↩</a></p></li>
+<ol start="16">
+<li id="fn16"><p>TODO<a href="transformation-des-donnees-1.html#fnref16">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
