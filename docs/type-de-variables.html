@@ -191,9 +191,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="5.3.2" data-path="remaniement-des-donnees.html"><a href="remaniement-des-donnees.html#filter"><i class="fa fa-check"></i><b>5.3.2</b> <code>filter()</code></a></li>
 <li class="chapter" data-level="5.3.3" data-path="remaniement-des-donnees.html"><a href="remaniement-des-donnees.html#mutate"><i class="fa fa-check"></i><b>5.3.3</b> <code>mutate()</code></a></li>
 <li class="chapter" data-level="5.3.4" data-path="remaniement-des-donnees.html"><a href="remaniement-des-donnees.html#summarise"><i class="fa fa-check"></i><b>5.3.4</b> <code>summarise()</code></a></li>
-<li class="chapter" data-level="5.3.5" data-path="remaniement-des-donnees.html"><a href="remaniement-des-donnees.html#pieges-et-astuces-12"><i class="fa fa-check"></i><b>5.3.5</b> Pièges et astuces</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="a-vous-de-jouer-6.html"><a href="a-vous-de-jouer-6.html"><i class="fa fa-check"></i><b>5.4</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="5.4" data-path="chainage.html"><a href="chainage.html"><i class="fa fa-check"></i><b>5.4</b> Chainage</a></li>
+<li class="chapter" data-level="5.5" data-path="a-vous-de-jouer-6.html"><a href="a-vous-de-jouer-6.html"><i class="fa fa-check"></i><b>5.5</b> A vous de jouer !</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a><ul>
 <li class="chapter" data-level="6.1" data-path="decoupage-en-classe.html"><a href="decoupage-en-classe.html"><i class="fa fa-check"></i><b>6.1</b> Découpage en classe</a></li>
@@ -332,15 +332,15 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, height <
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:Date ──────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -364,11 +364,11 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, height <
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -383,7 +383,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -391,7 +391,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -405,7 +405,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -413,7 +413,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist

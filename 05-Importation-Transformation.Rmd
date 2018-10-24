@@ -330,10 +330,6 @@ La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. 
 
 ## Remaniement des données
 
-```{r}
-tg <- read("ToothGrowth", package = "datasets", lang = "fr")
-```
-
 Lors du module IV, vous avez réalisé votre premier remaniement de données afin de réaliser un graphique en barre résumant une variable numérique en fonction d'une variable facteur. 
 
 Le principale remaniement des données peut être réalisé en 4 grands piliers :
@@ -346,52 +342,54 @@ Le principale remaniement des données peut être réalisé en 4 grands piliers 
 
 - Résumer de colonnes d'un jeu de données initiale `summarise()`
 
+Ces grands piliers ont été défini dans le [chapitre 5 de  R for Datascience](http://r4ds.had.co.nz/transform.html)
+
 ### `select()`
 
 Lors de l'utilisation vos jeux de données, vous serez amené à réduire vos jeux de données en sous tableau.
 
-Partez du jeu de données portant sur la croissance des oursins, ce dernier contient pas moins de 19 variables étudiées sur 421 individus. 
+```{r}
+tg <- read("ToothGrowth", package = "datasets", lang = "fr")
+```
 
 ```{r}
-ub <- read("urchin_bio", package = "data.io", lang = "fr")
+urchin <- read("urchin_bio", package = "data.io", lang = "fr")
 ```
 
-Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction `select()` et les fonctions d'aide à la selection (`?select_helpers`) peut vous apporter la solution à votre demande.
+Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction `select()` et les fonctions d'aide à la selection (`?select_helpers`) vous apportent la solution à vos besoins.
 
 ```{r, echo = TRUE}
-ub1 <- select(ub, origin, solid_parts, test)
-  
-ub2 <- select(ub, c(1,4,14))
-
-ub3 <-  select(ub, origin, contains("weight"))
-
-ub4 <- select(ub, ends_with("ht"))
-
+urchin1 <- select(urchin, origin, solid_parts, test)
+urchin2 <- select(urchin, c(1,4,14))
+urchin3 <-  select(urchin, origin, contains("weight"))
+urchin4 <- select(urchin, ends_with("ht"))
 ```
 
-
+Les tableaux de données réduits sont proposé ci-dessous avec la fonction combine_charts(). La mise en forme des tableaux de données est réalisée avec la fontion **ggtexttable()** du package **ggpubr**.
 
 ```{r, fig.cap= "a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4"}
-u1 <- ggtexttable(head(ub1, n = 4), theme = ttheme("lBlack"))
-u2 <- ggtexttable(head(ub2, n = 4), theme = ttheme("classic"))
-u3 <- ggtexttable(head(ub3, n = 4), theme = ttheme("lRed"))
-u4 <- ggtexttable(head(ub4, n = 4), theme = ttheme("mGreen"))
-
-
-ggpubr::ggarrange(u1, u2, u3, u4, labels = "auto")
+u1 <- ggtexttable(head(urchin1, n = 4), theme = ttheme("lBlack"))
+u2 <- ggtexttable(head(urchin2, n = 4), theme = ttheme("classic"))
+u3 <- ggtexttable(head(urchin3, n = 4), theme = ttheme("lRed"))
+u4 <- ggtexttable(head(urchin4, n = 4), theme = ttheme("mGreen"))
+# Combinaison 
+combine_charts(chartlist = list(u1, u2, u3, u4))
 ```
-
 
 ### `filter()`
 
-Lors de l'analyse de vos jeux de données, vous serez amené à filtrer les lignes de vos tableaux de données. La fonction `filter()` est l'un des outils pouvant vous apporter la solution. 
+Lors de l'analyse de vos jeux de données, vous serez amené à filtrer les lignes de vos tableaux de données. La fonction `filter()` est l'un des outils pouvant vous apporter la solution. Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (**urchin2**).
 
-Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (l'origine, la hauteur et la masse du squelette).
+```{r}
+skimr::skim(urchin2)
+```
 
+Le tableau de données peut être combiné avec le graphique qui utilise les variable 
 ```{r, fig.cap= "a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins."}
-a <- chart(ub2, formula = height ~ skeleton %col=% origin) +
+a <- chart(urchin2, formula = height ~ skeleton %col=% origin) +
   geom_point(na.rm = TRUE)
-ggarrange(a,u2, labels = "auto", widths = c(2, 1))
+# Combinaison graphique et tableau
+combine_charts(chartlist = list(a,u2), widths = c(2, 1))
 ```
 
 Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau. 
@@ -401,15 +399,18 @@ Vous pouvez utiliser une variable facteur pour sélectionner uniquement un nivea
 - tout sauf : !=
 
 ```{r, echo = TRUE}
-u <- filter(ub2, origin != "Fishery") # tous les origines sauf ceux provenant de Fishery 
+urchin_sub1 <- filter(urchin2, origin != "Fishery") # tous les origines sauf ceux provenant de Fishery 
 ```
 
 
 ```{r, fig.cap= "a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins."}
-u2 <- ggtexttable(head(u, n = 4), theme = ttheme("classic"))
-a <- chart(u, formula = height ~ skeleton %col=% origin ) +
+# Tableau 
+u2 <- ggtexttable(head(urchin_sub1, n = 4), theme = ttheme("classic"))
+# Graphique
+a <- chart(urchin_sub1, formula = height ~ skeleton %col=% origin ) +
   geom_point(na.rm = TRUE)
-ggarrange(a,u2,labels = "auto", widths = c(2, 1))
+# Combinaison graphique et tableau
+combine_charts(chartlist = list(a,u2),widths = c(2, 1))
 ```
 
 Vous pouvez utiliser une variable numérique pour filtrer les données. 
@@ -423,15 +424,18 @@ Vous pouvez utiliser une variable numérique pour filtrer les données.
 - inférieur ou égal à : <=
 
 ```{r}
-u <- filter(ub2, height > 20) # hauteur supérieur à 20 
+urchin_sub2 <- filter(urchin2, height > 20) # hauteur supérieur à 20 
 ```
 
 
 ```{r, fig.cap= "a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus."}
-u2 <- ggtexttable(head(u, n = 4), theme = ttheme("classic"))
-a <- chart(u, formula = height ~ skeleton %col=% origin) +
+# Tableau
+u2 <- ggtexttable(head(urchin_sub2, n = 4), theme = ttheme("classic"))
+# Graphique
+a <- chart(urchin_sub2, formula = height ~ skeleton %col=% origin) +
   geom_point(na.rm = TRUE)
-ggarrange(a,u2,labels = "auto", widths = c(2, 1))
+# Combinaison graphique et tableau
+combine_charts(chartlist = list(a,u2), widths = c(2, 1))
 ```
 
 Vous pouvez combiner différents filtres :  
@@ -440,28 +444,33 @@ Vous pouvez combiner différents filtres :
 
 - | : ou
 
-
 ```{r}
-u <- filter(ub2, height > 20 & origin == "Farm") # hauteur supérieur à 20  et origine contenant uniquement les oursins venant du niveau `Farm`
+urchin_sub3 <- filter(urchin2, height > 20 & origin == "Farm") # hauteur supérieur à 20  et origine contenant uniquement les oursins venant du niveau `Farm`
 ```
 
 
 ```{r, fig.cap= "a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus."}
-u2 <- ggtexttable(head(u, n = 4), theme = ttheme("classic"))
-a <- chart(u, formula = height ~ skeleton %col=% origin) +
+# Tableau
+u3 <- ggtexttable(head(urchin_sub3, n = 4), theme = ttheme("classic"))
+# Graphique 
+a <- chart(urchin_sub3, formula = height ~ skeleton %col=% origin) +
   geom_point(na.rm = TRUE)
-ggarrange(a, u2,labels = "auto", widths = c(2, 1))
+# Combinaison du graphique et du tableau
+combine_charts(list(a, u3), widths = c(2, 1))
 ```
 
 
-#### Pièges et astuces
+Avec des variables facteurs composé des nombreux niveaux comme on peut le retrouver dans le jeu de données **zooplankton** du package **BioDataScience**, vous pouvez être amené à en sélectionner plusieurs niveaux au sein de cette variable.
 
-Avec des variables facteurs composé des nombreux niveaux, on peut être amené à en sélectionné plusieurs
-
+```{r}
+(zooplankton <- read("zooplankton", package = "data.io", lang  = "fr"))
 ```
-is <- filter(iris, Species == "virginica"| "setosa") ## erreur
 
-is <- filter(iris, Species %in% c("setosa", "virginica"))
+- %in%
+
+```{r}
+copepoda <- filter(zooplankton,
+  class %in% c("Calanoid", "Cyclopoid",  "Harpacticoid", "Poecilostomatoid"))
 ```
 
 
@@ -483,9 +492,10 @@ Vous pouvez tout d'abord employer les
 
 
 ```{r, echo= TRUE}
-ub <- mutate(ub, v1 =  lantern + spines + test, 
-             v2 = v1/skeleton,
-             v3 = skeleton^2)
+urchin <- mutate(urchin, 
+             weight_tot =  lantern + spines + test, 
+             ratio = weight_tot/skeleton,
+             skeleton2 = skeleton^2)
 ```
 
 - les fonctions mathématiques
@@ -495,15 +505,10 @@ ub <- mutate(ub, v1 =  lantern + spines + test,
     
 
 ```{r, echo = TRUE}
-ub <- mutate(ub, v1_log =  log(skeleton), 
-             v2_sqrt = sqrt(skeleton),
-             v3_sin = sin(skeleton))
+urchin <- mutate(urchin, skeleton_log =  log(skeleton), 
+             skeleton_sqrt = sqrt(skeleton),
+             skeleton_sin = sin(skeleton))
 ```
-
-
-
-
-#### Pièges et astuces
 
 La fonction `mutate()` permet de calculer de nouvelles variables. Cependant, la fonction `transmute()` permet de retirer les anciennes variables employées dans le calcule de la nouvelle. 
 
@@ -512,137 +517,94 @@ La fonction `mutate()` permet de calculer de nouvelles variables. Cependant, la 
 Lors de l'analyse de vos jeux de données, vous serez amené à résumer vos données. 
 
 ```{r}
-a <- summarise(tg, "moyenne" = mean(len), 
+tooth_tab <- summarise(tooth, "moyenne" = mean(len), 
                "minimum" = min(len), 
                "médiane" = median(len), 
                "maximum" = max(len))
-ggtexttable(a, theme = ttheme("lBlack"))
+ggtexttable(tooth_tab, theme = ttheme("lBlack"))
 ```
-
 
 Cette fonction n'a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d'une ou plusieurs variable de type facteur.
 
 ```{r}
-tg <- group_by(tg, supp)
+tooth <- group_by(tooth, supp)
 
-a <- summarise(tg, "moyenne" = mean(len), 
+tooth_tab <- summarise(tooth, "moyenne" = mean(len), 
                "minimum" = min(len), 
                "médiane" = median(len), 
                "maximum" = max(len))
-ggtexttable(a, theme = ttheme("lBlack"))
+ggtexttable(tooth_tab, theme = ttheme("lBlack"))
 ```
-
-```{r}
-tg <- group_by(tg, supp, dose)
-
-a <- summarise(tg, "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len))
-ggtexttable(a, theme = ttheme("lBlack"))
-```
-
 
 #### Pièges et astuces
 
 Tout comme lors de réalisation d'une boite de dispersion, vous devez être particulièrement vigilant ou nombre d'observation par sous groupe. Ajoutez à chaque tableau résumé des données, le nombre d'observation par sous-groupe.
 
 ```{r}
-a <- summarise(tg, "moyenne" = mean(len), 
+tooth_tab <- summarise(tooth, "moyenne" = mean(len), 
                "minimum" = min(len), 
                "médiane" = median(len), 
                "maximum" = max(len),
                "observation" = n())
-ggtexttable(a, theme = ttheme("lBlack"))
+ggtexttable(tooth_tab, theme = ttheme("lBlack"))
 ```
 
 
-### Pièges et astuces
+## Chainage 
+
+Le chainage (ou le pipe en anglais) permet de combiner une suite de fonction à appliquer sur un jeu de données par exemple comme lorsque vous souhaitez réaliser plusieurs étapes de remaniement des données.
+
+Différents pipes existent et nous avons décidé de vous présenter le pipe du package **flow**. Le jeu de données sur la biométrie humaine va être employé pour cette démonstration qui va comparer le remaniement d'un tableau de données avec et sans l'utilisation du chainage. 
 
 ```{r}
-ub <- read("urchin_bio", package = "data.io", lang = "fr")
+biometry <- read("biometry", package = "BioDataScience", lang = "fr")
+biometry1 <- read("biometry", package = "BioDataScience", lang = "fr")
 ```
 
-Lors de l'analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d'employer le **pipe**^[TODO] `%>.% qui permet de réaliser une suite d'intructions. 
+L'opérateur qui permet de chainer les fonctions est **%>.%**
 
-Vous pouvez calculer de nouvelles variables puis filtrer les lignes et enfin sélectionner des colonnes.
+Sur le jeu biometry, vous vous interessez aux IMC (bmi en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d'observations des hommes et des femmes de cette population dans un tableau. 
 
-Etape par étape, vous allez utiliser la fonction `mutate()`, puis `filter()` et enfin `select()
+Pour obtenir ces données vous devez : 
 
-```{r, echo = TRUE}
-ub <- mutate(ub, v1 =  lantern + spines + test, 
-             v2 = v1/skeleton,
-             v3 = skeleton^2,
-             v1_log =  log(skeleton), 
-             v2_sqrt = sqrt(skeleton),
-             v3_sin = sin(skeleton))
-
-ub <- filter(ub, height > 20 & origin == "Farm")
-
-ub <- select(ub, origin, solid_parts, test, v2_sqrt)
-```
-
-```{r}
-ggtexttable(head(ub, n = 6), theme = ttheme("lBlack"))
-```
+- calculer le imc
+- filter le tableau pour n'obtenir que le individus de moins de 25 ans
+- résumer les données afin d'obtenir la moyenne et la médiane par genre.
+- afficher un tableau de données avec ces résultats
 
 
 ```{r}
-ub1 <- read("urchin_bio", package = "data.io", lang = "fr")
-```
+# Sans chainage 
+biometry <- mutate(biometry, bmi = weight/((height/100))^2)
+biometry_sub <- filter(biometry, age <=25)
+biometry_sub <- group_by(biometry_sub, gender)
+biometry_tab <- summarise(biometry_sub, mean = mean(bmi), 
+                          median = median(bmi), number = n())
+tab1 <- ggtexttable(biometry_tab, theme = ttheme("lBlack"), rows = NULL, 
+            cols = c("Genre", "Moyenne", "Médiane", "Observations"))
 
-Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
+# avec le chainage 
 
-```{r, echo = TRUE}
-ub1 %>.%
-  mutate(., v1 =  lantern + spines + test, 
-         v2 = v1/skeleton,
-         v3 = skeleton^2, 
-         v1_log =  log(skeleton), 
-         v2_sqrt = sqrt(skeleton),
-         v3_sin = sin(skeleton)) %>.%
-  filter(., height > 20 & origin == "Farm") %>.%
-  select(., origin, solid_parts, test, v2_sqrt) -> ub1 
+biometry1 %>.%
+  mutate(., bmi = weight/((height/100))^2) %>.%
+  filter(., age <= 25) %>.%
+  group_by(., gender) %>.%
+  summarise(.,  mean = mean(bmi), median = median(bmi), number = n()) %>.%
+  ggtexttable(., theme = ttheme("lBlack"), rows = NULL, 
+            cols = c("Genre", "Moyenne", "Médiane", "Observations")) -> tab2
 
-# fonction pour afficher 
-ggtexttable(head(ub1, n = 6), theme = ttheme("lBlack"))
-```
-
-
-Le pipe est un outil très intéressant lors du résumé de données par une ou plusieurs variables facteurs.
-
-```{r, echo = TRUE}
-tg <- group_by(tg, supp, dose)
-a <- summarise(tg, "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len))
-ggtexttable(a, theme = ttheme("lBlack"))
-```
-
-```{r, echo = TRUE}
-
-tg %>.%
-  group_by(., supp, dose) %>.%
-  summarise(., "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len)) %>.%
-  ggtexttable(., theme = ttheme(
-             colnames.style = colnames_style(fill = "white"),
-             tbody.style = tbody_style(fill = get_palette("RdBu", 6))
-           ), rows = NULL, 
-           cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum"))
-
+# combinaison des deux tableaux pour obtenir une comparaison
+combine_charts(chartlist = list(tab1, tab2))
 
 ```
+
+Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Il permet également de faciliter la lecture du code. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
 
 #### Pour en savoir plus 
 
 - [Customisation de tableau](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggtexttable.html)
 
 ## A vous de jouer !
-
 
 Un squelette de projet RStudio vous a été fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de : 
 
@@ -651,21 +613,5 @@ Un squelette de projet RStudio vous a été fournit dans un dépôt Github Class
 - Comprendre les données proposées, en utilisant des visualisations graphiques appropriées 
 
 - Reproduire de plus le graphique ci-dessous 
-
-```{r}
-tg <- read("ToothGrowth", package = "datasets")
-
-tg$dose <- as.factor(tg$dose)
-
-chart(tg, formula = len ~ dose %fill=% dose) +
-  geom_violin(alpha = 0.3, position = "dodge", trim = FALSE) +
-  geom_boxplot(position = "dodge", width = 0.2) +
-  labs( y = "Longueur des dents \n de cochone d'Inde [mm/j]", x = "Dose administrée") +
-  theme(
-        text = element_text(size = 14),
-        axis.text = element_text(size = 14))
-```
-
-
 
 - Documenter  le fruit de votre étude dans un rapport R Notebook.

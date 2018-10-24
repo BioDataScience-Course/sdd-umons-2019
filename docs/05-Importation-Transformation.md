@@ -477,15 +477,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:Date ──────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -522,11 +522,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -549,7 +549,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -557,7 +557,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -580,7 +580,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -588,7 +588,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -600,11 +600,6 @@ La fonction **as.factor()** et la fonction **as.ordered** dérive de la fonction
 La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu'une variable facteur simple. 
 
 ## Remaniement des données
-
-
-```r
-tg <- read("ToothGrowth", package = "datasets", lang = "fr")
-```
 
 Lors du module IV, vous avez réalisé votre premier remaniement de données afin de réaliser un graphique en barre résumant une variable numérique en fonction d'une variable facteur. 
 
@@ -618,41 +613,42 @@ Le principale remaniement des données peut être réalisé en 4 grands piliers 
 
 - Résumer de colonnes d'un jeu de données initiale `summarise()`
 
+Ces grands piliers ont été défini dans le [chapitre 5 de  R for Datascience](http://r4ds.had.co.nz/transform.html)
+
 ### `select()`
 
 Lors de l'utilisation vos jeux de données, vous serez amené à réduire vos jeux de données en sous tableau.
 
-Partez du jeu de données portant sur la croissance des oursins, ce dernier contient pas moins de 19 variables étudiées sur 421 individus. 
-
 
 ```r
-ub <- read("urchin_bio", package = "data.io", lang = "fr")
-```
-
-Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction `select()` et les fonctions d'aide à la selection (`?select_helpers`) peut vous apporter la solution à votre demande.
-
-
-```r
-ub1 <- select(ub, origin, solid_parts, test)
-  
-ub2 <- select(ub, c(1,4,14))
-
-ub3 <-  select(ub, origin, contains("weight"))
-
-ub4 <- select(ub, ends_with("ht"))
+tg <- read("ToothGrowth", package = "datasets", lang = "fr")
 ```
 
 
+```r
+urchin <- read("urchin_bio", package = "data.io", lang = "fr")
+```
+
+Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction `select()` et les fonctions d'aide à la selection (`?select_helpers`) vous apportent la solution à vos besoins.
 
 
 ```r
-u1 <- ggtexttable(head(ub1, n = 4), theme = ttheme("lBlack"))
-u2 <- ggtexttable(head(ub2, n = 4), theme = ttheme("classic"))
-u3 <- ggtexttable(head(ub3, n = 4), theme = ttheme("lRed"))
-u4 <- ggtexttable(head(ub4, n = 4), theme = ttheme("mGreen"))
+urchin1 <- select(urchin, origin, solid_parts, test)
+urchin2 <- select(urchin, c(1,4,14))
+urchin3 <-  select(urchin, origin, contains("weight"))
+urchin4 <- select(urchin, ends_with("ht"))
+```
+
+Les tableaux de données réduits sont proposé ci-dessous avec la fonction combine_charts(). La mise en forme des tableaux de données est réalisée avec la fontion **ggtexttable()** du package **ggpubr**.
 
 
-ggpubr::ggarrange(u1, u2, u3, u4, labels = "auto")
+```r
+u1 <- ggtexttable(head(urchin1, n = 4), theme = ttheme("lBlack"))
+u2 <- ggtexttable(head(urchin2, n = 4), theme = ttheme("classic"))
+u3 <- ggtexttable(head(urchin3, n = 4), theme = ttheme("lRed"))
+u4 <- ggtexttable(head(urchin4, n = 4), theme = ttheme("mGreen"))
+# Combinaison 
+combine_charts(chartlist = list(u1, u2, u3, u4))
 ```
 
 <div class="figure" style="text-align: center">
@@ -660,23 +656,45 @@ ggpubr::ggarrange(u1, u2, u3, u4, labels = "auto")
 <p class="caption">(\#fig:unnamed-chunk-23)a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4</p>
 </div>
 
-
 ### `filter()`
 
-Lors de l'analyse de vos jeux de données, vous serez amené à filtrer les lignes de vos tableaux de données. La fonction `filter()` est l'un des outils pouvant vous apporter la solution. 
-
-Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (l'origine, la hauteur et la masse du squelette).
+Lors de l'analyse de vos jeux de données, vous serez amené à filtrer les lignes de vos tableaux de données. La fonction `filter()` est l'un des outils pouvant vous apporter la solution. Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (**urchin2**).
 
 
 ```r
-a <- chart(ub2, formula = height ~ skeleton %col=% origin) +
+skimr::skim(urchin2)
+```
+
+```
+# Skim summary statistics
+#  n obs: 421 
+#  n variables: 3 
+# 
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete   n n_unique                top_counts ordered
+#    origin       0      421 421        2 Far: 218, Fis: 203, NA: 0   FALSE
+# 
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete   n  mean   sd    p0  p25   p50   p75  p100
+#    height       0      421 421 15.48 7.47 2.4   9.3  15    21.6  35.1 
+#  skeleton     163      258 421  7.05 6.38 0.056 1.54  5.17 11.79 26.27
+#      hist
+#  ▅▇▇▆▆▆▂▁
+#  ▇▃▂▂▂▁▁▁
+```
+
+Le tableau de données peut être combiné avec le graphique qui utilise les variable 
+
+```r
+a <- chart(urchin2, formula = height ~ skeleton %col=% origin) +
   geom_point(na.rm = TRUE)
-ggarrange(a,u2, labels = "auto", widths = c(2, 1))
+# Combinaison graphique et tableau
+combine_charts(chartlist = list(a,u2), widths = c(2, 1))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-24-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-24)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-25)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.</p>
 </div>
 
 Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau. 
@@ -687,21 +705,24 @@ Vous pouvez utiliser une variable facteur pour sélectionner uniquement un nivea
 
 
 ```r
-u <- filter(ub2, origin != "Fishery") # tous les origines sauf ceux provenant de Fishery 
+urchin_sub1 <- filter(urchin2, origin != "Fishery") # tous les origines sauf ceux provenant de Fishery 
 ```
 
 
 
 ```r
-u2 <- ggtexttable(head(u, n = 4), theme = ttheme("classic"))
-a <- chart(u, formula = height ~ skeleton %col=% origin ) +
+# Tableau 
+u2 <- ggtexttable(head(urchin_sub1, n = 4), theme = ttheme("classic"))
+# Graphique
+a <- chart(urchin_sub1, formula = height ~ skeleton %col=% origin ) +
   geom_point(na.rm = TRUE)
-ggarrange(a,u2,labels = "auto", widths = c(2, 1))
+# Combinaison graphique et tableau
+combine_charts(chartlist = list(a,u2),widths = c(2, 1))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-26)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-27)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins.</p>
 </div>
 
 Vous pouvez utiliser une variable numérique pour filtrer les données. 
@@ -716,21 +737,24 @@ Vous pouvez utiliser une variable numérique pour filtrer les données.
 
 
 ```r
-u <- filter(ub2, height > 20) # hauteur supérieur à 20 
+urchin_sub2 <- filter(urchin2, height > 20) # hauteur supérieur à 20 
 ```
 
 
 
 ```r
-u2 <- ggtexttable(head(u, n = 4), theme = ttheme("classic"))
-a <- chart(u, formula = height ~ skeleton %col=% origin) +
+# Tableau
+u2 <- ggtexttable(head(urchin_sub2, n = 4), theme = ttheme("classic"))
+# Graphique
+a <- chart(urchin_sub2, formula = height ~ skeleton %col=% origin) +
   geom_point(na.rm = TRUE)
-ggarrange(a,u2,labels = "auto", widths = c(2, 1))
+# Combinaison graphique et tableau
+combine_charts(chartlist = list(a,u2), widths = c(2, 1))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-28)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-29-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-29)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus.</p>
 </div>
 
 Vous pouvez combiner différents filtres :  
@@ -740,34 +764,60 @@ Vous pouvez combiner différents filtres :
 - | : ou
 
 
-
 ```r
-u <- filter(ub2, height > 20 & origin == "Farm") # hauteur supérieur à 20  et origine contenant uniquement les oursins venant du niveau `Farm`
+urchin_sub3 <- filter(urchin2, height > 20 & origin == "Farm") # hauteur supérieur à 20  et origine contenant uniquement les oursins venant du niveau `Farm`
 ```
 
 
 
 ```r
-u2 <- ggtexttable(head(u, n = 4), theme = ttheme("classic"))
-a <- chart(u, formula = height ~ skeleton %col=% origin) +
+# Tableau
+u3 <- ggtexttable(head(urchin_sub3, n = 4), theme = ttheme("classic"))
+# Graphique 
+a <- chart(urchin_sub3, formula = height ~ skeleton %col=% origin) +
   geom_point(na.rm = TRUE)
-ggarrange(a, u2,labels = "auto", widths = c(2, 1))
+# Combinaison du graphique et du tableau
+combine_charts(list(a, u3), widths = c(2, 1))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-30-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-30)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-31-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-31)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus.</p>
 </div>
 
 
-#### Pièges et astuces
+Avec des variables facteurs composé des nombreux niveaux comme on peut le retrouver dans le jeu de données **zooplankton** du package **BioDataScience**, vous pouvez être amené à en sélectionner plusieurs niveaux au sein de cette variable.
 
-Avec des variables facteurs composé des nombreux niveaux, on peut être amené à en sélectionné plusieurs
+
+```r
+(zooplankton <- read("zooplankton", package = "data.io", lang  = "fr"))
+```
 
 ```
-is <- filter(iris, Species == "virginica"| "setosa") ## erreur
+# # A tibble: 1,262 x 20
+#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
+#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
+# # ... with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
+# #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
+# #   circularity <dbl>, density <dbl>, class <fct>
+```
 
-is <- filter(iris, Species %in% c("setosa", "virginica"))
+- %in%
+
+
+```r
+copepoda <- filter(zooplankton,
+  class %in% c("Calanoid", "Cyclopoid",  "Harpacticoid", "Poecilostomatoid"))
 ```
 
 
@@ -790,9 +840,10 @@ Vous pouvez tout d'abord employer les
 
 
 ```r
-ub <- mutate(ub, v1 =  lantern + spines + test, 
-             v2 = v1/skeleton,
-             v3 = skeleton^2)
+urchin <- mutate(urchin, 
+             weight_tot =  lantern + spines + test, 
+             ratio = weight_tot/skeleton,
+             skeleton2 = skeleton^2)
 ```
 
 - les fonctions mathématiques
@@ -803,15 +854,10 @@ ub <- mutate(ub, v1 =  lantern + spines + test,
 
 
 ```r
-ub <- mutate(ub, v1_log =  log(skeleton), 
-             v2_sqrt = sqrt(skeleton),
-             v3_sin = sin(skeleton))
+urchin <- mutate(urchin, skeleton_log =  log(skeleton), 
+             skeleton_sqrt = sqrt(skeleton),
+             skeleton_sin = sin(skeleton))
 ```
-
-
-
-
-#### Pièges et astuces
 
 La fonction `mutate()` permet de calculer de nouvelles variables. Cependant, la fonction `transmute()` permet de retirer les anciennes variables employées dans le calcule de la nouvelle. 
 
@@ -821,44 +867,29 @@ Lors de l'analyse de vos jeux de données, vous serez amené à résumer vos don
 
 
 ```r
-a <- summarise(tg, "moyenne" = mean(len), 
+tooth_tab <- summarise(tooth, "moyenne" = mean(len), 
                "minimum" = min(len), 
                "médiane" = median(len), 
                "maximum" = max(len))
-ggtexttable(a, theme = ttheme("lBlack"))
+ggtexttable(tooth_tab, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" />
-
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
 
 Cette fonction n'a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d'une ou plusieurs variable de type facteur.
 
 
 ```r
-tg <- group_by(tg, supp)
+tooth <- group_by(tooth, supp)
 
-a <- summarise(tg, "moyenne" = mean(len), 
+tooth_tab <- summarise(tooth, "moyenne" = mean(len), 
                "minimum" = min(len), 
                "médiane" = median(len), 
                "maximum" = max(len))
-ggtexttable(a, theme = ttheme("lBlack"))
+ggtexttable(tooth_tab, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" />
-
-
-```r
-tg <- group_by(tg, supp, dose)
-
-a <- summarise(tg, "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len))
-ggtexttable(a, theme = ttheme("lBlack"))
-```
-
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" />
-
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-37-1.svg" width="672" style="display: block; margin: auto;" />
 
 #### Pièges et astuces
 
@@ -866,115 +897,75 @@ Tout comme lors de réalisation d'une boite de dispersion, vous devez être part
 
 
 ```r
-a <- summarise(tg, "moyenne" = mean(len), 
+tooth_tab <- summarise(tooth, "moyenne" = mean(len), 
                "minimum" = min(len), 
                "médiane" = median(len), 
                "maximum" = max(len),
                "observation" = n())
-ggtexttable(a, theme = ttheme("lBlack"))
+ggtexttable(tooth_tab, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-38-1.svg" width="672" style="display: block; margin: auto;" />
 
 
-### Pièges et astuces
+## Chainage 
+
+Le chainage (ou le pipe en anglais) permet de combiner une suite de fonction à appliquer sur un jeu de données par exemple comme lorsque vous souhaitez réaliser plusieurs étapes de remaniement des données.
+
+Différents pipes existent et nous avons décidé de vous présenter le pipe du package **flow**. Le jeu de données sur la biométrie humaine va être employé pour cette démonstration qui va comparer le remaniement d'un tableau de données avec et sans l'utilisation du chainage. 
 
 
 ```r
-ub <- read("urchin_bio", package = "data.io", lang = "fr")
+biometry <- read("biometry", package = "BioDataScience", lang = "fr")
+biometry1 <- read("biometry", package = "BioDataScience", lang = "fr")
 ```
 
-Lors de l'analyse de vos jeux de données, vous serez amené à réaliser plusieurs de ces étapes de remaniement des données. La solution est d'employer le **pipe**^[TODO] `%>.% qui permet de réaliser une suite d'intructions. 
+L'opérateur qui permet de chainer les fonctions est **%>.%**
 
-Vous pouvez calculer de nouvelles variables puis filtrer les lignes et enfin sélectionner des colonnes.
+Sur le jeu biometry, vous vous interessez aux IMC (bmi en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d'observations des hommes et des femmes de cette population dans un tableau. 
 
-Etape par étape, vous allez utiliser la fonction `mutate()`, puis `filter()` et enfin `select()
+Pour obtenir ces données vous devez : 
 
-
-```r
-ub <- mutate(ub, v1 =  lantern + spines + test, 
-             v2 = v1/skeleton,
-             v3 = skeleton^2,
-             v1_log =  log(skeleton), 
-             v2_sqrt = sqrt(skeleton),
-             v3_sin = sin(skeleton))
-
-ub <- filter(ub, height > 20 & origin == "Farm")
-
-ub <- select(ub, origin, solid_parts, test, v2_sqrt)
-```
-
-
-```r
-ggtexttable(head(ub, n = 6), theme = ttheme("lBlack"))
-```
-
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" />
+- calculer le imc
+- filter le tableau pour n'obtenir que le individus de moins de 25 ans
+- résumer les données afin d'obtenir la moyenne et la médiane par genre.
+- afficher un tableau de données avec ces résultats
 
 
 
 ```r
-ub1 <- read("urchin_bio", package = "data.io", lang = "fr")
+# Sans chainage 
+biometry <- mutate(biometry, bmi = weight/((height/100))^2)
+biometry_sub <- filter(biometry, age <=25)
+biometry_sub <- group_by(biometry_sub, gender)
+biometry_tab <- summarise(biometry_sub, mean = mean(bmi), 
+                          median = median(bmi), number = n())
+tab1 <- ggtexttable(biometry_tab, theme = ttheme("lBlack"), rows = NULL, 
+            cols = c("Genre", "Moyenne", "Médiane", "Observations"))
+
+# avec le chainage 
+
+biometry1 %>.%
+  mutate(., bmi = weight/((height/100))^2) %>.%
+  filter(., age <= 25) %>.%
+  group_by(., gender) %>.%
+  summarise(.,  mean = mean(bmi), median = median(bmi), number = n()) %>.%
+  ggtexttable(., theme = ttheme("lBlack"), rows = NULL, 
+            cols = c("Genre", "Moyenne", "Médiane", "Observations")) -> tab2
+
+# combinaison des deux tableaux pour obtenir une comparaison
+combine_charts(chartlist = list(tab1, tab2))
 ```
 
-Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-40-1.svg" width="672" style="display: block; margin: auto;" />
 
-
-```r
-ub1 %>.%
-  mutate(., v1 =  lantern + spines + test, 
-         v2 = v1/skeleton,
-         v3 = skeleton^2, 
-         v1_log =  log(skeleton), 
-         v2_sqrt = sqrt(skeleton),
-         v3_sin = sin(skeleton)) %>.%
-  filter(., height > 20 & origin == "Farm") %>.%
-  select(., origin, solid_parts, test, v2_sqrt) -> ub1 
-
-# fonction pour afficher 
-ggtexttable(head(ub1, n = 6), theme = ttheme("lBlack"))
-```
-
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-41-1.svg" width="672" style="display: block; margin: auto;" />
-
-
-Le pipe est un outil très intéressant lors du résumé de données par une ou plusieurs variables facteurs.
-
-
-```r
-tg <- group_by(tg, supp, dose)
-a <- summarise(tg, "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len))
-ggtexttable(a, theme = ttheme("lBlack"))
-```
-
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-42-1.svg" width="672" style="display: block; margin: auto;" />
-
-
-```r
-tg %>.%
-  group_by(., supp, dose) %>.%
-  summarise(., "moyenne" = mean(len), 
-               "minimum" = min(len), 
-               "médiane" = median(len), 
-               "maximum" = max(len)) %>.%
-  ggtexttable(., theme = ttheme(
-             colnames.style = colnames_style(fill = "white"),
-             tbody.style = tbody_style(fill = get_palette("RdBu", 6))
-           ), rows = NULL, 
-           cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum"))
-```
-
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-43-1.svg" width="672" style="display: block; margin: auto;" />
+Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Il permet également de faciliter la lecture du code. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
 
 #### Pour en savoir plus 
 
 - [Customisation de tableau](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggtexttable.html)
 
 ## A vous de jouer !
-
 
 Un squelette de projet RStudio vous a été fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de : 
 
@@ -983,24 +974,5 @@ Un squelette de projet RStudio vous a été fournit dans un dépôt Github Class
 - Comprendre les données proposées, en utilisant des visualisations graphiques appropriées 
 
 - Reproduire de plus le graphique ci-dessous 
-
-
-```r
-tg <- read("ToothGrowth", package = "datasets")
-
-tg$dose <- as.factor(tg$dose)
-
-chart(tg, formula = len ~ dose %fill=% dose) +
-  geom_violin(alpha = 0.3, position = "dodge", trim = FALSE) +
-  geom_boxplot(position = "dodge", width = 0.2) +
-  labs( y = "Longueur des dents \n de cochone d'Inde [mm/j]", x = "Dose administrée") +
-  theme(
-        text = element_text(size = 14),
-        axis.text = element_text(size = 14))
-```
-
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-44-1.svg" width="672" style="display: block; margin: auto;" />
-
-
 
 - Documenter  le fruit de votre étude dans un rapport R Notebook.
