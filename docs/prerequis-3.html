@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-22">
+<meta name="date" content="2018-10-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,12 +47,52 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #1f1c1b; background-color: #ffffff; }
+code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code > span.dt { color: #0057ae; } /* DataType */
+code > span.dv { color: #b08000; } /* DecVal */
+code > span.bn { color: #b08000; } /* BaseN */
+code > span.fl { color: #b08000; } /* Float */
+code > span.cn { color: #aa5500; } /* Constant */
+code > span.ch { color: #924c9d; } /* Char */
+code > span.sc { color: #3daee9; } /* SpecialChar */
+code > span.st { color: #bf0303; } /* String */
+code > span.vs { color: #bf0303; } /* VerbatimString */
+code > span.ss { color: #ff5500; } /* SpecialString */
+code > span.im { color: #ff5500; } /* Import */
+code > span.co { color: #898887; } /* Comment */
+code > span.do { color: #607880; } /* Documentation */
+code > span.an { color: #ca60ca; } /* Annotation */
+code > span.cv { color: #0095ff; } /* CommentVar */
+code > span.ot { color: #006e28; } /* Other */
+code > span.fu { color: #644a9b; } /* Function */
+code > span.va { color: #0057ae; } /* Variable */
+code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #1f1c1b; } /* Operator */
+code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code > span.pp { color: #006e28; } /* Preprocessor */
+code > span.at { color: #0057ae; } /* Attribute */
+code > span.re { color: #0057ae; } /* RegionMarker */
+code > span.in { color: #b08000; } /* Information */
+code > span.wa { color: #bf0303; } /* Warning */
+code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
+code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code > span. { color: #1f1c1b; } /* Normal */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -330,7 +370,7 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 </blockquote>
 <p>L’élément le plus important étant la vitesse de calcul du processeur, obtenez la référence du processeur de l’ordinateur que vous convoitez et recherchez-le <a href="https://novabench.com/parts/cpu?all=true">ici</a>. Comparer alors son score à notre configuration de référence, et faites-en de même pour les autres caractéristiques (mémoire vive, type et taille du disque dur, etc.)</p>
 <p>Prenez aussi comme référence les ordinateurs de votre salle de travaux pratiques. A l’UMONS, dans la salle “Pentagone”, les ordinateurs sont équipés d’Intel Core i5-6400T @ 2.20Ghz. Ce sont des processeurs 4 coeurs/4 threads avec un score CPU Novabench de 511. Ils possèdent également 8Go de mémoire vive, un disque dur SDD avec 190Go dédiés à Windows 10 64-bit, et un processeur graphique intégré qui affiche 1920x1080 pixels à l’écran. Aux salles “Escher” et “Turing”, ce sont des processeurs Intel Core i5-4590 @ 3.30Ghz, également 4 coeurs/4 threads affichant un score CPU Novabench de 515. Le reste de leurs configurations est similaire à celle des ordinateurs “Pentagone”. <strong>Vous pouvez également vous baser sur d’autres tests, les CPUMarks et comparer le processeur de l’ordinateur que vous voulez acheter avec les scores de vos machines des salles de travaux pratiques à partir de <a href="https://www.cpubenchmark.net/compare/Intel-i5-4590-vs-Intel-i5-6400T/2234vs2668">cette page</a>.</strong></p>
-<p>Dans le choix de votre ordinateur, il faut tout d’abord vous demander si vous voulez un ordinateur pour <strong>apprendre</strong> à traiter des données sur des petits tableaux, et que vous prévoyez changer dans 1 ou 2 ans (dans ce cas, une configuration de base convient), ou si vous voulez investir sur plus long terme. Visez alors plus haut. Naturellement, le prix sera un critère fondamental, également<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>Dans le choix de votre ordinateur, il faut tout d’abord vous demander si vous voulez un ordinateur pour <strong>apprendre</strong> à traiter des données sur des petits tableaux, et que vous prévoyez changer dans 1 ou 2 ans (dans ce cas, une configuration de base convient), ou si vous voulez investir sur plus long terme. Visez alors plus haut. Naturellement, le prix sera un critère fondamental, également<a href="references.html#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a>.</p>
 <p>Justification des besoins :</p>
 <ul>
 <li><p><strong>Processeur :</strong> l’élément le plus important. Un processeur puissant et multitâche est indispensable. Il vous faut au moins 2 coeurs et 4 threads (selon les modèles, chaque coeur peut gérer une seule tâche -ou “thread” en anglais- ou deux). Un processeur 4 coeurs/4 threads est encore mieux, et à partir de 4 coeurs/8 threads, c’est parfait. Pour la vitesse de calcul, comme indiqué plus haut, un score CPU Novabench de 700 ou mieux, ou un CPUMark de 7000 ou mieux doit être visé pour une configuration de référence ou performante. Avec un score moitié moindre, c’est encore un processeur utilisable, mais ne descendez pas en dessous pour une configuration de base.</p></li>
@@ -400,7 +440,7 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 </tr>
 </tbody>
 </table>
-<p>Avec un budget de 500€-600€, des concessions sont nécessaires. A titre d’exemple, nous reprenons deux configurations sous Windows ici. Le Lenovo choisi a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu juste. L’Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n’a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c’est quand même fort juste sous Windows 10 qui est déjà très gourmand en espace disque à la base. Donc votre préférence ira si possible plutôt vers une configuration du type Acer Swift 3 ci-dessus<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. Des versions avec processeur Core i5 et 8Go de mémoire existent. Elles sont parfaites, … mais le prix les alignent presque avec nos configurations de référence ci-dessous. Vous verrez aussi dans les tests que ces machines ne sont pas irréprochables, mais il faut mettre les “défauts” relevés en regard du prix très contenu, et relativiser. Pour la science des données, nous privilégierons des ordinateurs plus rapides, quitte a être un peu moins bien cotés dans les tests sur la qualité de l’écran (comme l’Acer, par exemple).</p>
+<p>Avec un budget de 500€-600€, des concessions sont nécessaires. A titre d’exemple, nous reprenons deux configurations sous Windows ici. Le Lenovo choisi a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu juste. L’Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n’a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c’est quand même fort juste sous Windows 10 qui est déjà très gourmand en espace disque à la base. Donc votre préférence ira si possible plutôt vers une configuration du type Acer Swift 3 ci-dessus<a href="references.html#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a>. Des versions avec processeur Core i5 et 8Go de mémoire existent. Elles sont parfaites, … mais le prix les alignent presque avec nos configurations de référence ci-dessous. Vous verrez aussi dans les tests que ces machines ne sont pas irréprochables, mais il faut mettre les “défauts” relevés en regard du prix très contenu, et relativiser. Pour la science des données, nous privilégierons des ordinateurs plus rapides, quitte a être un peu moins bien cotés dans les tests sur la qualité de l’écran (comme l’Acer, par exemple).</p>
 <p>Du côté Mac portables, nous avons le MacBook 12’’ et le MacBook Air, présenté ici. Ils sont beaucoup plus chers, mais ce sont des ordinateurs durables et bien finis qui se revendent très bien. Dans les deux cas, le processeur (même si Core i5, ou i7) est fort juste et est plus à l’aise en bureautique. Pour analyser des petits jeux de données, ça fonctionne quand même bien. Ici aussi, des concessions sont nécessaires sur la capacité du disque dur pour tirer le prix à … 1000€ tout de même ! Mais comme le MacBook Air existe depuis 2015 quasiment inchangé, vous pouvez trouver en occasion des modèles à prix équivalent aux deux autres machines, <strong>mais faites attention à éviter les modèles anciens à processeurs lents qui se vendent encore, et qui ne sont pas assez puissants !</strong> Un modèle avec un disque de 256Go existe aussi. Attention aussi : même si ce modèle vieilli bien, il est quand même en fin de vie. Ca a un impact sur la revente.</p>
 </div>
 <div id="configurations-de-reference" class="section level4">
@@ -544,9 +584,9 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Renseignez-vous au niveau des services étudiants à l’UMONS et à l’AGE : des aides existent pour les étudiants boursiers qui souhaitent acquérir un ordinateur dans le cadre de leurs études.<a href="prerequis-3.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d’autres constructeurs aussi !<a href="prerequis-3.html#fnref2">↩</a></p></li>
+<ol start="17">
+<li id="fn17"><p>Renseignez-vous au niveau des services étudiants à l’UMONS et à l’AGE : des aides existent pour les étudiants boursiers qui souhaitent acquérir un ordinateur dans le cadre de leurs études.<a href="prerequis-3.html#fnref17">↩</a></p></li>
+<li id="fn18"><p>Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d’autres constructeurs aussi !<a href="prerequis-3.html#fnref18">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

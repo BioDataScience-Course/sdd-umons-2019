@@ -2,12 +2,7 @@
 
 
 
-
-
-
-
-
-Vos objectifs pour ce module sont :
+#### Objectifs {-}
 
 - Savoir importer des données via la fonction `read()`, ainsi qu'appréhender ses arguments.
 
@@ -15,82 +10,120 @@ Vos objectifs pour ce module sont :
 
 - Savoir remanier des données afin d'extraire l'information importante d'un jeu de données.
 
+#### Prérequis {-}
 
 Si ce n'est déjà fait, vous devez avoir réaliser le module 1 ainsi que les modules liés à la visualisation des données.
 
-
 ## Importation des données
 
-Afin de réaliser l'analyse de vos résultats vous devez commencer par importer correctement vos données. Pour ce faire, la fonction pouvant vous apporter la solution est la fonction `read()` du package `data.io`
+Afin de réaliser l'analyse de vos résultats vous devez commencer par importer correctement vos données. Il existe une multitude de fonction pour réaliser l'importation de divers formats de fichiers. La fonction `read()` du package `data.io` est l'une d'entre-elles. 
 
-Vos données peuvent provenir de plusieurs endroits :
-
-- un package 
-- un jeu de données encodé manuellement 
-
-### Données provenant d'un package
-
-En effet, les packages que l'on peut assimiler à des boites à outils dans R sont pour certain composé de jeu de données. La fonction `read() permet de les importer.
+Durant les précédents modules, vous avez employé cette fonction pour importer vos jeux de données. Reprennons un exemple pour détailler cette fonction.
 
 
 ```r
-# Importation de données provenant d'un package
-is <- read("iris", package = "datasets", lang = "fr")
-
-ub <- read("urchin_bio", package = "data.io", lang = "fr")
+(biometry <- read("biometry", package = "BioDataScience", lang = "fr"))
 ```
 
-La fonction `read()` requiert comme premier argument le nom du jeu de données (e.g. `"iris"` ou `"urchin_bio"`), suivi de l'argument `package=` (e.g. `"datasets"`, ou `"data.io"`), suivi de l'argument `lang=` (e.g. `"fr"`) qui définit la langue d'intérêt.  
+```
+# # A tibble: 395 x 7
+#    gender day_birth  weight height wrist year_measure   age
+#    <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
+#  1 M      1995-03-11     69    182  15           2013    18
+#  2 M      1998-04-03     74    190  16           2013    15
+#  3 M      1967-04-04     83    185  17.5         2013    46
+#  4 M      1994-02-10     60    175  15           2013    19
+#  5 W      1990-12-02     48    167  14           2013    23
+#  6 W      1994-07-15     52    179  14           2013    19
+#  7 W      1971-03-03     72    167  15.5         2013    42
+#  8 W      1997-06-24     74    180  16           2013    16
+#  9 M      1972-10-26    110    189  19           2013    41
+# 10 M      1945-03-15     82    160  18           2013    68
+# # ... with 385 more rows
+```
 
-L'instruction ci-dessous permet d'obtenir une liste de l'ensemble des jeux de données présent dans un package.
+La fonction `read()` du package `data.io` assigne à **biometry** le jeu de données **biometry** présent dans le package **BioDataScience**. Il est également spécifié que la langue souhaitée est le français avec l'argument **lang = "fr"**. 
+
+Lorsque vous vous retrouvez confrontés à devoir importer de nouvelles données dans R, vous devez vous poser les deux questions suivantes :
+
+- Où ces données sont stockées ? 
+
+Les données peuvent provenir de multiples endroits. Vous avez pu vous observer dans les modules précédents que les données peuvaientt être dans un package (par exemple le jeu de données **biometry** dans le package **BioDataScience**). Vous avez également pu observer que les données pouvait se retrouver sur votre disque, dans un dossier de votre ordinateur (par exemple, le jeu de données biometry_2014.xlsx lors de la comparaison des workflow entre Excell-Word et R-Rmarkdown). Les données peuvent également provenir d'un lien url (par exemple lors d'encodage de données collaboratives sur Google Sheets) ou d'une base de données.
+
+La fonction read() permet d'importer des données sur votre disque, depuis un URL ou encore depuis un package. Elle unifie donc 3 méthodes bien distinctes.
+
+- Quels est le format de vos données ? 
+
+Les données peuvent être sauvegardées avec différents formats comme csv, xlsx ou encore txt. Une multitude de formats existe avec des avantages et inconvénients que nous ne developperons pas dans cette section.
+
+La fonction **read()** supporte néanmoins 32 formats de fichier différents en utilisant en interne des fonctions provenant de différents packages dans R. Elle permet donc d'unifier ces différents outils d'importations des données :
 
 
 ```r
-#read(package = "data.io")
+getOption("read_write")
+```
+
+```
+# # A tibble: 32 x 5
+#    type  read_fun      read_header    write_fun      comment              
+#    <chr> <chr>         <chr>          <chr>          <chr>                
+#  1 csv   readr::read_… data.io::hrea… readr::write_… comma separated valu…
+#  2 csv2  readr::read_… data.io::hrea… <NA>           semicolon separated …
+#  3 xlcsv readr::read_… data.io::hrea… readr::write_… write a CSV file mor…
+#  4 tsv   readr::read_… data.io::hrea… readr::write_… tab separated values 
+#  5 fwf   readr::read_… data.io::hrea… <NA>           fixed width file     
+#  6 log   readr::read_… <NA>           <NA>           standard log file    
+#  7 rds   readr::read_… <NA>           readr::write_… R data file (no comp…
+#  8 txt   readr::read_… <NA>           readr::write_… text file (as length…
+#  9 raw   readr::read_… <NA>           <NA>           binary file (read as…
+# 10 ssv   readr::read_… data.io::hrea… <NA>           space separated valu…
+# # ... with 22 more rows
 ```
 
 
-### Données encodées manuellement
+### Données sur le disque 
 
-En effet, vous serez amené à encoder manuellement vos jeux de données dans un fichier au format `"xlsx"`, `"csv"` ou encore `"txt"`. La fonction `read()` permet de les importer. Vous devrez dans ce cas spécifier le chemin d'accès à votre fichier.
+La fonction read() vous permet d'importer de nombreux formats de fichiers comme expliqué précédement toute la difficulté va donc être dans la localisation de votre fichier sur votre ordinateur. Vous allez devoir spécifier le chemin d'accès de vos données.
 
-Le chemin d'accès à votre fichier peut s'écrire de diffférentes manières absolue ou bien de manière relative. Vous devez tant que possible employer des chemins relatifs. Les projets dans RStudio définissent un environnement de travail comme vu dans le module 1. Afin que ce projet soit portable, il est indisensable d'employer des chemins relatifs. 
+Le chemin d'accès à votre fichier peut s'écrire de manière absolue ou bien de manière relative. **Vous devez tant que possible employer des chemins relatifs.** Les projets dans RStudio définissent un environnement de travail comme vu dans le module 1. Ces projets sont amenés à être employé par différents collaborateurs. Il est donc indispensable que votre projet soit **portable**.
 
-Votre projet s'organise comme ceci :
+Un projet RStudio pourra être qualifié de **portable** s'il est possible de déplacer le répertoire de base du projet et tout ce qu'il contient (ou le renommer) sans que les analyses effectuées dans R n'en soient affectées. Ceci est utile pour copier, par exemple, le projet d'un PC à un autre, ou si vous décidez de restructurer vos fichiers sur le disque dur.
+
+La démonstration va être effectuée sur base du projet sdd1_biometry qui vous avez traité lors de la comparaison des workflows.
+
+Votre projet s'organise comme ceci et se trouve dans le dossier project du dossier shared :
 
 ```
 /home
   /sv
-    /Shared
-      /Projects
-        /Projet test                 # Le répertoire de base du projet
-          Projet test.Rproj          # Fichier de configuration du projet créé par RStudio
+    /shared
+      /projects
+        /sdd1_biometry                 # Le répertoire de base du projet
+          sdd1_biometry.Rproj          # Fichier de configuration du projet créé par RStudio
           /data                      # Le dossier avec les données de départ
-            Oursins.csv              # Un jeu de données au format CSV
-          /R                         # Un dossier pour les scripts d'analyse R
-            première analyse.R       # Un scirpt de découverte des données
-          /reports                   # Un dossier pour les rapports d'analyse
-            Rapport de test.nb.html  # Vue HTML du rapport générée automatiquement
-            Rapport de test.Rmd      # Un premier rapport au format R Notebook
+            biometry_2014.xlsx       # Un jeu de données au format xlsx sur la biométrie humaine
+          /analysis                  # Un dossier pour les rapports d'analyse
+            biometry.nb.html  # Vue HTML du rapport générée automatiquement
+            biometry.Rmd      # Un premier rapport au format R Notebook 
 ```
 
-Afin de définir la position de votre fichiers `Oursins.csv`, vous aller simplement lister l'ensemble de dossier. Il s'agit du chemin absolu , de la position de votre fichier sur votre ordinateur. Ce format n'est pas du tout portable
+Afin de définir la position de votre fichiers `biometry_2014.xlsx`, vous devez simplement lister l'ensemble de dossier. Il s'agit du chemin absolu , de la position de votre fichier sur votre ordinateur. Ce format n'est pas du tout portable
 
 ```
-/home/sv/Shared/Projects/Projet test/data/Oursins.csv 
+/home/sv/shared/projects/sdd1_biometry/data/biometry_2014.xlsx 
 ```
 
 Ce chemin est plus portable que le précédent et le tild représente le dossier utilisateur. 
 
 ```
-~/Shared/Projects/Projet test/data/Oursins.csv
+~/shared/projects/sdd1_biometry/data/biometry_2014.xlsx
+```
+Comme rapellez ci-dessus, les projets dans RStudio définissent un environnement de travail. Vous devez déterminer le chemin relatif en fonction du répertoire actif dans un projet R studio, c'est le projet lui même qui est le répertoire actif. 
+
+```
+data/biometry_2014.xlsx
 ```
 
-Vous détemrinez le chemin relatif en fonction du répertoire actif dans un projet R studio, c'est le projet lui même qui est le répertoire actif. 
-
-```
-data/Oursins.csv
-```
 Afin de passer d'un chemin absolu à un chemin relatif vous devez :
 
 - connaitre le répertoire actif 
@@ -99,56 +132,318 @@ Afin de passer d'un chemin absolu à un chemin relatif vous devez :
 
 Pour obtenir une explication complète et détaillée sur l'utilisation des chemins relatifs dans l'organisation d'un projet Rstudio, lisez le tutoriel : **"Tutoriel SDD-UMONS : La gestion des fichiers dans un projet et les chemins relatifs"**
 
-
-```r
-# cg <- read("/Users/engels/Documents/projet/data/jeu_fictif.csv") # chemin absolu
-# ou encore
-# cg <- read(data/jeu_fictif.csv) # Chemin relatif
-```
-
 #### Pièges et astuces
 
-L'utilisation des chemins relatifs est indispensable comme expliqués ci-dessus. Lors de vos travaux organisé en plusieurs projets cohérents vous serez amené à travailler principalement dans des fichiers de type `Rscript` ou des fichiers `R notebook`. Le `Rscript` utilise comme point de départ la position de projet R studio. Par contre, le `R notebook` utilise sa propre position comme point de départ.
+L'utilisation des chemins relatifs est indispensable comme expliqués ci-dessus. Lors de vos travaux organisé en plusieurs projets cohérents vous serez amené à travailler principalement dans des fichiers de type **Rscript** ou des fichiers **R notebook** ou encore **R markdown**.
+
+**Notez ceci**
+
+- Le **Rscript** utilise comme référence afin de définir la position d'un jeu de données (ou tous autres fichiers) dans un projet, la position de projet R studio. 
+
+```
+data/biometry_2014.xlsx
+```
+
+- Le **R notebook** ou R markdown utilise comme référence afin de définir le chemin d'accès d'un jeu de données (ou tous autres fichiers) dans un projet, sa propre position.
+
+```
+../data/biometry_2014.xlsx
+```
+
+L'utilisation des chemins d'accès relatifs respecte les mêmes principes pour l'insertion d'une image par exemple.
+
+### Données provenant d'un url
+
+Il existe différents programmes qui permettent d'éditer des tableaux de données en ligne et de les transmettre simplement. [Google Sheet](https://www.google.com/intl/fr_BE/sheets/about/) est l'un de ces programmes. 
 
 
-### Pièges et astuces
+Partez de l'url suivant :
 
-La fonction read() est également capable d'importer les fichier comprimer ".zip" , ".tar" ou encore ".tar.gz". 
+- <https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw/edit?usp=sharing>
+
+Il s'agit d'un tableau de données portant sur la croissance de différentes espèces de coraux. Ce tableau de données peut être transmis sous la forme d'un tableau csv que la fonction **read()** peut importer. 
+
+remarque : le lien founit ne permet pas de modifier les données fournie, ce paramètre peut très simplement être modifié.
 
 
 ```r
-iris <- read(data_example("iris.csv.zip"))
+coral <- read("https://docs.google.com/spreadsheets/d/e/2PACX-1vSxqegwJVjO0PxIs7mObr0syeYwNdpvd25AWUoWkwocQexYUqQUK0hC57NwsypQQUDnsJLiR-hxzSFA/pub?gid=0&single=true&output=csv", type = "csv")
 ```
 
 ```
 # Parsed with column specification:
 # cols(
-#   Sepal.Length = col_double(),
-#   Sepal.Width = col_double(),
-#   Petal.Length = col_double(),
-#   Petal.Width = col_double(),
-#   Species = col_character()
+#   localisation = col_character(),
+#   species = col_character(),
+#   id = col_integer(),
+#   growth_day = col_double()
 # )
 ```
 
-La fonction read() est également capable d'importer des fichiers en lignes. 
+```r
+# Visualisation des premières ligne du tableau de données
+head(coral)
+```
+
+```
+# # A tibble: 6 x 4
+#   localisation species      id growth_day
+#   <chr>        <chr>     <int>      <dbl>
+# 1 A0           s.hystrix     1       1.44
+# 2 A0           s.hystrix     2       1.82
+# 3 A0           s.hystrix     3       1.66
+# 4 A0           s.hystrix     4       1.16
+# 5 A0           s.hystrix     5       1.72
+# 6 A0           s.hystrix     6       1.65
+```
+
+### Données provenant d'un package
+
+Les packages que l'on peut assimiler à des boites à outils dans R que vous employer à chaque utilisation sur le programme comme **data.io**, **chart** ou encore **flow**, sont pour certains composés de jeux de données. La fonction `read()` permet également de les importer.
+
+Précédement, une seule fonction était employé pour importer ces données. Il s'agissait de la fonction `data()`.
 
 
 ```r
-#ble <- read("http://tinyurl.com/Biostat-Ble", type = "csv") # requiert une connexion internet 
+# Chargement de package
+library(data.io)
+# Appel du jeu de données
+data(urchin_bio)
+# Visualisation des premières ligne du jeu de données
+head(urchin_bio)
 ```
 
+```
+#    origin diameter1 diameter2 height buoyant_weight weight solid_parts
+# 1 Fishery       9.9      10.2    5.0             NA 0.5215      0.4777
+# 2 Fishery      10.5      10.6    5.7             NA 0.6418      0.5891
+# 3 Fishery      10.8      10.8    5.2             NA 0.7336      0.6770
+# 4 Fishery       9.6       9.3    4.6             NA 0.3697      0.3438
+# 5 Fishery      10.4      10.7    4.8             NA 0.6097      0.5587
+# 6 Fishery      10.5      11.1    5.0             NA 0.6096      0.5509
+#   integuments dry_integuments digestive_tract dry_digestive_tract gonads
+# 1      0.3658              NA          0.0525              0.0079      0
+# 2      0.4447              NA          0.0482              0.0090      0
+# 3      0.5326              NA          0.0758              0.0134      0
+# 4      0.2661              NA          0.0442              0.0064      0
+# 5      0.4058              NA          0.0743              0.0117      0
+# 6      0.4269              NA          0.0492              0.0097      0
+#   dry_gonads skeleton lantern   test spines maturity  sex
+# 1          0   0.1793  0.0211 0.0587 0.0995        0 <NA>
+# 2          0   0.1880  0.0205 0.0622 0.1053        0 <NA>
+# 3          0   0.2354  0.0254 0.0836 0.1263        0 <NA>
+# 4          0   0.0630  0.0167 0.0180 0.0283        0 <NA>
+# 5          0       NA      NA     NA     NA        0 <NA>
+# 6          0       NA      NA     NA     NA        0 <NA>
+```
+
+La fonction read() est capable d'importer ces données en une seule instruction. 
+
+
+```r
+# Importation de données provenant d'un package
+urchin <- read("urchin_bio", package = "data.io")
+# Visualisation des premières ligne du jeu de données
+head(urchin)
+```
+
+```
+# # A tibble: 6 x 19
+#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+# 1 Fishe…       9.9      10.2    5               NA  0.522       0.478
+# 2 Fishe…      10.5      10.6    5.7             NA  0.642       0.589
+# 3 Fishe…      10.8      10.8    5.2             NA  0.734       0.677
+# 4 Fishe…       9.6       9.3    4.6             NA  0.370       0.344
+# 5 Fishe…      10.4      10.7    4.8             NA  0.610       0.559
+# 6 Fishe…      10.5      11.1    5               NA  0.610       0.551
+# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
+# #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
+# #   spines <dbl>, maturity <int>, sex <fct>
+```
+
+La fonction `read()` requiert comme premier argument le nom du jeu de données (e.g. `"iris"` ou `"urchin_bio"`), suivi de l'argument `package=` (e.g. `"datasets"`, ou `"data.io"`), suivi de l'argument `lang=` (e.g. `"fr"`) qui définit la langue d'intérêt.  
+
+L'instruction ci-dessous permet d'obtenir une liste de l'ensemble des jeux de données présent dans un package.
+
+
+```r
+read(package = "data.io")
+```
+
+
+### Pièges et astuces
+
+#### Langue du jeu de données
+
+La fonction **read()** a l'avantage de pouvoir employer un fichier annexe pour ajouter simplement les labels et les unités en différentes langues. Certains jeux de données comme le jeu de données de **urchin_bio** du package **data.io** possèdent ces fichiers annexes.
+
+Lorsque l'on importe le jeu de données avec la fonction data(), les fichiers annexes ne sont pas employé.
+
+
+```r
+# Chargement des données
+data("urchin_bio")
+# Visualisation des données
+chart(urchin_bio, height ~ weight %col=% origin) +
+  geom_point()
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-7-1.svg" width="672" style="display: block; margin: auto;" />
+
+Ces fichiers annexes sont par contre employé par la fonction **read()** pour ajouter les labels et unités au tableau de données. Certaines fonctions comme **chart()** sont capables d'employer ces labels et unités. 
+
+
+```r
+# Importation du tableau de données avec l'argument lang qui varie.
+urchin <- read("urchin_bio", package = "data.io")
+urchin_en <- read("urchin_bio", package = "data.io", lang = "en")
+urchin_fr <- read("urchin_bio", package = "data.io", lang = "fr")
+urchin_FR <- read("urchin_bio", package = "data.io", lang = "FR")
+```
+
+L'arguement lang permet de spécifier la langue souhaitée. Les différences dans les labels sont observables sur le graphique ci-dessous.
+
+
+```r
+# Réalisation graphique
+a <- chart(urchin, height ~ weight %col=% origin) +
+  geom_point()
+b <- chart(urchin_en, height ~ weight %col=% origin) +
+  geom_point()
+c <- chart(urchin_fr, height ~ weight %col=% origin) +
+  geom_point()
+d <- chart(urchin_FR, height ~ weight %col=% origin) +
+  geom_point()
+# Combinaison des graphiques
+combine_charts(chartlist = list(a, b, c, d))
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-9-1.svg" width="672" style="display: block; margin: auto;" />
+
+ 
+- A & B: l'argument lang par défaut est **lang = "en"**. Il ajoute les lables et unités en  anglais avec les unités dans le système international.
+- C : l'argument **lang = "fr"** ajoute les labels et unités en français. Il laisse cependant les niveaux des variables facteurs en anglais (Farm et Fishery).
+- D : l'argument **lang= "FR"** ajoute les lables et unités en français. Dr plus, il traduit également les niveaux des variables facteurs.
+
+Il vous est conseillé d'employé l'argument **lang="fr"** lors de vos différents travaux. La langues international en science est l'anglais et vous serez très certainement amené dans votre carrière scientifique de produire des documents en français et en anglais. L'utilisation de **lang= "FR"** rend le code uniquement utilisable dans ces conditions. Observez les exemples proposés ci-dessous.
+
+
+```r
+urchin_en %>.%
+  filter(., origin == "Farm") %>.%
+  head(.)
+```
+
+```
+# # A tibble: 6 x 19
+#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+# 1 Farm        53.1      54.5   26.3           9.57   60.2        41.7
+# 2 Farm        52.7      52.7   25.9          10.8    63.2        46.6
+# 3 Farm        54        54.2   24.5          10.7    64.4        44.3
+# 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
+# 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
+# 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
+# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
+# #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
+# #   spines <dbl>, maturity <int>, sex <fct>
+```
+
+
+```r
+urchin_fr %>.%
+  filter(., origin == "Farm") %>.%
+  head(.)
+```
+
+```
+# # A tibble: 6 x 19
+#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+# 1 Farm        53.1      54.5   26.3           9.57   60.2        41.7
+# 2 Farm        52.7      52.7   25.9          10.8    63.2        46.6
+# 3 Farm        54        54.2   24.5          10.7    64.4        44.3
+# 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
+# 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
+# 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
+# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
+# #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
+# #   spines <dbl>, maturity <int>, sex <fct>
+```
+
+
+```r
+urchin_FR %>.%
+  filter(., origin == "Pêcherie") %>.%
+  head(.)
+```
+
+```
+# # A tibble: 6 x 19
+#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+# 1 Pêche…       9.9      10.2    5               NA  0.522       0.478
+# 2 Pêche…      10.5      10.6    5.7             NA  0.642       0.589
+# 3 Pêche…      10.8      10.8    5.2             NA  0.734       0.677
+# 4 Pêche…       9.6       9.3    4.6             NA  0.370       0.344
+# 5 Pêche…      10.4      10.7    4.8             NA  0.610       0.559
+# 6 Pêche…      10.5      11.1    5               NA  0.610       0.551
+# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
+# #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
+# #   spines <dbl>, maturity <int>, sex <fct>
+```
 
 ## Type de variables
 
+Lors de la réalisation de graphiques dans les modules précédents vous avez compris que toutes les variables ne se valait pas dans R. 
+
 
 ```r
-tg <- read("ToothGrowth", package = "datasets")
+(biometry <- read("biometry", package = "BioDataScience", lang = "fr"))
 ```
 
-Prenez l'exemple de jeu de donnée portant sur la croissance des dents de cochon d'Inde (`ToothGrowth, du package `datasets`). Il est composé de 60 observations et de trois variables portant sur la longueur des dents (mm), le supplément administré (OJ jus d'orange ou VC vitamine C) et la dose administrée ( 0.5, 1 et 2 en mm/j). 
+```
+# # A tibble: 395 x 7
+#    gender day_birth  weight height wrist year_measure   age
+#    <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
+#  1 M      1995-03-11     69    182  15           2013    18
+#  2 M      1998-04-03     74    190  16           2013    15
+#  3 M      1967-04-04     83    185  17.5         2013    46
+#  4 M      1994-02-10     60    175  15           2013    19
+#  5 W      1990-12-02     48    167  14           2013    23
+#  6 W      1994-07-15     52    179  14           2013    19
+#  7 W      1971-03-03     72    167  15.5         2013    42
+#  8 W      1997-06-24     74    180  16           2013    16
+#  9 M      1972-10-26    110    189  19           2013    41
+# 10 M      1945-03-15     82    160  18           2013    68
+# # ... with 385 more rows
+```
 
-Les jeux de données sont une suite de variables mises côte à côte. Vous avez à votre disposition plusieurs type de variables : 
+Ce graphique combiné ci-dessous montre de boites de dispersion. 
+
+
+```r
+a <- chart(biometry, height ~ gender %fill=% gender) +
+  geom_boxplot() 
+
+b <- chart(biometry, height ~ weight %fill=% gender) +
+  geom_boxplot()
+
+combine_charts(chartlist = list(a,b), common.legend = TRUE)
+```
+
+```
+# Warning: position_dodge requires non-overlapping x intervals
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-14-1.svg" width="672" style="display: block; margin: auto;" />
+
+Les jeux de données sont une suite de variables mises côte à côte. Vous avez à votre disposition plusieurs type de variables pour personnaliser le jeu de données : 
 
 - nombre :
     + numérique : `numeric`
@@ -156,82 +451,160 @@ Les jeux de données sont une suite de variables mises côte à côte. Vous avez
     + valeurs arrondies : `double`
     + nombre complexe : `complex`
 
-Il s'agit des valeurs numériques qui vont composer vos jeux de données. Si une variable numérique ne l'est pas vous pouvez la tranformer avec l'instruction suivante :
-
-
-```r
-tg$len <- as.numeric(tg$len)
-```
-
+Il s'agit des valeurs numériques qui vont composer une variable du jeux de données. Si une variable numérique ne l'est pas vous pouvez la tranformer avec l'instruction suivante :
 
 - caractères : `character`
 
-Il s'agit de chaine de charactères qui vont composer vos jeux de données. Les chaines de caractères vont avoir 2 but. Soit il s'agit d'une information ayant pour objectif d'être employé comme variable facteur ou bien il s'agit d'une information complémentaire sur les observations qui ne sera pas employer dans l'analyse des données. Cependant, vous pouvez être amené à transformer une variable en caractère avec l'instruction suivante :
-
-
-```r
-tg$supp <- as.character(tg$supp)
-```
+Il s'agit de chaine de charactères qui vont composer une variable du jeux de données. Les chaines de caractères vont avoir 2 but. Soit il s'agit d'une information ayant pour objectif d'être employé comme variable facteur ou bien il s'agit d'une information complémentaire sur les observations qui ne sera pas employer dans l'analyse des données. Cependant, vous pouvez être amené à transformer une variable en caractère avec l'instruction suivante :
 
 - facteur : `factor`
 
-Il s'agit d'une variable permettant de discriminer des observations avec un ensemble de niveau dans un jeu de données comme la variable portant sur le supplément administré ou en portant sur la dose administrée. Si une variable facteur ne l'est pas vous pouvez la tranformer avec l'instruction suivante :
+Il s'agit d'une variable permettant de discriminer des observations avec un ensemble de niveau dans un jeu de données comme la variable portant sur l'origine du tableau de donnés urchin.
 
+- Date : `date`
 
-```r
-tg$supp <- as.factor(tg$supp)
-```
-
-Il est possible de ne pas simplement changer une variable en variable facteur. Il est possible de de préciser les niveaux `levels`, de l'ordonner avec l'argument `ordered = TRUE`. Prenez la variable dose du jeu de données `ToothGrowth`. Etant donné qu'il s'agit de doses croissantes administrées à des cochons d'Inde, cette variable doit donc être une variable ordonnée.
-
-
-```r
-tg$dose <- factor(tg$dose, levels = c(0.5, 1, 2), ordered = TRUE)
-```
-
-La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu'une variable facteur simple. 
+Le date dans un jeu de données sont proposé sous le format date.
 
 La fonction `skim()` du package `skimr` permet de visualiser le type de la variable et bien plus encore. Il fournit une visualisation différentes en fonction du type de la variable. Il propose par exemple un histogramme pour les variables numériques comme le montre le tableau ci-dessous
 
 
 ```r
-#skimr::skim(tg)
+skimr::skim(biometry)
+```
+
+```
+# Skim summary statistics
+#  n obs: 395 
+#  n variables: 7 
+# 
+# ── Variable type:Date ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#   variable missing complete   n        min        max     median n_unique
+#  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
+# 
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete   n n_unique            top_counts ordered
+#    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
+# 
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#      variable missing complete   n    mean    sd     p0    p25    p50  p75
+#           age       0      395 395   35.34 17.32   15     19     27     50
+#        height       0      395 395  170.71  9.07  146    164    171    177
+#        weight       0      395 395   71.2  15.45   41.5   59     69.3   80
+#         wrist       2      393 395   16.65  1.67   10     15.5   16.5   18
+#  year_measure       0      395 395 2015.32  1.61 2013   2014   2016   2017
+#  p100     hist
+#    89 ▇▂▁▅▂▁▁▁
+#   193 ▁▂▆▆▇▅▃▁
+#   131 ▂▇▇▆▂▁▁▁
+#    23 ▁▁▂▇▇▂▁▁
+#  2017 ▅▅▁▁▁▅▁▇
 ```
 Avec une seule instruction, on obtient une quantité d'information sur notr jeu de données comme le nombre d'observation, le nombre de variables et un traitement spécifique pour chaque type de variable. 
 
 Cet instruction permet de visualiser et d'appréhender le jeu de données mais ne doit pas figurer tel quel dans un rapport d'analyse. 
 
-
-### Pièges et astuces
-
-Les variables d'un jeu de données doivent être correctement importées afin d'éviter toutes mauvaises interprétations comme le montre les deux graphiques ci-dessous. 
-
-Dans les graphiques a), vous pouvez observer que la dose a été employé comme une variable numérique et dans le graphique b) la dose est employée comme variable facteur. Vous observez que le bon encodage de la variable dose permet d'obtenir le graphique pertinent et cohérent avec la signification des données.
-
+#### Pièges et astuces
 
 
 ```r
-tg <- read("ToothGrowth", package = "datasets")
+tooth <- read("ToothGrowth", package = "datasets", lang = "fr")
+```
 
-a <- chart(tg, len ~ dose) +
-  geom_boxplot() +
-  labs( x = "Dose administrée [mg/j]" , y = " longueur des dents [mm]")
+Le jeu de données comprend 60 observations sur la croissance de dents de cochons d'inde. Ces derniers reçoivent 2 types de suppléments soit du jus d'orange (OC) ou de la vitamine C (VC). Ils recoivent trois doses 0.5, 1, 2 mg/jour. VOus pouvez observer les données avec la fonction **skim()**.
 
-b <- chart(tg, len ~ as.factor(dose)) +
-  geom_boxplot() +
-  labs( x = "Dose administrée [mg/j]" , y = " longueur des dents [mm]")
 
-ggarrange(a,b, labels = "auto")
+```r
+skimr::skim(tooth)
 ```
 
 ```
-# Warning: Continuous x aesthetic -- did you forget aes(group=...)?
+# Skim summary statistics
+#  n obs: 60 
+#  n variables: 3 
+# 
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique            top_counts ordered
+#      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
+# 
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
+#      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
+#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
+#      hist
+#  ▇▁▇▁▁▁▁▇
+#  ▃▅▃▅▃▇▂▂
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" />
+La variable dose est encodée sous la forme de variable numérique alors que cette dernière doit être sous la forme de facteur. **Vous devez recoder cette variable.**
 
 
-## Transformation des données
+```r
+tooth$dose <- as.factor(tooth$dose)
+# Visualisation des données
+skimr::skim(tooth)
+```
+
+```
+# Skim summary statistics
+#  n obs: 60 
+#  n variables: 3 
+# 
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique
+#      dose       0       60 60        3
+#      supp       0       60 60        2
+#                                        top_counts ordered
+#                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
+#  OJ: 30, VC: 30, NA: 0                              FALSE
+# 
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
+#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
+#      hist
+#  ▃▅▃▅▃▇▂▂
+```
+
+Vous pouvez cependant aller encore plus loin car la variable est une variable facteur et plus précisement une variable facteur ordonée. Il y a une progression dans les doses administrées.
+
+Il est possible de ne pas simplement changer une variable en variable facteur. Il est possible de de préciser les niveaux `levels`, de l'ordonner avec l'argument `ordered = TRUE`. Prenez la variable dose du jeu de données `ToothGrowth`. Etant donné qu'il s'agit de doses croissantes administrées à des cochons d'Inde, cette variable doit donc être une variable ordonnée.
+
+
+```r
+tooth$dose <- as.ordered(tooth$dose)
+# Visualisation des données
+skimr::skim(tooth)
+```
+
+```
+# Skim summary statistics
+#  n obs: 60 
+#  n variables: 3 
+# 
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique
+#      dose       0       60 60        3
+#      supp       0       60 60        2
+#                                        top_counts ordered
+#                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
+#  OJ: 30, VC: 30, NA: 0                              FALSE
+# 
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
+#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
+#      hist
+#  ▃▅▃▅▃▇▂▂
+```
+
+La fonction **as.factor()** et la fonction **as.ordered** dérive de la fonction **factor()**.
+
+La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu'une variable facteur simple. 
+
+## Remaniement des données
+
+
+```r
+tg <- read("ToothGrowth", package = "datasets", lang = "fr")
+```
 
 Lors du module IV, vous avez réalisé votre premier remaniement de données afin de réaliser un graphique en barre résumant une variable numérique en fonction d'une variable facteur. 
 
@@ -283,8 +656,8 @@ ggpubr::ggarrange(u1, u2, u3, u4, labels = "auto")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-15)a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-23-1.svg" alt="a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-23)a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4</p>
 </div>
 
 
@@ -302,8 +675,8 @@ ggarrange(a,u2, labels = "auto", widths = c(2, 1))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-16-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-16)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-24-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-24)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins.</p>
 </div>
 
 Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau. 
@@ -327,8 +700,8 @@ ggarrange(a,u2,labels = "auto", widths = c(2, 1))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-18-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-18)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-26)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins.</p>
 </div>
 
 Vous pouvez utiliser une variable numérique pour filtrer les données. 
@@ -356,8 +729,8 @@ ggarrange(a,u2,labels = "auto", widths = c(2, 1))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-20-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-20)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-28)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus.</p>
 </div>
 
 Vous pouvez combiner différents filtres :  
@@ -382,8 +755,8 @@ ggarrange(a, u2,labels = "auto", widths = c(2, 1))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-22-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-22)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus.</p>
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-30-1.svg" alt="a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-30)a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus.</p>
 </div>
 
 
@@ -455,7 +828,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 Cette fonction n'a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d'une ou plusieurs variable de type facteur.
@@ -471,7 +844,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -484,7 +857,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-27-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 #### Pièges et astuces
@@ -501,7 +874,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-28-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ### Pièges et astuces
@@ -536,7 +909,7 @@ ub <- select(ub, origin, solid_parts, test, v2_sqrt)
 ggtexttable(head(ub, n = 6), theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-31-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -562,7 +935,7 @@ ub1 %>.%
 ggtexttable(head(ub1, n = 6), theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-41-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 Le pipe est un outil très intéressant lors du résumé de données par une ou plusieurs variables facteurs.
@@ -577,7 +950,7 @@ a <- summarise(tg, "moyenne" = mean(len),
 ggtexttable(a, theme = ttheme("lBlack"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-42-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -594,7 +967,7 @@ tg %>.%
            cols = c("Supplément", "Dose", "Moyenne", "Minimum", "Médiane", "Maximum"))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-43-1.svg" width="672" style="display: block; margin: auto;" />
 
 #### Pour en savoir plus 
 
@@ -626,7 +999,7 @@ chart(tg, formula = len ~ dose %fill=% dose) +
         axis.text = element_text(size = 14))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-44-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 
