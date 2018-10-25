@@ -266,9 +266,9 @@ combine_charts(chartlist = list(a,b), common.legend = TRUE)
 Les jeux de données sont une suite de variables mises côte à côte. Vous avez à votre disposition plusieurs type de variables pour personnaliser le jeu de données : 
 
 - nombre :
-    + numérique : `numeric`
-    + entiers : `integer`
-    + valeurs arrondies : `double`
+    + numérique (continu) : `numeric`
+    + entiers (discret) : `integer`
+    + valeur arrondie : `double`
     + nombre complexe : `complex`
 
 Il s'agit des valeurs numériques qui vont composer une variable du jeux de données. Si une variable numérique ne l'est pas vous pouvez la tranformer avec l'instruction suivante :
@@ -314,9 +314,7 @@ tooth$dose <- as.factor(tooth$dose)
 skimr::skim(tooth)
 ```
 
-Vous pouvez cependant aller encore plus loin car la variable est une variable facteur et plus précisement une variable facteur ordonée. Il y a une progression dans les doses administrées.
-
-Il est possible de ne pas simplement changer une variable en variable facteur. Il est possible de de préciser les niveaux `levels`, de l'ordonner avec l'argument `ordered = TRUE`. Prenez la variable dose du jeu de données `ToothGrowth`. Etant donné qu'il s'agit de doses croissantes administrées à des cochons d'Inde, cette variable doit donc être une variable ordonnée.
+Vous pouvez cependant aller encore plus loin car la variable est une variable facteur et plus précisement une variable facteur ordonée. Il y a une progression dans les doses administrées.  Prenez la variable dose du jeu de données `tooth`. Etant donné qu'il s'agit de doses croissantes administrées à des cochons d'Inde, cette variable doit donc être une variable ordonnée.
 
 ```{r}
 tooth$dose <- as.ordered(tooth$dose)
@@ -326,7 +324,7 @@ skimr::skim(tooth)
 
 La fonction **as.factor()** et la fonction **as.ordered** dérive de la fonction **factor()**.
 
-La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu'une variable facteur simple. 
+La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu'une variable facteur non ordonnée. 
 
 ## Remaniement des données
 
@@ -554,7 +552,7 @@ ggtexttable(tooth_tab, theme = ttheme("lBlack"))
 
 Le chainage (ou le pipe en anglais) permet de combiner une suite de fonction à appliquer sur un jeu de données par exemple comme lorsque vous souhaitez réaliser plusieurs étapes de remaniement des données.
 
-Différents pipes existent et nous avons décidé de vous présenter le pipe du package **flow**. Le jeu de données sur la biométrie humaine va être employé pour cette démonstration qui va comparer le remaniement d'un tableau de données avec et sans l'utilisation du chainage. 
+Différents pipes existent et nous avons décidé de vous présenter le pipe du package **flow**. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d'un tableau de données avec et sans l'utilisation du chainage. 
 
 ```{r}
 biometry <- read("biometry", package = "BioDataScience", lang = "fr")
@@ -571,7 +569,6 @@ Pour obtenir ces données vous devez :
 - filter le tableau pour n'obtenir que le individus de moins de 25 ans
 - résumer les données afin d'obtenir la moyenne et la médiane par genre.
 - afficher un tableau de données avec ces résultats
-
 
 ```{r}
 # Sans chainage 

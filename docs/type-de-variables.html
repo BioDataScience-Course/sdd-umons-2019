@@ -209,10 +209,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
-<li class="chapter" data-level="A.1" data-path="prerequis-4.html"><a href="prerequis-4.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="prerequis-4.html"><a href="prerequis-4.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis-4.html"><a href="prerequis-4.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
-<li class="chapter" data-level="A.1.3" data-path="prerequis-4.html"><a href="prerequis-4.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un ordinateur</a></li>
+<li class="chapter" data-level="A.1" data-path="prerequis-5.html"><a href="prerequis-5.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-5.html"><a href="prerequis-5.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-5.html"><a href="prerequis-5.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+<li class="chapter" data-level="A.1.3" data-path="prerequis-5.html"><a href="prerequis-5.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un ordinateur</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="install.html"><a href="install.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -307,9 +307,9 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, height <
 <ul>
 <li>nombre :
 <ul>
-<li>numérique : <code>numeric</code></li>
-<li>entiers : <code>integer</code></li>
-<li>valeurs arrondies : <code>double</code></li>
+<li>numérique (continu) : <code>numeric</code></li>
+<li>entiers (discret) : <code>integer</code></li>
+<li>valeur arrondie : <code>double</code></li>
 <li>nombre complexe : <code>complex</code></li>
 </ul></li>
 </ul>
@@ -396,8 +396,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
 #  ▃▅▃▅▃▇▂▂</code></pre>
-<p>Vous pouvez cependant aller encore plus loin car la variable est une variable facteur et plus précisement une variable facteur ordonée. Il y a une progression dans les doses administrées.</p>
-<p>Il est possible de ne pas simplement changer une variable en variable facteur. Il est possible de de préciser les niveaux <code>levels</code>, de l’ordonner avec l’argument <code>ordered = TRUE</code>. Prenez la variable dose du jeu de données <code>ToothGrowth</code>. Etant donné qu’il s’agit de doses croissantes administrées à des cochons d’Inde, cette variable doit donc être une variable ordonnée.</p>
+<p>Vous pouvez cependant aller encore plus loin car la variable est une variable facteur et plus précisement une variable facteur ordonée. Il y a une progression dans les doses administrées. Prenez la variable dose du jeu de données <code>tooth</code>. Etant donné qu’il s’agit de doses croissantes administrées à des cochons d’Inde, cette variable doit donc être une variable ordonnée.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">as.ordered</span>(tooth<span class="op">$</span>dose)
 <span class="co"># Visualisation des données</span>
 skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre></div>
@@ -419,7 +418,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #      hist
 #  ▃▅▃▅▃▇▂▂</code></pre>
 <p>La fonction <strong>as.factor()</strong> et la fonction <strong>as.ordered</strong> dérive de la fonction <strong>factor()</strong>.</p>
-<p>La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu’une variable facteur simple.</p>
+<p>La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu’une variable facteur non ordonnée.</p>
 </div>
 </div>
 <div id="disqus_thread"></div>
