@@ -51,6 +51,8 @@
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -197,11 +199,24 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Données qualitatives</a><ul>
 <li class="chapter" data-level="6.1" data-path="decoupage-en-classe.html"><a href="decoupage-en-classe.html"><i class="fa fa-check"></i><b>6.1</b> Découpage en classe</a></li>
-<li class="chapter" data-level="6.2" data-path="tableaux-de-contingences.html"><a href="tableaux-de-contingences.html"><i class="fa fa-check"></i><b>6.2</b> Tableaux de contingences</a></li>
-<li class="chapter" data-level="6.3" data-path="acquisition-de-donnees-scientifiques.html"><a href="acquisition-de-donnees-scientifiques.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données scientifiques</a></li>
-<li class="chapter" data-level="6.4" data-path="a-vous-de-jouer-7.html"><a href="a-vous-de-jouer-7.html"><i class="fa fa-check"></i><b>6.4</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="6.2" data-path="instructions-obtenu-avec-laddins.html"><a href="instructions-obtenu-avec-laddins.html"><i class="fa fa-check"></i><b>6.2</b> instructions obtenu avec l’addins</a></li>
+<li class="chapter" data-level="6.3" data-path="visualisation-de-la-variable-facteur-obtenue.html"><a href="visualisation-de-la-variable-facteur-obtenue.html"><i class="fa fa-check"></i><b>6.3</b> Visualisation de la variable facteur obtenue</a></li>
+<li class="chapter" data-level="6.4" data-path="instructions-obtenu-avec-laddins-1.html"><a href="instructions-obtenu-avec-laddins-1.html"><i class="fa fa-check"></i><b>6.4</b> instructions obtenu avec l’addins</a></li>
+<li class="chapter" data-level="6.5" data-path="visualisation-de-la-variable-facteur-obtenue-1.html"><a href="visualisation-de-la-variable-facteur-obtenue-1.html"><i class="fa fa-check"></i><b>6.5</b> Visualisation de la variable facteur obtenue</a></li>
+<li class="chapter" data-level="6.6" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html"><i class="fa fa-check"></i><b>6.6</b> Tableaux de données</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.6.1</b> Métadonnées</a></li>
+<li class="chapter" data-level="6.6.2" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableau-cas-par-variables"><i class="fa fa-check"></i><b>6.6.2</b> Tableau cas par variables</a></li>
+<li class="chapter" data-level="6.6.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableau-de-contingence"><i class="fa fa-check"></i><b>6.6.3</b> Tableau de contingence</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a></li>
+<li class="chapter" data-level="6.7" data-path="acquisition-de-donnees-scientifiques.html"><a href="acquisition-de-donnees-scientifiques.html"><i class="fa fa-check"></i><b>6.7</b> Acquisition de données scientifiques</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="acquisition-de-donnees-scientifiques.html"><a href="acquisition-de-donnees-scientifiques.html#precision-et-exactitudes"><i class="fa fa-check"></i><b>6.7.1</b> Précision et exactitudes</a></li>
+<li class="chapter" data-level="6.7.2" data-path="acquisition-de-donnees-scientifiques.html"><a href="acquisition-de-donnees-scientifiques.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.7.2</b> Codification des données</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="a-vous-de-jouer-7.html"><a href="a-vous-de-jouer-7.html"><i class="fa fa-check"></i><b>6.8</b> A vous de jouer !</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a><ul>
+<li class="chapter" data-level="7.1" data-path="probabilites.html"><a href="probabilites.html"><i class="fa fa-check"></i><b>7.1</b> Probabilités</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
 <li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
@@ -296,22 +311,64 @@ biometry_sub &lt;-<span class="st"> </span><span class="kw">filter</span>(biomet
 biometry_sub &lt;-<span class="st"> </span><span class="kw">group_by</span>(biometry_sub, gender)
 biometry_tab &lt;-<span class="st"> </span><span class="kw">summarise</span>(biometry_sub, <span class="dt">mean =</span> <span class="kw">mean</span>(bmi), 
                           <span class="dt">median =</span> <span class="kw">median</span>(bmi), <span class="dt">number =</span> <span class="kw">n</span>())
-tab1 &lt;-<span class="st"> </span><span class="kw">ggtexttable</span>(biometry_tab, <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>), <span class="dt">rows =</span> <span class="ot">NULL</span>, 
-            <span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>))
-
-<span class="co"># avec le chainage </span>
-
+knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span class="dt">rows =</span> <span class="ot">NULL</span>, 
+            <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Genre</th>
+<th align="right">Moyenne</th>
+<th align="right">Médiane</th>
+<th align="right">Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">22.33636</td>
+<td align="right">22.09681</td>
+<td align="right">97</td>
+</tr>
+<tr class="even">
+<td align="left">W</td>
+<td align="right">21.80113</td>
+<td align="right">21.02974</td>
+<td align="right">94</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># avec le chainage </span>
 biometry1 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">bmi =</span> weight<span class="op">/</span>((height<span class="op">/</span><span class="dv">100</span>))<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">filter</span>(., age <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">group_by</span>(., gender) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">summarise</span>(.,  <span class="dt">mean =</span> <span class="kw">mean</span>(bmi), <span class="dt">median =</span> <span class="kw">median</span>(bmi), <span class="dt">number =</span> <span class="kw">n</span>()) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">ggtexttable</span>(., <span class="dt">theme =</span> <span class="kw">ttheme</span>(<span class="st">&quot;lBlack&quot;</span>), <span class="dt">rows =</span> <span class="ot">NULL</span>, 
-            <span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>)) -&gt;<span class="st"> </span>tab2
-
-<span class="co"># combinaison des deux tableaux pour obtenir une comparaison</span>
-<span class="kw">combine_charts</span>(<span class="dt">chartlist =</span> <span class="kw">list</span>(tab1, tab2))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-40-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(., <span class="dt">rows =</span> <span class="ot">NULL</span>, 
+            <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Genre</th>
+<th align="right">Moyenne</th>
+<th align="right">Médiane</th>
+<th align="right">Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">22.33636</td>
+<td align="right">22.09681</td>
+<td align="right">97</td>
+</tr>
+<tr class="even">
+<td align="left">W</td>
+<td align="right">21.80113</td>
+<td align="right">21.02974</td>
+<td align="right">94</td>
+</tr>
+</tbody>
+</table>
 <p>Le pipe permet d’éviter certaine répétion afin de réaliser en cascade la suite des opérations. Il permet également de faciliter la lecture du code. Vous devez être vigilant à la structure du pipe qui comprend le pipe <code>%&gt;.%</code>et le point au début des fonctions <code>.</code>. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction.</p>
 <div id="pour-en-savoir-plus-11" class="section level4">
 <h4><span class="header-section-number">5.4.0.1</span> Pour en savoir plus</h4>

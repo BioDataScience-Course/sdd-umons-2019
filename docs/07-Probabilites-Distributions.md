@@ -3,3 +3,33 @@
 
 
 On part du paradoxe bayésien (effet d’un test de dépistage en fonction de la prévalence d’une maladie) -> probabilités et calculs de probabilités. Généralisation = lois de distributions. Distributions discrètes et continues. Principales lois de distributions et utilisation en pratique. Evaluation par les pairs d’un rapport réalisé jusqu’ici.
+
+
+#### Objectifs {-}
+
+- Appréhender le calculsde probabilités 
+
+- Appréhender les principales lois de distributions et leurs utilisations pratiques 
+
+
+## Probabilités
+
+La notion de **probabilité** en statistique est intimement liée à la notion instinctive de hasard. Elle sous-entend qu’on ne peut prédire ce que le hasard va nous donner comme résultat... cependant, on peut prédire avec quelle fréquence un événement^[Un événement (event) est un fait qui se produit. Tout ce que l’on observe dans le monde qui nous entoure est donc qualifié d’événement en statistique.] pourrait se produire.
+
+Quel est la probabilité de 
+
+La probabilité d’un événement est une valeur numérique comprise entre zéro et un qui exprime avec quelle fréquence cet événement peut se produire.
+
+$$0 \leq P(E) \leq 1$$
+ou encore : 
+
+$$P(E) \ = \ \frac{nombre \ d \ ' occurence \ de \ E}{ nombre \ total \ d\ 'essais} $$
+
+On retrouve plusieurs types d'événements :
+- Événements disjoints : événements ne pouvant se produire simultanément. Ex. : succès versus échec d’un traitement, pile ou face pour une pièce de monnaie.
+- Événements successifs : événements issus d’actions séparées. Souvent successifs dans le temps (deux jets de la même pièce de monnaie, mais pas nécessairement : jet de deux pièces de monnaie simultanément).
+- Événements (successifs) indépendants : lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.
+
+
+Une probabilité discrète (discrete probability) d’un seul événement E est la mesure de la fréquence d’occurrence de E. Elle se note P(E), P{E} ou Pr{E}
+

@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="a-vous-de-jouer-5.html">
-<link rel="next" href="importation-des-donnees.html">
+<link rel="prev" href="proba.html">
+<link rel="next" href="chi2.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,50 +51,8 @@
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -290,20 +248,23 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="import" class="section level1">
-<h1><span class="header-section-number">Module 5</span> Importation/transformation des données</h1>
-<div id="objectifs-4" class="section level4 unnumbered">
-<h4>Objectifs</h4>
-<ul>
-<li><p>Savoir importer des données via la fonction <code>read()</code>, ainsi qu’appréhender ses arguments.</p></li>
-<li><p>Appréhender les types de variables et l’importance d’encoder convenablement les variables.</p></li>
-<li><p>Savoir remanier des données afin d’extraire l’information importante d’un jeu de données.</p></li>
-</ul>
+<div id="probabilites" class="section level2">
+<h2><span class="header-section-number">7.1</span> Probabilités</h2>
+<p>La notion de <strong>probabilité</strong> en statistique est intimement liée à la notion instinctive de hasard. Elle sous-entend qu’on ne peut prédire ce que le hasard va nous donner comme résultat… cependant, on peut prédire avec quelle fréquence un événement<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> pourrait se produire.</p>
+<p>Quel est la probabilité de</p>
+<p>La probabilité d’un événement est une valeur numérique comprise entre zéro et un qui exprime avec quelle fréquence cet événement peut se produire.</p>
+<p><span class="math display">\[0 \leq P(E) \leq 1\]</span> ou encore :</p>
+<p><span class="math display">\[P(E) \ = \ \frac{nombre \ d \ &#39; occurence \ de \ E}{ nombre \ total \ d\ &#39;essais} \]</span></p>
+<p>On retrouve plusieurs types d’événements : - Événements disjoints : événements ne pouvant se produire simultanément. Ex. : succès versus échec d’un traitement, pile ou face pour une pièce de monnaie. - Événements successifs : événements issus d’actions séparées. Souvent successifs dans le temps (deux jets de la même pièce de monnaie, mais pas nécessairement : jet de deux pièces de monnaie simultanément). - Événements (successifs) indépendants : lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.</p>
+<p>Une probabilité discrète (discrete probability) d’un seul événement E est la mesure de la fréquence d’occurrence de E. Elle se note P(E), P{E} ou Pr{E}</p>
+
 </div>
-<div id="prerequis-3" class="section level4 unnumbered">
-<h4>Prérequis</h4>
-<p>Si ce n’est déjà fait, vous devez avoir réaliser le module 1 ainsi que les modules liés à la visualisation des données.</p>
-</div> 
+<!-- </div> -->
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Un événement (event) est un fait qui se produit. Tout ce que l’on observe dans le monde qui nous entoure est donc qualifié d’événement en statistique.<a href="probabilites.html#fnref1">↩</a></p></li>
+</ol>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -330,8 +291,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="a-vous-de-jouer-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="importation-des-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="proba.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chi2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -361,7 +322,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/05-Importation-Transformation.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/07-Probabilites-Distributions.Rmd",
 "text": "Editer"
 },
 "download": null,

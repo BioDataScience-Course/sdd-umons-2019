@@ -347,31 +347,31 @@ Ces grands piliers ont été défini dans le [chapitre 5 de  R for Datascience](
 Lors de l'utilisation vos jeux de données, vous serez amené à réduire vos jeux de données en sous tableau.
 
 ```{r}
-tg <- read("ToothGrowth", package = "datasets", lang = "fr")
-```
-
-```{r}
 urchin <- read("urchin_bio", package = "data.io", lang = "fr")
+rmarkdown::paged_table(urchin)
 ```
 
 Vous vous intéressez dans votre analyse uniquement à certaines variables. La fonction `select()` et les fonctions d'aide à la selection (`?select_helpers`) vous apportent la solution à vos besoins.
 
-```{r, echo = TRUE}
+```{r}
 urchin1 <- select(urchin, origin, solid_parts, test)
-urchin2 <- select(urchin, c(1,4,14))
-urchin3 <-  select(urchin, origin, contains("weight"))
-urchin4 <- select(urchin, ends_with("ht"))
+rmarkdown::paged_table(urchin1)
 ```
 
-Les tableaux de données réduits sont proposé ci-dessous avec la fonction combine_charts(). La mise en forme des tableaux de données est réalisée avec la fontion **ggtexttable()** du package **ggpubr**.
+```{r}
+urchin2 <- select(urchin, c(1,4,14))
+rmarkdown::paged_table(urchin2)
 
-```{r, fig.cap= "a) Résumé de la sélection effectué ub1, b) Résumé de la sélection effectué ub2, c) Résumé de la sélection effectué ub3, d) Résumé de la sélection effectué ub4"}
-u1 <- ggtexttable(head(urchin1, n = 4), theme = ttheme("lBlack"))
-u2 <- ggtexttable(head(urchin2, n = 4), theme = ttheme("classic"))
-u3 <- ggtexttable(head(urchin3, n = 4), theme = ttheme("lRed"))
-u4 <- ggtexttable(head(urchin4, n = 4), theme = ttheme("mGreen"))
-# Combinaison 
-combine_charts(chartlist = list(u1, u2, u3, u4))
+```
+
+```{r}
+urchin3 <-  select(urchin, origin, contains("weight"))
+rmarkdown::paged_table(urchin3)
+```
+
+```{r}
+urchin4 <- select(urchin, ends_with("ht"))
+rmarkdown::paged_table(urchin4)
 ```
 
 ### `filter()`
@@ -379,18 +379,11 @@ combine_charts(chartlist = list(u1, u2, u3, u4))
 Lors de l'analyse de vos jeux de données, vous serez amené à filtrer les lignes de vos tableaux de données. La fonction `filter()` est l'un des outils pouvant vous apporter la solution. Repartez du jeu de données portant sur la croissance des oursins simplifié à 3 variables (**urchin2**).
 
 ```{r}
-skimr::skim(urchin2)
+rmarkdown::paged_table(urchin2)
 ```
 
-Le tableau de données peut être combiné avec le graphique qui utilise les variable 
-```{r, fig.cap= "a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins."}
-a <- chart(urchin2, formula = height ~ skeleton %col=% origin) +
-  geom_point(na.rm = TRUE)
-# Combinaison graphique et tableau
-combine_charts(chartlist = list(a,u2), widths = c(2, 1))
-```
 
-Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau. 
+Vous pouvez utiliser une variable facteur pour sélectionner uniquement un niveau d'une variable. 
 
 - égal à : ==
 
@@ -398,17 +391,7 @@ Vous pouvez utiliser une variable facteur pour sélectionner uniquement un nivea
 
 ```{r, echo = TRUE}
 urchin_sub1 <- filter(urchin2, origin != "Fishery") # tous les origines sauf ceux provenant de Fishery 
-```
-
-
-```{r, fig.cap= "a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins."}
-# Tableau 
-u2 <- ggtexttable(head(urchin_sub1, n = 4), theme = ttheme("classic"))
-# Graphique
-a <- chart(urchin_sub1, formula = height ~ skeleton %col=% origin ) +
-  geom_point(na.rm = TRUE)
-# Combinaison graphique et tableau
-combine_charts(chartlist = list(a,u2),widths = c(2, 1))
+rmarkdown::paged_table(urchin_sub1)
 ```
 
 Vous pouvez utiliser une variable numérique pour filtrer les données. 
@@ -423,17 +406,7 @@ Vous pouvez utiliser une variable numérique pour filtrer les données.
 
 ```{r}
 urchin_sub2 <- filter(urchin2, height > 20) # hauteur supérieur à 20 
-```
-
-
-```{r, fig.cap= "a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur les tailles des individus."}
-# Tableau
-u2 <- ggtexttable(head(urchin_sub2, n = 4), theme = ttheme("classic"))
-# Graphique
-a <- chart(urchin_sub2, formula = height ~ skeleton %col=% origin) +
-  geom_point(na.rm = TRUE)
-# Combinaison graphique et tableau
-combine_charts(chartlist = list(a,u2), widths = c(2, 1))
+rmarkdown::paged_table(urchin_sub2)
 ```
 
 Vous pouvez combiner différents filtres :  
@@ -444,24 +417,15 @@ Vous pouvez combiner différents filtres :
 
 ```{r}
 urchin_sub3 <- filter(urchin2, height > 20 & origin == "Farm") # hauteur supérieur à 20  et origine contenant uniquement les oursins venant du niveau `Farm`
-```
-
-
-```{r, fig.cap= "a) Nuage de points montrant la variation de la hauteur du test des oursins en fonction du poids du squelette. b) Tableau de données résumé de la croissance des oursins suite à l'application d'un filtre sur l'orgine des oursins et sur les tailles des individus."}
-# Tableau
-u3 <- ggtexttable(head(urchin_sub3, n = 4), theme = ttheme("classic"))
-# Graphique 
-a <- chart(urchin_sub3, formula = height ~ skeleton %col=% origin) +
-  geom_point(na.rm = TRUE)
-# Combinaison du graphique et du tableau
-combine_charts(list(a, u3), widths = c(2, 1))
+rmarkdown::paged_table(urchin_sub3)
 ```
 
 
 Avec des variables facteurs composé des nombreux niveaux comme on peut le retrouver dans le jeu de données **zooplankton** du package **BioDataScience**, vous pouvez être amené à en sélectionner plusieurs niveaux au sein de cette variable.
 
 ```{r}
-(zooplankton <- read("zooplankton", package = "data.io", lang  = "fr"))
+zooplankton <- read("zooplankton", package = "data.io", lang  = "fr")
+rmarkdown::paged_table(zooplankton)
 ```
 
 - %in%
@@ -469,8 +433,8 @@ Avec des variables facteurs composé des nombreux niveaux comme on peut le retro
 ```{r}
 copepoda <- filter(zooplankton,
   class %in% c("Calanoid", "Cyclopoid",  "Harpacticoid", "Poecilostomatoid"))
+rmarkdown::paged_table(copepoda)
 ```
-
 
 ### `mutate()`
 
@@ -512,6 +476,10 @@ La fonction `mutate()` permet de calculer de nouvelles variables. Cependant, la 
 
 ### `summarise()`
 
+```{r}
+tooth <- read("ToothGrowth", package = "datasets", lang = "fr")
+rmarkdown::paged_table(tooth)
+```
 Lors de l'analyse de vos jeux de données, vous serez amené à résumer vos données. 
 
 ```{r}
@@ -519,7 +487,7 @@ tooth_tab <- summarise(tooth, "moyenne" = mean(len),
                "minimum" = min(len), 
                "médiane" = median(len), 
                "maximum" = max(len))
-ggtexttable(tooth_tab, theme = ttheme("lBlack"))
+knitr::kable(tooth_tab)
 ```
 
 Cette fonction n'a de véritable intêrét que couplée avec la fonction `group_by() qui va permettre de grouper un jeu de données en fonction d'une ou plusieurs variable de type facteur.
@@ -531,7 +499,7 @@ tooth_tab <- summarise(tooth, "moyenne" = mean(len),
                "minimum" = min(len), 
                "médiane" = median(len), 
                "maximum" = max(len))
-ggtexttable(tooth_tab, theme = ttheme("lBlack"))
+knitr::kable(tooth_tab)
 ```
 
 #### Pièges et astuces
@@ -544,7 +512,7 @@ tooth_tab <- summarise(tooth, "moyenne" = mean(len),
                "médiane" = median(len), 
                "maximum" = max(len),
                "observation" = n())
-ggtexttable(tooth_tab, theme = ttheme("lBlack"))
+knitr::kable(tooth_tab)
 ```
 
 
@@ -577,21 +545,20 @@ biometry_sub <- filter(biometry, age <=25)
 biometry_sub <- group_by(biometry_sub, gender)
 biometry_tab <- summarise(biometry_sub, mean = mean(bmi), 
                           median = median(bmi), number = n())
-tab1 <- ggtexttable(biometry_tab, theme = ttheme("lBlack"), rows = NULL, 
-            cols = c("Genre", "Moyenne", "Médiane", "Observations"))
+knitr::kable(biometry_tab, rows = NULL, 
+            col = c("Genre", "Moyenne", "Médiane", "Observations"))
+```
 
+
+```{r}
 # avec le chainage 
-
 biometry1 %>.%
   mutate(., bmi = weight/((height/100))^2) %>.%
   filter(., age <= 25) %>.%
   group_by(., gender) %>.%
   summarise(.,  mean = mean(bmi), median = median(bmi), number = n()) %>.%
-  ggtexttable(., theme = ttheme("lBlack"), rows = NULL, 
-            cols = c("Genre", "Moyenne", "Médiane", "Observations")) -> tab2
-
-# combinaison des deux tableaux pour obtenir une comparaison
-combine_charts(chartlist = list(tab1, tab2))
+  knitr::kable(., rows = NULL, 
+            col = c("Genre", "Moyenne", "Médiane", "Observations"))
 
 ```
 
