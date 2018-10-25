@@ -1,4 +1,4 @@
-# Données qualitatives {#qualit}
+# Traitement des données II {#qualit}
 
 
 
@@ -249,7 +249,7 @@ anthirrhinum
 #            54           122            58
 ```
 
-## Acquisition de données scientifiques
+## Acquisition de données
 
 Dans le module 5, vous avez pris connaissance des types de variable et dans ce module vous avez pris connaissance des notions liés aux tableaux de données et aux métadonnées. Cependant, la première étape avant d'acquérir des données est de planifier l'expérience. 
 

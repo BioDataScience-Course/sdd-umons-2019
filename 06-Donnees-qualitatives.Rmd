@@ -1,4 +1,4 @@
-# Données qualitatives {#qualit}
+# Traitement des données II {#qualit}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
 knitr::opts_chunk$set(comment = '#', fig.align = "center")
@@ -161,7 +161,7 @@ anthirrhinum <- as.table(c("fleur rouge" = 54, "fleur rose" = 122, "fleur blanch
 anthirrhinum
 ```
 
-## Acquisition de données scientifiques
+## Acquisition de données
 
 Dans le module 5, vous avez pris connaissance des types de variable et dans ce module vous avez pris connaissance des notions liés aux tableaux de données et aux métadonnées. Cependant, la première étape avant d'acquérir des données est de planifier l'expérience. 
 
