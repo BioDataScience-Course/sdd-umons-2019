@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="a-vous-de-jouer-5.html">
-<link rel="next" href="importation-des-donnees.html">
+<link rel="prev" href="importation-des-donnees.html">
+<link rel="next" href="remaniement-des-donnees.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -289,20 +289,74 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="import" class="section level1">
-<h1><span class="header-section-number">Module 5</span> Traitement des données I</h1>
-<div id="objectifs-4" class="section level4 unnumbered">
-<h4>Objectifs</h4>
-<ul>
-<li><p>Savoir importer différents formats de données dans R via la fonction <code>read()</code>.</p></li>
-<li><p>Appréhender les types de variables et l’importance d’encoder convenablement les variables.</p></li>
-<li><p>Savoir remanier des données afin d’extraire l’information importante d’un jeu de données.</p></li>
-</ul>
+<div id="types-de-variables" class="section level2">
+<h2><span class="header-section-number">5.2</span> Types de variables</h2>
+<p>Lors de la réalisation de graphiques dans les modules précédents vous avez compris que toutes les variables ne sont pas équivalentes. Certains graphiques sont plutôt destinés à des variables <strong>qualitatives</strong> (par exemple, graphique en barres), alors que d’autres représentent des données <strong>quantitatives</strong> comme le nuage de points.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
+<pre><code># # A tibble: 395 x 7
+#    gender day_birth  weight height wrist year_measure   age
+#    &lt;fct&gt;  &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
+#  1 M      1995-03-11     69    182  15           2013    18
+#  2 M      1998-04-03     74    190  16           2013    15
+#  3 M      1967-04-04     83    185  17.5         2013    46
+#  4 M      1994-02-10     60    175  15           2013    19
+#  5 W      1990-12-02     48    167  14           2013    23
+#  6 W      1994-07-15     52    179  14           2013    19
+#  7 W      1971-03-03     72    167  15.5         2013    42
+#  8 W      1997-06-24     74    180  16           2013    16
+#  9 M      1972-10-26    110    189  19           2013    41
+# 10 M      1945-03-15     82    160  18           2013    68
+# # ... with 385 more rows</code></pre>
+<p>La Figure <a href="types-de-variables.html#fig:two-boxplots">5.1</a> montre deux boites de dispersion parallèles différentes. Laquelle de ces deux représentations est incorrecte et pourquoi ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, height <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>gender) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() 
+
+b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, height <span class="op">~</span><span class="st"> </span>weight <span class="op">%fill=%</span><span class="st"> </span>gender) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()
+
+<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code># Warning: position_dodge requires non-overlapping x intervals</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:two-boxplots"></span>
+<img src="05-Importation-Transformation_files/figure-html/two-boxplots-1.svg" alt="Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de `gender." width="672" />
+<p class="caption">
+Figure 5.1: Boites de dispersion parallèles de la taille (<code>height</code>) en fonction de A. une variable qualitative (<code>gender</code>) et B. une variable quantitative (<code>weight</code>) et couleur en fonction de `gender.
+</p>
 </div>
-<div id="prerequis-3" class="section level4 unnumbered">
-<h4>Prérequis</h4>
-<p>Le contenu du module <a href="intro.html#intro">1</a> doit être parfaitement maîtrisé. Il est également souhaitable, mais pas indispensable, de comprendre comment réaliser des graphiques dans R.</p>
-</div> 
+<p>C’est la figure <a href="types-de-variables.html#fig:two-boxplots">5.1</a>B qui tente de représenter une variable quantitative numérique <code>height</code>sous forme de boites de dispersion parallèles (correct), mais en fonction d’une variable de découpage en sous-ensemble (<code>weight</code>) qui est elle-même une variable quantitative, … alors qu’une variable qualitative telle que <code>gender</code> aurait dû être utilisée (comme dans la Fig. <a href="types-de-variables.html#fig:two-boxplots">5.1</a>A). Dans le cas présent, R a bien voulu réaliser le graphique (avec juste une petit warning), mais comment l’interpréter ? Dans d’autres situations, il vous renverra purement et simplement un message d’erreur.</p>
+<p>Les jeux de données, lorsqu’ils sont bien encodés (<strong>tableaux “cas par variables”</strong>, en anglais on parlera de <a href="http://vita.had.co.nz/papers/tidy-data.html">tidy data</a>) sont en fait un ensemble de variables en colonnes mesurées sur un ensemble d’individus en lignes. Vous avez à votre disposition plusieurs <em>types</em> de variables pour personnaliser le jeu de données. Deux catégories principales de variables existent, chacune avec deux sous-catégories :</p>
+<ul>
+<li>Les variables <strong>quantitatives</strong> sont issues de mesures quantitatives ou de dénombrements
+<ul>
+<li>Les variables quantitatives <strong>continues</strong> sont représentées par des valeurs réelles (<code>double</code> dans R)</li>
+<li>Les variables quantitatives <strong>discrètes</strong> sont typiquement représentées par des entiers (<code>integer</code> dans R)</li>
+</ul></li>
+<li>Les variables <strong>qualitatives</strong> sont constituées d’un petit nombre de valeurs possibles (on parle des niveaux de la variables ou de leurs modalités)
+<ul>
+<li>Les variables qualitatives <strong>ordonnées</strong> on des niveaux qui penvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets <code>ordered</code>.</li>
+<li>Les variables qualitatives <strong>non ordonnées</strong> ont des niveaux qui ne peuvent être rangés et sont typiquement représentées par des objets <code>factor</code> en R</li>
+</ul></li>
+</ul>
+<p>R essaye de gommer autant que possible la distinction entre nombres <code>integer</code> et <code>double</code> tous deux rassemblés en <code>numeric</code>. Si besoin, la conversion se fait automatiquement. En pratique, concentrez-vous essentiellement sur les objets <code>numeric</code> pour tout ce qui est quantitatif. Concernant les données qualitatives, elles sont souvent représentées par du texte (nom d’une couleur par exemple) et importées en chaines de caractère (<code>character</code>) dans R. Vous devez les convertir de manière explicite à l’aide de <code>as.factor()</code> ou <code>as.ordered()</code> par la suite.</p>
+<p>Il existe naturellement encore d’autres types de variables. Les dates sont représentées, par exemple, par des objets <code>Date</code>, les nombres complexes par <code>complex</code>, les données binaires par <code>raw</code>, etc.</p>
+<p>La fonction <code>skim()</code> du package <code>skimr</code> permet de visualiser la classe de la variable et bien plus encore. Elle fournit un résumé différent en fonction du type de la variable et propose, par exemple, un histogramme stylisé pour les variables numériques comme le montre le tableau ci-dessous.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#skimr::skim(biometry)</span></code></pre></div>
+<p>Avec une seule instruction, on obtient une quantité d’information sur notre jeu de données comme le nombre d’observations, le nombre de variables et un traitement spécifique pour chaque type de variable. Cette instruction permet de visualiser et d’appréhender le jeu de données mais ne doit généralement pas figurer tel quel dans un rapport d’analyse.</p>
+<div id="pieges-et-astuces-7" class="section level4">
+<h4><span class="header-section-number">5.2.0.1</span> Pièges et astuces</h4>
+<p>Voici un jeu de données qui étudie l’alongement des dents chez le cobaye en fonction du susbstitut alimentaire.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ToothGrowth&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div>
+<p>Le jeu de données comprend 60 observations. Ces derniers reçoivent deux types de suppléments soit du jus d’orange (<code>OC</code>) ou de la vitamine C (<code>VC</code>). Ils recoivent trois doses 0.5, 1, 2 mg/j. Vous pouvez observer les données avec la fonction <code>skim()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#skimr::skim(tooth)</span></code></pre></div>
+<p>La variable dose est encodée sous forme de variable numérique alors que cette dernière ne contient que trois niveaux différents et devra être le plus souvent traitée comme une <strong>variable qualitative ordonnée à 3 niveaux</strong> . <strong>Vous devrez donc recoder cette variable en variable facteur.</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">as.factor</span>(tooth<span class="op">$</span>dose)
+<span class="co"># Visualisation des données</span>
+<span class="co">#skimr::skim(tooth)</span></code></pre></div>
+<p>Vous pouvez cependant aller encore plus loin car la variable est une variable facteur et plus précisement une variable facteur ordonnée. Il y a une progression dans les doses administrées. Prenez la variable dose du jeu de données <code>tooth</code>. Etant donné qu’il s’agit de doses croissantes administrées à des cochons d’Inde, cette variable doit donc être un facteur ordonné.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">ordered</span>(tooth<span class="op">$</span>dose, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>))
+<span class="co"># Visualisation des données</span>
+<span class="co">#skimr::skim(tooth)</span></code></pre></div>
+<p>Les fonctions <code>as.factor()</code> ou <code>factor()</code> et <code>as.ordered()</code> ou <code>ordered()</code> effectuent cette conversion de <code>character</code> vers objects <code>factor</code> ou <code>ordered. Attention que l'*ordre* des niveaux par défaut est l'ordre alphabétique. Il ne convient pas toujours, et dans ce cas, il faut fournir l'argument</code>levels =` dans un ordre bien défini comme ci-dessus. La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu’une variable facteur non ordonnée.</p>
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -329,8 +383,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="a-vous-de-jouer-5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="importation-des-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="importation-des-donnees.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="remaniement-des-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
