@@ -99,8 +99,8 @@ Cliquez sur le bouton `New Folder` dans la barre d'outils de l'onglet **`Files`*
 ```
 /home
   /sv
-    /Shared
-      /Projects
+    /shared
+      /projects
         /project_test           # Le répertoire de base du projet
            analysis             # Le dossier qui comprend toutes les analyses (rapport, présentation,...)
            data                 # Le dossier qui comprend toutes les données
@@ -129,7 +129,7 @@ Un projet RStudio pourra être qualifié de portable s'il est possible de dépla
 ```
 /home
   /sv
-    /Shared
+    /shared
       /projects
         /project_test             # Le répertoire de base du projet
            analysis               # Le dossier qui comprend toutes les analyses (rapport, présentation,...)

@@ -47,7 +47,7 @@ small_dataset
 # 6 test        2       41.1
 ```
 
-Dans la plupart des cas, vous utiliserez ou collecterez des données stockées dans des formats divers : feuilles Excel, fichiers CSV ("coma-separated-values", un format standard d'encodage d'un tableau de données sous forme textuelle), formats spécifiques à divers logiciels statistiques comme SAS, Stata ou Systat, ... Ces données peuvent être sur un disque local ou disponibles depuis un lien URL sur le net^[R permet également d'interroger des bases de données spécialisées, mais nous n'aborderons ce sujet spécifique qu'au cours de Science des Données Biologique 5 en Master 2.]. De nombreuses fonctions existent dans R pour importer toutes ces données. La fonction `read()` du package `data.io` est l'une des plus simples et conviviales d'entre-elles. Vous l'avez déjà utilisée, mais reprenons un exemple pour en discuter les détails.
+Dans la plupart des cas, vous utiliserez ou collecterez des données stockées dans des formats divers : feuilles Excel, fichiers CSV ("comma-separated-values", un format standard d'encodage d'un tableau de données sous forme textuelle), formats spécifiques à divers logiciels statistiques comme SAS, Stata ou Systat, ... Ces données peuvent être sur un disque local ou disponibles depuis un lien URL sur le net^[R permet également d'interroger des bases de données spécialisées, mais nous n'aborderons ce sujet spécifique qu'au cours de Science des Données Biologique 5 en Master 2.]. De nombreuses fonctions existent dans R pour importer toutes ces données. La fonction `read()` du package `data.io` est l'une des plus simples et conviviales d'entre-elles. Vous l'avez déjà utilisée, mais reprenons un exemple pour en discuter les détails.
 
 
 ```r
@@ -74,7 +74,12 @@ Dans la plupart des cas, vous utiliserez ou collecterez des données stockées d
 Le jeu de données `biometry` est disponible dans le package R **BioDataScience**. Dans ce cas, il ne faut pas spécifier de chemin d'accès au fichier : R sait où le trouver tout seul. Il est également spécifié ici que la langue souhaitée est le français avec l'argument `lang = "fr"`. Le résultat de l'importation est assigné à la variable `biometry`(mais elle pourrait tout aussi bien porter un autre nom). Pour finir, le tout est entouré, de manière optionnelle, de parenthèses afin de forcer l'impression du résultat.
 
 <div class="note">
-<p><strong>Visualisez toujours votre tableau de données juste après l'importation.</strong> Vérifiez que les différentes colonnes ont été importées au bon format. *En particulier, les données numériques sont-elle bien comprises par R comme des nombres (<code>&lt;dbl&gt;</code> ou <code>&lt;int&gt;) ?* L'impression du tableau de données est une façon de voir cela, mais il y en a bien d'autres : essayez</code>View(biometry)<code>,</code>str(biometry)<code>, ou cliquez sur la petite icône bleue avec une flèche devant</code>biometry` dans l'onglet <strong>Environnement</strong>.</p>
+<p><strong>Visualisez toujours votre tableau de données juste après l'importation.</strong> Vérifiez que les différentes colonnes ont été importées au bon format. <em>En particulier</em>,</p>
+<ul>
+<li><p>Les données numériques sont-elle bien comprises par R comme des nombres (<code>&lt;dbl&gt;</code> ou <code>&lt;int&gt;</code>) ?</p></li>
+<li><p>Les variables qualitatives ou semi-quantitatives sont importées comme chaines de caractères (<code>&lt;chr&gt;</code>) et doivent éventuellement être converties en variables de type <strong>facteur</strong> à l'aide de <code>as.factor()</code> ou <strong>facteur ordonné</strong> avec <code>as.ordered()</code>, voir plus loin.</p></li>
+</ul>
+<p>L'impression du tableau de données est une façon de voir cela, mais il y en a bien d'autres : essayez <code>View(biometry)</code>, <code>str(biometry)</code>, ou cliquez sur la petite icône bleue avec une flèche devant <code>biometry</code> dans l'onglet <strong>Environnement</strong>.</p>
 </div>
 
 Avant d'importer vos données dans R, vous devez vous poser les deux questions suivantes :
@@ -85,7 +90,7 @@ Vous venez d'importer des données depuis un package R. Vous pouvez également l
 
 - Quels est le format de vos données ?
 
-Souvent ce format est renseigné par l'**extension** du fichier. Par exemple **.xlsx** pour un Microsoft Excel ou **.csv** pour du "coma-separated-value". Attention ! L'extension du fichier est cachée sous Windows, et parfois sous MacOS. Visualisez vos fichiers dans l'onglet **Files** dans RStudio pour voir leur nom complet, avec l'extension. Pour l'instant, `read()` supporte 32 formats de fichiers différents, mais cette liste est amenée à s'agrandir à l'avenir. Pour découvrir les formats supportés, et les fonctions d'importation spécifiques appelées à chaque fois, utilisez :
+Souvent ce format est renseigné par l'**extension** du fichier. Par exemple **.xlsx** pour un Microsoft Excel ou **.csv** pour du "comma-separated-value". Attention ! L'extension du fichier est cachée sous Windows, et parfois sous MacOS. Visualisez vos fichiers dans l'onglet **Files** dans RStudio pour voir leur nom complet, avec l'extension. Pour l'instant, `read()` supporte 32 formats de fichiers différents, mais cette liste est amenée à s'agrandir à l'avenir. Pour découvrir les formats supportés, et les fonctions d'importation spécifiques appelées à chaque fois, utilisez :
 
 
 ```r
@@ -124,10 +129,12 @@ Lorsque l'extension du fichier reflète le format des données, il vous suffit j
 </ol>
 </div>
 
+Les explications détaillées concernant l'organisation de vos projets dans RStudio pour qu'ils soient portables, la gestion des chemins d'accès aux fichiers et les chemins relatifs sont détaillés dans l'annexe \@ref(prise), à la section \@ref(rs-projet). **C'est le moment de vérifier que vous avez bien compris et assimilé son contenu.**
+
 
 #### Pièges et astuces
 
-- Si l'extension est incorrecte, vous pouvez forcer un format de fichier particulier à l'importation en l'indiquant dans l'appel à `read()` comme `read$<ext>()`. Par exemple, pour forcer l'importation d'un fichier de type "coma-separated-values" pour un fichier qui se nommerait `my_data.txt`, vous écrirez `read$csv(my_data.txt)`.
+- Si l'extension est incorrecte, vous pouvez forcer un format de fichier particulier à l'importation en l'indiquant dans l'appel à `read()` comme `read$<ext>()`. Par exemple, pour forcer l'importation d'un fichier de type "comma-separated-values" pour un fichier qui se nommerait `my_data.txt`, vous écrirez `read$csv(my_data.txt)`.
 
 - Si les données ne sont pas importées correctement, cela signifie que les arguments d'importation par défaut ne sont pas adaptés. Les arguments à spécifier sont différents d'un format à l'autre. Voyez d'abord la fonction appelée en interne par `read()`dans le tableau obtenu via `getOption("read_write")`. Par exemple, pour un fichier `xlsx`, il s'agit de la fonction `readxl::read_excel()` qui est utilisée. Ensuite, voyez l'aide de cette dernière fonction pour en découvrir les différents arguments (`?readxl::read_excel`). Là, vous pourrez découvrir les arguments `sheet =`qui indiquent la feuille à importer depuis le fichier (première feuille par défaut), ou `range = ` qui indique la plage de données dans le feuille à utiliser (par défaut, depuis la cellule A1 en haut à gauche jusqu'à la fin du tableau). Donc, si votre fichier `my_data.xlsx` contient les feuilles `sheet1`, `sheet2` et `sheet3`, et que les données qui vous intéressent sont dans la plage `C5:E34` de `sheet2`, vous pourrez écrire: `read("my_data.xlsx", sheet = "sheet2", range = "C5:E34")`.
 

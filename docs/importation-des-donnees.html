@@ -311,7 +311,7 @@ small_dataset</code></pre></div>
 # 4 test        0.5     10.3
 # 5 test        1       19.9
 # 6 test        2       41.1</code></pre>
-<p>Dans la plupart des cas, vous utiliserez ou collecterez des données stockées dans des formats divers : feuilles Excel, fichiers CSV (“coma-separated-values”, un format standard d’encodage d’un tableau de données sous forme textuelle), formats spécifiques à divers logiciels statistiques comme SAS, Stata ou Systat, … Ces données peuvent être sur un disque local ou disponibles depuis un lien URL sur le net<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. De nombreuses fonctions existent dans R pour importer toutes ces données. La fonction <code>read()</code> du package <code>data.io</code> est l’une des plus simples et conviviales d’entre-elles. Vous l’avez déjà utilisée, mais reprenons un exemple pour en discuter les détails.</p>
+<p>Dans la plupart des cas, vous utiliserez ou collecterez des données stockées dans des formats divers : feuilles Excel, fichiers CSV (“comma-separated-values”, un format standard d’encodage d’un tableau de données sous forme textuelle), formats spécifiques à divers logiciels statistiques comme SAS, Stata ou Systat, … Ces données peuvent être sur un disque local ou disponibles depuis un lien URL sur le net<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. De nombreuses fonctions existent dans R pour importer toutes ces données. La fonction <code>read()</code> du package <code>data.io</code> est l’une des plus simples et conviviales d’entre-elles. Vous l’avez déjà utilisée, mais reprenons un exemple pour en discuter les détails.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
 <pre><code># # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
@@ -330,7 +330,22 @@ small_dataset</code></pre></div>
 <p>Le jeu de données <code>biometry</code> est disponible dans le package R <strong>BioDataScience</strong>. Dans ce cas, il ne faut pas spécifier de chemin d’accès au fichier : R sait où le trouver tout seul. Il est également spécifié ici que la langue souhaitée est le français avec l’argument <code>lang = &quot;fr&quot;</code>. Le résultat de l’importation est assigné à la variable <code>biometry</code>(mais elle pourrait tout aussi bien porter un autre nom). Pour finir, le tout est entouré, de manière optionnelle, de parenthèses afin de forcer l’impression du résultat.</p>
 <div class="note">
 <p>
-<strong>Visualisez toujours votre tableau de données juste après l’importation.</strong> Vérifiez que les différentes colonnes ont été importées au bon format. <em>En particulier, les données numériques sont-elle bien comprises par R comme des nombres (<code>&lt;dbl&gt;</code> ou <code>&lt;int&gt;) ?</em> L’impression du tableau de données est une façon de voir cela, mais il y en a bien d’autres : essayez</code>View(biometry)<code>,</code>str(biometry)<code>, ou cliquez sur la petite icône bleue avec une flèche devant</code>biometry` dans l’onglet <strong>Environnement</strong>.
+<strong>Visualisez toujours votre tableau de données juste après l’importation.</strong> Vérifiez que les différentes colonnes ont été importées au bon format. <em>En particulier</em>,
+</p>
+<ul>
+<li>
+<p>
+Les données numériques sont-elle bien comprises par R comme des nombres (<code>&lt;dbl&gt;</code> ou <code>&lt;int&gt;</code>) ?
+</p>
+</li>
+<li>
+<p>
+Les variables qualitatives ou semi-quantitatives sont importées comme chaines de caractères (<code>&lt;chr&gt;</code>) et doivent éventuellement être converties en variables de type <strong>facteur</strong> à l’aide de <code>as.factor()</code> ou <strong>facteur ordonné</strong> avec <code>as.ordered()</code>, voir plus loin.
+</p>
+</li>
+</ul>
+<p>
+L’impression du tableau de données est une façon de voir cela, mais il y en a bien d’autres : essayez <code>View(biometry)</code>, <code>str(biometry)</code>, ou cliquez sur la petite icône bleue avec une flèche devant <code>biometry</code> dans l’onglet <strong>Environnement</strong>.
 </p>
 </div>
 <p>Avant d’importer vos données dans R, vous devez vous poser les deux questions suivantes :</p>
@@ -341,7 +356,7 @@ small_dataset</code></pre></div>
 <ul>
 <li>Quels est le format de vos données ?</li>
 </ul>
-<p>Souvent ce format est renseigné par l’<strong>extension</strong> du fichier. Par exemple <strong>.xlsx</strong> pour un Microsoft Excel ou <strong>.csv</strong> pour du “coma-separated-value”. Attention ! L’extension du fichier est cachée sous Windows, et parfois sous MacOS. Visualisez vos fichiers dans l’onglet <strong>Files</strong> dans RStudio pour voir leur nom complet, avec l’extension. Pour l’instant, <code>read()</code> supporte 32 formats de fichiers différents, mais cette liste est amenée à s’agrandir à l’avenir. Pour découvrir les formats supportés, et les fonctions d’importation spécifiques appelées à chaque fois, utilisez :</p>
+<p>Souvent ce format est renseigné par l’<strong>extension</strong> du fichier. Par exemple <strong>.xlsx</strong> pour un Microsoft Excel ou <strong>.csv</strong> pour du “comma-separated-value”. Attention ! L’extension du fichier est cachée sous Windows, et parfois sous MacOS. Visualisez vos fichiers dans l’onglet <strong>Files</strong> dans RStudio pour voir leur nom complet, avec l’extension. Pour l’instant, <code>read()</code> supporte 32 formats de fichiers différents, mais cette liste est amenée à s’agrandir à l’avenir. Pour découvrir les formats supportés, et les fonctions d’importation spécifiques appelées à chaque fois, utilisez :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getOption</span>(<span class="st">&quot;read_write&quot;</span>)</code></pre></div>
 <pre><code># # A tibble: 32 x 5
 #    type  read_fun      read_header    write_fun      comment              
@@ -378,10 +393,11 @@ Utilisez le snippet <code>filerelchoose</code> que vous activez dans une zone de
 </li>
 </ol>
 </div>
+<p>Les explications détaillées concernant l’organisation de vos projets dans RStudio pour qu’ils soient portables, la gestion des chemins d’accès aux fichiers et les chemins relatifs sont détaillés dans l’annexe <a href="prise.html#prise">B</a>, à la section <a href="rs.html#rs-projet">B.1.1</a>. <strong>C’est le moment de vérifier que vous avez bien compris et assimilé son contenu.</strong></p>
 <div id="pieges-et-astuces-6" class="section level4">
 <h4><span class="header-section-number">5.1.1.1</span> Pièges et astuces</h4>
 <ul>
-<li><p>Si l’extension est incorrecte, vous pouvez forcer un format de fichier particulier à l’importation en l’indiquant dans l’appel à <code>read()</code> comme <code>read$&lt;ext&gt;()</code>. Par exemple, pour forcer l’importation d’un fichier de type “coma-separated-values” pour un fichier qui se nommerait <code>my_data.txt</code>, vous écrirez <code>read$csv(my_data.txt)</code>.</p></li>
+<li><p>Si l’extension est incorrecte, vous pouvez forcer un format de fichier particulier à l’importation en l’indiquant dans l’appel à <code>read()</code> comme <code>read$&lt;ext&gt;()</code>. Par exemple, pour forcer l’importation d’un fichier de type “comma-separated-values” pour un fichier qui se nommerait <code>my_data.txt</code>, vous écrirez <code>read$csv(my_data.txt)</code>.</p></li>
 <li><p>Si les données ne sont pas importées correctement, cela signifie que les arguments d’importation par défaut ne sont pas adaptés. Les arguments à spécifier sont différents d’un format à l’autre. Voyez d’abord la fonction appelée en interne par <code>read()</code>dans le tableau obtenu via <code>getOption(&quot;read_write&quot;)</code>. Par exemple, pour un fichier <code>xlsx</code>, il s’agit de la fonction <code>readxl::read_excel()</code> qui est utilisée. Ensuite, voyez l’aide de cette dernière fonction pour en découvrir les différents arguments (<code>?readxl::read_excel</code>). Là, vous pourrez découvrir les arguments <code>sheet =</code>qui indiquent la feuille à importer depuis le fichier (première feuille par défaut), ou <code>range =</code> qui indique la plage de données dans le feuille à utiliser (par défaut, depuis la cellule A1 en haut à gauche jusqu’à la fin du tableau). Donc, si votre fichier <code>my_data.xlsx</code> contient les feuilles <code>sheet1</code>, <code>sheet2</code> et <code>sheet3</code>, et que les données qui vous intéressent sont dans la plage <code>C5:E34</code> de <code>sheet2</code>, vous pourrez écrire: <code>read(&quot;my_data.xlsx&quot;, sheet = &quot;sheet2&quot;, range = &quot;C5:E34&quot;)</code>.</p></li>
 </ul>
 </div>
