@@ -6,11 +6,11 @@
 knitr::opts_chunk$set(comment = "#", fig.align = "center")
 ```
 
-#### Objectifs : {-}
+##### Objectifs {-}
 
 - Appréhender ce qu'est la science des données et les (bio)statistiques.
 
-- S'initier à des outils de base (SciViews Box, RStudio, Markdown, git, Github).
+- S'initier à des outils de base (SciViews Box, RStudio, Markdown, Git, Github).
 
 - Se sensibiliser à l'importance d'une présence web au niveau professionnel.
 
@@ -53,7 +53,7 @@ La **SciViews Box** est une machine virtuelle (un ordinateur complet, mais total
 Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à l'installation et la configuration de la SciViews Box.
 
 ```{r echo=FALSE, out.width="256px", fig.cap="Logo de la SciViews Box"}
-knitr::include_graphics('images/svBox-256.png')
+knitr::include_graphics('images/sdd1_01/svBox-256.png')
 ```
 
 ```{block, type = 'bdd'}
@@ -90,7 +90,7 @@ D. Une zone multiusage où vous pouvez manipuler vos fichiers (`Files`), vos gra
 Des explications détaillées se trouvent dans l'annexe \@ref(rs) qui présente les bases de l'utilisation de RStudio. Vous avez également à votre disposition un aide-mémoire afin d'appréhender cette interface [RStudio IDE Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf). 
 
 
-#### Pour en savoir plus ...
+##### Pour en savoir plus {-}
 
 - [RStudio](https://www.rstudio.com/). Site Web de RStudio comprennant un ensemble de ressources en anglais
 
@@ -120,7 +120,7 @@ Après avoir réalisé l'activité, un document récapitulatif est mis à votre 
 ```
 
 
-#### Pour en savoir plus...
+##### Pour en savoir plus {-}
 
 - [Markdown](https://daringfireball.net/projects/markdown/). Explication en anglais de l'intérêt d'employer Markdown ainsi que la syntax à employer.
 
@@ -177,7 +177,7 @@ Différents outils informatiques existent pour faciliter le travail collaboratif
 
 La gestion de versions est gérée par *Git*. Cet outil va remplacer les nombreuses copies d'un même fichier par une sorte d'arbre que l'on peut représenter schématiquement comme ci-dessous :
 
-![Représentation de la gestion de fichiers via Git](images/git1.png)
+![Représentation de la gestion de fichiers via Git](images/sdd1_01/git1.png)
 
 Comme vous pouvez le voir ci-dessus, on peut suivre la progression de notre projet via un nombre d'étapes successives représentées sur le schéma par des boules bleues. Chaque étape capture l'état de notre projet au moment où nous avons décidé de l'enregistrer. Pour enregistrer une nouvelle version de votre projet, vous réalisez un **commit** qui sera accompagné d'un message spécifiant les modifications apportées. Git comprend de nombreux outils très intéressant pour la gestion de versions que vous utiliserez par la suite.
 
@@ -188,13 +188,13 @@ Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur 
 
 Lorsque l'on travaille seul tout en utilisant GitHub, l'évolution de notre projet va ressembler à l'arbre ci-dessous : 
 
-![Représentation des versions successives d'un projet avec GitHub.](images/github.png)
+![Représentation des versions successives d'un projet avec GitHub.](images/sdd1_01/github.png)
 
 On réalise un envoi (**push**) lorsque l'on souhaite synchroniser nos changements locaux avec la version sur le cloud. Plusieurs **commit**s peuvent être envoyés avec un seul **push** sur le réseau, et c'est d'ailleurs généralement comme cela que l'on procède. L'inverse (rappatrier localement les changements que d'autres collaborateurs ont envoyé sur la version réseau de notre projet) s'appelle faire un "**pull**".
 
 L'avantage principal de **GitHub** ne réside pas vraiment dans la posibilité de réaliser une sauvegarde en ligne mais plutôt dans la possibilité de collaborer avec d'autres personnes présentes sur ce réseau comme l'illustre la figure ci-dessous. Deux scientifiques (les versions représentées par des boules bleues et des boules vertes) collaborent sur un même projet que l'on appele un **dépôt** (**repository** en anglais) lorsqu'il est en ligne. Le premier chercheur (boules bleues) va initier le dépôt et réaliser un "push"" pour rendre son travail accessible sur le réseau (boules oranges). Son collaborateur (boules vertes) va **clôner** (**clone** en anglais) le dépôt sur son ordinateur afin d'y travailler également en local sur son PC. Après avoir fait des changements, il réalise également un **push** sur le réseau. Le premier scientifique, avant de travailler à nouveau sur le projet, va donc réaliser un **pull** afin d'obtenir en local l'ensemble des modifications fournies par son ou ses collaborateurs, et ensuite après modifications en local il effectuera à nouveau un "push". 
 
-![Différentes versions d'un projet sur GitHub lorsque deux personnes différentes collaborent sur le même dépôt.](images/github1.png)
+![Différentes versions d'un projet sur GitHub lorsque deux personnes différentes collaborent sur le même dépôt.](images/sdd1_01/github1.png)
 
 Vous venez d'apprendre le B-A-BA de la terminologie nécessaire à la bonne compréhension de Git et GitBub :
 
@@ -211,7 +211,7 @@ Vous venez d'apprendre le B-A-BA de la terminologie nécessaire à la bonne comp
 Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails dans les liens ci-dessous et dans les Appendices. Il est, par exemple, possible de travailler sur une version en parallèle d'un dépôt original pour lequel on n'a pas de droits en écriture. Dans ce cas, il faudra faire une copie dans notre propre compte GitHub du dépôt. Cela s'appelle faire un **fork**. Il n'est pas possible de faire un **push** vers le dépôt d'origine puisqu'on n'a pas les droits en écriture. Dans ce cas, on fera un **pull request**, suggérant ainsi à l'auteur d'origine que nous avons fait des modifications qui pourraient l'intéresser. Si c'est effectivement le cas, il pourra accepter notre "pull request" et intégrer nos suggestions dans le dépôt d'origine. Vous serez amenés à "forker" des dépôts GitHub pour vos exercices, et vous effectuerez également un "pull request" lorsque vous serez suffisamment aguéris avec les autres techniques de gestion de vos projets sous Git et GitHub.
 
 
-##### Pour en savoir plus 
+##### Pour en savoir plus {-}
 
 - [Gérez vos codes sources avec Git](https://openclassrooms.com/fr/courses/1233741-gerez-vos-codes-source-avec-git). Explication en français sur l'utilisation de Git. 
 
@@ -246,8 +246,40 @@ Les réseaux sociaux sont une mine d'or sur nos habitudes de vie comme Facebook,
 Dans le cadre de ce premier module, vous allez réaliser votre premier site web professionnel (contenant également une section "blog" que vous pourrez alimenter, entre autres, avec vos considérations concernant vos cours, les analyse de données, et autres, ...). Ce site sera immédiatement disponible sur le web et ce, de manière entièrement gratuite ! Afin de mener à bien ce premier projet, divers outils vous seront nécessaires. Ces outils seront complétés plus tard par d'autres pour que vous ayez une boite à outils complète pour vos futures analyses de données dans un contexte professionnel.
 
 
-### A vous de jouer 
+##### A vous de jouer {-}
 
 ```{block, type = 'bdd'}
 Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre site web professionnel via l'addresse suivante : <https://github.com/BioDataScience-Course/blogdown.source>. Les instructions détaillées sont dans le fichier `README.md` sur ce dépôt.
 ```
+
+Lorsque vous éditez votre site blogdown, faites attention à ceci :
+
+- Hugo (le logiciel qui compile le site Web) n'est pas très tolérant. Vous **devez** respecter la syntaxe qu'il impose. Faites attention aux détails, comme les **virgules** indispensables pour séparer les items dans une liste. Par exemple, dans la liste `[interests]` qui apparait dans `content/home/about.md`, si vous ajoutez des items comme ceci, Hugo ne compilera plus le site correctement.
+    ```
+      interests = [
+        "Biology",
+        "Ecology"
+        "Movies"
+      ]
+    ```
+    Tous les items doivent être séparés par une virgule, ce qui n'est pas le cas de `"Ecology"` et `"Movies"`. La forme correcte est présentée ci-dessous :
+    ```
+      interests = [
+        "Biology",
+        "Ecology",
+        "Movies"
+      ]
+    ```
+
+- **Ne cliquez pas sur le bouton `Preview`** lorsque vous éditez un fichier `.md`. Normalement dans RStudio, c'est effectivement avec ce bouton qu'on obtient une visualisation du rendu final du document. Mais avec blogdown, il *faut* passer par `Addins -> BLOGDOWN -> Serve Site`. De plus, si vous avez cliqué sur `Preview`, le fichier `.html` généré peut empêcher la bonne construction du site. Donc, **effacez tous les fichiers `.html` correspondant aux `.md` présents dans un sous-dossier de `content`
+
+- S'il vous semble que la compilation du site est bloquée, redémarrez R. Dans le menu de RStudio, failes `Session -> Restart R`, ensuite relancer la compilation du site avec `Addins -> BLOGDOWN -> Serve Site`. Trquez un message d'erreur éventuel qui apparaitrait dans l'onglet `Console`, et sinon, vérifiez la syntaxe dans `config.toml`, les entêtes de tous les fichiers `.md`, ainsi que l'absence de fichiers `.html`associés.
+
+- N'oubliez pas de commiter vos changements à partir de l'onglet `Git` dans RStudio. A ce stade, vous avez mis à jour les **sources** de votre site, mais pas votre site lui-même. Pour mettre à jour votre site en ligne, il faut aussi commiter les changements dans `<your_login>.github.io`. Ouvrez ce dernier dépôt dans `Github Desktop` et effectuez-y un commit. Ensuite, naviguez vers `http://<your_login>.github.io` piur vérifer ce qui apparait en ligne. Attention, il se peut que le cache du navigateur ou d'un routeur vous renvoie encore une ancienne version. Rafraichissez la page deux ou trois fois pour voir apparaitre la dernière version de votre oeuvre.
+
+
+##### Pour en savoir plus {-}
+
+- Le [manuel de blogdown](https://bookdown.org/yihui/blogdown/) (en anglais).
+
+- Des [exemples de sites web](https://awesome-blogdown.com) réalisés avec blogdown.

@@ -143,7 +143,7 @@ Les explications détaillées concernant l'organisation de vos projets dans RStu
 
 Il existe différents logiciels qui permettent d'éditer des tableaux de données en ligne et de les partager sur le Net. [Google Sheet](https://www.google.com/intl/fr_BE/sheets/about/) est l'un d'entre eux, tout comme [Excel Online](https://office.live.com/start/Excel.aspx). Des stockages spécifiques pour les données scientifiques existent aussi comme [figshare](https://figshare.com) ou [Zenodo](https://zenodo.org). Ces sites permettent de partager facilement des jeux de données sur le Net. **La science est de plus en plus ouverte, et les pratiques d'"Open Data" de plus en plus fréquentes et même imposée par des programmes de recherche comme les [programmes européens](https://europa.eu/european-union/documents-publications/open-data_fr) ou le [FNRS](http://www.recherchescientifique.be/index.php?id=1628) en Belgique**. Vous serez donc certainement amenés à accéder à des données depuis Internet.
 
-Voici un exemple de feuille de données Google Sheet: https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw. Il est possible d'importer ce genre de données **directement** depuis R, mais il faut d'abord déterminer l'URL à utiliser pour obtenir les données dans un format reconnu. Dans le cas de Google Sheet, il suffit d'indiquer à la fin de cette URL que l'on souhaite exporter les données au format CSV en rajoutant `/export?format=csv` à la fin de l'URL. N'oubliez pas non plus de spécifier à `read()` que les données sont également à lire au format CSV en utilisant `read$csv()` :
+Voici un exemple de feuille de données Google Sheet: https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw. Il est possible d'importer ce genre de données **directement** depuis R, mais il faut d'abord déterminer l'[URL à utiliser pour obtenir les données](https://www.labnol.org/internet/direct-links-for-google-drive/28356/) dans un format reconnu. Dans le cas de Google Sheet, il suffit d'indiquer à la fin de cette URL que l'on souhaite exporter les données au format CSV en rajoutant `/export?format=csv` à la fin de l'URL. N'oubliez pas non plus de spécifier à `read()` que les données sont également à lire au format CSV en utilisant `read$csv()` :
 
 
 ```r
@@ -152,11 +152,35 @@ Voici un exemple de feuille de données Google Sheet: https://docs.google.com/sp
 
 ```
 # Parsed with column specification:
-# cols()
+# cols(
+#   localisation = col_character(),
+#   species = col_character(),
+#   id = col_integer(),
+#   salinity = col_double(),
+#   temperature = col_double(),
+#   date = col_datetime(format = ""),
+#   time = col_integer(),
+#   gain = col_double(),
+#   gain_std = col_double()
+# )
 ```
 
 ```
-# # A tibble: 0 x 0
+# # A tibble: 98 x 9
+#    localisation species    id salinity temperature date               
+#    <chr>        <chr>   <int>    <dbl>       <dbl> <dttm>             
+#  1 A0           s.hyst…     1     34.7        24.5 2018-04-24 09:10:00
+#  2 A0           s.hyst…     2     34.7        24.5 2018-04-24 09:10:00
+#  3 A0           s.hyst…     3     34.7        24.5 2018-04-24 09:10:00
+#  4 A0           s.hyst…     4     34.7        24.5 2018-04-24 09:10:00
+#  5 A0           s.hyst…     5     34.7        24.5 2018-04-24 09:10:00
+#  6 A0           s.hyst…     6     34.7        24.5 2018-04-24 09:10:00
+#  7 A0           s.hyst…     7     34.7        24.5 2018-04-24 09:10:00
+#  8 A0           s.hyst…     8     34.7        24.5 2018-04-24 09:10:00
+#  9 A0           s.hyst…     9     34.7        24.5 2018-04-24 09:10:00
+# 10 A0           s.hyst…    10     34.7        24.5 2018-04-24 09:10:00
+# # ... with 88 more rows, and 3 more variables: time <int>, gain <dbl>,
+# #   gain_std <dbl>
 ```
 
 
@@ -368,10 +392,6 @@ b <- chart(biometry, height ~ weight %fill=% gender) +
   geom_boxplot()
 
 combine_charts(list(a, b), common.legend = TRUE)
-```
-
-```
-# Warning: position_dodge requires non-overlapping x intervals
 ```
 
 <div class="figure" style="text-align: center">
