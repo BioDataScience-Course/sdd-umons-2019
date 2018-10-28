@@ -104,6 +104,14 @@ Voici un exemple de feuille de données Google Sheet: https://docs.google.com/sp
 (coral <- read$csv("https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw/export?format=csv"))
 ```
 
+Lorsque vous travaillez sur des données provenant d'url et donc qui sont susceptible d'être modifié. Il est préférable d'enregistrer une copie de ces données. Ensuite vous pouvez travailler à partir de ces données suavegardées. 
+
+```{r}
+# write(coral, file = "data/coral.rds", type = "rds" )
+# coral <- read("data/coral.rds")
+```
+
+Attention, ne supprimez jamais  l'instruction permettant de retrouver vos données sur Internet. Utilisez la dièse pour ne plus exécuter l'instruction dans R.
 
 ### Données depuis un package
 
@@ -507,18 +515,9 @@ biometry1 %>.%
 
 Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Il permet également de faciliter la lecture du code. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
 
-#### Pour en savoir plus 
-
-- [Customisation de tableau](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggtexttable.html)
 
 ## A vous de jouer !
 
-Un squelette de projet RStudio vous a été fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de : 
+Une tâche individuelle vous est assignée via l'url suivant :
 
-- Importer les données provenant du `ToothGrowth`
-
-- Comprendre les données proposées, en utilisant des visualisations graphiques appropriées 
-
-- Reproduire de plus le graphique ci-dessous 
-
-- Documenter  le fruit de votre étude dans un rapport R Notebook.
+- <https://classroom.github.com/a/WfxTmH4b>

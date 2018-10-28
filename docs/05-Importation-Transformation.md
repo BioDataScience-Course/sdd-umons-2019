@@ -183,6 +183,15 @@ Voici un exemple de feuille de données Google Sheet: https://docs.google.com/sp
 # #   gain_std <dbl>
 ```
 
+Lorsque vous travaillez sur des données provenant d'url et donc qui sont susceptible d'être modifié. Il est préférable d'enregistrer une copie de ces données. Ensuite vous pouvez travailler à partir de ces données suavegardées. 
+
+
+```r
+# write(coral, file = "data/coral.rds", type = "rds" )
+# coral <- read("data/coral.rds")
+```
+
+Attention, ne supprimez jamais  l'instruction permettant de retrouver vos données sur Internet. Utilisez la dièse pour ne plus exécuter l'instruction dans R.
 
 ### Données depuis un package
 
@@ -248,7 +257,7 @@ chart(urchin_bio, height ~ weight %col=% origin) +
   geom_point()
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-10-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-11-1.svg" width="672" style="display: block; margin: auto;" />
 
 Comparez ceci avec le même graphique, mais obtenu à partir de différentes versions du jeu de données `urchin_bio` importé à l'aide de `read()` avec des valeurs différentes pour l'argument `lang =`. 
 
@@ -276,7 +285,7 @@ d <- chart(urchin_FR, height ~ weight %col=% origin) +
 combine_charts(list(a, b, c, d))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-13-1.svg" width="672" style="display: block; margin: auto;" />
 
  
 - A & B: l'argument lang par défaut est `lang = "en"`. Il utilise les labels et unités en anglais avec les unités dans le système international.
@@ -824,18 +833,9 @@ W        21.80113   21.02974             94
 
 Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Il permet également de faciliter la lecture du code. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
 
-#### Pour en savoir plus 
-
-- [Customisation de tableau](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggtexttable.html)
 
 ## A vous de jouer !
 
-Un squelette de projet RStudio vous a été fournit dans un dépôt Github Classroom, y compris organisation des fichiers et jeux de données types. Votre objectif est de : 
+Une tâche individuelle vous est assignée via l'url suivant :
 
-- Importer les données provenant du `ToothGrowth`
-
-- Comprendre les données proposées, en utilisant des visualisations graphiques appropriées 
-
-- Reproduire de plus le graphique ci-dessous 
-
-- Documenter  le fruit de votre étude dans un rapport R Notebook.
+- <https://classroom.github.com/a/WfxTmH4b>
