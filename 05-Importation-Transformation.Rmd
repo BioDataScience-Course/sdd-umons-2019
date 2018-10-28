@@ -8,7 +8,7 @@ SciViews::R
 
 ##### Objectifs {-}
 
-- Savoir importer différents formats de données dans R via la fonction `read()`.
+- Savoir importer des données dans différents formats et différentes sources via la fonction `read()`.
 
 - Appréhender les types de variables et l'importance d'encoder convenablement les variables.
 
@@ -63,7 +63,7 @@ Vous venez d'importer des données depuis un package R. Vous pouvez également l
 
 - Quels est le format de vos données ?
 
-Souvent ce format est renseigné par l'**extension** du fichier. Par exemple **.xlsx** pour un Microsoft Excel ou **.csv** pour du "comma-separated-value". Attention ! L'extension du fichier est cachée sous Windows, et parfois sous MacOS. Visualisez vos fichiers dans l'onglet **Files** dans RStudio pour voir leur nom complet, avec l'extension. Pour l'instant, `read()` supporte 32 formats de fichiers différents, mais cette liste est amenée à s'agrandir à l'avenir. Pour découvrir les formats supportés, et les fonctions d'importation spécifiques appelées à chaque fois, utilisez :
+Souvent ce format est renseigné par l'**extension** du fichier. Par exemple **.xlsx** pour un Microsoft Excel ou **.csv** pour du "comma-separated-value". Attention ! L'extension du fichier est cachée sous Windows, et parfois sous MacOS. Visualisez vos fichiers dans l'onglet **Files** dans RStudio pour voir leurs noms complets, avec les extensions. Pour l'instant, `read()` supporte 32 formats de fichiers différents, mais cette liste est amenée à s'agrandir à l'avenir. Pour découvrir les formats supportés, et les fonctions d'importation spécifiques appelées à chaque fois, utilisez :
 
 ```{r}
 getOption("read_write")
@@ -96,35 +96,68 @@ Les explications détaillées concernant l'organisation de vos projets dans RStu
 
 ### Données depuis Internet
 
-Il existe différents logiciels qui permettent d'éditer des tableaux de données en ligne et de les partager sur le Net. [Google Sheet](https://www.google.com/intl/fr_BE/sheets/about/) est l'un d'entre eux, tout comme [Excel Online](https://office.live.com/start/Excel.aspx). Des stockages spécifiques pour les données scientifiques existent aussi comme [figshare](https://figshare.com) ou [Zenodo](https://zenodo.org). Ces sites permettent de partager facilement des jeux de données sur le Net. **La science est de plus en plus ouverte, et les pratiques d'"Open Data" de plus en plus fréquentes et même imposée par des programmes de recherche comme les [programmes européens](https://europa.eu/european-union/documents-publications/open-data_fr) ou le [FNRS](http://www.recherchescientifique.be/index.php?id=1628) en Belgique**. Vous serez donc certainement amenés à accéder à des données depuis Internet.
+Il existe différents logiciels qui permettent d'éditer des tableaux de données en ligne et de les partager sur le Net. [Google Sheets](https://www.google.com/intl/fr_BE/sheets/about/) est l'un d'entre eux, tout comme [Excel Online](https://office.live.com/start/Excel.aspx). Des stockages spécifiques pour les données scientifiques existent aussi comme [Figshare](https://figshare.com) ou [Zenodo](https://zenodo.org). Ces sites permettent de partager facilement des jeux de données sur le Net.
 
-Voici un exemple de feuille de données Google Sheet: https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw. Il est possible d'importer ce genre de données **directement** depuis R, mais il faut d'abord déterminer l'[URL à utiliser pour obtenir les données](https://www.labnol.org/internet/direct-links-for-google-drive/28356/) dans un format reconnu. Dans le cas de Google Sheet, il suffit d'indiquer à la fin de cette URL que l'on souhaite exporter les données au format CSV en rajoutant `/export?format=csv` à la fin de l'URL. N'oubliez pas non plus de spécifier à `read()` que les données sont également à lire au format CSV en utilisant `read$csv()` :
+```{block, type = 'info'}
+La science est de plus en plus ouverte, et les pratiques d'**Open Data** de plus en plus fréquentes et même imposées par des programmes de recherche comme les [programmes européens](https://europa.eu/european-union/documents-publications/open-data_fr) ou le [FNRS](http://www.recherchescientifique.be/index.php?id=1628) en Belgique. Vous serez donc certainement amenés à accéder à des données depuis des dépôts spécialisés sur Internet.
+
+Concentrez-vous sur les outils spécifiques à la gestion de ce type de données. il s'agit, en effet, d'une compétence clé qu'un bon scientifique des données se doit de maîtriser parfaitement. En recherchant à chaque fois la meilleure façon d'accéder à des données sur le Net, vous développerez cette compétence progressivement par la pratique... et **vous pourrez faire valoir un atout encore rare mais apprécié lors d'un entretien d'embaûche plus tard.** 
+```
+
+Voici un exemple de feuille de données Google Sheets : https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw. Il est possible d'importer ce genre de données **directement** depuis R, mais il faut d'abord déterminer l'[URL à utiliser pour obtenir les données](https://www.labnol.org/internet/direct-links-for-google-drive/28356/) dans un format reconnu. Dans le cas de Google Sheets, il suffit d'indiquer à la fin de cette URL que l'on souhaite exporter les données au format CSV en rajoutant `/export?format=csv` à la fin de l'URL.
+
+Cette URL est très longue. Elle est peu pratique et par ailleurs, elle a toujours la même structure : `"https://docs.google.com/spreadsheets/d/{id}/export?format=csv"` avec `{id}` qui est l'identifiant unique de la feuille Google Sheets (ici `1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw`). Vous pouvez indiquer explicitement ceci dans votre code et profiter des capacités de remplacement de texte dans des chaînes de caractères de la fonction `glue::glue()` pour effectuer un travail impeccable. 
 
 ```{r}
-(coral <- read$csv("https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw/export?format=csv"))
+googlesheets_as_csv <- "https://docs.google.com/spreadsheets/d/{id}/export?format=csv"
+coral_id <- "1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw"
+(coral_url <- glue::glue(googlesheets_as_csv, id = coral_id))
 ```
 
-Lorsque vous travaillez sur des données issues d'une source externe, et donc susceptibles d'être modifiées. Il est préférable d'enregistrer une copie locale de ces données. Ensuite vous pouvez travailler à partir de ces données sauvegardées. 
+Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas non plus de spécifier à `read()` que les données sont à lire au format CSV en utilisant `read$csv()` :
+
+```{r}
+(coral <- read$csv(coral_url))
+```
+
+Lorsque vous travaillez sur des données issues d'une source externe, et donc susceptibles d'être modifiées ou même pire, de disparaître. Il est préférable d'enregistrer une **copie locale** de ces données dans votre projet (dans le sous-dossier `data` de préférence). Si vous travaillez exclusivement avec R, l'un des meilleurs formats est RDS, un format natif qui conservera toutes les caractéristiques de votre objet, y compris sa classe, et d'éventuels attributs^[Si vous devez aussi accéder à vos données à partir d'autres languages comme Python, Java ou C++, utilisez un format commun reconnu par les différents logiciels. Le CSV fonctionne généralement bien, mais des formats binaires plus performants sont également disponibles. Parmi ces formats "inter-languages", gardez un oeil sur [Apache Arrow](https://arrow.apache.org) très prometteur et avec une version pour R qui sera disponible prochainement.]. Par défault, les données seront stockées non compressées, mais vous pourrez aussi décider de compresser avec les algorithmes `"gz"` (plus rapide et répandu), `"bz2"` (intermédaire), ou `"xz"` (le plus efficace en taux de compression mais aussi le plus lent et gourmand en ressources CPU). Par exemple, pour enregistrer les données avec compression `"gz"`, vous écrirez :
 
 ```{r, eval=FALSE}
-write$rds(coral, file = "../data/coral.rds")
+write$rds(coral, file = "../data/coral.rds", compress = "gz")
 ```
 
-Ensuite, vous pourrez simplement charger ces données plus moin comme ceci :
+Ensuite, vous pourrez simplement charger ces données plus loin depuis la version locale dans votre R Markdown comme ceci :
 
 ```{r, eval=FALSE}
 coral <- read("../data/coral.rds")
 ```
 
-Attention, ne supprimez jamais l'instruction permettant de retrouver vos données sur Internet ! C'est le lien, le fil conducteur vers les données originales. Vous pouvez soit mettre l'instruction en commentaire en ajoutant un dièse devant, soit soustraire le chunk de l'avaluation en indiquant `eval=FALSE` dans son entête. Faites-en de même avec l'instruction `write()`. Ainsi, le tratement de vos données commencera à l'instruction `read()` et vous partirez de la copie locale. Si jamais vous voulez effectuer une mise à jour depuis la source initiale, il sera toujours possible de décommenter les instructions, ou de passer le chunk à `eval=TRUE` temporairement (ou encore plus simplement, forcez l'exécution du chunk dans l'éditeur en cliquant sur la petite flèche verte en haut à gauche du chunk).
+**Attention, ne supprimez jamais l'instruction permettant de retrouver vos données sur Internet** sous prétexte que vous avez maintenant une copie locale à disposition. C'est le lien, le fil conducteur vers les données originales. Vous pouvez soit mettre l'instruction en commentaire en ajoutant un dièse devant, soit soustraire le chunk de l'évaluation en indiquant `eval=FALSE` dans son entête. Faites-en de même avec l'instruction `write()`. Ainsi, le traitement de vos données commencera à l'instruction `read()` et vous partirez de la copie locale. Si jamais vous voulez effectuer une mise à jour depuis la source initiale, il sera toujours possible de décommenter les instructions, ou de passer le chunk à `eval=TRUE` temporairement (ou encore plus simplement, forcez l'exécution du chunk dans l'éditeur en cliquant sur la petite flèche verte en haut à gauche du chunk).
+
+
+##### Pièges et astuces {-}
+
+- Comme il s'agit seulement d'une *copie* des données originelles, vous pouvez choisir de ne pas inclure le fichier `.rds` dans le système de gestion de version de Git. C'est très simple : il suffit d'ajouter une entrée `.rds` dans le fichier `.gitignore` à la racine de votre dépôt, et tous les fichiers avec cette extension seront ignorés. Notez toutefois que, si vous partagez votre projet sur GitHub, **les données locales n'y apparaitront pas non plus.** D'une part, cela décharge le système de gestion de version, et d'autre part, les gros fichiers de données n'ont pas vraiment leur place sur GitHub. Cependant, soyez conscient de ce que quelqu'un qui réalise un clone ou un fork de votre dépôt devra *d'abord* réimporter lui aussi localement les données avant de pouvoir travailler, ce qui implique de bien comprendre le mécanisme que vous avez mis en place. Documentez-le correctement, avec une note explicite dans le fichier `README.md`, par exemple.
+
+- Les données originales ne sont peut-être pas présentées de la façon qui vous convient. Cela peut nécessiter un travail important de **préparation du tableau de données.** Au fur et à mesure que le ou les chunks d'importation/préparation des données augmentent en taille, ils deviennent de plus en plus gênants dans un document consacré à l'**analyse** de ces données. Si c'est le cas, vous avez deux options possibles :
+    1. Séparer votre R Markdown en deux. Un premier document dédié à l'importation/préparation des données et un second qui se concentre sur l'analyse. Une bonne pratique consiste à numéroter les fichiers en tête pour qu'ils apparaissent par ordre logique lorsqu'ils sont listés par ordre alphabétique (`01_import.Rmd`, `02_analysis.Rmd`).
+    2. Effectuer le travail d'importation/préparation du tableau de données dans un script R. Dans le R Markdown, vous pouvez ajouter l'instruction (commentée ou placée dans un chunk `eval=FALSE`) pour sourcer ce script R afin de réimporter/retraiter vos données :
+    ```r
+    #source("../R/data-import.R")
+    ```
+    Si le travail de préparation des données est lourd (et donc, prend beaucoup de temps) il peut être avantageux d'enregistrer localement la version **nettoyée** de vos données plutôt que la version originale. Mais alors indiquez-le explicitement.
+
+```{block, type = 'warning'}
+Faites toujours la distinction entre **données brutes** et **données nettoyées**. Ne les mélangez jamais et documentez toujours de manière reproductible le processus qui mène des unes aux autres ! C'est tout aussi important que de garder un lien vers la source originale des données dans votre code et d'utiliser toujours des chemins relatifs vers vos fichiers pour une analyse portable et reproductible.
+```
 
 
 ### Données depuis un package
 
-Les packages comme **data.io**, **chart** ou encore **flow**, fournissent une série de fonctions supplémentaires. Certains d'entre eux proposent également des jeux de données. Ici aussi, `read()` permet de les récupérer, même si c'est la fonction `data()` qui est souvent utilisée à cet effet. Comparons `read()` et `data()` dans le cas des données issues de packages R. Avec `data()`, vous n'assignez pas le jeu de données à un nom. Ce nom vous est **imposé** comme le nom initial du jeu de données :
+Les packages R comme **data.io**, **chart** ou encore **flow**, fournissent une série de fonctions supplémentaires. Certains d'entre eux proposent également des jeux de données. Ici aussi, `read()` permet de les récupérer, même si c'est la fonction `data()` qui est souvent utilisée à cet effet dans R. Comparons `read()` et `data()` dans le cas des données issues de packages R. Avec `data()`, vous n'assignez pas le jeu de données à un nom. Ce nom vous est **imposé** comme le nom initial du jeu de données :
 
 ```{r}
-data("urchin_bio", package = "data.io") # package = optionnel si package déjà chargé
+data("urchin_bio", package = "data.io") # package = optionnel si déjà chargé
 ```
 
 Le jeu de données `urchin_bio` n'est pas véritablement chargé dans l'environnement utilisateur avec `data()`. Seulement une "promesse" de chargement (`Promise`) est enregistrée. Voyez dans l'onglet **Environnement** ce qui apparait. Ce n'est qu'à la première utilisation du jeu de données que le tableau est véritablement chargé. Par exemple :
@@ -141,12 +174,12 @@ La fonction `read()` permet de choisir librement le nom que nous souhaitons donn
 urchin <- read("urchin_bio", package = "data.io")
 ```
 
-Nous avons déjà vu que `read()` donne accès également dans certains cas à des métadonnées (par exemple le label et les unités des jeux de données) dans différentes langues, ce que ne permet pas `data()`. Enfin, la syntaxe et la fonction utilisée sont pratiquement identiques pour charger des données depuis un fichier, depuis Internet ou depuis un package avec `read()`. C'est logique et facile à retenir. `data()` ne permet *que* de récupérer des données liées à un package R, et c'est tout !   **Pour toutes ces raisons, nous préférons utiliser `read()` à `data()`.**
+Nous avons déjà vu que `read()` donne accès également dans certains cas à des métadonnées (par exemple le label et les unités des jeux de données) dans différentes langues, ce que ne permet pas `data()`. Enfin, la syntaxe et la fonction utilisée sont pratiquement identiques pour charger des données depuis un fichier, depuis Internet ou depuis un package avec `read()`. C'est logique et facile à retenir. `data()` ne permet *que* de récupérer des données liées à un package R, et c'est tout !   **Pour toutes ces raisons, nous préférons utiliser ici `read()` à `data()`.**
 
 
 #### Langue du jeu de données
 
-La fonction `read()` a l'avantage de pouvoir employer un fichier annexe pour rajouter des **métadonnées** (données complémentaires) à notre tableau, comme les labels et les unités des variables en différentes langues. Lorsque l'on importe le jeu de données avec la fonction `data()`, les métadonnées ne sont pas employées.
+La fonction `read()` est également capable de lire un fichier annexe permettant de rajouter des **métadonnées** (données complémentaires) à notre tableau, comme les **labels** et les **unités** des variables en différentes langues. Lorsque l'on importe le jeu de données avec la fonction `data()`, ces métadonnées ne sont pas employées.
 
 ```{r}
 data("urchin_bio", package = "data.io")
@@ -184,7 +217,7 @@ combine_charts(list(a, b, c, d))
 - C : l'argument `lang = "fr"` utilise les labels et unités en français. Il laisse cependant les niveaux des variables facteurs en anglais (`Farm` et `Fishery`) afin d'éviter de devoir changer les instructions de manipulation des données qui feraient référence à ces niveaux.
 - D : l'argument `lang = "FR"` ajoute les labels et unités en français. De plus, il traduit également les niveaux des variables facteurs (`Culture` et `Pêcherie`).
 
-Il vous est conseillé d'employé l'argument `lang = "fr"` lors de vos différents travaux. La langues internationale en science est l'anglais et vous serez très certainement amené dans votre carrière scientifique à produire des documents en français et en anglais. L'utilisation de `lang = "fr"`rend le **même** code réutilisable sur la version française ou anglaise, contrairement à `lang = "FR"`. Observez les exemples ci-dessous.
+Il vous est conseillé d'employé l'argument `lang = "fr"` lors de vos différents travaux. La langue internationale en science est l'anglais et vous serez très certainement amené dans votre carrière scientifique à produire des documents en français et en anglais. L'utilisation de `lang = "fr"`rend le **même** code réutilisable sur la version française ou anglaise, contrairement à `lang = "FR"`. Observez les exemples ci-dessous.
 
 ```{r}
 urchin_en %>.%
@@ -198,11 +231,15 @@ urchin_fr %>.%
   head(.)
 ```
 
+Pas d'adaptation nécessaire du code pour passer de `urchin_en` à `urchin_fr`.
+
 ```{r}
 urchin_FR %>.%
   filter(., origin == "Pêcherie") %>.%
   head(.)
 ```
+
+Le code a dû être modifier dans l'instruction `filter()` lors du passage à `urchin_FR` (`Farm` -> `Pêcherie`). Bien évidemment, pour un rapport *plus formel* en français, **tout** doit être traduit en français et l'option `lang = "FR"` accompagnée d'une vérification et une adaptation éventuelle du code est à préférer dans ce cas précis.
 
 
 ## Types de variables
@@ -215,7 +252,7 @@ Lors de la réalisation de graphiques dans les modules précédents vous avez co
 
 La Figure \@ref(fig:two-boxplots) montre deux boites de dispersion parallèles différentes. Laquelle de ces deux représentations est incorrecte et pourquoi ? 
 
-```{r two-boxplots, fig.cap="Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de `gender."}
+```{r two-boxplots, fig.cap="Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de gender`"}
 a <- chart(biometry, height ~ gender %fill=% gender) +
   geom_boxplot() 
 
@@ -235,17 +272,21 @@ Les jeux de données, lorsqu'ils sont bien encodés (**tableaux "cas par variabl
     + Les variables quantitatives **discrètes** sont typiquement représentées par des entiers (`integer` dans R)
     
 - Les variables **qualitatives** sont constituées d'un petit nombre de valeurs possibles (on parle des niveaux de la variables ou de leurs modalités)
-    + Les variables qualitatives **ordonnées** on des niveaux qui penvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets `ordered`.
+    + Les variables qualitatives **ordonnées** ont des niveaux qui penvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets `ordered`.
     + Les variables qualitatives **non ordonnées** ont des niveaux qui ne peuvent être rangés et sont typiquement représentées par des objets `factor` en R
 
-R essaye de gommer autant que possible la distinction entre nombres `integer` et `double` tous deux rassemblés en `numeric`. Si besoin, la conversion se fait automatiquement. En pratique, concentrez-vous essentiellement sur les objets `numeric` pour tout ce qui est quantitatif. Concernant les données qualitatives, elles sont souvent représentées par du texte (nom d'une couleur par exemple) et importées en chaines de caractère (`character`) dans R. Vous devez les convertir de manière explicite à l'aide de `as.factor()` ou `as.ordered()` par la suite.
+```{block, type = 'info'}
+R essaye de gommer autant que possible la distinction entre nombres `integer` et `double` tous deux rassemblés en `numeric`. Si besoin, la conversion se fait automatiquement. En pratique, concentrez-vous essentiellement sur les objets `numeric` pour tout ce qui est quantitatif. Un nombre tel que `1` est considéré par R comme un `double` par défaut. Si vous vouliez expressément spécifier que c'est un entier, vous pouvez le faire en ajoutant un `L` majuscule derrière le nombre. Ainsi, `1L` est compris par R comme l'**entier** 1. Encore une fois, cette distinction *explicite* est rarement nécessaire dans R.
+
+Concernant les données qualitatives, elles sont souvent représentées par du texte (nom d'une couleur par exemple) et importées en chaines de caractère (`character`) par défaut dans R à partir de la fonction `read()`. Vous devez les convertir de manière explicite à l'aide de `as.factor()`, `factor()`, `as.ordered()` ou `ordered() par la suite.
+```
 
 Il existe naturellement encore d'autres types de variables. Les dates sont représentées, par exemple, par des objets `Date`, les nombres complexes par `complex`, les données binaires par `raw`, etc.
 
 La fonction `skim()` du package `skimr` permet de visualiser la classe de la variable et bien plus encore. Elle fournit un résumé différent en fonction du type de la variable et propose, par exemple, un histogramme stylisé pour les variables numériques comme le montre le tableau ci-dessous.
 
 ```{r, echo=TRUE}
-#skimr::skim(biometry)
+skimr::skim(biometry)
 ```
 Avec une seule instruction, on obtient une quantité d'information sur notre jeu de données comme le nombre d'observations, le nombre de variables et un traitement spécifique pour chaque type de variable. Cette instruction permet de visualiser et d'appréhender le jeu de données mais ne doit généralement pas figurer tel quel dans un rapport d'analyse. 
 
@@ -258,29 +299,37 @@ Voici un jeu de données qui étudie l'allongement des dents chez le cobaye en f
 tooth <- read("ToothGrowth", package = "datasets", lang = "fr")
 ```
 
-Le jeu de données comprend 60 observations. Ces derniers reçoivent deux types de suppléments soit du jus d'orange (`OC`) ou de la vitamine C (`VC`). Ils recoivent trois doses 0.5, 1, 2 mg/j. Vous pouvez observer les données avec la fonction `skim()`.
+Le jeu de données comprend 60 observations effectuées sur des cochons d'Inde. Ces derniers reçoivent deux types de suppléments alimentaires : soit du jus d'orange (`OJ`), soit de la vitamine C (`VC`). Des lots différents recoivent des doses différentes d'acide ascorbique via ces suppléments, soit 0.5, 1, ou 2 mg/j. Vous pouvez inspecter ces données rapidement avec la fonction `skim()`.
 
 ```{r}
-#skimr::skim(tooth)
+skimr::skim(tooth)
 ```
 
-La variable dose est encodée sous forme de variable numérique alors que cette dernière ne contient que trois niveaux différents et devra être le plus souvent traitée comme une **variable qualitative ordonnée à 3 niveaux** . **Vous devrez donc recoder cette variable en variable facteur.**
+La variable dose est encodée sous forme numérique alors que cette dernière ne contient que trois niveaux différents et devra être le plus souvent traitée comme une **variable qualitative ordonnée à trois niveaux** . **Vous devrez donc probablement recoder cette variable en variable facteur.**
+
+```{block, type = 'note'}
+Ce n'est pas le caractère quantitatif ou qualitatif du *mécanisme sous-jacent qui est mesuré* qui détermine si la variable est quantitative ou qualitative, mais d'autres critères comme la précision avec laquelle la mesure a été effectuée. Par exemple, un anémomètre mesure la vitesse du vent sous forme de variable **quantitative** alors qu'une échelle approximative de type `vent nul`, `vent faible`, `vent moyen`, `vent fort` ou `tempête` basée sur l'observation des rides ou des vagues à la surface de la mer pourrait éventuellement convenir pour mesurer le même phénomène si une grande précision n'est pas nécessaire. Mais dans ce cas, la variable devra être traitée comme une variable **qualitative**.
+
+De même, un plan expérimental qui réduit volontairement les valeurs fixées dans une expérience, comme ici les doses journalières d'acide ascorbique, fera aussi basculer la variable en **qualitative**, et ce, quelle que soit la précision avec laquelle les valeurs sont mesurées par ailleurs. Un découpage en classes aura aussi le même effet de transformer une variable quantitative en variable qualitative ordonnée.
+```
+
+Indiquons à présent explicitement à R que la variable `dose` doit être considérée comme qualitative :
 
 ```{r}
 tooth$dose <- as.factor(tooth$dose)
 # Visualisation des données
-#skimr::skim(tooth)
+skimr::skim(tooth)
 ```
 
-Vous pouvez cependant aller encore plus loin car la variable est une variable facteur et plus précisement une variable facteur ordonnée. Il y a une progression dans les doses administrées.  Prenez la variable dose du jeu de données `tooth`. Etant donné qu'il s'agit de doses croissantes administrées à des cochons d'Inde, cette variable doit donc être un facteur ordonné.
+Vous pouvez (et devez !) cependant aller encore plus loin car la variable est en réalité qualitative **ordonnée**, et doit être représentée par un objet "facteur ordonné" (`ordered`) plutôt que `factor`. Il y a en effet, une progression dans les doses administrées. Lors de la conversion, R considère les différents niveaux par **ordre alphabéthique** par défaut. Ici cela convient, mais ce n'est pas toujours le cas. Il vaut donc mieux spécifier explicitement l'*ordre*  des niveaux dans l'argument optionnel `levels =`. Cela donne :
 
 ```{r}
 tooth$dose <- ordered(tooth$dose, levels = c(0.5, 1, 2))
 # Visualisation des données
-#skimr::skim(tooth)
+skimr::skim(tooth)
 ```
 
-Les fonctions `as.factor()` ou `factor()` et `as.ordered()` ou `ordered()` effectuent cette conversion de `character` vers objects `factor` ou `ordered. Attention que l'*ordre* des niveaux par défaut est l'ordre alphabétique. Il ne convient pas toujours, et dans ce cas, il faut fournir l'argument `levels =` dans un ordre bien défini comme ci-dessus. La variable facteur ordonnée est reconnue par une ensemble de fonction dans R. Elle ne sera de ce fait pas traitée de la même manière qu'une variable facteur non ordonnée. 
+Les fonctions `as.factor()` ou `factor()` et `as.ordered()` ou `ordered()` effectuent cette conversion de `character` ou `numeric` vers objets `factor` ou `ordered`. Une variable facteur ordonnée sera alors reconnue comme telle par un ensemble de fonction dans R. Elle ne sera, de ce fait, pas traitée de la même manière qu'une variable facteur non ordonnée, ni même qu'une variable numérique. Soyez bien attentif à l'encodage correct des données dans R avant d'effectuer vos graphiques et vos analyses. 
 
 
 ## Remaniement des données
