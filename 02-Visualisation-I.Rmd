@@ -6,7 +6,7 @@ SciViews::R
 ```
 
 
-#### Objectifs {-}
+##### Objectifs {-}
 
 - Découvrir --et vous émerveiller de--  ce que l'on peut faire avec le [logiciel R](http://www.r-project.org) [@R-base]
 
@@ -19,7 +19,7 @@ SciViews::R
 - Comparer de manière critique un workflow 'classique' en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown ; Prendre conscience de l'énorme potentiel de R
 
 
-#### Prérequis {-}
+##### Prérequis {-}
 
 Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio, Markdown. Vous devez aussi maîtriser les bases de Git et de GitHub (avoir un compte GitHub, savoir clôner un dépôt localement, travailler avec GitHub Desktop pour faire ses "commits", "push" et "pull"). L'ensemble de ces outils a été abordé lors de la création de votre site personnel professionnel du module \@ref(intro).
 
@@ -92,7 +92,7 @@ vembedr::embed_youtube("-QzG3Xr202w", width = 770, height = 433)
 Cette vidéo ne vous a montré que les principaux outils disponibles lors de la réalisation de graphiques. Soyez curieux et expérimentez par vous-même ! 
 
 
-### A vous de jouer !
+##### A vous de jouer {-}
 
 ```{block2, type='bdd'}
 Dans la fenêtre **Console** de RStudio, entrez l'instruction suivante suivie de la touche `Entrée` pour ouvrir le tutoriel concernant le nuage de points :
@@ -103,9 +103,7 @@ N'oubliez pas d'appuyer sur la touche `ESC` pour reprendre la main dans R à la 
 ```
 
 
-### Pièges et Astuces
-
-#### Modifications des échelles d'un graphiques
+### Echelles d'un graphiques
 
 Vous devez être vigilant lors de la réalisation d'un nuage de point particulièrement sur l'étendue des valeurs présentées sur vos axes. Vous devez utilisez votre expertise de biologiste pour vous posez les deux questions suivantes :
 
@@ -129,7 +127,7 @@ combine_charts(list(a, b, c, d))
 ```
 
 
-#### Transformation des données
+### Transformation des données
 
 Vous avez la possibilité d'appliquer une transformation de vos données (il est même conseillé de le faire) afin qu'elles soient plus facilement analysables. Par exemple, il est possible d'utiliser des fonctions de puissance, racines, logarithmes, exponentielles^[Pour les proportions (`prop`) ou les pourcentages (`perc`) (valeurs bornées entre 0 et 1 ou 0 et 100%) la transformation arcsin est souvent utilisée : $prop′ = \arcsin \sqrt{prop}$ ou $perc′ = \arcsin \sqrt{perc / 100}$.] pour modifier l'apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d'analyser statistiquement des données qui s'alignent le long d'une droite). Par exemple, sur nos données de hauteurs et masses d'oursins, la transformation double-log (log(x) *et* log(Y)) fonctionne très bien pour rendre le nuage de points plus linéaire :
 
@@ -146,7 +144,7 @@ combine_charts(list(a, b))
 ```
 
 
-#### Utilisation des snippets
+##### Pièges et astuces {-}
 
 RStudio permet de récupérer rapidement des instructions à partir d'une banque de solutions toutes prêtes. Cela s'appelle des **snippets**. Vous avez une série de snippets disponibles dans la SciViews Box. Celui qui vous permet de réaliser un graphique en nuage de points s'appelle `.cbxy` (pour **c**hart -> **b**ivariate -> **xy**-plot). Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci dans la fenêtre d'édition :
 
@@ -158,7 +156,7 @@ chart(data = DF, YNUM ~ XNUM) +
 Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver dans l'aide-mémoire consacré à [**SciViews**](https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf). Vous avez également à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/)) qui utilise la fonction `ggplot()` plutôt que `chart()` et une interface légèrement différente pour spécifier les variables à utiliser pour réaliser le graphique (`aes(x = ..., y = ...)).
 
 
-### A vous de jouer !
+##### A vous de jouer {-}
 
 Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **individuel**. Une fois votre assignation réalisée, faites un clône local de votre dépôt et placez-le dans le sous-dossier `projects` de votre dossier partagé avec la SciViews Box `shared`. Vous aurez alors un nouveau projet RStudio \@ref(rs-projet)
 
@@ -176,7 +174,7 @@ Inspirez-vous du script dans le dépôt `sdd1_iris`. Vous devez commencer par fa
 Prêtez une attention toute particulière à l'organisation d'un script R. En plus des instructions R, il contient aussi sous forme de commentaires, un titre , la date de la dernière mise à jour, le nom de l'auteur, et des sections qui organisent de façon claire le contenu du script. A ce sujet, vous trouverez des explications détaillées concernant l'utilisation des scripts R dans l'annexe \@ref(script).
 
 
-### Pour en savoir plus...
+##### Pour en savoir plus {-}
 
 - [Visualisation des données dans R for Data Science](http://r4ds.had.co.nz/data-visualisation.html). Chapitre du livre portant sur la visualisation des données, en anglais.
 
@@ -189,7 +187,7 @@ Prêtez une attention toute particulière à l'organisation d'un script R. En pl
 - [geom_point()](http://ggplot2.tidyverse.org/reference/geom_point.html). La fiche technique de la fonction (en anglais).
 
 
-### Testez vos acquis !
+##### Testez vos acquis {-}
 
 ```{block2, type='bdd'}
 Dans la fenêtre **Console** de RStudio, entrez l'instruction suivante et puis appuyez sur la touche `Entrée` pour ouvrir le tutoriel de challenge concernant le nuage de points :
@@ -209,7 +207,7 @@ Un fichier R Markdown est un fichier avec une extension `.Rmd`. Il permet de com
 Des explications détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R Markdown. De plus, l'écriture d'un rapport d'analyse scientifique doit respecter certaines conventions. Vous trouverez des explications à ce sujet dans l'annexe \@ref(redaction-scientifique).
 
 
-### Pour en savoir plus...
+##### Pour en savoir plus {-}
 
 - [What is R Markdown?](https://rmarkdown.rstudio.com/lesson-1.html). Vidéo en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).
 
@@ -226,7 +224,7 @@ Des explications détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R
 - [Reproducible reports](https://rworkshop.uni.lu/lectures/lecture04_rmarkdown.html#1) with R Markdown. Une explication en anglais de la raison d'être de R Markdown.
 
 
-### A vous de jouer !
+##### A vous de jouer {-}
 
 - Utilisation de **R Notebook**, un type de document R Markdown flexible et particulièrement bien adapté pour construire de manière interactive son analyse en même temps que le rapport associé.
 
@@ -244,7 +242,7 @@ Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Class
 
 ```{block2, type='bdd'}
 
-Comparez le workflow classique en biologie via Microsoft Office avec l'utilisation de R - R Markdown en suivant les explications dans le fichier `README.md`du dépôt accessible depuis :
+Comparez le workflow classique en biologie via Microsoft Office avec l'utilisation de R - R Markdown en suivant les explications dans le fichier `README.md`du dépôt accessible depuis\ :
 
 - <https://classroom.github.com/g/2Cii2dws>
 
