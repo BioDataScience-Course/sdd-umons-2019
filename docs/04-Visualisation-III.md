@@ -3,7 +3,7 @@
 
 
 
-#### Objectifs {-}
+##### Objectifs {-}
 
 - Savoir réaliser différents graphiques pour représenter des variables facteurs comme le graphique en barres, ou le graphique en camembert dans R avec la fonction `chart()`
 
@@ -14,16 +14,19 @@
 - Découvrir différents systèmes graphiques (graphiques de base, lattice, ggplot2) et les comparer entre eux
 
 
-#### Prérequis {-}
+##### Prérequis {-}
 
-Assurez-vous de bien maîtriser les notions relatives à la représentation graphiques vues jusqu'ici dans les modules \@ref(visu1) et \@ref(visu2).
+Assurez-vous de bien maîtriser les bases relatives à la représentation graphiques vues dans le module \@ref(visu1) et que vous êtes à l'aise dans l'utilisation de vos outils logiciels (SciViews Box, RStudio, R Markdown).
 
 
 ## Graphique en barres
 
-### Dénombrement d'observations par facteur
+Le graphique en barres (on dit aussi graphique en bâtons) compare les effectifs pour différents niveaux (ou modalités) d'une variable qualitative ou facteur. La différence avec l'histogramme est donc subtile et tient au fait que, pour l'histogramme, nous partons d'une variable quantitative qui est découpée en classes.
 
-Le graphique en barres est très similaire à l'histogramme, si ce n'est que l'on ne part pas d'une variable numérique découpée en classes, mais d'une variable facteur dont les observations sont donc déjà réparties en un (petit) nombre de classes distinctes. La question du nombre et/ou de l'intervalle des classes ne se pose donc plus ici. Par défaut, les barres seront séparées les unes des autres par un petit espace vide pour bien indiquer visuellement qu'il n'y a pas continuité entre les classes (dans l'histogramme, les barres sont accolées les unes aux autres pour matérialiser justement cette continuité).
+
+### Effectifs par facteur
+
+La question du nombre et/ou de l'intervalle des classes ne se pose pas dans le cas du graphique en barres. Par défaut, les barres seront séparées les unes des autres par un petit espace vide pour bien indiquer visuellement qu'il n'y a pas continuité entre les classes (dans l'histogramme, les barres sont accolées les unes aux autres pour matérialiser justement cette continuité).
 
 La formule que vous utiliserez, ici encore, ne fait appel qu'à une seule variable et s'écrira donc :
 
@@ -45,7 +48,7 @@ Les instructions dans R pour produire un graphique en barres à l'aide de la fon
 
 ```r
 # Importation du jeu de données
-(zooplankton <- read("zooplankton", package = "data.io", lang = "fr"))
+(zooplankton <- read("zooplankton", package = "data.io", lang = "FR"))
 ```
 
 ```
@@ -70,7 +73,7 @@ Les instructions dans R pour produire un graphique en barres à l'aide de la fon
 ```r
 # Réduction du jeu de données 
 (copepoda <- filter(zooplankton,
-  class %in% c("Calanoid", "Cyclopoid",  "Harpacticoid",  "Poecilostomatoid")))
+  class %in% c("Calanoïde", "Cyclopoïde",  "Harpacticoïde",  "Poecilostomatoïde")))
 ```
 
 ```
@@ -96,7 +99,7 @@ Les instructions dans R pour produire un graphique en barres à l'aide de la fon
 # Réalisation du graphique
 chart(data = copepoda, ~ class) +
   geom_bar() +
-  ylab("Dénombrement")
+  ylab("Effectifs")
 ```
 
 <div class="figure" style="text-align: center">
@@ -107,28 +110,28 @@ chart(data = copepoda, ~ class) +
 La fonction `geom_bar()` se charge d'ajouter les barres verticales dans le graphique. La hauteur de ces barres correspond au nombre d'observations rencontrées dans le jeu de données pour chaque niveau (ou classe, ou groupe) de la variable facteur représentée.
 
 
-#### Dénombrement par plusieurs facteurs
+### Effectifs par 2 facteurs
 
 
 ```r
 # Importation des données biometry
-(biometry <- read("biometry", package = "BioDataScience", lang = "fr"))
+(biometry <- read("biometry", package = "BioDataScience", lang = "FR"))
 ```
 
 ```
 # # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
-#  1 M      1995-03-11     69    182  15           2013    18
-#  2 M      1998-04-03     74    190  16           2013    15
-#  3 M      1967-04-04     83    185  17.5         2013    46
-#  4 M      1994-02-10     60    175  15           2013    19
-#  5 W      1990-12-02     48    167  14           2013    23
-#  6 W      1994-07-15     52    179  14           2013    19
-#  7 W      1971-03-03     72    167  15.5         2013    42
-#  8 W      1997-06-24     74    180  16           2013    16
-#  9 M      1972-10-26    110    189  19           2013    41
-# 10 M      1945-03-15     82    160  18           2013    68
+#  1 H      1995-03-11     69    182  15           2013    18
+#  2 H      1998-04-03     74    190  16           2013    15
+#  3 H      1967-04-04     83    185  17.5         2013    46
+#  4 H      1994-02-10     60    175  15           2013    19
+#  5 F      1990-12-02     48    167  14           2013    23
+#  6 F      1994-07-15     52    179  14           2013    19
+#  7 F      1971-03-03     72    167  15.5         2013    42
+#  8 F      1997-06-24     74    180  16           2013    16
+#  9 H      1972-10-26    110    189  19           2013    41
+# 10 H      1945-03-15     82    160  18           2013    68
 # # ... with 385 more rows
 ```
 
@@ -144,19 +147,19 @@ Différentes représentations sont possibles pour observer des dénombrements te
 ```r
 a <- chart(data = biometry, ~ gender) +
   geom_bar() +
-  ylab("Dénombrement")
+  ylab("Effectifs")
 
 b <- chart(data = biometry, ~ gender %fill=% year_measure) +
   geom_bar() +
-  ylab("Dénombrement") +
+  ylab("Effectifs") +
   scale_fill_viridis_d()
 
 combine_charts(list(a, b), common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement des hommes (M) et des femmes (W) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Dénombrement des hommes (M) et des femmes (W) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B).</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-4)Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B).</p>
 </div>
 
 Il existe d'autres options en utilisant la valeur `dodge` ou `fill` pour l'argument `position =`.
@@ -182,16 +185,16 @@ combine_charts(list(a, b, c), common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement des hommes (M) et des femmes (W) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Dénombrement des hommes (M) et des femmes (W) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations).</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations)." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-5)Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations).</p>
 </div>
 
-Soyez vigilant à la différence entre l'argument `position = stack` et `position = fill` qui malgré un rendu semblable ont l'axe des ordonnées qui diffère (dans le cas de `fill`, il s'agit de la **fraction** par rapport au total qui est représentée, et non pas des effectifs absolus dénombrés).
+Soyez vigilant à la différence entre l'argument `position = stack` et `position = fill` qui malgré un rendu semblable ont l'axe des ordonnées qui diffère (dans le cas de `fill`, il s'agit de la **fraction** par rapport au total qui est représentée, et non pas des **effectifs** absolus dénombrés).
 
 
-#### Pièges et Astuces
+##### Pièges et Astuces {-}
 
-##### Réordonner la variable facteur par fréquence
+###### Réordonner la variable facteur par fréquence {-}
 
 Vous pouvez avoir le souhait d'ordonner votre variable facteur afin d'améliorer le rendu visuel de votre graphique. Pour cela, vous pouvez employer la fonction `fct_infreq()`. 
 
@@ -199,7 +202,7 @@ Vous pouvez avoir le souhait d'ordonner votre variable facteur afin d'améliorer
 ```r
 chart(data = copepoda, ~ fct_infreq(class)) +
   geom_bar() +
-  labs(x = "Classe", y = "Abondance")
+  labs(x = "Classe", y = "Effectifs")
 ```
 
 <div class="figure" style="text-align: center">
@@ -207,15 +210,15 @@ chart(data = copepoda, ~ fct_infreq(class)) +
 <p class="caption">(\#fig:unnamed-chunk-6)Dénombrement des classes de copépodes du jeu de données zooplankton.</p>
 </div>
 
-##### Rotation du graphique en barre
+###### Rotation des axes du graphique en barre {-}
 
-Lorsque les niveaux dans la variable étudiée sont trop nombreux, la légende en abscisse risque de se chevaucher, comme dans la Fig. \@ref(fig:barchart1)
+Lorsque les niveaux dans la variable étudiée sont trop nombreux, les légendes en abscisse risquent de se chevaucher, comme dans la Fig. \@ref(fig:barchart1)
 
 
 ```r
 chart(data = zooplankton, ~ class) +
   geom_bar() +
-  ylab("Dénombrement")
+  ylab("Effectifs")
 ```
 
 <div class="figure" style="text-align: center">
@@ -223,13 +226,13 @@ chart(data = zooplankton, ~ class) +
 <p class="caption">(\#fig:barchart1)Dénombrement des classes du jeu de données zooplankton.</p>
 </div>
 
-Avec la fonction `coord_flip()` ajoutée à votre graphique, vous pouvez effectuer une rotation des axes pour obtenir un **graphique en barres horizontales**. De plus, l'oeil humain perçoit plus distinctement les différences de longueurs horizontales que verticales. Donc, de ce point de vue, le graphe en barres horizontal est considéré comme meilleur que le graphe en barres verticales. 
+Avec la fonction `coord_flip()` ajoutée à votre graphique, vous pouvez effectuer une rotation des axes pour obtenir un **graphique en barres horizontales**. De plus, l'oeil humain perçoit plus distinctement les différences de longueurs horizontales que verticales. Donc, de ce point de vue, le graphe en barres horizontal est considéré comme meilleur que le graphe en barres verticales.
 
 
 ```r
 chart(data = zooplankton, ~ class) +
   geom_bar() +
-  ylab("Dénombrement") +
+  ylab("Effectifs") +
   coord_flip()
 ```
 
@@ -239,7 +242,7 @@ chart(data = zooplankton, ~ class) +
 </div>
 
 
-#### Pour en savoir plus 
+##### Pour en savoir plus {-}
 
 - [Graphes en barres à l'aide de ggplot2](http://www.sthda.com/french/wiki/ggplot2-barplots-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees). Un tutoriel en français utilisant la fonction `ggplot()`. L'annotation des barres est également présentée.
 
@@ -248,9 +251,9 @@ chart(data = zooplankton, ~ class) +
 - [Autres exemples de graphes en barres](http://ggplot.yhathq.com/docs/geom_bar.html) à l'aide de ``ggplot()`.
 
 
-### Valeurs moyennes à l'aide d'un graphe en barres
+### Valeurs moyennes
 
-Le graphique en barres peut être employé pour résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les occurrences d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de
+Le graphique en barres peut être aussi employé pour résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les effectifs d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de
 
 $$y \sim x$$
 
@@ -299,7 +302,7 @@ Ici, nous faisons appel à une autre famille de fonctions : celles qui effectuen
 \BeginKnitrBlock{warning}<div class="warning">Le graphe en barres pour représenter les moyennes est très répandu dans le domaine scientifique malgré le grand nombre d'arguments en sa défaveur et que vous pouvez lire dans la section **pour en savoir plus** ci-dessous. L'un des arguments le plus important est la faible information qu'il véhicule puisque l'ensemble des données n'est plus représentée que par une valeur (la moyenne) pour chaque niveau de la variable facteur. Pour un petit nombre d'observations, il vaut mieux toutes les représenter à l'aide d'un nuage de points. Si le nombre d'observation devient très grand (dizianes ou plus), le graphique en boites de dispersion est plus indiqué (voir plus loin dans ce module).</div>\EndKnitrBlock{warning}
 
 
-#### Pour en savoir plus 
+##### Pour en savoir plus {-} 
 
 - [Beware of dynamite](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/TatsukiRcode/Poster3.pdf). Démonstration de l'impact d'un graphe en barres pour représenter la moyenne (et l'écart type) = graphique en "dynamite".
 
@@ -308,7 +311,7 @@ Ici, nous faisons appel à une autre famille de fonctions : celles qui effectuen
 
 ## Graphique en camembert
 
-Le graphique en camembert va vous permettre de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barres. 
+Le graphique en camembert (ou en parts de tarte, ou encore appelé diagramme circulaire, *pie chart* en anglais) va vous permettre de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barres. 
 
 
 ```r
@@ -320,16 +323,16 @@ chart(data = copepoda, ~ factor(0) %fill=% class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Exemple de graphique en camembert montrant le dénombrement des niveaux d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-11)Exemple de graphique en camembert montrant le dénombrement des niveaux d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.svg" alt="Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur." width="672" />
+<p class="caption">(\#fig:unnamed-chunk-11)Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur.</p>
 </div>
 
-Ce graphique est plus difficile à réaliser à l'aide de `chart()` ou `ggplot()`. En fait, il faut ruser ici, et l'auteur du package **ggplot2** n'avait tout simplement pas l'intention d'ajouter ce type de graphique dans la panoplie proposée. En effet, il faut savoir que l'oeil humain est nettement moins bon pour repérer des angles que pour comparer des longueurs. **Donc, le diagramme en barres est souvent meilleur pour comparer des dénombrements par classes.** Mais d'une part, le graphique en camembert est (malheureusement) un graphique très répandu et il faut savoir l'interpréter, et d'autre part, il peut s'avérer quand même utile dans certaines situations. Notez l'utilisation de la fonction `theme_void()` qui crée un graphique sans axes.
+Ce graphique est plus difficile à réaliser à l'aide de `chart()` ou `ggplot()`. En fait, il faut ruser ici, et l'auteur du package **ggplot2** n'avait tout simplement pas l'intention d'ajouter ce type de graphique dans la panoplie proposée. En effet, il faut savoir que l'oeil humain est nettement moins bon pour repérer des angles que pour comparer des longueurs. **Donc, le diagramme en barres est souvent meilleur pour comparer des effectifs par classes.** Mais d'une part, le graphique en camembert est (malheureusement) un graphique très répandu et il faut savoir l'interpréter, et d'autre part, il peut s'avérer quand même utile dans certaines situations. Notez l'utilisation de la fonction `theme_void()` qui crée un graphique sans axes.
 
 
-### Pièges et astuces
+##### Pièges et astuces {-}
 
-Partons d'un exemple fictif pour vous convaincre qu'un graphique en barres est souvent plus lisible qu'un graphique en camembert. Combien d'observations comptez-vous pour la lettre **h** ? 
+Partons d'un exemple fictif pour vous convaincre qu'un graphique en barres est souvent plus lisible qu'un graphique en camembert. Combien d'observations comptez-vous pour la lettre **H** ? 
 
 
 
@@ -339,18 +342,17 @@ Partons d'un exemple fictif pour vous convaincre qu'un graphique en barres est s
 <p class="caption">(\#fig:unnamed-chunk-13)Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider).</p>
 </div>
 
-Maintenant, effectuez le même exercice sur base d'un graphique en barres, combien d'observations pour la lettre **h** ?
+Maintenant, effectuez le même exercice sur base d'un graphique en barres, combien d'observations pour la lettre **H** ?
 
 <div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.svg" alt="Dénombrement des niveaux d'une variable facteur sur un graphique en barres." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-14)Dénombrement des niveaux d'une variable facteur sur un graphique en barres.</p>
 </div>
 
-Dans ce dernier cas, c'est bien plus facile : il y a effectivement 24 observations relatives à la lettre **h**.
+Dans ce dernier cas, c'est bien plus facile : il y a effectivement 24 observations relatives à la lettre **H**.
 
 
-### Pour en savoir plus 
-
+##### Pour en savoir plus {-} 
 
 - [Graphique en camembert à l'aide de la fonction `ggplot()`](http://www.sthda.com/french/wiki/ggplot2-graphique-en-camembert-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees). Explications en français des différentes étapes pour passer d'un graphique en barres à un graphique en camembert avec **ggplot2**.
 
@@ -363,7 +365,7 @@ Dans ce dernier cas, c'est bien plus facile : il y a effectivement 24 observatio
 
 ## Boite de dispersion
 
-Vous souhaitez représenter graphiquement cette fois *un résumé* d'une variable numérique mesurée sur un nombre (relativement) important d'individus, soit depuis une dizaine jusqu'à plusieurs millions. Vous souhaitez également conserver de l'information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d'une variable facteur. Nous avons déjà vu au module \@ref(visu2) les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les **boites de dispersion** comme option alternative intéressante. La boite de dispersion va représenter graphiquement cinq descripteurs appelés les **cinq nombres**.
+Vous souhaitez représenter graphiquement cette fois *un résumé* d'une variable numérique mesurée sur un nombre (relativement) important d'individus, soit depuis une dizaine jusqu'à plusieurs millions. Vous souhaitez également conserver de l'information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d'une variable facteur. Nous avons déjà vu au module \@ref(visu2) les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les **boites de dispersion** (encore appelée boite à moustaches) comme option alternative intéressante. La boite de dispersion va représenter graphiquement cinq descripteurs appelés les **cinq nombres**.
 
 Considérez l'échantillon suivant :
 
@@ -398,6 +400,8 @@ median(x)
 Les quartiles séparent l'échantillon en quatre. Le **premier quartile** (Q1) sera la valeur pour laquelle 25% des observations seront plus petites. Elle se situe donc entre la valeur minimale et la médiane. Cette médiane est égale au second quartile (50% des observations plus petites). Le **troisième quartile** (Q3) est la valeur pour laquelle 75% des observations de l'échantillon sont plus petites^[Notez que, lorsque la coupure tombe entre deux observations, une valeur intermédiaire est utilisée. Ici par exemple, le premier quartile est entre 53 et 55, donc, il vaut 54. Le troisième quartile se situe entre 78 et 82. Il vaut donc 80.]. Enfin, la valeur **minimale** et la valeur **maximale** observées dans l'échantillon complètent ces cinq nombres qui décrivent de manière synthétique la *position* et l'*étendue* des observations.
 
 \BeginKnitrBlock{note}<div class="note">Les **cinq nombres** sont : la **valeur minimale**, le **premier quartile**, la **médiane** (ou deuxième quartile), le **troisième quartile** et la **valeur maximale**.</div>\EndKnitrBlock{note}
+
+Voici comment on les calcules facilement dans R :
 
 
 ```r
@@ -451,9 +455,7 @@ chart(data = copepoda, size ~ class) +
 La formule à employer est `YNUM (size) ~ XFACTOR (class)`. Ensuite, pour réaliser une boite de dispersion vous devez ajouter la fonction `geom_boxplot()`.
 
 
-### Pièges et Astuces
-
-#### Nombre d'observations par boite de dispersion
+### Taille de l'échantillon
 
 Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d'observations qui se cachent sous chacune d'elles. En effet, réaliser une boite de dispersion à partir d'échantillons ne comportant que cinq valeurs ou moins n'a *aucun* sens ! 
 
@@ -462,7 +464,7 @@ Lors de la réalisation de boites de dispersion, vous devez être vigilant au no
 <p class="caption">(\#fig:unnamed-chunk-23)Piège des boites de dispersion : trop peu d'observations disponibles pour `a`.</p>
 </div>
 
-La boite de dispersion **`a`** est calculée à partir de seulement quatre observations. C'est trop peu. Comme les points représentant les observations ne sont habituellement pas superposés à la boite, cela peut passer inaperçu et tromper le lecteur ! Une bonne pratique consiste à ajouter *n*, le nombre d'observations au-dessus de chaque boite. Cela peut se faire facilement avec les fonctions `give_n()` et `stat_summary()` ci-dessous.
+La boite de dispersion **`A`** est calculée à partir de seulement quatre observations. C'est trop peu. Comme les points représentant les observations ne sont habituellement pas superposés à la boite, cela peut passer inaperçu et tromper le lecteur ! Une bonne pratique consiste à ajouter *n*, le nombre d'observations au-dessus de chaque boite. Cela peut se faire facilement avec les fonctions `give_n()` et `stat_summary()` ci-dessous.
 
 
 ```r
@@ -478,6 +480,9 @@ chart(data = copepoda, size ~ class) +
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.svg" alt="Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite)." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-24)Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite).</p>
 </div>
+
+
+### En fonction de 2 facteurs
 
 La Fig. \@ref(fig:boxplot-tooth) présente un graphique en boites de dispersion parallèles qui combine l'usage de *deux* variables facteurs différentes.
 
@@ -532,7 +537,7 @@ chart(data = tooth_growth, len ~ supp %fill=% dose) +
 </div>
 
 
-### Pour en savoir plus ! 
+##### Pour en savoir plus {-} 
 
 - [Un tutoriel boites de dispersion à l'aide de `ggplot()`](http://www.sthda.com/french/wiki/ggplot2-box-plot-guide-de-demarrage-rapide-logiciel-r-et-visualisation-de-donnees) présentant encore bien d'autres variantes possibles.
 
@@ -637,7 +642,7 @@ combine_charts(list(a, b), common.legend = TRUE)
 Il existe d'autres fonctions permettant de combiner plusieurs graphiques comme [`plot_grid()`](https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html) du package **cowplot**, mais avec `combine_charts()` vous pourrez déjà faire beaucoup. De plus, un libellé sous forme d'une lettre majuscule est automatiquement associé à chaque sous-région de la figure composée. Cela permet d'y faire plus facilement référence dans le texte et/ou dans la légende.
 
 
-#### Pour en savoir plus ! 
+##### Pour en savoir plus {-} 
 
 - [Partitionnement des graphiques en facettes](http://www.sthda.com/french/wiki/ggplot2-facet-diviser-un-graphique-en-plusieurs-panneaux-logiciel-r-et-visualisation-de-donnees). Differentes options sont présentées ici.
 
@@ -875,7 +880,25 @@ coplot(data = urchin, height ~ weight | origin)
 A l'issue de cette comparaison, vous pourrez décider du moteur graphique que vous préfèrerez utiliser. Dans le cadre de ce cours, nous n'utiliserons en tous cas que quasi-exclusivement des graphiques **ggplot2** créés à l'aide la fonction `chart()`.
 
 
-### Pour en savoir plus
+##### A vous de jouer {-}
+
+Proposez cinq graphiques inédits (qui n'ont pas été vu jusqu'ici) dans vos différents projets. Employez par exemple les liens suivants pour vous inspirer :
+
+- <https://www.r-graph-gallery.com>
+
+- <http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html>
+
+
+Terminez ce module en vérifiant que vous avez acquis l'ensemble des notions abordées.
+
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("....")
+</div>\EndKnitrBlock{bdd}
+
+
+##### Pour en savoir plus {-}
 
 - Chapitre [Data visualisation](http://r4ds.had.co.nz/data-visualisation.html) de R for Data Science qui utilise `ggplot()`. 
 
@@ -892,21 +915,3 @@ A l'issue de cette comparaison, vous pourrez décider du moteur graphique que vo
 - [Autres exemples de graphiques R de base](http://www.sthda.com/english/wiki/scatter-plots-r-base-graphs)
 
 - [ggplot2 comparé aux graphiques R de base](https://flowingdata.com/2016/03/22/comparing-ggplot2-and-r-base-graphics/). Un point de vue différent d'un utilisateur habitué aux graphiques R de base (en anglais).
-
-
-## A vous de jouer !
-
-Proposez cinq graphiques inédits (qui n'ont pas été vu jusqu'ici) dans vos différents projets. Employez par exemple les liens suivants pour vous inspirer :
-
-- <https://www.r-graph-gallery.com>
-
-- <http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html>
-
-
-Terminez ce module en vérifiant que vous avez acquis l'ensemble des notions abordées.
-
-\BeginKnitrBlock{bdd}<div class="bdd">
-Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
-
-    BioDataScience::run("....")
-</div>\EndKnitrBlock{bdd}

@@ -93,9 +93,9 @@
 <polyline points='129.67,327.85 129.67,324.86 ' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
 <polyline points='271.35,327.85 271.35,324.86 ' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
 <polyline points='413.02,327.85 413.02,324.86 ' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='126.89' y='337.56' style='font-size: 10.28px; font-family: Arial;' textLength='5.56px' lengthAdjust='spacingAndGlyphs'>a</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='268.57' y='337.56' style='font-size: 10.28px; font-family: Arial;' textLength='5.56px' lengthAdjust='spacingAndGlyphs'>b</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='410.52' y='337.56' style='font-size: 10.28px; font-family: Arial;' textLength='5.00px' lengthAdjust='spacingAndGlyphs'>c</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='261.68' y='351.37' style='font-size: 12.00px; font-family: Arial;' textLength='19.34px' lengthAdjust='spacingAndGlyphs'>fact</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text transform='translate(17.22,179.76) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='28.69px' lengthAdjust='spacingAndGlyphs'>value</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='126.34' y='337.56' style='font-size: 10.28px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>A</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='268.01' y='337.56' style='font-size: 10.28px; font-family: Arial;' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>B</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='409.41' y='337.56' style='font-size: 10.28px; font-family: Arial;' textLength='7.22px' lengthAdjust='spacingAndGlyphs'>C</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='251.01' y='351.37' style='font-size: 12.00px; font-family: Arial;' textLength='40.68px' lengthAdjust='spacingAndGlyphs'>Facteur</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text transform='translate(17.22,182.76) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='34.69px' lengthAdjust='spacingAndGlyphs'>Valeur</text></g>
 </svg>

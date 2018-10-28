@@ -162,8 +162,8 @@
 <polyline points='44.67,324.81 246.02,324.81 ' style='stroke-width: 1.07; stroke-linecap: square;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
 <polyline points='99.58,327.80 99.58,324.81 ' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
 <polyline points='191.11,327.80 191.11,324.81 ' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='95.42' y='337.52' style='font-size: 10.28px; font-family: Arial;' textLength='8.33px' lengthAdjust='spacingAndGlyphs'>M</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='186.39' y='337.52' style='font-size: 10.28px; font-family: Arial;' textLength='9.44px' lengthAdjust='spacingAndGlyphs'>W</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='95.97' y='337.52' style='font-size: 10.28px; font-family: Arial;' textLength='7.22px' lengthAdjust='spacingAndGlyphs'>H</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='188.05' y='337.52' style='font-size: 10.28px; font-family: Arial;' textLength='6.11px' lengthAdjust='spacingAndGlyphs'>F</text></g>
 <defs>
   <clipPath id='cpMHw1MDR8MzYwfDI1LjczODY='>
     <rect x='0.00' y='25.74' width='504.00' height='334.26' />
@@ -195,7 +195,7 @@
     <rect x='0.00' y='0.00' width='504.00' height='360.00' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text transform='translate(17.22,219.62) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='82.71px' lengthAdjust='spacingAndGlyphs'>Dénombrement</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text transform='translate(17.22,199.60) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='42.68px' lengthAdjust='spacingAndGlyphs'>Effectifs</text></g>
 <defs>
   <clipPath id='cpMHw1MDR8MzYwfDI1LjczODY='>
     <rect x='0.00' y='25.74' width='504.00' height='334.26' />
@@ -373,8 +373,8 @@
 <polyline points='296.67,324.81 498.02,324.81 ' style='stroke-width: 1.07; stroke-linecap: square;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
 <polyline points='351.58,327.80 351.58,324.81 ' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
 <polyline points='443.11,327.80 443.11,324.81 ' style='stroke-width: 1.07; stroke-linecap: butt;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='347.42' y='337.52' style='font-size: 10.28px; font-family: Arial;' textLength='8.33px' lengthAdjust='spacingAndGlyphs'>M</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='438.39' y='337.52' style='font-size: 10.28px; font-family: Arial;' textLength='9.44px' lengthAdjust='spacingAndGlyphs'>W</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='347.97' y='337.52' style='font-size: 10.28px; font-family: Arial;' textLength='7.22px' lengthAdjust='spacingAndGlyphs'>H</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='440.05' y='337.52' style='font-size: 10.28px; font-family: Arial;' textLength='6.11px' lengthAdjust='spacingAndGlyphs'>F</text></g>
 <defs>
   <clipPath id='cpMHw1MDR8MzYwfDI1LjczODY='>
     <rect x='0.00' y='25.74' width='504.00' height='334.26' />
@@ -406,7 +406,7 @@
     <rect x='0.00' y='0.00' width='504.00' height='360.00' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text transform='translate(269.22,219.62) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='82.71px' lengthAdjust='spacingAndGlyphs'>Dénombrement</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text transform='translate(269.22,199.60) rotate(-90)' style='font-size: 12.00px; font-family: Arial;' textLength='42.68px' lengthAdjust='spacingAndGlyphs'>Effectifs</text></g>
 <defs>
   <clipPath id='cpMHw1MDR8MzYwfDI1LjczODY='>
     <rect x='0.00' y='25.74' width='504.00' height='334.26' />
