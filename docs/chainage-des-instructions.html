@@ -303,9 +303,11 @@ code > span. { color: #1f1c1b; } /* Normal */
     <span class="dt">median =</span> <span class="kw">median</span>(bmi),
     <span class="dt">number =</span> <span class="kw">n</span>()),
   <span class="dt">rows =</span> <span class="ot">NULL</span>,  <span class="dt">digits =</span> <span class="dv">1</span>,
-  <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>)
+  <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>),
+  <span class="dt">caption =</span> <span class="st">&quot;IMC d&#39;hommes (M) et femmes (W) de 25 ans maximum.&quot;</span>
 )</code></pre></div>
 <table>
+<caption><span id="tab:unnamed-chunk-48">Tableau 5.4: </span>IMC d’hommes (M) et femmes (W) de 25 ans maximum.</caption>
 <thead>
 <tr class="header">
 <th align="left">Genre</th>
@@ -340,8 +342,10 @@ biometry_tab &lt;-<span class="st"> </span><span class="kw">summarise</span>(bio
   <span class="dt">median =</span> <span class="kw">median</span>(bmi),
   <span class="dt">number =</span> <span class="kw">n</span>())
 knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span class="dt">rows =</span> <span class="ot">NULL</span>, <span class="dt">digits =</span> <span class="dv">1</span>,
-  <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>))</code></pre></div>
+  <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>),
+  <span class="dt">caption =</span> <span class="st">&quot;IMC d&#39;hommes (M) et femmes (W) de 25 ans maximum.&quot;</span>)</code></pre></div>
 <table>
+<caption><span id="tab:unnamed-chunk-49">Tableau 5.5: </span>IMC d’hommes (M) et femmes (W) de 25 ans maximum.</caption>
 <thead>
 <tr class="header">
 <th align="left">Genre</th>
@@ -377,8 +381,10 @@ knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span
     <span class="dt">median =</span> <span class="kw">median</span>(bmi),
     <span class="dt">number =</span> <span class="kw">n</span>()) <span class="op">%&gt;.%</span>
 <span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(., <span class="dt">rows =</span> <span class="ot">NULL</span>, <span class="dt">digits =</span> <span class="dv">1</span>, 
-    <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>))</code></pre></div>
+    <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>),
+    <span class="dt">caption =</span> <span class="st">&quot;IMC d&#39;hommes (M) et femmes (W) de 25 ans maximum.&quot;</span>)</code></pre></div>
 <table>
+<caption><span id="tab:unnamed-chunk-50">Tableau 5.6: </span>IMC d’hommes (M) et femmes (W) de 25 ans maximum.</caption>
 <thead>
 <tr class="header">
 <th align="left">Genre</th>

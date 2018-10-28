@@ -580,7 +580,8 @@ knitr::kable(
     median = median(bmi),
     number = n()),
   rows = NULL,  digits = 1,
-  col = c("Genre", "Moyenne", "Médiane", "Observations")
+  col = c("Genre", "Moyenne", "Médiane", "Observations"),
+  caption = "IMC d'hommes (M) et femmes (W) de 25 ans maximum."
 )
 ```
 
@@ -595,7 +596,8 @@ biometry_tab <- summarise(biometry_25,
   median = median(bmi),
   number = n())
 knitr::kable(biometry_tab, rows = NULL, digits = 1,
-  col = c("Genre", "Moyenne", "Médiane", "Observations"))
+  col = c("Genre", "Moyenne", "Médiane", "Observations"),
+  caption = "IMC d'hommes (M) et femmes (W) de 25 ans maximum.")
 ```
 
 - Des trois approches, la version ci-dessous ave chainage des opérations est la plus lisible et la plus pratique^[Le chainage n'est cependant pas forcément plus facile à débogger que la version avec variables intermédiaires. Le package **flow** propose la fonction `debug_flow()` à appeler directement après un plantage pour inspecter la dernière instruction qui a causé l'erreur, voir `?debug_flow`.].
@@ -610,7 +612,8 @@ biometry %>.%
     median = median(bmi),
     number = n()) %>.%
   knitr::kable(., rows = NULL, digits = 1, 
-    col = c("Genre", "Moyenne", "Médiane", "Observations"))
+    col = c("Genre", "Moyenne", "Médiane", "Observations"),
+    caption = "IMC d'hommes (M) et femmes (W) de 25 ans maximum.")
 
 ```
 

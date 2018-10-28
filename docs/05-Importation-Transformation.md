@@ -1012,11 +1012,14 @@ knitr::kable(
     median = median(bmi),
     number = n()),
   rows = NULL,  digits = 1,
-  col = c("Genre", "Moyenne", "Médiane", "Observations")
+  col = c("Genre", "Moyenne", "Médiane", "Observations"),
+  caption = "IMC d'hommes (M) et femmes (W) de 25 ans maximum."
 )
 ```
 
 
+
+Table: (\#tab:unnamed-chunk-48)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
 
 Genre    Moyenne   Médiane   Observations
 ------  --------  --------  -------------
@@ -1035,10 +1038,13 @@ biometry_tab <- summarise(biometry_25,
   median = median(bmi),
   number = n())
 knitr::kable(biometry_tab, rows = NULL, digits = 1,
-  col = c("Genre", "Moyenne", "Médiane", "Observations"))
+  col = c("Genre", "Moyenne", "Médiane", "Observations"),
+  caption = "IMC d'hommes (M) et femmes (W) de 25 ans maximum.")
 ```
 
 
+
+Table: (\#tab:unnamed-chunk-49)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
 
 Genre    Moyenne   Médiane   Observations
 ------  --------  --------  -------------
@@ -1058,10 +1064,13 @@ biometry %>.%
     median = median(bmi),
     number = n()) %>.%
   knitr::kable(., rows = NULL, digits = 1, 
-    col = c("Genre", "Moyenne", "Médiane", "Observations"))
+    col = c("Genre", "Moyenne", "Médiane", "Observations"),
+    caption = "IMC d'hommes (M) et femmes (W) de 25 ans maximum.")
 ```
 
 
+
+Table: (\#tab:unnamed-chunk-50)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
 
 Genre    Moyenne   Médiane   Observations
 ------  --------  --------  -------------
