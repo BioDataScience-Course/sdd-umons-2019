@@ -3,7 +3,7 @@
 
 # Installation de la SciViews Box {#svbox}
 
-<img src="images/svBox-256.png" width="256px" style="display: block; margin: auto 0 auto auto;" />
+<img src="images/sdd1_01/svBox-256.png" width="256px" style="display: block; margin: auto 0 auto auto;" />
 
 La SciViews Box est une machine virtuelle (c'est-à-dire, l'équivalent d'un ordinateur complet, mais "dématérialisé" et utilisable à l'intérieur de n'importe quel autre ordinateur physique). Elle est spécialement configurée pour analyser des données et rédiger des documents scientifiques de manière professionnelle.
 
@@ -86,7 +86,7 @@ Si vous n'arrivez pas à entrer dans le BIOS, ou à trouver l'entrée correspond
 **Si votre ordinateur est conforme aux spécifications ci-dessus, et si la virtualisation est activée, vous êtes maintenant prêt à installer votre SciViews Box!** Dans ce cas, passez directement à la section \@ref(install). Si vous n'avez pas encore d'ordinateur et souhaitez en acheter un, voyez quelques conseils utiles ci-dessous pour faire le bon choix.
 
 
-### Conseils pour acheter un ordinateur {#achat_pc}
+### Conseils pour acheter un PC {#achat_pc}
 
 <div class="note">
 <p>Pour les étudiants de l'UMONS, vous ne <em>devez pas</em> posséder votre propre ordinateur pour suivre le cours de science des données biologiques. Des ordinateurs en configuration de référence (voir <a href="#ordi">ordinateur</a>) vous sont accessibles au cours et aux travaux pratiques, et en dehors des heures à la salle &quot;Escher&quot; (demander un accès au secrétariat des sciences). Toutefois, si vous pouvez acquérir un ordinateur personnel, cela vous apportera un confort et une flexibilité indéniable, <strong>à condition de bien le choisir !</strong></p>

@@ -236,7 +236,7 @@ Un script R doit être organisé de manière cohérente afin d'être exécutable
 Notez que les instructions exécutées dans le script sont envoyées dans la fenêtre `Console` en bas à gauche.
 
 
-### R Markdown/R Notebook dans RStudio {#Rmd}
+### R Markdown/R Notebook {#Rmd}
 
 Un document R Markdown est un fichier dont l'extension est `.Rmd`. Il combine à la fois des instructions R (pour les analyses) et le langage Markdown (pour le texte). le R Markdown ne vous permet pas de visualiser directement le résultat final d'un rapport d'analyse^[Les systèmes d'édition professionnels dissocient en effet le fond de la forme : vous rédiger d'abord le contenu, et ensuite, vous indiquer le style à lui appliquer.]
 
@@ -317,11 +317,11 @@ Si vous cliquez sur la petite flèche noire pointant vrs le bas juste après `Pr
 ![](images/annexe_a2/rmd6.png)
 
 
-## Github 
+## GitHub 
 
 TODO
 
 
-## Github Classroom
+## GitHub Classroom
 
 TODO
