@@ -5,25 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <meta name="description" content="">
+  <title>Science des données biologiques, UMONS</title>
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="" />
+  <meta property="og:title" content="Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
-  
-  
-  
-  
+  <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
+  <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="" />
+  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
   
-  
-  
+  <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-
+<meta name="date" content="2018-10-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -137,7 +139,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="3" data-path="visu2.html"><a href="visu2.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a><ul>
 <li class="chapter" data-level="3.1" data-path="histogramme.html"><a href="histogramme.html"><i class="fa fa-check"></i><b>3.1</b> Histogramme</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="histogramme.html"><a href="histogramme.html#pieges-et-astuces-1"><i class="fa fa-check"></i><b>3.1.1</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="3.1.1" data-path="histogramme.html"><a href="histogramme.html#nombre-de-classes"><i class="fa fa-check"></i><b>3.1.1</b> Nombre de classes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="histogramme.html"><a href="histogramme.html#histogramme-par-facteur"><i class="fa fa-check"></i><b>3.1.2</b> Histogramme par facteur</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="graphique-de-densite.html"><a href="graphique-de-densite.html"><i class="fa fa-check"></i><b>3.2</b> Graphique de densité</a></li>
 <li class="chapter" data-level="3.3" data-path="diagramme-en-violon.html"><a href="diagramme-en-violon.html"><i class="fa fa-check"></i><b>3.3</b> Diagramme en violon</a><ul>
@@ -188,20 +191,16 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Traitement des données II</a><ul>
 <li class="chapter" data-level="6.1" data-path="decoupage-en-classe.html"><a href="decoupage-en-classe.html"><i class="fa fa-check"></i><b>6.1</b> Découpage en classe</a></li>
-<li class="chapter" data-level="6.2" data-path="instructions-obtenu-avec-laddins.html"><a href="instructions-obtenu-avec-laddins.html"><i class="fa fa-check"></i><b>6.2</b> instructions obtenu avec l’addins</a></li>
-<li class="chapter" data-level="6.3" data-path="visualisation-de-la-variable-facteur-obtenue.html"><a href="visualisation-de-la-variable-facteur-obtenue.html"><i class="fa fa-check"></i><b>6.3</b> Visualisation de la variable facteur obtenue</a></li>
-<li class="chapter" data-level="6.4" data-path="instructions-obtenu-avec-laddins-1.html"><a href="instructions-obtenu-avec-laddins-1.html"><i class="fa fa-check"></i><b>6.4</b> instructions obtenu avec l’addins</a></li>
-<li class="chapter" data-level="6.5" data-path="visualisation-de-la-variable-facteur-obtenue-1.html"><a href="visualisation-de-la-variable-facteur-obtenue-1.html"><i class="fa fa-check"></i><b>6.5</b> Visualisation de la variable facteur obtenue</a></li>
-<li class="chapter" data-level="6.6" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html"><i class="fa fa-check"></i><b>6.6</b> Tableaux de données</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.6.1</b> Métadonnées</a></li>
-<li class="chapter" data-level="6.6.2" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableau-cas-par-variables"><i class="fa fa-check"></i><b>6.6.2</b> Tableau cas par variables</a></li>
-<li class="chapter" data-level="6.6.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableau-de-contingence"><i class="fa fa-check"></i><b>6.6.3</b> Tableau de contingence</a></li>
+<li class="chapter" data-level="6.2" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html"><i class="fa fa-check"></i><b>6.2</b> Tableaux de données</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.2.1</b> Métadonnées</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableau-cas-par-variables"><i class="fa fa-check"></i><b>6.2.2</b> Tableau cas par variables</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableau-de-contingence"><i class="fa fa-check"></i><b>6.2.3</b> Tableau de contingence</a></li>
 </ul></li>
-<li class="chapter" data-level="6.7" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.7</b> Acquisition de données</a><ul>
-<li class="chapter" data-level="6.7.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitudes"><i class="fa fa-check"></i><b>6.7.1</b> Précision et exactitudes</a></li>
-<li class="chapter" data-level="6.7.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.7.2</b> Codification des données</a></li>
+<li class="chapter" data-level="6.3" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitudes"><i class="fa fa-check"></i><b>6.3.1</b> Précision et exactitudes</a></li>
+<li class="chapter" data-level="6.3.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.3.2</b> Codification des données</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="a-vous-de-jouer-7.html"><a href="a-vous-de-jouer-7.html"><i class="fa fa-check"></i><b>6.8</b> A vous de jouer !</a></li>
+<li class="chapter" data-level="6.4" data-path="a-vous-de-jouer-7.html"><a href="a-vous-de-jouer-7.html"><i class="fa fa-check"></i><b>6.4</b> A vous de jouer !</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a><ul>
 <li class="chapter" data-level="7.1" data-path="probabilites.html"><a href="probabilites.html"><i class="fa fa-check"></i><b>7.1</b> Probabilités</a></li>
@@ -271,7 +270,7 @@ code > span. { color: #1f1c1b; } /* Normal */
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Science des données biologiques, UMONS</a>
           </h1>
         </div>
 
@@ -284,9 +283,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="objectifs-1" class="section level5 unnumbered">
 <h5>Objectifs</h5>
 <ul>
-<li><p>Découvrir –et vous émerveiller de– ce que l’on peut faire avec le <a href="http://www.r-project.org">logiciel R</a> <span class="citation">[@R-base]</span></p></li>
+<li><p>Découvrir –et vous émerveiller de– ce que l’on peut faire avec le <a href="http://www.r-project.org">logiciel R</a> <span class="citation">(R Core Team <a href="#ref-R-base">2018</a>)</span></p></li>
 <li><p>Savoir réaliser différentes variantes d’un graphique en nuage de points dans R avec la fonction <code>chart()</code></p></li>
-<li><p>Découvrir le format R Markdown <span class="citation">[@R-rmarkdown]</span> et la recherche reproductible</p></li>
+<li><p>Découvrir le format R Markdown <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span> et la recherche reproductible</p></li>
 <li><p>Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez</p></li>
 <li><p>Comparer de manière critique un workflow ‘classique’ en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown ; Prendre conscience de l’énorme potentiel de R</p></li>
 </ul>
@@ -294,7 +293,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="prerequis" class="section level5 unnumbered">
 <h5>Prérequis</h5>
 <p>Si ce n’est déjà fait, vous devez installer et vous familiariser avec la ‘SciViews Box’, RStudio, Markdown. Vous devez aussi maîtriser les bases de Git et de GitHub (avoir un compte GitHub, savoir clôner un dépôt localement, travailler avec GitHub Desktop pour faire ses “commits”, “push” et “pull”). L’ensemble de ces outils a été abordé lors de la création de votre site personnel professionnel du module <a href="intro.html#intro">1</a>.</p>
-<p>Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels<a href="references.html#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
 
 <div class="bdd">
 <p>Démarrez la SciViews Box et RStudio. Dans la fenêtre <strong>Console</strong> de RStudio, entrez l’instruction suivante suivie de la touche <code>Entrée</code> pour ouvrir le tutoriel concernant les bases de R :</p>
@@ -306,12 +305,41 @@ code > span. { color: #1f1c1b; } /* Normal */
 
 </div> 
 </div>
+<h3>Références</h3>
+<div id="refs" class="references">
+<div id="ref-R-base">
+<p>R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+<div id="ref-R-rmarkdown">
+<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+</div>
+</div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Reportez-vous à l’Appendice <a href="learnr.html#learnr">C</a> pour apprendre à utiliser ces tutoriels.<a href="visu1.html#fnref1">↩</a></p></li>
+<ol start="2">
+<li id="fn2"><p>Reportez-vous à l’Appendice <a href="learnr.html#learnr">C</a> pour apprendre à utiliser ces tutoriels.<a href="visu1.html#fnref2">↩</a></p></li>
 </ol>
 </div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sddb.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </section>
 
           </div>

@@ -132,20 +132,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Nuage de points</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.1</b> Le nuage de points en vidéo</a></li>
-<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#a-vous-de-jouer-1"><i class="fa fa-check"></i><b>2.1.2</b> A vous de jouer !</a></li>
-<li class="chapter" data-level="2.1.3" data-path="nuage-de-points.html"><a href="nuage-de-points.html#pieges-et-astuces"><i class="fa fa-check"></i><b>2.1.3</b> Pièges et Astuces</a></li>
-<li class="chapter" data-level="2.1.4" data-path="nuage-de-points.html"><a href="nuage-de-points.html#a-vous-de-jouer-2"><i class="fa fa-check"></i><b>2.1.4</b> A vous de jouer !</a></li>
-<li class="chapter" data-level="2.1.5" data-path="nuage-de-points.html"><a href="nuage-de-points.html#pour-en-savoir-plus-4"><i class="fa fa-check"></i><b>2.1.5</b> Pour en savoir plus…</a></li>
-<li class="chapter" data-level="2.1.6" data-path="nuage-de-points.html"><a href="nuage-de-points.html#testez-vos-acquis"><i class="fa fa-check"></i><b>2.1.6</b> Testez vos acquis !</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#echelles-dun-graphiques"><i class="fa fa-check"></i><b>2.1.2</b> Echelles d’un graphiques</a></li>
+<li class="chapter" data-level="2.1.3" data-path="nuage-de-points.html"><a href="nuage-de-points.html#transformation-des-donnees"><i class="fa fa-check"></i><b>2.1.3</b> Transformation des données</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Graphiques dans R Markdown</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html#pour-en-savoir-plus-5"><i class="fa fa-check"></i><b>2.2.1</b> Pour en savoir plus…</a></li>
-<li class="chapter" data-level="2.2.2" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html#a-vous-de-jouer-3"><i class="fa fa-check"></i><b>2.2.2</b> A vous de jouer !</a></li>
-</ul></li>
+<li class="chapter" data-level="2.2" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Graphiques dans R Markdown</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="visu2.html"><a href="visu2.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a><ul>
 <li class="chapter" data-level="3.1" data-path="histogramme.html"><a href="histogramme.html"><i class="fa fa-check"></i><b>3.1</b> Histogramme</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="histogramme.html"><a href="histogramme.html#pieges-et-astuces-1"><i class="fa fa-check"></i><b>3.1.1</b> Pièges et astuces</a></li>
+<li class="chapter" data-level="3.1.1" data-path="histogramme.html"><a href="histogramme.html#nombre-de-classes"><i class="fa fa-check"></i><b>3.1.1</b> Nombre de classes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="histogramme.html"><a href="histogramme.html#histogramme-par-facteur"><i class="fa fa-check"></i><b>3.1.2</b> Histogramme par facteur</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="graphique-de-densite.html"><a href="graphique-de-densite.html"><i class="fa fa-check"></i><b>3.2</b> Graphique de densité</a></li>
 <li class="chapter" data-level="3.3" data-path="diagramme-en-violon.html"><a href="diagramme-en-violon.html"><i class="fa fa-check"></i><b>3.3</b> Diagramme en violon</a><ul>
@@ -309,6 +304,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, height <
 <span class="st">  </span><span class="kw">geom_boxplot</span>()
 
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code># Warning: position_dodge requires non-overlapping x intervals</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:two-boxplots"></span>
 <img src="05-Importation-Transformation_files/figure-html/two-boxplots-1.svg" alt="Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de `gender." width="672" />
 <p class="caption">

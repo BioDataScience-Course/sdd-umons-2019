@@ -6,7 +6,7 @@ SciViews::R
 ```
 
 
-#### Objectifs {-}
+##### Objectifs {-}
 
 - Savoir réaliser différentes variantes de graphiques visant à montrer *comment les données se distribuent* tel que les histogrammes, les graphes de densité ou encore les diagrammes en violon dans R avec la fonction `chart()`
 
@@ -15,12 +15,17 @@ SciViews::R
 - Gérer des conflits dans GitHub
 
 
-####  Préparatifs {-}
+##### Prérequis {-}
 
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Une fois votre assignation réalisée, faites un clône de votre dépôt et placez-le dans le dossier `shared/projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs-projet) qui se trouve dans le dépôt.
+Pour réaliser les exercices dans ce module, vous devez être capables de travailler dans la SciViews Box et dans RStudio. Vous devez également maîtriser les bases de Git et GitHub. Tout ceci est enseigné dans le module \@ref(intro). Vous devez également être familiés avec les graphiques dans R et R Markdown, une matière qui fait l'objet du module \@ref(visu1).
+
+
+#####  Préparatifs {-}
+
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Une fois votre assignation réalisée, faites un clône de votre dépôt et placez-le dans le dossier `shared/projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs-projet) que vous obtiendrez via une tâche GitHub Classroom.
 
 ```{block2, type='bdd'}
-Un projet sur le zooplancton provenant de Madagascar est mis à votre disposition. Utilisez l'URL suivante qui va vous donner accès à votre tâche. **Cette tache est un travail en binome**
+Un projet sur le zooplancton provenant de Madagascar est mis à votre disposition. Utilisez l'URL suivante qui va vous donner accès à votre tâche. **Cette tâche est un travail en binôme**
 
 - <https://classroom.github.com/g/7Ji4Aj9G>
 
@@ -29,20 +34,16 @@ Un projet sur le zooplancton provenant de Madagascar est mis à votre dispositio
 
 Vous utiliserez à la fois votre projet sur la biométrie des oursins (du module précédent) et ce nouveau projet sur le zooplancton^[Le mot **zooplancton** ne se décline jamais au pluriel. On parle du *zooplancton* pour désigner une large communauté d'organismes zooplanctoniques, et non pas *des zooplanctons*.] pour découvrir les nouveaux outils graphiques décrits dans ce module. 
 
-#### Prérequis {-}
-
-Pour réaliser les exercices dans ce module, vous devez être capables de travailler dans la SciViews Box et dans RStudio. Vous devez également maîtriser les bases de Git et GitHub. Tout ceci est enseigné dans le module \@ref(intro). Vous devez également être familiés avec les graphiques dans R et R Markdown, une matière qui fait l'objet du module \@ref(visu1).
-
 
 ## Histogramme
 
-Lors d'une expérience vous souhaitez visualiser la façon dont vos données s'étalent sur un axe (on parle de **distribution**^[La **distribution** des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d'une variable s'observent.] en statistique) pour l'une des variables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va découper en plusieurs **classes**^[Une variable numérique est **découpée en classes** en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.] une variable numérique.
+Vous souhaitez visualiser l'étalement de vos données sur un axe (on parle de **distribution**^[La **distribution** des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d'une variable s'observent.] en statistique) pour l'une des variables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va représenter sous forme de barres un découpage en plusieurs **classes**^[Une variable numérique est **découpée en classes** en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.] d'une variable numérique.
 
 ```{r, fig.cap="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton.", echo=FALSE, message=FALSE, warning=FALSE}
-zooplankton <- read("zooplankton", package = "data.io", lang = "fr")
+zooplankton <- read("zooplankton", package = "data.io", lang = "FR")
 chart(data = zooplankton, ~ size) +
   geom_histogram(bins = 50) +
-  ylab("Nombre d'occurence") +
+  ylab("Effectifs") +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
         axis.title.x = element_text(colour = "#029687", size = 15), 
         axis.text.y = element_text(colour = "#a80039", size  = 15), 
@@ -60,10 +61,11 @@ Les instructions dans R afin de produire un histogramme à l'aide de la fonction
 
 ```{r, fig.cap="Distribution des tailles au sein d'un échantillon de zooplancton"}
 # Importation du jeu de données
-(zooplankton <- read("zooplankton", package = "data.io", lang = "fr"))
+(zooplankton <- read("zooplankton", package = "data.io", lang = "FR"))
 # Réalisation du graphique
 chart(data = zooplankton, ~ size) +
-  geom_histogram(bins = 50) 
+  geom_histogram(bins = 50) +
+  ylab("Effectifs")
 # bins permet de préciser le nombre de classes souhaitées
 ```
 
@@ -76,48 +78,50 @@ set.seed(1000)
 df1 <- data_frame(x = rnorm(5000, 35, 5))
 g1 <- chart(data = df1, ~ x) +
   geom_histogram() +
-  labs(x = "Unimodal & symétrique", y = "Occurences")
+  labs(x = "Unimodal & symétrique", y = "Effectifs")
 
 df2 <- rbind(df1, data_frame(x = rnorm(7000, 60, 5)))
 g2 <- chart(data = df2, ~ x) +
   geom_histogram() +
-  labs(x = "Bimodal & symétrique", y = "Occurences")
+  labs(x = "Bimodal & symétrique", y = "Effectifs")
 
 df3 <- data_frame(x = rlnorm(3000, 0, 0.6))
 g3 <- chart(data = df3, ~ x) +
   geom_histogram() +
-  labs(x = "Unimodal & asymétrique", y = "Occurences")
+  labs(x = "Unimodal & asymétrique", y = "Effectifs")
 
 df4 <- rbind(df2, data_frame(x = rnorm(3000, 80, 5)))
 g4 <- chart(data = df4, ~ x) +
   geom_histogram() +
-  labs(x = "Multimodal & symétrique", y = "Occurences")
+  labs(x = "Multimodal & symétrique", y = "Effectifs")
 
 combine_charts(list(g1, g2, g3, g4))
 rm(g1, g2, g3, g4, df1, df2, df3, df4)
 ```
 
 
-### Pièges et astuces
+### Nombre de classes
 
-#### Nombres de classes d'un histogramme
+Vous devez être particulièrement vigilant lors de la réalisation d'un histogramme aux classes définies pour ce dernier. 
 
-Vous devez être particulièrement vigilant lors de la réalisation d'un histogramme aux classes de ce dernier. 
-
-```{r histo-classes, fig.cap = "Piège de l'histogramme. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes."}
+```{r histo-classes, fig.cap = "Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes."}
 # Réalisation du graphique précédent
 a <- chart(data = zooplankton, ~ size) +
-  geom_histogram(bins = 50) 
+  geom_histogram(bins = 50) +
+  ylab("Effectifs")
 
 # Modification du nombre de classes
 b <- chart(data = zooplankton, ~ size) +
-  geom_histogram(bins = 20)
+  geom_histogram(bins = 20) +
+  ylab("Effectifs")
 
 c <- chart(data = zooplankton, ~ size) +
-  geom_histogram(bins = 10)
+  geom_histogram(bins = 10) +
+  ylab("Effectifs")
 
 d <- chart(data = zooplankton, ~ size) +
-  geom_histogram(bins = 5) 
+  geom_histogram(bins = 5) +
+  ylab("Effectifs")
 
 # Assemblage des graphiques
 combine_charts(list(a, b, c, d))
@@ -126,9 +130,9 @@ combine_charts(list(a, b, c, d))
 Comme vous pouvez le voir à la Fig. \@ref(fig:histo-classes), le changement du nombre de classes peut modifier complètement la perception des données via l'histogramme. Le choix idéal est un compromis entre plus de classes (donc plus de détails), et un d"coupage raisonnable en fonction de la quantité de données disponibles. Si l'intervalle des classes est trop petit, l'histogramme sera illisible. Si l'intervalle des classes est trop grand, il sera impossible de visualiser correctement les différents modes. Dans la figure en exemple, les variantes A et B sont acceptables, mais les C et D manquent de détails.
 
 
-#### Utilisation des snippets
+##### Pièges et astuces {-}
 
-La SciViews Box propose un snippet RStudio pour réaliser un histogramme. Il s'appelle `.cuhist` (pour **c**hart -> **u**nivariate -> **hist**ogram). Entrez ce code dans une zone d'édition R et appuyez ensuite sur la tabulation, et vous verrez le code remplacé par ceci :
+La SciViews Box propose un **snippet RStudio** pour réaliser un histogramme. Il s'appelle `.cuhist` (pour **c**hart -> **u**nivariate -> **hist**ogram). Entrez ce code dans une zone d'édition R et appuyez ensuite sur la tabulation, et vous verrez le code remplacé par ceci :
 
 ```
 chart(data = DF, ~VARNUM) +
@@ -140,9 +144,9 @@ L'argument `binwidth =` permet de préciser la largeur des classes. C'est une au
 Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver dans l'aide-mémoire sur [**SciViews**](https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf). N'oubliez pas que vous avez également à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/)), via la fonction `ggplot()`.
 
 
-#### Histogramme par facteur
+### Histogramme par facteur
 
-Lors de l'analyse de jeux de données, vous serez amené à réaliser un histogramme par facteur (c'est-à-dire, en fonction de différents niveau d'une variable représentant des groupes). Par exemple, dans un jeu de données sur des fleurs d'iris, la variable `species` représente l'espèce d'iris étudiée (trois espèces différentes : *I. setosa*, *I. versicolor* et *I. virginica*).
+Lors de l'analyse de jeux de données, vous serez amené à réaliser un histogramme par facteur (c'est-à-dire, en fonction de différents niveaux d'une variable qualitative qui divise le jeu de données en sous-groupes). Par exemple, dans un jeu de données sur des fleurs d'iris, la variable `species`^[Attention : le jeu de donnée `iris` est un grand classique dans R, mais lorsqu'il est chargé à l'aide de la fonction `read()` du package **data.io**, le nom de ses variables est modifié pour suivre la convention "snake-case" qui veut que seules des lettres minuscules soient utilisées et que les mots soient séparés par un trait souligné `_`. Ainsi, dans le jeu de données d'origine, les variables sont nommées `Petal_Length` ou `Species`. Ici, ces même variables se nomment `petal_length` et `species`.] représente l'espèce d'iris étudiée (trois espèces différentes : *I. setosa*, *I. versicolor* et *I. virginica*).
 
 ```{r, fig.cap= "Distribution des longueurs de sépales de trois espèces d'iris."}
 # Importation du jeu de données
@@ -150,7 +154,7 @@ Lors de l'analyse de jeux de données, vous serez amené à réaliser un histogr
 # Réalisation de l'histogramme par facteur
 chart(data = iris, ~ sepal_length %fill=% species) +
   geom_histogram(bins = 25) +
-  ylab("Occurences") +
+  ylab("Effectifs") +
   scale_fill_viridis_d() # palette de couleur harmonieuse
 ```
 
@@ -161,7 +165,7 @@ Nous avons ici un bon exemple d'histogramme multimodal lié à la présence de t
 ```{r , fig.cap= "Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)."}
 chart(data = iris, ~ sepal_length | species) +
   geom_histogram(bins = 25) +
-  ylab("Occurences")
+  ylab("Effectifs")
 ```
 
 L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec `|` et l'argument `%fill=%`^[Astuce proposée [ici](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2).]. Il faut ensuite ajouter par derriere un histogramme grisé de l'ensemble des données.
@@ -172,7 +176,7 @@ chart(data = iris, ~ sepal_length %fill=% species | species) +
   # histogramme d'arrière plan en gris ne tenant pas compte de la variable species
   geom_histogram(data = select(iris, -species), fill = "grey", bins = nbins) + 
   geom_histogram(show.legend = FALSE, bins = nbins) +
-  ylab("Occurences") +
+  ylab("Effectifs") +
   scale_fill_viridis_d()
 ```
 
@@ -186,7 +190,7 @@ L'histogramme n'est pas le seul outil à votre disposition. Vous pouvez égaleme
 ```{r, fig.cap= "A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image.", echo=FALSE, message=FALSE}
 a <- chart(data = zooplankton, ~ size) +
   geom_histogram(bins = 30) +
-  labs( y = "Dénombrement") +
+  ylab("Effectifs") +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
         axis.title.x = element_text(colour = "#029687", size = 15), 
         axis.text.y = element_text(colour = "#a80039", size  = 15), 
@@ -196,7 +200,7 @@ a <- chart(data = zooplankton, ~ size) +
 
 b <- chart(data = zooplankton, ~ size) +
   geom_density() +
-  labs( y = "Densité") +
+  ylab("Densité") +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
         axis.title.x = element_text(colour = "#029687", size = 15), 
         axis.text.y = element_text(colour = "#a80039", size  = 15), 
@@ -217,10 +221,11 @@ Les instructions en R pour produire un graphique de densité avec la fonction `c
 
 ```{r, fig.cap="Distribution des tailles au sein de l'échantillon de zooplancton."}
 # Importation du jeu de données
-(zooplankton <- read("zooplankton", package = "data.io", lang = "fr"))
+(zooplankton <- read("zooplankton", package = "data.io", lang = "FR"))
 # Réalisation du graphique
 chart(data = zooplankton, ~ size) +
-  geom_density()
+  geom_density() +
+  ylab("Densité")
 ```
 
 Ici, nous utilisons donc la fonction `geom_density()`.
@@ -233,7 +238,7 @@ Le graphique en violon est constitué de deux graphiques de densité en miroir. 
 ```{r violin-plot, fig.cap="Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton.", echo=FALSE, message=FALSE, warning=FALSE}
 
 zooplankton %>.%
-  filter(., class %in% c("Annelid", "Calanoid", "Cyclopoid", "Decapod")) %>.%
+  filter(., class %in% c("Annélide", "Calanoïde", "Cyclopoïde", "Décapode")) %>.%
 chart(data = ., size ~ class %fill=% class) +
   geom_violin(show.legend = FALSE)  +
   theme(axis.text.x = element_text(colour = "#a80039", size = 15), 
@@ -248,10 +253,10 @@ Les instructions en R pour produire un diagramme en violon à l'aide de la fonct
 
 ```{r, fig.cap="Distribution des tailles pour 4 groupes taxonomiques de zooplancton."}
 # Importation du jeu de données
-zooplankton <- read("zooplankton", package = "data.io", lang = "fr")
+zooplankton <- read("zooplankton", package = "data.io", lang = "FR")
 # Réduction du jeu de données 
 zooplankton_sub <- filter(zooplankton,
-  class %in% c("Annelid", "Calanoid", "Cyclopoid", "Decapod"))
+  class %in% c("Annélide", "Calanoïde", "Cyclopoïde", "Décapode"))
 # Réalisation du graphique
 chart(data = zooplankton_sub, size ~ class) +
   geom_violin()
@@ -260,7 +265,7 @@ chart(data = zooplankton_sub, size ~ class) +
 Ici, la formule fournie à `chart()` indique la variable numérique à représenter par une graphe de densité _dans le terme de gauche_, et la variable facteur qui découpe l'échantillon en classes _à droite_ : `YNUM (size) ~ XFACT (class)`. Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction `geom_violin()`. Vous pouvez aussi utiliser `%fill=%` pour colorer vos différents graphes en fonction de la variable facteur également, comme dans la Fig. \@ref(fig:violin-plot).
 
 
-### Pièges et astuces
+##### Pièges et astuces {-}
 
 Parfois, les labels sur l'axe des abscisses d'un diagramme en violon apparaissent trop rapprochés et se chevauchent, comme ci-dessous.
 
@@ -285,9 +290,13 @@ chart(data = zooplankton, class ~ size) +
 ```
 
 
-## A vous de jouer !
+## Visualiser des distributions
 
-Reprenez vos différents projets et étudiez la distribution de variables numériques de différentes manières. Terminez ce module en vérifiant que vous avez bien compris les notions apprises jusqu'ici.
+En pratique, vous ne représenterez pas systématiquement tous ces types de graphiques pour toutes les variables. Il faudra choisir le graphique le plus adapté à la situation. La plupart du temps, cela se fait de manière *itérative* : vous essayez diverses variantes, vous les comparez, et vous gardez celle(s) qui visualisent le mieux les données dans le cas particulier de votre étude.
+
+##### A vous de jouer {-}
+
+Reprenez vos différents projets et étudiez la distribution de variables numériques de différentes manières. Commentez vos différents graphiques par des paragraphes rédigés en Markdown. Précisez ceux qui vous semblent les plus appropriés et justifiez vos choix. Terminez ce module en vérifiant que vous avez bien compris les notions apprises jusqu'ici.
 
 ```{block2, type='bdd'}
 
@@ -297,4 +306,10 @@ Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante da
 
 ```
 
+
+##### Pour en savoir plus {-}
+
+- Si vous avez encore du mal avec la compréhension de l'histogramme, voyez [cette vidéo](https://www.youtube.com/watch?v=lNfeCYGa07Y) qui vous montre comment le construire à la main.
+
+- Les [histogrammes à classes de largeurs variables](https://www.youtube.com/watch?v=IWyaMBV76EE).
 

@@ -4,6 +4,8 @@
 
 On part du paradoxe bayésien (effet d’un test de dépistage en fonction de la prévalence d’une maladie) -> probabilités et calculs de probabilités. Généralisation = lois de distributions. Distributions discrètes et continues. Principales lois de distributions et utilisation en pratique. Evaluation par les pairs d’un rapport réalisé jusqu’ici.
 
+- Espérance et probabilité dans le contexte des jeux de hasard [vidéo](https://www.youtube.com/watch?v=5TtwG_LR0iY)
+
 
 #### Objectifs {-}
 

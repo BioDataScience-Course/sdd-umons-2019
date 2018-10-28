@@ -403,6 +403,10 @@ b <- chart(biometry, height ~ weight %fill=% gender) +
 combine_charts(list(a, b), common.legend = TRUE)
 ```
 
+```
+# Warning: position_dodge requires non-overlapping x intervals
+```
+
 <div class="figure" style="text-align: center">
 <img src="05-Importation-Transformation_files/figure-html/two-boxplots-1.svg" alt="Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de `gender." width="672" />
 <p class="caption">(\#fig:two-boxplots)Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de `gender.</p>
