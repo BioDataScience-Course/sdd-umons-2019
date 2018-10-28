@@ -433,6 +433,10 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(urchin_su
 </div>
 <div id="mutate" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> <code>mutate()</code></h3>
+<div class="figure">
+<img src="images/sdd1_05/mutate.gif" />
+
+</div>
 <p>La fonction <code>mutate()</code> permet de calculer de nouvelles variables (si le nom fourni n’existe pas encore dans le jeu de donnée) ou écrase les variables existantes de même nom. Repartons du jeu de données <code>urchin</code>. Pour calculer de nouvelles variables, vous pouvez employer :</p>
 <ul>
 <li>les opérateurs arithmétiques :
@@ -480,6 +484,10 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(<span cla
 </div>
 <div id="group_by" class="section level3">
 <h3><span class="header-section-number">5.3.4</span> <code>group_by()</code></h3>
+<div class="figure">
+<img src="images/sdd1_05/group_by.gif" />
+
+</div>
 <p>La fonction <code>group_by()</code> ne change rien dans le tableau lui-même, mais ajoute une annotation qui indique que les calculs ultérieurs devront être effectués sur des sous-ensembles du tableau en parallèle. Ceci est surtout utile avec <code>summarise()</code> (voir ci-dessous). Pour annuler le regroupement, il suffit d’utiliser <code>ungroup()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urchin_by_orig &lt;-<span class="st"> </span><span class="kw">group_by</span>(urchin, origin)
 <span class="kw">head</span>(urchin_by_orig)</code></pre></div>
@@ -503,6 +511,10 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(<span cla
 </div>
 <div id="summarise" class="section level3">
 <h3><span class="header-section-number">5.3.5</span> <code>summarise()</code></h3>
+<div class="figure">
+<img src="images/sdd1_05/summarise.gif" />
+
+</div>
 <p>Si vous voulez résumer vos données (calcul de la moyenne, médiane, etc.), vous pouvez réaliser ceci sur une variable en particulier avec les fonctions dédiées. Par exemple <code>mean(urchin$skeleton)</code> renvoie la masse moyenne de squelette pour tous les oursins (ce calcul donne <code>NA</code> dès qu’il y a des valeurs manquantes, mais l’argument <code>na.rm = TRUE</code> permet d’obtenir un résultat en ne tenant pas compte de ces données manquantes : <code>mean(urchin$skeleton, na.rm = TRUE)</code>). Cela devient vite laborieux s’il faut réitérer ce genre de calcul sur plusieurs variables du jeu de données, et assembler ensuite les résultats dans un petit tableau synthétique. D’autant plus, s’il faut séparer d’abord le jeu de données en sous-groupes pour faire ces calculs. La fonction <code>summarise()</code> reporte automatiquement ces calculs, en tenant compte automatiquement des regroupements proposés via <code>group_by()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ToothGrowth&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
 tooth_summary &lt;-<span class="st"> </span><span class="kw">summarise</span>(tooth,

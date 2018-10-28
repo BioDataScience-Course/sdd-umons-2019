@@ -808,6 +808,8 @@ rmarkdown::paged_table(urchin_sub4)
 
 ### `mutate()`
 
+![](images/sdd1_05/mutate.gif)
+
 La fonction `mutate()` permet de calculer de nouvelles variables (si le nom fourni n'existe pas encore dans le jeu de donnée) ou écrase les variables existantes de même nom.  Repartons du jeu de données `urchin`. Pour calculer de nouvelles variables, vous pouvez employer : 
 
 - les opérateurs arithmétiques :
@@ -861,6 +863,8 @@ La fonction `transmute()` effectue la même opération, mais en plus, elle laiss
 
 ### `group_by()`
 
+![](images/sdd1_05/group_by.gif)
+
 La fonction `group_by()` ne change rien dans le tableau lui-même, mais ajoute une annotation qui indique que les calculs ultérieurs devront être effectués sur des sous-ensembles du tableau en parallèle. Ceci est surtout utile avec `summarise()` (voir ci-dessous). Pour annuler le regroupement, il suffit d'utiliser `ungroup()`.
 
 
@@ -898,6 +902,8 @@ identical(ungroup(urchin_by_orig), urchin)
 
 
 ### `summarise()`
+
+![](images/sdd1_05/summarise.gif)
 
 Si vous voulez résumer vos données (calcul de la moyenne, médiane, etc.), vous pouvez réaliser ceci sur une variable en particulier avec les fonctions dédiées. Par exemple `mean(urchin$skeleton)` renvoie la masse moyenne de squelette pour tous les oursins (ce calcul donne `NA` dès qu'il y a des valeurs manquantes, mais l'argument `na.rm = TRUE` permet d'obtenir un résultat en ne tenant pas compte de ces données manquantes : `mean(urchin$skeleton, na.rm = TRUE)`). Cela devient vite laborieux s'il faut réitérer ce genre de calcul sur plusieurs variables du jeu de données, et assembler ensuite les résultats dans un petit tableau synthétique. D'autant plus, s'il faut séparer d'abord le jeu de données en sous-groupes pour faire ces calculs. La fonction `summarise()` reporte automatiquement ces calculs, en tenant compte automatiquement des regroupements proposés via `group_by()`.
 
