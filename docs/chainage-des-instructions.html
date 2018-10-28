@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="differents-moteurs-graphiques.html">
-<link rel="next" href="importation-des-donnees.html">
+<link rel="prev" href="remaniement-des-donnees.html">
+<link rel="next" href="qualit.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -275,21 +275,96 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="import" class="section level1">
-<h1><span class="header-section-number">Module 5</span> Traitement des données I</h1>
-<div id="objectifs-4" class="section level5 unnumbered">
-<h5>Objectifs</h5>
+<div id="chainage-des-instructions" class="section level2">
+<h2><span class="header-section-number">5.4</span> Chainage des instructions</h2>
+<p>Le chainage (ou le pipe en anglais) permet de combiner une suite de fonction à appliquer sur un jeu de données par exemple comme lorsque vous souhaitez réaliser plusieurs étapes de remaniement des données.</p>
+<p>Différents pipes existent et nous avons décidé de vous présenter le pipe du package <strong>flow</strong>. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d’un tableau de données avec et sans l’utilisation du chainage.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
+biometry1 &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div>
+<p>L’opérateur qui permet de chainer les fonctions est <strong>`%&gt;.%</strong></p>
+<p>Sur le jeu biometry, vous vous interessez aux IMC (bmi en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d’observations des hommes et des femmes de cette population dans un tableau.</p>
+<p>Pour obtenir ces données vous devez :</p>
 <ul>
-<li><p>Savoir importer différents formats de données dans R via la fonction <code>read()</code>.</p></li>
-<li><p>Appréhender les types de variables et l’importance d’encoder convenablement les variables.</p></li>
-<li><p>Savoir remanier des données afin d’extraire l’information importante d’un jeu de données.</p></li>
+<li>calculer le imc</li>
+<li>filter le tableau pour n’obtenir que le individus de moins de 25 ans</li>
+<li>résumer les données afin d’obtenir la moyenne et la médiane par genre.</li>
+<li>afficher un tableau de données avec ces résultats</li>
 </ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sans chainage </span>
+biometry &lt;-<span class="st"> </span><span class="kw">mutate</span>(biometry, <span class="dt">bmi =</span> weight<span class="op">/</span>((height<span class="op">/</span><span class="dv">100</span>))<span class="op">^</span><span class="dv">2</span>)
+biometry_sub &lt;-<span class="st"> </span><span class="kw">filter</span>(biometry, age <span class="op">&lt;=</span><span class="dv">25</span>)
+biometry_sub &lt;-<span class="st"> </span><span class="kw">group_by</span>(biometry_sub, gender)
+biometry_tab &lt;-<span class="st"> </span><span class="kw">summarise</span>(biometry_sub, <span class="dt">mean =</span> <span class="kw">mean</span>(bmi), 
+                          <span class="dt">median =</span> <span class="kw">median</span>(bmi), <span class="dt">number =</span> <span class="kw">n</span>())
+knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span class="dt">rows =</span> <span class="ot">NULL</span>, 
+            <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Genre</th>
+<th align="right">Moyenne</th>
+<th align="right">Médiane</th>
+<th align="right">Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">22.33636</td>
+<td align="right">22.09681</td>
+<td align="right">97</td>
+</tr>
+<tr class="even">
+<td align="left">W</td>
+<td align="right">21.80113</td>
+<td align="right">21.02974</td>
+<td align="right">94</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># avec le chainage </span>
+biometry1 <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">bmi =</span> weight<span class="op">/</span>((height<span class="op">/</span><span class="dv">100</span>))<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">filter</span>(., age <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">group_by</span>(., gender) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">summarise</span>(.,  <span class="dt">mean =</span> <span class="kw">mean</span>(bmi), <span class="dt">median =</span> <span class="kw">median</span>(bmi), <span class="dt">number =</span> <span class="kw">n</span>()) <span class="op">%&gt;.%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(., <span class="dt">rows =</span> <span class="ot">NULL</span>, 
+            <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Genre</th>
+<th align="right">Moyenne</th>
+<th align="right">Médiane</th>
+<th align="right">Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">M</td>
+<td align="right">22.33636</td>
+<td align="right">22.09681</td>
+<td align="right">97</td>
+</tr>
+<tr class="even">
+<td align="left">W</td>
+<td align="right">21.80113</td>
+<td align="right">21.02974</td>
+<td align="right">94</td>
+</tr>
+</tbody>
+</table>
+<p>Le pipe permet d’éviter certaine répétion afin de réaliser en cascade la suite des opérations. Il permet également de faciliter la lecture du code. Vous devez être vigilant à la structure du pipe qui comprend le pipe <code>%&gt;.%</code>et le point au début des fonctions <code>.</code>. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction.</p>
+<div id="a-vous-de-jouer-6" class="section level5 unnumbered">
+<h5>A vous de jouer</h5>
+<p>Une tâche individuelle vous est assignée via l’url suivant :</p>
+<ul>
+<li><a href="https://classroom.github.com/a/WfxTmH4b" class="uri">https://classroom.github.com/a/WfxTmH4b</a></li>
+</ul>
+
 </div>
-<div id="prerequis-3" class="section level5 unnumbered">
-<h5>Prérequis</h5>
-<p>Le contenu du module <a href="intro.html#intro">1</a> doit être parfaitement maîtrisé. Il est également souhaitable, mais pas indispensable, de comprendre comment réaliser des graphiques dans R pour pouvoir comprendre le contenu de ce module.</p>
-</div> 
 </div>
+<!-- </div> -->
 <div id="disqus_thread"></div>
 <script>
 
@@ -315,8 +390,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="differents-moteurs-graphiques.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="importation-des-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="remaniement-des-donnees.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="qualit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

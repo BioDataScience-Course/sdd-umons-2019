@@ -3,7 +3,7 @@
 
 
 
-#### Objectifs {-}
+##### Objectifs {-}
 
 - Savoir importer différents formats de données dans R via la fonction `read()`.
 
@@ -12,9 +12,9 @@
 - Savoir remanier des données afin d'extraire l'information importante d'un jeu de données.
 
 
-#### Prérequis {-}
+##### Prérequis {-}
 
-Le contenu du module \@ref(intro) doit être parfaitement maîtrisé. Il est également souhaitable, mais pas indispensable, de comprendre comment réaliser des graphiques dans R.
+Le contenu du module \@ref(intro) doit être parfaitement maîtrisé. Il est également souhaitable, mais pas indispensable, de comprendre comment réaliser des graphiques dans R pour pouvoir comprendre le contenu de ce module.
 
 
 ## Importation des données
@@ -132,7 +132,7 @@ Lorsque l'extension du fichier reflète le format des données, il vous suffit j
 Les explications détaillées concernant l'organisation de vos projets dans RStudio pour qu'ils soient portables, la gestion des chemins d'accès aux fichiers et les chemins relatifs sont détaillés dans l'annexe \@ref(prise), à la section \@ref(rs-projet). **C'est le moment de vérifier que vous avez bien compris et assimilé son contenu.**
 
 
-#### Pièges et astuces
+##### Pièges et astuces {-}
 
 - Si l'extension est incorrecte, vous pouvez forcer un format de fichier particulier à l'importation en l'indiquant dans l'appel à `read()` comme `read$<ext>()`. Par exemple, pour forcer l'importation d'un fichier de type "comma-separated-values" pour un fichier qui se nommerait `my_data.txt`, vous écrirez `read$csv(my_data.txt)`.
 
@@ -183,15 +183,22 @@ Voici un exemple de feuille de données Google Sheet: https://docs.google.com/sp
 # #   gain_std <dbl>
 ```
 
-Lorsque vous travaillez sur des données provenant d'url et donc qui sont susceptible d'être modifié. Il est préférable d'enregistrer une copie de ces données. Ensuite vous pouvez travailler à partir de ces données suavegardées. 
+Lorsque vous travaillez sur des données issues d'une source externe, et donc susceptibles d'être modifiées. Il est préférable d'enregistrer une copie locale de ces données. Ensuite vous pouvez travailler à partir de ces données sauvegardées. 
 
 
 ```r
-# write(coral, file = "data/coral.rds", type = "rds" )
-# coral <- read("data/coral.rds")
+write$rds(coral, file = "../data/coral.rds")
 ```
 
-Attention, ne supprimez jamais  l'instruction permettant de retrouver vos données sur Internet. Utilisez la dièse pour ne plus exécuter l'instruction dans R.
+Ensuite, vous pourrez simplement charger ces données plus moin comme ceci :
+
+
+```r
+coral <- read("../data/coral.rds")
+```
+
+Attention, ne supprimez jamais l'instruction permettant de retrouver vos données sur Internet ! C'est le lien, le fil conducteur vers les données originales. Vous pouvez soit mettre l'instruction en commentaire en ajoutant un dièse devant, soit soustraire le chunk de l'avaluation en indiquant `eval=FALSE` dans son entête. Faites-en de même avec l'instruction `write()`. Ainsi, le tratement de vos données commencera à l'instruction `read()` et vous partirez de la copie locale. Si jamais vous voulez effectuer une mise à jour depuis la source initiale, il sera toujours possible de décommenter les instructions, ou de passer le chunk à `eval=TRUE` temporairement (ou encore plus simplement, forcez l'exécution du chunk dans l'éditeur en cliquant sur la petite flèche verte en haut à gauche du chunk).
+
 
 ### Données depuis un package
 
@@ -257,7 +264,7 @@ chart(urchin_bio, height ~ weight %col=% origin) +
   geom_point()
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-11-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" />
 
 Comparez ceci avec le même graphique, mais obtenu à partir de différentes versions du jeu de données `urchin_bio` importé à l'aide de `read()` avec des valeurs différentes pour l'argument `lang =`. 
 
@@ -285,7 +292,7 @@ d <- chart(urchin_FR, height ~ weight %col=% origin) +
 combine_charts(list(a, b, c, d))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-13-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-14-1.svg" width="672" style="display: block; margin: auto;" />
 
  
 - A & B: l'argument lang par défaut est `lang = "en"`. Il utilise les labels et unités en anglais avec les unités dans le système international.
@@ -438,9 +445,9 @@ La fonction `skim()` du package `skimr` permet de visualiser la classe de la var
 Avec une seule instruction, on obtient une quantité d'information sur notre jeu de données comme le nombre d'observations, le nombre de variables et un traitement spécifique pour chaque type de variable. Cette instruction permet de visualiser et d'appréhender le jeu de données mais ne doit généralement pas figurer tel quel dans un rapport d'analyse. 
 
 
-#### Pièges et astuces
+##### Pièges et astuces {-}
 
-Voici un jeu de données qui étudie l'alongement des dents chez le cobaye en fonction du susbstitut alimentaire.
+Voici un jeu de données qui étudie l'allongement des dents chez le cobaye en fonction du susbstitut alimentaire.
 
 
 ```r
@@ -751,7 +758,8 @@ supp     moyenne   minimum   médiane   maximum
 OJ      20.66333       8.2      22.7      30.9
 VC      16.96333       4.2      16.5      33.9
 
-#### Pièges et astuces
+
+##### Pièges et astuces {-}
 
 Tout comme lors de réalisation d'une boite de dispersion, vous devez être particulièrement vigilant ou nombre d'observation par sous groupe. Ajoutez à chaque tableau résumé des données, le nombre d'observation par sous-groupe.
 
@@ -773,7 +781,7 @@ OJ      20.66333       8.2      22.7      30.9            30
 VC      16.96333       4.2      16.5      33.9            30
 
 
-## Chainage 
+## Chainage des instructions
 
 Le chainage (ou le pipe en anglais) permet de combiner une suite de fonction à appliquer sur un jeu de données par exemple comme lorsque vous souhaitez réaliser plusieurs étapes de remaniement des données.
 
@@ -785,7 +793,7 @@ biometry <- read("biometry", package = "BioDataScience", lang = "fr")
 biometry1 <- read("biometry", package = "BioDataScience", lang = "fr")
 ```
 
-L'opérateur qui permet de chainer les fonctions est **%>.%**
+L'opérateur qui permet de chainer les fonctions est **`%>.%**
 
 Sur le jeu biometry, vous vous interessez aux IMC (bmi en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d'observations des hommes et des femmes de cette population dans un tableau. 
 
@@ -838,7 +846,7 @@ W        21.80113   21.02974             94
 Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Il permet également de faciliter la lecture du code. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
 
 
-## A vous de jouer !
+##### A vous de jouer {-}
 
 Une tâche individuelle vous est assignée via l'url suivant :
 
