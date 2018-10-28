@@ -920,71 +920,114 @@ VC      16.96333       4.2      16.5      33.9            30
 
 ## Chainage des instructions
 
-Le chainage (ou le pipe en anglais) permet de combiner une suite de fonction à appliquer sur un jeu de données par exemple comme lorsque vous souhaitez réaliser plusieurs étapes de remaniement des données.
+Le chainage (ou "pipe" en anglais) permet de combiner une suite d'instructions R. Il permet une représentation facilement lisible et compréhensible d'un traitement décomposé en plusieurs étapes simples de remaniement des données.
 
-Différents pipes existent et nous avons décidé de vous présenter le pipe du package **flow**. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d'un tableau de données avec et sans l'utilisation du chainage. 
+Différents opérateurs de chainage existent dans R. Le [Tidyverse](https://www.tidyverse.org) et RStudio sont en faveur de l'adoption d'un opérateur de chainage **`%>%`** issu du package **[magrittr](https://magrittr.tidyverse.org)**. Si nous sommes sensibles au clin d'oeil fait ici à un artiste belge bien connu ("ceci n'est pas un pipe"), nous n'adhérons pas à ce choix pour des raisons multiples et plutôt techniques qui n'ont pas leur place dans ce document^[Le lecteur intéressé pourra lire les différents articles suivants : [more pipes in R](http://www.win-vector.com/blog/2017/12/more-pipes-in-r/), y compris les liens qui s'y trouvent, permet de se faire une idée de la diversité des opérateurs de chainage dans R et de leur historique. [Dot pipe](https://winvector.github.io/wrapr/articles/dot_pipe.html) présente l'opérateur `%.>%` du package **wrapr** très proche du nôtre et [in praise of syntactic sugar](http://www.win-vector.com/blog/2017/07/in-praise-of-syntactic-sugar/) explique ses avantages. Nous partageons l'idée que le "pipe de base" ne devrait pas modifier l'instruction de droite contrairement à ce que fait `%>%` de **magrittr**, et notre opérateur `%>.%` va en outre plus loin encore que `%.>%` dans la facilité de déboggage du code chainé. ]. Nous vous présentons ici l'un des opérateurs de chainage du package **flow** : **`%>.%`**. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d'un tableau de données avec et sans l'utilisation du chainage.
 
 
 ```r
 biometry <- read("biometry", package = "BioDataScience", lang = "fr")
-biometry1 <- read("biometry", package = "BioDataScience", lang = "fr")
 ```
 
-L'opérateur qui permet de chainer les fonctions est **`%>.%**
+Vous vous intéressez à l'indice de masse corporelle ou IMC (BMI en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d'observations de manière séparée pour les hommes et les femmes. Pour obtenir ces résultats vous devez : 
 
-Sur le jeu biometry, vous vous interessez aux IMC (bmi en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d'observations des hommes et des femmes de cette population dans un tableau. 
+- calculer le bmi,
+- filter le tableau pour ne retenir que les individus de moins de 25 ans,
+- résumer les données afin d'obtenir la moyenne et la médiane par genre,
+- afficher un tableau de données avec ces résultats.
 
-Pour obtenir ces données vous devez : 
+Il est très clair ici que le traitement peut être décomposé en étapes plus simples. Cela apparait naturellement rien que dans la description de ce qui doit être fait. Sans l'utilisation de l'opérateur de chainage, deux approches sont possibles :
 
-- calculer le imc
-- filter le tableau pour n'obtenir que le individus de moins de 25 ans
-- résumer les données afin d'obtenir la moyenne et la médiane par genre.
-- afficher un tableau de données avec ces résultats
+- Imbriquer les instructions les unes dans les autres (très difficile à lire et à débogger) :
 
 
 ```r
-# Sans chainage 
-biometry <- mutate(biometry, bmi = weight/((height/100))^2)
-biometry_sub <- filter(biometry, age <=25)
-biometry_sub <- group_by(biometry_sub, gender)
-biometry_tab <- summarise(biometry_sub, mean = mean(bmi), 
-                          median = median(bmi), number = n())
-knitr::kable(biometry_tab, rows = NULL, 
-            col = c("Genre", "Moyenne", "Médiane", "Observations"))
+knitr::kable(
+  summarise(
+    group_by(
+      filter(
+        mutate(biometry, bmi = weight / (height/100)^2),
+        age <= 25),
+      gender),
+    mean = mean(bmi), 
+    median = median(bmi),
+    number = n()),
+  rows = NULL,  digits = 1,
+  col = c("Genre", "Moyenne", "Médiane", "Observations")
+)
 ```
 
 
 
-Genre     Moyenne    Médiane   Observations
-------  ---------  ---------  -------------
-M        22.33636   22.09681             97
-W        21.80113   21.02974             94
+Genre    Moyenne   Médiane   Observations
+------  --------  --------  -------------
+M           22.3      22.1             97
+W           21.8      21.0             94
 
+- Passer par des variables intermédiaires (`biometry_25` et `biometry_tab`). Les instructions sont plus lisibles, mais les variables intermédiaires "polluent" inutilement l'environnement de travail (en tout cas, si elles ne servent plus par après) :
 
 
 ```r
-# avec le chainage 
-biometry1 %>.%
-  mutate(., bmi = weight/((height/100))^2) %>.%
+biometry <- mutate(biometry, bmi = weight / (height/100)^2)
+biometry_25 <- filter(biometry, age <= 25)
+biometry_25 <- group_by(biometry_25, gender)
+biometry_tab <- summarise(biometry_25,
+  mean = mean(bmi), 
+  median = median(bmi),
+  number = n())
+knitr::kable(biometry_tab, rows = NULL, digits = 1,
+  col = c("Genre", "Moyenne", "Médiane", "Observations"))
+```
+
+
+
+Genre    Moyenne   Médiane   Observations
+------  --------  --------  -------------
+M           22.3      22.1             97
+W           21.8      21.0             94
+
+- Des trois approches, la version ci-dessous ave chainage des opérations est la plus lisible et la plus pratique^[Le chainage n'est cependant pas forcément plus facile à débogger que la version avec variables intermédiaires. Le package **flow** propose la fonction `debug_flow()` à appeler directement après un plantage pour inspecter la dernière instruction qui a causé l'erreur, voir `?debug_flow`.].
+
+
+```r
+biometry %>.%
+  mutate(., bmi = weight / (height/100)^2) %>.%
   filter(., age <= 25) %>.%
   group_by(., gender) %>.%
-  summarise(.,  mean = mean(bmi), median = median(bmi), number = n()) %>.%
-  knitr::kable(., rows = NULL, 
-            col = c("Genre", "Moyenne", "Médiane", "Observations"))
+  summarise(.,
+    mean = mean(bmi),
+    median = median(bmi),
+    number = n()) %>.%
+  knitr::kable(., rows = NULL, digits = 1, 
+    col = c("Genre", "Moyenne", "Médiane", "Observations"))
 ```
 
 
 
-Genre     Moyenne    Médiane   Observations
-------  ---------  ---------  -------------
-M        22.33636   22.09681             97
-W        21.80113   21.02974             94
+Genre    Moyenne   Médiane   Observations
+------  --------  --------  -------------
+M           22.3      22.1             97
+W           21.8      21.0             94
 
-Le pipe permet d'éviter certaine répétion afin de réaliser en cascade la suite des opérations. Il permet également de faciliter la lecture du code. Vous devez être vigilant à la structure du pipe qui comprend le pipe `%>.%`et le point au début des fonctions `.`. Le pipe fait le lien entre les différentes fonctions et le point renvoit au jeu de données passant de fonction en fonction. 
+Le pipe `%>.%` injecte le résultat précédent dans l'instruction suivante à travers l'objet `.` Ainsi, en seconde ligne `mutate(.)`, `.` se réfère à `biometry`. A la ligne suivante, `filter(.)`, le `.` se réfère au résultat issu de l'opération `mutate()`, et ainsi de suite. La logique d'enchainement des opérations sur le résultat, à chaque fois, du calcul précédent est donc le fondement de cet opérateur "pipe".
+
+Le pipe permet d'éviter de répéter le nom des objets (version avec variables intermédiaires), ce qui alourdit inutilement le code et le rend moins agréable à la lecture. L'imbrication des fonctions dans la première version est catastrophique pour la compréhension du code car les arguments des fonctions de plus haut niveau sont repoussés loin. Par exemple, l'argument de l'appel à `group_by()` (`gender`) se retrouve quatre lignes plus loin. Et encore, nous avons pris soin d'indenter le code pour repérer sur un plan vertical qui appartient à qui, mais imaginez ce que cela donne si l'instruction est mise à plat sur une seule ligne ! Le code le plus clair à la lecture est définitivement celui avec chainage des opérations. Or, un code plus lisible est plus compréhensible... et donc, moins boggé.
 
 
 ##### A vous de jouer {-}
 
-Une tâche individuelle vous est assignée via l'url suivant :
+Maintenant que vous venez d'apprendre à importer correctement vos données, à les remanier avec quelques-uns des opérateurs les plus fréquents, et que vous savez chainer vos instructions, il est temps de vous exercer sur un cas concret.
+
+\BeginKnitrBlock{bdd}<div class="bdd">Une tâche individuelle vous est assignée via l'URL suivante :
 
 - <https://classroom.github.com/a/WfxTmH4b>
+
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md` de ce dépôt GitHub Classroom.</div>\EndKnitrBlock{bdd}
+
+
+##### Pour en savoir plus {-}
+
+- [Présentation en détail du "dot-pipe"](https://github.com/WinVector/wrapr/blob/master/extras/wrapr_pipe.pdf) assez proche fonctionnellement de `%>.%` du package **flow**.
+
+- [Section sur le pipe dans "R for Data Science"](https://r4ds.had.co.nz/pipes.html) expliquant l'utilisation du pipe de magrittr (et aussi quand ne pas l'utiliser !)
+
