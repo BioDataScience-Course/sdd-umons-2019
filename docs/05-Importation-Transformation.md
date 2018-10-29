@@ -492,15 +492,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:Date ───────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -538,11 +538,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -572,7 +572,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -580,7 +580,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -601,7 +601,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -609,7 +609,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -1092,6 +1092,16 @@ Maintenant que vous venez d'apprendre à importer correctement vos données, à 
 
 Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md` de ce dépôt GitHub Classroom.</div>\EndKnitrBlock{bdd}
 
+
+Terminez ce module en vérifiant que vous avez acquis les notions minimales de ce dernier. 
+
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("05a_test")
+</div>\EndKnitrBlock{bdd}
+
+Trois challenges vous sont proposés afin d'améliorer vos compétences en lien avec module. Ces derniers sont disponibles sur Moodle. 
 
 ##### Pour en savoir plus {-}
 

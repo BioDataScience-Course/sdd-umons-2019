@@ -635,6 +635,18 @@ Créez un rapport et effectuez les différents exercices en suivant les instruct
 ```
 
 
+Terminez ce module en vérifiant que vous avez acquis les notions minimales de ce dernier. 
+
+```{block2, type='bdd'}
+
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("05a_test")
+
+```
+
+Trois challenges vous sont proposés afin d'améliorer vos compétences en lien avec module. Ces derniers sont disponibles sur Moodle. 
+
 ##### Pour en savoir plus {-}
 
 - [Présentation en détail du "dot-pipe"](https://github.com/WinVector/wrapr/blob/master/extras/wrapr_pipe.pdf) assez proche fonctionnellement de `%>.%` du package **flow**.

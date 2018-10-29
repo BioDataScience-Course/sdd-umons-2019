@@ -894,7 +894,7 @@ Terminez ce module en vérifiant que vous avez acquis l'ensemble des notions abo
 \BeginKnitrBlock{bdd}<div class="bdd">
 Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
 
-    BioDataScience::run("....")
+    BioDataScience::run("04a_test")
 </div>\EndKnitrBlock{bdd}
 
 
