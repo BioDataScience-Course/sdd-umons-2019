@@ -8,11 +8,13 @@ SciViews::R
 
 ##### Objectifs {-}
 
-- Savoir importer des données dans différents formats et différentes sources via la fonction `read()`.
+- Savoir importer des données depuis différents formats et différentes sources via la fonction `read()`.
 
-- Appréhender les types de variables et l'importance d'encoder convenablement les variables.
+- Appréhender les types de variables et l'importance de les encoder convenablement.
 
-- Savoir remanier des données afin d'extraire l'information importante d'un jeu de données.
+- Etre capable de convertir des variables d'un type à l'autre, y compris par l'utilisation du découpage en classes pour passer de variable quantitative à qualitative.
+
+- Savoir remanier des variables, filtrer un tableau et le résumer afin d'en extraire l'information importante.
 
 
 ##### Prérequis {-}
@@ -275,12 +277,6 @@ Les jeux de données, lorsqu'ils sont bien encodés (**tableaux "cas par variabl
     + Les variables qualitatives **ordonnées** ont des niveaux qui penvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets `ordered`.
     + Les variables qualitatives **non ordonnées** ont des niveaux qui ne peuvent être rangés et sont typiquement représentées par des objets `factor` en R
 
-```{block, type = 'info'}
-R essaye de gommer autant que possible la distinction entre nombres `integer` et `double` tous deux rassemblés en `numeric`. Si besoin, la conversion se fait automatiquement. En pratique, concentrez-vous essentiellement sur les objets `numeric` pour tout ce qui est quantitatif. Un nombre tel que `1` est considéré par R comme un `double` par défaut. Si vous vouliez expressément spécifier que c'est un entier, vous pouvez le faire en ajoutant un `L` majuscule derrière le nombre. Ainsi, `1L` est compris par R comme l'**entier** 1. Encore une fois, cette distinction *explicite* est rarement nécessaire dans R.
-
-Concernant les données qualitatives, elles sont souvent représentées par du texte (nom d'une couleur par exemple) et importées en chaines de caractère (`character`) par défaut dans R à partir de la fonction `read()`. Vous devez les convertir de manière explicite à l'aide de `as.factor()`, `factor()`, `as.ordered()` ou `ordered() par la suite.
-```
-
 Il existe naturellement encore d'autres types de variables. Les dates sont représentées, par exemple, par des objets `Date`, les nombres complexes par `complex`, les données binaires par `raw`, etc.
 
 La fonction `skim()` du package `skimr` permet de visualiser la classe de la variable et bien plus encore. Elle fournit un résumé différent en fonction du type de la variable et propose, par exemple, un histogramme stylisé pour les variables numériques comme le montre le tableau ci-dessous.
@@ -291,9 +287,31 @@ skimr::skim(biometry)
 Avec une seule instruction, on obtient une quantité d'information sur notre jeu de données comme le nombre d'observations, le nombre de variables et un traitement spécifique pour chaque type de variable. Cette instruction permet de visualiser et d'appréhender le jeu de données mais ne doit généralement pas figurer tel quel dans un rapport d'analyse. 
 
 
-##### Pièges et astuces {-}
+## Conversion de variables
 
-Voici un jeu de données qui étudie l'allongement des dents chez le cobaye en fonction du susbstitut alimentaire.
+Il est possible de convertir les variables seulement dans un sens : du plus détaillé au moins détaillé, c'est-à-dire, quantitatif continu -> quantitatif discret -> qualitatif ordonné -> qualitatif non ordonné.
+
+
+### Quantitatif continu à discret
+
+R essaye de gommer autant que possible la distinction entre nombres `integer` et `double` tous deux rassemblés en `numeric`. Si besoin, la conversion se fait automatiquement. En pratique, concentrez-vous essentiellement sur les objets `numeric` pour tout ce qui est quantitatif. Un nombre tel que `1` est considéré par R comme un `double` par défaut. Si vous vouliez expressément spécifier que c'est un entier, vous pouvez le faire en ajoutant un `L` majuscule derrière le nombre. Ainsi, `1L` est compris par R comme l'**entier** 1. Encore une fois, cette distinction *explicite* est rarement nécessaire dans R.
+
+Si vous voulez arrondir des nombres, vous pouvez utiliser la fonction `round()` avec son argument `digits =` qui indique le chiffre derrière la virgule qui doit être arrondi (0 par défaut). Pour arrondir vers l'entier le plus proche vers le haut, utilisez `floor()` et pour le plus proche vers le bas, employez `ceiling()`.
+
+```{r}
+(x <- seq(-1, 1, by = 0.1) + 0.01)
+round(x)
+round(x, digits = 1)
+ceiling(x)
+floor(x)
+```
+
+
+### Quantitatif à qualitatif
+
+Le traitement diffère selon le nombre de valeurs différentes rencontrées dans le jeu de données. Si une variable numérique contient en réalité un petit nombre de valeurs différentes, il suffit de convertir la *classe* de l'objet de `numeric` vers `factor` ou `ordered` pour que R comprenne que la variable doit être traitée comme une variable qualitative. Un exemple concret l'illustre ci-dessous. Si, par contre, le nombre de valeurs différentes est important (dizaines ou plus) alors il va falloir créer des regroupements. C'est le **découpage en classes** abordé plus loin.
+
+Voici un jeu de données qui étudie l'allongement des dents chez le cobaye en fonction de la supplémentation alimentaire en acide ascorbique.
 
 ```{r}
 tooth <- read("ToothGrowth", package = "datasets", lang = "fr")
@@ -329,7 +347,89 @@ tooth$dose <- ordered(tooth$dose, levels = c(0.5, 1, 2))
 skimr::skim(tooth)
 ```
 
-Les fonctions `as.factor()` ou `factor()` et `as.ordered()` ou `ordered()` effectuent cette conversion de `character` ou `numeric` vers objets `factor` ou `ordered`. Une variable facteur ordonnée sera alors reconnue comme telle par un ensemble de fonction dans R. Elle ne sera, de ce fait, pas traitée de la même manière qu'une variable facteur non ordonnée, ni même qu'une variable numérique. Soyez bien attentif à l'encodage correct des données dans R avant d'effectuer vos graphiques et vos analyses. 
+Les fonctions `as.factor()` ou `factor()` et `as.ordered()` ou `ordered()` effectuent cette conversion de `character` ou `numeric` vers des objets `factor` ou `ordered`. Une variable facteur ordonnée sera alors reconnue comme telle par un ensemble de fonction dans R. Elle ne sera, de ce fait, pas traitée de la même manière qu'une variable facteur non ordonnée, ni même qu'une variable numérique. Soyez bien attentif à l'encodage correct des données dans R avant d'effectuer vos graphiques et vos analyses. 
+
+
+### Découpage en classes
+
+La conversion d'une variable quantitative à qualitative doit souvent passer par une réduction des niveaux en rassemblant les valeurs proches dans des **classes**. Vous avez déjà utilisé de manière implicite le découpage en classes lorsque vous avez réalisé des histogrammes. Si les histogrammes sont bi- ou multimodaux, un découpage se justifie. Par exemple, le jeu de données portant sur la biométrie humaine est typique d'un cas de distribution bimodale. En fait, ce sont des étudiants (ayant tous une vingtaine d'années) qui ont réalisé ces mesures. La plupart ont choisi de s'inclure dans l'échantillon, d'où un premier mode vers une vingtaine d'années. Ensuite, ils ont pu mesurer d'autres personnes, éventuellement dans leur entourage. Beaucoup ont demandé à leurs parents, ce qui résulte en un second mode vers la cinquantaine^[Notez que ceci ne constitue **pas** un échantillonnage correct par rapport à la population générale du Hainaut pour plusieurs raisons. (1) toutes les tranches d'âges ne sont échantillonnées de manière équivalente pour les raisons évoquées, (2) des liens génétiques existent au sein des familles, ce qui résulte en une **non indépendance** des observations entre elles, et (3) seule une sous-population constituée de personnes fréquentant l'université et de leur entourage a été échantillonnée. Cependant, dans le cadre de l'exercice, nous accepterons ces biais, tout en étant conscients qu'ils existent.]. Donc, la distribution bimodale résulte plus de l'échantillonnage en lui-même que d'une réalité démographique ! Cela ne change cependant rien pour l'exercice.
+
+```{r}
+biometry <- read("biometry", package = "BioDataScience", lang = "fr")
+chart(data = biometry, ~ age) +
+  geom_histogram(bins = 20) +
+  ylab("Effectifs")
+```
+
+Les **addins** de RStudio vont vous permettre de réaliser facilement un découpage du jeu de données en fonction de classes d'âges (bouton `Addins -> QUESTIONR -> Numeric range dividing`).
+
+![](images/sdd1_06/addins_cut.gif)
+
+Vous spécifiez le découpage voulu dans une boite de dialogue sur base de l'histogramme et lorsque vous cliquez sur le bouton `Done`, le code R qui effectue ce découpage est inséré dans l'éditeur RStudio à l'endroit du curseur. la nouvelle variable facteur `age_rec` basée sur le découpage en classes va être utile pour faire ressortir ensuite de l'information supplémentaire en contrastant les individus plus jeunes et ceux plus âgés.
+
+```{r}
+# Instructions obtenues à partir de l'addins
+biometry$age_rec <- cut(biometry$age, include.lowest = FALSE, right = TRUE,
+  breaks = c(14, 27, 90))
+# Visualisation de la variable facteur obtenue
+chart(biometry, formula = ~ age %fill=% age_rec) +
+  geom_histogram(bins = 20) +
+  ylab("Effectifs")
+```
+
+
+### Qualitatif ordonné ou non
+
+Les données qualitatives sont souvent représentées par du texte (nom d'une couleur par exemple) et importées sous forme de chaines de caractère (`character`) par défaut dans R à partir de la fonction `read()`. Vous devez les convertir de manière explicite à l'aide de `as.factor()`, `factor()`, `as.ordered()` ou `ordered()` par la suite. Voici un exemple :
+
+```{r}
+df <- tibble(
+  color     = c("blue", "green", "blue", "red", "green"),
+  intensity = c("low",  "low",   "high", "mid", "high"))
+df
+# Conversion en factor (color) et ordered (intensity)
+df$color <- factor(df$color,
+  levels = c("red", "green", "blue"))
+df$intensity <- ordered(df$intensity,
+  levels = c("low", "mid", "high"))
+df
+# Information plus détaillée
+str(df)
+skimr::skim(df)
+```
+
+```{block, type = 'warning'}
+Les différents niveaux des variables `factor` ou `ordered` sont et doivent rester entièrement de votre responsabilité. Certains aspects anciens de R essayent de gérer cela pour vous, mais ces fonctions ou options (`StringsAsFactor =` par exemple) tendent heureusement à être remplacées par des versions moins assertives. De même, les niveaux ne sont **pas** réduits lorsque vous filtrez un tableau pour ne retenir que certains niveaux. Vous devez indiquer explicitement ensuite que vous voulez éliminer les niveaux vides du tableau avec la fonction `droplevels()`.
+```
+
+Le jeu de données `iris` contient des données relatives à trois espèces différentes (`table()` permet de compter le nombre d'observations pour chaque niveau d'une variable qualitative `factor` ou `ordered`) :
+
+```{r}
+iris <- read("iris", package = "datasets", lang = "fr")
+table(iris$species)
+```
+
+Si nous restreignons le tableau aux 20 premiers individus, cela donne :
+
+```{r}
+iris20 <- iris[1:20, ]
+table(iris20$species)
+```
+
+Nous voyons que le tableau réduit `iris20` ne contient des données que d'une seule espèce. Pourtant `table()` continue de lister les autres niveaux de la variable. Les niveaux connus sont aussi imprimés avec `levels()` :
+
+```{r}
+levels(iris20$species)
+```
+
+Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l'espèce *I. setosa*. Dans ce cas, `droplevels()` permettra de faire disparaitre les autres niveaux de la variable `species`.
+
+```{r}
+iris20$species <- droplevels(iris20$species)
+levels(iris20$species)
+table(iris20$species)
+
+```
 
 
 ## Remaniement des données
@@ -635,7 +735,7 @@ Créez un rapport et effectuez les différents exercices en suivant les instruct
 ```
 
 
-Terminez ce module en vérifiant que vous avez acquis les notions minimales de ce dernier. 
+Terminez ce module en vérifiant que vous en avez acquis les notions principales. 
 
 ```{block2, type='bdd'}
 
@@ -645,7 +745,8 @@ Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante da
 
 ```
 
-Trois challenges vous sont proposés afin d'améliorer vos compétences en lien avec module. Ces derniers sont disponibles sur Moodle. 
+Des challenges vous sont proposés afin d'améliorer vos compétences en remaniement de données. Ces derniers sont [disponibles ici](https://github.com/BioDataScience-Course/sdd_lesson/tree/master/sdd1_05/exercises). 
+
 
 ##### Pour en savoir plus {-}
 

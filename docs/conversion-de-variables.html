@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="visu2.html">
-<link rel="next" href="graphique-de-densite.html">
+<link rel="prev" href="types-de-variables.html">
+<link rel="next" href="remaniement-des-donnees.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -276,164 +276,204 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="histogramme" class="section level2">
-<h2><span class="header-section-number">3.1</span> Histogramme</h2>
-<p>Vous souhaitez visualiser l’étalement de vos données sur un axe (on parle de <strong>distribution</strong><a href="references.html#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> en statistique) pour l’une des variables étudiées. L’histogramme est l’un des outils pouvant vous apporter cette information. Ce graphique va représenter sous forme de barres un découpage en plusieurs <strong>classes</strong><a href="references.html#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> d’une variable numérique.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.svg" alt="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton." width="672" />
-<p class="caption">
-Figure 2.2: Exemple d’histogramme montrant la distribution de la taille d’un échantillon de zooplancton.
+<div id="conversion-de-variables" class="section level2">
+<h2><span class="header-section-number">5.3</span> Conversion de variables</h2>
+<p>Il est possible de convertir les variables seulement dans un sens : du plus détaillé au moins détaillé, c’est-à-dire, quantitatif continu -&gt; quantitatif discret -&gt; qualitatif ordonné -&gt; qualitatif non ordonné.</p>
+<div id="quantitatif-continu-a-discret" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Quantitatif continu à discret</h3>
+<p>R essaye de gommer autant que possible la distinction entre nombres <code>integer</code> et <code>double</code> tous deux rassemblés en <code>numeric</code>. Si besoin, la conversion se fait automatiquement. En pratique, concentrez-vous essentiellement sur les objets <code>numeric</code> pour tout ce qui est quantitatif. Un nombre tel que <code>1</code> est considéré par R comme un <code>double</code> par défaut. Si vous vouliez expressément spécifier que c’est un entier, vous pouvez le faire en ajoutant un <code>L</code> majuscule derrière le nombre. Ainsi, <code>1L</code> est compris par R comme l’<strong>entier</strong> 1. Encore une fois, cette distinction <em>explicite</em> est rarement nécessaire dans R.</p>
+<p>Si vous voulez arrondir des nombres, vous pouvez utiliser la fonction <code>round()</code> avec son argument <code>digits =</code> qui indique le chiffre derrière la virgule qui doit être arrondi (0 par défaut). Pour arrondir vers l’entier le plus proche vers le haut, utilisez <code>floor()</code> et pour le plus proche vers le bas, employez <code>ceiling()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dt">by =</span> <span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span><span class="fl">0.01</span>)</code></pre></div>
+<pre><code>#  [1] -0.99 -0.89 -0.79 -0.69 -0.59 -0.49 -0.39 -0.29 -0.19 -0.09  0.01
+# [12]  0.11  0.21  0.31  0.41  0.51  0.61  0.71  0.81  0.91  1.01</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(x)</code></pre></div>
+<pre><code>#  [1] -1 -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(x, <span class="dt">digits =</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>#  [1] -1.0 -0.9 -0.8 -0.7 -0.6 -0.5 -0.4 -0.3 -0.2 -0.1  0.0  0.1  0.2  0.3
+# [15]  0.4  0.5  0.6  0.7  0.8  0.9  1.0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ceiling</span>(x)</code></pre></div>
+<pre><code>#  [1] 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">floor</span>(x)</code></pre></div>
+<pre><code>#  [1] -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  1</code></pre>
+</div>
+<div id="quantitatif-a-qualitatif" class="section level3">
+<h3><span class="header-section-number">5.3.2</span> Quantitatif à qualitatif</h3>
+<p>Le traitement diffère selon le nombre de valeurs différentes rencontrées dans le jeu de données. Si une variable numérique contient en réalité un petit nombre de valeurs différentes, il suffit de convertir la <em>classe</em> de l’objet de <code>numeric</code> vers <code>factor</code> ou <code>ordered</code> pour que R comprenne que la variable doit être traitée comme une variable qualitative. Un exemple concret l’illustre ci-dessous. Si, par contre, le nombre de valeurs différentes est important (dizaines ou plus) alors il va falloir créer des regroupements. C’est le <strong>découpage en classes</strong> abordé plus loin.</p>
+<p>Voici un jeu de données qui étudie l’allongement des dents chez le cobaye en fonction de la supplémentation alimentaire en acide ascorbique.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ToothGrowth&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div>
+<p>Le jeu de données comprend 60 observations effectuées sur des cochons d’Inde. Ces derniers reçoivent deux types de suppléments alimentaires : soit du jus d’orange (<code>OJ</code>), soit de la vitamine C (<code>VC</code>). Des lots différents recoivent des doses différentes d’acide ascorbique via ces suppléments, soit 0.5, 1, ou 2 mg/j. Vous pouvez inspecter ces données rapidement avec la fonction <code>skim()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre></div>
+<pre><code># Skim summary statistics
+#  n obs: 60 
+#  n variables: 3 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique            top_counts ordered
+#      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
+#      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
+#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
+#      hist
+#  ▇▁▇▁▁▁▁▇
+#  ▃▅▃▅▃▇▂▂</code></pre>
+<p>La variable dose est encodée sous forme numérique alors que cette dernière ne contient que trois niveaux différents et devra être le plus souvent traitée comme une <strong>variable qualitative ordonnée à trois niveaux</strong> . <strong>Vous devrez donc probablement recoder cette variable en variable facteur.</strong></p>
+<div class="note">
+<p>
+Ce n’est pas le caractère quantitatif ou qualitatif du <em>mécanisme sous-jacent qui est mesuré</em> qui détermine si la variable est quantitative ou qualitative, mais d’autres critères comme la précision avec laquelle la mesure a été effectuée. Par exemple, un anémomètre mesure la vitesse du vent sous forme de variable <strong>quantitative</strong> alors qu’une échelle approximative de type <code>vent nul</code>, <code>vent faible</code>, <code>vent moyen</code>, <code>vent fort</code> ou <code>tempête</code> basée sur l’observation des rides ou des vagues à la surface de la mer pourrait éventuellement convenir pour mesurer le même phénomène si une grande précision n’est pas nécessaire. Mais dans ce cas, la variable devra être traitée comme une variable <strong>qualitative</strong>.
+</p>
+<p>
+De même, un plan expérimental qui réduit volontairement les valeurs fixées dans une expérience, comme ici les doses journalières d’acide ascorbique, fera aussi basculer la variable en <strong>qualitative</strong>, et ce, quelle que soit la précision avec laquelle les valeurs sont mesurées par ailleurs. Un découpage en classes aura aussi le même effet de transformer une variable quantitative en variable qualitative ordonnée.
 </p>
 </div>
-<p>Outre l’histogramme lui-même, représenté par des barres de hauteur équivalentes au nombre de fois que les observations ont été réalisées dans les différentes classes, les éléments suivants sont également indispensables à la compréhension du graphique (ici mis en évidence en couleur)</p>
-<ul>
-<li>Les axes avec les graduations (en rouge). Su l’axe des abscisses, les classes de tailles, et sur l’axe des ordonnées, le nombre d’occurence</li>
-<li>les labels des axes et l’unité (pour l’axe des abscisses uniquement ici) (en bleu)</li>
-</ul>
-<p>Les instructions dans R afin de produire un histogramme à l’aide de la fonction <code>chart()</code> sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
-(zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre></div>
-<pre><code># # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
-#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# # ... with 1,252 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
-# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
-# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
-<span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">50</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Distribution des tailles au sein d'un échantillon de zooplancton" width="672" />
-<p class="caption">
-Figure 3.1: Distribution des tailles au sein d’un échantillon de zooplancton
-</p>
+<p>Indiquons à présent explicitement à R que la variable <code>dose</code> doit être considérée comme qualitative :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">as.factor</span>(tooth<span class="op">$</span>dose)
+<span class="co"># Visualisation des données</span>
+skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre></div>
+<pre><code># Skim summary statistics
+#  n obs: 60 
+#  n variables: 3 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique
+#      dose       0       60 60        3
+#      supp       0       60 60        2
+#                                        top_counts ordered
+#                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
+#  OJ: 30, VC: 30, NA: 0                              FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
+#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
+#      hist
+#  ▃▅▃▅▃▇▂▂</code></pre>
+<p>Vous pouvez (et devez !) cependant aller encore plus loin car la variable est en réalité qualitative <strong>ordonnée</strong>, et doit être représentée par un objet “facteur ordonné” (<code>ordered</code>) plutôt que <code>factor</code>. Il y a en effet, une progression dans les doses administrées. Lors de la conversion, R considère les différents niveaux par <strong>ordre alphabéthique</strong> par défaut. Ici cela convient, mais ce n’est pas toujours le cas. Il vaut donc mieux spécifier explicitement l’<em>ordre</em> des niveaux dans l’argument optionnel <code>levels =</code>. Cela donne :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">ordered</span>(tooth<span class="op">$</span>dose, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>))
+<span class="co"># Visualisation des données</span>
+skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre></div>
+<pre><code># Skim summary statistics
+#  n obs: 60 
+#  n variables: 3 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique
+#      dose       0       60 60        3
+#      supp       0       60 60        2
+#                                        top_counts ordered
+#                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
+#  OJ: 30, VC: 30, NA: 0                              FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
+#       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
+#      hist
+#  ▃▅▃▅▃▇▂▂</code></pre>
+<p>Les fonctions <code>as.factor()</code> ou <code>factor()</code> et <code>as.ordered()</code> ou <code>ordered()</code> effectuent cette conversion de <code>character</code> ou <code>numeric</code> vers des objets <code>factor</code> ou <code>ordered</code>. Une variable facteur ordonnée sera alors reconnue comme telle par un ensemble de fonction dans R. Elle ne sera, de ce fait, pas traitée de la même manière qu’une variable facteur non ordonnée, ni même qu’une variable numérique. Soyez bien attentif à l’encodage correct des données dans R avant d’effectuer vos graphiques et vos analyses.</p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bins permet de préciser le nombre de classes souhaitées</span></code></pre></div>
-<p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée (<code>zooplankton</code>), ainsi que la formule à employer dans laquelle vous avez indiqué le nom de la variable que vous voulez sur l’axe des abscisses à droite de la formule, après le tilde <code>~</code>. Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter <code>size</code>, Jusqu’ici, nous avons spécifié <em>ce que</em> nous voulons représenter, mais pas encore <em>comment</em> (sous quelle apparence), nous voulons matérialiser cela sur le graphique. Pour un histogramme, nous devons ajouter la fonction <code>geom_histogram()</code>. L’argument <code>bins</code> dans cette fonction permet de préciser le nombre de classes souhaitées. Le découpage en classe se fait automatiquement dans R à partir de la variable <code>size</code> d’origine.</p>
-<p>Vous pouvez décrypter votre histogramme sur base des <strong>modes</strong><a href="references.html#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a> et de la <strong>symétrie</strong><a href="references.html#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> de ces derniers. Un histogramme peut être unimodal (un seul mode), bimodal (deux modes) ou multimodal (plus de deux modes). En général, s’il y a plus d’un mode, nous pouvons suspecter que des sous-populations existent au sein de notre échantillon.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
-<p class="caption">
-Figure 3.2: Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique.
-</p>
-</div>
-<div id="nombre-de-classes" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Nombre de classes</h3>
-<p>Vous devez être particulièrement vigilant lors de la réalisation d’un histogramme aux classes définies pour ce dernier.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique précédent</span>
-a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">50</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)
-
-<span class="co"># Modification du nombre de classes</span>
-b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
+<div id="decoupage-en-classes" class="section level3">
+<h3><span class="header-section-number">5.3.3</span> Découpage en classes</h3>
+<p>La conversion d’une variable quantitative à qualitative doit souvent passer par une réduction des niveaux en rassemblant les valeurs proches dans des <strong>classes</strong>. Vous avez déjà utilisé de manière implicite le découpage en classes lorsque vous avez réalisé des histogrammes. Si les histogrammes sont bi- ou multimodaux, un découpage se justifie. Par exemple, le jeu de données portant sur la biométrie humaine est typique d’un cas de distribution bimodale. En fait, ce sont des étudiants (ayant tous une vingtaine d’années) qui ont réalisé ces mesures. La plupart ont choisi de s’inclure dans l’échantillon, d’où un premier mode vers une vingtaine d’années. Ensuite, ils ont pu mesurer d’autres personnes, éventuellement dans leur entourage. Beaucoup ont demandé à leurs parents, ce qui résulte en un second mode vers la cinquantaine<a href="references.html#fn19" class="footnoteRef" id="fnref19"><sup>19</sup></a>. Donc, la distribution bimodale résulte plus de l’échantillonnage en lui-même que d’une réalité démographique ! Cela ne change cependant rien pour l’exercice.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
+<span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>age) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">20</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)
-
-c &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)
-
-d &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">5</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)
-
-<span class="co"># Assemblage des graphiques</span>
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b, c, d))</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:histo-classes"></span>
-<img src="03-Visualisation-II_files/figure-html/histo-classes-1.svg" alt="Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes." width="672" />
-<p class="caption">
-Figure 3.3: Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d’organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes.
-</p>
-</div>
-<p>Comme vous pouvez le voir à la Fig. <a href="histogramme.html#fig:histo-classes">3.3</a>, le changement du nombre de classes peut modifier complètement la perception des données via l’histogramme. Le choix idéal est un compromis entre plus de classes (donc plus de détails), et un d“coupage raisonnable en fonction de la quantité de données disponibles. Si l’intervalle des classes est trop petit, l’histogramme sera illisible. Si l’intervalle des classes est trop grand, il sera impossible de visualiser correctement les différents modes. Dans la figure en exemple, les variantes A et B sont acceptables, mais les C et D manquent de détails.</p>
-<div id="pieges-et-astuces-1" class="section level5 unnumbered">
-<h5>Pièges et astuces</h5>
-<p>La SciViews Box propose un <strong>snippet RStudio</strong> pour réaliser un histogramme. Il s’appelle <code>.cuhist</code> (pour <strong>c</strong>hart -&gt; <strong>u</strong>nivariate -&gt; <strong>hist</strong>ogram). Entrez ce code dans une zone d’édition R et appuyez ensuite sur la tabulation, et vous verrez le code remplacé par ceci :</p>
-<pre><code>chart(data = DF, ~VARNUM) +
-    geom_histogram(binwidth = 30)</code></pre>
-<p>L’argument <code>binwidth =</code> permet de préciser la largeur des classes. C’est une autre façon de spécifier le découpage en classes, mais vous pouvez naturellement le remplacer par l’argument <code>bins =</code> si vous préférez.</p>
-<p>Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver dans l’aide-mémoire sur <a href="https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf"><strong>SciViews</strong></a>. N’oubliez pas que vous avez également à votre disposition l’aide-mémoire sur la visualisation des données (<a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Data Visualization Cheat Sheet</strong></a>), via la fonction <code>ggplot()</code>.</p>
-</div>
-</div>
-<div id="histogramme-par-facteur" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Histogramme par facteur</h3>
-<p>Lors de l’analyse de jeux de données, vous serez amené à réaliser un histogramme par facteur (c’est-à-dire, en fonction de différents niveaux d’une variable qualitative qui divise le jeu de données en sous-groupes). Par exemple, dans un jeu de données sur des fleurs d’iris, la variable <code>species</code><a href="references.html#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> représente l’espèce d’iris étudiée (trois espèces différentes : <em>I. setosa</em>, <em>I. versicolor</em> et <em>I. virginica</em>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
-(iris &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;iris&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
-<pre><code># # A tibble: 150 x 5
-#    sepal_length sepal_width petal_length petal_width species
-#           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
-#  1          5.1         3.5          1.4         0.2 setosa 
-#  2          4.9         3            1.4         0.2 setosa 
-#  3          4.7         3.2          1.3         0.2 setosa 
-#  4          4.6         3.1          1.5         0.2 setosa 
-#  5          5           3.6          1.4         0.2 setosa 
-#  6          5.4         3.9          1.7         0.4 setosa 
-#  7          4.6         3.4          1.4         0.3 setosa 
-#  8          5           3.4          1.5         0.2 setosa 
-#  9          4.4         2.9          1.4         0.2 setosa 
-# 10          4.9         3.1          1.5         0.1 setosa 
-# # ... with 140 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation de l&#39;histogramme par facteur</span>
-<span class="kw">chart</span>(<span class="dt">data =</span> iris, <span class="op">~</span><span class="st"> </span>sepal_length <span class="op">%fill=%</span><span class="st"> </span>species) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">25</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>() <span class="co"># palette de couleur harmonieuse</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Distribution des longueurs de sépales de trois espèces d'iris." width="672" />
-<p class="caption">
-Figure 2.3: Distribution des longueurs de sépales de trois espèces d’iris.
-</p>
-</div>
-<p>Ici, nous avons tracé un histogramme unique, mais en prenant soin de colorier les barres en fonction de l’espèce. la formule fait toujours intervenir la variable numérique à découper en classes à la droite du tilde <code>~</code>, ici <code>sepal_length</code>, mais nous y avons ajouté une directive supplémentaire pour indiquer que le remplissage des barres (<code>%fill=%</code>) doit se faire en fonction du contenu de la variable <code>species</code>.</p>
-<p>Nous avons ici un bon exemple d’histogramme multimodal lié à la présence de trois sous-groupes (les trois espèces différentes) au sein d’un jeu de données unique. Le rendu du graphique n’est pas optimal. Voici deux astuces pour l’améliorer. La premières consiste à représenter trois histogrammes séparés, mais rassemblés dans une même figure. Pour cela, nous utilisons des <strong>facettes</strong> (<code>facets</code>) au lieu de l’argument <code>%fill=%</code>. Dans <code>chart()</code>, les facettes peuvent être spécifiées an utilisant l’opérateur <code>|</code> dans la formule.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> iris, <span class="op">~</span><span class="st"> </span>sepal_length <span class="op">|</span><span class="st"> </span>species) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">25</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)." width="672" />
-<p class="caption">
-Figure 2.4: Distribution de la longueur des sépales de trois espèces d’iris (en employant les facettes pour séparer les espèces).
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-29-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Les <strong>addins</strong> de RStudio vont vous permettre de réaliser facilement un découpage du jeu de données en fonction de classes d’âges (bouton <code>Addins -&gt; QUESTIONR -&gt; Numeric range dividing</code>).</p>
+<div class="figure">
+<img src="images/sdd1_06/addins_cut.gif" />
+
+</div>
+<p>Vous spécifiez le découpage voulu dans une boite de dialogue sur base de l’histogramme et lorsque vous cliquez sur le bouton <code>Done</code>, le code R qui effectue ce découpage est inséré dans l’éditeur RStudio à l’endroit du curseur. la nouvelle variable facteur <code>age_rec</code> basée sur le découpage en classes va être utile pour faire ressortir ensuite de l’information supplémentaire en contrastant les individus plus jeunes et ceux plus âgés.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Instructions obtenues à partir de l&#39;addins</span>
+biometry<span class="op">$</span>age_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(biometry<span class="op">$</span>age, <span class="dt">include.lowest =</span> <span class="ot">FALSE</span>, <span class="dt">right =</span> <span class="ot">TRUE</span>,
+  <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">27</span>, <span class="dv">90</span>))
+<span class="co"># Visualisation de la variable facteur obtenue</span>
+<span class="kw">chart</span>(biometry, <span class="dt">formula =</span> <span class="op">~</span><span class="st"> </span>age <span class="op">%fill=%</span><span class="st"> </span>age_rec) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">20</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre></div>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-30-1.svg" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="qualitatif-ordonne-ou-non" class="section level3">
+<h3><span class="header-section-number">5.3.4</span> Qualitatif ordonné ou non</h3>
+<p>Les données qualitatives sont souvent représentées par du texte (nom d’une couleur par exemple) et importées sous forme de chaines de caractère (<code>character</code>) par défaut dans R à partir de la fonction <code>read()</code>. Vous devez les convertir de manière explicite à l’aide de <code>as.factor()</code>, <code>factor()</code>, <code>as.ordered()</code> ou <code>ordered()</code> par la suite. Voici un exemple :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">tibble</span>(
+  <span class="dt">color     =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>),
+  <span class="dt">intensity =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>,  <span class="st">&quot;low&quot;</span>,   <span class="st">&quot;high&quot;</span>, <span class="st">&quot;mid&quot;</span>, <span class="st">&quot;high&quot;</span>))
+df</code></pre></div>
+<pre><code># # A tibble: 5 x 2
+#   color intensity
+#   &lt;chr&gt; &lt;chr&gt;    
+# 1 blue  low      
+# 2 green low      
+# 3 blue  high     
+# 4 red   mid      
+# 5 green high</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Conversion en factor (color) et ordered (intensity)</span>
+df<span class="op">$</span>color &lt;-<span class="st"> </span><span class="kw">factor</span>(df<span class="op">$</span>color,
+  <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>))
+df<span class="op">$</span>intensity &lt;-<span class="st"> </span><span class="kw">ordered</span>(df<span class="op">$</span>intensity,
+  <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;mid&quot;</span>, <span class="st">&quot;high&quot;</span>))
+df</code></pre></div>
+<pre><code># # A tibble: 5 x 2
+#   color intensity
+#   &lt;fct&gt; &lt;ord&gt;    
+# 1 blue  low      
+# 2 green low      
+# 3 blue  high     
+# 4 red   mid      
+# 5 green high</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Information plus détaillée</span>
+<span class="kw">str</span>(df)</code></pre></div>
+<pre><code># Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 5 obs. of  2 variables:
+#  $ color    : Factor w/ 3 levels &quot;red&quot;,&quot;green&quot;,..: 3 2 3 1 2
+#  $ intensity: Ord.factor w/ 3 levels &quot;low&quot;&lt;&quot;mid&quot;&lt;&quot;high&quot;: 1 1 3 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">skimr<span class="op">::</span><span class="kw">skim</span>(df)</code></pre></div>
+<pre><code># Skim summary statistics
+#  n obs: 5 
+#  n variables: 2 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
+#   variable missing complete n n_unique                    top_counts
+#      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
+#  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
+#  ordered
+#    FALSE
+#     TRUE</code></pre>
+<div class="warning">
+<p>
+Les différents niveaux des variables <code>factor</code> ou <code>ordered</code> sont et doivent rester entièrement de votre responsabilité. Certains aspects anciens de R essayent de gérer cela pour vous, mais ces fonctions ou options (<code>StringsAsFactor =</code> par exemple) tendent heureusement à être remplacées par des versions moins assertives. De même, les niveaux ne sont <strong>pas</strong> réduits lorsque vous filtrez un tableau pour ne retenir que certains niveaux. Vous devez indiquer explicitement ensuite que vous voulez éliminer les niveaux vides du tableau avec la fonction <code>droplevels()</code>.
 </p>
 </div>
-<p>L’histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur <code>species</code>. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec <code>|</code> et l’argument <code>%fill=%</code><a href="references.html#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a>. Il faut ensuite ajouter par derriere un histogramme grisé de l’ensemble des données.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbins &lt;-<span class="st"> </span><span class="dv">25</span>
-<span class="kw">chart</span>(<span class="dt">data =</span> iris, <span class="op">~</span><span class="st"> </span>sepal_length <span class="op">%fill=%</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>species) <span class="op">+</span>
-<span class="st">  </span><span class="co"># histogramme d&#39;arrière plan en gris ne tenant pas compte de la variable species</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> <span class="kw">select</span>(iris, <span class="op">-</span>species), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">bins =</span> nbins) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">bins =</span> nbins) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.svg" alt="Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans)." width="672" />
-<p class="caption">
-Figure 3.4: Distribution des longueurs de sépales de trois espèces d’iris (avec facettes et histogrammes complets grisés en arrière plans).
-</p>
-</div>
-<p>Vous découvrez sans doute que les graphiques réalisables avec R sont modulables à souhait en ajoutant une série d’instructions successives qui créent autant de couches superposées dans le graphique. Cette approche permet de réaliser quasiment une infinité de graphiques différents en combinant seulement quelques dizaines d’instructions. Pour s’y retrouver, les fonctions qui ajoutent des couches commencent toutes par <code>geom_</code>, et celles qui manipulent les couleurs par <code>scale_</code>, par exemple. Vous découvrirez encore d’autres fonctions graphiques plus loin.</p>
+<p>Le jeu de données <code>iris</code> contient des données relatives à trois espèces différentes (<code>table()</code> permet de compter le nombre d’observations pour chaque niveau d’une variable qualitative <code>factor</code> ou <code>ordered</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;iris&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
+<span class="kw">table</span>(iris<span class="op">$</span>species)</code></pre></div>
+<pre><code># 
+#     setosa versicolor  virginica 
+#         50         50         50</code></pre>
+<p>Si nous restreignons le tableau aux 20 premiers individus, cela donne :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris20 &lt;-<span class="st"> </span>iris[<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, ]
+<span class="kw">table</span>(iris20<span class="op">$</span>species)</code></pre></div>
+<pre><code># 
+#     setosa versicolor  virginica 
+#         20          0          0</code></pre>
+<p>Nous voyons que le tableau réduit <code>iris20</code> ne contient des données que d’une seule espèce. Pourtant <code>table()</code> continue de lister les autres niveaux de la variable. Les niveaux connus sont aussi imprimés avec <code>levels()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(iris20<span class="op">$</span>species)</code></pre></div>
+<pre><code># [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;</code></pre>
+<p>Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l’espèce <em>I. setosa</em>. Dans ce cas, <code>droplevels()</code> permettra de faire disparaitre les autres niveaux de la variable <code>species</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris20<span class="op">$</span>species &lt;-<span class="st"> </span><span class="kw">droplevels</span>(iris20<span class="op">$</span>species)
+<span class="kw">levels</span>(iris20<span class="op">$</span>species)</code></pre></div>
+<pre><code># [1] &quot;setosa&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(iris20<span class="op">$</span>species)</code></pre></div>
+<pre><code># 
+# setosa 
+#     20</code></pre>
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="6">
-<li id="fn6"><p>La <strong>distribution</strong> des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d’une variable s’observent.<a href="histogramme.html#fnref6">↩</a></p></li>
-<li id="fn7"><p>Une variable numérique est <strong>découpée en classes</strong> en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.<a href="histogramme.html#fnref7">↩</a></p></li>
-<li id="fn8"><p>Les <strong>modes</strong> d’un histogramme correspondent à des classes plus abondantes localement, c’est-à-dire que les classes à gauche et à droite du mode comptent moins d’occurences que lui.<a href="histogramme.html#fnref8">↩</a></p></li>
-<li id="fn9"><p>Un histogramme est dit <strong>symétrique</strong> lorsque son profil à gauche est identique ou très similaire à son profil à droite autour d’un mode.<a href="histogramme.html#fnref9">↩</a></p></li>
-<li id="fn10"><p>Attention : le jeu de donnée <code>iris</code> est un grand classique dans R, mais lorsqu’il est chargé à l’aide de la fonction <code>read()</code> du package <strong>data.io</strong>, le nom de ses variables est modifié pour suivre la convention “snake-case” qui veut que seules des lettres minuscules soient utilisées et que les mots soient séparés par un trait souligné <code>_</code>. Ainsi, dans le jeu de données d’origine, les variables sont nommées <code>Petal_Length</code> ou <code>Species</code>. Ici, ces même variables se nomment <code>petal_length</code> et <code>species</code>.<a href="histogramme.html#fnref10">↩</a></p></li>
-<li id="fn11"><p>Astuce proposée <a href="https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2">ici</a>.<a href="histogramme.html#fnref11">↩</a></p></li>
+<ol start="19">
+<li id="fn19"><p>Notez que ceci ne constitue <strong>pas</strong> un échantillonnage correct par rapport à la population générale du Hainaut pour plusieurs raisons. (1) toutes les tranches d’âges ne sont échantillonnées de manière équivalente pour les raisons évoquées, (2) des liens génétiques existent au sein des familles, ce qui résulte en une <strong>non indépendance</strong> des observations entre elles, et (3) seule une sous-population constituée de personnes fréquentant l’université et de leur entourage a été échantillonnée. Cependant, dans le cadre de l’exercice, nous accepterons ces biais, tout en étant conscients qu’ils existent.<a href="conversion-de-variables.html#fnref19">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -461,8 +501,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="visu2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graphique-de-densite.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="types-de-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="remaniement-des-donnees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -492,7 +532,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/03-Visualisation-II.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/05-Importation-Transformation.Rmd",
 "text": "Editer"
 },
 "download": null,

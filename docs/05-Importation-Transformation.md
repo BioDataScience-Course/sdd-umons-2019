@@ -5,11 +5,13 @@
 
 ##### Objectifs {-}
 
-- Savoir importer des données dans différents formats et différentes sources via la fonction `read()`.
+- Savoir importer des données depuis différents formats et différentes sources via la fonction `read()`.
 
-- Appréhender les types de variables et l'importance d'encoder convenablement les variables.
+- Appréhender les types de variables et l'importance de les encoder convenablement.
 
-- Savoir remanier des données afin d'extraire l'information importante d'un jeu de données.
+- Etre capable de convertir des variables d'un type à l'autre, y compris par l'utilisation du découpage en classes pour passer de variable quantitative à qualitative.
+
+- Savoir remanier des variables, filtrer un tableau et le résumer afin d'en extraire l'information importante.
 
 
 ##### Prérequis {-}
@@ -473,11 +475,6 @@ Les jeux de données, lorsqu'ils sont bien encodés (**tableaux "cas par variabl
     + Les variables qualitatives **ordonnées** ont des niveaux qui penvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets `ordered`.
     + Les variables qualitatives **non ordonnées** ont des niveaux qui ne peuvent être rangés et sont typiquement représentées par des objets `factor` en R
 
-<div class="info">
-<p>R essaye de gommer autant que possible la distinction entre nombres <code>integer</code> et <code>double</code> tous deux rassemblés en <code>numeric</code>. Si besoin, la conversion se fait automatiquement. En pratique, concentrez-vous essentiellement sur les objets <code>numeric</code> pour tout ce qui est quantitatif. Un nombre tel que <code>1</code> est considéré par R comme un <code>double</code> par défaut. Si vous vouliez expressément spécifier que c'est un entier, vous pouvez le faire en ajoutant un <code>L</code> majuscule derrière le nombre. Ainsi, <code>1L</code> est compris par R comme l'<strong>entier</strong> 1. Encore une fois, cette distinction <em>explicite</em> est rarement nécessaire dans R.</p>
-<p>Concernant les données qualitatives, elles sont souvent représentées par du texte (nom d'une couleur par exemple) et importées en chaines de caractère (<code>character</code>) par défaut dans R à partir de la fonction <code>read()</code>. Vous devez les convertir de manière explicite à l'aide de <code>as.factor()</code>, <code>factor()</code>, <code>as.ordered()</code> ou `ordered() par la suite.</p>
-</div>
-
 Il existe naturellement encore d'autres types de variables. Les dates sont représentées, par exemple, par des objets `Date`, les nombres complexes par `complex`, les données binaires par `raw`, etc.
 
 La fonction `skim()` du package `skimr` permet de visualiser la classe de la variable et bien plus encore. Elle fournit un résumé différent en fonction du type de la variable et propose, par exemple, un histogramme stylisé pour les variables numériques comme le montre le tableau ci-dessous.
@@ -492,15 +489,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ───────────────────────────────────────────────────────────────────
+# ── Variable type:Date ───────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -517,9 +514,66 @@ skimr::skim(biometry)
 Avec une seule instruction, on obtient une quantité d'information sur notre jeu de données comme le nombre d'observations, le nombre de variables et un traitement spécifique pour chaque type de variable. Cette instruction permet de visualiser et d'appréhender le jeu de données mais ne doit généralement pas figurer tel quel dans un rapport d'analyse. 
 
 
-##### Pièges et astuces {-}
+## Conversion de variables
 
-Voici un jeu de données qui étudie l'allongement des dents chez le cobaye en fonction du susbstitut alimentaire.
+Il est possible de convertir les variables seulement dans un sens : du plus détaillé au moins détaillé, c'est-à-dire, quantitatif continu -> quantitatif discret -> qualitatif ordonné -> qualitatif non ordonné.
+
+
+### Quantitatif continu à discret
+
+R essaye de gommer autant que possible la distinction entre nombres `integer` et `double` tous deux rassemblés en `numeric`. Si besoin, la conversion se fait automatiquement. En pratique, concentrez-vous essentiellement sur les objets `numeric` pour tout ce qui est quantitatif. Un nombre tel que `1` est considéré par R comme un `double` par défaut. Si vous vouliez expressément spécifier que c'est un entier, vous pouvez le faire en ajoutant un `L` majuscule derrière le nombre. Ainsi, `1L` est compris par R comme l'**entier** 1. Encore une fois, cette distinction *explicite* est rarement nécessaire dans R.
+
+Si vous voulez arrondir des nombres, vous pouvez utiliser la fonction `round()` avec son argument `digits =` qui indique le chiffre derrière la virgule qui doit être arrondi (0 par défaut). Pour arrondir vers l'entier le plus proche vers le haut, utilisez `floor()` et pour le plus proche vers le bas, employez `ceiling()`.
+
+
+```r
+(x <- seq(-1, 1, by = 0.1) + 0.01)
+```
+
+```
+#  [1] -0.99 -0.89 -0.79 -0.69 -0.59 -0.49 -0.39 -0.29 -0.19 -0.09  0.01
+# [12]  0.11  0.21  0.31  0.41  0.51  0.61  0.71  0.81  0.91  1.01
+```
+
+```r
+round(x)
+```
+
+```
+#  [1] -1 -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  1  1  1  1  1  1
+```
+
+```r
+round(x, digits = 1)
+```
+
+```
+#  [1] -1.0 -0.9 -0.8 -0.7 -0.6 -0.5 -0.4 -0.3 -0.2 -0.1  0.0  0.1  0.2  0.3
+# [15]  0.4  0.5  0.6  0.7  0.8  0.9  1.0
+```
+
+```r
+ceiling(x)
+```
+
+```
+#  [1] 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2
+```
+
+```r
+floor(x)
+```
+
+```
+#  [1] -1 -1 -1 -1 -1 -1 -1 -1 -1 -1  0  0  0  0  0  0  0  0  0  0  1
+```
+
+
+### Quantitatif à qualitatif
+
+Le traitement diffère selon le nombre de valeurs différentes rencontrées dans le jeu de données. Si une variable numérique contient en réalité un petit nombre de valeurs différentes, il suffit de convertir la *classe* de l'objet de `numeric` vers `factor` ou `ordered` pour que R comprenne que la variable doit être traitée comme une variable qualitative. Un exemple concret l'illustre ci-dessous. Si, par contre, le nombre de valeurs différentes est important (dizaines ou plus) alors il va falloir créer des regroupements. C'est le **découpage en classes** abordé plus loin.
+
+Voici un jeu de données qui étudie l'allongement des dents chez le cobaye en fonction de la supplémentation alimentaire en acide ascorbique.
 
 
 ```r
@@ -538,11 +592,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -572,7 +626,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -580,7 +634,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -601,7 +655,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -609,14 +663,186 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
 #  ▃▅▃▅▃▇▂▂
 ```
 
-Les fonctions `as.factor()` ou `factor()` et `as.ordered()` ou `ordered()` effectuent cette conversion de `character` ou `numeric` vers objets `factor` ou `ordered`. Une variable facteur ordonnée sera alors reconnue comme telle par un ensemble de fonction dans R. Elle ne sera, de ce fait, pas traitée de la même manière qu'une variable facteur non ordonnée, ni même qu'une variable numérique. Soyez bien attentif à l'encodage correct des données dans R avant d'effectuer vos graphiques et vos analyses. 
+Les fonctions `as.factor()` ou `factor()` et `as.ordered()` ou `ordered()` effectuent cette conversion de `character` ou `numeric` vers des objets `factor` ou `ordered`. Une variable facteur ordonnée sera alors reconnue comme telle par un ensemble de fonction dans R. Elle ne sera, de ce fait, pas traitée de la même manière qu'une variable facteur non ordonnée, ni même qu'une variable numérique. Soyez bien attentif à l'encodage correct des données dans R avant d'effectuer vos graphiques et vos analyses. 
+
+
+### Découpage en classes
+
+La conversion d'une variable quantitative à qualitative doit souvent passer par une réduction des niveaux en rassemblant les valeurs proches dans des **classes**. Vous avez déjà utilisé de manière implicite le découpage en classes lorsque vous avez réalisé des histogrammes. Si les histogrammes sont bi- ou multimodaux, un découpage se justifie. Par exemple, le jeu de données portant sur la biométrie humaine est typique d'un cas de distribution bimodale. En fait, ce sont des étudiants (ayant tous une vingtaine d'années) qui ont réalisé ces mesures. La plupart ont choisi de s'inclure dans l'échantillon, d'où un premier mode vers une vingtaine d'années. Ensuite, ils ont pu mesurer d'autres personnes, éventuellement dans leur entourage. Beaucoup ont demandé à leurs parents, ce qui résulte en un second mode vers la cinquantaine^[Notez que ceci ne constitue **pas** un échantillonnage correct par rapport à la population générale du Hainaut pour plusieurs raisons. (1) toutes les tranches d'âges ne sont échantillonnées de manière équivalente pour les raisons évoquées, (2) des liens génétiques existent au sein des familles, ce qui résulte en une **non indépendance** des observations entre elles, et (3) seule une sous-population constituée de personnes fréquentant l'université et de leur entourage a été échantillonnée. Cependant, dans le cadre de l'exercice, nous accepterons ces biais, tout en étant conscients qu'ils existent.]. Donc, la distribution bimodale résulte plus de l'échantillonnage en lui-même que d'une réalité démographique ! Cela ne change cependant rien pour l'exercice.
+
+
+```r
+biometry <- read("biometry", package = "BioDataScience", lang = "fr")
+chart(data = biometry, ~ age) +
+  geom_histogram(bins = 20) +
+  ylab("Effectifs")
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-29-1.svg" width="672" style="display: block; margin: auto;" />
+
+Les **addins** de RStudio vont vous permettre de réaliser facilement un découpage du jeu de données en fonction de classes d'âges (bouton `Addins -> QUESTIONR -> Numeric range dividing`).
+
+![](images/sdd1_06/addins_cut.gif)
+
+Vous spécifiez le découpage voulu dans une boite de dialogue sur base de l'histogramme et lorsque vous cliquez sur le bouton `Done`, le code R qui effectue ce découpage est inséré dans l'éditeur RStudio à l'endroit du curseur. la nouvelle variable facteur `age_rec` basée sur le découpage en classes va être utile pour faire ressortir ensuite de l'information supplémentaire en contrastant les individus plus jeunes et ceux plus âgés.
+
+
+```r
+# Instructions obtenues à partir de l'addins
+biometry$age_rec <- cut(biometry$age, include.lowest = FALSE, right = TRUE,
+  breaks = c(14, 27, 90))
+# Visualisation de la variable facteur obtenue
+chart(biometry, formula = ~ age %fill=% age_rec) +
+  geom_histogram(bins = 20) +
+  ylab("Effectifs")
+```
+
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-30-1.svg" width="672" style="display: block; margin: auto;" />
+
+
+### Qualitatif ordonné ou non
+
+Les données qualitatives sont souvent représentées par du texte (nom d'une couleur par exemple) et importées sous forme de chaines de caractère (`character`) par défaut dans R à partir de la fonction `read()`. Vous devez les convertir de manière explicite à l'aide de `as.factor()`, `factor()`, `as.ordered()` ou `ordered()` par la suite. Voici un exemple :
+
+
+```r
+df <- tibble(
+  color     = c("blue", "green", "blue", "red", "green"),
+  intensity = c("low",  "low",   "high", "mid", "high"))
+df
+```
+
+```
+# # A tibble: 5 x 2
+#   color intensity
+#   <chr> <chr>    
+# 1 blue  low      
+# 2 green low      
+# 3 blue  high     
+# 4 red   mid      
+# 5 green high
+```
+
+```r
+# Conversion en factor (color) et ordered (intensity)
+df$color <- factor(df$color,
+  levels = c("red", "green", "blue"))
+df$intensity <- ordered(df$intensity,
+  levels = c("low", "mid", "high"))
+df
+```
+
+```
+# # A tibble: 5 x 2
+#   color intensity
+#   <fct> <ord>    
+# 1 blue  low      
+# 2 green low      
+# 3 blue  high     
+# 4 red   mid      
+# 5 green high
+```
+
+```r
+# Information plus détaillée
+str(df)
+```
+
+```
+# Classes 'tbl_df', 'tbl' and 'data.frame':	5 obs. of  2 variables:
+#  $ color    : Factor w/ 3 levels "red","green",..: 3 2 3 1 2
+#  $ intensity: Ord.factor w/ 3 levels "low"<"mid"<"high": 1 1 3 2 3
+```
+
+```r
+skimr::skim(df)
+```
+
+```
+# Skim summary statistics
+#  n obs: 5 
+#  n variables: 2 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────
+#   variable missing complete n n_unique                    top_counts
+#      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
+#  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
+#  ordered
+#    FALSE
+#     TRUE
+```
+
+<div class="warning">
+<p>Les différents niveaux des variables <code>factor</code> ou <code>ordered</code> sont et doivent rester entièrement de votre responsabilité. Certains aspects anciens de R essayent de gérer cela pour vous, mais ces fonctions ou options (<code>StringsAsFactor =</code> par exemple) tendent heureusement à être remplacées par des versions moins assertives. De même, les niveaux ne sont <strong>pas</strong> réduits lorsque vous filtrez un tableau pour ne retenir que certains niveaux. Vous devez indiquer explicitement ensuite que vous voulez éliminer les niveaux vides du tableau avec la fonction <code>droplevels()</code>.</p>
+</div>
+
+Le jeu de données `iris` contient des données relatives à trois espèces différentes (`table()` permet de compter le nombre d'observations pour chaque niveau d'une variable qualitative `factor` ou `ordered`) :
+
+
+```r
+iris <- read("iris", package = "datasets", lang = "fr")
+table(iris$species)
+```
+
+```
+# 
+#     setosa versicolor  virginica 
+#         50         50         50
+```
+
+Si nous restreignons le tableau aux 20 premiers individus, cela donne :
+
+
+```r
+iris20 <- iris[1:20, ]
+table(iris20$species)
+```
+
+```
+# 
+#     setosa versicolor  virginica 
+#         20          0          0
+```
+
+Nous voyons que le tableau réduit `iris20` ne contient des données que d'une seule espèce. Pourtant `table()` continue de lister les autres niveaux de la variable. Les niveaux connus sont aussi imprimés avec `levels()` :
+
+
+```r
+levels(iris20$species)
+```
+
+```
+# [1] "setosa"     "versicolor" "virginica"
+```
+
+Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l'espèce *I. setosa*. Dans ce cas, `droplevels()` permettra de faire disparaitre les autres niveaux de la variable `species`.
+
+
+```r
+iris20$species <- droplevels(iris20$species)
+levels(iris20$species)
+```
+
+```
+# [1] "setosa"
+```
+
+```r
+table(iris20$species)
+```
+
+```
+# 
+# setosa 
+#     20
+```
 
 
 ## Remaniement des données
@@ -921,7 +1147,7 @@ knitr::kable(tooth_summary, digits = 2,
 
 
 
-Table: (\#tab:unnamed-chunk-44)Allongement des dents chez des cochons d'Inde recevant de l'acide ascorbique.
+Table: (\#tab:unnamed-chunk-52)Allongement des dents chez des cochons d'Inde recevant de l'acide ascorbique.
 
  moyenne   minimum   médiane   maximum
 --------  --------  --------  --------
@@ -943,7 +1169,7 @@ knitr::kable(tooth_summary2, digits = 2,
 
 
 
-Table: (\#tab:unnamed-chunk-45)Allongement des dents chez des cochons d'Inde en fonction du supplément jus d'orange (OJ) ou vitamine C (VC).
+Table: (\#tab:unnamed-chunk-53)Allongement des dents chez des cochons d'Inde en fonction du supplément jus d'orange (OJ) ou vitamine C (VC).
 
 supp    moyenne   minimum   médiane   maximum
 -----  --------  --------  --------  --------
@@ -969,7 +1195,7 @@ knitr::kable(tooth_summary2, digits = 2,
 
 
 
-Table: (\#tab:unnamed-chunk-46)Allongement des dents chez des cochons d'Inde en fonction du supplément jus d'orange (OJ) ou vitamine C (VC).
+Table: (\#tab:unnamed-chunk-54)Allongement des dents chez des cochons d'Inde en fonction du supplément jus d'orange (OJ) ou vitamine C (VC).
 
 supp    moyenne   minimum   médiane   maximum    n
 -----  --------  --------  --------  --------  ---
@@ -1019,7 +1245,7 @@ knitr::kable(
 
 
 
-Table: (\#tab:unnamed-chunk-48)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
+Table: (\#tab:unnamed-chunk-56)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
 
 Genre    Moyenne   Médiane   Observations
 ------  --------  --------  -------------
@@ -1044,7 +1270,7 @@ knitr::kable(biometry_tab, rows = NULL, digits = 1,
 
 
 
-Table: (\#tab:unnamed-chunk-49)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
+Table: (\#tab:unnamed-chunk-57)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
 
 Genre    Moyenne   Médiane   Observations
 ------  --------  --------  -------------
@@ -1070,7 +1296,7 @@ biometry %>.%
 
 
 
-Table: (\#tab:unnamed-chunk-50)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
+Table: (\#tab:unnamed-chunk-58)IMC d'hommes (M) et femmes (W) de 25 ans maximum.
 
 Genre    Moyenne   Médiane   Observations
 ------  --------  --------  -------------
@@ -1093,7 +1319,7 @@ Maintenant que vous venez d'apprendre à importer correctement vos données, à 
 Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md` de ce dépôt GitHub Classroom.</div>\EndKnitrBlock{bdd}
 
 
-Terminez ce module en vérifiant que vous avez acquis les notions minimales de ce dernier. 
+Terminez ce module en vérifiant que vous en avez acquis les notions principales. 
 
 \BeginKnitrBlock{bdd}<div class="bdd">
 Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
@@ -1101,7 +1327,8 @@ Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante da
     BioDataScience::run("05a_test")
 </div>\EndKnitrBlock{bdd}
 
-Trois challenges vous sont proposés afin d'améliorer vos compétences en lien avec module. Ces derniers sont disponibles sur Moodle. 
+Des challenges vous sont proposés afin d'améliorer vos compétences en remaniement de données. Ces derniers sont [disponibles ici](https://github.com/BioDataScience-Course/sdd_lesson/tree/master/sdd1_05/exercises). 
+
 
 ##### Pour en savoir plus {-}
 

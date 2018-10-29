@@ -4,7 +4,7 @@
 
 ##### Objectifs {-}
 
-- Appréhender le découpage en classe d'une variable numérique, afin de la transformer en une variable facteur 
+- Comprendre les principaux tableaux de données utilisés en data science
 
 - Savoir réaliser des tableaux de contingences
 
@@ -14,40 +14,6 @@
 ##### Prérequis {-}
 
 Ce module est la continuation du module \@ref(import) dont le contenu doit être bien compris et maîtrisé avant de poursuivre ici.
-
-
-## Découpage en classe
-
-Vous avez déjà utilisé de manière implicite le découpage en classes lorsque vous avez réalisé des histogrammes. Cette technique peut être utilisée également dans la phase de recodage des variables afin de créer des sous-groupes à partir de variables quantitatives. Si les histogrammes sont bi- ou multimodaux, un découpage se justifie. Par exemple, le jeu de données portant sur la biométrie humaine est typique d'un cas de distribution bimodale. En fait, ce sont des étudiants (ayant tous une vingtaine d'années) qui ont réalisé ces mesures. La plupart ont choisi de s'inclure dans l'échantillon, d'où un premier mode vers une vingtaine d'années. Ensuite, ils ont pu mesurer d'autres personnes, éventuellement dans leur entourage. Beaucoup ont demandé à leurs parents, ce qui résulte en un second mode vers la cinquantaine^[Notez que ceci ne constitue **pas** un échantillonnage correct par rapport à la population générale du Hainaut pour plusieurs raisons. (1) toutes les tranches d'âges ne sont échantillonnées de manière équivalente pour les raisons évoquées, (2) des liens génétiques existent au sein des familles, ce qui résulte en une **non indépendance** des observations entre elles, et (3) seule une sous-population constituée de personnes fréquentant l'université et de leur entourage a été échantillonnée. Cependant, dans le cadre de l'exercice, nous accepterons ces biais, tout en étant conscients qu'ils existent.]. Donc, la distribution bimodale résulte plus de l'échantillonnage en lui-même que d'une réalité démographique ! Cela ne change cependant rien pour l'exercice.
-
-
-```r
-biometry <- read("biometry", package = "BioDataScience", lang = "fr")
-chart(data = biometry, ~ age) +
-  geom_histogram(bins = 20) +
-  ylab("Effectifs")
-```
-
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-1-1.svg" width="672" style="display: block; margin: auto;" />
-
-Les **addins** de RStudio vont vous permettre de réaliser facilement un découpage du jeu de données en fonction de classes d'âges (bouton `Addins -> QUESTIONR -> Numeric range dividing`).
-
-![](images/sdd1_06/addins_cut.gif)
-
-Vous spécifiez le découpage voulu dans une boite de dialogue sur base de l'histogramme et lorsque vous cliquez sur le bouton `Done`, le code R qui effectue ce découpage est inséré dans l'éditeur RStudio à l'endroit du curseur. la nouvelle variable facteur `age_rec` basée sur le découpage en classes va être utile pour faire ressortir ensuite de l'information supplémentaire en contrastant les individus plus jeunes et ceux plus âgés.
-
-
-```r
-# Instructions obtenues à partir de l'addins
-biometry$age_rec <- cut(biometry$age, include.lowest = FALSE, right = TRUE,
-  breaks = c(14, 27, 90))
-# Visualisation de la variable facteur obtenue
-chart(biometry, formula = ~ age %fill=% age_rec) +
-  geom_histogram(bins = 20) +
-  ylab("Effectifs")
-```
-
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-2-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ## Tableaux de données
@@ -67,19 +33,20 @@ Les tableaux de données que vous avez traités jusqu'à présent étaient tous 
 
 
 ```r
+biometry <- read("biometry", package = "BioDataScience", lang = "fr")
 head(biometry)
 ```
 
 ```
-# # A tibble: 6 x 8
-#   gender day_birth  weight height wrist year_measure   age age_rec
-#   <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl> <fct>  
-# 1 M      1995-03-11     69    182  15           2013    18 (14,27]
-# 2 M      1998-04-03     74    190  16           2013    15 (14,27]
-# 3 M      1967-04-04     83    185  17.5         2013    46 (27,90]
-# 4 M      1994-02-10     60    175  15           2013    19 (14,27]
-# 5 W      1990-12-02     48    167  14           2013    23 (14,27]
-# 6 W      1994-07-15     52    179  14           2013    19 (14,27]
+# # A tibble: 6 x 7
+#   gender day_birth  weight height wrist year_measure   age
+#   <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
+# 1 M      1995-03-11     69    182  15           2013    18
+# 2 M      1998-04-03     74    190  16           2013    15
+# 3 M      1967-04-04     83    185  17.5         2013    46
+# 4 M      1994-02-10     60    175  15           2013    19
+# 5 W      1990-12-02     48    167  14           2013    23
+# 6 W      1994-07-15     52    179  14           2013    19
 ```
 
 L'encodage d'un petit tableau cas par variables directement dans R est facile. Cela peut se faire de plusieurs façons différentes. En voici deux utilisant les fonctions `tibble()` (spécification colonne par colonne, utilisez le snippet `.dmtibble` pour vous aider) et `tribble()` (spécification ligne par ligne, utilisez le snippet `.dmtribble`) :
@@ -163,6 +130,8 @@ C'est le dénombrement de l'occurence de chaque niveau d'une (tableau à une ent
 
 
 ```r
+biometry$age_rec <- cut(biometry$age, include.lowest = FALSE, right = TRUE,
+  breaks = c(14, 27, 90))
 (bio_tab <- table(biometry$gender, biometry$age_rec))
 ```
 
@@ -238,7 +207,7 @@ knitr::kable(timolol_table,
 
 
 
-Table: (\#tab:unnamed-chunk-13)Exemple de table de contingence à double entrée.
+Table: (\#tab:unnamed-chunk-11)Exemple de table de contingence à double entrée.
 
           placebo   timolol
 -------  --------  --------
@@ -255,7 +224,7 @@ tab2 <- ggpubr::ggtexttable(table(biometry$gender, biometry$age_rec))
 combine_charts(list(tab1, tab2), nrow = 2)
 ```
 
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-14-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ### Métadonnées
