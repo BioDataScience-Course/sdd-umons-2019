@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-10-30">
+<meta name="date" content="2018-11-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,12 +47,19 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -135,7 +142,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#echelles-dun-graphiques"><i class="fa fa-check"></i><b>2.1.2</b> Echelles d’un graphiques</a></li>
 <li class="chapter" data-level="2.1.3" data-path="nuage-de-points.html"><a href="nuage-de-points.html#transformation-des-donnees"><i class="fa fa-check"></i><b>2.1.3</b> Transformation des données</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Graphiques dans R Markdown</a></li>
+<li class="chapter" data-level="2.2" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Graphiques dans R Markdown</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html#r-markdown-en-video"><i class="fa fa-check"></i><b>2.2.1</b> R Markdown en vidéo</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="visu2.html"><a href="visu2.html"><i class="fa fa-check"></i><b>3</b> Visualisation II</a><ul>
 <li class="chapter" data-level="3.1" data-path="histogramme.html"><a href="histogramme.html"><i class="fa fa-check"></i><b>3.1</b> Histogramme</a><ul>
@@ -195,9 +204,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="6.1.2" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableaux-de-contingence"><i class="fa fa-check"></i><b>6.1.2</b> Tableaux de contingence</a></li>
 <li class="chapter" data-level="6.1.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.1.3</b> Métadonnées</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.2</b> Acquisition de données</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitude"><i class="fa fa-check"></i><b>6.2.1</b> Précision et exactitude</a></li>
-<li class="chapter" data-level="6.2.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.2.2</b> Codification des données</a></li>
+<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a></li>
+<li class="chapter" data-level="6.3" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitude"><i class="fa fa-check"></i><b>6.3.1</b> Précision et exactitude</a></li>
+<li class="chapter" data-level="6.3.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.3.2</b> Codification des données</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a><ul>
@@ -291,7 +301,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="prerequis" class="section level5 unnumbered">
 <h5>Prérequis</h5>
 <p>Si ce n’est déjà fait, vous devez installer et vous familiariser avec la ‘SciViews Box’, RStudio, Markdown. Vous devez aussi maîtriser les bases de Git et de GitHub (avoir un compte GitHub, savoir clôner un dépôt localement, travailler avec GitHub Desktop pour faire ses “commits”, “push” et “pull”). L’ensemble de ces outils a été abordé lors de la création de votre site personnel professionnel du module <a href="intro.html#intro">1</a>.</p>
-<p>Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels<a href="references.html#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+<p>Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
 
 <div class="bdd">
 <p>Démarrez la SciViews Box et RStudio. Dans la fenêtre <strong>Console</strong> de RStudio, entrez l’instruction suivante suivie de la touche <code>Entrée</code> pour ouvrir le tutoriel concernant les bases de R :</p>
@@ -314,8 +324,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p>Reportez-vous à l’Appendice <a href="learnr.html#learnr">C</a> pour apprendre à utiliser ces tutoriels.<a href="visu1.html#fnref2">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Reportez-vous à l’Appendice <a href="learnr.html#learnr">C</a> pour apprendre à utiliser ces tutoriels.<a href="visu1.html#fnref1">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

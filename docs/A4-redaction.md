@@ -43,7 +43,7 @@ xfun::session_info()
 ```
 R version 3.4.4 (2018-03-15)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS  10.14
+Running under: macOS  10.14.1
 
 Locale: en_US.UTF-8 / en_US.UTF-8 / en_US.UTF-8 / C / en_US.UTF-8 / en_US.UTF-8
 

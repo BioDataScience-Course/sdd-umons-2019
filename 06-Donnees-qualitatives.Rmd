@@ -159,6 +159,15 @@ Exemple de métadonnées :
 Vous avez pu vous aperçevoir que la fonction `read()` permet d'ajouter certaine métadonnées comme les unités aux variables d'un jeu de données. Cependant, il n’est pas toujours possible de rajouter les métadonnées dans un tableau sous forme électronique, mais il faut toujours les consigner dans un **cahier de laboratoire**, et ensuite les **retranscrire dans le rapport**.
 
 
+## Population et échantillonnage
+
+...
+
+```{r}
+DT::datatable(iris)
+```
+
+
 ## Acquisition de données
 
 Dans le module \@ref(import), vous avez pris connaissance des types de variable et venez d'apprendre comment encoder différents types de tableaux de données et de leurs associer les indispensables métadonnées. Cependant, la première étape avant d'acquérir des données est de planifier correctement son expérience. La Science des Données est intimement liée à la démarche scientifique et intervient dans toutes les étapes depuis la caractérisation de la question et le planning de l'expérience jusqu'à la diffusion des résultats. Plus en détails, cela correspond à :
@@ -166,7 +175,8 @@ Dans le module \@ref(import), vous avez pris connaissance des types de variable 
 - Définir une question (objectif)
 - Réaliser une recherche bibliographique sur la thématique
 - Définir le protocole de l'expérience à partir de l'objectif
-    + Définir les variables à mesurées 
+    + Définir la population étudiée et l'échantillonnage
+    + Définir les variables à mesurer 
         + Définir les unité des mesures
         + Définir la précision des mesures 
         + Définir les instruments de mesure nécessaires 

@@ -209,7 +209,14 @@ Un fichier R Markdown est un fichier avec une extension `.Rmd`. Il permet de com
 
 ![](images/annexe_a2/rmd.gif)
 
-Des explications détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R Markdown. De plus, l'écriture d'un rapport d'analyse scientifique doit respecter certaines conventions. Vous trouverez des explications à ce sujet dans l'annexe \@ref(redaction-scientifique).
+
+### R Markdown en vidéo
+
+La vidéo ci-dessous vous montre ce qu'est R Markdown, un format hybride entre Markdown et R bien pratique pour inclure vos graphiques directement dans un rapport.
+
+<!--html_preserve--><iframe src="https://www.youtube.com/embed/NDuHBMh690I" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
+
+Des explications plus détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R Markdown. De plus, l'écriture d'un rapport d'analyse scientifique doit respecter certaines conventions. Vous trouverez des explications à ce sujet dans l'annexe \@ref(redaction-scientifique).
 
 
 ##### Pour en savoir plus {-}
