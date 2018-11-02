@@ -6,32 +6,228 @@ On part du paradoxe bayésien (effet d’un test de dépistage en fonction de la
 
 - Espérance et probabilité dans le contexte des jeux de hasard [vidéo](https://www.youtube.com/watch?v=5TtwG_LR0iY)
 
-
 ##### Objectifs {-}
 
-- Appréhender le calculsde probabilités 
+- Appréhender le calculs de probabilités 
 
 - Appréhender les principales lois de distributions et leurs utilisations pratiques 
 
-
 ## Probabilités
 
-La notion de **probabilité** en statistique est intimement liée à la notion instinctive de hasard. Elle sous-entend qu’on ne peut prédire ce que le hasard va nous donner comme résultat... cependant, on peut prédire avec quelle fréquence un événement^[Un événement (event) est un fait qui se produit. Tout ce que l’on observe dans le monde qui nous entoure est donc qualifié d’événement en statistique.] pourrait se produire.
+Partez d'un test de dépistage d'une maladie qui touche 8% de la population dont le test mis en place détecte 95% des malades. Cependant, le test se trompe dans 10% des cas et détecte un patient sain comme atteint de la maladie.
 
-Quel est la probabilité de 
+Vous pouvez dès lors calculer la probabilité que le test soit positif
 
-La probabilité d’un événement est une valeur numérique comprise entre zéro et un qui exprime avec quelle fréquence cet événement peut se produire.
+
+```r
+# personne malade et détectée
+0.08*0.95 
+```
+
+```
+# [1] 0.076
+```
+
+```r
+# personne saine et détectée
+0.92*0.10
+```
+
+```
+# [1] 0.092
+```
+
+```r
+# La probabilité que le test soit positif est donc 
+0.08*0.95 + 0.92*0.10
+```
+
+```
+# [1] 0.168
+```
+
+Vous pouvez également déterminer la probabilité d'avoir :
+
+- des faux positifs
+
+
+```r
+0.92*0.10
+```
+
+```
+# [1] 0.092
+```
+
+- des faux négatifs
+
+
+```r
+0.08*0.05
+```
+
+```
+# [1] 0.004
+```
+
+- des vrai négatifs
+
+
+```r
+0.92*0.9
+```
+
+```
+# [1] 0.828
+```
+
+- Des vrai positifs
+
+
+```r
+0.08*0.95
+```
+
+```
+# [1] 0.076
+```
+
+
+Est ce que ce test de dépistage vous semble intéressant ? 
+
+Partez maintenant du principe que la maladie n'affecte que 0.8% de la population. Le test détecte toujours 95% des patients malades et détecte 10% de patients sains.
+
+Que pensez vous maintenant du test de dépistage ? alors que la maladie est plus rare ? 
+
+Vous pouvez calculer à nouveau la probabilité que le test soit positif
+
+
+```r
+# personne malade et détectée
+0.008*0.95 
+```
+
+```
+# [1] 0.0076
+```
+
+```r
+# personne saine et détectée
+0.992*0.10
+```
+
+```
+# [1] 0.0992
+```
+
+```r
+# La probabilité que le test soit positif est donc 
+0.008*0.95 + 0.992*0.10
+```
+
+```
+# [1] 0.1068
+```
+
+Vous pouvez également déterminer la probabilité d'avoir :
+
+- des faux positifs
+
+
+```r
+0.992*0.10
+```
+
+```
+# [1] 0.0992
+```
+
+- des faux négatifs
+
+
+```r
+0.008*0.05
+```
+
+```
+# [1] 4e-04
+```
+
+- des vrai négatifs
+
+
+```r
+0.992*0.9
+```
+
+```
+# [1] 0.8928
+```
+
+- Des vrai positifs
+
+
+```r
+0.008*0.95
+```
+
+```
+# [1] 0.0076
+```
+
+Commençons par définir la notion de probabilité.
+
+- La notion de **probabilité** en statistique est intimement liée à la notion instinctive de hasard. Elle sous-entend qu’on ne peut prédire ce que le hasard va nous donner comme résultat... cependant, on peut prédire avec quelle fréquence un événement^[Un événement (event) est un fait qui se produit. Tout ce que l’on observe dans le monde qui nous entoure est donc qualifié d’événement en statistique.] pourrait se produire.
+
+- La probabilité d’un événement est une valeur numérique comprise entre zéro et un qui exprime avec quelle fréquence cet événement peut se produire.
 
 $$0 \leq P(E) \leq 1$$
-ou encore : 
 
-$$P(E) \ = \ \frac{nombre \ d \ ' occurence \ de \ E}{ nombre \ total \ d\ 'essais} $$
+Lors d'un examen écrit, un professeur décide de donner à ces étudiants des QCM. Chaque question comprend 4 possibilités et une seule réponse est correcte par question. UN étudiant qui n'a pas étudié décidé de passer l'examen et de tenter sa chance en sélectionnant des réponses au hasard. 
 
-On retrouve plusieurs types d'événements :
-- Événements disjoints : événements ne pouvant se produire simultanément. Ex. : succès versus échec d’un traitement, pile ou face pour une pièce de monnaie.
-- Événements successifs : événements issus d’actions séparées. Souvent successifs dans le temps (deux jets de la même pièce de monnaie, mais pas nécessairement : jet de deux pièces de monnaie simultanément).
-- Événements (successifs) indépendants : lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.
+- Quelle est la probabilité d'obtenir la bonne réponse à une question ? 
 
+
+```r
+1/4
+```
+
+```
+# [1] 0.25
+```
+
+nous parlerons dans ce cas d'un événements disjoints^[Evénements ne pouvant se produire simultanément. Ex. : succès versus échec d’un traitement, pile ou face pour une pièce de monnaie.]
+
+- Quelle est la probabilité d'obtenir 5 fois d'affilé la bonne réponse ?
+
+
+```r
+0.25 * 0.25 * 0.25 * 0.25 * 0.25
+```
+
+```
+# [1] 0.0009765625
+```
+
+```r
+# ou encore
+0.25^5
+```
+
+```
+# [1] 0.0009765625
+```
+nous parlerons dans ce cas d'un événements successifs^[Evénements issus d’actions séparées. Souvent successifs dans le temps (deux jets de la même pièce de monnaie, mais pas nécessairement : jet de deux pièces de monnaie simultanément)]  et plus précisément d'événements successifs indépendants^[lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.].
+
+Vous avez à votre disposition un élevage de drosophiles dont 30% sont claires et 70% sont noires. Quelles est la probabilités d'obtenir 2 mouches de suite de la même couleurs ?
+
+- 
 
 Une probabilité discrète (discrete probability) d’un seul événement E est la mesure de la fréquence d’occurrence de E. Elle se note P(E), P{E} ou Pr{E}
+
+Une probabilité conditionnelle
+
+Somme de probabilités discrètes
+
+Produit de probabilités
 
