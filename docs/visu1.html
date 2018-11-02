@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-01">
+<meta name="date" content="2018-11-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -209,6 +209,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="6.3.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitude"><i class="fa fa-check"></i><b>6.3.1</b> Précision et exactitude</a></li>
 <li class="chapter" data-level="6.3.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.3.2</b> Codification des données</a></li>
 </ul></li>
+<li class="chapter" data-level="6.4" data-path="recombinaison-de-tableaux.html"><a href="recombinaison-de-tableaux.html"><i class="fa fa-check"></i><b>6.4</b> Recombinaison de tableaux</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="recombinaison-de-tableaux.html"><a href="recombinaison-de-tableaux.html#gather-spread"><i class="fa fa-check"></i><b>6.4.1</b> <code>gather()</code> &amp; <code>spread()</code></a></li>
+<li class="chapter" data-level="6.4.2" data-path="recombinaison-de-tableaux.html"><a href="recombinaison-de-tableaux.html#separate-unite"><i class="fa fa-check"></i><b>6.4.2</b> <code>separate</code> &amp; <code>unite()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="multi-tableaux.html"><a href="multi-tableaux.html"><i class="fa fa-check"></i><b>6.5</b> Multi-tableaux</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a><ul>
 <li class="chapter" data-level="7.1" data-path="probabilites.html"><a href="probabilites.html"><i class="fa fa-check"></i><b>7.1</b> Probabilités</a></li>
@@ -301,7 +306,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="prerequis" class="section level5 unnumbered">
 <h5>Prérequis</h5>
 <p>Si ce n’est déjà fait, vous devez installer et vous familiariser avec la ‘SciViews Box’, RStudio, Markdown. Vous devez aussi maîtriser les bases de Git et de GitHub (avoir un compte GitHub, savoir clôner un dépôt localement, travailler avec GitHub Desktop pour faire ses “commits”, “push” et “pull”). L’ensemble de ces outils a été abordé lors de la création de votre site personnel professionnel du module <a href="intro.html#intro">1</a>.</p>
-<p>Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels<a href="references.html#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
 
 <div class="bdd">
 <p>Démarrez la SciViews Box et RStudio. Dans la fenêtre <strong>Console</strong> de RStudio, entrez l’instruction suivante suivie de la touche <code>Entrée</code> pour ouvrir le tutoriel concernant les bases de R :</p>
@@ -324,8 +329,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Reportez-vous à l’Appendice <a href="learnr.html#learnr">C</a> pour apprendre à utiliser ces tutoriels.<a href="visu1.html#fnref1">↩</a></p></li>
+<ol start="2">
+<li id="fn2"><p>Reportez-vous à l’Appendice <a href="learnr.html#learnr">C</a> pour apprendre à utiliser ces tutoriels.<a href="visu1.html#fnref2">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
