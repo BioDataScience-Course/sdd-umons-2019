@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-02">
+<meta name="date" content="2018-11-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="proba.html">
-<link rel="next" href="chi2.html">
+<link rel="next" href="lois-de-distributions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -217,6 +217,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a><ul>
 <li class="chapter" data-level="7.1" data-path="probabilites.html"><a href="probabilites.html"><i class="fa fa-check"></i><b>7.1</b> Probabilités</a></li>
+<li class="chapter" data-level="7.2" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html"><i class="fa fa-check"></i><b>7.2</b> Lois de distributions</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html#distribution-uniforme"><i class="fa fa-check"></i><b>7.2.1</b> Distribution uniforme</a></li>
+<li class="chapter" data-level="7.2.2" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html#distribution-binomiale"><i class="fa fa-check"></i><b>7.2.2</b> Distribution binomiale</a></li>
+<li class="chapter" data-level="7.2.3" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html#distribution-de-poisson"><i class="fa fa-check"></i><b>7.2.3</b> Distribution de poisson</a></li>
+<li class="chapter" data-level="7.2.4" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html#distribution-normale"><i class="fa fa-check"></i><b>7.2.4</b> Distribution normale</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
@@ -294,7 +300,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="probabilites" class="section level2">
 <h2><span class="header-section-number">7.1</span> Probabilités</h2>
 <p>Partez d’un test de dépistage d’une maladie qui touche 8% de la population dont le test mis en place détecte 95% des malades. Cependant, le test se trompe dans 10% des cas et détecte un patient sain comme atteint de la maladie.</p>
-<p>Vous pouvez dès lors calculer la probabilité que le test soit positif</p>
+<p>Vous pouvez dès lors calculer la probabilité que le test soit positif. Le test va donc detecter des personnes malades et des personnes saines</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># personne malade et détectée</span>
 <span class="fl">0.08</span><span class="op">*</span><span class="fl">0.95</span> </code></pre></div>
 <pre><code># [1] 0.076</code></pre>
@@ -316,12 +322,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.08</span><span class="op">*</span><span class="fl">0.05</span></code></pre></div>
 <pre><code># [1] 0.004</code></pre>
 <ul>
-<li>des vrai négatifs</li>
+<li>des vrais négatifs</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.92</span><span class="op">*</span><span class="fl">0.9</span></code></pre></div>
 <pre><code># [1] 0.828</code></pre>
 <ul>
-<li>Des vrai positifs</li>
+<li>Des vrais positifs</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.08</span><span class="op">*</span><span class="fl">0.95</span></code></pre></div>
 <pre><code># [1] 0.076</code></pre>
@@ -365,40 +371,99 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li><p>La probabilité d’un événement est une valeur numérique comprise entre zéro et un qui exprime avec quelle fréquence cet événement peut se produire.</p></li>
 </ul>
 <p><span class="math display">\[0 \leq P(E) \leq 1\]</span></p>
-<p>Lors d’un examen écrit, un professeur décide de donner à ces étudiants des QCM. Chaque question comprend 4 possibilités et une seule réponse est correcte par question. UN étudiant qui n’a pas étudié décidé de passer l’examen et de tenter sa chance en sélectionnant des réponses au hasard.</p>
+<p>Partons du dénombrement de fumeur en fonction du revenu des sondés.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabac &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Revenu_faible =</span> <span class="kw">c</span>(<span class="dv">634</span>,<span class="dv">1846</span>,<span class="dv">2480</span>),
+                        <span class="dt">Revenu_moyen =</span> <span class="kw">c</span>(<span class="dv">332</span>, <span class="dv">1622</span>,<span class="dv">1954</span>),
+                        <span class="dt">Revenu_eleve =</span> <span class="kw">c</span>(<span class="dv">247</span>,<span class="dv">1868</span>,<span class="dv">2115</span>),
+                        <span class="dt">Total =</span> <span class="kw">c</span>(<span class="dv">1213</span>, <span class="dv">5336</span>, <span class="dv">6549</span>))
+<span class="kw">rownames</span>(tabac) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="kw">c</span>(<span class="st">&quot;Fume&quot;</span>, <span class="st">&quot;Ne fume pas&quot;</span>,  <span class="st">&quot;Total&quot;</span>))
+knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Revenu_faible</th>
+<th align="right">Revenu_moyen</th>
+<th align="right">Revenu_eleve</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fume</td>
+<td align="right">634</td>
+<td align="right">332</td>
+<td align="right">247</td>
+<td align="right">1213</td>
+</tr>
+<tr class="even">
+<td>Ne fume pas</td>
+<td align="right">1846</td>
+<td align="right">1622</td>
+<td align="right">1868</td>
+<td align="right">5336</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td align="right">2480</td>
+<td align="right">1954</td>
+<td align="right">2115</td>
+<td align="right">6549</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>Quelle est la probabilité d’obtenir la bonne réponse à une question ?</li>
+<li>Quel est la probabilité d’être un fumeur ? Cette question peut s’écrire : P(fumeur).</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">/</span><span class="dv">4</span></code></pre></div>
-<pre><code># [1] 0.25</code></pre>
-<p>nous parlerons dans ce cas d’un événements disjoints<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span><span class="op">/</span><span class="dv">6549</span></code></pre></div>
+<pre><code># [1] 0.1852191</code></pre>
+<p>Il s’agit d’une probabilité discrète<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
 <ul>
-<li>Quelle est la probabilité d’obtenir 5 fois d’affilé la bonne réponse ?</li>
+<li>Quel est la probabilité d’être fumeur si le revenu élevé ? Cette question peut s’écrire : P(fumeur|revenu élevé).</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.25</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.25</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.25</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.25</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.25</span></code></pre></div>
-<pre><code># [1] 0.0009765625</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ou encore</span>
-<span class="fl">0.25</span><span class="op">^</span><span class="dv">5</span></code></pre></div>
-<pre><code># [1] 0.0009765625</code></pre>
-<p>nous parlerons dans ce cas d’un événements successifs<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> et plus précisément d’événements successifs indépendants<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>.</p>
-<p>Vous avez à votre disposition un élevage de drosophiles dont 30% sont claires et 70% sont noires. Quelles est la probabilités d’obtenir 2 mouches de suite de la même couleurs ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">247</span><span class="op">/</span><span class="dv">2115</span></code></pre></div>
+<pre><code># [1] 0.1167849</code></pre>
+<p>Il s’agit d’une probabilité conditionnelle<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a></p>
+<p>Quels est la probabilités d’avoir un revenu faible ou d’avoir un élevé ? Cette question peut s’écrire : P(revenu faible ou revenu élevé)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2480</span><span class="op">/</span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">2115</span><span class="op">/</span><span class="dv">6549</span></code></pre></div>
+<pre><code># [1] 0.7016338</code></pre>
+<p>Il s’agit d’une somme de probabilités discrètes disjoints<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></p>
 <ul>
-<li></li>
+<li>Quels est la probabilités d’être fumeur ou d’avoir un revenu moyen ? Cette question peut s’écrire : P(fumeur ou revenu moyen).</li>
 </ul>
-<p>Une probabilité discrète (discrete probability) d’un seul événement E est la mesure de la fréquence d’occurrence de E. Elle se note P(E), P{E} ou Pr{E}</p>
-<p>Une probabilité conditionnelle</p>
-<p>Somme de probabilités discrètes</p>
-<p>Produit de probabilités</p>
-
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span><span class="op">/</span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">1954</span><span class="op">/</span><span class="dv">6549</span> <span class="op">-</span><span class="st"> </span><span class="dv">332</span><span class="op">/</span><span class="dv">6549</span></code></pre></div>
+<pre><code># [1] 0.4328905</code></pre>
+<p>Il s’agit d’une somme de probabilités discrètes non disjoints<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></p>
+<p>Dans une population, voici les proportions de différents groupes sanguins : 44% O, 42% A, 10% B, 4% AB</p>
+<p>_ Quelles est la probabalité d’obtenir 1 individu du groupe B ? Cette question peut s’écrire : P(B).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span></code></pre></div>
+<pre><code># [1] 0.1</code></pre>
+<ul>
+<li>Quelles est la probabilité d’obtenir 3 individus du groupe B d’affilé ? Cette question peut s’écrire : P(B et B et B).</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span><span class="op">*</span><span class="fl">0.10</span><span class="op">*</span><span class="fl">0.10</span></code></pre></div>
+<pre><code># [1] 0.001</code></pre>
+<p>nous parlerons dans ce cas d’un événements successifs<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> et plus précisément d’événements successifs indépendants<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a>.</p>
+<p>Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques.</p>
+<ul>
+<li>Quelles est la probabilité d’obtenir 3 individus du groupe B d’affilé ? Cette question peut s’écrire : P(B et B et B).</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span><span class="op">/</span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">9</span><span class="op">/</span><span class="dv">99</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span><span class="op">/</span><span class="dv">98</span></code></pre></div>
+<pre><code># [1] 0.000742115</code></pre>
+<p>Il s’agit d’événement succéssifs non-indépendants.</p>
+<p>Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas (replicates), il est possible de déterminer à quelle fréquence un événement E se produit de manière expérimentale. La probabilité observée est quantifiable sur base d’un échantillon.</p>
+<p>La probabilité théorique est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.</p>
 </div>
-<!-- </div> -->
 <div class="footnotes">
 <hr />
 <ol start="1">
 <li id="fn1"><p>Un événement (event) est un fait qui se produit. Tout ce que l’on observe dans le monde qui nous entoure est donc qualifié d’événement en statistique.<a href="probabilites.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Evénements ne pouvant se produire simultanément. Ex. : succès versus échec d’un traitement, pile ou face pour une pièce de monnaie.<a href="probabilites.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Evénements issus d’actions séparées. Souvent successifs dans le temps (deux jets de la même pièce de monnaie, mais pas nécessairement : jet de deux pièces de monnaie simultanément)<a href="probabilites.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.<a href="probabilites.html#fnref4">↩</a></p></li>
+<li id="fn2"><p>Une probabilité discrète (discrete probability) d’un seul événement E est la mesure de la fréquence d’occurrence de E. Elle se note P(E)<a href="probabilites.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>une probabilité conditionnelle (conditional probability) est la probabilité qu’un événement E2 se produise si et seulement si un premier événement E1 s’est produit (E1 et E2 sont deux événements successifs). La probabilité conditionnelle s’écrit P(E2|E1)<a href="probabilites.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>Si E1 et E2 sont deux événements disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2)<a href="probabilites.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>Si E1 et E2 sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2) − P(E1 et E2)<a href="probabilites.html#fnref5">↩</a></p></li>
+<li id="fn6"><p>Evénements issus d’actions séparées. Souvent successifs dans le temps<a href="probabilites.html#fnref6">↩</a></p></li>
+<li id="fn7"><p>lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.<a href="probabilites.html#fnref7">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -427,7 +492,7 @@ s.setAttribute('data-timestamp', +new Date());
         </div>
       </div>
 <a href="proba.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chi2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lois-de-distributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
