@@ -212,18 +212,29 @@ Un fichier R Markdown est un fichier avec une extension `.Rmd`. Il permet de com
 
 ### R Markdown en vidéo
 
-La vidéo ci-dessous vous montre ce qu'est R Markdown, un format hybride entre Markdown et R bien pratique pour inclure vos graphiques directement dans un rapport.
+La vidéo ci-dessous vous montre ce qu'est R Markdown, un format hybride entre Markdown et R bien pratique pour inclure vos graphiques directement dans un rapport. Elle vous montre aussi comment transformer un script R en document R Markdown (ou R Notebook, qui en est une variante).
 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/NDuHBMh690I" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
-Des explications plus détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R Markdown. De plus, l'écriture d'un rapport d'analyse scientifique doit respecter certaines conventions. Vous trouverez des explications à ce sujet dans l'annexe \@ref(redaction-scientifique).
+Les balises spéciales R Markdown à retenir sont les suivantes :
+
+- en entrée de chunk R : ```` ```{r} ```` seul sur une ligne. Il est aussi possible de rajouter un nom, par exemple, ```` ```{r graphique1} ```` et/ou des options, par exemple, ```` ```{r, echo=FALSE, results='hide'} ```` pour cacher et le code et le résultat dans le rapport),
+- en sortie de chunk R : ```` ``` ```` seul sur une ligne.
+
+Vous devez bien entendu avoir autant de balises d'entrée que de balises de sortie. Des explications plus détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée au R Markdown. De plus, l'écriture d'un rapport d'analyse scientifique doit respecter certaines conventions. Vous trouverez des explications à ce sujet dans l'annexe \@ref(redaction-scientifique).
+
+\BeginKnitrBlock{note}<div class="note">Vous ne devez bien évidemment pas commencer avec un script R. Vous pouvez commencer d'emblée avec un R Markdown/R Notebook et écrire vos instructions R directement dedans. Il vous est toujours possible d'exécuter ces instructions ligne après ligne dans la fenêtre **Console** pour les tester tout comme à partir d'un script R.</div>\EndKnitrBlock{note}
 
 
 ##### Pour en savoir plus {-}
 
+- [Communicating results with R Markdown](https://rviews.rstudio.com/2018/11/01/r-markdown-a-better-approach/) explique la même chose que dans la vidéo, avec plus de détails et des liens vers d'autres documents utiles (en anglais).
+
 - [What is R Markdown?](https://rmarkdown.rstudio.com/lesson-1.html). Vidéo en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).
 
 - [Introduction to R Markdown](https://rmarkdown.rstudio.com/articles_intro.html). Tutoriel en anglais, par RStudio.
+
+- [R Markdown : the definitive guide](https://bookdown.org/yihui/rmarkdown/) est **le** manuel par excellence pour R Markdown (en anglais uniquement, malheureusement).
 
 - Aide-mémoire R Markdown: dans les menus de RStudio : `Help -> Cheatsheets -> R Markdown Cheat Sheet`
 
@@ -235,15 +246,17 @@ Des explications plus détaillées se trouvent dans l'annexe \@ref(Rmd) dédiée
 
 - [Reproducible reports](https://rworkshop.uni.lu/lectures/lecture04_rmarkdown.html#1) with R Markdown. Une explication en anglais de la raison d'être de R Markdown.
 
+- [Why I love R Notebooks](https://rviews.rstudio.com/2017/03/15/why-i-love-r-notebooks/) explique (en anglais) pourquoi le format R Notebook est particulièrement bien adapté à la science des données.
+
 
 ##### A vous de jouer {-}
 
-- Utilisation de **R Notebook**, un type de document R Markdown flexible et particulièrement bien adapté pour construire de manière interactive son analyse en même temps que le rapport associé.
+- Vous allez maintenant manipuler un **R Notebook** pour construire de manière interactive une analyse en même temps que le rapport associé.
 
 \BeginKnitrBlock{bdd}<div class="bdd">
-Employez le projet `sdd1_urchin_bio` que vous avez obtenu via le lien GitHub Classroom dans la première partie de ce module. 
+Partez du projet `sdd1_urchin_bio` que vous avez obtenu via le lien GitHub Classroom dans la première partie de ce module. 
 
-Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier, bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres formes de visualisations graphiques.
+Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier, bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres formes de visualisation graphique.
 </div>\EndKnitrBlock{bdd}
 
 - Workflow "classique" en biologie (Microsoft Excel et Word) comparé à R et R Markdown.
