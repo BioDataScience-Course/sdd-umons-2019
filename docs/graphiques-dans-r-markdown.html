@@ -217,6 +217,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a><ul>
 <li class="chapter" data-level="7.1" data-path="probabilites.html"><a href="probabilites.html"><i class="fa fa-check"></i><b>7.1</b> Probabilités</a></li>
+<li class="chapter" data-level="7.2" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html"><i class="fa fa-check"></i><b>7.2</b> Lois de distributions</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html#distribution-uniforme"><i class="fa fa-check"></i><b>7.2.1</b> Distribution uniforme</a></li>
+<li class="chapter" data-level="7.2.2" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html#distribution-binomiale"><i class="fa fa-check"></i><b>7.2.2</b> Distribution binomiale</a></li>
+<li class="chapter" data-level="7.2.3" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html#distribution-de-poisson"><i class="fa fa-check"></i><b>7.2.3</b> Distribution de poisson</a></li>
+<li class="chapter" data-level="7.2.4" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html#distribution-normale"><i class="fa fa-check"></i><b>7.2.4</b> Distribution normale</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
@@ -300,30 +306,43 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div id="r-markdown-en-video" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> R Markdown en vidéo</h3>
-<p>La vidéo ci-dessous vous montre ce qu’est R Markdown, un format hybride entre Markdown et R bien pratique pour inclure vos graphiques directement dans un rapport.</p>
+<p>La vidéo ci-dessous vous montre ce qu’est R Markdown, un format hybride entre Markdown et R bien pratique pour inclure vos graphiques directement dans un rapport. Elle vous montre aussi comment transformer un script R en document R Markdown (ou R Notebook, qui en est une variante).</p>
 <iframe src="https://www.youtube.com/embed/NDuHBMh690I" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
-<p>Des explications plus détaillées se trouvent dans l’annexe <a href="rs.html#Rmd">B.1.3</a> dédiée au R Markdown. De plus, l’écriture d’un rapport d’analyse scientifique doit respecter certaines conventions. Vous trouverez des explications à ce sujet dans l’annexe <a href="redaction-scientifique.html#redaction-scientifique">D</a>.</p>
+<p>Les balises spéciales R Markdown à retenir sont les suivantes :</p>
+<ul>
+<li>en entrée de chunk R : <code>```{r}</code> seul sur une ligne. Il est aussi possible de rajouter un nom, par exemple, <code>```{r graphique1}</code> et/ou des options, par exemple, <code>```{r, echo=FALSE, results='hide'}</code> pour cacher et le code et le résultat dans le rapport),</li>
+<li>en sortie de chunk R : <code>```</code> seul sur une ligne.</li>
+</ul>
+<p>Vous devez bien entendu avoir autant de balises d’entrée que de balises de sortie. Des explications plus détaillées se trouvent dans l’annexe <a href="rs.html#Rmd">B.1.3</a> dédiée au R Markdown. De plus, l’écriture d’un rapport d’analyse scientifique doit respecter certaines conventions. Vous trouverez des explications à ce sujet dans l’annexe <a href="redaction-scientifique.html#redaction-scientifique">D</a>.</p>
+
+<div class="note">
+Vous ne devez bien évidemment pas commencer avec un script R. Vous pouvez commencer d’emblée avec un R Markdown/R Notebook et écrire vos instructions R directement dedans. Il vous est toujours possible d’exécuter ces instructions ligne après ligne dans la fenêtre <strong>Console</strong> pour les tester tout comme à partir d’un script R.
+</div>
+
 <div id="pour-en-savoir-plus-5" class="section level5 unnumbered">
 <h5>Pour en savoir plus</h5>
 <ul>
+<li><p><a href="https://rviews.rstudio.com/2018/11/01/r-markdown-a-better-approach/">Communicating results with R Markdown</a> explique la même chose que dans la vidéo, avec plus de détails et des liens vers d’autres documents utiles (en anglais).</p></li>
 <li><p><a href="https://rmarkdown.rstudio.com/lesson-1.html">What is R Markdown?</a>. Vidéo en anglais + site présentant les différentes possibilités, par les concepteurs de R Markdown (RStudio).</p></li>
 <li><p><a href="https://rmarkdown.rstudio.com/articles_intro.html">Introduction to R Markdown</a>. Tutoriel en anglais, par RStudio.</p></li>
+<li><p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown : the definitive guide</a> est <strong>le</strong> manuel par excellence pour R Markdown (en anglais uniquement, malheureusement).</p></li>
 <li><p>Aide-mémoire R Markdown: dans les menus de RStudio : <code>Help -&gt; Cheatsheets -&gt; R Markdown Cheat Sheet</code></p></li>
 <li><p>Référence rapide à Markdown : dans les menus RStudio <code>Help -&gt; Markdown Quick Reference</code></p></li>
 <li><p><a href="https://rstudio-pubs-static.s3.amazonaws.com/32239_0956f02cef24443abd9525551368ef12.html#6">Introduction à R Markdown</a>. Présentation en français par Agrocampus Ouest - Rennes.</p></li>
 <li><p><a href="https://www.fun-mooc.fr/c4x/UPSUD/42001S02/asset/RMarkdown.pdf">Le langage R Markdown</a>. Introduction en français concise, mais relativement complète.</p></li>
 <li><p><a href="https://rworkshop.uni.lu/lectures/lecture04_rmarkdown.html#1">Reproducible reports</a> with R Markdown. Une explication en anglais de la raison d’être de R Markdown.</p></li>
+<li><p><a href="https://rviews.rstudio.com/2017/03/15/why-i-love-r-notebooks/">Why I love R Notebooks</a> explique (en anglais) pourquoi le format R Notebook est particulièrement bien adapté à la science des données.</p></li>
 </ul>
 </div>
 <div id="a-vous-de-jouer-3" class="section level5 unnumbered">
 <h5>A vous de jouer</h5>
 <ul>
-<li>Utilisation de <strong>R Notebook</strong>, un type de document R Markdown flexible et particulièrement bien adapté pour construire de manière interactive son analyse en même temps que le rapport associé.</li>
+<li>Vous allez maintenant manipuler un <strong>R Notebook</strong> pour construire de manière interactive une analyse en même temps que le rapport associé.</li>
 </ul>
 
 <div class="bdd">
-<p>Employez le projet <code>sdd1_urchin_bio</code> que vous avez obtenu via le lien GitHub Classroom dans la première partie de ce module.</p>
-<p>Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d’étudier, bien sûr, mais vous êtes aussi encouragés à expérimenter d’autres formes de visualisations graphiques.</p>
+<p>Partez du projet <code>sdd1_urchin_bio</code> que vous avez obtenu via le lien GitHub Classroom dans la première partie de ce module.</p>
+<p>Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d’étudier, bien sûr, mais vous êtes aussi encouragés à expérimenter d’autres formes de visualisation graphique.</p>
 </div>
 
 <ul>
