@@ -416,8 +416,8 @@ TODO: partie encore à écrire
 DT::datatable(iris)
 ```
 
-<!--html_preserve--><div id="htmlwidget-4c0a6d51a1cfad2fc4e0" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4c0a6d51a1cfad2fc4e0">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-7d337ac4be27e005de37" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7d337ac4be27e005de37">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 ## Acquisition de données
@@ -655,7 +655,7 @@ rmarkdown::paged_table(shotgun_wide2)
 
 Parfois, ce sont les variables qui sont encodées de manière inappropriée par rapport aux analyses que vous souhaitez faire. Les fonctions `separate` et `unite()` permettent de séparer une colonne en plusieurs, ou inversément.
 
-<div class="note">
+<div class="info">
 <p>L'aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf">Data Import</a> vous rappelle ces fonctions dans sa section <strong>Split Cells</strong>. Elles sont également décrites en détails dans <a href="https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting">R for Data Science</a>.</p>
 </div>
 
@@ -704,140 +704,178 @@ rmarkdown::paged_table(crabs)
 
 ## Traitements multi-tableaux
 
-Durant vos analyses, vous serez confronté à devoir gérer plusieurs tableaux que vous allez vouloir rassembler en un seul tableau.
+Durant vos analyses, vous serez confronté à devoir gérer plusieurs tableaux que vous allez vouloir rassembler en un seul. Selon le travail à réaliser, il s'agit de coller les tableaux l'un au dessus de l'autre, l'un à côté de l'autre, ou d'effectuer un travail de fusion plus complexe. Nous allons maintenant voir ces différents cas successivement.
 
-L'aide-mémoire [Data Import::CHEAT SHEET](https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf) est l'outil pour vous aider dans cette tache. Vous y trouverez des explications dans la section Combine Tables. 
+<div class="info">
+<p>L'aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf">Data Transformation</a> vous rappelle les différentes fonctions à utiliser dans sa section <strong>Combine Tables</strong>. Leur utilisation est également décrite en détails dans <a href="https://r4ds.had.co.nz/relational-data.html">R for Data Science</a>.</p>
+</div>
 
-Ces outils provenant du package **dplyr** sont décrits en détails dans ["R for Data Science"](https://r4ds.had.co.nz/relational-data.html). 
 
-Pour combiner deux tableaux de données par les lignes, la fonction la plus simple est `bind_rows()`.
+### Empilement de haut en bas
 
-Partons de données mesurée dans les mésoscosmes de notre laboratoire les différents paramètres suivants : 
-- la temperature, le ph, la salinté, l'oxygène dissous à l'aide d'instruments tels qu'un pHmètre, un conductimètre ou encore un oxymètre
-- la concentration en orthophosphate et en nitrate dissous  dans l'eau à l'aide d'un autoanalyseur employant la colorimétrie
+Pour empiler des tableaux l'un au dessus de l'autre, la fonction la plus simple est `bind_rows()`. Partons de données mesurée dans les mésoscosmes de notre laboratoire lors des travaux pratiques du cours d'océanographie générale. Les différentes variables mesurées sont les suivantes\ : 
 
-Ils ont obtenu 3 fichiers qu'ils ont du par la suite recombiner.
+- les données **physico-chimiques** : la température, le pH, la salinité, l'oxygène dissous à l'aide, respectivement, d'un pHmètre, d'un conductimètre et d'un oxymètre
+- la concentration en **nutriments** : orthophosphates (PO~4~^3-^) et nitrates (NO~3~^-^) dissous dans l'eau par analyse colorimétrique
 
-Le groupe A a encodé le tableau suivant : 
+Pour la première série de mesures, ils ont encodé deux fichiers qu'ils ont du par la suite rassembler. Le groupe 1 a encodé le tableau suivant : 
 
 
 ```r
-param_physico_A <- as_dataframe(tibble(sample = c("A0", "B0", "A0", "B0", "A0", 
-                                                "B0", "A0", "B0"), 
-                                     ph = c(7.94, 7.94, 7.94, 7.99, 7.94, 7.99,
-                                            7.94, 7.99),
-                                     salinity = c(34.0, 35.3, 33.9, 35.1, 34.0,
-                                                  35.2, 33.9, 35.1),
-                                     oxygen = c(7.98, 8.00, 7.98, 7.98, 7.99, 
-                                                7.86, 7.89, 7.98),
-                                     temperature = c(24.6, 24.4, 25.1, 24.7, 
-                                                     24.9, 24.7, 25.0, 24.6),
-                                     student = c("st1", "st1", "st2", "st2", 
-                                                 "st3", "st3", "st4", "st4" )
-                                     ))
-rmarkdown::paged_table(param_physico_A)
+physico1 <- as_dataframe(tibble(
+  sample      = c("A0", "B0", "A0", "B0", "A0", "B0", "A0", "B0"),
+  student     = c("st1", "st1", "st2", "st2", "st3", "st3", "st4", "st4" ),
+  ph          = c(7.94, 7.94, 7.94, 7.99, 7.94, 7.99, 7.94, 7.99),
+  salinity    = c(34.0, 35.3, 33.9, 35.1, 34.0, 35.2, 33.9, 35.1),
+  oxygen      = c(7.98, 8.00, 7.98, 7.98, 7.99, 7.86, 7.89, 7.98),
+  temperature = c(24.6, 24.4, 25.1, 24.7, 24.9, 24.7, 25.0, 24.6)
+  ))
+rmarkdown::paged_table(physico1)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"7.94","4":"34.0","5":"7.98","6":"24.6"},{"1":"B0","2":"st1","3":"7.94","4":"35.3","5":"8.00","6":"24.4"},{"1":"A0","2":"st2","3":"7.94","4":"33.9","5":"7.98","6":"25.1"},{"1":"B0","2":"st2","3":"7.99","4":"35.1","5":"7.98","6":"24.7"},{"1":"A0","2":"st3","3":"7.94","4":"34.0","5":"7.99","6":"24.9"},{"1":"B0","2":"st3","3":"7.99","4":"35.2","5":"7.86","6":"24.7"},{"1":"A0","2":"st4","3":"7.94","4":"33.9","5":"7.89","6":"25.0"},{"1":"B0","2":"st4","3":"7.99","4":"35.1","5":"7.98","6":"24.6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
-Le groupe B a encodé le tableau suivant :
+Le groupe 2 a encodé ce tableau :
 
 
 ```r
-param_physico_B <- as_dataframe(tibble(sample = c("A0", "B0", "A0", "B0"), 
-                                      ph = c(7.94, 7.99, 7.93, 7.99),
-                                      salinity = c(33.8, 35.0, 33.9, 35.1),
-                                      oxygen = c(7.96, 8.01, 7.90, 8.00),
-                                      temperature = c(25.0, 24.6, 24.0, 24.0),
-                                      student = c( "st5", "st5", "st6", "st6")
-                                      ))
-rmarkdown::paged_table(param_physico_A)
+physico2 <- as_dataframe(tibble(
+  sample      = c("A0", "B0", "A0", "B0"),
+  student     = c( "st5", "st5", "st6", "st6"),
+  ph          = c(7.94, 7.99, 7.93, 7.99),
+  salinity    = c(33.8, 35.0, 33.9, 35.1),
+  oxygen      = c(7.96, 8.01, 7.90, 8.00),
+  temperature = c(25.0, 24.6, 24.0, 24.0)
+  ))
+rmarkdown::paged_table(physico2)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st5","3":"7.94","4":"33.8","5":"7.96","6":"25.0"},{"1":"B0","2":"st5","3":"7.99","4":"35.0","5":"8.01","6":"24.6"},{"1":"A0","2":"st6","3":"7.93","4":"33.9","5":"7.90","6":"24.0"},{"1":"B0","2":"st6","3":"7.99","4":"35.1","5":"8.00","6":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
-
-La combinaison des deux tableaux de données se fait via la fonction bind_rows()
+L'empilement des deux tableaux de données en un seul se fait via la fonction `bind_rows()` lorsque les tableaux contiennent les mêmes variables présentées exactement dans le même ordre comme ici :
 
 
 ```r
-param_physico <- bind_rows(param_physico_A, param_physico_B)
-rmarkdown::paged_table(param_physico)
+physico <- bind_rows(physico1, physico2)
+rmarkdown::paged_table(physico)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4"},{"1":"A0","2":"7.94","3":"33.8","4":"7.96","5":"25.0","6":"st5"},{"1":"B0","2":"7.99","3":"35.0","4":"8.01","5":"24.6","6":"st5"},{"1":"A0","2":"7.93","3":"33.9","4":"7.90","5":"24.0","6":"st6"},{"1":"B0","2":"7.99","3":"35.1","4":"8.00","5":"24.0","6":"st6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"7.94","4":"34.0","5":"7.98","6":"24.6"},{"1":"B0","2":"st1","3":"7.94","4":"35.3","5":"8.00","6":"24.4"},{"1":"A0","2":"st2","3":"7.94","4":"33.9","5":"7.98","6":"25.1"},{"1":"B0","2":"st2","3":"7.99","4":"35.1","5":"7.98","6":"24.7"},{"1":"A0","2":"st3","3":"7.94","4":"34.0","5":"7.99","6":"24.9"},{"1":"B0","2":"st3","3":"7.99","4":"35.2","5":"7.86","6":"24.7"},{"1":"A0","2":"st4","3":"7.94","4":"33.9","5":"7.89","6":"25.0"},{"1":"B0","2":"st4","3":"7.99","4":"35.1","5":"7.98","6":"24.6"},{"1":"A0","2":"st5","3":"7.94","4":"33.8","5":"7.96","6":"25.0"},{"1":"B0","2":"st5","3":"7.99","4":"35.0","5":"8.01","6":"24.6"},{"1":"A0","2":"st6","3":"7.93","4":"33.9","5":"7.90","6":"24.0"},{"1":"B0","2":"st6","3":"7.99","4":"35.1","5":"8.00","6":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
-Les deux groupes ont également réalisés des prélèvements d'eau qui ont été dosé par colorimétrie avec un autoanalyseur. Les échantillons des deux groupes ont été analysé dans la même série.
+
+### Empilement de gauche à droite
+
+Pour combiner des tableaux de données par les colonnes, de gauche à droite, la fonction la plus simple à utiliser est `bind_cols()`. Les étudiants ont également réalisé des prélèvements d'eaux qui ont été dosés par colorimétrie avec un autoanalyseur. Les échantillons des deux groupes ont été analysés dans la même série par l'appareil, ce qui donne le tableau suivant pour les nutriments :
 
 
 ```r
-nutrient <- as_dataframe(tibble(sample = rep(c("A0", "B0"), times = 6),
-                                student = c("st4", "st4", "st6", "st6", 
-                                            "st5", "st5", "st2", "st2",
-                                            "st1", "st1", "st3", "st3"),
-                                po4_conc = c(2.445, 0.374, 2.446, 0.394, 2.433,
-                                             0.361, 2.441, 0.372, 2.438, 0.388,
-                                             2.445, 0.390),
-                                no3_conc = c(1.145, 0.104, 0.447, 0.066, 0.439,
-                                             0.093, 0.477, 0.167, 0.443, 0.593,
-                                             0.450, 0.125)
-                                     ))
-rmarkdown::paged_table(nutrient)
+nutrients <- as_dataframe(tibble(
+  sample  = rep(c("A0", "B0"), times = 6),
+  student = rep(c("st4", "st6", "st5", "st2", "st1", "st3"), each = 2),
+  po4     = c(2.445, 0.374, 2.446, 0.394, 2.433, 0.361,
+              2.441, 0.372, 2.438, 0.388, 2.445, 0.390),
+  no3     = c(1.145, 0.104, 0.447, 0.066, 0.439, 0.093,
+              0.477, 0.167, 0.443, 0.593, 0.450, 0.125)
+  ))
+rmarkdown::paged_table(nutrients)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4_conc"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3_conc"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st4","3":"2.445","4":"1.145"},{"1":"B0","2":"st4","3":"0.374","4":"0.104"},{"1":"A0","2":"st6","3":"2.446","4":"0.447"},{"1":"B0","2":"st6","3":"0.394","4":"0.066"},{"1":"A0","2":"st5","3":"2.433","4":"0.439"},{"1":"B0","2":"st5","3":"0.361","4":"0.093"},{"1":"A0","2":"st2","3":"2.441","4":"0.477"},{"1":"B0","2":"st2","3":"0.372","4":"0.167"},{"1":"A0","2":"st1","3":"2.438","4":"0.443"},{"1":"B0","2":"st1","3":"0.388","4":"0.593"},{"1":"A0","2":"st3","3":"2.445","4":"0.450"},{"1":"B0","2":"st3","3":"0.390","4":"0.125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st4","3":"2.445","4":"1.145"},{"1":"B0","2":"st4","3":"0.374","4":"0.104"},{"1":"A0","2":"st6","3":"2.446","4":"0.447"},{"1":"B0","2":"st6","3":"0.394","4":"0.066"},{"1":"A0","2":"st5","3":"2.433","4":"0.439"},{"1":"B0","2":"st5","3":"0.361","4":"0.093"},{"1":"A0","2":"st2","3":"2.441","4":"0.477"},{"1":"B0","2":"st2","3":"0.372","4":"0.167"},{"1":"A0","2":"st1","3":"2.438","4":"0.443"},{"1":"B0","2":"st1","3":"0.388","4":"0.593"},{"1":"A0","2":"st3","3":"2.445","4":"0.450"},{"1":"B0","2":"st3","3":"0.390","4":"0.125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
-Pour combiner deux tableaux de données par les colonnes, la fonction la plus simple est `bind_cols()`.
-
-Vous devez être très vigilant lors de l'utilisation de cette fonction car cette dernière combine vos tableaux sans s'assurer que vos lignes soient alignées convenablement. 
-
-
+Vous devez être très vigilant lors de l'utilisation de `bind_cols()` car cette dernière combine vos tableaux sans s'assurer que vos lignes soient alignées convenablement !
 
 
 ```r
-param <- bind_cols(param_physico, nutrient)
-# Visualisation du tableau de données
-rmarkdown::paged_table(param)
+oceano <- bind_cols(nutrients, physico)
+rmarkdown::paged_table(oceano)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]},{"label":["sample1"],"name":[7],"type":["chr"],"align":["left"]},{"label":["student1"],"name":[8],"type":["chr"],"align":["left"]},{"label":["po4_conc"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["no3_conc"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1","7":"A0","8":"st4","9":"2.445","10":"1.145"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1","7":"B0","8":"st4","9":"0.374","10":"0.104"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2","7":"A0","8":"st6","9":"2.446","10":"0.447"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2","7":"B0","8":"st6","9":"0.394","10":"0.066"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3","7":"A0","8":"st5","9":"2.433","10":"0.439"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3","7":"B0","8":"st5","9":"0.361","10":"0.093"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4","7":"A0","8":"st2","9":"2.441","10":"0.477"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4","7":"B0","8":"st2","9":"0.372","10":"0.167"},{"1":"A0","2":"7.94","3":"33.8","4":"7.96","5":"25.0","6":"st5","7":"A0","8":"st1","9":"2.438","10":"0.443"},{"1":"B0","2":"7.99","3":"35.0","4":"8.01","5":"24.6","6":"st5","7":"B0","8":"st1","9":"0.388","10":"0.593"},{"1":"A0","2":"7.93","3":"33.9","4":"7.90","5":"24.0","6":"st6","7":"A0","8":"st3","9":"2.445","10":"0.450"},{"1":"B0","2":"7.99","3":"35.1","4":"8.00","5":"24.0","6":"st6","7":"B0","8":"st3","9":"0.390","10":"0.125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sample1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["student1"],"name":[6],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st4","3":"2.445","4":"1.145","5":"A0","6":"st1","7":"7.94","8":"34.0","9":"7.98","10":"24.6"},{"1":"B0","2":"st4","3":"0.374","4":"0.104","5":"B0","6":"st1","7":"7.94","8":"35.3","9":"8.00","10":"24.4"},{"1":"A0","2":"st6","3":"2.446","4":"0.447","5":"A0","6":"st2","7":"7.94","8":"33.9","9":"7.98","10":"25.1"},{"1":"B0","2":"st6","3":"0.394","4":"0.066","5":"B0","6":"st2","7":"7.99","8":"35.1","9":"7.98","10":"24.7"},{"1":"A0","2":"st5","3":"2.433","4":"0.439","5":"A0","6":"st3","7":"7.94","8":"34.0","9":"7.99","10":"24.9"},{"1":"B0","2":"st5","3":"0.361","4":"0.093","5":"B0","6":"st3","7":"7.99","8":"35.2","9":"7.86","10":"24.7"},{"1":"A0","2":"st2","3":"2.441","4":"0.477","5":"A0","6":"st4","7":"7.94","8":"33.9","9":"7.89","10":"25.0"},{"1":"B0","2":"st2","3":"0.372","4":"0.167","5":"B0","6":"st4","7":"7.99","8":"35.1","9":"7.98","10":"24.6"},{"1":"A0","2":"st1","3":"2.438","4":"0.443","5":"A0","6":"st5","7":"7.94","8":"33.8","9":"7.96","10":"25.0"},{"1":"B0","2":"st1","3":"0.388","4":"0.593","5":"B0","6":"st5","7":"7.99","8":"35.0","9":"8.01","10":"24.6"},{"1":"A0","2":"st3","3":"2.445","4":"0.450","5":"A0","6":"st6","7":"7.93","8":"33.9","9":"7.90","10":"24.0"},{"1":"B0","2":"st3","3":"0.390","4":"0.125","5":"B0","6":"st6","7":"7.99","8":"35.1","9":"8.00","10":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
-Qu'observez vous ? 
+Qu'observez vous ?
 
-Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d'employer des fonctions comme left_joint() qui vont employer un ou plusieurs colonnes similaire sur les deux tableaux de donnée.
+Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d'employer des fonctions de fusion de tableaux plus complexes comme `left_joint()` (ci-dessous). Pour utiliser correctement `bind_cols()`, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant `arrange()` :
 
 
 ```r
-param <- left_join(param_physico, nutrient, by = c("student", "sample"))
-# Visualisation du tableau de données
-rmarkdown::paged_table(param)
+nutrients2 <- arrange(nutrients, student, sample)
+rmarkdown::paged_table(nutrients2)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]},{"label":["po4_conc"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["no3_conc"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1","7":"2.438","8":"0.443"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1","7":"0.388","8":"0.593"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2","7":"2.441","8":"0.477"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2","7":"0.372","8":"0.167"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3","7":"2.445","8":"0.450"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3","7":"0.390","8":"0.125"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4","7":"2.445","8":"1.145"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4","7":"0.374","8":"0.104"},{"1":"A0","2":"7.94","3":"33.8","4":"7.96","5":"25.0","6":"st5","7":"2.433","8":"0.439"},{"1":"B0","2":"7.99","3":"35.0","4":"8.01","5":"24.6","6":"st5","7":"0.361","8":"0.093"},{"1":"A0","2":"7.93","3":"33.9","4":"7.90","5":"24.0","6":"st6","7":"2.446","8":"0.447"},{"1":"B0","2":"7.99","3":"35.1","4":"8.00","5":"24.0","6":"st6","7":"0.394","8":"0.066"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"2.438","4":"0.443"},{"1":"B0","2":"st1","3":"0.388","4":"0.593"},{"1":"A0","2":"st2","3":"2.441","4":"0.477"},{"1":"B0","2":"st2","3":"0.372","4":"0.167"},{"1":"A0","2":"st3","3":"2.445","4":"0.450"},{"1":"B0","2":"st3","3":"0.390","4":"0.125"},{"1":"A0","2":"st4","3":"2.445","4":"1.145"},{"1":"B0","2":"st4","3":"0.374","4":"0.104"},{"1":"A0","2":"st5","3":"2.433","4":"0.439"},{"1":"B0","2":"st5","3":"0.361","4":"0.093"},{"1":"A0","2":"st6","3":"2.446","4":"0.447"},{"1":"B0","2":"st6","3":"0.394","4":"0.066"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+
+Le tableau `nutrients2` a maintenant les données présentées dnas le ma^me ordre (en lignes) que le tableau `physico`. Nous pouvons donc rassembler ces deux tableaux à l'aide de `bind_cols()` :
+
+
+```r
+oceano <- bind_cols(nutrients2, physico)
+rmarkdown::paged_table(oceano)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sample1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["student1"],"name":[6],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"2.438","4":"0.443","5":"A0","6":"st1","7":"7.94","8":"34.0","9":"7.98","10":"24.6"},{"1":"B0","2":"st1","3":"0.388","4":"0.593","5":"B0","6":"st1","7":"7.94","8":"35.3","9":"8.00","10":"24.4"},{"1":"A0","2":"st2","3":"2.441","4":"0.477","5":"A0","6":"st2","7":"7.94","8":"33.9","9":"7.98","10":"25.1"},{"1":"B0","2":"st2","3":"0.372","4":"0.167","5":"B0","6":"st2","7":"7.99","8":"35.1","9":"7.98","10":"24.7"},{"1":"A0","2":"st3","3":"2.445","4":"0.450","5":"A0","6":"st3","7":"7.94","8":"34.0","9":"7.99","10":"24.9"},{"1":"B0","2":"st3","3":"0.390","4":"0.125","5":"B0","6":"st3","7":"7.99","8":"35.2","9":"7.86","10":"24.7"},{"1":"A0","2":"st4","3":"2.445","4":"1.145","5":"A0","6":"st4","7":"7.94","8":"33.9","9":"7.89","10":"25.0"},{"1":"B0","2":"st4","3":"0.374","4":"0.104","5":"B0","6":"st4","7":"7.99","8":"35.1","9":"7.98","10":"24.6"},{"1":"A0","2":"st5","3":"2.433","4":"0.439","5":"A0","6":"st5","7":"7.94","8":"33.8","9":"7.96","10":"25.0"},{"1":"B0","2":"st5","3":"0.361","4":"0.093","5":"B0","6":"st5","7":"7.99","8":"35.0","9":"8.01","10":"24.6"},{"1":"A0","2":"st6","3":"2.446","4":"0.447","5":"A0","6":"st6","7":"7.93","8":"33.9","9":"7.90","10":"24.0"},{"1":"B0","2":"st6","3":"0.394","4":"0.066","5":"B0","6":"st6","7":"7.99","8":"35.1","9":"8.00","10":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+Après vérification de l'adéquation des lignes, nous n'aurons plus besoin des colonnes `sample1` et `student1`. La vérification automatique à l'aide de code R et l'élimination de ces variables du tableau `oceano` vous sont laissées comme exercices...
+
+
+### Fusion de tableaux
+
+La fusion fera intervenir une ou plusieurs colonnes communes des deux tableaux pour déterminer quelles lignes du premier correspondent aux lignes du second. Ainsi, la fusion des tableaux est assurée d'être réalisée correctement quel que soit l'odre des lignes dans les deux tableaux d'origine. Utilisons `left_join()` en joignant les lignes en fonction des valeurs de `student` et `sample` :
+
+
+
+```r
+oceano <- left_join(nutrients, physico, by = c("student", "sample"))
+rmarkdown::paged_table(oceano)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ph"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st4","3":"2.445","4":"1.145","5":"7.94","6":"33.9","7":"7.89","8":"25.0"},{"1":"B0","2":"st4","3":"0.374","4":"0.104","5":"7.99","6":"35.1","7":"7.98","8":"24.6"},{"1":"A0","2":"st6","3":"2.446","4":"0.447","5":"7.93","6":"33.9","7":"7.90","8":"24.0"},{"1":"B0","2":"st6","3":"0.394","4":"0.066","5":"7.99","6":"35.1","7":"8.00","8":"24.0"},{"1":"A0","2":"st5","3":"2.433","4":"0.439","5":"7.94","6":"33.8","7":"7.96","8":"25.0"},{"1":"B0","2":"st5","3":"0.361","4":"0.093","5":"7.99","6":"35.0","7":"8.01","8":"24.6"},{"1":"A0","2":"st2","3":"2.441","4":"0.477","5":"7.94","6":"33.9","7":"7.98","8":"25.1"},{"1":"B0","2":"st2","3":"0.372","4":"0.167","5":"7.99","6":"35.1","7":"7.98","8":"24.7"},{"1":"A0","2":"st1","3":"2.438","4":"0.443","5":"7.94","6":"34.0","7":"7.98","8":"24.6"},{"1":"B0","2":"st1","3":"0.388","4":"0.593","5":"7.94","6":"35.3","7":"8.00","8":"24.4"},{"1":"A0","2":"st3","3":"2.445","4":"0.450","5":"7.94","6":"34.0","7":"7.99","8":"24.9"},{"1":"B0","2":"st3","3":"0.390","4":"0.125","5":"7.99","6":"35.2","7":"7.86","8":"24.7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+Observez bien ce dernier tableau. L'ordre retenu est celui de `nutrients` (le premier), mais les données issues de `physico` ont été *retriées* avant d'être fusionnées pour que les données correspondent. Comparez au tableau `physico` d'origine réimprimé ci-dessous :
+
+
+```r
+rmarkdown::paged_table(physico)
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"7.94","4":"34.0","5":"7.98","6":"24.6"},{"1":"B0","2":"st1","3":"7.94","4":"35.3","5":"8.00","6":"24.4"},{"1":"A0","2":"st2","3":"7.94","4":"33.9","5":"7.98","6":"25.1"},{"1":"B0","2":"st2","3":"7.99","4":"35.1","5":"7.98","6":"24.7"},{"1":"A0","2":"st3","3":"7.94","4":"34.0","5":"7.99","6":"24.9"},{"1":"B0","2":"st3","3":"7.99","4":"35.2","5":"7.86","6":"24.7"},{"1":"A0","2":"st4","3":"7.94","4":"33.9","5":"7.89","6":"25.0"},{"1":"B0","2":"st4","3":"7.99","4":"35.1","5":"7.98","6":"24.6"},{"1":"A0","2":"st5","3":"7.94","4":"33.8","5":"7.96","6":"25.0"},{"1":"B0","2":"st5","3":"7.99","4":"35.0","5":"8.01","6":"24.6"},{"1":"A0","2":"st6","3":"7.93","4":"33.9","5":"7.90","6":"24.0"},{"1":"B0","2":"st6","3":"7.99","4":"35.1","5":"8.00","6":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
 
 ##### A vous de jouer {-}
 

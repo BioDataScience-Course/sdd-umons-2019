@@ -417,7 +417,7 @@ rmarkdown::paged_table(shotgun_wide2)
 
 Parfois, ce sont les variables qui sont encodées de manière inappropriée par rapport aux analyses que vous souhaitez faire. Les fonctions `separate` et `unite()` permettent de séparer une colonne en plusieurs, ou inversément.
 
-```{block, type='note'}
+```{block, type='info'}
 L'aide-mémoire [Data Import](https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf) vous rappelle ces fonctions dans sa section **Split Cells**. Elles sont également décrites en détails dans [R for Data Science](https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting).
 ```
 
@@ -445,98 +445,115 @@ rmarkdown::paged_table(crabs)
 
 ## Traitements multi-tableaux
 
-Durant vos analyses, vous serez confronté à devoir gérer plusieurs tableaux que vous allez vouloir rassembler en un seul tableau.
+Durant vos analyses, vous serez confronté à devoir gérer plusieurs tableaux que vous allez vouloir rassembler en un seul. Selon le travail à réaliser, il s'agit de coller les tableaux l'un au dessus de l'autre, l'un à côté de l'autre, ou d'effectuer un travail de fusion plus complexe. Nous allons maintenant voir ces différents cas successivement.
 
-L'aide-mémoire [Data Import::CHEAT SHEET](https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf) est l'outil pour vous aider dans cette tache. Vous y trouverez des explications dans la section Combine Tables. 
-
-Ces outils provenant du package **dplyr** sont décrits en détails dans ["R for Data Science"](https://r4ds.had.co.nz/relational-data.html). 
-
-Pour combiner deux tableaux de données par les lignes, la fonction la plus simple est `bind_rows()`.
-
-Partons de données mesurée dans les mésoscosmes de notre laboratoire les différents paramètres suivants : 
-- la temperature, le ph, la salinté, l'oxygène dissous à l'aide d'instruments tels qu'un pHmètre, un conductimètre ou encore un oxymètre
-- la concentration en orthophosphate et en nitrate dissous  dans l'eau à l'aide d'un autoanalyseur employant la colorimétrie
-
-Ils ont obtenu 3 fichiers qu'ils ont du par la suite recombiner.
-
-Le groupe A a encodé le tableau suivant : 
-
-```{r}
-param_physico_A <- as_dataframe(tibble(sample = c("A0", "B0", "A0", "B0", "A0", 
-                                                "B0", "A0", "B0"), 
-                                     ph = c(7.94, 7.94, 7.94, 7.99, 7.94, 7.99,
-                                            7.94, 7.99),
-                                     salinity = c(34.0, 35.3, 33.9, 35.1, 34.0,
-                                                  35.2, 33.9, 35.1),
-                                     oxygen = c(7.98, 8.00, 7.98, 7.98, 7.99, 
-                                                7.86, 7.89, 7.98),
-                                     temperature = c(24.6, 24.4, 25.1, 24.7, 
-                                                     24.9, 24.7, 25.0, 24.6),
-                                     student = c("st1", "st1", "st2", "st2", 
-                                                 "st3", "st3", "st4", "st4" )
-                                     ))
-rmarkdown::paged_table(param_physico_A)
-```
-
-Le groupe B a encodé le tableau suivant :
-
-```{r}
-param_physico_B <- as_dataframe(tibble(sample = c("A0", "B0", "A0", "B0"), 
-                                      ph = c(7.94, 7.99, 7.93, 7.99),
-                                      salinity = c(33.8, 35.0, 33.9, 35.1),
-                                      oxygen = c(7.96, 8.01, 7.90, 8.00),
-                                      temperature = c(25.0, 24.6, 24.0, 24.0),
-                                      student = c( "st5", "st5", "st6", "st6")
-                                      ))
-rmarkdown::paged_table(param_physico_A)
+```{block, type='info'}
+L'aide-mémoire [Data Transformation](https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf) vous rappelle les différentes fonctions à utiliser dans sa section **Combine Tables**. Leur utilisation est également décrite en détails dans [R for Data Science](https://r4ds.had.co.nz/relational-data.html). 
 ```
 
 
-La combinaison des deux tableaux de données se fait via la fonction bind_rows()
+### Empilement de haut en bas
+
+Pour empiler des tableaux l'un au dessus de l'autre, la fonction la plus simple est `bind_rows()`. Partons de données mesurée dans les mésoscosmes de notre laboratoire lors des travaux pratiques du cours d'océanographie générale. Les différentes variables mesurées sont les suivantes\ : 
+
+- les données **physico-chimiques** : la température, le pH, la salinité, l'oxygène dissous à l'aide, respectivement, d'un pHmètre, d'un conductimètre et d'un oxymètre
+- la concentration en **nutriments** : orthophosphates (PO~4~^3-^) et nitrates (NO~3~^-^) dissous dans l'eau par analyse colorimétrique
+
+Pour la première série de mesures, ils ont encodé deux fichiers qu'ils ont du par la suite rassembler. Le groupe 1 a encodé le tableau suivant : 
 
 ```{r}
-param_physico <- bind_rows(param_physico_A, param_physico_B)
-rmarkdown::paged_table(param_physico)
+physico1 <- as_dataframe(tibble(
+  sample      = c("A0", "B0", "A0", "B0", "A0", "B0", "A0", "B0"),
+  student     = c("st1", "st1", "st2", "st2", "st3", "st3", "st4", "st4" ),
+  ph          = c(7.94, 7.94, 7.94, 7.99, 7.94, 7.99, 7.94, 7.99),
+  salinity    = c(34.0, 35.3, 33.9, 35.1, 34.0, 35.2, 33.9, 35.1),
+  oxygen      = c(7.98, 8.00, 7.98, 7.98, 7.99, 7.86, 7.89, 7.98),
+  temperature = c(24.6, 24.4, 25.1, 24.7, 24.9, 24.7, 25.0, 24.6)
+  ))
+rmarkdown::paged_table(physico1)
 ```
 
-Les deux groupes ont également réalisés des prélèvements d'eau qui ont été dosé par colorimétrie avec un autoanalyseur. Les échantillons des deux groupes ont été analysé dans la même série.
+Le groupe 2 a encodé ce tableau :
 
 ```{r}
-nutrient <- as_dataframe(tibble(sample = rep(c("A0", "B0"), times = 6),
-                                student = c("st4", "st4", "st6", "st6", 
-                                            "st5", "st5", "st2", "st2",
-                                            "st1", "st1", "st3", "st3"),
-                                po4_conc = c(2.445, 0.374, 2.446, 0.394, 2.433,
-                                             0.361, 2.441, 0.372, 2.438, 0.388,
-                                             2.445, 0.390),
-                                no3_conc = c(1.145, 0.104, 0.447, 0.066, 0.439,
-                                             0.093, 0.477, 0.167, 0.443, 0.593,
-                                             0.450, 0.125)
-                                     ))
-rmarkdown::paged_table(nutrient)
+physico2 <- as_dataframe(tibble(
+  sample      = c("A0", "B0", "A0", "B0"),
+  student     = c( "st5", "st5", "st6", "st6"),
+  ph          = c(7.94, 7.99, 7.93, 7.99),
+  salinity    = c(33.8, 35.0, 33.9, 35.1),
+  oxygen      = c(7.96, 8.01, 7.90, 8.00),
+  temperature = c(25.0, 24.6, 24.0, 24.0)
+  ))
+rmarkdown::paged_table(physico2)
 ```
 
-Pour combiner deux tableaux de données par les colonnes, la fonction la plus simple est `bind_cols()`.
+L'empilement des deux tableaux de données en un seul se fait via la fonction `bind_rows()` lorsque les tableaux contiennent les mêmes variables présentées exactement dans le même ordre comme ici :
 
-Vous devez être très vigilant lors de l'utilisation de cette fonction car cette dernière combine vos tableaux sans s'assurer que vos lignes soient alignées convenablement. 
+```{r}
+physico <- bind_rows(physico1, physico2)
+rmarkdown::paged_table(physico)
+```
 
+
+### Empilement de gauche à droite
+
+Pour combiner des tableaux de données par les colonnes, de gauche à droite, la fonction la plus simple à utiliser est `bind_cols()`. Les étudiants ont également réalisé des prélèvements d'eaux qui ont été dosés par colorimétrie avec un autoanalyseur. Les échantillons des deux groupes ont été analysés dans la même série par l'appareil, ce qui donne le tableau suivant pour les nutriments :
+
+```{r}
+nutrients <- as_dataframe(tibble(
+  sample  = rep(c("A0", "B0"), times = 6),
+  student = rep(c("st4", "st6", "st5", "st2", "st1", "st3"), each = 2),
+  po4     = c(2.445, 0.374, 2.446, 0.394, 2.433, 0.361,
+              2.441, 0.372, 2.438, 0.388, 2.445, 0.390),
+  no3     = c(1.145, 0.104, 0.447, 0.066, 0.439, 0.093,
+              0.477, 0.167, 0.443, 0.593, 0.450, 0.125)
+  ))
+rmarkdown::paged_table(nutrients)
+```
+
+Vous devez être très vigilant lors de l'utilisation de `bind_cols()` car cette dernière combine vos tableaux sans s'assurer que vos lignes soient alignées convenablement !
+
+```{r}
+oceano <- bind_cols(nutrients, physico)
+rmarkdown::paged_table(oceano)
+```
+
+Qu'observez vous ?
+
+Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d'employer des fonctions de fusion de tableaux plus complexes comme `left_joint()` (ci-dessous). Pour utiliser correctement `bind_cols()`, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant `arrange()` :
+
+```{r}
+nutrients2 <- arrange(nutrients, student, sample)
+rmarkdown::paged_table(nutrients2)
+```
+
+Le tableau `nutrients2` a maintenant les données présentées dnas le ma^me ordre (en lignes) que le tableau `physico`. Nous pouvons donc rassembler ces deux tableaux à l'aide de `bind_cols()` :
+
+```{r}
+oceano <- bind_cols(nutrients2, physico)
+rmarkdown::paged_table(oceano)
+```
+
+Après vérification de l'adéquation des lignes, nous n'aurons plus besoin des colonnes `sample1` et `student1`. La vérification automatique à l'aide de code R et l'élimination de ces variables du tableau `oceano` vous sont laissées comme exercices...
+
+
+### Fusion de tableaux
+
+La fusion fera intervenir une ou plusieurs colonnes communes des deux tableaux pour déterminer quelles lignes du premier correspondent aux lignes du second. Ainsi, la fusion des tableaux est assurée d'être réalisée correctement quel que soit l'odre des lignes dans les deux tableaux d'origine. Utilisons `left_join()` en joignant les lignes en fonction des valeurs de `student` et `sample` :
 
 
 ```{r}
-param <- bind_cols(param_physico, nutrient)
-# Visualisation du tableau de données
-rmarkdown::paged_table(param)
+oceano <- left_join(nutrients, physico, by = c("student", "sample"))
+rmarkdown::paged_table(oceano)
 ```
 
-Qu'observez vous ? 
-
-Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d'employer des fonctions comme left_joint() qui vont employer un ou plusieurs colonnes similaire sur les deux tableaux de donnée.
+Observez bien ce dernier tableau. L'ordre retenu est celui de `nutrients` (le premier), mais les données issues de `physico` ont été *retriées* avant d'être fusionnées pour que les données correspondent. Comparez au tableau `physico` d'origine réimprimé ci-dessous :
 
 ```{r}
-param <- left_join(param_physico, nutrient, by = c("student", "sample"))
-# Visualisation du tableau de données
-rmarkdown::paged_table(param)
+rmarkdown::paged_table(physico)
 ```
+
+
 
 ##### A vous de jouer {-}
 
