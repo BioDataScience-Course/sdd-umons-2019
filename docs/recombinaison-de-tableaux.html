@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-03">
+<meta name="date" content="2018-11-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -331,7 +331,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(shot_gun1
 <p>Vous en conviendrez que le tableau nommé shot_gun1 est moins aisée à lire comparé à tableau shot_gun. Cependant, il permet de produire facilement des graphique.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(shot_gun1, <span class="dt">formula =</span> sequences <span class="op">~</span><span class="st"> </span>batch <span class="op">%fill=%</span><span class="st"> </span>kingdom) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre></div>
-<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>La fonction opposée à <code>gather()</code> est la fonction <code>spread()</code> qui permet de retourner vers le tableau d’origine.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shot_gun2 &lt;-<span class="st"> </span><span class="kw">spread</span>(shot_gun1, <span class="dt">key =</span> batch, <span class="dt">value =</span> sequences) 
 <span class="co"># visualisation du tableau de données </span>

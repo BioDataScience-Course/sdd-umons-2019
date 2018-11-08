@@ -424,8 +424,7 @@ factorial(1000)
 ```
 
 ```
-# Warning in factorial(1000): valeur d'argument hors intervalle dans
-# 'gammafn'
+# Warning in factorial(1000): value out of range in 'gammafn'
 ```
 
 ```
@@ -437,8 +436,7 @@ factorial(10000)
 ```
 
 ```
-# Warning in factorial(10000): valeur d'argument hors intervalle dans
-# 'gammafn'
+# Warning in factorial(10000): value out of range in 'gammafn'
 ```
 
 ```

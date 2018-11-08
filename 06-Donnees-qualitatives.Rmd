@@ -7,11 +7,13 @@ SciViews::R
 
 ##### Objectifs {-}
 
-- Comprendre les principaux tableaux de données utilisés en data science
+- Comprendre les principaux tableaux de données utilisés en science des données
 
 - Savoir réaliser des tableaux de contingences
 
-- Acquérir des données et les encoder correctement et de manière à ce que les analyses soient reproductibles 
+- Acquérir des données et les encoder correctement et de manière à ce que les analyses soient reproductibles
+
+- Etre capable de remanier des tableaux de données et de fusionner plusieurs tableaux
 
 
 ##### Prérequis {-}
@@ -28,11 +30,11 @@ Les tableaux de données sont principalement représentés sous deux formes : le
 
 Chaque individus est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de [tidy data](https://www.jstatsoft.org/article/view/v059i10).
 
-Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j'ai un seul et même individu représenté sur *chaque* ligne du tableau ? Si la réponse est non, le tableau de données n'est **pas** correctement encodé.
+Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j'ai un seul et même individu représenté sur *chaque* ligne du tableau\ ? Si la réponse est non, le tableau de données n'est **pas** correctement encodé.
 
 TODO : exemple et solution
 
-Les tableaux de données que vous avez traités jusqu'à présent étaient tous des tableaux cas par variables. Chaque ligne représentait un individu sur qui plusieurs variables (en colonnes) étaient mesurées.
+Les tableaux de données que vous avez traités jusqu'à présent étaient tous des tableaux **cas par variables**. Chaque ligne représentait un _individu_ sur qui une ou plusieurs _variables_ (en colonnes) étaient mesurées.
 
 ```{r}
 biometry <- read("biometry", package = "BioDataScience", lang = "fr")
@@ -83,7 +85,7 @@ Pour de plus gros tableaux, il vaut mieux utiliser un tableur tel que Excel ou L
 
 ### Tableaux de contingence
 
-C'est le dénombrement de l'occurence de chaque niveau d'une (tableau à une entrée) ou de deux variables **qualitatives** (tableau à double entrée). L fonction `table()` crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :
+C'est le dénombrement de l'occurence de chaque niveau d'une (tableau à une entrée) ou de deux variables **qualitatives** (tableau à double entrée). La fonction `table()` crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :
 
 ```{r}
 biometry$age_rec <- cut(biometry$age, include.lowest = FALSE, right = TRUE,
@@ -127,13 +129,25 @@ knitr::kable(timolol_table,
   caption = "Exemple de table de contingence à double entrée.")
 ```
 
-Il est même possible de représenter *graphiquement* un tableau de contingence pour l'inclure dans une figure composée, éventuellement en les mélangeant avec des graphiques^[Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme ... un tableau plutôt que comme une figure !].
+Il est même possible de représenter *graphiquement* un tableau de contingence pour l'inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques^[Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme ... un tableau plutôt que comme une figure !].
 
 ```{r}
 tab1 <- ggpubr::ggtexttable(head(biometry), rows = NULL)
 tab2 <- ggpubr::ggtexttable(table(biometry$gender, biometry$age_rec))
 
 combine_charts(list(tab1, tab2), nrow = 2)
+```
+
+Différentes fonctions dans R existent également pour convertir un tableau de contingence en tableau cas par variables (ou en tous cas, en un tableau similaire). Par exemple, `as_dataframe()` renvoie un tableau indiquant les fréquences d'occurences :
+
+```{r}
+(timolol2 <- as_dataframe(timolol_table, n = "freq"))
+```
+
+Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l'aide de la fonction `uncount()`^[Notez également que passer d'un tableau cas par variables à un tableau des fréquences d'occurences se fait à l'aide de `count()`.] :
+
+```{r}
+uncount(timolol2, freq)
 ```
 
 

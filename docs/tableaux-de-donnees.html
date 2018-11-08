@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-03">
+<meta name="date" content="2018-11-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -303,9 +303,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="tableaux-cas-par-variables" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Tableaux cas par variables</h3>
 <p>Chaque individus est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de <a href="https://www.jstatsoft.org/article/view/v059i10">tidy data</a>.</p>
-<p>Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j’ai un seul et même individu représenté sur <em>chaque</em> ligne du tableau ? Si la réponse est non, le tableau de données n’est <strong>pas</strong> correctement encodé.</p>
+<p>Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j’ai un seul et même individu représenté sur <em>chaque</em> ligne du tableau ? Si la réponse est non, le tableau de données n’est <strong>pas</strong> correctement encodé.</p>
 <p>TODO : exemple et solution</p>
-<p>Les tableaux de données que vous avez traités jusqu’à présent étaient tous des tableaux cas par variables. Chaque ligne représentait un individu sur qui plusieurs variables (en colonnes) étaient mesurées.</p>
+<p>Les tableaux de données que vous avez traités jusqu’à présent étaient tous des tableaux <strong>cas par variables</strong>. Chaque ligne représentait un <em>individu</em> sur qui une ou plusieurs <em>variables</em> (en colonnes) étaient mesurées.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
 <span class="kw">head</span>(biometry)</code></pre></div>
 <pre><code># # A tibble: 6 x 7
@@ -359,7 +359,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div id="tableaux-de-contingence" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Tableaux de contingence</h3>
-<p>C’est le dénombrement de l’occurence de chaque niveau d’une (tableau à une entrée) ou de deux variables <strong>qualitatives</strong> (tableau à double entrée). L fonction <code>table()</code> crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :</p>
+<p>C’est le dénombrement de l’occurence de chaque niveau d’une (tableau à une entrée) ou de deux variables <strong>qualitatives</strong> (tableau à double entrée). La fonction <code>table()</code> crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry<span class="op">$</span>age_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(biometry<span class="op">$</span>age, <span class="dt">include.lowest =</span> <span class="ot">FALSE</span>, <span class="dt">right =</span> <span class="ot">TRUE</span>,
   <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">27</span>, <span class="dv">90</span>))
 (bio_tab &lt;-<span class="st"> </span><span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))</code></pre></div>
@@ -443,12 +443,37 @@ timolol_table</code></pre></div>
 </tr>
 </tbody>
 </table>
-<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en les mélangeant avec des graphiques<a href="references.html#fn24" class="footnoteRef" id="fnref24"><sup>24</sup></a>.</p>
+<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab1 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">head</span>(biometry), <span class="dt">rows =</span> <span class="ot">NULL</span>)
 tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))
 
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(tab1, tab2), <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
 <p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Différentes fonctions dans R existent également pour convertir un tableau de contingence en tableau cas par variables (ou en tous cas, en un tableau similaire). Par exemple, <code>as_dataframe()</code> renvoie un tableau indiquant les fréquences d’occurences :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(timolol2 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(timolol_table, <span class="dt">n =</span> <span class="st">&quot;freq&quot;</span>))</code></pre></div>
+<pre><code># # A tibble: 4 x 3
+#   patient traitement  freq
+#   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;
+# 1 malade  placebo      128
+# 2 sain    placebo       19
+# 3 malade  timolol      116
+# 4 sain    timolol       44</code></pre>
+<p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">uncount</span>(timolol2, freq)</code></pre></div>
+<pre><code># # A tibble: 307 x 2
+#    patient traitement
+#    &lt;chr&gt;   &lt;chr&gt;     
+#  1 malade  placebo   
+#  2 malade  placebo   
+#  3 malade  placebo   
+#  4 malade  placebo   
+#  5 malade  placebo   
+#  6 malade  placebo   
+#  7 malade  placebo   
+#  8 malade  placebo   
+#  9 malade  placebo   
+# 10 malade  placebo   
+# # ... with 297 more rows</code></pre>
 </div>
 <div id="metadonnees" class="section level3">
 <h3><span class="header-section-number">6.1.3</span> Métadonnées</h3>
@@ -471,8 +496,9 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 </div>
 <div class="footnotes">
 <hr />
-<ol start="24">
-<li id="fn24"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref24">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref2">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
