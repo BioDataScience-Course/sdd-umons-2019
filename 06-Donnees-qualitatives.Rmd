@@ -452,7 +452,7 @@ L'aide-mémoire [Data Transformation](https://github.com/rstudio/cheatsheets/blo
 ```
 
 
-### Empilement de haut en bas
+### Empilement vers le bas
 
 Pour empiler des tableaux l'un au dessus de l'autre, la fonction la plus simple est `bind_rows()`. Partons de données mesurée dans les mésoscosmes de notre laboratoire lors des travaux pratiques du cours d'océanographie générale. Les différentes variables mesurées sont les suivantes\ : 
 
@@ -495,7 +495,7 @@ rmarkdown::paged_table(physico)
 ```
 
 
-### Empilement de gauche à droite
+### Empilement à droite
 
 Pour combiner des tableaux de données par les colonnes, de gauche à droite, la fonction la plus simple à utiliser est `bind_cols()`. Les étudiants ont également réalisé des prélèvements d'eaux qui ont été dosés par colorimétrie avec un autoanalyseur. Les échantillons des deux groupes ont été analysés dans la même série par l'appareil, ce qui donne le tableau suivant pour les nutriments :
 

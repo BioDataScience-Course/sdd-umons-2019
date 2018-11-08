@@ -215,8 +215,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="6.4.2" data-path="recombinaison-de-tableaux.html"><a href="recombinaison-de-tableaux.html#recombinaison-de-variables"><i class="fa fa-check"></i><b>6.4.2</b> Recombinaison de variables</a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="traitements-multi-tableaux.html"><a href="traitements-multi-tableaux.html"><i class="fa fa-check"></i><b>6.5</b> Traitements multi-tableaux</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="traitements-multi-tableaux.html"><a href="traitements-multi-tableaux.html#empilement-de-haut-en-bas"><i class="fa fa-check"></i><b>6.5.1</b> Empilement de haut en bas</a></li>
-<li class="chapter" data-level="6.5.2" data-path="traitements-multi-tableaux.html"><a href="traitements-multi-tableaux.html#empilement-de-gauche-a-droite"><i class="fa fa-check"></i><b>6.5.2</b> Empilement de gauche à droite</a></li>
+<li class="chapter" data-level="6.5.1" data-path="traitements-multi-tableaux.html"><a href="traitements-multi-tableaux.html#empilement-vers-le-bas"><i class="fa fa-check"></i><b>6.5.1</b> Empilement vers le bas</a></li>
+<li class="chapter" data-level="6.5.2" data-path="traitements-multi-tableaux.html"><a href="traitements-multi-tableaux.html#empilement-a-droite"><i class="fa fa-check"></i><b>6.5.2</b> Empilement à droite</a></li>
 <li class="chapter" data-level="6.5.3" data-path="traitements-multi-tableaux.html"><a href="traitements-multi-tableaux.html#fusion-de-tableaux"><i class="fa fa-check"></i><b>6.5.3</b> Fusion de tableaux</a></li>
 </ul></li>
 </ul></li>
@@ -310,8 +310,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 L’aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf">Data Transformation</a> vous rappelle les différentes fonctions à utiliser dans sa section <strong>Combine Tables</strong>. Leur utilisation est également décrite en détails dans <a href="https://r4ds.had.co.nz/relational-data.html">R for Data Science</a>.
 </p>
 </div>
-<div id="empilement-de-haut-en-bas" class="section level3">
-<h3><span class="header-section-number">6.5.1</span> Empilement de haut en bas</h3>
+<div id="empilement-vers-le-bas" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> Empilement vers le bas</h3>
 <p>Pour empiler des tableaux l’un au dessus de l’autre, la fonction la plus simple est <code>bind_rows()</code>. Partons de données mesurée dans les mésoscosmes de notre laboratoire lors des travaux pratiques du cours d’océanographie générale. Les différentes variables mesurées sont les suivantes :</p>
 <ul>
 <li>les données <strong>physico-chimiques</strong> : la température, le pH, la salinité, l’oxygène dissous à l’aide, respectivement, d’un pHmètre, d’un conductimètre et d’un oxymètre</li>
@@ -356,8 +356,8 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico)<
   </script>
 </div>
 </div>
-<div id="empilement-de-gauche-a-droite" class="section level3">
-<h3><span class="header-section-number">6.5.2</span> Empilement de gauche à droite</h3>
+<div id="empilement-a-droite" class="section level3">
+<h3><span class="header-section-number">6.5.2</span> Empilement à droite</h3>
 <p>Pour combiner des tableaux de données par les colonnes, de gauche à droite, la fonction la plus simple à utiliser est <code>bind_cols()</code>. Les étudiants ont également réalisé des prélèvements d’eaux qui ont été dosés par colorimétrie avec un autoanalyseur. Les échantillons des deux groupes ont été analysés dans la même série par l’appareil, ce qui donne le tableau suivant pour les nutriments :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nutrients &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(
   <span class="dt">sample  =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>), <span class="dt">times =</span> <span class="dv">6</span>),
