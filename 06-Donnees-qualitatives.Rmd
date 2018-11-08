@@ -330,6 +330,8 @@ Votre objectif est d'acquérir des données pour étudier la prévalence de l'ob
 
 ### Formats long et large
 
+![`gather()` versus `spread() par [gadenbuie](https://github.com/gadenbuie/tidyexplain/blob/master/images/tidyr-spread-gather.gif).](images/sdd1_06/tidyr-spread-gather.gif)
+
 Le **format long** d'un tableau de données correspond à un encodage en un minimum de colonnes, les données étant réparties sur un plus grand nombre de lignes en comparaison du **format large** qui regroupe les données dans plusieurs colonnes successives. Voici un exemple fictif d'un jeu de données au fomat long :
 
 ```{r, echo=FALSE}
@@ -464,7 +466,7 @@ Pour la première série de mesures, ils ont encodé deux fichiers qu'ils ont du
 ```{r}
 physico1 <- as_dataframe(tibble(
   sample      = c("A0", "B0", "A0", "B0", "A0", "B0", "A0", "B0"),
-  student     = c("st1", "st1", "st2", "st2", "st3", "st3", "st4", "st4" ),
+  student     = c("st1", "st1", "st2", "st2", "st3", "st3", "st4", "st4"),
   ph          = c(7.94, 7.94, 7.94, 7.99, 7.94, 7.99, 7.94, 7.99),
   salinity    = c(34.0, 35.3, 33.9, 35.1, 34.0, 35.2, 33.9, 35.1),
   oxygen      = c(7.98, 8.00, 7.98, 7.98, 7.99, 7.86, 7.89, 7.98),
@@ -520,7 +522,7 @@ rmarkdown::paged_table(oceano)
 
 Qu'observez vous ?
 
-Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d'employer des fonctions de fusion de tableaux plus complexes comme `left_joint()` (ci-dessous). Pour utiliser correctement `bind_cols()`, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant `arrange()` :
+Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d'employer des fonctions de fusion de tableaux plus complexes comme `full_joint()` (ci-dessous). Pour utiliser correctement `bind_cols()`, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant `arrange()` :
 
 ```{r}
 nutrients2 <- arrange(nutrients, student, sample)
@@ -539,11 +541,11 @@ Après vérification de l'adéquation des lignes, nous n'aurons plus besoin des 
 
 ### Fusion de tableaux
 
-La fusion fera intervenir une ou plusieurs colonnes communes des deux tableaux pour déterminer quelles lignes du premier correspondent aux lignes du second. Ainsi, la fusion des tableaux est assurée d'être réalisée correctement quel que soit l'odre des lignes dans les deux tableaux d'origine. Utilisons `left_join()` en joignant les lignes en fonction des valeurs de `student` et `sample` :
+La fusion fera intervenir une ou plusieurs colonnes communes des deux tableaux pour déterminer quelles lignes du premier correspondent aux lignes du second. Ainsi, la fusion des tableaux est assurée d'être réalisée correctement quel que soit l'odre des lignes dans les deux tableaux d'origine. Utilisons `full_join()` en joignant les lignes en fonction des valeurs de `student` et `sample` :
 
 
 ```{r}
-oceano <- left_join(nutrients, physico, by = c("student", "sample"))
+oceano <- full_join(nutrients, physico, by = c("student", "sample"))
 rmarkdown::paged_table(oceano)
 ```
 
@@ -553,6 +555,23 @@ Observez bien ce dernier tableau. L'ordre retenu est celui de `nutrients` (le pr
 rmarkdown::paged_table(physico)
 ```
 
+Il existe, en fait, plusieurs versions pour la fusion de tableaux, représentées par une série de fonctions `xxx_join()`. Lorsque les lignes entre les deux tableaux fusionnés correspondent parfaitement comme dans l'exemple traité ici, les différentes variantes ont le même effet. Mais lorsque des lignes diffèrent, les variantes ont leur importance :
+
+- `full_join()` garde toutes les lignes,
+
+![`full_join()` par [gadenbuie](https://github.com/gadenbuie/tidyexplain/blob/master/images/full-join.gif).](images/sdd1_06/full-join.gif)
+
+- `left_join()` ne garde que les lignes uniques du tableau de gauche en plus des lignes communes,
+
+![`left_join()` par [gadenbuie](https://github.com/gadenbuie/tidyexplain/blob/master/images/left-join.gif).](images/sdd1_06/left-join.gif)
+
+- `right_join()` ne garde que les lignes uniques du tableau de droite en plus des lignes communes,
+
+![`right_join()` par [gadenbuie](https://github.com/gadenbuie/tidyexplain/blob/master/images/right-join.gif).](images/sdd1_06/right-join.gif)
+
+- `inner_join()` garde uniquement les lignes communes aux deux tableaux,
+
+![`inner_join()` par [gadenbuie](https://github.com/gadenbuie/tidyexplain/blob/master/images/inner-join.gif).](images/sdd1_06/inner-join.gif)
 
 
 ##### A vous de jouer {-}
