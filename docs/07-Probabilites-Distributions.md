@@ -16,7 +16,7 @@ On part du paradoxe bayésien (effet d’un test de dépistage en fonction de la
 
 Partez d'un test de dépistage d'une maladie qui touche 8% de la population dont le test mis en place détecte 95% des malades. Cependant, le test se trompe dans 10% des cas et détecte un patient sain comme atteint de la maladie.
 
-Vous pouvez dès lors calculer la probabilité que le test soit positif
+Vous pouvez dès lors calculer la probabilité que le test soit positif. Le test va donc detecter des personnes malades et des personnes saines
 
 
 ```r
@@ -70,7 +70,7 @@ Vous pouvez également déterminer la probabilité d'avoir :
 # [1] 0.004
 ```
 
-- des vrai négatifs
+- des vrais négatifs
 
 
 ```r
@@ -81,7 +81,7 @@ Vous pouvez également déterminer la probabilité d'avoir :
 # [1] 0.828
 ```
 
-- Des vrai positifs
+- Des vrais positifs
 
 
 ```r
@@ -91,7 +91,6 @@ Vous pouvez également déterminer la probabilité d'avoir :
 ```
 # [1] 0.076
 ```
-
 
 Est ce que ce test de dépistage vous semble intéressant ? 
 
@@ -183,51 +182,370 @@ Commençons par définir la notion de probabilité.
 
 $$0 \leq P(E) \leq 1$$
 
-Lors d'un examen écrit, un professeur décide de donner à ces étudiants des QCM. Chaque question comprend 4 possibilités et une seule réponse est correcte par question. UN étudiant qui n'a pas étudié décidé de passer l'examen et de tenter sa chance en sélectionnant des réponses au hasard. 
 
-- Quelle est la probabilité d'obtenir la bonne réponse à une question ? 
-
-
-```r
-1/4
-```
-
-```
-# [1] 0.25
-```
-
-nous parlerons dans ce cas d'un événements disjoints^[Evénements ne pouvant se produire simultanément. Ex. : succès versus échec d’un traitement, pile ou face pour une pièce de monnaie.]
-
-- Quelle est la probabilité d'obtenir 5 fois d'affilé la bonne réponse ?
+Partons du dénombrement de fumeur en fonction du revenu des sondés.
 
 
 ```r
-0.25 * 0.25 * 0.25 * 0.25 * 0.25
+tabac <- data.frame(Revenu_faible = c(634,1846,2480),
+                        Revenu_moyen = c(332, 1622,1954),
+                        Revenu_eleve = c(247,1868,2115),
+                        Total = c(1213, 5336, 6549))
+rownames(tabac) <- paste0(c("Fume", "Ne fume pas",  "Total"))
+knitr::kable(tabac)
+```
+
+               Revenu_faible   Revenu_moyen   Revenu_eleve   Total
+------------  --------------  -------------  -------------  ------
+Fume                     634            332            247    1213
+Ne fume pas             1846           1622           1868    5336
+Total                   2480           1954           2115    6549
+
+- Quel est la probabilité d'être un fumeur ? Cette question peut s'écrire : P(fumeur). 
+
+
+```r
+1213/6549
 ```
 
 ```
-# [1] 0.0009765625
+# [1] 0.1852191
+```
+
+Il s'agit d'une probabilité discrète^[Une probabilité discrète (discrete probability) d’un seul événement E est la mesure de la fréquence d’occurrence de E. Elle se note P(E)]
+
+- Quel est la probabilité d'être fumeur si le revenu élevé ? Cette question peut s'écrire : P(fumeur|revenu élevé). 
+
+
+```r
+247/2115
+```
+
+```
+# [1] 0.1167849
+```
+
+Il s'agit d'une probabilité conditionnelle^[une probabilité conditionnelle (conditional probability) est la probabilité qu’un événement E2 se produise si et seulement si un premier événement E1 s’est produit (E1 et E2 sont deux événements successifs). La probabilité conditionnelle s’écrit P(E2|E1)]
+
+Quels est la probabilités d'avoir un revenu faible ou d'avoir un élevé ? Cette question peut s'écrire : P(revenu faible ou revenu élevé)
+
+
+```r
+2480/6549 + 2115/6549
+```
+
+```
+# [1] 0.7016338
+```
+
+Il s'agit d'une somme de probabilités discrètes disjoints^[Si E1 et E2 sont deux événements disjoints,
+la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2)]
+
+- Quels est la probabilités d'être fumeur ou d'avoir un revenu moyen ? Cette question peut s'écrire : P(fumeur ou revenu moyen). 
+
+
+```r
+1213/6549 + 1954/6549 - 332/6549
+```
+
+```
+# [1] 0.4328905
+```
+
+Il s'agit d'une somme de probabilités discrètes non disjoints^[Si E1 et E2 sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2) − P(E1 et E2)]
+
+Dans une population, voici les proportions de différents groupes sanguins : 44% O, 42% A, 10% B, 4% AB
+
+_ Quelles est la probabalité d'obtenir 1 individu du groupe B ? Cette question peut s'écrire : P(B). 
+
+
+```r
+0.10
+```
+
+```
+# [1] 0.1
+```
+
+- Quelles est la probabilité d'obtenir 3 individus du groupe B d'affilé ? Cette question peut s'écrire : P(B et B et B). 
+
+
+```r
+0.10*0.10*0.10
+```
+
+```
+# [1] 0.001
+```
+
+nous parlerons dans ce cas d'un événements successifs^[Evénements issus d’actions séparées. Souvent successifs dans le temps]  et plus précisément d'événements successifs indépendants^[lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.].
+
+
+Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques. 
+
+- Quelles est la probabilité d'obtenir 3 individus du groupe B d'affilé ? Cette question peut s'écrire : P(B et B et B). 
+
+
+```r
+10/100 * 9/99 * 8/98
+```
+
+```
+# [1] 0.000742115
+```
+
+Il s'agit d'événement succéssifs non-indépendants. 
+
+Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas (replicates), il est possible de déterminer à quelle fréquence un événement E se produit de manière expérimentale. La probabilité observée est quantifiable sur base d’un échantillon. 
+
+La probabilité théorique est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
+
+## Lois de distributions
+
+Une loi de distribution statistique permet de prédire de manière théorique les probabilités de tous les événements possibles.
+
+Elle associe, donc, une probabilité théorique à un événement.
+
+La comparaison des probabilités théoriques et observées constitue l’un des piliers de la statistique. Le raisonnement est le suivant : si les probabilités observées sont suffisamment proches des probabilités théoriques, alors, nous pouvons considérer que les événement sont générés selon un mécanisme proche de celui qui est à la base de la loi de distribution théorique correspondante.
+
+### Distribution uniforme
+
+La loi de la distribution uniforme émet l'hypothèse que tous les événements sont équiprobales^[la probabilité de tous les événements possibles est égale pour tous]. 
+
+la probabilité d’un de ces événements vaut donc: $$\frac{1}{nbr \ E}$$
+
+
+```r
+# Uniform distribution (density probability) with parameters:
+.min <- 0; .max <- 4 #  .min and .max range of possible events
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(.min-(.max-.min)/4, .max+(.max-.min)/4, l = 1000) # Quantiles
+.d <- function (x) dunif(x, min = .min, max = .max)         # Distribution function
+.q <- function (p) qunif(p, min = .min, max = .max)  # Quantile for lower-tail prob
+.label <- bquote(U(.(.min), .(.max)))
+curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+abline(h = 0, col = "gray") # Baseline
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" />
+
+### Distribution binomiale
+
+Partons d'un exemple pratique pour découvrir cette distribution. L'albinisme est une maladie héréditaire liée à un gène récessif. Parmi 20 familles dont le père et la mère normaux ont le gène récessif. Quelle est la probabilité d'obtenir 0, 1, 2, ..., 20 enfants albinos dans les 20 familles. 
+
+Les conditions d'applications de la distribution binomiale sont :
+
+- Résultats binaire
+- Essais indépendants,
+- n fixé à l'avance
+- Probabilité de réussite constante. 
+
+Cette distribution peut s'écrire de manière mathématiquement :
+
+Soit une variable binaire aléatoire Y, la probabilité d’obtenir j succès parmi n essais est :
+
+$$P(Y=j)= _n C _J \times p^j \times (1-p)^{n-j}$$
+
+Le coefficient binomiale $_n C _J$ vaut $$\frac{n!}{j!(n-j)!}$$
+
+
+```r
+(.table <- data.frame(success = 0:20,
+  probability = dbinom(0:20, size = 20, prob = 0.25)))
+```
+
+```
+#    success  probability
+# 1        0 3.171212e-03
+# 2        1 2.114141e-02
+# 3        2 6.694781e-02
+# 4        3 1.338956e-01
+# 5        4 1.896855e-01
+# 6        5 2.023312e-01
+# 7        6 1.686093e-01
+# 8        7 1.124062e-01
+# 9        8 6.088669e-02
+# 10       9 2.706075e-02
+# 11      10 9.922275e-03
+# 12      11 3.006750e-03
+# 13      12 7.516875e-04
+# 14      13 1.541923e-04
+# 15      14 2.569872e-05
+# 16      15 3.426496e-06
+# 17      16 3.569266e-07
+# 18      17 2.799425e-08
+# 19      18 1.555236e-09
+# 20      19 5.456968e-11
+# 21      20 9.094947e-13
+```
+
+On peut représenter graphiquement le résultat lié au nombre d'albinos dans ces 20 familles.
+
+
+```r
+plot(0:20, dbinom(0:20, size = 20, prob = 0.25), type = "h",
+  col = "black", xlab = "Quantiles", ylab = "Probability mass")
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" />
+
+Partons d'une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d'avoir 0, 1 ou 2  malade sur 10000 individus ? 
+
+La distribution binomiale requiert le développement du polynome  $_n C _J$  qui revient donc à $0.001^1 \times 0.999^{9999}\ !$
+
+
+```r
+factorial(1)
+```
+
+```
+# [1] 1
 ```
 
 ```r
-# ou encore
-0.25^5
+factorial(10)
 ```
 
 ```
-# [1] 0.0009765625
+# [1] 3628800
 ```
-nous parlerons dans ce cas d'un événements successifs^[Evénements issus d’actions séparées. Souvent successifs dans le temps (deux jets de la même pièce de monnaie, mais pas nécessairement : jet de deux pièces de monnaie simultanément)]  et plus précisément d'événements successifs indépendants^[lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.].
 
-Vous avez à votre disposition un élevage de drosophiles dont 30% sont claires et 70% sont noires. Quelles est la probabilités d'obtenir 2 mouches de suite de la même couleurs ?
+```r
+factorial(100)
+```
 
-- 
+```
+# [1] 9.332622e+157
+```
 
-Une probabilité discrète (discrete probability) d’un seul événement E est la mesure de la fréquence d’occurrence de E. Elle se note P(E), P{E} ou Pr{E}
+```r
+factorial(1000)
+```
 
-Une probabilité conditionnelle
+```
+# Warning in factorial(1000): valeur d'argument hors intervalle dans
+# 'gammafn'
+```
 
-Somme de probabilités discrètes
+```
+# [1] Inf
+```
 
-Produit de probabilités
+```r
+factorial(10000)
+```
+
+```
+# Warning in factorial(10000): valeur d'argument hors intervalle dans
+# 'gammafn'
+```
+
+```
+# [1] Inf
+```
+
+La distribution de poisson permet d'obtenir la réponse à la question posée. 
+
+### Distribution de poisson
+
+cette distribution discrète se caractérise par $\mu$ égale à $\sigma$ et n'a donc qu'un seul paramètre $\lambda$. Cette distribution est  **asymétrique pour de faible $\lambda$** et tend vers une distribution normale pour de grand $\lambda$.
+
+Les conditions d'application sont 
+
+- la probabilités de succès très faible
+- très grand nombre d'essais
+
+$$P(Y=0) = e^{-\lambda}$$
+
+et 
+
+$$P(Y=k) = P(Y=k-1) \times \frac{ \lambda }{k}$$
+Le calcul se réalise de proche en prohce en partant de la probabilité de l'événement correspondant à aucune occurence de succès. 
+
+
+```r
+plot(0:(2+20), dpois(0:(2+20), lambda = 2), type = "h",
+  col = "black", xlab = "Quantiles", ylab = "Probability mass")
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" />
+
+Quelle est la probabilité dans un population d'obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue. 
+
+### Distribution normale 
+
+La chaîne Youtube, La statistique expliquée à mon chat, dans la vidéo [Pâte à tartiner et variable continue](https://www.youtube.com/watch?v=THk2GBxkg4o) explique la notion de variable continue.
+
+Une loi de distribution continue permet de prédire la probabilité qu'un événement se produise parmi un nombre très grand d'événement (infini, la plupart du temps). On ne s’intéresse qu’à des probabilités pour un intervalle concernant une fraction de tous les événements possibles.
+
+La distribution normale a deux paramètre : $\mu$ & $\sigma$
+
+$$f(y) = \frac{1}{ \sigma \sqrt{2 \pi}} e^{\frac{-1}{2} \left( \frac{y - \mu}{\sigma} \right)^2}$$
+
+Cette distribution s'écrit Y ∼ N(μ, σ) pour la variable Y suit une distribution Normale de moyenne μ, et d’écart type σ. 
+
+
+```r
+# Normal distribution (density probability) with parameters:
+.mu <- 175; .s <- 10 #  mu = .mu and sigma = .s
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(-3.5*.s+.mu, 3.5*.s+.mu, l = 1000)     # Quantiles
+.d <- function (x) dnorm(x, mean = .mu, sd = .s) # Distribution function
+.q <- function (p) qnorm(p, mean = .mu, sd = .s) # Quantile for lower-tail prob
+.label <- bquote(N(.(.mu), .(.s)))               # Curve parameters
+curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+abline(h = 0, col = "gray") # Baseline
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
+
+La variable Y suit une distribution Normale de moyenne $\mu$ (175), et d’écart type $\sigma$ (10). 
+
+On appelle également cette distribution, la loi de distribution Gaussienne. Cette dernière est l'une des plus employée. Pratiquement, toutes les distributions tendent vers la distribution normale pour N allant vers l'infini expliqué par [le théorème central limite](https://www.youtube.com/watch?v=4dhm2QAA2x4). 
+
+
+```r
+# Normal distribution (density probability) with parameters:
+.mu <- 175; .s <- 10 #  mu = .mu and sigma = .s
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(-3.5*.s+.mu, 3.5*.s+.mu, l = 1000)     # Quantiles
+.d <- function (x) dnorm(x, mean = .mu, sd = .s) # Distribution function
+.q <- function (p) qnorm(p, mean = .mu, sd = .s) # Quantile for lower-tail prob
+.label <- bquote(N(.(.mu), .(.s)))               # Curve parameters
+curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+abline(h = 0, col = "gray") # Baseline
+
+text(.mu+.s, .d(.mu+.s), .label, pos = 4, col = .col) # Label at right
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
+
+
+* La distribution normale réduite : $\mu_z = 0$ &  $\sigma_z = 1$
+
+$$f(z) = \frac{1}{ \sqrt{2 \pi}} e^{ - \frac{z^2}{2} }$$
+
+La variable Y suit une distribution Normale de moyenne $\mu$ (180), et d’écart type $\sigma$ (15) qui s'écrit Y ∼ N(μ, σ) pour la variable Y suit une distribution Normale de moyenne μ, et d’écart type σ
+
+
+```r
+# Normal distribution (density probability) with parameters:
+.mu <- 0; .s <- 1 #  mu = .mu and sigma = .s
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(-3.5*.s+.mu, 3.5*.s+.mu, l = 1000)     # Quantiles
+.d <- function (x) dnorm(x, mean = .mu, sd = .s) # Distribution function
+.q <- function (p) qnorm(p, mean = .mu, sd = .s) # Quantile for lower-tail prob
+.label <- bquote(N(.(.mu), .(.s)))               # Curve parameters
+curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+abline(h = 0, col = "gray") # Baseline
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
+
+
+
 
