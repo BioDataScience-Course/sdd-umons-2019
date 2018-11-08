@@ -289,7 +289,104 @@ Exemple de métadonnées :
 - Nom de l’opérateur en charge de la mesure
 - ...
 
-Vous avez pu vous aperçevoir que la fonction `read()` permet d'ajouter certaine métadonnées comme les unités aux variables d'un jeu de données. Cependant, il n’est pas toujours possible de rajouter les métadonnées dans un tableau sous forme électronique, mais il faut toujours les consigner dans un **cahier de laboratoire**, et ensuite les **retranscrire dans le rapport**.
+Vous avez pu vous aperçevoir que la fonction `read()` permet d'ajouter certaines métadonnées comme les unités aux variables d'un jeu de données. Cependant, il n’est pas toujours possible de rajouter les métadonnées dans un tableau sous forme électronique, mais il faut toujours les consigner dans un **cahier de laboratoire**, et ensuite les **retranscrire dans le rapport**. La fonction `labelise()` vous permet de rajouter le **label** et les **unités** de mesure pour vos différentes variables directement dans le tableau. Par exemple, voici l'encodage direct d'un petit jeu de données qui mesure la distance du saut (`jump`) en cm de grenouilles taureaux en fonction de leur masse (`weight`) en g pour 5 individus différents (`ind`). Vous pouvez annoter ce data frame de la façon suivante :
+
+
+```r
+frog <- tribble(
+  ~ind, ~jump, ~weight,
+   1,    71,    204,
+   2,    70,    240,
+   3,   100,    296,
+   4,   120,    303,
+   5,   103,    422
+)
+# Ajout des labels et des unités
+frog <- labelise(frog, self = FALSE,
+  label = list(
+    ind    = "Individu",
+    jump   = "Distance du saut",
+    weight = "Masse"),
+  units = list(
+    jump   = "cm",
+    weight = "g")
+  )
+# Affichage synthétique des données et métadonnées associées
+str(frog)
+```
+
+```
+# Classes 'tbl_df', 'tbl' and 'data.frame':	5 obs. of  3 variables:
+#  $ ind   : atomic  1 2 3 4 5
+#   ..- attr(*, "label")= chr "Individu"
+#  $ jump  : atomic  71 70 100 120 103
+#   ..- attr(*, "label")= chr "Distance du saut"
+#   ..- attr(*, "units")= chr "cm"
+#  $ weight: atomic  204 240 296 303 422
+#   ..- attr(*, "label")= chr "Masse"
+#   ..- attr(*, "units")= chr "g"
+```
+
+```r
+# Affichage des labels
+label(frog)
+```
+
+```
+#                ind               jump             weight 
+#         "Individu" "Distance du saut"            "Masse"
+```
+
+Les métadonnées sont enregistrées dans des **attributs** en R (`attr`). De même, `comment()` permet d'associer ou de récupérer un attribut commentaire :
+
+
+```r
+# Ajout d'un commentaire concernant le jeu de données lui-même
+comment(frog) <- "Saut de grenouilles taureaux"
+# Ajout d'un commentaire sur une variable
+comment(frog$jump) <- "Premier saut mesuré après stimulation de l'animal"
+# Affichage synthétique
+str(frog)
+```
+
+```
+# Classes 'tbl_df', 'tbl' and 'data.frame':	5 obs. of  3 variables:
+#  $ ind   : atomic  1 2 3 4 5
+#   ..- attr(*, "label")= chr "Individu"
+#  $ jump  : atomic  71 70 100 120 103
+#   ..- attr(*, "label")= chr "Distance du saut"
+#   ..- attr(*, "units")= chr "cm"
+#   ..- attr(*, "comment")= chr "Premier saut mesuré après stimulation de l'animal"
+#  $ weight: atomic  204 240 296 303 422
+#   ..- attr(*, "label")= chr "Masse"
+#   ..- attr(*, "units")= chr "g"
+#  - attr(*, "comment")= chr "Saut de grenouilles taureaux"
+```
+
+```r
+# Récupération des commentaires
+comment(frog)
+```
+
+```
+# [1] "Saut de grenouilles taureaux"
+```
+
+```r
+comment(frog$jump)
+```
+
+```
+# [1] "Premier saut mesuré après stimulation de l'animal"
+```
+
+```r
+comment(frog$weight) # Rien!
+```
+
+```
+# NULL
+```
 
 
 ### Dictionnaire des données
@@ -312,15 +409,15 @@ Ce tableau peut-être encodé sous forme textuelle et placé dans le même dossi
 
 ## Population et échantillonnage
 
-...
+TODO: partie encore à écrire
 
 
 ```r
 DT::datatable(iris)
 ```
 
-<!--html_preserve--><div id="htmlwidget-3e7d26208eaf5500ed4c" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3e7d26208eaf5500ed4c">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-4c0a6d51a1cfad2fc4e0" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4c0a6d51a1cfad2fc4e0">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 ## Acquisition de données
@@ -346,7 +443,7 @@ Dans le module \@ref(import), vous avez pris connaissance des types de variable 
     + Analyser les données (traitements statistiques, modélisation,...).
 - Produire des supports de présentation pour répondant à la question de départ et diffuser l'information dans la communauté scientifique
 
-Nous trtaitons ici des premières étapes qui visent à acquérir les données.
+Nous traitons ici des premières étapes qui visent à acquérir les données.
 
 
 ### Précision et exactitude
@@ -444,87 +541,125 @@ Votre objectif est d'acquérir des données pour étudier la prévalence de l'ob
 
 ## Recombinaison de tableaux
 
-### `gather()` & `spread()`
+### Formats long et large
 
-Encoder correctement un tableau de données n'es pas une chose simple. Il peut y avoir plusieurs manières de le représenter en fonction du type de représentation que l'on souhaite, du type d'analyse,...Quoi qu'il en soit, il est important de connaitre les fonctions permettant de recombiner simplement un tableau de données. 
-
-L'aide-mémoire [Data Import::CHEAT SHEET](https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf) est l'outil pour vous aider dans cette tache. Vous y trouverez des explication dans la section Reshape Data. 
-
-Ces outils provenant du package **tidyr** sont décrits en détails dans  ["R for Data Science"](https://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering). 
+Le **format long** d'un tableau de données correspond à un encodage en un minimum de colonnes, les données étant réparties sur un plus grand nombre de lignes en comparaison du **format large** qui regroupe les données dans plusieurs colonnes successives. Voici un exemple fictif d'un jeu de données au fomat long :
 
 
-Prenons l'exemple de ce tableau de contingence provenant des données relatée dans l'article suivant : [Paleomicrobiology to investigate copper resistance in bacteria : isolation and description of Cupriavidus necator B9 in the soil of a medieval foundry](http://di.umons.ac.be/details.aspx?pub=0a0de102-c145-403f-9e1c-8ad4fdc1fc39). 
+```
+# # A tibble: 6 x 3
+#   sex   traitment value
+#   <chr> <chr>     <dbl>
+# 1 m     control     1.2
+# 2 f     control     3.4
+# 3 m     test1       4.8
+# 4 f     test1       3.1
+# 5 m     test2       0.9
+# 6 f     test2       1.2
+```
 
-L'article est basé sur l'analyse métagénomique de type shotgun pour 4 communautés microbiennes. Comme ces analyses coûtent très cher, il est souvent impossible de faire des réplicats. Un seul échantillon d'ADN a donc été séquencé par communauté. Il en résulte une longue liste de sequences que l'on peut attribuer à des règnes. 
+Voici maintenant le même jeu de données présenté dans le format large :
+
+
+```
+# # A tibble: 2 x 4
+#   sex   control test1 test2
+#   <chr>   <dbl> <dbl> <dbl>
+# 1 m         1.2   4.8   0.9
+# 2 f         3.4   3.1   1.2
+```
+
+Dans le format large, les différents niveaux de la variable facteur `treatment` deviennent autant de colonnes (donc de variables) séparées, et la variable d'origine n'existe plus de manière explicite. Ces deux tableaux contiennent la même information. Bien évidemment, un seul de ces formats est un _tableau cas par variables correct_. Le format long sera le bon si tous les mesures sont réalisées sur des individus différents. Le format large sera correct, par contre, si les différentes mesures ont été faites à chaque fois sur les _mêmes_ individus (dans le cas présent, _un seul_ mâle et _une seule_ femelle auraient alors été mesurés dans les trois situations.
+
+<div class="note">
+<p>C'est la règle qui veut qu'<strong>une ligne corresponde à un et un seul individu</strong> dans un tableau cas par variables qui permet de décider si le format long ou le format large est celui qui est correctement encodé.</p>
+</div>
+
+Encoder correctement un tableau de données n'est pas une chose simple. Il peut y avoir plusieurs manières de le représenter. De plus, beaucoup de scientifiques ignorent ou oublient l'importance de bien encoder un tableau sous forme cas par variables. Lorsque vous souhaitez effectuer une représentation graphique, un format peut convenir mieux qu'un autre également, en fonction de ce que vous souhaitez visualiser sur le graphique. Il est donc important de connaitre les fonctions permettant de recombiner simplement un tableau de données d'une forme vers l'autre : `gather()` et `spread()`. 
+
+<div class="info">
+<p>L'aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf">Data Import</a> est un outil pratique pour vous aider à retrouver les fonctions. Les explications relatives à cette partie s'y trouvent dans la section <strong>Reshape Data</strong>.</p>
+<p>L'utilisation des fonction <code>gather()</code> et <code>spread()</code> provenant du package <strong>tidyr</strong> est également décrite en détails dans <a href="https://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering">R for Data Science</a>.</p>
+</div>
+
+Prenons l'exemple d'un jeu de données provenant de l'article scientifique suivant : [Paleomicrobiology to investigate copper resistance in bacteria : isolation and description of Cupriavidus necator B9 in the soil of a medieval foundry](http://di.umons.ac.be/details.aspx?pub=0a0de102-c145-403f-9e1c-8ad4fdc1fc39). L'article est basé sur l'analyse métagénomique de type "shotgun" pour quatre communautés microbiennes (notées `c1`, `c4`, `c7`et `c10`, respectivement)^[Les analyses métagénomiques coûtent très cher. Il est souvent impossible de faire des réplicats. Un seul échantillon d'ADN a donc été séquencé ici pour chaque communauté.]. Il en résulte une longue liste de sequences que l'on peut attribuer à des règnes.
 
 
 ```r
-shot_gun <- data.frame(kingdom = c("Archaea", "Bacteria", "Eukaryota", "Viruses", 
-                                    "other sequences", "unassigned", 
-                                    "unclassified sequences"),
-                        c1 = c( 98379, 6665903, 81593, 1245, 757, 1320419, 15508),
-                        c4 = c( 217985, 9739134, 101834, 4867, 1406, 2311326, 21572),
-                        c7 = c( 143314, 7103244, 71111, 5181, 907, 1600886, 14423),
-                        c10 = c(272541, 15966053, 150918, 15303, 2688, 3268646, 35024))
+shotgun_wide <- tibble(
+  kingdom = c("Archaea", "Bacteria", "Eukaryota", "Viruses",
+              "other sequences", "unassigned", "unclassified sequences"),
+  c1      = c( 98379, 6665903, 81593, 1245, 757, 1320419, 15508),
+  c4      = c( 217985, 9739134, 101834, 4867, 1406, 2311326, 21572),
+  c7      = c( 143314, 7103244, 71111, 5181, 907, 1600886, 14423),
+  c10     = c(272541, 15966053, 150918, 15303, 2688, 3268646, 35024))
 
-rmarkdown::paged_table(shot_gun)
+rmarkdown::paged_table(shotgun_wide)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["kingdom"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["c1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["c4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["c7"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["c10"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"98379","3":"217985","4":"143314","5":"272541"},{"1":"Bacteria","2":"6665903","3":"9739134","4":"7103244","5":"15966053"},{"1":"Eukaryota","2":"81593","3":"101834","4":"71111","5":"150918"},{"1":"Viruses","2":"1245","3":"4867","4":"5181","5":"15303"},{"1":"other sequences","2":"757","3":"1406","4":"907","5":"2688"},{"1":"unassigned","2":"1320419","3":"2311326","4":"1600886","5":"3268646"},{"1":"unclassified sequences","2":"15508","3":"21572","4":"14423","5":"35024"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["kingdom"],"name":[1],"type":["chr"],"align":["left"]},{"label":["c1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["c4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["c7"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["c10"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"98379","3":"217985","4":"143314","5":"272541"},{"1":"Bacteria","2":"6665903","3":"9739134","4":"7103244","5":"15966053"},{"1":"Eukaryota","2":"81593","3":"101834","4":"71111","5":"150918"},{"1":"Viruses","2":"1245","3":"4867","4":"5181","5":"15303"},{"1":"other sequences","2":"757","3":"1406","4":"907","5":"2688"},{"1":"unassigned","2":"1320419","3":"2311326","4":"1600886","5":"3268646"},{"1":"unclassified sequences","2":"15508","3":"21572","4":"14423","5":"35024"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
-Ce tableau dénombre les séquences appartenant à chaque règne. Ce tableau de contingence est pratique afin de reprensenter les données mais il ne l'est pas autant pour réaliser des graphiques (par exemple). Les colonnes C1, C4, C7 et C10 sont d'une certaine manière une variable facteur qui a été employé en colonne que l'on peut aisement retransformé comme telle. 
+Ce tableau est clair et lisible... seulement, est-il correctement encodé en cas par variables d'après vous\ ? Quelle que soit la réponse à cette question, il est toujours possible de passer de ce format large à un format long dans R de la façon suivante :
 
 
 ```r
- shot_gun1 <- gather(shot_gun, c1, c4, c7, c10, key = "batch" ,value = "sequences")
-rmarkdown::paged_table(shot_gun1)
+ shotgun_long <- gather(shotgun_wide,
+   c1, c4, c7, c10, key = "batch", value = "sequences")
+
+rmarkdown::paged_table(shotgun_long)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["kingdom"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["batch"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sequences"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"c1","3":"98379"},{"1":"Bacteria","2":"c1","3":"6665903"},{"1":"Eukaryota","2":"c1","3":"81593"},{"1":"Viruses","2":"c1","3":"1245"},{"1":"other sequences","2":"c1","3":"757"},{"1":"unassigned","2":"c1","3":"1320419"},{"1":"unclassified sequences","2":"c1","3":"15508"},{"1":"Archaea","2":"c4","3":"217985"},{"1":"Bacteria","2":"c4","3":"9739134"},{"1":"Eukaryota","2":"c4","3":"101834"},{"1":"Viruses","2":"c4","3":"4867"},{"1":"other sequences","2":"c4","3":"1406"},{"1":"unassigned","2":"c4","3":"2311326"},{"1":"unclassified sequences","2":"c4","3":"21572"},{"1":"Archaea","2":"c7","3":"143314"},{"1":"Bacteria","2":"c7","3":"7103244"},{"1":"Eukaryota","2":"c7","3":"71111"},{"1":"Viruses","2":"c7","3":"5181"},{"1":"other sequences","2":"c7","3":"907"},{"1":"unassigned","2":"c7","3":"1600886"},{"1":"unclassified sequences","2":"c7","3":"14423"},{"1":"Archaea","2":"c10","3":"272541"},{"1":"Bacteria","2":"c10","3":"15966053"},{"1":"Eukaryota","2":"c10","3":"150918"},{"1":"Viruses","2":"c10","3":"15303"},{"1":"other sequences","2":"c10","3":"2688"},{"1":"unassigned","2":"c10","3":"3268646"},{"1":"unclassified sequences","2":"c10","3":"35024"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["kingdom"],"name":[1],"type":["chr"],"align":["left"]},{"label":["batch"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sequences"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"c1","3":"98379"},{"1":"Bacteria","2":"c1","3":"6665903"},{"1":"Eukaryota","2":"c1","3":"81593"},{"1":"Viruses","2":"c1","3":"1245"},{"1":"other sequences","2":"c1","3":"757"},{"1":"unassigned","2":"c1","3":"1320419"},{"1":"unclassified sequences","2":"c1","3":"15508"},{"1":"Archaea","2":"c4","3":"217985"},{"1":"Bacteria","2":"c4","3":"9739134"},{"1":"Eukaryota","2":"c4","3":"101834"},{"1":"Viruses","2":"c4","3":"4867"},{"1":"other sequences","2":"c4","3":"1406"},{"1":"unassigned","2":"c4","3":"2311326"},{"1":"unclassified sequences","2":"c4","3":"21572"},{"1":"Archaea","2":"c7","3":"143314"},{"1":"Bacteria","2":"c7","3":"7103244"},{"1":"Eukaryota","2":"c7","3":"71111"},{"1":"Viruses","2":"c7","3":"5181"},{"1":"other sequences","2":"c7","3":"907"},{"1":"unassigned","2":"c7","3":"1600886"},{"1":"unclassified sequences","2":"c7","3":"14423"},{"1":"Archaea","2":"c10","3":"272541"},{"1":"Bacteria","2":"c10","3":"15966053"},{"1":"Eukaryota","2":"c10","3":"150918"},{"1":"Viruses","2":"c10","3":"15303"},{"1":"other sequences","2":"c10","3":"2688"},{"1":"unassigned","2":"c10","3":"3268646"},{"1":"unclassified sequences","2":"c10","3":"35024"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-Vous en conviendrez que le tableau nommé shot_gun1 est moins aisée à lire comparé à tableau shot_gun. Cependant, il permet de produire facilement des graphique. 
+
+Vous conviendrez que le tableau nommé `shotgun_long` est moins compact et moins aisé à lire comparé à `shotgun_wide`. C'est une raison qui fait que beaucoup de scientifiques sont tentés d'utiliser le format large alors qu'ici il ne correspond **pas** à un tableau cas par variables correct, puisqu'il est impossible que les *mêmes* individus soient présents dans les différents lots (il s'agit de communautés microbiennes *indépendantes* les unes des autres). De plus, seul le format `shotgun_long` permet de produire des graphiques pertinents^[Notez malgré tout que, à condition de bien en comprendre les implications, le format complémentaire peut se justifier dans une publication pour y présenter un tableau le plus lisible possible, ce qui est le cas ici. Mais pour les analyses, c'est le format qui correspond à un tableau cas par variables qui **doit** être utilisé.].
 
 
 ```r
-chart(shot_gun1, formula = sequences ~ batch %fill=% kingdom) +
+chart(data = shotgun_long, sequences ~ batch %fill=% kingdom) +
   geom_col(position = "fill")
 ```
 
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-28-1.svg" width="672" style="display: block; margin: auto;" />
 
-La fonction opposée à `gather()` est la fonction `spread()` qui permet de retourner vers le tableau d'origine. 
+Essayez de réaliser ce type de graphique en partant de `shotgun_wide`... Bonne chance !
+
+<div class="note">
+<p>Très souvent, lorsqu'il est impossible de réaliser un graphique avec <code>chart()</code> ou <code>ggplot()</code> parce que les données se présentent mal, c'est parce que le jeu de données est encodé de manière incorrecte ! Si les données sont, par contre, correctement encodées, demandez-vous alors si le graphique que vous voulez faire est pertinent.</p>
+</div>
+
+Pour passer du format long au format large (traitement inverse à `gather()`), il faut utiliser la fonction `spread()`. Ainsi pour retrouver le tableau d'origine (ou quelque chose de très semblable) à partir de `shotgun_long` nous utiliserons : 
 
 
 ```r
-shot_gun2 <- spread(shot_gun1, key = batch, value = sequences) 
-# visualisation du tableau de données 
-rmarkdown::paged_table(shot_gun2)
+shotgun_wide2 <- spread(shotgun_long, key = batch, value = sequences) 
+
+rmarkdown::paged_table(shotgun_wide2)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["kingdom"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["c1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["c10"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["c4"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["c7"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"98379","3":"272541","4":"217985","5":"143314"},{"1":"Bacteria","2":"6665903","3":"15966053","4":"9739134","5":"7103244"},{"1":"Eukaryota","2":"81593","3":"150918","4":"101834","5":"71111"},{"1":"other sequences","2":"757","3":"2688","4":"1406","5":"907"},{"1":"unassigned","2":"1320419","3":"3268646","4":"2311326","5":"1600886"},{"1":"unclassified sequences","2":"15508","3":"35024","4":"21572","5":"14423"},{"1":"Viruses","2":"1245","3":"15303","4":"4867","5":"5181"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["kingdom"],"name":[1],"type":["chr"],"align":["left"]},{"label":["c1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["c10"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["c4"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["c7"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"98379","3":"272541","4":"217985","5":"143314"},{"1":"Bacteria","2":"6665903","3":"15966053","4":"9739134","5":"7103244"},{"1":"Eukaryota","2":"81593","3":"150918","4":"101834","5":"71111"},{"1":"other sequences","2":"757","3":"2688","4":"1406","5":"907"},{"1":"unassigned","2":"1320419","3":"3268646","4":"2311326","5":"1600886"},{"1":"unclassified sequences","2":"15508","3":"35024","4":"21572","5":"14423"},{"1":"Viruses","2":"1245","3":"15303","4":"4867","5":"5181"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
 
-### `separate` & `unite()`
+### Recombinaison de variables
 
-Lors de vos analyses vous serez confronté à devoir combiner ou séparer des colonnes de votre tableau de données. 
+Parfois, ce sont les variables qui sont encodées de manière inappropriée par rapport aux analyses que vous souhaitez faire. Les fonctions `separate` et `unite()` permettent de séparer une colonne en plusieurs, ou inversément.
 
-L'aide-mémoire [Data Import::CHEAT SHEET](https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf) est l'outil pour vous aider dans cette tache. Vous y trouverez des explication dans la section Split Cells. 
+<div class="note">
+<p>L'aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf">Data Import</a> vous rappelle ces fonctions dans sa section <strong>Split Cells</strong>. Elles sont également décrites en détails dans <a href="https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting">R for Data Science</a>.</p>
+</div>
 
-Ces outils provenant du package **tidyr** sont décrits en détails dans  ["R for Data Science"](https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting). 
-
-
-Partez donc du jeu de données sur la biométrie des crabes du package **MASS**
+Partons, par exemple, du jeu de données sur la biométrie des crabes du package **MASS** :
 
 
 ```r
@@ -538,11 +673,11 @@ rmarkdown::paged_table(crabs)
   </script>
 </div>
 
-La fonction qui permet de combiner facilement les colonnes sex et species est la fonction `unite()` comme montré dans l'exemple ci-dessous. N'hésitez pas à faire appel à la fonction d'aide pour connaitre les arguments de la fonction. 
+La fonction `unite` permet de combiner facilement les colonnes `sex` et `species` comme montré dans l'exemple ci-dessous. N'hésitez pas à faire appel à la page d'aide de la fonction via `?unite` pour vous guider.
 
 
 ```r
-crabs <- unite(crabs, col = "sp_sex",sex, species, sep = "_")
+crabs <- unite(crabs, col = "sp_sex", sex, species, sep = "_")
 rmarkdown::paged_table(crabs)
 ```
 
@@ -552,7 +687,7 @@ rmarkdown::paged_table(crabs)
   </script>
 </div>
 
-La fonction opposée à `unite()` est la fonction `separate()` qui permet de retourner vers le tableau d'origine.
+La fonction complémentaire à `unite()` est `separate()`. Elle permet de séparer une variable en deux ou plus de colonnes séparées. Donc, pour retrouver un tableau similaire à celui d'origine, nous pourrons faire :
 
 
 ```r
@@ -566,7 +701,8 @@ rmarkdown::paged_table(crabs)
   </script>
 </div>
 
-## Multi-tableaux
+
+## Traitements multi-tableaux
 
 Durant vos analyses, vous serez confronté à devoir gérer plusieurs tableaux que vous allez vouloir rassembler en un seul tableau.
 

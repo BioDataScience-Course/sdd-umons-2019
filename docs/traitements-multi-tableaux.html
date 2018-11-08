@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="qualit.html">
-<link rel="next" href="population-et-echantillonnage.html">
+<link rel="prev" href="recombinaison-de-tableaux.html">
+<link rel="next" href="proba.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -298,332 +298,101 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tableaux-de-donnees" class="section level2">
-<h2><span class="header-section-number">6.1</span> Tableaux de données</h2>
-<p>Les tableaux de données sont principalement représentés sous deux formes : les tableaux <strong>cas par variables</strong> et les tableaux de <strong>contingence</strong>.</p>
-<div id="tableaux-cas-par-variables" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> Tableaux cas par variables</h3>
-<p>Chaque individus est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de <a href="https://www.jstatsoft.org/article/view/v059i10">tidy data</a>.</p>
-<p>Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j’ai un seul et même individu représenté sur <em>chaque</em> ligne du tableau ? Si la réponse est non, le tableau de données n’est <strong>pas</strong> correctement encodé.</p>
-<p>TODO : exemple et solution</p>
-<p>Les tableaux de données que vous avez traités jusqu’à présent étaient tous des tableaux <strong>cas par variables</strong>. Chaque ligne représentait un <em>individu</em> sur qui une ou plusieurs <em>variables</em> (en colonnes) étaient mesurées.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
-<span class="kw">head</span>(biometry)</code></pre></div>
-<pre><code># # A tibble: 6 x 7
-#   gender day_birth  weight height wrist year_measure   age
-#   &lt;fct&gt;  &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
-# 1 M      1995-03-11     69    182  15           2013    18
-# 2 M      1998-04-03     74    190  16           2013    15
-# 3 M      1967-04-04     83    185  17.5         2013    46
-# 4 M      1994-02-10     60    175  15           2013    19
-# 5 W      1990-12-02     48    167  14           2013    23
-# 6 W      1994-07-15     52    179  14           2013    19</code></pre>
-<p>L’encodage d’un petit tableau cas par variables directement dans R est facile. Cela peut se faire de plusieurs façons différentes. En voici deux utilisant les fonctions <code>tibble()</code> (spécification colonne par colonne, utilisez le snippet <code>.dmtibble</code> pour vous aider) et <code>tribble()</code> (spécification ligne par ligne, utilisez le snippet <code>.dmtribble</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Spécification colonne par colonne avec tibble()</span>
-(DF &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(
-  <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
-  <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>)
-)))</code></pre></div>
-<pre><code># # A tibble: 2 x 2
-#       x     y
-#   &lt;dbl&gt; &lt;dbl&gt;
-# 1     1     3
-# 2     2     4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Spécification ligne par ligne avec tribble()</span>
-(DF1 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tribble</span>(
-  <span class="op">~</span>x, <span class="op">~</span>y,
-   <span class="dv">1</span>,  <span class="dv">3</span>,
-   <span class="dv">2</span>,  <span class="dv">4</span>
-)))</code></pre></div>
-<pre><code># # A tibble: 2 x 2
-#       x     y
-#   &lt;dbl&gt; &lt;dbl&gt;
-# 1     1     3
-# 2     2     4</code></pre>
-<p>La seconde approche est plus naturelle, mais la première permet d’utiliser diverses fonctions de R pour faciliter l’encodage, par exemple :</p>
-<ul>
-<li>Séquence d’entiers successifs :</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></code></pre></div>
-<pre><code>#  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<ul>
-<li>Répétition d’un vecteur 5 fois :</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="dv">5</span>)</code></pre></div>
-<pre><code>#  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<ul>
-<li>Répétition de chaque item d’un vecteur 5 fois :</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="dt">each =</span> <span class="dv">5</span>)</code></pre></div>
-<pre><code>#  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot;</code></pre>
-<p>Pour de plus gros tableaux, il vaut mieux utiliser un tableur tel que Excel ou LibreOffice Calc pour l’encodage. Les tableurs en ligne comme Google Sheets ou Excel Online conviennent très bien également et facilitent un travail collaboratif ainsi que la mise à disposition sut le Net, comme nous avons vu au module <a href="import.html#import">5</a>.</p>
+<div id="traitements-multi-tableaux" class="section level2">
+<h2><span class="header-section-number">6.5</span> Traitements multi-tableaux</h2>
+<p>Durant vos analyses, vous serez confronté à devoir gérer plusieurs tableaux que vous allez vouloir rassembler en un seul tableau.</p>
+<p>L’aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/data-transformation.pdf">Data Import::CHEAT SHEET</a> est l’outil pour vous aider dans cette tache. Vous y trouverez des explications dans la section Combine Tables.</p>
+<p>Ces outils provenant du package <strong>dplyr</strong> sont décrits en détails dans <a href="https://r4ds.had.co.nz/relational-data.html">“R for Data Science”</a>.</p>
+<p>Pour combiner deux tableaux de données par les lignes, la fonction la plus simple est <code>bind_rows()</code>.</p>
+<p>Partons de données mesurée dans les mésoscosmes de notre laboratoire les différents paramètres suivants : - la temperature, le ph, la salinté, l’oxygène dissous à l’aide d’instruments tels qu’un pHmètre, un conductimètre ou encore un oxymètre - la concentration en orthophosphate et en nitrate dissous dans l’eau à l’aide d’un autoanalyseur employant la colorimétrie</p>
+<p>Ils ont obtenu 3 fichiers qu’ils ont du par la suite recombiner.</p>
+<p>Le groupe A a encodé le tableau suivant :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">param_physico_A &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(<span class="dt">sample =</span> <span class="kw">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>, <span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>, <span class="st">&quot;A0&quot;</span>, 
+                                                <span class="st">&quot;B0&quot;</span>, <span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>), 
+                                     <span class="dt">ph =</span> <span class="kw">c</span>(<span class="fl">7.94</span>, <span class="fl">7.94</span>, <span class="fl">7.94</span>, <span class="fl">7.99</span>, <span class="fl">7.94</span>, <span class="fl">7.99</span>,
+                                            <span class="fl">7.94</span>, <span class="fl">7.99</span>),
+                                     <span class="dt">salinity =</span> <span class="kw">c</span>(<span class="fl">34.0</span>, <span class="fl">35.3</span>, <span class="fl">33.9</span>, <span class="fl">35.1</span>, <span class="fl">34.0</span>,
+                                                  <span class="fl">35.2</span>, <span class="fl">33.9</span>, <span class="fl">35.1</span>),
+                                     <span class="dt">oxygen =</span> <span class="kw">c</span>(<span class="fl">7.98</span>, <span class="fl">8.00</span>, <span class="fl">7.98</span>, <span class="fl">7.98</span>, <span class="fl">7.99</span>, 
+                                                <span class="fl">7.86</span>, <span class="fl">7.89</span>, <span class="fl">7.98</span>),
+                                     <span class="dt">temperature =</span> <span class="kw">c</span>(<span class="fl">24.6</span>, <span class="fl">24.4</span>, <span class="fl">25.1</span>, <span class="fl">24.7</span>, 
+                                                     <span class="fl">24.9</span>, <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">24.6</span>),
+                                     <span class="dt">student =</span> <span class="kw">c</span>(<span class="st">&quot;st1&quot;</span>, <span class="st">&quot;st1&quot;</span>, <span class="st">&quot;st2&quot;</span>, <span class="st">&quot;st2&quot;</span>, 
+                                                 <span class="st">&quot;st3&quot;</span>, <span class="st">&quot;st3&quot;</span>, <span class="st">&quot;st4&quot;</span>, <span class="st">&quot;st4&quot;</span> )
+                                     ))
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(param_physico_A)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
-<div id="tableaux-de-contingence" class="section level3">
-<h3><span class="header-section-number">6.1.2</span> Tableaux de contingence</h3>
-<p>C’est le dénombrement de l’occurence de chaque niveau d’une (tableau à une entrée) ou de deux variables <strong>qualitatives</strong> (tableau à double entrée). La fonction <code>table()</code> crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry<span class="op">$</span>age_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(biometry<span class="op">$</span>age, <span class="dt">include.lowest =</span> <span class="ot">FALSE</span>, <span class="dt">right =</span> <span class="ot">TRUE</span>,
-  <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">27</span>, <span class="dv">90</span>))
-(bio_tab &lt;-<span class="st"> </span><span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))</code></pre></div>
-<pre><code>#    
-#     (14,27] (27,90]
-#   M     106      92
-#   W      97     100</code></pre>
-<p>Le tableau de contingence peut toujours être calculé à partir d’un tableau cas par variable, mais il peut également être encodé directement si nécessaire. Voic un petit tableau de contingence à simple entrée encodé directement comme tel (vecteur nommé transformé en objet <code>table</code> à l’aide de la fonction <code>as.table()</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">anthirrhinum &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(
-  <span class="st">&quot;fleur rouge&quot;</span>   =<span class="st"> </span><span class="dv">54</span>,
-  <span class="st">&quot;fleur rose&quot;</span>    =<span class="st"> </span><span class="dv">122</span>,
-  <span class="st">&quot;fleur blanche&quot;</span> =<span class="st"> </span><span class="dv">58</span>)
-)
-anthirrhinum</code></pre></div>
-<pre><code>#   fleur rouge    fleur rose fleur blanche 
-#            54           122            58</code></pre>
-<p>Une troisième possibilité est d’utiliser un tableau indiquant les <strong>fréquences d’occurence</strong> dans une colonne (<code>freq</code> ci-dessus). Ce n’est <strong>pas</strong> un tableau cas par variable, mais une forme bien plus concise et pratique pour préencoder les données qui devront être ensuite transformées en tableau de contingence à l’aide de la fonction <code>xtabs()</code>. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction <code>rep()</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">timolol &lt;-<span class="st"> </span><span class="kw">tibble</span>(
-  <span class="dt">traitement =</span> <span class="kw">c</span>(<span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;placebo&quot;</span>),
-  <span class="dt">patient    =</span> <span class="kw">c</span>(<span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>,  <span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>),
-  <span class="dt">freq       =</span> <span class="kw">c</span>(<span class="dv">44</span>,        <span class="dv">116</span>,       <span class="dv">19</span>,        <span class="dv">128</span>)
-)
-<span class="co"># Creation du tableau de contingence </span>
-timolol_table &lt;-<span class="st"> </span><span class="kw">xtabs</span>(<span class="dt">data =</span> timolol, freq <span class="op">~</span><span class="st"> </span>patient <span class="op">+</span><span class="st"> </span>traitement)
-timolol_table</code></pre></div>
-<pre><code>#         traitement
-# patient  placebo timolol
-#   malade     128     116
-#   sain        19      44</code></pre>
-<p>La sortie par défaut d’un tableau de contingence n’est pas très esthétique, mais plusieurs options existent pour le formatter d’une façon agréable. En voici deux exemples :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pander<span class="op">::</span><span class="kw">pander</span>(timolol_table,
-  <span class="dt">caption =</span> <span class="st">&quot;Exemple de table de contingence à double entrée.&quot;</span>)</code></pre></div>
-<table style="width:46%;">
-<caption>Exemple de table de contingence à double entrée.</caption>
-<colgroup>
-<col width="18%" />
-<col width="13%" />
-<col width="13%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="center"> </th>
-<th align="center">placebo</th>
-<th align="center">timolol</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center"><strong>malade</strong></td>
-<td align="center">128</td>
-<td align="center">116</td>
-</tr>
-<tr class="even">
-<td align="center"><strong>sain</strong></td>
-<td align="center">19</td>
-<td align="center">44</td>
-</tr>
-</tbody>
-</table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(timolol_table,
-  <span class="dt">caption =</span> <span class="st">&quot;Exemple de table de contingence à double entrée.&quot;</span>)</code></pre></div>
-<table>
-<caption><span id="tab:unnamed-chunk-11">Tableau 6.1: </span>Exemple de table de contingence à double entrée.</caption>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">placebo</th>
-<th align="right">timolol</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>malade</td>
-<td align="right">128</td>
-<td align="right">116</td>
-</tr>
-<tr class="even">
-<td>sain</td>
-<td align="right">19</td>
-<td align="right">44</td>
-</tr>
-</tbody>
-</table>
-<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab1 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">head</span>(biometry), <span class="dt">rows =</span> <span class="ot">NULL</span>)
-tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))
+<p>Le groupe B a encodé le tableau suivant :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">param_physico_B &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(<span class="dt">sample =</span> <span class="kw">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>, <span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>), 
+                                      <span class="dt">ph =</span> <span class="kw">c</span>(<span class="fl">7.94</span>, <span class="fl">7.99</span>, <span class="fl">7.93</span>, <span class="fl">7.99</span>),
+                                      <span class="dt">salinity =</span> <span class="kw">c</span>(<span class="fl">33.8</span>, <span class="fl">35.0</span>, <span class="fl">33.9</span>, <span class="fl">35.1</span>),
+                                      <span class="dt">oxygen =</span> <span class="kw">c</span>(<span class="fl">7.96</span>, <span class="fl">8.01</span>, <span class="fl">7.90</span>, <span class="fl">8.00</span>),
+                                      <span class="dt">temperature =</span> <span class="kw">c</span>(<span class="fl">25.0</span>, <span class="fl">24.6</span>, <span class="fl">24.0</span>, <span class="fl">24.0</span>),
+                                      <span class="dt">student =</span> <span class="kw">c</span>( <span class="st">&quot;st5&quot;</span>, <span class="st">&quot;st5&quot;</span>, <span class="st">&quot;st6&quot;</span>, <span class="st">&quot;st6&quot;</span>)
+                                      ))
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(param_physico_A)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>La combinaison des deux tableaux de données se fait via la fonction bind_rows()</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">param_physico &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(param_physico_A, param_physico_B)
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(param_physico)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4"},{"1":"A0","2":"7.94","3":"33.8","4":"7.96","5":"25.0","6":"st5"},{"1":"B0","2":"7.99","3":"35.0","4":"8.01","5":"24.6","6":"st5"},{"1":"A0","2":"7.93","3":"33.9","4":"7.90","5":"24.0","6":"st6"},{"1":"B0","2":"7.99","3":"35.1","4":"8.00","5":"24.0","6":"st6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Les deux groupes ont également réalisés des prélèvements d’eau qui ont été dosé par colorimétrie avec un autoanalyseur. Les échantillons des deux groupes ont été analysé dans la même série.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nutrient &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(<span class="dt">sample =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>), <span class="dt">times =</span> <span class="dv">6</span>),
+                                <span class="dt">student =</span> <span class="kw">c</span>(<span class="st">&quot;st4&quot;</span>, <span class="st">&quot;st4&quot;</span>, <span class="st">&quot;st6&quot;</span>, <span class="st">&quot;st6&quot;</span>, 
+                                            <span class="st">&quot;st5&quot;</span>, <span class="st">&quot;st5&quot;</span>, <span class="st">&quot;st2&quot;</span>, <span class="st">&quot;st2&quot;</span>,
+                                            <span class="st">&quot;st1&quot;</span>, <span class="st">&quot;st1&quot;</span>, <span class="st">&quot;st3&quot;</span>, <span class="st">&quot;st3&quot;</span>),
+                                <span class="dt">po4_conc =</span> <span class="kw">c</span>(<span class="fl">2.445</span>, <span class="fl">0.374</span>, <span class="fl">2.446</span>, <span class="fl">0.394</span>, <span class="fl">2.433</span>,
+                                             <span class="fl">0.361</span>, <span class="fl">2.441</span>, <span class="fl">0.372</span>, <span class="fl">2.438</span>, <span class="fl">0.388</span>,
+                                             <span class="fl">2.445</span>, <span class="fl">0.390</span>),
+                                <span class="dt">no3_conc =</span> <span class="kw">c</span>(<span class="fl">1.145</span>, <span class="fl">0.104</span>, <span class="fl">0.447</span>, <span class="fl">0.066</span>, <span class="fl">0.439</span>,
+                                             <span class="fl">0.093</span>, <span class="fl">0.477</span>, <span class="fl">0.167</span>, <span class="fl">0.443</span>, <span class="fl">0.593</span>,
+                                             <span class="fl">0.450</span>, <span class="fl">0.125</span>)
+                                     ))
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(nutrient)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4_conc"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3_conc"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st4","3":"2.445","4":"1.145"},{"1":"B0","2":"st4","3":"0.374","4":"0.104"},{"1":"A0","2":"st6","3":"2.446","4":"0.447"},{"1":"B0","2":"st6","3":"0.394","4":"0.066"},{"1":"A0","2":"st5","3":"2.433","4":"0.439"},{"1":"B0","2":"st5","3":"0.361","4":"0.093"},{"1":"A0","2":"st2","3":"2.441","4":"0.477"},{"1":"B0","2":"st2","3":"0.372","4":"0.167"},{"1":"A0","2":"st1","3":"2.438","4":"0.443"},{"1":"B0","2":"st1","3":"0.388","4":"0.593"},{"1":"A0","2":"st3","3":"2.445","4":"0.450"},{"1":"B0","2":"st3","3":"0.390","4":"0.125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Pour combiner deux tableaux de données par les colonnes, la fonction la plus simple est <code>bind_cols()</code>.</p>
+<p>Vous devez être très vigilant lors de l’utilisation de cette fonction car cette dernière combine vos tableaux sans s’assurer que vos lignes soient alignées convenablement.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">param &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(param_physico, nutrient)
+<span class="co"># Visualisation du tableau de données</span>
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(param)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]},{"label":["sample1"],"name":[7],"type":["chr"],"align":["left"]},{"label":["student1"],"name":[8],"type":["chr"],"align":["left"]},{"label":["po4_conc"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["no3_conc"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1","7":"A0","8":"st4","9":"2.445","10":"1.145"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1","7":"B0","8":"st4","9":"0.374","10":"0.104"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2","7":"A0","8":"st6","9":"2.446","10":"0.447"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2","7":"B0","8":"st6","9":"0.394","10":"0.066"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3","7":"A0","8":"st5","9":"2.433","10":"0.439"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3","7":"B0","8":"st5","9":"0.361","10":"0.093"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4","7":"A0","8":"st2","9":"2.441","10":"0.477"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4","7":"B0","8":"st2","9":"0.372","10":"0.167"},{"1":"A0","2":"7.94","3":"33.8","4":"7.96","5":"25.0","6":"st5","7":"A0","8":"st1","9":"2.438","10":"0.443"},{"1":"B0","2":"7.99","3":"35.0","4":"8.01","5":"24.6","6":"st5","7":"B0","8":"st1","9":"0.388","10":"0.593"},{"1":"A0","2":"7.93","3":"33.9","4":"7.90","5":"24.0","6":"st6","7":"A0","8":"st3","9":"2.445","10":"0.450"},{"1":"B0","2":"7.99","3":"35.1","4":"8.00","5":"24.0","6":"st6","7":"B0","8":"st3","9":"0.390","10":"0.125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Qu’observez vous ?</p>
+<p>Effectivement nos deux tableaux de données n’ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d’employer des fonctions comme left_joint() qui vont employer un ou plusieurs colonnes similaire sur les deux tableaux de donnée.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">param &lt;-<span class="st"> </span><span class="kw">left_join</span>(param_physico, nutrient, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;student&quot;</span>, <span class="st">&quot;sample&quot;</span>))
+<span class="co"># Visualisation du tableau de données</span>
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(param)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["student"],"name":[6],"type":["chr"],"align":["left"]},{"label":["po4_conc"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["no3_conc"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"7.94","3":"34.0","4":"7.98","5":"24.6","6":"st1","7":"2.438","8":"0.443"},{"1":"B0","2":"7.94","3":"35.3","4":"8.00","5":"24.4","6":"st1","7":"0.388","8":"0.593"},{"1":"A0","2":"7.94","3":"33.9","4":"7.98","5":"25.1","6":"st2","7":"2.441","8":"0.477"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.7","6":"st2","7":"0.372","8":"0.167"},{"1":"A0","2":"7.94","3":"34.0","4":"7.99","5":"24.9","6":"st3","7":"2.445","8":"0.450"},{"1":"B0","2":"7.99","3":"35.2","4":"7.86","5":"24.7","6":"st3","7":"0.390","8":"0.125"},{"1":"A0","2":"7.94","3":"33.9","4":"7.89","5":"25.0","6":"st4","7":"2.445","8":"1.145"},{"1":"B0","2":"7.99","3":"35.1","4":"7.98","5":"24.6","6":"st4","7":"0.374","8":"0.104"},{"1":"A0","2":"7.94","3":"33.8","4":"7.96","5":"25.0","6":"st5","7":"2.433","8":"0.439"},{"1":"B0","2":"7.99","3":"35.0","4":"8.01","5":"24.6","6":"st5","7":"0.361","8":"0.093"},{"1":"A0","2":"7.93","3":"33.9","4":"7.90","5":"24.0","6":"st6","7":"2.446","8":"0.447"},{"1":"B0","2":"7.99","3":"35.1","4":"8.00","5":"24.0","6":"st6","7":"0.394","8":"0.066"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div id="a-vous-de-jouer-8" class="section level5 unnumbered">
+<h5>A vous de jouer</h5>
+<p>TODO</p>
 
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(tab1, tab2), <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<p>Différentes fonctions dans R existent également pour convertir un tableau de contingence en tableau cas par variables (ou en tous cas, en un tableau similaire). Par exemple, <code>as_dataframe()</code> renvoie un tableau indiquant les fréquences d’occurences :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(timolol2 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(timolol_table, <span class="dt">n =</span> <span class="st">&quot;freq&quot;</span>))</code></pre></div>
-<pre><code># # A tibble: 4 x 3
-#   patient traitement  freq
-#   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;
-# 1 malade  placebo      128
-# 2 sain    placebo       19
-# 3 malade  timolol      116
-# 4 sain    timolol       44</code></pre>
-<p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">uncount</span>(timolol2, freq)</code></pre></div>
-<pre><code># # A tibble: 307 x 2
-#    patient traitement
-#    &lt;chr&gt;   &lt;chr&gt;     
-#  1 malade  placebo   
-#  2 malade  placebo   
-#  3 malade  placebo   
-#  4 malade  placebo   
-#  5 malade  placebo   
-#  6 malade  placebo   
-#  7 malade  placebo   
-#  8 malade  placebo   
-#  9 malade  placebo   
-# 10 malade  placebo   
-# # ... with 297 more rows</code></pre>
-</div>
-<div id="metadonnees" class="section level3">
-<h3><span class="header-section-number">6.1.3</span> Métadonnées</h3>
-<p>Les données dans un tableau de données doivent <strong>impérativement</strong> être associées à un ensemble de métadonnées. Les métadonnées (metadata en anglais) apportent des informations complémentaires nécessaires pour une interprétation corrrecte des données. Elles permettent donc de replacer les données dans leur contexte et de spécifier des caractéristiques liées aux pesures réalisées comme les unités de mesure par exemple.</p>
-<p><span class="math display">\[Donn\acute{e}es \ de \ qualit\acute{e} \ = \ tableau \ de \ donn\acute{e}es + \ m\acute{e}tadonn\acute{e}es\]</span></p>
-<p>Les données correctement qualifiées et documentée sont les seules qui penvent être utilisées par un collaborateur externe. C’est à dire qu’une personne externe à l’expérience ne peut interpréter le tableau de données que si les métadonnées sont complètes et explicites.</p>
-<p>Exemple de métadonnées :</p>
-<ul>
-<li>Unités de mesure (exemple : 3,5 mL, 21,2 °C)</li>
-<li>Précision de la mesure (21,2 +/- 0,2 dans le cas d’un thermomètre gradué tous les 0,2 °C)</li>
-<li>Méthode de mesure utilisée (thermomètre à mercure, ou électronique, ou …)</li>
-<li>Type d’instrument employé (marque et modèle du thermomètre par exemple)</li>
-<li>Date de la mesure</li>
-<li>Nom du projet lié à la prise de mesure</li>
-<li>Nom de l’opérateur en charge de la mesure</li>
-<li>…</li>
-</ul>
-<p>Vous avez pu vous aperçevoir que la fonction <code>read()</code> permet d’ajouter certaines métadonnées comme les unités aux variables d’un jeu de données. Cependant, il n’est pas toujours possible de rajouter les métadonnées dans un tableau sous forme électronique, mais il faut toujours les consigner dans un <strong>cahier de laboratoire</strong>, et ensuite les <strong>retranscrire dans le rapport</strong>. La fonction <code>labelise()</code> vous permet de rajouter le <strong>label</strong> et les <strong>unités</strong> de mesure pour vos différentes variables directement dans le tableau. Par exemple, voici l’encodage direct d’un petit jeu de données qui mesure la distance du saut (<code>jump</code>) en cm de grenouilles taureaux en fonction de leur masse (<code>weight</code>) en g pour 5 individus différents (<code>ind</code>). Vous pouvez annoter ce data frame de la façon suivante :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">frog &lt;-<span class="st"> </span><span class="kw">tribble</span>(
-  <span class="op">~</span>ind, <span class="op">~</span>jump, <span class="op">~</span>weight,
-   <span class="dv">1</span>,    <span class="dv">71</span>,    <span class="dv">204</span>,
-   <span class="dv">2</span>,    <span class="dv">70</span>,    <span class="dv">240</span>,
-   <span class="dv">3</span>,   <span class="dv">100</span>,    <span class="dv">296</span>,
-   <span class="dv">4</span>,   <span class="dv">120</span>,    <span class="dv">303</span>,
-   <span class="dv">5</span>,   <span class="dv">103</span>,    <span class="dv">422</span>
-)
-<span class="co"># Ajout des labels et des unités</span>
-frog &lt;-<span class="st"> </span><span class="kw">labelise</span>(frog, <span class="dt">self =</span> <span class="ot">FALSE</span>,
-  <span class="dt">label =</span> <span class="kw">list</span>(
-    <span class="dt">ind    =</span> <span class="st">&quot;Individu&quot;</span>,
-    <span class="dt">jump   =</span> <span class="st">&quot;Distance du saut&quot;</span>,
-    <span class="dt">weight =</span> <span class="st">&quot;Masse&quot;</span>),
-  <span class="dt">units =</span> <span class="kw">list</span>(
-    <span class="dt">jump   =</span> <span class="st">&quot;cm&quot;</span>,
-    <span class="dt">weight =</span> <span class="st">&quot;g&quot;</span>)
-  )
-<span class="co"># Affichage synthétique des données et métadonnées associées</span>
-<span class="kw">str</span>(frog)</code></pre></div>
-<pre><code># Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 5 obs. of  3 variables:
-#  $ ind   : atomic  1 2 3 4 5
-#   ..- attr(*, &quot;label&quot;)= chr &quot;Individu&quot;
-#  $ jump  : atomic  71 70 100 120 103
-#   ..- attr(*, &quot;label&quot;)= chr &quot;Distance du saut&quot;
-#   ..- attr(*, &quot;units&quot;)= chr &quot;cm&quot;
-#  $ weight: atomic  204 240 296 303 422
-#   ..- attr(*, &quot;label&quot;)= chr &quot;Masse&quot;
-#   ..- attr(*, &quot;units&quot;)= chr &quot;g&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Affichage des labels</span>
-<span class="kw">label</span>(frog)</code></pre></div>
-<pre><code>#                ind               jump             weight 
-#         &quot;Individu&quot; &quot;Distance du saut&quot;            &quot;Masse&quot;</code></pre>
-<p>Les métadonnées sont enregistrées dans des <strong>attributs</strong> en R (<code>attr</code>). De même, <code>comment()</code> permet d’associer ou de récupérer un attribut commentaire :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ajout d&#39;un commentaire concernant le jeu de données lui-même</span>
-<span class="kw">comment</span>(frog) &lt;-<span class="st"> &quot;Saut de grenouilles taureaux&quot;</span>
-<span class="co"># Ajout d&#39;un commentaire sur une variable</span>
-<span class="kw">comment</span>(frog<span class="op">$</span>jump) &lt;-<span class="st"> &quot;Premier saut mesuré après stimulation de l&#39;animal&quot;</span>
-<span class="co"># Affichage synthétique</span>
-<span class="kw">str</span>(frog)</code></pre></div>
-<pre><code># Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 5 obs. of  3 variables:
-#  $ ind   : atomic  1 2 3 4 5
-#   ..- attr(*, &quot;label&quot;)= chr &quot;Individu&quot;
-#  $ jump  : atomic  71 70 100 120 103
-#   ..- attr(*, &quot;label&quot;)= chr &quot;Distance du saut&quot;
-#   ..- attr(*, &quot;units&quot;)= chr &quot;cm&quot;
-#   ..- attr(*, &quot;comment&quot;)= chr &quot;Premier saut mesuré après stimulation de l&#39;animal&quot;
-#  $ weight: atomic  204 240 296 303 422
-#   ..- attr(*, &quot;label&quot;)= chr &quot;Masse&quot;
-#   ..- attr(*, &quot;units&quot;)= chr &quot;g&quot;
-#  - attr(*, &quot;comment&quot;)= chr &quot;Saut de grenouilles taureaux&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Récupération des commentaires</span>
-<span class="kw">comment</span>(frog)</code></pre></div>
-<pre><code># [1] &quot;Saut de grenouilles taureaux&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">comment</span>(frog<span class="op">$</span>jump)</code></pre></div>
-<pre><code># [1] &quot;Premier saut mesuré après stimulation de l&#39;animal&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">comment</span>(frog<span class="op">$</span>weight) <span class="co"># Rien!</span></code></pre></div>
-<pre><code># NULL</code></pre>
-</div>
-<div id="dictionnaire-des-donnees" class="section level3">
-<h3><span class="header-section-number">6.1.4</span> Dictionnaire des données</h3>
-<p>Le dictionnaire des données est un <a href="https://ineumann.developpez.com/tutoriels/merise/initiation-merise/#LII-B">élément important de la constitution d’une base de données</a>. Il s’agit d’un tableau annexe qui reprend le <strong>nom</strong> de chaque variable, son <strong>label</strong> (nom plus long et explicite), son <strong>type</strong> (numérique, facteur, facteur ordonné, date, …), la taille (de moindre importance pour nous), et un <strong>commentaire</strong> éventuel. Dans notre contexte, il est également utile de renseigner les <strong>unités</strong> de mesure, et la façon dont les <strong>données manquantes</strong> sont encodées. Cela donne donc un tableau du genre :</p>
-<table style="width:100%;">
-<colgroup>
-<col width="13%" />
-<col width="12%" />
-<col width="13%" />
-<col width="13%" />
-<col width="23%" />
-<col width="23%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Variable</th>
-<th align="left">Label</th>
-<th align="center">Unités</th>
-<th align="center">Type</th>
-<th align="center">Val. manquantes</th>
-<th align="left">Commentaire</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">date</td>
-<td align="left">Date</td>
-<td align="center">-</td>
-<td align="center">Date</td>
-<td align="center">NA</td>
-<td align="left">Date de mesure</td>
-</tr>
-<tr class="even">
-<td align="left">age</td>
-<td align="left">Âge</td>
-<td align="center">années</td>
-<td align="center">numeric</td>
-<td align="center">-1</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left">diameter</td>
-<td align="left">Diamètre du test</td>
-<td align="center">mm</td>
-<td align="center">numeric</td>
-<td align="center">NA</td>
-<td align="left">Moyenne de deux diamètres perpendiculaires</td>
-</tr>
-<tr class="even">
-<td align="left">origin</td>
-<td align="left">Origine</td>
-<td align="center">-</td>
-<td align="center">factor</td>
-<td align="center">unknown</td>
-<td align="left">“Fishery” = oursins sauvages, “Farm” = oursins d’élevage</td>
-</tr>
-</tbody>
-</table>
-<p>Ce tableau peut-être encodé sous forme textuelle et placé dans le même dossier que le jeu de données lui-même. Il peut aussi être encodé comme feuille supplémentaire dans une fichier Excel.</p>
-<div class="note">
-<p>
-Le dictionnaire des données est un outil important pour comprendre ce que contient le tableau de données, et donc, son inteprétation. <em>Ne le négligez pas !</em>
-</p>
 </div>
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref2">↩</a></p></li>
-</ol>
-</div>
+<!-- </div> -->
 <div id="disqus_thread"></div>
 <script>
 
@@ -649,8 +418,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="qualit.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="population-et-echantillonnage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="recombinaison-de-tableaux.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="proba.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
