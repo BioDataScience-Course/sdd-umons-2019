@@ -203,6 +203,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="6.1.1" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableaux-cas-par-variables"><i class="fa fa-check"></i><b>6.1.1</b> Tableaux cas par variables</a></li>
 <li class="chapter" data-level="6.1.2" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#tableaux-de-contingence"><i class="fa fa-check"></i><b>6.1.2</b> Tableaux de contingence</a></li>
 <li class="chapter" data-level="6.1.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.1.3</b> Métadonnées</a></li>
+<li class="chapter" data-level="6.1.4" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#dictionnaire-des-donnees"><i class="fa fa-check"></i><b>6.1.4</b> Dictionnaire des données</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a></li>
 <li class="chapter" data-level="6.3" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données</a><ul>
@@ -492,6 +493,70 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 <li>…</li>
 </ul>
 <p>Vous avez pu vous aperçevoir que la fonction <code>read()</code> permet d’ajouter certaine métadonnées comme les unités aux variables d’un jeu de données. Cependant, il n’est pas toujours possible de rajouter les métadonnées dans un tableau sous forme électronique, mais il faut toujours les consigner dans un <strong>cahier de laboratoire</strong>, et ensuite les <strong>retranscrire dans le rapport</strong>.</p>
+</div>
+<div id="dictionnaire-des-donnees" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> Dictionnaire des données</h3>
+<p>Le dictionnaire des données est un <a href="https://ineumann.developpez.com/tutoriels/merise/initiation-merise/#LII-B">élément important de la constitution d’une base de données</a>. Il s’agit d’un tableau annexe qui reprend le <strong>nom</strong> de chaque variable, son <strong>label</strong> (nom plus long et explicite), son <strong>type</strong> (numérique, facteur, facteur ordonné, date, …), la taille (de moindre importance pour nous), et un <strong>commentaire</strong> éventuel. Dans notre contexte, il est également utile de renseigner les <strong>unités</strong> de mesure, et la façon dont les <strong>données manquantes</strong> sont encodées. Cela donne donc un tableau du genre :</p>
+<table style="width:100%;">
+<colgroup>
+<col width="13%" />
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Label</th>
+<th align="center">Unités</th>
+<th align="center">Type</th>
+<th align="center">Val. manquantes</th>
+<th align="left">Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">date</td>
+<td align="left">Date</td>
+<td align="center">-</td>
+<td align="center">Date</td>
+<td align="center">NA</td>
+<td align="left">Date de mesure</td>
+</tr>
+<tr class="even">
+<td align="left">age</td>
+<td align="left">Âge</td>
+<td align="center">années</td>
+<td align="center">numeric</td>
+<td align="center">-1</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">diameter</td>
+<td align="left">Diamètre du test</td>
+<td align="center">mm</td>
+<td align="center">numeric</td>
+<td align="center">NA</td>
+<td align="left">Moyenne de deux diamètres perpendiculaires</td>
+</tr>
+<tr class="even">
+<td align="left">origin</td>
+<td align="left">Origine</td>
+<td align="center">-</td>
+<td align="center">factor</td>
+<td align="center">unknown</td>
+<td align="left">“Fishery” = oursins sauvages, “Farm” = oursins d’élevage</td>
+</tr>
+</tbody>
+</table>
+<p>Ce tableau peut-être encodé sous forme textuelle et placé dans le même dossier que le jeu de données lui-même. Il peut aussi être encodé comme feuille supplémentaire dans une fichier Excel.</p>
+<div class="note">
+<p>
+Le dictionnaire des données est un outil important pour comprendre ce que contient le tableau de données, et donc, son inteprétation. <em>Ne le négligez pas !</em>
+</p>
+</div>
 </div>
 </div>
 <div class="footnotes">
