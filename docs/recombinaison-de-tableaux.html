@@ -312,8 +312,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="formats-long-et-large" class="section level3">
 <h3><span class="header-section-number">6.4.1</span> Formats long et large</h3>
 <div class="figure">
-<img src="images/sdd1_06/tidyr-spread-gather.gif" alt="gather() versus `spread() par gadenbuie." />
-<p class="caption"><code>gather()</code> versus `spread() par <a href="https://github.com/gadenbuie/tidyexplain/blob/master/images/tidyr-spread-gather.gif">gadenbuie</a>.</p>
+<img src="images/sdd1_06/tidyr-spread-gather.gif" alt="gather() versus spread() par gadenbuie." />
+<p class="caption"><code>gather()</code> versus <code>spread()</code> par <a href="https://github.com/gadenbuie/tidyexplain/blob/master/images/tidyr-spread-gather.gif">gadenbuie</a>.</p>
 </div>
 <p>Le <strong>format long</strong> d’un tableau de données correspond à un encodage en un minimum de colonnes, les données étant réparties sur un plus grand nombre de lignes en comparaison du <strong>format large</strong> qui regroupe les données dans plusieurs colonnes successives. Voici un exemple fictif d’un jeu de données au fomat long :</p>
 <pre><code># # A tibble: 6 x 3
@@ -371,6 +371,11 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(shotgun_l
 {"columns":[{"label":["kingdom"],"name":[1],"type":["chr"],"align":["left"]},{"label":["batch"],"name":[2],"type":["chr"],"align":["left"]},{"label":["sequences"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"c1","3":"98379"},{"1":"Bacteria","2":"c1","3":"6665903"},{"1":"Eukaryota","2":"c1","3":"81593"},{"1":"Viruses","2":"c1","3":"1245"},{"1":"other sequences","2":"c1","3":"757"},{"1":"unassigned","2":"c1","3":"1320419"},{"1":"unclassified sequences","2":"c1","3":"15508"},{"1":"Archaea","2":"c4","3":"217985"},{"1":"Bacteria","2":"c4","3":"9739134"},{"1":"Eukaryota","2":"c4","3":"101834"},{"1":"Viruses","2":"c4","3":"4867"},{"1":"other sequences","2":"c4","3":"1406"},{"1":"unassigned","2":"c4","3":"2311326"},{"1":"unclassified sequences","2":"c4","3":"21572"},{"1":"Archaea","2":"c7","3":"143314"},{"1":"Bacteria","2":"c7","3":"7103244"},{"1":"Eukaryota","2":"c7","3":"71111"},{"1":"Viruses","2":"c7","3":"5181"},{"1":"other sequences","2":"c7","3":"907"},{"1":"unassigned","2":"c7","3":"1600886"},{"1":"unclassified sequences","2":"c7","3":"14423"},{"1":"Archaea","2":"c10","3":"272541"},{"1":"Bacteria","2":"c10","3":"15966053"},{"1":"Eukaryota","2":"c10","3":"150918"},{"1":"Viruses","2":"c10","3":"15303"},{"1":"other sequences","2":"c10","3":"2688"},{"1":"unassigned","2":"c10","3":"3268646"},{"1":"unclassified sequences","2":"c10","3":"35024"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+<p>Voici la logique derrière <code>gather()</code>, présentée sous forme d’une animation :</p>
+<div class="figure">
+<img src="images/sdd1_06/gather.gif" alt="gather() par apreshill." />
+<p class="caption"><code>gather()</code> par <a href="https://github.com/apreshill/teachthat/blob/master/gather/gather.gif">apreshill</a>.</p>
+</div>
 <p>Vous conviendrez que le tableau nommé <code>shotgun_long</code> est moins compact et moins aisé à lire comparé à <code>shotgun_wide</code>. C’est une raison qui fait que beaucoup de scientifiques sont tentés d’utiliser le format large alors qu’ici il ne correspond <strong>pas</strong> à un tableau cas par variables correct, puisqu’il est impossible que les <em>mêmes</em> individus soient présents dans les différents lots (il s’agit de communautés microbiennes <em>indépendantes</em> les unes des autres). De plus, seul le format <code>shotgun_long</code> permet de produire des graphiques pertinents<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> shotgun_long, sequences <span class="op">~</span><span class="st"> </span>batch <span class="op">%fill=%</span><span class="st"> </span>kingdom) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre></div>
@@ -389,6 +394,11 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(shotgun_w
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["kingdom"],"name":[1],"type":["chr"],"align":["left"]},{"label":["c1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["c10"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["c4"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["c7"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"98379","3":"272541","4":"217985","5":"143314"},{"1":"Bacteria","2":"6665903","3":"15966053","4":"9739134","5":"7103244"},{"1":"Eukaryota","2":"81593","3":"150918","4":"101834","5":"71111"},{"1":"other sequences","2":"757","3":"2688","4":"1406","5":"907"},{"1":"unassigned","2":"1320419","3":"3268646","4":"2311326","5":"1600886"},{"1":"unclassified sequences","2":"15508","3":"35024","4":"21572","5":"14423"},{"1":"Viruses","2":"1245","3":"15303","4":"4867","5":"5181"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
+</div>
+<p>La logique de <code>spread()</code> est illustrée via l’animation suivante :</p>
+<div class="figure">
+<img src="images/sdd1_06/spread.gif" alt="spread() par apreshill." />
+<p class="caption"><code>spread()</code> par <a href="https://github.com/apreshill/teachthat/blob/master/spread/spread.gif">apreshill</a>.</p>
 </div>
 
 <div class="bdd">
