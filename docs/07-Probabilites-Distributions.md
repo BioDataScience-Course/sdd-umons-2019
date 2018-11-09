@@ -186,16 +186,24 @@ Gasp ! Dans ce cas, un test positif n'aura effectivement détecté un malade que
 > Comme nous pouvons le constater ici, le calcul des probabilités est relativement simple. Mais en même temps, les résultats obtenus peuvent être complètement **contre-intuitifs**. D'où l'intérêt de faire ce genre de calcul, justement.
 
 
-### Théorème de Bayes
-
-TODO...
-
-Il s'agit d'une probabilité conditionnelle^[une probabilité conditionnelle (conditional probability) est la probabilité qu’un événement E2 se produise si et seulement si un premier événement E1 s’est produit (E1 et E2 sont deux événements successifs). La probabilité conditionnelle s’écrit P(E2|E1)]
-
-
 ### Arbre des probabilités
 
-TODO...
+Il se peut que tout cela vous paraisse très (trop) abstrait. Vous êtes peut-être quelqu'un de visuel qui comprend mieux les concepts en image. Dans ce cas, la méthode alternative de résolution des calculs de probabilités via les **arbres de probabilités** devrait vous éclairer. Le principe consiste à représenter un arbre constitué de noeuds (des faits qui se produisent). De ces noeuds, vous représentez autant de branches (des segments de droites) que d'événements possibles. La figure suivante est l'arbre des probabilités correspondant au cas du dépistage de la maladie qui touche 8% de la population.
+
+![Arbre de probabilités permettant de déterminer la probabilité d'avoir un test positif](images/sdd1_07/probtree.png)
+
+Du premier noeud (le fait qu'une personne est atteinte ou non de la maladie), nous avons deux branches menant aux deux événements "malade" et "sain". Chacune de ces deux situations est un nouveau noeud d'où deux événements sont possibles à chaque fois (2 fois 2 nouvelles branches) : un test "positif", ou un test "négatif". Les noeuds terminaux (les "négatifs" et "positifs" ici) sont aussi appelés les feuilles de l'arbre. L'arbre reprend donc tous les cas possibles depuis le noeud de départ (sa racine), jusqu'aux feuilles.
+
+L'étape suivante consiste à aller indiquer le long des branches les probabilités associées à chaque événement : 0.08 pour "malade", 0.95 pour un dépistage "positif" si la personne est malade, etc.
+
+Le calcul se fait ensuite comme suit. On repère tous les cas qui nous intéressent. Ici, il s'agit de toutes les trajectoires qui mènent à un test "positif". Le calcul des probabilités se fait en **multipliant les probabilités lorsqu'on passe d'un noeud à l'autres et en additionnant les probabilités ainsi calculées le long des feuilles terminales de l'arbre considéré.** Donc, le chemin "malade" -> "positif" correspond à 0.08 \* 0.95 = 0.076. Le chemin "sain" -> "positif" correspond à 0.92 \* 0.10 = 0.092. Enfin, nous sommons les probabilités ainsi calculées pour toutes les feuilles de l'arbre qui nous intéressent. Ici, ce sont toutes les feuilles qui correspondent à un test "positif", soit 0.076 + 0.092 = 0.168. *Et voilà ! Nous avons répondu au problème : la probabilité d'avoir un résultat positif avec le test de dépistage dans un population dont 8% est atteint de la maladie est de 16.8%.*
+
+
+### Théorème de Bayes
+
+Nous devons introduire ici le concept de **probabilité conditionnelle**. Une probabilité conditionnelle est la probabilité qu’un événement *E2* se produise si et seulement si un premier événement *E1* s’est produit (*E1* et *E2* sont deux événements successifs). La probabilité conditionnelle s’écrit $\mathrm{P}(E2|E1)$.
+
+
 
 
 ### Probabilités et contingence
@@ -439,8 +447,7 @@ factorial(1000)
 ```
 
 ```
-# Warning in factorial(1000): valeur d'argument hors intervalle dans
-# 'gammafn'
+# Warning in factorial(1000): value out of range in 'gammafn'
 ```
 
 ```
@@ -452,8 +459,7 @@ factorial(10000)
 ```
 
 ```
-# Warning in factorial(10000): valeur d'argument hors intervalle dans
-# 'gammafn'
+# Warning in factorial(10000): value out of range in 'gammafn'
 ```
 
 ```
