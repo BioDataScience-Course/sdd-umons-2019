@@ -2,117 +2,152 @@
 
 
 
-On part du paradoxe bayésien (effet d’un test de dépistage en fonction de la prévalence d’une maladie) -> probabilités et calculs de probabilités. Généralisation = lois de distributions. Distributions discrètes et continues. Principales lois de distributions et utilisation en pratique. Evaluation par les pairs d’un rapport réalisé jusqu’ici.
-
-- Espérance et probabilité dans le contexte des jeux de hasard [vidéo](https://www.youtube.com/watch?v=5TtwG_LR0iY)
-
 ##### Objectifs {-}
 
-- Appréhender le calculs de probabilités 
+- Appréhender le calculs de probabilités
 
-- Appréhender les principales lois de distributions et leurs utilisations pratiques 
+- Appréhender les principales lois de distributions et leurs utilisations pratiques
+
+
+##### Prérequis {-}
+
+Vous devez être à l'aise avec l'utilisation de R, RStudio et R Markdown. Vous avez appris à maitriser ces outils dans les modules \@ref(intro) & \@ref(visu1).
+
 
 ## Probabilités
 
-Partez d'un test de dépistage d'une maladie qui touche 8% de la population dont le test mis en place détecte 95% des malades. Cependant, le test se trompe dans 10% des cas et détecte un patient sain comme atteint de la maladie.
+La vidéo suivante vous introduit la notion de probabilité et le calcul de probabilités d'une manière plaisante à partir d'un jeu de hasard proposé par un petit chat à ses amis...
 
-Vous pouvez dès lors calculer la probabilité que le test soit positif. Le test va donc detecter des personnes malades et des personnes saines
+<!--html_preserve--><iframe src="https://www.youtube.com/embed/5TtwG_LR0iY" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
+
+<div class="note">
+<p>Sachant qu'un <strong>évènement</strong> en statistique est un fait qui se produit, la <strong>probabilité</strong> que cet évènement se produise effectivement peut être quantifiée sur base de l'observation des réalisations passées. Ainsi si l'évènement en question s'est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet évènement se produise est de 9/12, soit 0,75. Notez qu'une probabilité est un nombre compris entre zéro (lorsqu'il ne se produit jamais) et un (lorsqu'il se produit toujours).</p>
+</div>
+
+On écrira, pour la probabilité de l'évènement *E* :
+
+$$0 \leq \mathrm{P}(E) \leq 1$$
+
+
+### Dépistage
+
+> Voyons tout de suite une application plus proche de la biologie : le dépistage d'une maladie qui touche 8% de la population. Le test de dépistage mis en place détecte 95% des malades. De plus, le test se trompe dans 10% des cas pour les personnes saines. Comment connaitre le risque d'être malade si on est diagnostiqué positif par ce test ?
+
+Pour résoudre ce problème, nous devons d'abord apprendre à *combiner* des probabilités. Ce n'est pas bien compliqué. Si on a affaire à des **évènements successifs indépendants** (c'est-à-dire que l'occurence de l'un ne dépend pas de l'occurence de l'autre), la **probabilité que les deux évènements successifs indépendants se produisent tous les deux est la multiplication des deux probabiltés**. On pourra écrire :
+
+$$\mathrm{P}(E_1 \,\mathrm{et}\, E_2) = \mathrm{P}(E_1) * \mathrm{P}(E_2)$$
+
+Vous pouvez dès lors calculer la probabilité que l'on teste un patient malade (probabilité = 0,08) et que le test soit positif (0,95) dans ce cas : 
 
 
 ```r
-# personne malade et détectée
-0.08*0.95 
+# Personne malade et détectée positive
+(p_sick_positive <- 0.08 * 0.95)
 ```
 
 ```
 # [1] 0.076
 ```
 
+Ceci n'indique *pas* la probabilité que le test soit positif car il est également parfois (erronément) positif pour des patients sains. Mais au fait, quelle est la probabilité d'avoir un patient sain ? **La probabilité que l'un parmi tous les évènements possibles se produise vaut toujours un**. Les seuls évènements possibles ici sont que le patient soit sain ou malade. Donc,
+
+$$\mathrm{P}(sain) + \mathrm{P}(malade) = 1 \rightarrow \mathrm{P}(sain) = 1 - \mathrm{P}(malade) = 0.92$$
+
+Nous pouvons maintenant déterminer la probabilité que le test soit positif dans le cas d'une personne saine :
+
+
+
 ```r
-# personne saine et détectée
-0.92*0.10
+# Personne saine et détectée positive
+(p_healthy_positive <- 0.92 * 0.10)
 ```
 
 ```
 # [1] 0.092
 ```
 
+Bon, il nous reste à combiner les probabilités que le test soit positif si la personne est malade et si la personne est saine. Mais comment faire\ ? Ici, on n'a pas affaire à des évènements successifs, mais à des évènements mutuellement exclusifs. On les appellent des **évènements disjoints**. Pour déterminer si l'un parmi deux évènements disjoints se produit, il suffit d'**additionner leurs probabilités respectives**. Nous pouvons maintenant déterminer la probabilité que le test soit positif quelle que soit la personne testée :
+
+
+
 ```r
-# La probabilité que le test soit positif est donc 
-0.08*0.95 + 0.92*0.10
+# La probabilité que le test soit positif 
+(p_positive <- p_sick_positive + p_healthy_positive)
 ```
 
 ```
 # [1] 0.168
 ```
 
-Vous pouvez également déterminer la probabilité d'avoir :
-
-- des faux positifs
+Nous nous trouvons ici face à un résultat pour le moins surprenant ! En effet, nous constatons que le test est positif dans 16,8% des cas, mais seulement 7,6% du temps, il sera correct (probabilité d'une personne malade détectée). Parmi tous les cas positifs au test, il y en a...
 
 
 ```r
-0.92*0.10
+p_sick_positive / p_positive
 ```
 
 ```
-# [1] 0.092
+# [1] 0.452381
 ```
 
-- des faux négatifs
+... seulement 45,2% qui sont effectivement malades (on parle de **vrais positifs**) ! Ceci ne correspond pas du tout aux indications de départ sur les performances du test.
+
+\BeginKnitrBlock{note}<div class="note">Dans le cas de deux faits successifs qui ne peuvent chacun que résulter en deux évènements, nous avons seulement quatre situations possibles. Si l'un des cas est qualifié de positif et l'autre de négatif, nous aurons:
+  
+- les **vrais positifs** (test positif alors que la personne est malade), ici 0.08 * 0.95
+
+- les **faux positifs** (test positif alors que la personne est saine), ici 0.92 * 0.10
+
+- **les vrais négatifs** (test négatif alors que la personne est saine), ici 0.92 * 0.90
+
+- **les faux négatifs** (test négatif alors que la personne est malade), ici 0.08 * 0.05
+</div>\EndKnitrBlock{note}
+
+En fait, les performances finales du test de dépistage dépendent *aussi* de la prévalence de la maladie. Ainsi pour une maladie très commune qui affecterait 80% de la population, nous obtenons :
 
 
 ```r
-0.08*0.05
+# Faux positifs
+0.20 * 0.10
 ```
 
 ```
-# [1] 0.004
-```
-
-- des vrais négatifs
-
-
-```r
-0.92*0.9
-```
-
-```
-# [1] 0.828
-```
-
-- Des vrais positifs
-
-
-```r
-0.08*0.95
-```
-
-```
-# [1] 0.076
-```
-
-Est ce que ce test de dépistage vous semble intéressant ? 
-
-Partez maintenant du principe que la maladie n'affecte que 0.8% de la population. Le test détecte toujours 95% des patients malades et détecte 10% de patients sains.
-
-Que pensez vous maintenant du test de dépistage ? alors que la maladie est plus rare ? 
-
-Vous pouvez calculer à nouveau la probabilité que le test soit positif
-
-
-```r
-# personne malade et détectée
-0.008*0.95 
-```
-
-```
-# [1] 0.0076
+# [1] 0.02
 ```
 
 ```r
-# personne saine et détectée
-0.992*0.10
+# Vrais positifs
+0.80 * 0.95
+```
+
+```
+# [1] 0.76
+```
+
+```r
+# Total des positifs
+0.20 * 0.10 + 0.80 * 0.95
+```
+
+```
+# [1] 0.78
+```
+
+```r
+# Fractions de tests positifs qui sont corrects
+(0.80 * 0.95) / (0.20 * 0.10 + 0.80 * 0.95)
+```
+
+```
+# [1] 0.974359
+```
+
+Ouf ! Dans ca cas-ci le test positif est correct dans 97,4% des cas. Mais qu'en serait-il si la maladie est très rare (probabilité de 0,008)\ ?
+
+
+```r
+# Faux positifs
+0.992 * 0.10
 ```
 
 ```
@@ -120,114 +155,93 @@ Vous pouvez calculer à nouveau la probabilité que le test soit positif
 ```
 
 ```r
-# La probabilité que le test soit positif est donc 
-0.008*0.95 + 0.992*0.10
+# Vrais positifs
+0.008 * 0.95
+```
+
+```
+# [1] 0.0076
+```
+
+```r
+# Total des positifs
+0.992 * 0.10 + 0.008 * 0.95
 ```
 
 ```
 # [1] 0.1068
 ```
 
-Vous pouvez également déterminer la probabilité d'avoir :
+```r
+# Fractions de tests positifs qui sont corrects
+(0.008 * 0.95) / (0.992 * 0.10 + 0.008 * 0.95)
+```
 
-- des faux positifs
+```
+# [1] 0.07116105
+```
+
+Gasp ! Dans ce cas, un test positif n'aura effectivement détecté un malade que dans ... 7,1% des cas ! Les 92,9% autres cas positifs seront en fait des personnes saines.
+
+> Comme nous pouvons le constater ici, le calcul des probabilités est relativement simple. Mais en même temps, les résultats obtenus peuvent être complètement **contre-intuitifs**. D'où l'intérêt de faire ce genre de calcul, justement.
+
+
+### Théorème de Bayes
+
+TODO...
+
+Il s'agit d'une probabilité conditionnelle^[une probabilité conditionnelle (conditional probability) est la probabilité qu’un événement E2 se produise si et seulement si un premier événement E1 s’est produit (E1 et E2 sont deux événements successifs). La probabilité conditionnelle s’écrit P(E2|E1)]
+
+
+### Arbre des probabilités
+
+TODO...
+
+
+### Probabilités et contingence
+
+Comme un tableau de contingence indique le nombre de fois que des évènements ont pu être observés, il peut servir de base à des calculs de probabilités. Partons du dénombrement de fumeur en fonction du revenu dans une population.
 
 
 ```r
-0.992*0.10
-```
-
-```
-# [1] 0.0992
-```
-
-- des faux négatifs
-
-
-```r
-0.008*0.05
-```
-
-```
-# [1] 4e-04
-```
-
-- des vrai négatifs
-
-
-```r
-0.992*0.9
-```
-
-```
-# [1] 0.8928
-```
-
-- Des vrai positifs
-
-
-```r
-0.008*0.95
-```
-
-```
-# [1] 0.0076
-```
-
-Commençons par définir la notion de probabilité.
-
-- La notion de **probabilité** en statistique est intimement liée à la notion instinctive de hasard. Elle sous-entend qu’on ne peut prédire ce que le hasard va nous donner comme résultat... cependant, on peut prédire avec quelle fréquence un événement^[Un événement (event) est un fait qui se produit. Tout ce que l’on observe dans le monde qui nous entoure est donc qualifié d’événement en statistique.] pourrait se produire.
-
-- La probabilité d’un événement est une valeur numérique comprise entre zéro et un qui exprime avec quelle fréquence cet événement peut se produire.
-
-$$0 \leq P(E) \leq 1$$
-
-
-Partons du dénombrement de fumeur en fonction du revenu des sondés.
-
-
-```r
-tabac <- data.frame(Revenu_faible = c(634,1846,2480),
-                        Revenu_moyen = c(332, 1622,1954),
-                        Revenu_eleve = c(247,1868,2115),
-                        Total = c(1213, 5336, 6549))
-rownames(tabac) <- paste0(c("Fume", "Ne fume pas",  "Total"))
+tabac <- data.frame(
+  revenu_faible = c(634,1846,2480),
+  revenu_moyen = c(332, 1622,1954),
+  revenu_eleve = c(247,1868,2115),
+  total = c(1213, 5336, 6549))
+rownames(tabac) <- c("fume", "ne fume pas",  "total")
 knitr::kable(tabac)
 ```
 
-               Revenu_faible   Revenu_moyen   Revenu_eleve   Total
+               revenu_faible   revenu_moyen   revenu_eleve   total
 ------------  --------------  -------------  -------------  ------
-Fume                     634            332            247    1213
-Ne fume pas             1846           1622           1868    5336
-Total                   2480           1954           2115    6549
+fume                     634            332            247    1213
+ne fume pas             1846           1622           1868    5336
+total                   2480           1954           2115    6549
 
-- Quel est la probabilité d'être un fumeur ? Cette question peut s'écrire : P(fumeur). 
+- Quelle est la probabilité d'être un fumeur $\mathrm{P}(fumeur)$\ ? Rappelons-nous de la définition de probabilité\ : nombre de cas où l'évènement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l'échantillon de 6549 perosnnes, soit :
 
 
 ```r
-1213/6549
+1213 / 6549
 ```
 
 ```
 # [1] 0.1852191
 ```
 
-Il s'agit d'une probabilité discrète^[Une probabilité discrète (discrete probability) d’un seul événement E est la mesure de la fréquence d’occurrence de E. Elle se note P(E)]
-
-- Quel est la probabilité d'être fumeur si le revenu élevé ? Cette question peut s'écrire : P(fumeur|revenu élevé). 
+- Quelle est la probabilité d'être fumeur si le revenu élevé $\mathrm{P}(fumeur|revenu\_eleve)$\ ? Le nombre de fumeurs à revenus élevés se monte à 247. **Attention, ici l'échantillon de référence n'est plus la population totale, mais seulement ceux qui ont des revenus élevés**, donc 2115 personnes :
 
 
 ```r
-247/2115
+247 / 2115
 ```
 
 ```
 # [1] 0.1167849
 ```
 
-Il s'agit d'une probabilité conditionnelle^[une probabilité conditionnelle (conditional probability) est la probabilité qu’un événement E2 se produise si et seulement si un premier événement E1 s’est produit (E1 et E2 sont deux événements successifs). La probabilité conditionnelle s’écrit P(E2|E1)]
-
-Quels est la probabilités d'avoir un revenu faible ou d'avoir un élevé ? Cette question peut s'écrire : P(revenu faible ou revenu élevé)
+- Quelle est la probabilités d'avoir un revenu faible ou d'avoir un élevé ? Cette question peut s'écrire : P(revenu faible ou revenu élevé)
 
 
 ```r
@@ -256,7 +270,7 @@ Il s'agit d'une somme de probabilités discrètes non disjoints^[Si E1 et E2 son
 
 Dans une population, voici les proportions de différents groupes sanguins : 44% O, 42% A, 10% B, 4% AB
 
-_ Quelles est la probabalité d'obtenir 1 individu du groupe B ? Cette question peut s'écrire : P(B). 
+- Quelles est la probabalité d'obtenir 1 individu du groupe B ? Cette question peut s'écrire : P(B). 
 
 
 ```r
@@ -267,7 +281,7 @@ _ Quelles est la probabalité d'obtenir 1 individu du groupe B ? Cette question 
 # [1] 0.1
 ```
 
-- Quelles est la probabilité d'obtenir 3 individus du groupe B d'affilé ? Cette question peut s'écrire : P(B et B et B). 
+- Quelle est la probabilité d'obtenir 3 individus du groupe B d'affilé ? Cette question peut s'écrire : P(B et B et B). 
 
 
 ```r
@@ -278,7 +292,7 @@ _ Quelles est la probabalité d'obtenir 1 individu du groupe B ? Cette question 
 # [1] 0.001
 ```
 
-nous parlerons dans ce cas d'un événements successifs^[Evénements issus d’actions séparées. Souvent successifs dans le temps]  et plus précisément d'événements successifs indépendants^[lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.].
+Nous parlerons dans ce cas d'un événements successifs^[Evénements issus d’actions séparées. Souvent successifs dans le temps]  et plus précisément d'événements successifs indépendants^[lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.].
 
 
 Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques. 
@@ -294,11 +308,12 @@ Dans une population de 100 personnes dont les proportions des différentes group
 # [1] 0.000742115
 ```
 
-Il s'agit d'événement succéssifs non-indépendants. 
+Il s'agit d'événements successifs non-indépendants. 
 
 Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas (replicates), il est possible de déterminer à quelle fréquence un événement E se produit de manière expérimentale. La probabilité observée est quantifiable sur base d’un échantillon. 
 
 La probabilité théorique est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
+
 
 ## Lois de distributions
 
@@ -328,7 +343,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-18-1.svg" width="672" style="display: block; margin: auto;" />
 
 ### Distribution binomiale
 
@@ -388,7 +403,7 @@ plot(0:20, dbinom(0:20, size = 20, prob = 0.25), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" />
 
 Partons d'une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d'avoir 0, 1 ou 2  malade sur 10000 individus ? 
 
@@ -467,7 +482,7 @@ plot(0:(2+20), dpois(0:(2+20), lambda = 2), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" />
 
 Quelle est la probabilité dans un population d'obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue. 
 
@@ -497,7 +512,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" />
 
 La variable Y suit une distribution Normale de moyenne $\mu$ (175), et d’écart type $\sigma$ (10). 
 
@@ -519,7 +534,7 @@ abline(h = 0, col = "gray") # Baseline
 text(.mu+.s, .d(.mu+.s), .label, pos = 4, col = .col) # Label at right
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 * La distribution normale réduite : $\mu_z = 0$ &  $\sigma_z = 1$
@@ -542,7 +557,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 
