@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-08">
+<meta name="date" content="2018-11-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -374,7 +374,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(shotgun_l
 <p>Vous conviendrez que le tableau nommé <code>shotgun_long</code> est moins compact et moins aisé à lire comparé à <code>shotgun_wide</code>. C’est une raison qui fait que beaucoup de scientifiques sont tentés d’utiliser le format large alors qu’ici il ne correspond <strong>pas</strong> à un tableau cas par variables correct, puisqu’il est impossible que les <em>mêmes</em> individus soient présents dans les différents lots (il s’agit de communautés microbiennes <em>indépendantes</em> les unes des autres). De plus, seul le format <code>shotgun_long</code> permet de produire des graphiques pertinents<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> shotgun_long, sequences <span class="op">~</span><span class="st"> </span>batch <span class="op">%fill=%</span><span class="st"> </span>kingdom) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre></div>
-<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-28-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-29-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Essayez de réaliser ce type de graphique en partant de <code>shotgun_wide</code>… Bonne chance !</p>
 <div class="note">
 <p>
@@ -390,6 +390,15 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(shotgun_w
 {"columns":[{"label":["kingdom"],"name":[1],"type":["chr"],"align":["left"]},{"label":["c1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["c10"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["c4"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["c7"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Archaea","2":"98379","3":"272541","4":"217985","5":"143314"},{"1":"Bacteria","2":"6665903","3":"15966053","4":"9739134","5":"7103244"},{"1":"Eukaryota","2":"81593","3":"150918","4":"101834","5":"71111"},{"1":"other sequences","2":"757","3":"2688","4":"1406","5":"907"},{"1":"unassigned","2":"1320419","3":"3268646","4":"2311326","5":"1600886"},{"1":"unclassified sequences","2":"15508","3":"35024","4":"21572","5":"14423"},{"1":"Viruses","2":"1245","3":"15303","4":"4867","5":"5181"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+
+<div class="bdd">
+<p>Une tâche en binome vous est assignée via l’URL suivante :</p>
+<ul>
+<li><a href="https://classroom.github.com/g/shtUkGbz" class="uri">https://classroom.github.com/g/shtUkGbz</a></li>
+</ul>
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier <code>README.md</code> de ce dépôt GitHub Classroom.
+</div>
+
 </div>
 <div id="recombinaison-de-variables" class="section level3">
 <h3><span class="header-section-number">6.4.2</span> Recombinaison de variables</h3>
