@@ -314,7 +314,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>La comparaison des probabilités théoriques et observées constitue l’un des piliers de la statistique. Le raisonnement est le suivant : si les probabilités observées sont suffisamment proches des probabilités théoriques, alors, nous pouvons considérer que les événement sont générés selon un mécanisme proche de celui qui est à la base de la loi de distribution théorique correspondante.</p>
 <div id="distribution-uniforme" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> Distribution uniforme</h3>
-<p>La loi de la distribution uniforme émet l’hypothèse que tous les événements sont équiprobales<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
+<p>La loi de la distribution uniforme émet l’hypothèse que tous les événements sont équiprobales<a href="references.html#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a>.</p>
 <p>la probabilité d’un de ces événements vaut donc: <span class="math display">\[\frac{1}{nbr \ E}\]</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Uniform distribution (density probability) with parameters:</span>
 .min &lt;-<span class="st"> </span><span class="dv">0</span>; .max &lt;-<span class="st"> </span><span class="dv">4</span> <span class="co">#  .min and .max range of possible events</span>
@@ -326,7 +326,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="kw">curve</span>(<span class="kw">.d</span>(x), <span class="dt">xlim =</span> <span class="kw">range</span>(.x), <span class="dt">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">col =</span> .col,
   <span class="dt">add =</span> .add, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability density&quot;</span>) <span class="co"># Curve</span>
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="co"># Baseline</span></code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-18-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="distribution-binomiale" class="section level3">
 <h3><span class="header-section-number">7.2.2</span> Distribution binomiale</h3>
@@ -369,7 +369,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>On peut représenter graphiquement le résultat lié au nombre d’albinos dans ces 20 familles.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">20</span>, <span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">prob =</span> <span class="fl">0.25</span>), <span class="dt">type =</span> <span class="st">&quot;h&quot;</span>,
   <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability mass&quot;</span>)</code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Partons d’une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d’avoir 0, 1 ou 2 malade sur 10000 individus ?</p>
 <p>La distribution binomiale requiert le développement du polynome <span class="math inline">\(_n C _J\)</span> qui revient donc à <span class="math inline">\(0.001^1 \times 0.999^{9999}\ !\)</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1</span>)</code></pre></div>
@@ -379,10 +379,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">100</span>)</code></pre></div>
 <pre><code># [1] 9.332622e+157</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1000</span>)</code></pre></div>
-<pre><code># Warning in factorial(1000): value out of range in &#39;gammafn&#39;</code></pre>
+<pre><code># Warning in factorial(1000): valeur d&#39;argument hors intervalle dans
+# &#39;gammafn&#39;</code></pre>
 <pre><code># [1] Inf</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">10000</span>)</code></pre></div>
-<pre><code># Warning in factorial(10000): value out of range in &#39;gammafn&#39;</code></pre>
+<pre><code># Warning in factorial(10000): valeur d&#39;argument hors intervalle dans
+# &#39;gammafn&#39;</code></pre>
 <pre><code># [1] Inf</code></pre>
 <p>La distribution de poisson permet d’obtenir la réponse à la question posée.</p>
 </div>
@@ -399,7 +401,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p><span class="math display">\[P(Y=k) = P(Y=k-1) \times \frac{ \lambda }{k}\]</span> Le calcul se réalise de proche en prohce en partant de la probabilité de l’événement correspondant à aucune occurence de succès.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">20</span>), <span class="kw">dpois</span>(<span class="dv">0</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">20</span>), <span class="dt">lambda =</span> <span class="dv">2</span>), <span class="dt">type =</span> <span class="st">&quot;h&quot;</span>,
   <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability mass&quot;</span>)</code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Quelle est la probabilité dans un population d’obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue.</p>
 </div>
 <div id="distribution-normale" class="section level3">
@@ -419,7 +421,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="kw">curve</span>(<span class="kw">.d</span>(x), <span class="dt">xlim =</span> <span class="kw">range</span>(.x), <span class="dt">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">col =</span> .col,
   <span class="dt">add =</span> .add, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability density&quot;</span>) <span class="co"># Curve</span>
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="co"># Baseline</span></code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>La variable Y suit une distribution Normale de moyenne <span class="math inline">\(\mu\)</span> (175), et d’écart type <span class="math inline">\(\sigma\)</span> (10).</p>
 <p>On appelle également cette distribution, la loi de distribution Gaussienne. Cette dernière est l’une des plus employée. Pratiquement, toutes les distributions tendent vers la distribution normale pour N allant vers l’infini expliqué par <a href="https://www.youtube.com/watch?v=4dhm2QAA2x4">le théorème central limite</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Normal distribution (density probability) with parameters:</span>
@@ -434,7 +436,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="co"># Baseline</span>
 
 <span class="kw">text</span>(.mu<span class="op">+</span>.s, <span class="kw">.d</span>(.mu<span class="op">+</span>.s), .label, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">col =</span> .col) <span class="co"># Label at right</span></code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>La distribution normale réduite : <span class="math inline">\(\mu_z = 0\)</span> &amp; <span class="math inline">\(\sigma_z = 1\)</span></li>
 </ul>
@@ -450,15 +452,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="kw">curve</span>(<span class="kw">.d</span>(x), <span class="dt">xlim =</span> <span class="kw">range</span>(.x), <span class="dt">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">col =</span> .col,
   <span class="dt">add =</span> .add, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability density&quot;</span>) <span class="co"># Curve</span>
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="co"># Baseline</span></code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>
 <!-- </div> -->
 <div class="footnotes">
 <hr />
-<ol start="5">
-<li id="fn5"><p>la probabilité de tous les événements possibles est égale pour tous<a href="lois-de-distributions.html#fnref5">↩</a></p></li>
+<ol start="33">
+<li id="fn33"><p>la probabilité de tous les événements possibles est égale pour tous<a href="lois-de-distributions.html#fnref33">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

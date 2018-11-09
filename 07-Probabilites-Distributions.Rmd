@@ -215,6 +215,13 @@ Etant donné que les statistiques reposent sur un nombre (si possible important)
 
 La probabilité théorique est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
 
+```{block2, type='bdd'}
+
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("07a_proba")
+
+```
 
 ## Lois de distributions
 

@@ -459,13 +459,13 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2480</span><span class="op">/</span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">2115</span><span class="op">/</span><span class="dv">6549</span></code></pre></div>
 <pre><code># [1] 0.7016338</code></pre>
-<p>Il s’agit d’une somme de probabilités discrètes disjoints<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Il s’agit d’une somme de probabilités discrètes disjoints<a href="references.html#fn29" class="footnoteRef" id="fnref29"><sup>29</sup></a></p>
 <ul>
 <li>Quels est la probabilités d’être fumeur ou d’avoir un revenu moyen ? Cette question peut s’écrire : P(fumeur ou revenu moyen).</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span><span class="op">/</span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">1954</span><span class="op">/</span><span class="dv">6549</span> <span class="op">-</span><span class="st"> </span><span class="dv">332</span><span class="op">/</span><span class="dv">6549</span></code></pre></div>
 <pre><code># [1] 0.4328905</code></pre>
-<p>Il s’agit d’une somme de probabilités discrètes non disjoints<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<p>Il s’agit d’une somme de probabilités discrètes non disjoints<a href="references.html#fn30" class="footnoteRef" id="fnref30"><sup>30</sup></a></p>
 <p>Dans une population, voici les proportions de différents groupes sanguins : 44% O, 42% A, 10% B, 4% AB</p>
 <ul>
 <li>Quelles est la probabalité d’obtenir 1 individu du groupe B ? Cette question peut s’écrire : P(B).</li>
@@ -477,7 +477,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span><span class="op">*</span><span class="fl">0.10</span><span class="op">*</span><span class="fl">0.10</span></code></pre></div>
 <pre><code># [1] 0.001</code></pre>
-<p>Nous parlerons dans ce cas d’un événements successifs<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> et plus précisément d’événements successifs indépendants<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>.</p>
+<p>Nous parlerons dans ce cas d’un événements successifs<a href="references.html#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a> et plus précisément d’événements successifs indépendants<a href="references.html#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a>.</p>
 <p>Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques.</p>
 <ul>
 <li>Quelles est la probabilité d’obtenir 3 individus du groupe B d’affilé ? Cette question peut s’écrire : P(B et B et B).</li>
@@ -487,15 +487,21 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <p>Il s’agit d’événements successifs non-indépendants.</p>
 <p>Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas (replicates), il est possible de déterminer à quelle fréquence un événement E se produit de manière expérimentale. La probabilité observée est quantifiable sur base d’un échantillon.</p>
 <p>La probabilité théorique est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.</p>
+
+<div class="bdd">
+<p>Ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;07a_proba&quot;)</code></pre>
+</div>
+
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Si E1 et E2 sont deux événements disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2)<a href="probabilites.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Si E1 et E2 sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2) − P(E1 et E2)<a href="probabilites.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Evénements issus d’actions séparées. Souvent successifs dans le temps<a href="probabilites.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.<a href="probabilites.html#fnref4">↩</a></p></li>
+<ol start="29">
+<li id="fn29"><p>Si E1 et E2 sont deux événements disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2)<a href="probabilites.html#fnref29">↩</a></p></li>
+<li id="fn30"><p>Si E1 et E2 sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2) − P(E1 et E2)<a href="probabilites.html#fnref30">↩</a></p></li>
+<li id="fn31"><p>Evénements issus d’actions séparées. Souvent successifs dans le temps<a href="probabilites.html#fnref31">↩</a></p></li>
+<li id="fn32"><p>lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.<a href="probabilites.html#fnref32">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
