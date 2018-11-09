@@ -389,8 +389,8 @@ Sachant qu’un <strong>événement</strong> en statistique est un fait qui se p
 <h3><span class="header-section-number">7.1.2</span> Arbre des probabilités</h3>
 <p>Il se peut que tout cela vous paraisse très (trop) abstrait. Vous êtes peut-être quelqu’un de visuel qui comprend mieux les concepts en image. Dans ce cas, la méthode alternative de résolution des calculs de probabilités via les <strong>arbres de probabilités</strong> devrait vous éclairer. Le principe consiste à représenter un arbre constitué de noeuds (des faits qui se produisent). De ces noeuds, vous représentez autant de branches (des segments de droites) que d’événements possibles. La figure suivante est l’arbre des probabilités correspondant au cas du dépistage de la maladie qui touche 8% de la population.</p>
 <div class="figure">
-<img src="images/sdd1_07/probtree.png" alt="Arbre de probabilités permettant de déterminer la probabilité d’avoir un test positif" />
-<p class="caption">Arbre de probabilités permettant de déterminer la probabilité d’avoir un test positif</p>
+<img src="images/sdd1_07/probtree.png" alt="Arbre de probabilités permettant de déterminer la probabilité d’avoir un résultat positif au test." />
+<p class="caption">Arbre de probabilités permettant de déterminer la probabilité d’avoir un résultat positif au test.</p>
 </div>
 <p>Du premier noeud (le fait qu’une personne est atteinte ou non de la maladie), nous avons deux branches menant aux deux événements “malade” et “sain”. Chacune de ces deux situations est un nouveau noeud d’où deux événements sont possibles à chaque fois (2 fois 2 nouvelles branches) : un test “positif”, ou un test “négatif”. Les noeuds terminaux (les “négatifs” et “positifs” ici) sont aussi appelés les feuilles de l’arbre. L’arbre reprend donc tous les cas possibles depuis le noeud de départ (sa racine), jusqu’aux feuilles.</p>
 <p>L’étape suivante consiste à aller indiquer le long des branches les probabilités associées à chaque événement : 0.08 pour “malade”, 0.95 pour un dépistage “positif” si la personne est malade, etc.</p>
@@ -398,7 +398,21 @@ Sachant qu’un <strong>événement</strong> en statistique est un fait qui se p
 </div>
 <div id="theoreme-de-bayes" class="section level3">
 <h3><span class="header-section-number">7.1.3</span> Théorème de Bayes</h3>
-<p>Nous devons introduire ici le concept de <strong>probabilité conditionnelle</strong>. Une probabilité conditionnelle est la probabilité qu’un événement <em>E2</em> se produise si et seulement si un premier événement <em>E1</em> s’est produit (<em>E1</em> et <em>E2</em> sont deux événements successifs). La probabilité conditionnelle s’écrit <span class="math inline">\(\mathrm{P}(E2|E1)\)</span>.</p>
+<p>Nous devons introduire ici le concept de probabilité conditionnelle.</p>
+<div class="note">
+<p>
+Une <strong>probabilité conditionnelle</strong> est la probabilité qu’un événement <em>E2</em> se produise si et seulement si un premier événement <em>E1</em> s’est produit (<em>E1</em> et <em>E2</em> sont deux événements successifs). La probabilité conditionnelle s’écrit <span class="math inline"><span class="math inline">\(\mathrm{P}(E2|E1)\)</span></span>.
+</p>
+</div>
+<p>On pourra considérer, donc, la probabilité conditionnelle d’avoir un résultat positif au test, si la personne est malade <span class="math inline">\(\mathrm{P}(positif|malade)\)</span>. Vous l’avez indiquée plus haut dans l’arbre des probabilités, c’est 0.95. Maintenant, la probabilité qu’une personne soit malade si elle est positive au test <span class="math inline">\(\mathrm{P}(malade|positif)\)</span> est une information capitable ici. Le lien entre les deux n’est pas facile à faire. C’est grâce aux travaux du révérend <strong>Thomas Bayes</strong> au 18<sup>ème</sup> siècle que ce problème a été résolu. Les implications du <strong>théorème de Bayes</strong> sont énormes car cela permet de déterminer des probabilités dites <em>a posteriori</em> en fonction de connaissances <em>a priori</em>.</p>
+<p>Si nous réanalysons le raisonnement qui est fait dans l’arbre de probabilités, on peut remarquer que le premier calcul (“malade” -&gt; “positif”) correspond en fait à la probabilité que le test soit positif si le patient est malade <span class="math inline">\(\mathrm{P}(positif|malade)\)</span> multipliée par la probabilité que le patient soit malade <span class="math inline">\(\mathrm{P}(malade)\)</span>, et ceci est aussi égal à <span class="math inline">\(\mathrm{P}(positif\, et\, malade)\)</span>. Donc,</p>
+<p><span class="math display">\[\mathrm{P}(positif|malade) * \mathrm{P}(malade) = \mathrm{P}(positif\, et\, malade)\]</span></p>
+<p>Par un raisonnement symmétrique, on peut aussi dire que :</p>
+<p><span class="math display">\[\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif\, et\, malade)\]</span></p>
+<p>Donc, nous avons aussi :</p>
+<p><span class="math display">\[\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif|malade) * \mathrm{P}(malade)\]</span> … et en divisant les deux termes par <span class="math inline">\(\mathrm{P}(positif)\)</span>, on obtient :</p>
+<p><span class="math display">\[\mathrm{P}(malade|positif) = \frac{\mathrm{P}(positif|malade) * \mathrm{P}(malade)}{\mathrm{P}(positif)}\]</span></p>
+<p>Cette dernière équation est celle à retenir. Nous avons maintenant une façon simple de déterminer <span class="math inline">\(\mathrm{P}(malade|positif)\)</span> à partir de <span class="math inline">\(\mathrm{P}(positif|malade)\)</span>, <span class="math inline">\(\mathrm{P}(malade)\)</span>, et <span class="math inline">\(\mathrm{P}(positif)\)</span>, c’est-à-dire des probabilités auxquelles nous avons facilement accès expérimentalement en pratique. Calculez comme exercice la probabilité qu’un patient soit malade s’il est positif au test <em>via</em> le théorème de Bayes, et comparez le résultat de votre calcul à ce que nous avions obtenu plus haut (45.2%).</p>
 </div>
 <div id="probabilites-et-contingence" class="section level3">
 <h3><span class="header-section-number">7.1.4</span> Probabilités et contingence</h3>
@@ -445,7 +459,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 </tbody>
 </table>
 <ul>
-<li>Quelle est la probabilité d’être un fumeur <span class="math inline">\(\mathrm{P}(fumeur)\)</span> ? Rappelons-nous de la définition de probabilité : nombre de cas où l’événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l’échantillon de 6549 perosnnes, soit :</li>
+<li>Quelle est la probabilité d’être un fumeur <span class="math inline">\(\mathrm{P}(fumeur)\)</span> ? Rappelons-nous de la définition de probabilité : nombre de cas où l’événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l’échantillon de 6549 personnes, soit :</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre></div>
 <pre><code># [1] 0.1852191</code></pre>
@@ -455,47 +469,50 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">247</span> <span class="op">/</span><span class="st"> </span><span class="dv">2115</span></code></pre></div>
 <pre><code># [1] 0.1167849</code></pre>
 <ul>
-<li>Quelle est la probabilités d’avoir un revenu faible ou d’avoir un élevé ? Cette question peut s’écrire : P(revenu faible ou revenu élevé)</li>
+<li>Quelle est la probabilités d’avoir un revenu faible ou d’avoir un élevé ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(revenu\-faible\, ou\, revenu\_eleve)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2480</span><span class="op">/</span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">2115</span><span class="op">/</span><span class="dv">6549</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2480</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">2115</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre></div>
 <pre><code># [1] 0.7016338</code></pre>
-<p>Il s’agit d’une somme de probabilités discrètes disjoints<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Il s’agit d’une somme de probabilités disjointes.</p>
 <ul>
-<li>Quels est la probabilités d’être fumeur ou d’avoir un revenu moyen ? Cette question peut s’écrire : P(fumeur ou revenu moyen).</li>
+<li>Quelle est la probabilités d’être fumeur ou d’avoir un revenu moyen ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(fumeur\, ou\, revenu\_moyen)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span><span class="op">/</span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">1954</span><span class="op">/</span><span class="dv">6549</span> <span class="op">-</span><span class="st"> </span><span class="dv">332</span><span class="op">/</span><span class="dv">6549</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">1954</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">-</span><span class="st"> </span><span class="dv">332</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre></div>
 <pre><code># [1] 0.4328905</code></pre>
-<p>Il s’agit d’une somme de probabilités discrètes non disjoints<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
-<p>Dans une population, voici les proportions de différents groupes sanguins : 44% O, 42% A, 10% B, 4% AB</p>
+<p>Il s’agit d’une somme de probabilités non disjointes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<div id="populations-de-taille-infinie" class="section level4">
+<h4><span class="header-section-number">7.1.4.1</span> Populations de taille infinie</h4>
+<p>Dans une population, voici les proportions de différents groupes sanguins :</p>
+<pre><code>44% O, 42% A, 10% B, 4% AB</code></pre>
 <ul>
-<li>Quelles est la probabalité d’obtenir 1 individu du groupe B ? Cette question peut s’écrire : P(B).</li>
+<li>Quelles est la probabilité d’obtenir 1 individu du groupe B ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B)\)</span>.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span></code></pre></div>
 <pre><code># [1] 0.1</code></pre>
 <ul>
-<li>Quelle est la probabilité d’obtenir 3 individus du groupe B d’affilé ? Cette question peut s’écrire : P(B et B et B).</li>
+<li>Quelle est la probabilité d’obtenir 3 individus du groupe B d’affilée ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B\, et\, B\, et\, B)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span><span class="op">*</span><span class="fl">0.10</span><span class="op">*</span><span class="fl">0.10</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span></code></pre></div>
 <pre><code># [1] 0.001</code></pre>
-<p>Nous parlerons dans ce cas d’un événements successifs<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> et plus précisément d’événements successifs indépendants<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>.</p>
-<p>Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques.</p>
+<p>Nous avons ici 3 événements successifs indépendants. Donc, on multiplie leurs probabilités respectives.</p>
+</div>
+<div id="populations-de-taille-finie" class="section level4">
+<h4><span class="header-section-number">7.1.4.2</span> Populations de taille finie</h4>
+<p>Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques au cas précédent.</p>
 <ul>
-<li>Quelles est la probabilité d’obtenir 3 individus du groupe B d’affilé ? Cette question peut s’écrire : P(B et B et B).</li>
+<li>Quelles est la probabilité d’obtenir 3 individus du groupe B d’affilée ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B\, et\, B\, et\, B)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span><span class="op">/</span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">9</span><span class="op">/</span><span class="dv">99</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span><span class="op">/</span><span class="dv">98</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">9</span> <span class="op">/</span><span class="st"> </span><span class="dv">99</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">98</span></code></pre></div>
 <pre><code># [1] 0.000742115</code></pre>
-<p>Il s’agit d’événements successifs non-indépendants.</p>
-<p>Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas (replicates), il est possible de déterminer à quelle fréquence un événement E se produit de manière expérimentale. La probabilité observée est quantifiable sur base d’un échantillon.</p>
-<p>La probabilité théorique est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.</p>
+<p>Il s’agit d’événements successifs non-indépendants. En effet, le retrait d’un individu de la population de taille finie <em>modifie</em> les proportions relatives des groupes sanguins dans le reste de la population !</p>
+<p>Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas, il est possible de déterminer à quelle fréquence un événement <em>E</em> se produit de manière expérimentale. La <strong>probabilité observée</strong> est quantifiable sur base d’un échantillon. La <strong>probabilité théorique</strong> est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.</p>
+</div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>Si E1 et E2 sont deux événements disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2)<a href="probabilites.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Si E1 et E2 sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2) − P(E1 et E2)<a href="probabilites.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Evénements issus d’actions séparées. Souvent successifs dans le temps<a href="probabilites.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.<a href="probabilites.html#fnref4">↩</a></p></li>
+<li id="fn1"><p>Si <em>E1</em> et <em>E2</em> sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : <span class="math inline">\(\mathrm{P}(E1\, ou\, E2) = \mathrm{P}(E1) + \mathrm{P}(E2) - \mathrm{P}(E1\, et\, E2)\)</span>.<a href="probabilites.html#fnref1">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

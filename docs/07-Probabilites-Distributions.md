@@ -190,7 +190,7 @@ Gasp ! Dans ce cas, un test positif n'aura effectivement détecté un malade que
 
 Il se peut que tout cela vous paraisse très (trop) abstrait. Vous êtes peut-être quelqu'un de visuel qui comprend mieux les concepts en image. Dans ce cas, la méthode alternative de résolution des calculs de probabilités via les **arbres de probabilités** devrait vous éclairer. Le principe consiste à représenter un arbre constitué de noeuds (des faits qui se produisent). De ces noeuds, vous représentez autant de branches (des segments de droites) que d'événements possibles. La figure suivante est l'arbre des probabilités correspondant au cas du dépistage de la maladie qui touche 8% de la population.
 
-![Arbre de probabilités permettant de déterminer la probabilité d'avoir un test positif](images/sdd1_07/probtree.png)
+![Arbre de probabilités permettant de déterminer la probabilité d'avoir un résultat positif au test.](images/sdd1_07/probtree.png)
 
 Du premier noeud (le fait qu'une personne est atteinte ou non de la maladie), nous avons deux branches menant aux deux événements "malade" et "sain". Chacune de ces deux situations est un nouveau noeud d'où deux événements sont possibles à chaque fois (2 fois 2 nouvelles branches) : un test "positif", ou un test "négatif". Les noeuds terminaux (les "négatifs" et "positifs" ici) sont aussi appelés les feuilles de l'arbre. L'arbre reprend donc tous les cas possibles depuis le noeud de départ (sa racine), jusqu'aux feuilles.
 
@@ -201,9 +201,30 @@ Le calcul se fait ensuite comme suit. On repère tous les cas qui nous intéress
 
 ### Théorème de Bayes
 
-Nous devons introduire ici le concept de **probabilité conditionnelle**. Une probabilité conditionnelle est la probabilité qu’un événement *E2* se produise si et seulement si un premier événement *E1* s’est produit (*E1* et *E2* sont deux événements successifs). La probabilité conditionnelle s’écrit $\mathrm{P}(E2|E1)$.
+Nous devons introduire ici le concept de probabilité conditionnelle.
 
+<div class="note">
+<p>Une <strong>probabilité conditionnelle</strong> est la probabilité qu’un événement <em>E2</em> se produise si et seulement si un premier événement <em>E1</em> s’est produit (<em>E1</em> et <em>E2</em> sont deux événements successifs). La probabilité conditionnelle s’écrit <span class="math inline">\(\mathrm{P}(E2|E1)\)</span>.</p>
+</div>
 
+On pourra considérer, donc, la probabilité conditionnelle d'avoir un résultat positif au test, si la personne est malade $\mathrm{P}(positif|malade)$. Vous l'avez indiquée plus haut dans l'arbre des probabilités, c'est 0.95. Maintenant, la probabilité qu'une personne soit malade si elle est positive au test $\mathrm{P}(malade|positif)$ est une information capitable ici. Le lien entre les deux n'est pas facile à faire. C'est grâce aux travaux du révérend **Thomas Bayes** au 18^ème^ siècle que ce problème a été résolu. Les implications du **théorème de Bayes** sont énormes car cela permet de déterminer des probabilités dites *a posteriori* en fonction de connaissances *a priori*.
+
+Si nous réanalysons le raisonnement qui est fait dans l'arbre de probabilités, on peut remarquer que le premier calcul ("malade" -> "positif") correspond en fait à la probabilité que le test soit positif si le patient est malade $\mathrm{P}(positif|malade)$ multipliée par la probabilité que le patient soit malade $\mathrm{P}(malade)$, et ceci est aussi égal à $\mathrm{P}(positif\, et\, malade)$. Donc,
+
+$$\mathrm{P}(positif|malade) * \mathrm{P}(malade) = \mathrm{P}(positif\, et\, malade)$$
+
+Par un raisonnement symmétrique, on peut aussi dire que :
+
+$$\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif\, et\, malade)$$
+
+Donc, nous avons aussi :
+
+$$\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif|malade) * \mathrm{P}(malade)$$
+... et en divisant les deux termes par $\mathrm{P}(positif)$, on obtient :
+
+$$\mathrm{P}(malade|positif) = \frac{\mathrm{P}(positif|malade) * \mathrm{P}(malade)}{\mathrm{P}(positif)}$$
+
+Cette dernière équation est celle à retenir. Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positif)$ à partir de $\mathrm{P}(positif|malade)$, $\mathrm{P}(malade)$, et $\mathrm{P}(positif)$, c'est-à-dire des probabilités auxquelles nous avons facilement accès expérimentalement en pratique. Calculez comme exercice la probabilité qu'un patient soit malade s'il est positif au test *via* le théorème de Bayes, et comparez le résultat de votre calcul à ce que nous avions obtenu plus haut (45.2%).
 
 
 ### Probabilités et contingence
@@ -227,7 +248,7 @@ fume                     634            332            247    1213
 ne fume pas             1846           1622           1868    5336
 total                   2480           1954           2115    6549
 
-- Quelle est la probabilité d'être un fumeur $\mathrm{P}(fumeur)$\ ? Rappelons-nous de la définition de probabilité\ : nombre de cas où l'événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l'échantillon de 6549 perosnnes, soit :
+- Quelle est la probabilité d'être un fumeur $\mathrm{P}(fumeur)$\ ? Rappelons-nous de la définition de probabilité\ : nombre de cas où l'événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l'échantillon de 6549 personnes, soit :
 
 
 ```r
@@ -249,36 +270,40 @@ total                   2480           1954           2115    6549
 # [1] 0.1167849
 ```
 
-- Quelle est la probabilités d'avoir un revenu faible ou d'avoir un élevé ? Cette question peut s'écrire : P(revenu faible ou revenu élevé)
+- Quelle est la probabilités d'avoir un revenu faible ou d'avoir un élevé ? Cette question peut s'écrire\ : $\mathrm{P}(revenu\-faible\, ou\, revenu\_eleve)$.
 
 
 ```r
-2480/6549 + 2115/6549
+2480 / 6549 + 2115 / 6549
 ```
 
 ```
 # [1] 0.7016338
 ```
 
-Il s'agit d'une somme de probabilités discrètes disjoints^[Si E1 et E2 sont deux événements disjoints,
-la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2)]
+Il s'agit d'une somme de probabilités disjointes.
 
-- Quels est la probabilités d'être fumeur ou d'avoir un revenu moyen ? Cette question peut s'écrire : P(fumeur ou revenu moyen). 
+- Quelle est la probabilités d'être fumeur ou d'avoir un revenu moyen ? Cette question peut s'écrire\ : $\mathrm{P}(fumeur\, ou\, revenu\_moyen)$. 
 
 
 ```r
-1213/6549 + 1954/6549 - 332/6549
+1213 / 6549 + 1954 / 6549 - 332 / 6549
 ```
 
 ```
 # [1] 0.4328905
 ```
 
-Il s'agit d'une somme de probabilités discrètes non disjoints^[Si E1 et E2 sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : P(E1 ou E2) = P(E1) + P(E2) − P(E1 et E2)]
+Il s'agit d'une somme de probabilités non disjointes^[Si *E1* et *E2* sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est\ : $\mathrm{P}(E1\, ou\, E2) = \mathrm{P}(E1) + \mathrm{P}(E2) - \mathrm{P}(E1\, et\, E2)$.].
 
-Dans une population, voici les proportions de différents groupes sanguins : 44% O, 42% A, 10% B, 4% AB
 
-- Quelles est la probabalité d'obtenir 1 individu du groupe B ? Cette question peut s'écrire : P(B). 
+#### Populations de taille infinie
+
+Dans une population, voici les proportions de différents groupes sanguins\ :
+
+    44% O, 42% A, 10% B, 4% AB
+
+- Quelles est la probabilité d'obtenir 1 individu du groupe B\ ? Cette question peut s'écrire\ : $\mathrm{P}(B)$. 
 
 
 ```r
@@ -289,38 +314,38 @@ Dans une population, voici les proportions de différents groupes sanguins : 44%
 # [1] 0.1
 ```
 
-- Quelle est la probabilité d'obtenir 3 individus du groupe B d'affilé ? Cette question peut s'écrire : P(B et B et B). 
+- Quelle est la probabilité d'obtenir 3 individus du groupe B d'affilée\ ? Cette question peut s'écrire : $\mathrm{P}(B\, et\, B\, et\, B)$. 
 
 
 ```r
-0.10*0.10*0.10
+0.10 * 0.10 * 0.10
 ```
 
 ```
 # [1] 0.001
 ```
 
-Nous parlerons dans ce cas d'un événements successifs^[Evénements issus d’actions séparées. Souvent successifs dans le temps]  et plus précisément d'événements successifs indépendants^[lorsque les résultats de la seconde action ne sont pas influencés par les résultats de la première action. Ex. : deux jets successifs d’une pièce de monnaie, tirage au sort dans une urne avec remise.].
+Nous avons ici 3 événements successifs indépendants. Donc, on multiplie leurs probabilités respectives.
 
 
-Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques. 
+#### Populations de taille finie
 
-- Quelles est la probabilité d'obtenir 3 individus du groupe B d'affilé ? Cette question peut s'écrire : P(B et B et B). 
+Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques au cas précédent.
+
+- Quelles est la probabilité d'obtenir 3 individus du groupe B d'affilée\ ? Cette question peut s'écrire\ : $\mathrm{P}(B\, et\, B\, et\, B)$. 
 
 
 ```r
-10/100 * 9/99 * 8/98
+10 / 100 * 9 / 99 * 8 / 98
 ```
 
 ```
 # [1] 0.000742115
 ```
 
-Il s'agit d'événements successifs non-indépendants. 
+Il s'agit d'événements successifs non-indépendants. En effet, le retrait d'un individu de la population de taille finie *modifie* les proportions relatives des groupes sanguins dans le reste de la population\ !
 
-Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas (replicates), il est possible de déterminer à quelle fréquence un événement E se produit de manière expérimentale. La probabilité observée est quantifiable sur base d’un échantillon. 
-
-La probabilité théorique est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
+Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas, il est possible de déterminer à quelle fréquence un événement *E* se produit de manière expérimentale. La **probabilité observée** est quantifiable sur base d’un échantillon. La **probabilité théorique** est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
 
 
 ## Lois de distributions
@@ -351,7 +376,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-18-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" />
 
 ### Distribution binomiale
 
@@ -411,7 +436,7 @@ plot(0:20, dbinom(0:20, size = 20, prob = 0.25), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" />
 
 Partons d'une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d'avoir 0, 1 ou 2  malade sur 10000 individus ? 
 
@@ -490,7 +515,7 @@ plot(0:(2+20), dpois(0:(2+20), lambda = 2), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" />
 
 Quelle est la probabilité dans un population d'obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue. 
 
@@ -520,7 +545,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
 
 La variable Y suit une distribution Normale de moyenne $\mu$ (175), et d’écart type $\sigma$ (10). 
 
@@ -542,7 +567,7 @@ abline(h = 0, col = "gray") # Baseline
 text(.mu+.s, .d(.mu+.s), .label, pos = 4, col = .col) # Label at right
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 * La distribution normale réduite : $\mu_z = 0$ &  $\sigma_z = 1$
@@ -565,7 +590,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 
