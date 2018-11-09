@@ -240,6 +240,13 @@ Il s'agit d'événements successifs non-indépendants. En effet, le retrait d'un
 
 Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas, il est possible de déterminer à quelle fréquence un événement *E* se produit de manière expérimentale. La **probabilité observée** est quantifiable sur base d’un échantillon. La **probabilité théorique** est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
 
+```{block2, type='bdd'}
+
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("07a_proba")
+
+```
 
 ## Lois de distributions
 

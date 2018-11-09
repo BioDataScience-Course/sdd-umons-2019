@@ -347,6 +347,11 @@ Il s'agit d'événements successifs non-indépendants. En effet, le retrait d'un
 
 Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas, il est possible de déterminer à quelle fréquence un événement *E* se produit de manière expérimentale. La **probabilité observée** est quantifiable sur base d’un échantillon. La **probabilité théorique** est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
 
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("07a_proba")
+</div>\EndKnitrBlock{bdd}
 
 ## Lois de distributions
 
@@ -376,7 +381,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" />
 
 ### Distribution binomiale
 
@@ -436,7 +441,7 @@ plot(0:20, dbinom(0:20, size = 20, prob = 0.25), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" />
 
 Partons d'une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d'avoir 0, 1 ou 2  malade sur 10000 individus ? 
 
@@ -515,7 +520,7 @@ plot(0:(2+20), dpois(0:(2+20), lambda = 2), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
 
 Quelle est la probabilité dans un population d'obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue. 
 
@@ -545,7 +550,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
 
 La variable Y suit une distribution Normale de moyenne $\mu$ (175), et d’écart type $\sigma$ (10). 
 
@@ -567,7 +572,7 @@ abline(h = 0, col = "gray") # Baseline
 text(.mu+.s, .d(.mu+.s), .label, pos = 4, col = .col) # Label at right
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 * La distribution normale réduite : $\mu_z = 0$ &  $\sigma_z = 1$
@@ -590,7 +595,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-27-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 

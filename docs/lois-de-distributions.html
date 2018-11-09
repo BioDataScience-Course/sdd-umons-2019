@@ -326,7 +326,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="kw">curve</span>(<span class="kw">.d</span>(x), <span class="dt">xlim =</span> <span class="kw">range</span>(.x), <span class="dt">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">col =</span> .col,
   <span class="dt">add =</span> .add, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability density&quot;</span>) <span class="co"># Curve</span>
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="co"># Baseline</span></code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="distribution-binomiale" class="section level3">
 <h3><span class="header-section-number">7.2.2</span> Distribution binomiale</h3>
@@ -369,7 +369,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>On peut représenter graphiquement le résultat lié au nombre d’albinos dans ces 20 familles.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">20</span>, <span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">prob =</span> <span class="fl">0.25</span>), <span class="dt">type =</span> <span class="st">&quot;h&quot;</span>,
   <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability mass&quot;</span>)</code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Partons d’une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d’avoir 0, 1 ou 2 malade sur 10000 individus ?</p>
 <p>La distribution binomiale requiert le développement du polynome <span class="math inline">\(_n C _J\)</span> qui revient donc à <span class="math inline">\(0.001^1 \times 0.999^{9999}\ !\)</span></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1</span>)</code></pre></div>
@@ -399,7 +399,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p><span class="math display">\[P(Y=k) = P(Y=k-1) \times \frac{ \lambda }{k}\]</span> Le calcul se réalise de proche en prohce en partant de la probabilité de l’événement correspondant à aucune occurence de succès.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">20</span>), <span class="kw">dpois</span>(<span class="dv">0</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">20</span>), <span class="dt">lambda =</span> <span class="dv">2</span>), <span class="dt">type =</span> <span class="st">&quot;h&quot;</span>,
   <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability mass&quot;</span>)</code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Quelle est la probabilité dans un population d’obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue.</p>
 </div>
 <div id="distribution-normale" class="section level3">
@@ -419,7 +419,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="kw">curve</span>(<span class="kw">.d</span>(x), <span class="dt">xlim =</span> <span class="kw">range</span>(.x), <span class="dt">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">col =</span> .col,
   <span class="dt">add =</span> .add, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability density&quot;</span>) <span class="co"># Curve</span>
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="co"># Baseline</span></code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>La variable Y suit une distribution Normale de moyenne <span class="math inline">\(\mu\)</span> (175), et d’écart type <span class="math inline">\(\sigma\)</span> (10).</p>
 <p>On appelle également cette distribution, la loi de distribution Gaussienne. Cette dernière est l’une des plus employée. Pratiquement, toutes les distributions tendent vers la distribution normale pour N allant vers l’infini expliqué par <a href="https://www.youtube.com/watch?v=4dhm2QAA2x4">le théorème central limite</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Normal distribution (density probability) with parameters:</span>
@@ -434,7 +434,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="co"># Baseline</span>
 
 <span class="kw">text</span>(.mu<span class="op">+</span>.s, <span class="kw">.d</span>(.mu<span class="op">+</span>.s), .label, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">col =</span> .col) <span class="co"># Label at right</span></code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>La distribution normale réduite : <span class="math inline">\(\mu_z = 0\)</span> &amp; <span class="math inline">\(\sigma_z = 1\)</span></li>
 </ul>
@@ -450,7 +450,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <span class="kw">curve</span>(<span class="kw">.d</span>(x), <span class="dt">xlim =</span> <span class="kw">range</span>(.x), <span class="dt">xaxs =</span> <span class="st">&quot;i&quot;</span>, <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">col =</span> .col,
   <span class="dt">add =</span> .add, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability density&quot;</span>) <span class="co"># Curve</span>
 <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>) <span class="co"># Baseline</span></code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-27-1.svg" width="672" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

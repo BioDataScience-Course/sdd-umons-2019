@@ -223,8 +223,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="7" data-path="proba.html"><a href="proba.html"><i class="fa fa-check"></i><b>7</b> Probabilités &amp; distributions</a><ul>
 <li class="chapter" data-level="7.1" data-path="probabilites.html"><a href="probabilites.html"><i class="fa fa-check"></i><b>7.1</b> Probabilités</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="probabilites.html"><a href="probabilites.html#depistage"><i class="fa fa-check"></i><b>7.1.1</b> Dépistage</a></li>
-<li class="chapter" data-level="7.1.2" data-path="probabilites.html"><a href="probabilites.html#theoreme-de-bayes"><i class="fa fa-check"></i><b>7.1.2</b> Théorème de Bayes</a></li>
-<li class="chapter" data-level="7.1.3" data-path="probabilites.html"><a href="probabilites.html#arbre-des-probabilites"><i class="fa fa-check"></i><b>7.1.3</b> Arbre des probabilités</a></li>
+<li class="chapter" data-level="7.1.2" data-path="probabilites.html"><a href="probabilites.html#arbre-des-probabilites"><i class="fa fa-check"></i><b>7.1.2</b> Arbre des probabilités</a></li>
+<li class="chapter" data-level="7.1.3" data-path="probabilites.html"><a href="probabilites.html#theoreme-de-bayes"><i class="fa fa-check"></i><b>7.1.3</b> Théorème de Bayes</a></li>
 <li class="chapter" data-level="7.1.4" data-path="probabilites.html"><a href="probabilites.html#probabilites-et-contingence"><i class="fa fa-check"></i><b>7.1.4</b> Probabilités et contingence</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="lois-de-distributions.html"><a href="lois-de-distributions.html"><i class="fa fa-check"></i><b>7.2</b> Lois de distributions</a><ul>
@@ -453,7 +453,7 @@ timolol_table</code></pre></div>
 </tr>
 </tbody>
 </table>
-<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques<a href="references.html#fn24" class="footnoteRef" id="fnref24"><sup>24</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab1 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">head</span>(biometry), <span class="dt">rows =</span> <span class="ot">NULL</span>)
 tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))
 
@@ -468,7 +468,7 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 # 2 sain    placebo       19
 # 3 malade  timolol      116
 # 4 sain    timolol       44</code></pre>
-<p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> :</p>
+<p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="references.html#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">uncount</span>(timolol2, freq)</code></pre></div>
 <pre><code># # A tibble: 307 x 2
 #    patient traitement
@@ -628,9 +628,9 @@ Le dictionnaire des données est un outil important pour comprendre ce que conti
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref2">↩</a></p></li>
+<ol start="24">
+<li id="fn24"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref24">↩</a></p></li>
+<li id="fn25"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref25">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
