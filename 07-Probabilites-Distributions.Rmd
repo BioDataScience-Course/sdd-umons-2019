@@ -26,10 +26,10 @@ vembedr::embed_youtube("5TtwG_LR0iY", width = 770, height = 433)
 ```
 
 ```{block, type='note'}
-Sachant qu'un **évènement** en statistique est un fait qui se produit, la **probabilité** que cet évènement se produise effectivement peut être quantifiée sur base de l'observation des réalisations passées. Ainsi si l'évènement en question s'est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet évènement se produise est de 9/12, soit 0,75. Notez qu'une probabilité est un nombre compris entre zéro (lorsqu'il ne se produit jamais) et un (lorsqu'il se produit toujours).
+Sachant qu'un **événement** en statistique est un fait qui se produit, la **probabilité** que cet événement se produise effectivement peut être quantifiée sur base de l'observation des réalisations passées. Ainsi si l'événement en question s'est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet événement se produise est de 9/12, soit 0,75. Notez qu'une probabilité est un nombre compris entre zéro (lorsqu'il ne se produit jamais) et un (lorsqu'il se produit toujours).
 ```
 
-On écrira, pour la probabilité de l'évènement *E* :
+On écrira, pour la probabilité de l'événement *E* :
 
 $$0 \leq \mathrm{P}(E) \leq 1$$
 
@@ -38,7 +38,7 @@ $$0 \leq \mathrm{P}(E) \leq 1$$
 
 > Voyons tout de suite une application plus proche de la biologie : le dépistage d'une maladie qui touche 8% de la population. Le test de dépistage mis en place détecte 95% des malades. De plus, le test se trompe dans 10% des cas pour les personnes saines. Comment connaitre le risque d'être malade si on est diagnostiqué positif par ce test ?
 
-Pour résoudre ce problème, nous devons d'abord apprendre à *combiner* des probabilités. Ce n'est pas bien compliqué. Si on a affaire à des **évènements successifs indépendants** (c'est-à-dire que l'occurence de l'un ne dépend pas de l'occurence de l'autre), la **probabilité que les deux évènements successifs indépendants se produisent tous les deux est la multiplication des deux probabiltés**. On pourra écrire :
+Pour résoudre ce problème, nous devons d'abord apprendre à *combiner* des probabilités. Ce n'est pas bien compliqué. Si on a affaire à des **événements successifs indépendants** (c'est-à-dire que l'occurence de l'un ne dépend pas de l'occurence de l'autre), la **probabilité que les deux événements successifs indépendants se produisent tous les deux est la multiplication des deux probabiltés**. On pourra écrire :
 
 $$\mathrm{P}(E_1 \,\mathrm{et}\, E_2) = \mathrm{P}(E_1) * \mathrm{P}(E_2)$$
 
@@ -49,7 +49,7 @@ Vous pouvez dès lors calculer la probabilité que l'on teste un patient malade 
 (p_sick_positive <- 0.08 * 0.95)
 ```
 
-Ceci n'indique *pas* la probabilité que le test soit positif car il est également parfois (erronément) positif pour des patients sains. Mais au fait, quelle est la probabilité d'avoir un patient sain ? **La probabilité que l'un parmi tous les évènements possibles se produise vaut toujours un**. Les seuls évènements possibles ici sont que le patient soit sain ou malade. Donc,
+Ceci n'indique *pas* la probabilité que le test soit positif car il est également parfois (erronément) positif pour des patients sains. Mais au fait, quelle est la probabilité d'avoir un patient sain ? **La probabilité que l'un parmi tous les événements possibles se produise vaut toujours un**. Les seuls événements possibles ici sont que le patient soit sain ou malade. Donc,
 
 $$\mathrm{P}(sain) + \mathrm{P}(malade) = 1 \rightarrow \mathrm{P}(sain) = 1 - \mathrm{P}(malade) = 0.92$$
 
@@ -61,7 +61,7 @@ Nous pouvons maintenant déterminer la probabilité que le test soit positif dan
 (p_healthy_positive <- 0.92 * 0.10)
 ```
 
-Bon, il nous reste à combiner les probabilités que le test soit positif si la personne est malade et si la personne est saine. Mais comment faire\ ? Ici, on n'a pas affaire à des évènements successifs, mais à des évènements mutuellement exclusifs. On les appellent des **évènements disjoints**. Pour déterminer si l'un parmi deux évènements disjoints se produit, il suffit d'**additionner leurs probabilités respectives**. Nous pouvons maintenant déterminer la probabilité que le test soit positif quelle que soit la personne testée :
+Bon, il nous reste à combiner les probabilités que le test soit positif si la personne est malade et si la personne est saine. Mais comment faire\ ? Ici, on n'a pas affaire à des événements successifs, mais à des évènements mutuellement exclusifs. On les appellent des **événements disjoints**. Pour déterminer si l'un parmi deux événements disjoints se produit, il suffit d'**additionner leurs probabilités respectives**. Nous pouvons maintenant déterminer la probabilité que le test soit positif quelle que soit la personne testée :
 
 
 ```{r}
@@ -78,7 +78,7 @@ p_sick_positive / p_positive
 ... seulement 45,2% qui sont effectivement malades (on parle de **vrais positifs**) ! Ceci ne correspond pas du tout aux indications de départ sur les performances du test.
 
 ```{block2, type='note'}
-Dans le cas de deux faits successifs qui ne peuvent chacun que résulter en deux évènements, nous avons seulement quatre situations possibles. Si l'un des cas est qualifié de positif et l'autre de négatif, nous aurons:
+Dans le cas de deux faits successifs qui ne peuvent chacun que résulter en deux événements, nous avons seulement quatre situations possibles. Si l'un des cas est qualifié de positif et l'autre de négatif, nous aurons:
   
 - les **vrais positifs** (test positif alors que la personne est malade), ici 0.08 * 0.95
 
@@ -135,7 +135,7 @@ TODO...
 
 ### Probabilités et contingence
 
-Comme un tableau de contingence indique le nombre de fois que des évènements ont pu être observés, il peut servir de base à des calculs de probabilités. Partons du dénombrement de fumeur en fonction du revenu dans une population.
+Comme un tableau de contingence indique le nombre de fois que des événements ont pu être observés, il peut servir de base à des calculs de probabilités. Partons du dénombrement de fumeur en fonction du revenu dans une population.
 
 ```{r}
 tabac <- data.frame(
@@ -147,7 +147,7 @@ rownames(tabac) <- c("fume", "ne fume pas",  "total")
 knitr::kable(tabac)
 ```
 
-- Quelle est la probabilité d'être un fumeur $\mathrm{P}(fumeur)$\ ? Rappelons-nous de la définition de probabilité\ : nombre de cas où l'évènement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l'échantillon de 6549 perosnnes, soit :
+- Quelle est la probabilité d'être un fumeur $\mathrm{P}(fumeur)$\ ? Rappelons-nous de la définition de probabilité\ : nombre de cas où l'événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l'échantillon de 6549 perosnnes, soit :
 
 ```{r}
 1213 / 6549

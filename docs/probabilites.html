@@ -313,29 +313,29 @@ code > span. { color: #1f1c1b; } /* Normal */
 <iframe src="https://www.youtube.com/embed/5TtwG_LR0iY" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
 <div class="note">
 <p>
-Sachant qu’un <strong>évènement</strong> en statistique est un fait qui se produit, la <strong>probabilité</strong> que cet évènement se produise effectivement peut être quantifiée sur base de l’observation des réalisations passées. Ainsi si l’évènement en question s’est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet évènement se produise est de 9/12, soit 0,75. Notez qu’une probabilité est un nombre compris entre zéro (lorsqu’il ne se produit jamais) et un (lorsqu’il se produit toujours).
+Sachant qu’un <strong>événement</strong> en statistique est un fait qui se produit, la <strong>probabilité</strong> que cet événement se produise effectivement peut être quantifiée sur base de l’observation des réalisations passées. Ainsi si l’événement en question s’est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet événement se produise est de 9/12, soit 0,75. Notez qu’une probabilité est un nombre compris entre zéro (lorsqu’il ne se produit jamais) et un (lorsqu’il se produit toujours).
 </p>
 </div>
-<p>On écrira, pour la probabilité de l’évènement <em>E</em> :</p>
+<p>On écrira, pour la probabilité de l’événement <em>E</em> :</p>
 <p><span class="math display">\[0 \leq \mathrm{P}(E) \leq 1\]</span></p>
 <div id="depistage" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> Dépistage</h3>
 <blockquote>
 <p>Voyons tout de suite une application plus proche de la biologie : le dépistage d’une maladie qui touche 8% de la population. Le test de dépistage mis en place détecte 95% des malades. De plus, le test se trompe dans 10% des cas pour les personnes saines. Comment connaitre le risque d’être malade si on est diagnostiqué positif par ce test ?</p>
 </blockquote>
-<p>Pour résoudre ce problème, nous devons d’abord apprendre à <em>combiner</em> des probabilités. Ce n’est pas bien compliqué. Si on a affaire à des <strong>évènements successifs indépendants</strong> (c’est-à-dire que l’occurence de l’un ne dépend pas de l’occurence de l’autre), la <strong>probabilité que les deux évènements successifs indépendants se produisent tous les deux est la multiplication des deux probabiltés</strong>. On pourra écrire :</p>
+<p>Pour résoudre ce problème, nous devons d’abord apprendre à <em>combiner</em> des probabilités. Ce n’est pas bien compliqué. Si on a affaire à des <strong>événements successifs indépendants</strong> (c’est-à-dire que l’occurence de l’un ne dépend pas de l’occurence de l’autre), la <strong>probabilité que les deux événements successifs indépendants se produisent tous les deux est la multiplication des deux probabiltés</strong>. On pourra écrire :</p>
 <p><span class="math display">\[\mathrm{P}(E_1 \,\mathrm{et}\, E_2) = \mathrm{P}(E_1) * \mathrm{P}(E_2)\]</span></p>
 <p>Vous pouvez dès lors calculer la probabilité que l’on teste un patient malade (probabilité = 0,08) et que le test soit positif (0,95) dans ce cas :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Personne malade et détectée positive</span>
 (p_sick_positive &lt;-<span class="st"> </span><span class="fl">0.08</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>)</code></pre></div>
 <pre><code># [1] 0.076</code></pre>
-<p>Ceci n’indique <em>pas</em> la probabilité que le test soit positif car il est également parfois (erronément) positif pour des patients sains. Mais au fait, quelle est la probabilité d’avoir un patient sain ? <strong>La probabilité que l’un parmi tous les évènements possibles se produise vaut toujours un</strong>. Les seuls évènements possibles ici sont que le patient soit sain ou malade. Donc,</p>
+<p>Ceci n’indique <em>pas</em> la probabilité que le test soit positif car il est également parfois (erronément) positif pour des patients sains. Mais au fait, quelle est la probabilité d’avoir un patient sain ? <strong>La probabilité que l’un parmi tous les événements possibles se produise vaut toujours un</strong>. Les seuls événements possibles ici sont que le patient soit sain ou malade. Donc,</p>
 <p><span class="math display">\[\mathrm{P}(sain) + \mathrm{P}(malade) = 1 \rightarrow \mathrm{P}(sain) = 1 - \mathrm{P}(malade) = 0.92\]</span></p>
 <p>Nous pouvons maintenant déterminer la probabilité que le test soit positif dans le cas d’une personne saine :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Personne saine et détectée positive</span>
 (p_healthy_positive &lt;-<span class="st"> </span><span class="fl">0.92</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span>)</code></pre></div>
 <pre><code># [1] 0.092</code></pre>
-<p>Bon, il nous reste à combiner les probabilités que le test soit positif si la personne est malade et si la personne est saine. Mais comment faire ? Ici, on n’a pas affaire à des évènements successifs, mais à des évènements mutuellement exclusifs. On les appellent des <strong>évènements disjoints</strong>. Pour déterminer si l’un parmi deux évènements disjoints se produit, il suffit d’<strong>additionner leurs probabilités respectives</strong>. Nous pouvons maintenant déterminer la probabilité que le test soit positif quelle que soit la personne testée :</p>
+<p>Bon, il nous reste à combiner les probabilités que le test soit positif si la personne est malade et si la personne est saine. Mais comment faire ? Ici, on n’a pas affaire à des événements successifs, mais à des évènements mutuellement exclusifs. On les appellent des <strong>événements disjoints</strong>. Pour déterminer si l’un parmi deux événements disjoints se produit, il suffit d’<strong>additionner leurs probabilités respectives</strong>. Nous pouvons maintenant déterminer la probabilité que le test soit positif quelle que soit la personne testée :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># La probabilité que le test soit positif </span>
 (p_positive &lt;-<span class="st"> </span>p_sick_positive <span class="op">+</span><span class="st"> </span>p_healthy_positive)</code></pre></div>
 <pre><code># [1] 0.168</code></pre>
@@ -345,7 +345,7 @@ Sachant qu’un <strong>évènement</strong> en statistique est un fait qui se p
 <p>… seulement 45,2% qui sont effectivement malades (on parle de <strong>vrais positifs</strong>) ! Ceci ne correspond pas du tout aux indications de départ sur les performances du test.</p>
 
 <div class="note">
-<p>Dans le cas de deux faits successifs qui ne peuvent chacun que résulter en deux évènements, nous avons seulement quatre situations possibles. Si l’un des cas est qualifié de positif et l’autre de négatif, nous aurons:</p>
+<p>Dans le cas de deux faits successifs qui ne peuvent chacun que résulter en deux événements, nous avons seulement quatre situations possibles. Si l’un des cas est qualifié de positif et l’autre de négatif, nous aurons:</p>
 <ul>
 <li><p>les <strong>vrais positifs</strong> (test positif alors que la personne est malade), ici 0.08 * 0.95</p></li>
 <li><p>les <strong>faux positifs</strong> (test positif alors que la personne est saine), ici 0.92 * 0.10</p></li>
@@ -396,7 +396,7 @@ Sachant qu’un <strong>évènement</strong> en statistique est un fait qui se p
 </div>
 <div id="probabilites-et-contingence" class="section level3">
 <h3><span class="header-section-number">7.1.4</span> Probabilités et contingence</h3>
-<p>Comme un tableau de contingence indique le nombre de fois que des évènements ont pu être observés, il peut servir de base à des calculs de probabilités. Partons du dénombrement de fumeur en fonction du revenu dans une population.</p>
+<p>Comme un tableau de contingence indique le nombre de fois que des événements ont pu être observés, il peut servir de base à des calculs de probabilités. Partons du dénombrement de fumeur en fonction du revenu dans une population.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabac &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">revenu_faible =</span> <span class="kw">c</span>(<span class="dv">634</span>,<span class="dv">1846</span>,<span class="dv">2480</span>),
   <span class="dt">revenu_moyen =</span> <span class="kw">c</span>(<span class="dv">332</span>, <span class="dv">1622</span>,<span class="dv">1954</span>),
@@ -439,7 +439,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 </tbody>
 </table>
 <ul>
-<li>Quelle est la probabilité d’être un fumeur <span class="math inline">\(\mathrm{P}(fumeur)\)</span> ? Rappelons-nous de la définition de probabilité : nombre de cas où l’évènement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l’échantillon de 6549 perosnnes, soit :</li>
+<li>Quelle est la probabilité d’être un fumeur <span class="math inline">\(\mathrm{P}(fumeur)\)</span> ? Rappelons-nous de la définition de probabilité : nombre de cas où l’événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l’échantillon de 6549 perosnnes, soit :</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre></div>
 <pre><code># [1] 0.1852191</code></pre>
