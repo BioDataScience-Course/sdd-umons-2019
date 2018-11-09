@@ -469,7 +469,7 @@ crabs <- unite(crabs, col = "sp_sex", sex, species, sep = "_")
 rmarkdown::paged_table(crabs)
 ```
 
-La fonction complémentaire à `unite()` est `separate()`. Elle permet de séparer une variable en deux ou plus de colonnes séparées. Donc, pour retrouver un tableau similaire à celui d'origine, nous pourrons faire :
+La fonction complémentaire à `unite()` est `separate()`. Elle permet de séparer une variable en deux ou plusieurs colonnes séparées. Donc, pour retrouver un tableau similaire à celui d'origine, nous pourrons faire :
 
 ```{r}
 crabs <- separate(crabs, col = "sp_sex", into = c("sex", "species"), sep = "_")
