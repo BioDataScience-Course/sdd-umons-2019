@@ -372,7 +372,7 @@ tribble(
 )
 ```
 
-Dans le format large, les différents niveaux de la variable facteur `treatment` deviennent autant de colonnes (donc de variables) séparées, et la variable d'origine n'existe plus de manière explicite. Ces deux tableaux contiennent la même information. Bien évidemment, un seul de ces formats est un _tableau cas par variables correct_. Le format long sera le bon si tous les mesures sont réalisées sur des individus différents. Le format large sera correct, par contre, si les différentes mesures ont été faites à chaque fois sur les _mêmes_ individus (dans le cas présent, _un seul_ mâle et _une seule_ femelle auraient alors été mesurés dans les trois situations.
+Dans le format large, les différents niveaux de la variable facteur `treatment` deviennent autant de colonnes (donc de variables) séparées, et la variable d'origine n'existe plus de manière explicite. Ces deux tableaux contiennent la même information. Bien évidemment, un seul de ces formats est un _tableau cas par variables correct_. Le format long sera le bon si tous les mesures sont réalisées sur des individus différents. Le format large sera correct, par contre, si les différentes mesures ont été faites à chaque fois sur les _mêmes_ individus (dans le cas présent, _un seul_ mâle et _une seule_ femelle auraient alors été mesurés dans les trois situations).
 
 ```{block, type='note'}
 C'est la règle qui veut qu'**une ligne corresponde à un et un seul individu** dans un tableau cas par variables qui permet de décider si le format long ou le format large est celui qui est correctement encodé. 
@@ -449,7 +449,7 @@ Créez un rapport et effectuez les différents exercices en suivant les instruct
 
 ### Recombinaison de variables
 
-Parfois, ce sont les variables qui sont encodées de manière inappropriée par rapport aux analyses que vous souhaitez faire. Les fonctions `separate` et `unite()` permettent de séparer une colonne en plusieurs, ou inversément.
+Parfois, ce sont les variables qui sont encodées de manière inappropriée par rapport aux analyses que vous souhaitez faire. Les fonctions `separate()` et `unite()` permettent de séparer une colonne en plusieurs, ou inversément.
 
 ```{block, type='info'}
 L'aide-mémoire [Data Import](https://github.com/rstudio/cheatsheets/blob/master/data-import.pdf) vous rappelle ces fonctions dans sa section **Split Cells**. Elles sont également décrites en détails dans [R for Data Science](https://r4ds.had.co.nz/tidy-data.html#separating-and-uniting).
@@ -462,7 +462,7 @@ crabs <- read("crabs", package = "MASS", lang = "fr")
 rmarkdown::paged_table(crabs)
 ```
 
-La fonction `unite` permet de combiner facilement les colonnes `sex` et `species` comme montré dans l'exemple ci-dessous. N'hésitez pas à faire appel à la page d'aide de la fonction via `?unite` pour vous guider.
+La fonction `unite()` permet de combiner facilement les colonnes `sex` et `species` comme montré dans l'exemple ci-dessous. N'hésitez pas à faire appel à la page d'aide de la fonction via `?unite` pour vous guider.
 
 ```{r}
 crabs <- unite(crabs, col = "sp_sex", sex, species, sep = "_")
