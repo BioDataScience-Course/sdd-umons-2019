@@ -194,9 +194,9 @@ Il se peut que tout cela vous paraisse très (trop) abstrait. Vous êtes peut-ê
 
 Du premier noeud (le fait qu'une personne est atteinte ou non de la maladie), nous avons deux branches menant aux deux événements "malade" et "sain". Chacune de ces deux situations est un nouveau noeud d'où deux événements sont possibles à chaque fois (2 fois 2 nouvelles branches) : un test "positif", ou un test "négatif". Les noeuds terminaux (les "négatifs" et "positifs" ici) sont aussi appelés les feuilles de l'arbre. L'arbre reprend donc tous les cas possibles depuis le noeud de départ (sa racine), jusqu'aux feuilles.
 
-L'étape suivante consiste à aller indiquer le long des branches les probabilités associées à chaque événement : 0.08 pour "malade", 0.95 pour un dépistage "positif" si la personne est malade, etc.
+L'étape suivante consiste à aller indiquer le long des branches les probabilités associées à chaque événement : 0.08 pour "malade", 0.95 pour un dépistage "positif" si la personne est malade, etc. A ce stade, une petite vérification peut être faite. La somme des probabilités aux feuilles doit toujours valoir un, et il en est de même de la somme de toutes les branches issues d'un même noeud.
 
-Le calcul se fait ensuite comme suit. On repère tous les cas qui nous intéressent. Ici, il s'agit de toutes les trajectoires qui mènent à un test "positif". Le calcul des probabilités se fait en **multipliant les probabilités lorsqu'on passe d'un noeud à l'autres et en additionnant les probabilités ainsi calculées le long des feuilles terminales de l'arbre considéré.** Donc, le chemin "malade" -> "positif" correspond à 0.08 \* 0.95 = 0.076. Le chemin "sain" -> "positif" correspond à 0.92 \* 0.10 = 0.092. Enfin, nous sommons les probabilités ainsi calculées pour toutes les feuilles de l'arbre qui nous intéressent. Ici, ce sont toutes les feuilles qui correspondent à un test "positif", soit 0.076 + 0.092 = 0.168. *Et voilà ! Nous avons répondu au problème : la probabilité d'avoir un résultat positif avec le test de dépistage dans un population dont 8% est atteint de la maladie est de 16.8%.*
+Le calcul se fait ensuite comme suit. On repère tous les cas qui nous intéressent. Ici, il s'agit de toutes les trajectoires qui mènent à un test "positif". Le calcul des probabilités se fait en **multipliant les probabilités lorsqu'on passe d'un noeud à l'autre et en additionnant les probabilités ainsi calculées le long des feuilles terminales de l'arbre considéré.** Donc, le chemin "malade" -> "positif" correspond à 0.08 \* 0.95 = 0.076. Le chemin "sain" -> "positif" correspond à 0.92 \* 0.10 = 0.092. Enfin, nous sommons les probabilités ainsi calculées pour toutes les feuilles de l'arbre qui nous intéressent. Ici, ce sont toutes les feuilles qui correspondent à un test "positif", soit 0.076 + 0.092 = 0.168. *Et voilà ! Nous avons répondu au problème : la probabilité d'avoir un résultat positif avec le test de dépistage dans un population dont 8% est atteint de la maladie est de 16.8%.*
 
 
 ### Théorème de Bayes
@@ -206,6 +206,10 @@ Nous devons introduire ici le concept de probabilité conditionnelle.
 <div class="note">
 <p>Une <strong>probabilité conditionnelle</strong> est la probabilité qu’un événement <em>E2</em> se produise si et seulement si un premier événement <em>E1</em> s’est produit (<em>E1</em> et <em>E2</em> sont deux événements successifs). La probabilité conditionnelle s’écrit <span class="math inline">\(\mathrm{P}(E2|E1)\)</span>.</p>
 </div>
+
+Vous noterez que l'arbre des probabilités représente, en réalité, des probabilités conditionnelles à partir du second niveau (l'arbre peut être évidemment plus complexe).
+
+![Arbre de probabilités avec probabilités conditionnelles en rouge.](images/sdd1_07/probtree2.png)
 
 On pourra considérer, donc, la probabilité conditionnelle d'avoir un résultat positif au test, si la personne est malade $\mathrm{P}(positif|malade)$. Vous l'avez indiquée plus haut dans l'arbre des probabilités, c'est 0.95. Maintenant, la probabilité qu'une personne soit malade si elle est positive au test $\mathrm{P}(malade|positif)$ est une information capitable ici. Le lien entre les deux n'est pas facile à faire. C'est grâce aux travaux du révérend **Thomas Bayes** au 18^ème^ siècle que ce problème a été résolu. Les implications du **théorème de Bayes** sont énormes car cela permet de déterminer des probabilités dites *a posteriori* en fonction de connaissances *a priori*.
 
@@ -224,7 +228,28 @@ $$\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif|malade) 
 
 $$\mathrm{P}(malade|positif) = \frac{\mathrm{P}(positif|malade) * \mathrm{P}(malade)}{\mathrm{P}(positif)}$$
 
-Cette dernière équation est celle à retenir. Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positif)$ à partir de $\mathrm{P}(positif|malade)$, $\mathrm{P}(malade)$, et $\mathrm{P}(positif)$, c'est-à-dire des probabilités auxquelles nous avons facilement accès expérimentalement en pratique. Calculez comme exercice la probabilité qu'un patient soit malade s'il est positif au test *via* le théorème de Bayes, et comparez le résultat de votre calcul à ce que nous avions obtenu plus haut (45.2%).
+\BeginKnitrBlock{note}<div class="note">De manière générale, le **théorème de Bayes** s'écrit :
+
+$$\mathrm{P}(A|B) = \frac{\mathrm{P}(B|A) * \mathrm{P}(A)}{\mathrm{P}(B)}$$
+</div>\EndKnitrBlock{note}
+
+Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positif)$ à partir de $\mathrm{P}(positif|malade)$, $\mathrm{P}(malade)$, et $\mathrm{P}(positif)$, c'est-à-dire des probabilités auxquelles nous avons facilement accès expérimentalement en pratique. Calculez comme exercice la probabilité qu'un patient soit malade s'il est positif au test *via* le théorème de Bayes, et comparez le résultat de votre calcul à ce que nous avions obtenu plus haut (45.2%).
+
+<div class="note">
+<p><strong>A retenir</strong></p>
+<ul>
+<li>Probabilité d'un événement :</li>
+</ul>
+<p><span class="math display">\[\mathrm{P}(E) = \frac{\mathrm{nbr\ occurences\ } E}{\mathrm{nbr\ total\ essais}}\]</span></p>
+<ul>
+<li>Probabilité de deux événements successifs (cas général) :</li>
+</ul>
+<p><span class="math display">\[\mathrm{P(A\, \mathrm{et}\, B)} = \mathrm{P}(B|A) * \mathrm{P(A)}\]</span></p>
+<ul>
+<li>Probabilité qu'un parmi deux événements se produise (cas général) :</li>
+</ul>
+<p><span class="math display">\[\mathrm{P(A\, \mathrm{ou}\, B)} = \mathrm{P}(A) + \mathrm{P(B)} - \mathrm{P}(A\, \mathrm{et}\, B)\]</span></p>
+</div>
 
 
 ### Probabilités et contingence
@@ -381,7 +406,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" />
 
 ### Distribution binomiale
 
@@ -441,7 +466,7 @@ plot(0:20, dbinom(0:20, size = 20, prob = 0.25), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
 
 Partons d'une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d'avoir 0, 1 ou 2  malade sur 10000 individus ? 
 
@@ -520,7 +545,7 @@ plot(0:(2+20), dpois(0:(2+20), lambda = 2), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
 
 Quelle est la probabilité dans un population d'obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue. 
 
@@ -550,7 +575,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-25-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-27-1.svg" width="672" style="display: block; margin: auto;" />
 
 La variable Y suit une distribution Normale de moyenne $\mu$ (175), et d’écart type $\sigma$ (10). 
 
@@ -572,7 +597,7 @@ abline(h = 0, col = "gray") # Baseline
 text(.mu+.s, .d(.mu+.s), .label, pos = 4, col = .col) # Label at right
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-26-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-28-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 * La distribution normale réduite : $\mu_z = 0$ &  $\sigma_z = 1$
@@ -595,7 +620,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-27-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-29-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 
