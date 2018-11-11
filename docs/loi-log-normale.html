@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="traitements-multi-tableaux.html">
-<link rel="next" href="probabilites.html">
+<link rel="prev" href="distribution-normale.html">
+<link rel="next" href="graphique-quantile-quantile.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -328,19 +328,31 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="proba" class="section level1">
-<h1><span class="header-section-number">Module 7</span> Probabilités &amp; distributions</h1>
-<div id="objectifs-6" class="section level5 unnumbered">
-<h5>Objectifs</h5>
-<ul>
-<li><p>Appréhender le calculs de probabilités</p></li>
-<li><p>Appréhender les principales lois de distributions et leurs utilisations pratiques</p></li>
-</ul>
+<div id="loi-log-normale" class="section level2">
+<h2><span class="header-section-number">7.7</span> Loi log-normale</h2>
+<p>La loi log-normale est utilisée pour représenter la distribution d’une variable aléatoire qui résulte de la multiplication d’un grand nombre de petits effets indépendants entre eux. C’est le cas en biologie et en chimie, par exemple, la taille d’un animal, la concentration d’une molécule en solution, la température d’un matériau, etc. Ces variables sont définies uniquement pour des valeurs nulles ou positives. Une taille et une concentration négatives ne sont pas possibles. De même pour une température en dessous du zéro absolu (attention, dans ce cas, la température doit être mesurée en Kelvin).</p>
+<div id="transformee-log" class="section level3">
+<h3><span class="header-section-number">7.7.1</span> Transformée log</h3>
+<p>La distribution log-normale devient normale lorsque l’on transforme la variable en son logarithme. Donc, si</p>
+<p><span class="math display">\[X \sim log{\text -}N(0, 0.5)\]</span></p>
+<p>alors</p>
+<p><span class="math display">\[log(X) \sim N(0, 0.5)\]</span></p>
+<p>Par facilité, on défini ses deux paramètres de manière relative à la moyenne <span class="math inline">\(\mu\)</span> et à l’écart type <span class="math inline">\(\sigma\)</span> qu’a la distribution normale obtenue après transformation log. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig <a href="loi-log-normale.html#fig:lognormal">7.11</a>). C’est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.</p>
+<div class="figure" style="text-align: center"><span id="fig:lognormal"></span>
+<img src="07-Probabilites-Distributions_files/figure-html/lognormal-1.svg" alt="Un exemple de distribution log-normale." width="672" />
+<p class="caption">
+Figure 7.11: Un exemple de distribution log-normale.
+</p>
 </div>
-<div id="prerequis-5" class="section level5 unnumbered">
-<h5>Prérequis</h5>
-<p>Vous devez être à l’aise avec l’utilisation de R, RStudio et R Markdown. Vous avez appris à maitriser ces outils dans les modules <a href="intro.html#intro">1</a> &amp; <a href="visu1.html#visu1">2</a>.</p>
-</div> 
+</div>
+<div id="snippets" class="section level3">
+<h3><span class="header-section-number">7.7.2</span> Snippets</h3>
+<p>Les fonctions relatives à la distribution log-normale dans R sont <code>&lt;x&gt;lnorm()</code>. Le calcul de probabilités se fait à l’aide de <code>plnorm()</code>, les quantiles se déterminent à partir de <code>qlnorm()</code> et un échantillon pseudo-aléatoire se calcule en utilisant <code>rlnorm()</code>. Les snippets relatifs à la loi log-normale dans la SciViews Box sont accessibles à partir du menu <code>(d)istributions: log-normal</code> à partir de <code>.il</code>) :</p>
+<div class="figure">
+<img src="images/sdd1_07/snippets-lognormal.png" />
+
+</div>
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -367,8 +379,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="traitements-multi-tableaux.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="probabilites.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="distribution-normale.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphique-quantile-quantile.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

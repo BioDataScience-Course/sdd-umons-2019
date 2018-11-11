@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="traitements-multi-tableaux.html">
-<link rel="next" href="probabilites.html">
+<link rel="prev" href="distribution-binomiale.html">
+<link rel="next" href="distribution-normale.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -328,19 +328,54 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="proba" class="section level1">
-<h1><span class="header-section-number">Module 7</span> Probabilités &amp; distributions</h1>
-<div id="objectifs-6" class="section level5 unnumbered">
-<h5>Objectifs</h5>
+<div id="distribution-de-poisson" class="section level2">
+<h2><span class="header-section-number">7.5</span> Distribution de poisson</h2>
+<p>Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à leur descendance ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu’une personne sur 20 est porteuse du gène défectueux sans être malade en Belgique, la probabilité de former un couple hétérozygote qui pourrait transmettre la maladie est de :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">/</span><span class="dv">20</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">20</span></code></pre></div>
+<pre><code># [1] 0.0025</code></pre>
+<p>… soit un couple sur 400. Donc, globalement, les probabilités d’avoir des enfants sains est beaucoup plus grande que 0.75 si nous incluons tous les couples belges de parents sains porteurs ou non. Cette probabilité est de :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">399</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.75</span>) <span class="op">/</span><span class="st"> </span><span class="dv">400</span></code></pre></div>
+<pre><code># [1] 0.999375</code></pre>
+<p>Pour un couple au hasard sans connaissance <em>a priori</em> du fait que les parents soient porteurs ou non, la probabilité d’avoir un enfant atteint de la mucoviscidose est heureusement très, très faible, mais non nulle (de l’ordre de 1/1600 = 0.999375). Si nous considérons maintenant une population suffisamment grande pour pouvoir espérer y trouver “statistiquement” une personne atteinte de mucoviscidose, nous pourrions décider d’étudier un échantillon aléatoire de 1600 enfants belges. La distribution binomiale requiert alors le calcul de <span class="math inline">\(C^j_n\)</span> sur base de <span class="math inline">\(n = 1600\)</span>, ce qui revient à devoir calculer le factoriel de 1600 :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1</span>)</code></pre></div>
+<pre><code># [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">10</span>)</code></pre></div>
+<pre><code># [1] 3628800</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">100</span>)</code></pre></div>
+<pre><code># [1] 9.332622e+157</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1600</span>)</code></pre></div>
+<pre><code># Warning in factorial(1600): value out of range in &#39;gammafn&#39;</code></pre>
+<pre><code># [1] Inf</code></pre>
+<p>Or, le factoriel est un nombre qui grandit très, très vite. Déjà le factoriel de 100 est un nombre à 157 chiffres. Nous voyons que R est incapable de calculer précisément le factoriel de 1000. Ce nombre est supérieur au plus grand nombre que l’ordinateur peut représenter pour un <code>double</code> en R (1.797693110^{308}). Donc, nous sommes incapables de répondre à la question à l’aide de la loi binomiale.</p>
+<div id="evenements-rares" class="section level3">
+<h3><span class="header-section-number">7.5.1</span> Evénements rares</h3>
+<p>La <strong>distribution de Poisson</strong> permet d’obtenir la réponse à la question posée parce qu’elle effectue le calcul différemment. Cette distribution discrète a un seul paramètre <span class="math inline">\(\lambda\)</span> qui représente le nombre moyen de cas rares que l’on observe dans un échantillon donné, ou sur un laps de temps fixé à l’avance. Cette distribution est <strong>asymétrique pour de faible <span class="math inline">\(\lambda\)</span></strong>. Les conditions d’application sont :</p>
 <ul>
-<li><p>Appréhender le calculs de probabilités</p></li>
-<li><p>Appréhender les principales lois de distributions et leurs utilisations pratiques</p></li>
+<li>résultats binaire,</li>
+<li>essais indépendants (les probabilités ne changement pas d’un essai à l’autre),</li>
+<li>taille d’échantillon ou laps de temps que le phénomène est observé fixe,</li>
+<li>probabilité d’observation de l’évènement <span class="math inline">\(\lambda\)</span> faible.</li>
 </ul>
+<p>Pour une variable <span class="math inline">\(Y \sim P(\lambda)\)</span>, nous pouvons calculer la probabilité que <span class="math inline">\(Y = 0\)</span>, <span class="math inline">\(Y = 1\)</span>, … de la façon suivante :</p>
+<p><span class="math display">\[P(Y=0) = e^{-\lambda}\]</span></p>
+<p>et</p>
+<p><span class="math display">\[P(Y=k) = P(Y=k-1) \times \frac{\lambda}{k}\]</span></p>
+<p>Le calcul se réalise de proche en proche en partant de la probabilité de ne jamais observer l’événement. Comme l’événement est rare, la probabilité tend très rapidement vers une valeur extrêmement faible. Seul le calcul des quelques premiers termes est donc nécessaire. A titre d’exercice, faites le calcul pour notre exemple d’un échantillon de la population belge, avec <span class="math inline">\(\lambda = 1\)</span> comme paramètre. La densité de probabilité pour cette distribution est représentée à la Fig. <a href="distribution-de-poisson.html#fig:poisson">7.8</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:poisson"></span>
+<img src="07-Probabilites-Distributions_files/figure-html/poisson-1.svg" alt="Probabilité d'occurence de mucoviscidose dans un échantillon aléatoire de 1600 belges." width="672" />
+<p class="caption">
+Figure 7.8: Probabilité d’occurence de mucoviscidose dans un échantillon aléatoire de 1600 belges.
+</p>
 </div>
-<div id="prerequis-5" class="section level5 unnumbered">
-<h5>Prérequis</h5>
-<p>Vous devez être à l’aise avec l’utilisation de R, RStudio et R Markdown. Vous avez appris à maitriser ces outils dans les modules <a href="intro.html#intro">1</a> &amp; <a href="visu1.html#visu1">2</a>.</p>
-</div> 
+</div>
+<div id="loi-de-poisson-dans-r" class="section level3">
+<h3><span class="header-section-number">7.5.2</span> Loi de Poisson dans R</h3>
+<p>Les fonctions dans R relatives à la distribution de Poisson portent des noms <code>&lt;x&gt;pois()</code>, tel que <code>ppois()</code> pour calculer des probabilités, <code>qpois()</code> pour calculer des quantiles ou <code>rpois()</code> pour générer des nombres pseudo-aléatoires selon cette distribution. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu <code>(d)istributions: poisson</code> à partir de <code>.ip</code>) :</p>
+<div class="figure">
+<img src="images/sdd1_07/snippets-poisson.png" />
+
+</div>
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -367,8 +402,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="traitements-multi-tableaux.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="probabilites.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="distribution-binomiale.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="distribution-normale.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

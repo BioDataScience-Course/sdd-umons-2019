@@ -403,12 +403,12 @@ Etant donné que les sciences des données reposent sur un nombre (si possible i
 Avant d'explorer ces lois de distributions statistiques, nous devons d'abord introduire la distinction entre **probabilité discrète** et **probabilité continue**. Une probabilité discrète est associée à une variable qualitative ou à la rigueur, à une variable continue discrète qui peut prendre un nombre fini -et généralement relativement petit- de valeurs. A chaque valeur est associé un événement, et chaque événement a une certaine probabilité de se produire dans un contexte donné. *Jusqu'à présent, nous n'avons traité que ce cas-là.* Par contre, une variable quantitative continue peut prendre un nombre infini de valeurs matérialisées généralement par l'ensemble des nombres réels. Dans ce cas, l'association d'un événement à une valeur de la variable, et d'une probabilité à chaque événement reste vraie en théorie. Mais en pratique, ces probabilités dites continues ne sont pas calculables par les équations étudiées jusqu'ici. Par contre, les **lois de distributions continues** permettent des calculs, moyennant une petite astuce que nous étudierons plus loin dans ce chapitre.
 
 
-### Distribution uniforme
+## Distribution uniforme
 
 La loi de la distribution uniforme se rapporte à un mécanisme qui génère **tous les événements de manière équiprobable**.
 
 
-#### Distribution uniforme discrète
+### Distribution discrète
 
 Dans le cas d'événements discrets, si $n_E$ est le nombre total d'événements possibles, la probabilité d’un de ces événements vaut donc :
 
@@ -422,7 +422,7 @@ La distribution uniforme est d'application pour les jeux de hasard (dés, boules
 </div>
 
 
-#### Distribution uniforme continue
+### Distribution continue
 
 D'emblée, nous pouvons facilement démontrer quel est le problème avec les probabilités dans le cas de la **distribution uniforme continue**. Nous avons en effet, un nombre infini d'événements équiprobables possibles. Donc, la probabilité de chaque événement est ($n_E = \infty$) :
 
@@ -459,7 +459,7 @@ Une autre représentation courante est la **densité de probabilité cumulée** 
 La distribution $U(0, 1)$ est particulière et est appelée **distribution uniforme standard**. Elle a la propriété particulière que si $X \sim U(0, 1)$ alors $(1-X) \sim U(0, 1)$.
 
 
-#### Calcul de probabilités à partir de quantiles
+### Quantiles vers probabilités
 
 L'**aire sous la courbe** représente une probabilité associée à l'intervalle considéré pour les quantiles. Répondez aux questions suivantes pour notre variable $X \sim U(0,4)$\ :
 
@@ -503,7 +503,7 @@ La réponse est 0,125, soit une fois sur huit.
 </div>
 
 
-#### Calcul de quantiles depuis des probabilités
+### Probabilités vers quantiles
 
 Le calcul inverse est parfois nécessaire. Par exemple pour répondre à la question suivante\ :
 
@@ -530,7 +530,7 @@ qunif(1/3, min = 0, max = 4, lower.tail = TRUE)
 Donc il faut observer pendant 1,33 min (1 min et 20 sec) pour avoir 1 chance sur 3 d'observer l'arrivée d'un insecte butineur.
 
 
-#### Calcul avec les snippets
+### Calcul avec les snippets
 
 La SciViews Box propose différents snippets pour nous aider à effectuer nos différents calculs et graphiques relatifs à la distribution uniforme continue. Ils se retrouvent dans le menu `(d)istributions` accédé depuis `...`. Donc `..i` donne *directement* accès à ce menu, et puis `(d)istributions: uniform` accédé depuis `.iu` directement. Ensuite, il suffit de choisir le snippet dans le menu déroulant (voir ci-dessous).
 
@@ -558,9 +558,12 @@ runif(10, min = 0, max = 1)
 ```
 
 
-### Distribution binomiale
+## Distribution binomiale
 
 Partons d'un exemple pratique pour découvrir cette distribution. La [mucoviscidose](http://www.muco.be/fr/mucoviscidose/maladie-génétique) est, dans la population européenne, la plus fréquente des maladies génétiques héréditaires. Elle se caractérise par un mucus (voies respiratoires) anormalement épais qui est à l'orgine de diverses complications. L'altération d'une protéine CFTR est à l'origine de cette maladie. Comme le gène qui code pour cette protéine est récessif, il faut que le deux allèles soient porteurs simultanément de la mutation pour que la maladie apparaisse. Parmi des familles de six enfants dont le père et la mère normaux sont tous deux porteurs hétérozygotes du gène altéré, quelle est la probabilité d'obtenir 0, 1, 2, ..., 6 enfants atteints de mucoviscidose\ ?
+
+
+### Epreuve de Benouilli
 
 La **distribution binomiale** est un loi de distribution discrète qui répond à ce genre de question. Ses conditions d'applications sont\ :
 
@@ -579,7 +582,12 @@ $C^j_n$ représente le nombre de combinaisons possibles pour obtenir $j$ succès
 
 $$Y \sim B(n,p)$$
 
-Notre exemple rentre parfaitement dans le cadre de l'épreuve de Bernouilli avec *n* = 6 et *p*, la probabilité du succès, c'est-à-dire, d'avoir un enfant qui ne développe pas la maladie de 3/4\ : $Y \sim B(6, 0.75)$. Les calculs sur base d'une distribution binomiale sont assez similaires à ceux de la distribution uniforme dans R, en remplaçant `unif` par `binom` dans le nom des fonction. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu `(d)istributions: binomial` à partir de `.ib`) :
+Notre exemple rentre parfaitement dans le cadre de l'épreuve de Bernouilli avec *n* = 6 et *p*, la probabilité du succès, c'est-à-dire, d'avoir un enfant qui ne développe pas la maladie de 3/4\ : $Y \sim B(6, 0.75)$.
+
+
+### Calculs et graphiques
+
+Les calculs sur base d'une distribution binomiale sont assez similaires à ceux de la distribution uniforme dans R, en remplaçant `unif` par `binom` dans le nom des fonction. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu `(d)istributions: binomial` à partir de `.ib`) :
 
 ![](images/sdd1_07/snippets-binomial.png)
 
@@ -617,7 +625,7 @@ La situation la plus probable est donc d'avoir 5 enfants sains sur 6. Nous pouvo
 </div>
 
 
-### Distribution de poisson
+## Distribution de poisson
 
 Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à leur descendance\ ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu'une personne sur 20 est porteuse du gène défectueux sans être malade en Belgique, la probabilité de former un couple hétérozygote qui pourrait transmettre la maladie est de :
 
@@ -682,6 +690,9 @@ factorial(1600)
 
 Or, le factoriel est un nombre qui grandit très, très vite. Déjà le factoriel de 100 est un nombre à 157 chiffres. Nous voyons que R est incapable de calculer précisément le factoriel de 1000. Ce nombre est supérieur au plus grand nombre que l'ordinateur peut représenter pour un `double` en R (1.7976931\times 10^{308}). Donc, nous sommes incapables de répondre à la question à l'aide de la loi binomiale.
 
+
+### Evénements rares
+
 La **distribution de Poisson** permet d'obtenir la réponse à la question posée parce qu'elle effectue le calcul différemment. Cette distribution discrète a un seul paramètre $\lambda$ qui représente le nombre moyen de cas rares que l'on observe dans un échantillon donné, ou sur un laps de temps fixé à l'avance. Cette distribution est **asymétrique pour de faible $\lambda$**. Les conditions d'application sont\ : 
 
 - résultats binaire,
@@ -704,84 +715,104 @@ Le calcul se réalise de proche en proche en partant de la probabilité de ne ja
 <p class="caption">(\#fig:poisson)Probabilité d'occurence de mucoviscidose dans un échantillon aléatoire de 1600 belges.</p>
 </div>
 
+
+### Loi de Poisson dans R
+
 Les fonctions dans R relatives à la distribution de Poisson portent des noms `<x>pois()`, tel que `ppois()` pour calculer des probabilités, `qpois()` pour calculer des quantiles ou `rpois()` pour générer des nombres pseudo-aléatoires selon cette distribution. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu `(d)istributions: poisson` à partir de `.ip`) :
 
 ![](images/sdd1_07/snippets-poisson.png)
 
 
-### Distribution normale
+## Distribution normale
 
-La vidéo suivante intitulée "pâte à tartiner et variable continue" vous permettra de r&capituler certaines notions étudiées jusqu'ici concernant les types de variables et vous introduira la loid de distribution normale ou distribution de Gauss ou gaussienne.
+La vidéo suivante vous permettra de récapituler certaines notions étudiées jusqu'ici concernant les types de variables et vous introduira la loi de distribution normale ou distribution de Gauss ou encore, gaussienne.
 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/THk2GBxkg4o" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
-La distribution normale a deux paramètre : $\mu$ & $\sigma$
 
-$$f(y) = \frac{1}{ \sigma \sqrt{2 \pi}} e^{\frac{-1}{2} \left( \frac{y - \mu}{\sigma} \right)^2}$$
+### Une "courbe en cloche"
 
-Cette distribution s'écrit Y ∼ N(μ, σ) pour la variable Y suit une distribution Normale de moyenne μ, et d’écart type σ. 
+La distribution normale est la distribution la plus utilisée en statistique. Elle se rencontre très souvent en biologie comme dans bien d'autres domaines, à chaque fois qu'une variable continue définie sur tout le domaine des réels est issue d'un nombre important de composantes indépendantes dont les effets sont additifs. La forme de sa densité de probabilité est caractéristique et dite "en cloche" (Fig. \@ref(fig:normal)).
 
+<div class="figure" style="text-align: center">
+<img src="07-Probabilites-Distributions_files/figure-html/normal-1.svg" alt="Un exemple de distribution normale." width="672" />
+<p class="caption">(\#fig:normal)Un exemple de distribution normale.</p>
+</div>
 
-```r
-# Normal distribution (density probability) with parameters:
-.mu <- 175; .s <- 10 #  mu = .mu and sigma = .s
-.col <- 1; .add <- FALSE # Plot parameters
-.x <- seq(-3.5*.s+.mu, 3.5*.s+.mu, l = 1000)     # Quantiles
-.d <- function (x) dnorm(x, mean = .mu, sd = .s) # Distribution function
-.q <- function (p) qnorm(p, mean = .mu, sd = .s) # Quantile for lower-tail prob
-.label <- bquote(N(.(.mu), .(.s)))               # Curve parameters
-curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
-  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
-abline(h = 0, col = "gray") # Baseline
-```
+Il s'agit d'une densité de probabilité symétrique et asymptotique à ses deux extrémités en + et -infini. La distribution normale a deux paramètres\ : la moyenne $\mu$ et l'écart type $\sigma$. Sa densité de probabilité est représentée par l'équation suivante\ :
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" />
+$$\Phi(Y) = \frac{1}{ \sigma \sqrt{2 \pi}} e^{-\frac{1}{2} \left( \frac{Y - \mu}{\sigma} \right)^2}$$
 
-La variable Y suit une distribution Normale de moyenne $\mu$ (175), et d’écart type $\sigma$ (10). 
+Pour une variable aléatoire $Y$ qui suit une distribution normale avec une moyenne $\mu$ et un écart type $\sigma$, nous écrirons\ :
 
-On appelle également cette distribution, la loi de distribution Gaussienne. Cette dernière est l'une des plus employée. Pratiquement, toutes les distributions tendent vers la distribution normale pour N allant vers l'infini expliqué par [le théorème central limite](https://www.youtube.com/watch?v=4dhm2QAA2x4). 
+$$Y \sim N(μ, σ)$$
 
 
-```r
-# Normal distribution (density probability) with parameters:
-.mu <- 175; .s <- 10 #  mu = .mu and sigma = .s
-.col <- 1; .add <- FALSE # Plot parameters
-.x <- seq(-3.5*.s+.mu, 3.5*.s+.mu, l = 1000)     # Quantiles
-.d <- function (x) dnorm(x, mean = .mu, sd = .s) # Distribution function
-.q <- function (p) qnorm(p, mean = .mu, sd = .s) # Quantile for lower-tail prob
-.label <- bquote(N(.(.mu), .(.s)))               # Curve parameters
-curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
-  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
-abline(h = 0, col = "gray") # Baseline
+### Loi normale réduite
 
-text(.mu+.s, .d(.mu+.s), .label, pos = 4, col = .col) # Label at right
-```
+Parmi toutes les distributions normales possibles, un est particulière\ : la **distribution normale réduite** qui a toujours une moyenne nulle et un écart type unitaire.
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
+$$N(0, 1)$$
 
+Elle représente la distribution des valeurs pour une variable qui a été **standardisée**, c'est-à-dire, à laquelle on a soustrait la moyenne et que l'on a divisé par son écart type.
 
-* La distribution normale réduite : $\mu_z = 0$ &  $\sigma_z = 1$
+$$Z = \frac{Y - \mu}{\sigma}$$
 
-$$f(z) = \frac{1}{ \sqrt{2 \pi}} e^{ - \frac{z^2}{2} }$$
+Sa formulation est nettement simplifiée.
 
-La variable Y suit une distribution Normale de moyenne $\mu$ (180), et d’écart type $\sigma$ (15) qui s'écrit Y ∼ N(μ, σ) pour la variable Y suit une distribution Normale de moyenne μ, et d’écart type σ
+$$\Phi(Z) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{Z^2}{2}}$$
+
+La probabilité qu'une observation soit dans un intervalle de $\pm 1 \sigma$ autour de la moyenne est de 2/3 environ. De même, un intervalle de $\pm 2 \sigma$ définit une aire de 95%, et celle-ci devient supérieure à 99% pour des observations se situent dans l'intervalle $\pm 3 \sigma$ (Fig. \@ref(fig:normal2)).
+
+<div class="figure" style="text-align: center">
+<img src="07-Probabilites-Distributions_files/figure-html/normal2-1.svg" alt="La distribution normale réduite avec les aires centrales autour de 1 et 2 écarts types mises en évidence." width="672" />
+<p class="caption">(\#fig:normal2)La distribution normale réduite avec les aires centrales autour de 1 et 2 écarts types mises en évidence.</p>
+</div>
 
 
-```r
-# Normal distribution (density probability) with parameters:
-.mu <- 0; .s <- 1 #  mu = .mu and sigma = .s
-.col <- 1; .add <- FALSE # Plot parameters
-.x <- seq(-3.5*.s+.mu, 3.5*.s+.mu, l = 1000)     # Quantiles
-.d <- function (x) dnorm(x, mean = .mu, sd = .s) # Distribution function
-.q <- function (p) qnorm(p, mean = .mu, sd = .s) # Quantile for lower-tail prob
-.label <- bquote(N(.(.mu), .(.s)))               # Curve parameters
-curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
-  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
-abline(h = 0, col = "gray") # Baseline
-```
+### Fonctions et snippets
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-37-1.svg" width="672" style="display: block; margin: auto;" />
+Les fonctions relatives à la distribution normale dans R sont `<x>norm()`. Le calcul de probabilités se fait à l'aide de `pnorm()`, de quantiles à partir de `qnorm()`. Un échantillon pseudo-aléatoire s'obtient à partir de `rnorm()`. Une série de snippets est à votre disposition dans la SciViews Box pour vous aider (menu `(d)istributions: normal` à partir de `.in`) :
+
+![](images/sdd1_07/snippets-normal.png)
 
 
+### Théorème central limite
+
+Une des raisons pour lesquelles la distribution normale est très répandue est liée au fait que beaucoup d'autres distributions tendent vers elle de manière asymptotique. Par exemple, une distribution binomiale symétrique (avec $p = 0.5$) et pour un $n$ croissant ressemblera de plus en plus à une distribution normale. Le théorème central limite démontre cela quelle que soit la distribution de départ. En pratique, la distribution normale est souvent une bonne approximation d'autres distributions pour des tailles d'échantillons déjà à partir de quelques dizaines d'individus.
+
+<!--html_preserve--><iframe src="https://www.youtube.com/embed/4dhm2QAA2x4" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
 
+## Loi log-normale
+
+La loi log-normale est utilisée pour représenter la distribution d'une variable aléatoire qui résulte de la multiplication d'un grand nombre de petits effets indépendants entre eux. C'est le cas en biologie et en chimie, par exemple, la taille d'un animal, la concentration d'une molécule en solution, la température d'un matériau, etc. Ces variables sont définies uniquement pour des valeurs nulles ou positives. Une taille et une concentration négatives ne sont pas possibles. De même pour une température en dessous du zéro absolu (attention, dans ce cas, la température doit être mesurée en Kelvin).
+
+
+### Transformée log
+
+La distribution log-normale devient normale lorsque l'on transforme la variable en son logarithme. Donc, si
+
+$$X \sim log{\text -}N(0, 0.5)$$
+
+alors
+
+$$log(X) \sim N(0, 0.5)$$
+
+Par facilité, on défini ses deux paramètres de manière relative à la moyenne $\mu$ et à l'écart type $\sigma$ qu'a la distribution normale obtenue après transformation log. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig \@ref(fig:lognormal)). C'est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.
+
+<div class="figure" style="text-align: center">
+<img src="07-Probabilites-Distributions_files/figure-html/lognormal-1.svg" alt="Un exemple de distribution log-normale." width="672" />
+<p class="caption">(\#fig:lognormal)Un exemple de distribution log-normale.</p>
+</div>
+
+### Snippets
+
+Les fonctions relatives à la distribution log-normale dans R sont `<x>lnorm()`. Le calcul de probabilités se fait à l'aide de `plnorm()`, les quantiles se déterminent à partir de `qlnorm()` et un échantillon pseudo-aléatoire se calcule en utilisant `rlnorm()`. Les snippets relatifs à la loi log-normale dans la SciViews Box sont accessibles à partir du menu `(d)istributions: log-normal` à partir de `.il`) :
+
+![](images/sdd1_07/snippets-lognormal.png)
+
+
+## Graphique quantile-quantile
+
+TODO...

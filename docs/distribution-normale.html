@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="traitements-multi-tableaux.html">
-<link rel="next" href="probabilites.html">
+<link rel="prev" href="distribution-de-poisson.html">
+<link rel="next" href="loi-log-normale.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -328,19 +328,53 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="proba" class="section level1">
-<h1><span class="header-section-number">Module 7</span> Probabilités &amp; distributions</h1>
-<div id="objectifs-6" class="section level5 unnumbered">
-<h5>Objectifs</h5>
-<ul>
-<li><p>Appréhender le calculs de probabilités</p></li>
-<li><p>Appréhender les principales lois de distributions et leurs utilisations pratiques</p></li>
-</ul>
+<div id="distribution-normale" class="section level2">
+<h2><span class="header-section-number">7.6</span> Distribution normale</h2>
+<p>La vidéo suivante vous permettra de récapituler certaines notions étudiées jusqu’ici concernant les types de variables et vous introduira la loi de distribution normale ou distribution de Gauss ou encore, gaussienne.</p>
+<iframe src="https://www.youtube.com/embed/THk2GBxkg4o" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
+<div id="une-courbe-en-cloche" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> Une “courbe en cloche”</h3>
+<p>La distribution normale est la distribution la plus utilisée en statistique. Elle se rencontre très souvent en biologie comme dans bien d’autres domaines, à chaque fois qu’une variable continue définie sur tout le domaine des réels est issue d’un nombre important de composantes indépendantes dont les effets sont additifs. La forme de sa densité de probabilité est caractéristique et dite “en cloche” (Fig. <a href="distribution-normale.html#fig:normal">7.9</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:normal"></span>
+<img src="07-Probabilites-Distributions_files/figure-html/normal-1.svg" alt="Un exemple de distribution normale." width="672" />
+<p class="caption">
+Figure 7.9: Un exemple de distribution normale.
+</p>
 </div>
-<div id="prerequis-5" class="section level5 unnumbered">
-<h5>Prérequis</h5>
-<p>Vous devez être à l’aise avec l’utilisation de R, RStudio et R Markdown. Vous avez appris à maitriser ces outils dans les modules <a href="intro.html#intro">1</a> &amp; <a href="visu1.html#visu1">2</a>.</p>
-</div> 
+<p>Il s’agit d’une densité de probabilité symétrique et asymptotique à ses deux extrémités en + et -infini. La distribution normale a deux paramètres : la moyenne <span class="math inline">\(\mu\)</span> et l’écart type <span class="math inline">\(\sigma\)</span>. Sa densité de probabilité est représentée par l’équation suivante :</p>
+<p><span class="math display">\[\Phi(Y) = \frac{1}{ \sigma \sqrt{2 \pi}} e^{-\frac{1}{2} \left( \frac{Y - \mu}{\sigma} \right)^2}\]</span></p>
+<p>Pour une variable aléatoire <span class="math inline">\(Y\)</span> qui suit une distribution normale avec une moyenne <span class="math inline">\(\mu\)</span> et un écart type <span class="math inline">\(\sigma\)</span>, nous écrirons :</p>
+<p><span class="math display">\[Y \sim N(μ, σ)\]</span></p>
+</div>
+<div id="loi-normale-reduite" class="section level3">
+<h3><span class="header-section-number">7.6.2</span> Loi normale réduite</h3>
+<p>Parmi toutes les distributions normales possibles, un est particulière : la <strong>distribution normale réduite</strong> qui a toujours une moyenne nulle et un écart type unitaire.</p>
+<p><span class="math display">\[N(0, 1)\]</span></p>
+<p>Elle représente la distribution des valeurs pour une variable qui a été <strong>standardisée</strong>, c’est-à-dire, à laquelle on a soustrait la moyenne et que l’on a divisé par son écart type.</p>
+<p><span class="math display">\[Z = \frac{Y - \mu}{\sigma}\]</span></p>
+<p>Sa formulation est nettement simplifiée.</p>
+<p><span class="math display">\[\Phi(Z) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{Z^2}{2}}\]</span></p>
+<p>La probabilité qu’une observation soit dans un intervalle de <span class="math inline">\(\pm 1 \sigma\)</span> autour de la moyenne est de 2/3 environ. De même, un intervalle de <span class="math inline">\(\pm 2 \sigma\)</span> définit une aire de 95%, et celle-ci devient supérieure à 99% pour des observations se situent dans l’intervalle <span class="math inline">\(\pm 3 \sigma\)</span> (Fig. <a href="distribution-normale.html#fig:normal2">7.10</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:normal2"></span>
+<img src="07-Probabilites-Distributions_files/figure-html/normal2-1.svg" alt="La distribution normale réduite avec les aires centrales autour de 1 et 2 écarts types mises en évidence." width="672" />
+<p class="caption">
+Figure 7.10: La distribution normale réduite avec les aires centrales autour de 1 et 2 écarts types mises en évidence.
+</p>
+</div>
+</div>
+<div id="fonctions-et-snippets" class="section level3">
+<h3><span class="header-section-number">7.6.3</span> Fonctions et snippets</h3>
+<p>Les fonctions relatives à la distribution normale dans R sont <code>&lt;x&gt;norm()</code>. Le calcul de probabilités se fait à l’aide de <code>pnorm()</code>, de quantiles à partir de <code>qnorm()</code>. Un échantillon pseudo-aléatoire s’obtient à partir de <code>rnorm()</code>. Une série de snippets est à votre disposition dans la SciViews Box pour vous aider (menu <code>(d)istributions: normal</code> à partir de <code>.in</code>) :</p>
+<div class="figure">
+<img src="images/sdd1_07/snippets-normal.png" />
+
+</div>
+</div>
+<div id="theoreme-central-limite" class="section level3">
+<h3><span class="header-section-number">7.6.4</span> Théorème central limite</h3>
+<p>Une des raisons pour lesquelles la distribution normale est très répandue est liée au fait que beaucoup d’autres distributions tendent vers elle de manière asymptotique. Par exemple, une distribution binomiale symétrique (avec <span class="math inline">\(p = 0.5\)</span>) et pour un <span class="math inline">\(n\)</span> croissant ressemblera de plus en plus à une distribution normale. Le théorème central limite démontre cela quelle que soit la distribution de départ. En pratique, la distribution normale est souvent une bonne approximation d’autres distributions pour des tailles d’échantillons déjà à partir de quelques dizaines d’individus.</p>
+<iframe src="https://www.youtube.com/embed/4dhm2QAA2x4" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -367,8 +401,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="traitements-multi-tableaux.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="probabilites.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="distribution-de-poisson.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="loi-log-normale.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
