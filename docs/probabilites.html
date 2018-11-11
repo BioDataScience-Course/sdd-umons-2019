@@ -540,12 +540,14 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <h4><span class="header-section-number">7.1.4.2</span> Populations de taille finie</h4>
 <p>Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques au cas précédent.</p>
 <ul>
-<li>Quelles est la probabilité d’obtenir 3 individus du groupe B d’affilée ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B\, et\, B\, et\, B)\)</span>.</li>
+<li>Quelles est la probabilité d’obtenir un échantillon de trois individus du groupe B issus de cette population<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B\, et\, B\, et\, B)\)</span>.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">9</span> <span class="op">/</span><span class="st"> </span><span class="dv">99</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">98</span></code></pre></div>
 <pre><code># [1] 0.000742115</code></pre>
-<p>Il s’agit d’événements successifs non-indépendants. En effet, le retrait d’un individu de la population de taille finie <em>modifie</em> les proportions relatives des groupes sanguins dans le reste de la population !</p>
+<p>Il s’agit d’événements successifs <strong>non-indépendants</strong>. En effet, le retrait d’un individu de la population de taille finie <em>modifie</em> les proportions relatives des groupes sanguins dans le reste de la population, et donc, les probabilités aux tirages suivants. Ainsi pour le groupe B, nous n’avons plus que 9 individus de ce groupe dans une population de 99 individus après le premier tirage d’un individu du groupe B ! Autrement dit, <span class="math inline">\(\mathrm{P}(B|B) \neq \mathrm{P}(B|not\ B)\)</span>. On a donc, <span class="math inline">\(\mathrm{P}(B|B) = 9/99\)</span> et ensuite <span class="math inline">\(\mathrm{P}(B|B\, \mathrm{et}\, B) = 8/98\)</span>.</p>
 <p>Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas, il est possible de déterminer à quelle fréquence un événement <em>E</em> se produit de manière expérimentale. La <strong>probabilité observée</strong> est quantifiable sur base d’un échantillon. La <strong>probabilité théorique</strong> est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.</p>
+<div id="a-vous-de-jouer-9" class="section level5 unnumbered">
+<h5>A vous de jouer</h5>
 
 <div class="bdd">
 <p>Ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
@@ -555,10 +557,12 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div class="footnotes">
 <hr />
 <ol start="1">
 <li id="fn1"><p>Si <em>E1</em> et <em>E2</em> sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : <span class="math inline">\(\mathrm{P}(E1\, ou\, E2) = \mathrm{P}(E1) + \mathrm{P}(E2) - \mathrm{P}(E1\, et\, E2)\)</span>.<a href="probabilites.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>En statistique, on appelle cela un tirage au sort <strong>sans</strong> remise. Le résultat est très différent si le premier individu tiré au hasard était remis dans la population et pouvait être éventuellement pris à nouveau au second ou troisième tirage (tirage au sort <strong>avec</strong> remise). Notez aussi que, pour une population de taille infinie ou quasi-infinie, les deux types de tirage au sort sont équivalents à celui <strong>avec</strong> remise car enlever un individu d’une population infinie ne change pas fondamentalement son effectif, donc les probabilités ultérieures.<a href="probabilites.html#fnref2">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

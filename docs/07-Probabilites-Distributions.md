@@ -357,7 +357,7 @@ Nous avons ici 3 événements successifs indépendants. Donc, on multiplie leurs
 
 Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques au cas précédent.
 
-- Quelles est la probabilité d'obtenir 3 individus du groupe B d'affilée\ ? Cette question peut s'écrire\ : $\mathrm{P}(B\, et\, B\, et\, B)$. 
+- Quelles est la probabilité d'obtenir un échantillon de trois individus du groupe B issus de cette population^[En statistique, on appelle cela un tirage au sort **sans** remise. Le résultat est très différent si le premier individu tiré au hasard était remis dans la population et pouvait être éventuellement pris à nouveau au second ou troisième tirage (tirage au sort **avec** remise). Notez aussi que, pour une population de taille infinie ou quasi-infinie, les deux types de tirage au sort sont équivalents à celui **avec** remise car enlever un individu d'une population infinie ne change pas fondamentalement son effectif, donc les probabilités ultérieures.]\ ? Cette question peut s'écrire\ : $\mathrm{P}(B\, et\, B\, et\, B)$. 
 
 
 ```r
@@ -368,9 +368,12 @@ Dans une population de 100 personnes dont les proportions des différentes group
 # [1] 0.000742115
 ```
 
-Il s'agit d'événements successifs non-indépendants. En effet, le retrait d'un individu de la population de taille finie *modifie* les proportions relatives des groupes sanguins dans le reste de la population\ !
+Il s'agit d'événements successifs **non-indépendants**. En effet, le retrait d'un individu de la population de taille finie *modifie* les proportions relatives des groupes sanguins dans le reste de la population, et donc, les probabilités aux tirages suivants. Ainsi pour le groupe B, nous n'avons plus que 9 individus de ce groupe dans une population de 99 individus après le premier tirage d'un individu du groupe B\ ! Autrement dit, $\mathrm{P}(B|B) \neq \mathrm{P}(B|not\ B)$. On a donc, $\mathrm{P}(B|B) = 9/99$ et ensuite $\mathrm{P}(B|B\, \mathrm{et}\, B) = 8/98$.
 
 Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas, il est possible de déterminer à quelle fréquence un événement *E* se produit de manière expérimentale. La **probabilité observée** est quantifiable sur base d’un échantillon. La **probabilité théorique** est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
+
+
+##### A vous de jouer {-}
 
 \BeginKnitrBlock{bdd}<div class="bdd">
 Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
