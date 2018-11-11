@@ -341,17 +341,17 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="figure" style="text-align: center"><span id="fig:chick1"></span>
 <img src="04-Visualisation-III_files/figure-html/chick1-1.svg" alt="Croissance de poulets en utilisant quatre aliments différents." width="672" />
 <p class="caption">
-Figure 4.10: Croissance de poulets en utilisant quatre aliments différents.
+Figure 4.19: Croissance de poulets en utilisant quatre aliments différents.
 </p>
 </div>
-<p>Le graphique à la Fig. <a href="figures-composees.html#fig:chick1">4.10</a> est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremélés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L’information est la même mais la lecture est beaucoup plus aisée.</p>
+<p>Le graphique à la Fig. <a href="figures-composees.html#fig:chick1">4.19</a> est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremélés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L’information est la même mais la lecture est beaucoup plus aisée.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> chick_weight, weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age [j]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Masse [g]&quot;</span>)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt="Croissance de poulets en utilisant quatre aliments différents (1-4)." width="672" />
 <p class="caption">
-Figure 4.11: Croissance de poulets en utilisant quatre aliments différents (1-4).
+Figure 4.20: Croissance de poulets en utilisant quatre aliments différents (1-4).
 </p>
 </div>
 <p>Vous observez que les échelles en abscisse et en ordonnée sont similaires sur tous les graphiques. Cela permet une meilleure comparaison. Notez toutefois que, plus le nombre de facettes augmente, plus chaque graphique individuel devient petit. Faites attention à ne pas finir avec des graphiques individuels tellement petits qu’ils en deviennent illisibles !</p>
@@ -373,7 +373,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">d
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt="A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins." width="672" />
 <p class="caption">
-Figure 4.12: A) Masse d’oursins en fonction de leur taille et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins.
+Figure 4.21: A) Masse d’oursins en fonction de leur taille et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins.
 </p>
 </div>
 <p>Il existe d’autres fonctions permettant de combiner plusieurs graphiques comme <a href="https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html"><code>plot_grid()</code></a> du package <strong>cowplot</strong>, mais avec <code>combine_charts()</code> vous pourrez déjà faire beaucoup. De plus, un libellé sous forme d’une lettre majuscule est automatiquement associé à chaque sous-région de la figure composée. Cela permet d’y faire plus facilement référence dans le texte et/ou dans la légende.</p>

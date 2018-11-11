@@ -655,6 +655,13 @@ Il existe d'autres fonctions permettant de combiner plusieurs graphiques comme [
 
 ## Différents moteurs graphiques
 
+<center>
+
+![Prolifération des standards d'après [xkcd](https://xkcd.com/927/).](https://imgs.xkcd.com/comics/standards.png)
+
+</center>
+
+
 Depuis le début, l'ensemble des graphiques que nous vous avons proposés utilise la fonction `chart()` du package **chart**. Cependant, il ne s'agit pas de la seule fonction permettant de réaliser des graphiques dans R, loin de là. En fait, **chart** est tout récent et a été développé pour homogénéiser autant que possible les graphiques issus de trois moteurs graphiques différents : **ggplot2**, **lattice** et les graphiques **base**. La fonction `chart()` a d'autres avantages également :
 
 - Un thème par défaut qui est le plus proche possible d'un rendu typique d'une publication scientifique.

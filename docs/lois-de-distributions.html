@@ -481,46 +481,61 @@ Figure 7.5: Temps d’observation nécessaire (quantile Q) pour voir arriver un 
 Figure 7.6: Probabilité d’avoir <em>j</em> enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose.
 </p>
 </div>
-<p>La situation la plus prabable est donc d’avoir 5 enfants sains sur 6. La distribution binomiale trouve de très nombreuses applications en biologie, en écologie, en génétique et dans d’autres disciplines.</p>
+<p>La situation la plus probable est donc d’avoir 5 enfants sains sur 6. Nous pouvons aussi observer que, lorsque <span class="math inline">\(p\)</span> s’éloigne de 0,5, les probabilités à l’extrême opposée tendent assez rapidement vers zéro (ici, la probabilité de n’avoir qu’un seul, ou aucun enfant sain). La distribution binomiale trouve de très nombreuses applications en biologie, en écologie, en génétique et dans d’autres disciplines. Elle permet même de représenter vos chances de réussite à l’examen de science des données biologiques ! Voici, pour finir, l’allure d’une distribution binomiale pour laquelle la probabilité du succès est égale à la probabilité d’échec (0,5). Cette distribution est symétrique.</p>
+<div class="figure" style="text-align: center"><span id="fig:binom2"></span>
+<img src="07-Probabilites-Distributions_files/figure-html/binom2-1.svg" alt="Probabilité d'avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1)." width="672" />
+<p class="caption">
+Figure 7.7: Probabilité d’avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1).
+</p>
+</div>
 </div>
 <div id="distribution-de-poisson" class="section level3">
 <h3><span class="header-section-number">7.2.3</span> Distribution de poisson</h3>
-<p>Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à 0, 1, 2, … de leurs enfants ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu’une personne sur 20 est porteuse du gène défectueux sans être malade en Belgique, la probabilité de former un couple hétérozygote qui pourrait transmettre la maladie est de :</p>
+<p>Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à leur descendance ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu’une personne sur 20 est porteuse du gène défectueux sans être malade en Belgique, la probabilité de former un couple hétérozygote qui pourrait transmettre la maladie est de :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">/</span><span class="dv">20</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">20</span></code></pre></div>
 <pre><code># [1] 0.0025</code></pre>
 <p>… soit un couple sur 400. Donc, globalement, les probabilités d’avoir des enfants sains est beaucoup plus grande que 0.75 si nous incluons tous les couples belges de parents sains porteurs ou non. Cette probabilité est de :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">399</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.75</span>) <span class="op">/</span><span class="st"> </span><span class="dv">400</span></code></pre></div>
 <pre><code># [1] 0.999375</code></pre>
-<p>Pour un couple au hasard sans connaissance <em>a priori</em> du fait que les parents soient porteurs ou non, la probabilité d’avoir un enfant atteint de la mucoviscidose est heureusement très, très faible, mais non nulle. Si nous considérons maintenant une population suffisamment grande pour pouvoir espérer y trouver au moins une personne atteinte de mucoviscidose, nous pourrions décider d’étudier un échantillon de 1000 enfants belges. La distribution binomiale requiert alors le calcul de <span class="math inline">\(C^j_n\)</span> sur base de <span class="math inline">\(n = 1000\)</span>, ce qui revient à devoir calculer le factoriel de 1000 :</p>
+<p>Pour un couple au hasard sans connaissance <em>a priori</em> du fait que les parents soient porteurs ou non, la probabilité d’avoir un enfant atteint de la mucoviscidose est heureusement très, très faible, mais non nulle (de l’ordre de 1/1600 = 0.999375). Si nous considérons maintenant une population suffisamment grande pour pouvoir espérer y trouver “statistiquement” une personne atteinte de mucoviscidose, nous pourrions décider d’étudier un échantillon aléatoire de 1600 enfants belges. La distribution binomiale requiert alors le calcul de <span class="math inline">\(C^j_n\)</span> sur base de <span class="math inline">\(n = 1600\)</span>, ce qui revient à devoir calculer le factoriel de 1600 :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1</span>)</code></pre></div>
 <pre><code># [1] 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">10</span>)</code></pre></div>
 <pre><code># [1] 3628800</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">100</span>)</code></pre></div>
 <pre><code># [1] 9.332622e+157</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1000</span>)</code></pre></div>
-<pre><code># Warning in factorial(1000): value out of range in &#39;gammafn&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1600</span>)</code></pre></div>
+<pre><code># Warning in factorial(1600): value out of range in &#39;gammafn&#39;</code></pre>
 <pre><code># [1] Inf</code></pre>
 <p>Or, le factoriel est un nombre qui grandit très, très vite. Déjà le factoriel de 100 est un nombre à 157 chiffres. Nous voyons que R est incapable de calculer précisément le factoriel de 1000. Ce nombre est supérieur au plus grand nombre que l’ordinateur peut représenter pour un <code>double</code> en R (1.797693110^{308}). Donc, nous sommes incapables de répondre à la question à l’aide de la loi binomiale.</p>
-<p>La <strong>distribution de Poisson</strong> permet d’obtenir la réponse à la question posée parce qu’elle effectue le calcul différemment. Cette distribution discrète a un seul paramètre <span class="math inline">\(\lambda\)</span> qui représente le nombre moyen de cas rares que l’on observe en moyenne dans un échantillon donné, ou sur un laps de temps fixe.</p>
-<p>suivants : - <span class="math inline">\(\mu\)</span> égale à <span class="math inline">\(\sigma\)</span> et n’a donc qu’un seul paramètre <span class="math inline">\(\lambda\)</span>. Cette distribution est <strong>asymétrique pour de faible <span class="math inline">\(\lambda\)</span></strong> et tend vers une distribution normale pour de grand <span class="math inline">\(\lambda\)</span>.</p>
-<p>Les conditions d’application sont</p>
+<p>La <strong>distribution de Poisson</strong> permet d’obtenir la réponse à la question posée parce qu’elle effectue le calcul différemment. Cette distribution discrète a un seul paramètre <span class="math inline">\(\lambda\)</span> qui représente le nombre moyen de cas rares que l’on observe dans un échantillon donné, ou sur un laps de temps fixé à l’avance. Cette distribution est <strong>asymétrique pour de faible <span class="math inline">\(\lambda\)</span></strong>. Les conditions d’application sont :</p>
 <ul>
-<li>la probabilités de succès très faible</li>
-<li>très grand nombre d’essais</li>
+<li>résultats binaire,</li>
+<li>essais indépendants (les probabilités ne changement pas d’un essai à l’autre),</li>
+<li>taille d’échantillon ou laps de temps que le phénomène est observé fixe,</li>
+<li>probabilité d’observation de l’évènement <span class="math inline">\(\lambda\)</span> faible.</li>
 </ul>
+<p>Pour une variable <span class="math inline">\(Y \sim P(\lambda)\)</span>, nous pouvons calculer la probabilité que <span class="math inline">\(Y = 0\)</span>, <span class="math inline">\(Y = 1\)</span>, … de la façon suivante :</p>
 <p><span class="math display">\[P(Y=0) = e^{-\lambda}\]</span></p>
 <p>et</p>
-<p><span class="math display">\[P(Y=k) = P(Y=k-1) \times \frac{ \lambda }{k}\]</span> Le calcul se réalise de proche en prohce en partant de la probabilité de l’événement correspondant à aucune occurence de succès.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">20</span>), <span class="kw">dpois</span>(<span class="dv">0</span><span class="op">:</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">20</span>), <span class="dt">lambda =</span> <span class="dv">2</span>), <span class="dt">type =</span> <span class="st">&quot;h&quot;</span>,
-  <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Probability mass&quot;</span>)</code></pre></div>
-<p><img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<p>Quelle est la probabilité dans un population d’obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue.</p>
+<p><span class="math display">\[P(Y=k) = P(Y=k-1) \times \frac{\lambda}{k}\]</span></p>
+<p>Le calcul se réalise de proche en proche en partant de la probabilité de ne jamais observer l’événement. Comme l’événement est rare, la probabilité tend très rapidement vers une valeur extrêmement faible. Seul le calcul des quelques premiers termes est donc nécessaire. A titre d’exercice, faites le calcul pour notre exemple d’un échantillon de la population belge, avec <span class="math inline">\(\lambda = 1\)</span> comme paramètre. La densité de probabilité pour cette distribution est représentée à la Fig. <a href="lois-de-distributions.html#fig:poisson">7.8</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:poisson"></span>
+<img src="07-Probabilites-Distributions_files/figure-html/poisson-1.svg" alt="Probabilité d'occurence de mucoviscidose dans un échantillon aléatoire de 1600 belges." width="672" />
+<p class="caption">
+Figure 7.8: Probabilité d’occurence de mucoviscidose dans un échantillon aléatoire de 1600 belges.
+</p>
+</div>
+<p>Les fonctions dans R relatives à la distribution de Poisson portent des noms <code>&lt;x&gt;pois()</code>, tel que <code>ppois()</code> pour calculer des probabilités, <code>qpois()</code> pour calculer des quantiles ou <code>rpois()</code> pour générer des nombres pseudo-aléatoires selon cette distribution. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu <code>(d)istributions: poisson</code> à partir de <code>.ip</code>) :</p>
+<div class="figure">
+<img src="images/sdd1_07/snippets-poisson.png" />
+
+</div>
 </div>
 <div id="distribution-normale" class="section level3">
 <h3><span class="header-section-number">7.2.4</span> Distribution normale</h3>
-<p>La chaîne Youtube, La statistique expliquée à mon chat, dans la vidéo <a href="https://www.youtube.com/watch?v=THk2GBxkg4o">Pâte à tartiner et variable continue</a> explique la notion de variable continue.</p>
-<p>Une loi de distribution continue permet de prédire la probabilité qu’un événement se produise parmi un nombre très grand d’événement (infini, la plupart du temps). On ne s’intéresse qu’à des probabilités pour un intervalle concernant une fraction de tous les événements possibles.</p>
+<p>La vidéo suivante intitulée “pâte à tartiner et variable continue” vous permettra de r&amp;capituler certaines notions étudiées jusqu’ici concernant les types de variables et vous introduira la loid de distribution normale ou distribution de Gauss ou gaussienne.</p>
+<iframe src="https://www.youtube.com/embed/THk2GBxkg4o" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
 <p>La distribution normale a deux paramètre : <span class="math inline">\(\mu\)</span> &amp; <span class="math inline">\(\sigma\)</span></p>
 <p><span class="math display">\[f(y) = \frac{1}{ \sigma \sqrt{2 \pi}} e^{\frac{-1}{2} \left( \frac{y - \mu}{\sigma} \right)^2}\]</span></p>
 <p>Cette distribution s’écrit Y ∼ N(μ, σ) pour la variable Y suit une distribution Normale de moyenne μ, et d’écart type σ.</p>
