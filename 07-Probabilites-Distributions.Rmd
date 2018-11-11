@@ -469,52 +469,76 @@ runif(10, min = 0, max = 1)
 
 ### Distribution binomiale
 
-Partons d'un exemple pratique pour découvrir cette distribution. L'albinisme est une maladie héréditaire liée à un gène récessif. Parmi 20 familles dont le père et la mère normaux ont le gène récessif. Quelle est la probabilité d'obtenir 0, 1, 2, ..., 20 enfants albinos dans les 20 familles. 
+Partons d'un exemple pratique pour découvrir cette distribution. La [mucoviscidose](http://www.muco.be/fr/mucoviscidose/maladie-génétique) est, dans la population européenne, la plus fréquente des maladies génétiques héréditaires. Elle se caractérise par un mucus (voies respiratoires) anormalement épais qui est à l'orgine de diverses complications. L'altération d'une protéine CFTR est à l'origine de cette maladie. Comme le gène qui code pour cette protéine est récessif, il faut que le deux allèles soient porteurs simultanément de la mutation pour que la maladie apparaisse. Parmi des familles de six enfants dont le père et la mère normaux sont tous deux porteurs hétérozygotes du gène altéré, quelle est la probabilité d'obtenir 0, 1, 2, ..., 6 enfants atteints de mucoviscidose\ ?
 
-Les conditions d'applications de la distribution binomiale sont :
+La **distribution binomiale** est un loi de distribution discrète qui répond à ce genre de question. Ses conditions d'applications sont\ :
 
-- Résultats binaire
-- Essais indépendants,
-- n fixé à l'avance
-- Probabilité de réussite constante. 
+- résultats binaire (deux événements possibles uniquement\ ; l'un sera nommé "succès" et l'autre "échec" par convention),
+- essais indépendants (les probabilités ne changement pas d'un essai à l'autre),
+- *n* le nombre d'essais totaux est fixé à l'avance,
+- probabilité du "succès" *p* constante (probabilité de l'"échec" = 1 - *p*). 
 
-Cette distribution peut s'écrire de manière mathématiquement :
+Les conditions particulières de cette situation sont appelées **épreuve de Bernouilli**. Mathématiquement, nous l'écrirons comme suit. Soit une variable aléatoire $Y$ qui comptabilise le nombre de succès, la probabilité d’obtenir $j$ succès parmi $n$ essais est\ :
 
-Soit une variable binaire aléatoire Y, la probabilité d’obtenir j succès parmi n essais est :
+$$P(Y=j)= C^j_n \times p^j \times (1-p)^{n-j}$$
 
-$$P(Y=j)= _n C _J \times p^j \times (1-p)^{n-j}$$
+Le **coefficient binomial** $C^j_n$ vaut^[Le factoriel d'un nombre $n$, noté $n!$ est $1 \times 2 \times 3 \times ... \times n$, avec $0! = 1$.]\ : $$C^j_n = \frac{n!}{j!(n-j)!}$$
 
-Le coefficient binomiale $_n C _J$ vaut $$\frac{n!}{j!(n-j)!}$$
+$C^j_n$ représente le nombre de combinaisons possibles pour obtenir $j$ succès parmi $n$ essais réalisés dans un ordre quelconque. On pourra écrire aussi\ :
+
+$$Y \sim B(n,p)$$
+
+Notre exemple rentre parfaitement dans le cadre de l'épreuve de Bernouilli avec *n* = 6 et *p*, la probabilité du succès, c'est-à-dire, d'avoir un enfant qui ne développe pas la maladie de 3/4\ : $Y \sim B(6, 0.75)$. Les calculs sur base d'une distribution binomiale sont assez similaires à ceux de la distribution uniforme dans R, en remplaçant `unif` par `binom` dans le nom des fonction. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu `(d)istributions: binomial` à partir de `.ib`) :
+
+![](images/sdd1_07/snippets-binomial.png)
+
+Puisqu'il s'agit d'une distribution discrète, un petit nombre d'événements possibles existent. Le snippet `.ibtable` retourne l'ensemble des valeurs possibles pour $j$ allant de 1 à $n$ en une seule étape. Les autres snippets devraient vous être familiers.
 
 ```{r}
-(.table <- data.frame(success = 0:20,
-  probability = dbinom(0:20, size = 20, prob = 0.25)))
+(.table <- data.frame(success = 0:6,
+  probability = dbinom(0:6, size = 6, prob = 0.75)))
 ```
 
-On peut représenter graphiquement le résultat lié au nombre d'albinos dans ces 20 familles.
+La représentation graphique donne la Fig. \@ref(fig:binom).
+
+```{r binom, echo=FALSE, fig.cap="Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose."}
+tibble(Quantile = 0:6, Probabilité = dbinom(0:6, size = 6, prob = 0.75)) %>.%
+  chart(., Probabilité ~ Quantile) +
+  geom_bar(stat = "identity", width = 0.05)
+```
+
+La situation la plus prabable est donc d'avoir 5 enfants sains sur 6. La distribution binomiale trouve de très nombreuses applications en biologie, en écologie, en génétique et dans d'autres disciplines.
+
+
+### Distribution de poisson
+
+Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à 0, 1, 2, ... de leurs enfants\ ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu'une personne sur 20 est porteuse du gène défectueux sans être malade en Belgique, la probabilité de former un couple hétérozygote qui pourrait transmettre la maladie est de :
 
 ```{r}
-plot(0:20, dbinom(0:20, size = 20, prob = 0.25), type = "h",
-  col = "black", xlab = "Quantiles", ylab = "Probability mass")
+1/20 * 1/20
 ```
 
-Partons d'une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d'avoir 0, 1 ou 2  malade sur 10000 individus ? 
+... soit un couple sur 400. Donc, globalement, les probabilités d'avoir des enfants sains est beaucoup plus grande que 0.75 si nous incluons tous les couples belges de parents sains porteurs ou non. Cette probabilité est de :
 
-La distribution binomiale requiert le développement du polynome  $_n C _J$  qui revient donc à $0.001^1 \times 0.999^{9999}\ !$
+```{r}
+(399 * 1 + 1 * 0.75) / 400
+```
+
+Pour un couple au hasard sans connaissance *a priori* du fait que les parents soient porteurs ou non, la probabilité d'avoir un enfant atteint de la mucoviscidose est heureusement très, très faible, mais non nulle. Si nous considérons maintenant une population suffisamment grande pour pouvoir espérer y trouver au moins une personne atteinte de mucoviscidose, nous pourrions décider d'étudier un échantillon de 1000 enfants belges. La distribution binomiale requiert alors le calcul de $C^j_n$ sur base de $n = 1000$, ce qui revient à devoir calculer le factoriel de 1000 :
 
 ```{r}
 factorial(1)
 factorial(10)
 factorial(100)
 factorial(1000)
-factorial(10000)
 ```
 
-La distribution de poisson permet d'obtenir la réponse à la question posée. 
+Or, le factoriel est un nombre qui grandit très, très vite. Déjà le factoriel de 100 est un nombre à 157 chiffres. Nous voyons que R est incapable de calculer précisément le factoriel de 1000. Ce nombre est supérieur au plus grand nombre que l'ordinateur peut représenter pour un `double` en R (`r .Machine$double.xmax`). Donc, nous sommes incapables de répondre à la question à l'aide de la loi binomiale.
 
-### Distribution de poisson
+La **distribution de Poisson** permet d'obtenir la réponse à la question posée parce qu'elle effectue le calcul différemment. Cette distribution discrète a un seul paramètre $\lambda$ qui représente le nombre moyen de cas rares que l'on observe en moyenne dans un échantillon donné, ou sur un laps de temps fixe. 
 
-cette distribution discrète se caractérise par $\mu$ égale à $\sigma$ et n'a donc qu'un seul paramètre $\lambda$. Cette distribution est  **asymétrique pour de faible $\lambda$** et tend vers une distribution normale pour de grand $\lambda$.
+suivants\ :
+- $\mu$ égale à $\sigma$ et n'a donc qu'un seul paramètre $\lambda$. Cette distribution est  **asymétrique pour de faible $\lambda$** et tend vers une distribution normale pour de grand $\lambda$.
 
 Les conditions d'application sont 
 

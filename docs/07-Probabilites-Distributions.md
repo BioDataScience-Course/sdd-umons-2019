@@ -559,67 +559,83 @@ runif(10, min = 0, max = 1)
 
 ### Distribution binomiale
 
-Partons d'un exemple pratique pour découvrir cette distribution. L'albinisme est une maladie héréditaire liée à un gène récessif. Parmi 20 familles dont le père et la mère normaux ont le gène récessif. Quelle est la probabilité d'obtenir 0, 1, 2, ..., 20 enfants albinos dans les 20 familles. 
+Partons d'un exemple pratique pour découvrir cette distribution. La [mucoviscidose](http://www.muco.be/fr/mucoviscidose/maladie-génétique) est, dans la population européenne, la plus fréquente des maladies génétiques héréditaires. Elle se caractérise par un mucus (voies respiratoires) anormalement épais qui est à l'orgine de diverses complications. L'altération d'une protéine CFTR est à l'origine de cette maladie. Comme le gène qui code pour cette protéine est récessif, il faut que le deux allèles soient porteurs simultanément de la mutation pour que la maladie apparaisse. Parmi des familles de six enfants dont le père et la mère normaux sont tous deux porteurs hétérozygotes du gène altéré, quelle est la probabilité d'obtenir 0, 1, 2, ..., 6 enfants atteints de mucoviscidose\ ?
 
-Les conditions d'applications de la distribution binomiale sont :
+La **distribution binomiale** est un loi de distribution discrète qui répond à ce genre de question. Ses conditions d'applications sont\ :
 
-- Résultats binaire
-- Essais indépendants,
-- n fixé à l'avance
-- Probabilité de réussite constante. 
+- résultats binaire (deux événements possibles uniquement\ ; l'un sera nommé "succès" et l'autre "échec" par convention),
+- essais indépendants (les probabilités ne changement pas d'un essai à l'autre),
+- *n* le nombre d'essais totaux est fixé à l'avance,
+- probabilité du "succès" *p* constante (probabilité de l'"échec" = 1 - *p*). 
 
-Cette distribution peut s'écrire de manière mathématiquement :
+Les conditions particulières de cette situation sont appelées **épreuve de Bernouilli**. Mathématiquement, nous l'écrirons comme suit. Soit une variable aléatoire $Y$ qui comptabilise le nombre de succès, la probabilité d’obtenir $j$ succès parmi $n$ essais est\ :
 
-Soit une variable binaire aléatoire Y, la probabilité d’obtenir j succès parmi n essais est :
+$$P(Y=j)= C^j_n \times p^j \times (1-p)^{n-j}$$
 
-$$P(Y=j)= _n C _J \times p^j \times (1-p)^{n-j}$$
+Le **coefficient binomial** $C^j_n$ vaut^[Le factoriel d'un nombre $n$, noté $n!$ est $1 \times 2 \times 3 \times ... \times n$, avec $0! = 1$.]\ : $$C^j_n = \frac{n!}{j!(n-j)!}$$
 
-Le coefficient binomiale $_n C _J$ vaut $$\frac{n!}{j!(n-j)!}$$
+$C^j_n$ représente le nombre de combinaisons possibles pour obtenir $j$ succès parmi $n$ essais réalisés dans un ordre quelconque. On pourra écrire aussi\ :
 
+$$Y \sim B(n,p)$$
 
-```r
-(.table <- data.frame(success = 0:20,
-  probability = dbinom(0:20, size = 20, prob = 0.25)))
-```
+Notre exemple rentre parfaitement dans le cadre de l'épreuve de Bernouilli avec *n* = 6 et *p*, la probabilité du succès, c'est-à-dire, d'avoir un enfant qui ne développe pas la maladie de 3/4\ : $Y \sim B(6, 0.75)$. Les calculs sur base d'une distribution binomiale sont assez similaires à ceux de la distribution uniforme dans R, en remplaçant `unif` par `binom` dans le nom des fonction. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu `(d)istributions: binomial` à partir de `.ib`) :
 
-```
-#    success  probability
-# 1        0 3.171212e-03
-# 2        1 2.114141e-02
-# 3        2 6.694781e-02
-# 4        3 1.338956e-01
-# 5        4 1.896855e-01
-# 6        5 2.023312e-01
-# 7        6 1.686093e-01
-# 8        7 1.124062e-01
-# 9        8 6.088669e-02
-# 10       9 2.706075e-02
-# 11      10 9.922275e-03
-# 12      11 3.006750e-03
-# 13      12 7.516875e-04
-# 14      13 1.541923e-04
-# 15      14 2.569872e-05
-# 16      15 3.426496e-06
-# 17      16 3.569266e-07
-# 18      17 2.799425e-08
-# 19      18 1.555236e-09
-# 20      19 5.456968e-11
-# 21      20 9.094947e-13
-```
+![](images/sdd1_07/snippets-binomial.png)
 
-On peut représenter graphiquement le résultat lié au nombre d'albinos dans ces 20 familles.
+Puisqu'il s'agit d'une distribution discrète, un petit nombre d'événements possibles existent. Le snippet `.ibtable` retourne l'ensemble des valeurs possibles pour $j$ allant de 1 à $n$ en une seule étape. Les autres snippets devraient vous être familiers.
 
 
 ```r
-plot(0:20, dbinom(0:20, size = 20, prob = 0.25), type = "h",
-  col = "black", xlab = "Quantiles", ylab = "Probability mass")
+(.table <- data.frame(success = 0:6,
+  probability = dbinom(0:6, size = 6, prob = 0.75)))
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-31-1.svg" width="672" style="display: block; margin: auto;" />
+```
+#   success  probability
+# 1       0 0.0002441406
+# 2       1 0.0043945312
+# 3       2 0.0329589844
+# 4       3 0.1318359375
+# 5       4 0.2966308594
+# 6       5 0.3559570312
+# 7       6 0.1779785156
+```
 
-Partons d'une maladie congénitale rare avec un cas 1/1000. Quels est la probabilité d'avoir 0, 1 ou 2  malade sur 10000 individus ? 
+La représentation graphique donne la Fig. \@ref(fig:binom).
 
-La distribution binomiale requiert le développement du polynome  $_n C _J$  qui revient donc à $0.001^1 \times 0.999^{9999}\ !$
+<div class="figure" style="text-align: center">
+<img src="07-Probabilites-Distributions_files/figure-html/binom-1.svg" alt="Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose." width="672" />
+<p class="caption">(\#fig:binom)Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose.</p>
+</div>
+
+La situation la plus prabable est donc d'avoir 5 enfants sains sur 6. La distribution binomiale trouve de très nombreuses applications en biologie, en écologie, en génétique et dans d'autres disciplines.
+
+
+### Distribution de poisson
+
+Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à 0, 1, 2, ... de leurs enfants\ ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu'une personne sur 20 est porteuse du gène défectueux sans être malade en Belgique, la probabilité de former un couple hétérozygote qui pourrait transmettre la maladie est de :
+
+
+```r
+1/20 * 1/20
+```
+
+```
+# [1] 0.0025
+```
+
+... soit un couple sur 400. Donc, globalement, les probabilités d'avoir des enfants sains est beaucoup plus grande que 0.75 si nous incluons tous les couples belges de parents sains porteurs ou non. Cette probabilité est de :
+
+
+```r
+(399 * 1 + 1 * 0.75) / 400
+```
+
+```
+# [1] 0.999375
+```
+
+Pour un couple au hasard sans connaissance *a priori* du fait que les parents soient porteurs ou non, la probabilité d'avoir un enfant atteint de la mucoviscidose est heureusement très, très faible, mais non nulle. Si nous considérons maintenant une population suffisamment grande pour pouvoir espérer y trouver au moins une personne atteinte de mucoviscidose, nous pourrions décider d'étudier un échantillon de 1000 enfants belges. La distribution binomiale requiert alors le calcul de $C^j_n$ sur base de $n = 1000$, ce qui revient à devoir calculer le factoriel de 1000 :
 
 
 ```r
@@ -658,23 +674,12 @@ factorial(1000)
 # [1] Inf
 ```
 
-```r
-factorial(10000)
-```
+Or, le factoriel est un nombre qui grandit très, très vite. Déjà le factoriel de 100 est un nombre à 157 chiffres. Nous voyons que R est incapable de calculer précisément le factoriel de 1000. Ce nombre est supérieur au plus grand nombre que l'ordinateur peut représenter pour un `double` en R (1.7976931\times 10^{308}). Donc, nous sommes incapables de répondre à la question à l'aide de la loi binomiale.
 
-```
-# Warning in factorial(10000): value out of range in 'gammafn'
-```
+La **distribution de Poisson** permet d'obtenir la réponse à la question posée parce qu'elle effectue le calcul différemment. Cette distribution discrète a un seul paramètre $\lambda$ qui représente le nombre moyen de cas rares que l'on observe en moyenne dans un échantillon donné, ou sur un laps de temps fixe. 
 
-```
-# [1] Inf
-```
-
-La distribution de poisson permet d'obtenir la réponse à la question posée. 
-
-### Distribution de poisson
-
-cette distribution discrète se caractérise par $\mu$ égale à $\sigma$ et n'a donc qu'un seul paramètre $\lambda$. Cette distribution est  **asymétrique pour de faible $\lambda$** et tend vers une distribution normale pour de grand $\lambda$.
+suivants\ :
+- $\mu$ égale à $\sigma$ et n'a donc qu'un seul paramètre $\lambda$. Cette distribution est  **asymétrique pour de faible $\lambda$** et tend vers une distribution normale pour de grand $\lambda$.
 
 Les conditions d'application sont 
 
@@ -694,7 +699,7 @@ plot(0:(2+20), dpois(0:(2+20), lambda = 2), type = "h",
   col = "black", xlab = "Quantiles", ylab = "Probability mass")
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-33-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" />
 
 Quelle est la probabilité dans un population d'obtenir une personne mesurant 191,0000 cm ? La probabilité est nulle. En effet, La variable étudié est une variable continue. Elle doit donc se traiter avec une distribution contiue. 
 
@@ -724,7 +729,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-34-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" />
 
 La variable Y suit une distribution Normale de moyenne $\mu$ (175), et d’écart type $\sigma$ (10). 
 
@@ -746,7 +751,7 @@ abline(h = 0, col = "gray") # Baseline
 text(.mu+.s, .d(.mu+.s), .label, pos = 4, col = .col) # Label at right
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-35-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 * La distribution normale réduite : $\mu_z = 0$ &  $\sigma_z = 1$
@@ -769,7 +774,7 @@ curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
 abline(h = 0, col = "gray") # Baseline
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-37-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 
