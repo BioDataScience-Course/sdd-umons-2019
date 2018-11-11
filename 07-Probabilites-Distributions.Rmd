@@ -189,6 +189,12 @@ $$\mathrm{P(A\, \mathrm{ou}\, B)} = \mathrm{P}(A) + \mathrm{P(B)} - \mathrm{P}(A
 
 ```
 
+<center>
+
+![Application *vraiment* utile du théorème de Bayes par [xkcd](https://xkcd.com/1236/).](https://imgs.xkcd.com/comics/seashell.png)
+
+</center>
+
 
 ### Probabilités et contingence
 
@@ -266,8 +272,6 @@ Dans une population de 100 personnes dont les proportions des différentes group
 
 Il s'agit d'événements successifs **non-indépendants**. En effet, le retrait d'un individu de la population de taille finie *modifie* les proportions relatives des groupes sanguins dans le reste de la population, et donc, les probabilités aux tirages suivants. Ainsi pour le groupe B, nous n'avons plus que 9 individus de ce groupe dans une population de 99 individus après le premier tirage d'un individu du groupe B\ ! Autrement dit, $\mathrm{P}(B|B) \neq \mathrm{P}(B|not\ B)$. On a donc, $\mathrm{P}(B|B) = 9/99$ et ensuite $\mathrm{P}(B|B\, \mathrm{et}\, B) = 8/98$.
 
-Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas, il est possible de déterminer à quelle fréquence un événement *E* se produit de manière expérimentale. La **probabilité observée** est quantifiable sur base d’un échantillon. La **probabilité théorique** est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.
-
 
 ##### A vous de jouer {-}
 
@@ -279,32 +283,189 @@ Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante da
 
 ```
 
+
 ## Lois de distributions
 
-Une loi de distribution statistique permet de prédire de manière théorique les probabilités de tous les événements possibles.
+Etant donné que les sciences des données reposent sur un nombre (si possible important) de répétitions d’une mesure -des réplicas-, il est possible de déterminer à quelle fréquence un événement *E* se produit de manière expérimentale. La **probabilité observée** est quantifiable sur base d’un échantillon comme nous venons de le voir dans la section précédente. La **probabilité théorique** est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique. Cependant, dans des situations particulières les statisticiens ont calculé les probabilités théoriques. Ce sont des **lois de distribution**. Elles associent une probabilité théorique à chaque événement possible.
 
-Elle associe, donc, une probabilité théorique à un événement.
+```{block, type='info'}
+La comparaison des probabilités théoriques et observées constitue l’un des piliers des statistiques. Le raisonnement est le suivant : si les probabilités observées sont suffisamment proches des probabilités théoriques, alors, nous pouvons considérer que les événements sont générés selon un mécanisme identique ou proche de celui qui est à la base de la loi de distribution théorique correspondante.
+```
 
-La comparaison des probabilités théoriques et observées constitue l’un des piliers de la statistique. Le raisonnement est le suivant : si les probabilités observées sont suffisamment proches des probabilités théoriques, alors, nous pouvons considérer que les événement sont générés selon un mécanisme proche de celui qui est à la base de la loi de distribution théorique correspondante.
+<center>
+
+![Même dans la vie de tous les jours, les calculs de probabilités peuvent être utiles, enfin... d'après [xkcd](https://xkcd.com/539/).](https://imgs.xkcd.com/comics/boyfriend.png)
+
+</center>
+
+Avant d'explorer ces lois de distributions statistiques, nous devons d'abord introduire la distinction entre **probabilité discrète** et **probabilité continue**. Une probabilité discrète est associée à une variable qualitative ou à la rigueur, à une variable continue discrète qui peut prendre un nombre fini -et généralement relativement petit- de valeurs. A chaque valeur est associé un événement, et chaque événement a une certaine probabilité de se produire dans un contexte donné. *Jusqu'à présent, nous n'avons traité que ce cas-là.* Par contre, une variable quantitative continue peut prendre un nombre infini de valeurs matérialisées généralement par l'ensemble des nombres réels. Dans ce cas, l'association d'un événement à une valeur de la variable, et d'une probabilité à chaque événement reste vraie en théorie. Mais en pratique, ces probabilités dites continues ne sont pas calculables par les équations étudiées jusqu'ici. Par contre, les **lois de distributions continues** permettent des calculs, moyennant une petite astuce que nous étudierons plus loin dans ce chapitre.
+
 
 ### Distribution uniforme
 
-La loi de la distribution uniforme émet l'hypothèse que tous les événements sont équiprobales^[la probabilité de tous les événements possibles est égale pour tous]. 
+La loi de la distribution uniforme se rapporte à un mécanisme qui génère **tous les événements de manière équiprobable**.
 
-la probabilité d’un de ces événements vaut donc: $$\frac{1}{nbr \ E}$$
 
-```{r}
+#### Distribution uniforme discrète
+
+Dans le cas d'événements discrets, si $n_E$ est le nombre total d'événements possibles, la probabilité d’un de ces événements vaut donc :
+
+$$\mathrm{P}(E) = \frac{1}{n_E}$$
+
+La distribution uniforme est d'application pour les jeux de hasard (dés, boules de lotto, ...). En biologie, elle est plus rare. Dans le cas d'un sexe ratio de 1:1 (autant de mâles que de femelles), la probabilité qu'un nouveau né soit un mâle ou une femelle suit une distribution uniforme et vaut 1/2. La distribution spatiale des individus dans une population biologique peut être uniforme lorsque les individus interagissent de telle manière que la distance entre eux soit identique (par exemple, dans un groupe de manchots *Aptenodytes patagonicus* sur la banquise). Imaginons un animal hypothétique pour lequel la portée peut être de 1 à 4 petits de manière équiprobable. Nous avons alors 1/4 des portées qui présentent respectivement, 1, 2, 3 ou 4 petits (Fig.\ \@ref(fig:unif1)).
+
+```{r unif1, echo=FALSE, fig.cap="Probabilité du nombre de petits dans une portée qui suivrait un distribution strictement uniforme entre 1 et 4."}
+tibble(Portée = 1:4, Probabilité = 1/4) %>.%
+  chart(., Probabilité ~ Portée) +
+  geom_bar(stat = "identity", width = 0.03)
+```
+
+
+#### Distribution uniforme continue
+
+D'emblée, nous pouvons facilement démontrer quel est le problème avec les probabilités dans le cas de la **distribution uniforme continue**. Nous avons en effet, un nombre infini d'événements équiprobables possibles. Donc, la probabilité de chaque événement est ($n_E = \infty$) :
+
+$$\mathrm{P}(E) = \frac{1}{\infty} = 0$$
+
+... et ce calcul est *correct*\ !
+
+```{block, type='warning'}
+Dans le cas de probabilités continues, la probabilité d'un événement en particulier est **toujours nulle**. Nous pouvons seulement calculer que l'un parmi plusieurs événements se produise (compris dans un intervalle).
+```
+
+La représentation graphique d'une loi de distribution continue est un outil utile pour la comprendre et vérifier ses calculs. La forme la plus courante consiste à montrer la **courbe de densité de probabilité** pour une distribution continue. Sur l'axe *X*, nous avons les **quantiles** (les valeurs observables), et sur l'axe *Y*, la densité de probabilité^[Plus la densité de probabilité est élevée, plus les événements dans cette région du graphique sont probables.]. Par exemple, si nous constatons qu'un insecte butineur arrive sur une fleur en moyenne toutes les 4 minutes, la probabilité qu'un butineur arrive dans un intervalle de temps compris entre 0 et 4 min depuis le moment initial $t_0$ de nos observations suit une distribution uniforme continue (Fig.\ \@ref(fig:unif2)).
+
+```{r unif2, echo=FALSE, fig.cap="Probabilité qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min."}
 # Uniform distribution (density probability) with parameters:
 .min <- 0; .max <- 4 #  .min and .max range of possible events
 .col <- 1; .add <- FALSE # Plot parameters
-.x <- seq(.min-(.max-.min)/4, .max+(.max-.min)/4, l = 1000) # Quantiles
-.d <- function (x) dunif(x, min = .min, max = .max)         # Distribution function
-.q <- function (p) qunif(p, min = .min, max = .max)  # Quantile for lower-tail prob
+.x <- seq(.min - (.max - .min)/4, .max + (.max - .min)/4, l = 1000) # Quantiles
+.d <- function(x) dunif(x, min = .min, max = .max)         # Distribution function
+.q <- function(p) qunif(p, min = .min, max = .max)  # Quantile for lower-tail prob
 .label <- bquote(U(.(.min), .(.max)))
-curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
-  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
-abline(h = 0, col = "gray") # Baseline
+#curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+#  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+#abline(h = 0, col = "gray") # Baseline
+ch_unif <- chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
+  geom_hline(yintercept = 0, col = "gray") +
+  geom_ribbon(x = .x, ymin = 0, ymax = .d(.x), fill = "gray", alpha = 0.2) +
+  geom_line() +
+  xlab("Quantile (temps d'observation en min)") +
+  ylab("Densité de probabilité")
+ch_unif
 ```
+
+Une autre représentation courante est la **densité de probabilité cumulée** qui représente la probabilité d'observer un quantile *ou moins*. Dans le cas présent, cela représente la probabilité qu'au moins un insecte butineur soit observé pour des durées d'observation croissantes (Fig.\ \@ref(fig:unif-cumul)).
+
+```{r unif-cumul, echo=FALSE, fig.cap="Probabilité cumulée qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min."}
+.dc <- function(x) punif(x, min = .min, max = .max)             # Density function
+chart(data = tibble(Quantiles = .x, Prob = .dc(.x)), Prob ~ Quantiles) +
+  geom_hline(yintercept = 0, col = "gray") +
+  geom_ribbon(x = .x, ymin = 0, ymax = .dc(.x), fill = "gray", alpha = 0.2) +
+  geom_line() +
+  xlab("Quantile (temps d'observation en min)") +
+  ylab("Densité de probabilité cumulée")
+```
+
+
+
+```{block, type='note'}
+**Notation :** nous noterons qu'une variable suit une loi de distribution comme ceci (le tilde ~ se lit "suit une distribution", et *U* représente la distribution uniforme avec entre parenthèse, les *paramètres* de la distribution, ici, les bornes inférieure et supérieure)\ :
+
+$$X \sim U(0, 4)$$
+
+Cela signifie : "la variable aléatoire *X* suit une distribution uniforme 0 à 4".
+
+```
+
+La distribution $U(0, 1)$ est particulière et est appelée **distribution uniforme standard**. Elle a la propriété particulière que si $X \sim U(0, 1)$ alors $(1-X) \sim U(0, 1)$.
+
+
+#### Calcul de probabilités à partir de quantiles
+
+L'**aire sous la courbe** représente une probabilité associée à l'intervalle considéré pour les quantiles. Répondez aux questions suivantes pour notre variable $X \sim U(0,4)$\ :
+
+1. Quelle est la probabilité que *X* = 1 (un insecte butineur arrive après *exactement* 1,00000... min d'observation)\ ?
+2. Quelle est la probabilité que *X* soit compris entre 1 et 1,5\ ?
+
+La réponse à la question (1) est immédiate. Cette probabilité est **nulle** (voir plus haut)^[La question n'est pas après *environ* une minute, mais à *exactement* 1 min 0 sec, 0 millisec, ..., ce qui est alors hautement improbable.]\ ! Pour la question (2), nous pouvons répondre en calculant l'aire sous la courbe entre les quantiles 1 et 1,5 (représentée par l'aire en rouge à la Fig. \@ref(fig:unif3)).
+
+```{r unif3, echo=FALSE, fig.cap="Probabilité qu'un insecte butineur arrive entre 1 et 1,5 min après le début d'une observation (aire P en rouge)."}
+.x2 <- .x
+.x2[.x2 < 1 | .x2 > 1.5] <- NA
+ch_unif +
+  geom_ribbon(x = .x2, ymin = 0, ymax = .d(.x2), fill = "red", alpha = 0.5) +
+  annotate("text", x = c(1, 1.5), y = 0, label = c("1,0", "1,5"), col = "red") +
+  annotate("text", x = c(1.25), y = 0.12, label = "P?", col = "red")
+```
+
+Ici, le calcul est assez simple à faire à la main. Mais nous verrons d'autres lois de distribution plus complexes. Dans tous les cas, R offre des fonctions qui calculent les **aires à gauche ou à droite** d'un quantile donné. Le nom de la fonction est toujours `p<distri>()`, avec pour la distribution uniforme `punif()`. L'aire à gauche du quantile nécessite de spécifier l'argument `lower.tail = TRUE` ("queue en bas de la distribution" en anglais). Pour l'aire à droite, on indiquera évidemment `lower.tail = FALSE`. Donc, pour calculer la probabilité qu'un insecte arrive en moins de 1,5 sec, nous écrirons :
+
+```{r}
+punif(1.5, min = 0, max = 4, lower.tail = TRUE)
+```
+
+Mais comme nous voulons déterminer la probabilité qu'un insecte arrive entre 1 et 1,5 sec, nous devons soustraire à cette valeur la probabilité qu'un insecte arrive en moins de 1 sec (la zone hachurée en rouge dans la Fig \@ref(fig:unif3) est en effet l'aire à gauche depuis le quantile 1,5 *moins* l'aire à gauche depuis le quantile 1) :
+
+```{r}
+punif(1.5, min = 0, max = 4, lower.tail = TRUE) -
+punif(1.0, min = 0, max = 4, lower.tail = TRUE)
+```
+
+La réponse est 0,125, soit une fois sur huit.
+
+```{block, type='note'}
+Le calcul de probabilités sur base de lois de distributions continues se fait via les aires à gauche ou à droite d'un quantile sur le graphique de densité de probabilité. Pour une aire centrale, nous soustrayons les aires à gauche des deux quantiles respectifs.
+```
+
+#### Calcul de quantiles depuis des probabilités
+
+Le calcul inverse est parfois nécessaire. Par exemple pour répondre à la question suivante\ :
+
+- Combien de temps devons-nous patienter pour observer l'arrivée d'un insecte butineur sur la fleur une fois sur trois observations en moyenne ?
+
+Ici, nous partons d'une probabilité (1/3) et voulons déterminer le quantile qui définit une aire à gauche de 1/3 sur le graphique (Fig.\ \@ref(fig:unif4)).
+
+```{r unif4, echo=FALSE, fig.cap="Temps d'observation nécessaire (quantile Q) pour voir arriver un butineur une fois sur trois (aire P en rouge de 1/3 à gauche de Q)."}
+.q3 <- qunif(1/3, min = 0, max = 4, lower.tail = TRUE)
+.x3 <- .x
+.x3[.x3 > .q3] <- NA
+ch_unif +
+  geom_ribbon(x = .x3, ymin = 0, ymax = .d(.x3), fill = "red", alpha = 0.5) +
+  annotate("text", x = .q3, y = 0, label = "Q?", col = "red") +
+  annotate("text", x = .q3/2, y = 0.12, label = "P = 1/3", col = "red")
+```
+
+Dans R, la fonction qui effectue ce calcul est `q<distri>()`. Donc ici, il s'agit de `qunif()`. Les arguments sont les mêmes que pour `punif()` sauf le premier qui est une ou plusieurs probabilités. Nous répondons à la question de la façon suivante\ :
+
+```{r}
+qunif(1/3, min = 0, max = 4, lower.tail = TRUE)
+```
+
+Donc il faut observer pendant 1,33 min (1 min et 20 sec) pour avoir 1 chance sur 3 d'observer l'arrivée d'un insecte butineur.
+
+
+#### Calcul avec les snippets
+
+La SciViews Box propose différents snippets pour nous aider à effectuer nos différents calculs et graphiques relatifs à la distribution uniforme continue. Ils se retrouvent dans le menu `(d)istributions` accédé depuis `...`. Donc `..i` donne *directement* accès à ce menu, et puis `(d)istributions: uniform` accédé depuis `.iu` directement. Ensuite, il suffit de choisir le snippet dans le menu déroulant (voir ci-dessous).
+
+![](images/sdd1_07/snippets-uniform.png)
+
+- `.iuproba` : calcul de probabilités depuis des quantiles
+- `.iuquant` : calcul de quantile depuis des probabilités
+- `.iurandom` : génération de nombres pseudo-aléatoires
+- `.iudens` : graphique de la densité de probabilité
+- `.iucumul` : graphique de la densité de probabilité cumulée
+- `.iullabel` : ajout d'un label sur le graphique à gauche
+- `.iurlabel`: ajout d'un label sur le graphique à droite
+
+Le snippet `.iurandom` nécessite quelques explications supplémentaires. R est capable de *simuler* la génération de nombres aléatoires selon différentes lois de distribution (`r<distri>()`). `runif()` est la fonction qui le fait pour une distribution uniforme continue. Comme il ne s'agit pas réellement de nombres aléatoires, on parle de générateur de nombres **pseudo-aléatoires**. En fait, il s'agit d'une série de nombres qui a les mêmes propriétés que des nombres réellement aléatoires. R se positionne au hasard dans cette série. Donc, à chaque fois que vous appelez la fonction `runif()`, vous obtenez logiquement des valeurs différentes. A des fins de reproductibilité, il est possible de *forcer* R à partir en un point précis de la série avec la fonction `set.seed()` avec un nombre comme argument qui donne la position. Par exemple `set.seed(281)`^[Si vous utilisez `set.seed()` prenez soin de spécifier toujours une valeur différente prise au hasard comme argument\ !]. La génération de nombres aléatoires dans les instructions qui suivent seront alors toujours les mêmes. Voici un exemple de 10 nombres aléatoires générés depuis une distribution uniforme standard (cmpris entre 0 et 1). Chaque fois que vous exécuterez ces deux instructions exactement l'une après l'autre, vous obtiendrez toujours la même suite. Si vous réexécutez la seconde instruction sans la première, vous obtiendrez une suite différente.
+
+```{r}
+set.seed(946)
+runif(10, min = 0, max = 1)
+```
+
 
 ### Distribution binomiale
 

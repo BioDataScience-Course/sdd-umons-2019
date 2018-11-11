@@ -453,6 +453,12 @@ Probabilité qu’un parmi deux événements se produise (cas général) :
 <span class="math display"><span class="math display">\[\mathrm{P(A\, \mathrm{ou}\, B)} = \mathrm{P}(A) + \mathrm{P(B)} - \mathrm{P}(A\, \mathrm{et}\, B)\]</span></span>
 </p>
 </div>
+<center>
+<div class="figure">
+<img src="https://imgs.xkcd.com/comics/seashell.png" alt="Application vraiment utile du théorème de Bayes par xkcd." />
+<p class="caption">Application <em>vraiment</em> utile du théorème de Bayes par <a href="https://xkcd.com/1236/">xkcd</a>.</p>
+</div>
+</center>
 </div>
 <div id="probabilites-et-contingence" class="section level3">
 <h3><span class="header-section-number">7.1.4</span> Probabilités et contingence</h3>
@@ -545,7 +551,6 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">9</span> <span class="op">/</span><span class="st"> </span><span class="dv">99</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">98</span></code></pre></div>
 <pre><code># [1] 0.000742115</code></pre>
 <p>Il s’agit d’événements successifs <strong>non-indépendants</strong>. En effet, le retrait d’un individu de la population de taille finie <em>modifie</em> les proportions relatives des groupes sanguins dans le reste de la population, et donc, les probabilités aux tirages suivants. Ainsi pour le groupe B, nous n’avons plus que 9 individus de ce groupe dans une population de 99 individus après le premier tirage d’un individu du groupe B ! Autrement dit, <span class="math inline">\(\mathrm{P}(B|B) \neq \mathrm{P}(B|not\ B)\)</span>. On a donc, <span class="math inline">\(\mathrm{P}(B|B) = 9/99\)</span> et ensuite <span class="math inline">\(\mathrm{P}(B|B\, \mathrm{et}\, B) = 8/98\)</span>.</p>
-<p>Etant donné que les statistiques reposent sur un nombre (si possible important) de répétitions d’une expérience, les fameux réplicas, il est possible de déterminer à quelle fréquence un événement <em>E</em> se produit de manière expérimentale. La <strong>probabilité observée</strong> est quantifiable sur base d’un échantillon. La <strong>probabilité théorique</strong> est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique.</p>
 <div id="a-vous-de-jouer-9" class="section level5 unnumbered">
 <h5>A vous de jouer</h5>
 
