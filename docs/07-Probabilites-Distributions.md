@@ -784,7 +784,7 @@ Une des raisons pour lesquelles la distribution normale est très répandue est 
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/4dhm2QAA2x4" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
 
-## Loi log-normale
+## Distribution log-normale
 
 La loi log-normale est utilisée pour représenter la distribution d'une variable aléatoire qui résulte de la multiplication d'un grand nombre de petits effets indépendants entre eux. C'est le cas en biologie et en chimie, par exemple, la taille d'un animal, la concentration d'une molécule en solution, la température d'un matériau, etc. Ces variables sont définies uniquement pour des valeurs nulles ou positives. Une taille et une concentration négatives ne sont pas possibles. De même pour une température en dessous du zéro absolu (attention, dans ce cas, la température doit être mesurée en Kelvin).
 

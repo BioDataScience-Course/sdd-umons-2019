@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-09">
+<meta name="date" content="2018-11-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -249,9 +249,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="7.6.3" data-path="distribution-normale.html"><a href="distribution-normale.html#fonctions-et-snippets"><i class="fa fa-check"></i><b>7.6.3</b> Fonctions et snippets</a></li>
 <li class="chapter" data-level="7.6.4" data-path="distribution-normale.html"><a href="distribution-normale.html#theoreme-central-limite"><i class="fa fa-check"></i><b>7.6.4</b> Théorème central limite</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="loi-log-normale.html"><a href="loi-log-normale.html"><i class="fa fa-check"></i><b>7.7</b> Loi log-normale</a><ul>
-<li class="chapter" data-level="7.7.1" data-path="loi-log-normale.html"><a href="loi-log-normale.html#transformee-log"><i class="fa fa-check"></i><b>7.7.1</b> Transformée log</a></li>
-<li class="chapter" data-level="7.7.2" data-path="loi-log-normale.html"><a href="loi-log-normale.html#snippets"><i class="fa fa-check"></i><b>7.7.2</b> Snippets</a></li>
+<li class="chapter" data-level="7.7" data-path="distribution-log-normale.html"><a href="distribution-log-normale.html"><i class="fa fa-check"></i><b>7.7</b> Distribution log-normale</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="distribution-log-normale.html"><a href="distribution-log-normale.html#transformee-log"><i class="fa fa-check"></i><b>7.7.1</b> Transformée log</a></li>
+<li class="chapter" data-level="7.7.2" data-path="distribution-log-normale.html"><a href="distribution-log-normale.html#snippets"><i class="fa fa-check"></i><b>7.7.2</b> Snippets</a></li>
 </ul></li>
 <li class="chapter" data-level="7.8" data-path="graphique-quantile-quantile.html"><a href="graphique-quantile-quantile.html"><i class="fa fa-check"></i><b>7.8</b> Graphique quantile-quantile</a></li>
 </ul></li>
@@ -353,7 +353,7 @@ Figure 7.1: Probabilité du nombre de petits dans une portée qui suivrait un di
 Dans le cas de probabilités continues, la probabilité d’un événement en particulier est <strong>toujours nulle</strong>. Nous pouvons seulement calculer que l’un parmi plusieurs événements se produise (compris dans un intervalle).
 </p>
 </div>
-<p>La représentation graphique d’une loi de distribution continue est un outil utile pour la comprendre et vérifier ses calculs. La forme la plus courante consiste à montrer la <strong>courbe de densité de probabilité</strong> pour une distribution continue. Sur l’axe <em>X</em>, nous avons les <strong>quantiles</strong> (les valeurs observables), et sur l’axe <em>Y</em>, la densité de probabilité<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. Par exemple, si nous constatons qu’un insecte butineur arrive sur une fleur en moyenne toutes les 4 minutes, la probabilité qu’un butineur arrive dans un intervalle de temps compris entre 0 et 4 min depuis le moment initial <span class="math inline">\(t_0\)</span> de nos observations suit une distribution uniforme continue (Fig. <a href="distribution-uniforme.html#fig:unif2">7.2</a>).</p>
+<p>La représentation graphique d’une loi de distribution continue est un outil utile pour la comprendre et vérifier ses calculs. La forme la plus courante consiste à montrer la <strong>courbe de densité de probabilité</strong> pour une distribution continue. Sur l’axe <em>X</em>, nous avons les <strong>quantiles</strong> (les valeurs observables), et sur l’axe <em>Y</em>, la densité de probabilité<a href="references.html#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a>. Par exemple, si nous constatons qu’un insecte butineur arrive sur une fleur en moyenne toutes les 4 minutes, la probabilité qu’un butineur arrive dans un intervalle de temps compris entre 0 et 4 min depuis le moment initial <span class="math inline">\(t_0\)</span> de nos observations suit une distribution uniforme continue (Fig. <a href="distribution-uniforme.html#fig:unif2">7.2</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:unif2"></span>
 <img src="07-Probabilites-Distributions_files/figure-html/unif2-1.svg" alt="Probabilité qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
 <p class="caption">
@@ -387,7 +387,7 @@ Cela signifie : “la variable aléatoire <em>X</em> suit une distribution unifo
 <li>Quelle est la probabilité que <em>X</em> = 1 (un insecte butineur arrive après <em>exactement</em> 1,00000… min d’observation) ?</li>
 <li>Quelle est la probabilité que <em>X</em> soit compris entre 1 et 1,5 ?</li>
 </ol>
-<p>La réponse à la question (1) est immédiate. Cette probabilité est <strong>nulle</strong> (voir plus haut)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> ! Pour la question (2), nous pouvons répondre en calculant l’aire sous la courbe entre les quantiles 1 et 1,5 (représentée par l’aire en rouge à la Fig. <a href="distribution-uniforme.html#fig:unif3">7.4</a>).</p>
+<p>La réponse à la question (1) est immédiate. Cette probabilité est <strong>nulle</strong> (voir plus haut)<a href="references.html#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a> ! Pour la question (2), nous pouvons répondre en calculant l’aire sous la courbe entre les quantiles 1 et 1,5 (représentée par l’aire en rouge à la Fig. <a href="distribution-uniforme.html#fig:unif3">7.4</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:unif3"></span>
 <img src="07-Probabilites-Distributions_files/figure-html/unif3-1.svg" alt="Probabilité qu'un insecte butineur arrive entre 1 et 1,5 min après le début d'une observation (aire P en rouge)." width="672" />
 <p class="caption">
@@ -442,7 +442,7 @@ Figure 7.5: Temps d’observation nécessaire (quantile Q) pour voir arriver un 
 <li><code>.iullabel</code> : ajout d’un label sur le graphique à gauche</li>
 <li><code>.iurlabel</code>: ajout d’un label sur le graphique à droite</li>
 </ul>
-<p>Le snippet <code>.iurandom</code> nécessite quelques explications supplémentaires. R est capable de <em>simuler</em> la génération de nombres aléatoires selon différentes lois de distribution (<code>r&lt;distri&gt;()</code>). <code>runif()</code> est la fonction qui le fait pour une distribution uniforme continue. Comme il ne s’agit pas réellement de nombres aléatoires, on parle de générateur de nombres <strong>pseudo-aléatoires</strong>. En fait, il s’agit d’une série de nombres qui a les mêmes propriétés que des nombres réellement aléatoires. R se positionne au hasard dans cette série. Donc, à chaque fois que vous appelez la fonction <code>runif()</code>, vous obtenez logiquement des valeurs différentes. A des fins de reproductibilité, il est possible de <em>forcer</em> R à partir en un point précis de la série avec la fonction <code>set.seed()</code> avec un nombre comme argument qui donne la position. Par exemple <code>set.seed(281)</code><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>. La génération de nombres aléatoires dans les instructions qui suivent seront alors toujours les mêmes. Voici un exemple de 10 nombres aléatoires générés depuis une distribution uniforme standard (cmpris entre 0 et 1). Chaque fois que vous exécuterez ces deux instructions exactement l’une après l’autre, vous obtiendrez toujours la même suite. Si vous réexécutez la seconde instruction sans la première, vous obtiendrez une suite différente.</p>
+<p>Le snippet <code>.iurandom</code> nécessite quelques explications supplémentaires. R est capable de <em>simuler</em> la génération de nombres aléatoires selon différentes lois de distribution (<code>r&lt;distri&gt;()</code>). <code>runif()</code> est la fonction qui le fait pour une distribution uniforme continue. Comme il ne s’agit pas réellement de nombres aléatoires, on parle de générateur de nombres <strong>pseudo-aléatoires</strong>. En fait, il s’agit d’une série de nombres qui a les mêmes propriétés que des nombres réellement aléatoires. R se positionne au hasard dans cette série. Donc, à chaque fois que vous appelez la fonction <code>runif()</code>, vous obtenez logiquement des valeurs différentes. A des fins de reproductibilité, il est possible de <em>forcer</em> R à partir en un point précis de la série avec la fonction <code>set.seed()</code> avec un nombre comme argument qui donne la position. Par exemple <code>set.seed(281)</code><a href="references.html#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a>. La génération de nombres aléatoires dans les instructions qui suivent seront alors toujours les mêmes. Voici un exemple de 10 nombres aléatoires générés depuis une distribution uniforme standard (cmpris entre 0 et 1). Chaque fois que vous exécuterez ces deux instructions exactement l’une après l’autre, vous obtiendrez toujours la même suite. Si vous réexécutez la seconde instruction sans la première, vous obtiendrez une suite différente.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">946</span>)
 <span class="kw">runif</span>(<span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>)</code></pre></div>
 <pre><code>#  [1] 0.6378020 0.7524999 0.5593599 0.6688387 0.8989262 0.5300384 0.1520689
@@ -451,10 +451,10 @@ Figure 7.5: Temps d’observation nécessaire (quantile Q) pour voir arriver un 
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>Plus la densité de probabilité est élevée, plus les événements dans cette région du graphique sont probables.<a href="distribution-uniforme.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>La question n’est pas après <em>environ</em> une minute, mais à <em>exactement</em> 1 min 0 sec, 0 millisec, …, ce qui est alors hautement improbable.<a href="distribution-uniforme.html#fnref4">↩</a></p></li>
-<li id="fn5"><p>Si vous utilisez <code>set.seed()</code> prenez soin de spécifier toujours une valeur différente prise au hasard comme argument !<a href="distribution-uniforme.html#fnref5">↩</a></p></li>
+<ol start="31">
+<li id="fn31"><p>Plus la densité de probabilité est élevée, plus les événements dans cette région du graphique sont probables.<a href="distribution-uniforme.html#fnref31">↩</a></p></li>
+<li id="fn32"><p>La question n’est pas après <em>environ</em> une minute, mais à <em>exactement</em> 1 min 0 sec, 0 millisec, …, ce qui est alors hautement improbable.<a href="distribution-uniforme.html#fnref32">↩</a></p></li>
+<li id="fn33"><p>Si vous utilisez <code>set.seed()</code> prenez soin de spécifier toujours une valeur différente prise au hasard comme argument !<a href="distribution-uniforme.html#fnref33">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

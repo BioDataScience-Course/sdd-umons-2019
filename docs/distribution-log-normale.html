@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-09">
+<meta name="date" content="2018-11-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -249,9 +249,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="7.6.3" data-path="distribution-normale.html"><a href="distribution-normale.html#fonctions-et-snippets"><i class="fa fa-check"></i><b>7.6.3</b> Fonctions et snippets</a></li>
 <li class="chapter" data-level="7.6.4" data-path="distribution-normale.html"><a href="distribution-normale.html#theoreme-central-limite"><i class="fa fa-check"></i><b>7.6.4</b> Théorème central limite</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="loi-log-normale.html"><a href="loi-log-normale.html"><i class="fa fa-check"></i><b>7.7</b> Loi log-normale</a><ul>
-<li class="chapter" data-level="7.7.1" data-path="loi-log-normale.html"><a href="loi-log-normale.html#transformee-log"><i class="fa fa-check"></i><b>7.7.1</b> Transformée log</a></li>
-<li class="chapter" data-level="7.7.2" data-path="loi-log-normale.html"><a href="loi-log-normale.html#snippets"><i class="fa fa-check"></i><b>7.7.2</b> Snippets</a></li>
+<li class="chapter" data-level="7.7" data-path="distribution-log-normale.html"><a href="distribution-log-normale.html"><i class="fa fa-check"></i><b>7.7</b> Distribution log-normale</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="distribution-log-normale.html"><a href="distribution-log-normale.html#transformee-log"><i class="fa fa-check"></i><b>7.7.1</b> Transformée log</a></li>
+<li class="chapter" data-level="7.7.2" data-path="distribution-log-normale.html"><a href="distribution-log-normale.html#snippets"><i class="fa fa-check"></i><b>7.7.2</b> Snippets</a></li>
 </ul></li>
 <li class="chapter" data-level="7.8" data-path="graphique-quantile-quantile.html"><a href="graphique-quantile-quantile.html"><i class="fa fa-check"></i><b>7.8</b> Graphique quantile-quantile</a></li>
 </ul></li>
@@ -328,8 +328,8 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="loi-log-normale" class="section level2">
-<h2><span class="header-section-number">7.7</span> Loi log-normale</h2>
+<div id="distribution-log-normale" class="section level2">
+<h2><span class="header-section-number">7.7</span> Distribution log-normale</h2>
 <p>La loi log-normale est utilisée pour représenter la distribution d’une variable aléatoire qui résulte de la multiplication d’un grand nombre de petits effets indépendants entre eux. C’est le cas en biologie et en chimie, par exemple, la taille d’un animal, la concentration d’une molécule en solution, la température d’un matériau, etc. Ces variables sont définies uniquement pour des valeurs nulles ou positives. Une taille et une concentration négatives ne sont pas possibles. De même pour une température en dessous du zéro absolu (attention, dans ce cas, la température doit être mesurée en Kelvin).</p>
 <div id="transformee-log" class="section level3">
 <h3><span class="header-section-number">7.7.1</span> Transformée log</h3>
@@ -337,7 +337,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p><span class="math display">\[X \sim log{\text -}N(0, 0.5)\]</span></p>
 <p>alors</p>
 <p><span class="math display">\[log(X) \sim N(0, 0.5)\]</span></p>
-<p>Par facilité, on défini ses deux paramètres de manière relative à la moyenne <span class="math inline">\(\mu\)</span> et à l’écart type <span class="math inline">\(\sigma\)</span> qu’a la distribution normale obtenue après transformation log. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig <a href="loi-log-normale.html#fig:lognormal">7.11</a>). C’est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.</p>
+<p>Par facilité, on défini ses deux paramètres de manière relative à la moyenne <span class="math inline">\(\mu\)</span> et à l’écart type <span class="math inline">\(\sigma\)</span> qu’a la distribution normale obtenue après transformation log. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig <a href="distribution-log-normale.html#fig:lognormal">7.11</a>). C’est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.</p>
 <div class="figure" style="text-align: center"><span id="fig:lognormal"></span>
 <img src="07-Probabilites-Distributions_files/figure-html/lognormal-1.svg" alt="Un exemple de distribution log-normale." width="672" />
 <p class="caption">
