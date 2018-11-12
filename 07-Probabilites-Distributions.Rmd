@@ -308,7 +308,8 @@ Tout au long de cette section des questions sous la forme d'un learnr vous sont 
 ```{block2, type='bdd'}
 Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
 
-    BioDataScience::run("07b_distri")
+BioDataScience::run("07b_distri")
+
 ```
 
 ## Distribution uniforme

@@ -409,7 +409,8 @@ Tout au long de cette section des questions sous la forme d'un learnr vous sont 
 
 \BeginKnitrBlock{bdd}<div class="bdd">Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
 
-    BioDataScience::run("07b_distri")</div>\EndKnitrBlock{bdd}
+BioDataScience::run("07b_distri")
+</div>\EndKnitrBlock{bdd}
 
 ## Distribution uniforme
 
