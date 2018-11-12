@@ -2,7 +2,7 @@
 
 
 
-Restitution globale concernant l’évaluation de rapports par les pairs. Test de Chi2, et application sur base d’une courte manip réalisée par les étudiants (par exemple, sur des coraux).
+Dans ce module, nous entrerons dans le monde de l'inférence statistique et des tests d'hypothèses qui nous permettront de répondre à des questions biologiques sur base de données empiriques malgré une incertitude sur le résultat.
 
 
 ##### Objectifs {-}
@@ -14,6 +14,8 @@ Restitution globale concernant l’évaluation de rapports par les pairs. Test d
 - Comprendre ce qu'est un test d'hypothèse
 
 - Connaitre la distribution Chi^2^ et les tests d'hypothèses basés sur cette distribution
+
+- Développer un regard critique (positif\ !) sur le travail de ses collègues via l'évaluation d'un rapport par les pairs (initiation au "peer reviewing")
 
 
 ##### Prérequis {-}
