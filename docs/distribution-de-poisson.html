@@ -5,25 +5,27 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <meta name="description" content="">
+  <title>Science des données biologiques, UMONS</title>
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="" />
+  <meta property="og:title" content="Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
-  
-  
-  
-  
+  <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
+  <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="" />
+  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
   
-  
-  
+  <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-
+<meta name="date" content="2018-11-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -320,7 +322,7 @@ code > span. { color: #1f1c1b; } /* Normal */
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Science des données biologiques, UMONS</a>
           </h1>
         </div>
 
@@ -330,10 +332,10 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="distribution-de-poisson" class="section level2">
 <h2><span class="header-section-number">7.5</span> Distribution de poisson</h2>
-<p>Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à leur descendance ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu’une personne sur 20 est porteuse du gène défectueux (hétérozygote) dans la population saine belge, la probabilité de former un couple doublement hétérozygote qui pourrait transmettre la maladie est de<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> :</p>
+<p>Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à leur descendance ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu’une personne sur 20 est porteuse du gène défectueux (hétérozygote) dans la population saine belge, la probabilité de former un couple doublement hétérozygote qui pourrait transmettre la maladie est de<a href="references.html#fn35" class="footnoteRef" id="fnref35"><sup>35</sup></a> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">/</span><span class="dv">20</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">20</span></code></pre></div>
 <pre><code># [1] 0.0025</code></pre>
-<p>… soit un couple sur 400. Donc, globalement, les probabilités d’avoir des enfants sains est beaucoup plus grande que 0.75 si nous incluons tous les couples belges de parents sains porteurs ou non. Cette probabilité est de<a href="#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a> :</p>
+<p>… soit un couple sur 400. Donc, globalement, les probabilités d’avoir des enfants sains est beaucoup plus grande que 0.75 si nous incluons tous les couples belges de parents sains porteurs ou non. Cette probabilité est de<a href="references.html#fn36" class="footnoteRef" id="fnref36"><sup>36</sup></a> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">399</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.75</span>) <span class="op">/</span><span class="st"> </span><span class="dv">400</span></code></pre></div>
 <pre><code># [1] 0.999375</code></pre>
 <p>Pour un couple au hasard sans connaissance <em>a priori</em> du fait que les parents soient porteurs ou non, la probabilité d’avoir un enfant atteint de la mucoviscidose est heureusement très, très faible, mais non nulle (de l’ordre de 1/1600 = 0.999375). Si nous considérons maintenant une population suffisamment grande pour pouvoir espérer y trouver “statistiquement” une personne atteinte de mucoviscidose, nous pourrions décider d’étudier un échantillon aléatoire de 1600 enfants belges. La distribution binomiale requiert alors le calcul de <span class="math inline">\(C^j_n\)</span> sur base de <span class="math inline">\(n = 1600\)</span>, ce qui revient à devoir calculer le factoriel de 1600 :</p>
@@ -379,11 +381,31 @@ Figure 7.8: Probabilité d’occurence de mucoviscidose dans un échantillon al�
 </div>
 <div class="footnotes">
 <hr />
-<ol start="7">
-<li id="fn7"><p>Comme il y a la même proportion d’hommes et de femmes porteurs, nous avons 1/20 des hommes et 1/20 des femmes qui sont porteurs. Nous formons des couples au hasard en piochant un homme dans la population masculine et une femme dans la population féminine de manière indépendante. Dans ce cas, nous obtenons un couple double porteur à une fréquence de 1/20 * 1/20 = 1/400.<a href="distribution-de-poisson.html#fnref7">↩</a></p></li>
-<li id="fn8"><p>Sur 400 couples, 399 ont une probabilité d’engendrer des enfants sains (porteurs hétérozygotes ou non porteurs confondus) de 100%. A cela il faut ajouter un couple sur 400 qui aura une probabilité de 75% de faire des enfants non atteints car non homozygotes.<a href="distribution-de-poisson.html#fnref8">↩</a></p></li>
+<ol start="35">
+<li id="fn35"><p>Comme il y a la même proportion d’hommes et de femmes porteurs, nous avons 1/20 des hommes et 1/20 des femmes qui sont porteurs. Nous formons des couples au hasard en piochant un homme dans la population masculine et une femme dans la population féminine de manière indépendante. Dans ce cas, nous obtenons un couple double porteur à une fréquence de 1/20 * 1/20 = 1/400.<a href="distribution-de-poisson.html#fnref35">↩</a></p></li>
+<li id="fn36"><p>Sur 400 couples, 399 ont une probabilité d’engendrer des enfants sains (porteurs hétérozygotes ou non porteurs confondus) de 100%. A cela il faut ajouter un couple sur 400 qui aura une probabilité de 75% de faire des enfants non atteints car non homozygotes.<a href="distribution-de-poisson.html#fnref36">↩</a></p></li>
 </ol>
 </div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://sddb.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
             </section>
 
           </div>
