@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="chi2.html">
-<link rel="next" href="test-dhypothese.html">
+<link rel="prev" href="echantillonnage.html">
+<link rel="next" href="moyenne.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -335,32 +335,104 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="echantillonnage" class="section level2">
-<h2><span class="header-section-number">8.1</span> Échantillonnage</h2>
-<p>Si nous pouvions mesurer <strong>tous</strong> les individus d’une population statistique à chaque fois, nous n’aurions pas besoin des statistiques. Mais ce n’est pratiquement jamais possible. Tout d’abord, le nombre d’individus est potentiellement très grand. Le travail nécessaire risque alors d’être démesuré. Afin de limiter les mesures à un nombre raisonnable de cas, nous effectuons un <strong>échantillonnage</strong> qui consiste à prélever un petit sous-ensemble de taille <span class="math inline">\(n\)</span> donné depuis la population de départ. Il existe différentes stratégies d’échantillonnage, mais la plus fréquente est l’<strong>échantillonnage aléatoire</strong> pour lequel :</p>
+<div id="test-dhypothese" class="section level2">
+<h2><span class="header-section-number">8.2</span> Test d’hypothèse</h2>
+<p>Le test d’hypothèse ou test statistique est l’outil le plus simple pour répondre à une question via l’inférence. Il s’agit ici de réduire la question à sa plus simple expression en la réduisant à deux <strong>hypothèses</strong> contradictoires (en gros, la réponse à la question est soit “oui”, soit “non” et rien d’autre).</p>
 <ul>
-<li>chaque individu dans la population a la même probabilité d’être pris dans l’échantillon,</li>
-<li>les mesures et les individu sont indépendants les uns des autres.</li>
+<li>L’<strong>hypothèse nulle</strong>, notée <span class="math inline">\(H_0\)</span> est l’affirmation de base ou de référence que l’on cherchera à réfuter,</li>
+<li>L’<strong>hypothèse alternative</strong>, notée <span class="math inline">\(H_1\)</span> ou <span class="math inline">\(H_a\)</span> représente une autre affirmation qui doit nécessairement être vraie si <span class="math inline">\(H_0\)</span> est fausse.</li>
 </ul>
-<p>Nous n’avons pas forcément accès à tous les individus d’une population. Dans ce cas, nous devons la limiter à un sous-ensemble raisonnable. Par exemple, il est impossible de mesurer <em>toutes</em> les souris. Par contre, nous pouvons décider d’étudier la ou les souches de souris disponibles dans l’animalerie, ou chez nos fournisseurs.</p>
-<p>Quoi qu’il en soit, l’échantillon n’est qu’un petit sous-ensemble sélectionné par un mécanisme faisant intervenir le hasard. Donc, deux échantillons de la même population ont un très forte probabilité d’être différents l’un de l’autre. Il en va également des statistiques calculées sur ces échantillons, comme les effectifs observés pour chaque niveau de variables qualitatives ou les valeurs moyennes pour les variables quantitatives, par exemple. <strong>Cette variabilité d’un échantillon à l’autre ne nous intéresse pas car elle n’apporte pas d’information sur la population elle-même.</strong> Ce qui nous intéresse, c’est d’estimer au mieux les valeurs (effectifs, moyennes, etc.) dans la population.</p>
+<p>Les deux hypothèses ne sont pas symétriques. Notre intention est de <strong>rejeter <span class="math inline">\(H_0\)</span></strong>. Dans ce cas, nous pourrons considérer que <span class="math inline">\(H_1\)</span> est vraie, avec un certain degré de certitude que nous pourrons également quantifier. Si nous n’y arrivons pas, nous dirons que nous ne pouvons pas rejeter <span class="math inline">\(H_0\)</span>, mais nous ne pourrons jamais dire que que nous l’<strong>acceptons</strong> car dans ce cas, deux explications resteront possibles : (1) <span class="math inline">\(H_0\)</span> est effectivement vraie, ou (2) <span class="math inline">\(H_0\)</span> est fausse mais nous n’avons pas <em>assez</em> de données à disposition pour le démontrer avec le niveau de certitude recherché.</p>
+<div id="becs-croises-des-sapins" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Becs croisés des sapins</h3>
+<p>Tout cela reste très abstrait. Prenons un exemple concret simple. Le bec-croisé des sapins <em>Loxia curvirostra</em> Linné 1758 est un passereau qui a la particularité d’avoir un bec dont les deux parties se croisent, ce qui donne un outil particulièrement adapté pour extraire les graines de conifères dont il se nourrit.</p>
+<div class="figure">
+<img src="images/sdd1_08/red-crossbills-male.jpg" alt="Bec-croisés des sapins mâles montrant les deux variétés (bec croisé à gauche ou à droite). Photo : Elaine R. Wilson (license CC BY-SA 3.0)." />
+<p class="caption">Bec-croisés des sapins mâles montrant les deux variétés (bec croisé à gauche ou à droite). Photo : Elaine R. Wilson (license CC BY-SA 3.0).</p>
+</div>
+<p>Comme des individus à bec croisé à gauche et d’autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu les résultats suivants :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(crossbill &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(<span class="dt">left =</span> <span class="dv">1895</span>, <span class="dt">right =</span> <span class="dv">1752</span>)))</code></pre></div>
+<pre><code>#  left right 
+#  1895  1752</code></pre>
+<p>Les scientifiques pensent que les variétés gauches et droites se rencontrent avec un ratio 1:1 dans la population étudiée suite à une sélection présumée basée sur le rapport des deux variétés. La question se traduit sous forme d’un test d’hypothèse comme ceci :</p>
+<ul>
+<li><span class="math inline">\(H_0: left = right\)</span></li>
+<li><span class="math inline">\(H_1:left \neq right\)</span></li>
+</ul>
+<p>Pouvons-nous rejeter <span class="math inline">\(H_0\)</span> ici ?</p>
+</div>
+<div id="test-chi2-de-pearson" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Test Chi<sup>2</sup> de Pearson</h3>
+<p>Le test Chi<sup>2</sup> (ou <span class="math inline">\(\chi^2\)</span>) de Pearson est un test d’hypothèse qui permet de comparer des effectifs observés notés <span class="math inline">\(a_i\)</span> à des effectifs théoriques <span class="math inline">\(\alpha_i\)</span> sous l’hypothèse nulle pour les différents niveaux <span class="math inline">\(i\)</span> allant de 1 à <span class="math inline">\(n\)</span> d’une variable qualitative. Notre tableau de contingence à simple entrée <code>crossbill</code> contient nos <span class="math inline">\(a_i\)</span>. Nous devons donc calculer quels sont les effectifs théoriques <span class="math inline">\(\alpha_i\)</span>. Le nombre total d’oiseaux observés est :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(crossbill)</code></pre></div>
+<pre><code># [1] 3647</code></pre>
+<p>… et les effectifs attendus sous <span class="math inline">\(H_0\)</span> sont :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(alpha_i &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">left =</span> <span class="kw">sum</span>(crossbill) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">right =</span> <span class="kw">sum</span>(crossbill) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>))</code></pre></div>
+<pre><code>#   left  right 
+# 1823.5 1823.5</code></pre>
+<p>Le principe de la <strong>statistique <span class="math inline">\(/chi^2\)</span></strong> consiste à sommer les écarts au carré par rapport aux <span class="math inline">\(\alpha_i\)</span> de référence divisés par ces mêmes <span class="math inline">\(\alpha_i\)</span> pour quantifier l’écart entre les valeurs observées et les valeurs théoriques. Donc :</p>
+<p><span class="math display">\[\chi^2_\mathrm{obs} = \sum_{i=1}^n\frac{(a_i - \alpha_i)^2}{\alpha_i}\]</span></p>
+<p>Notez que cette statistique prend la valeur nulle lorsque tous les <span class="math inline">\(a_i\)</span> sont strictement égaux aux <span class="math inline">\(\alpha_i\)</span>. Dans tous les autres cas, des termes positifs (le carré de différences est toujours une valeur positive) apparaissent. Donc la statistique <span class="math inline">\(\chi^2\)</span> est d’autant plus grande que les observations s’éloignent de la théorie.</p>
+<p>Calculons <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> dans notre cas<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(chi2_obs &lt;-<span class="st"> </span><span class="kw">sum</span>((crossbill <span class="op">-</span><span class="st"> </span>alpha_i)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>alpha_i))</code></pre></div>
+<pre><code># [1] 5.607074</code></pre>
+<p>Pour répondre à la question, il nous faut une loi de distribution statistique qui permet d’associer une probabilité au quantile <span class="math inline">\(chi^2_\mathrm{obs}\)</span> sous <span class="math inline">\(H_0\)</span>. C’est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du <span class="math inline">\(chi_2\)</span>. La loi du même nom admet un seul paramètre, les <strong>degrés de libertés</strong> (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée <span class="math inline">\(n\)</span> - 1. Ici, ddl = 2 - 1 = 1. La Fig. <a href="test-dhypothese.html#fig:chi2plot">8.1</a> représente la densité de probabilité typique sous <span class="math inline">\(H_0\)</span> d’une loi <span class="math inline">\(\chi^2\)</span><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. C’est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à + infini.</p>
+<div class="figure" style="text-align: center"><span id="fig:chi2plot"></span>
+<img src="08-Test-Chi2_files/figure-html/chi2plot-1.svg" alt="Allure typique de la densité de probabilité de la distribution Chi^2^ (ici ddl = 3)." width="672" />
+<p class="caption">
+Figure 8.1: Allure typique de la densité de probabilité de la distribution Chi<sup>2</sup> (ici ddl = 3).
+</p>
+</div>
+</div>
+<div id="seuil--du-test" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> Seuil α du test</h3>
+<p>Le raisonnement est le suivant. Connaissant la densité de probabilité théorique sous <span class="math inline">\(H_0\)</span>, nous savons que, plus le <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> est grand, moins il est plausible. Nous devons décider d’une limite à partir de laquelle nous considèrerons que la valeur observée est suffisamment grande que pour considérer <span class="math inline">\(H_0\)</span> comme non plausible et nous pourrons alors la rejeter. Cette limite se définit sous la forme d’une <strong>probabilité</strong> correspondant à une zone de rejet définie dans la distribution théorique de référence sous <span class="math inline">\(H_0\)</span>. Cette limite s’appelle le <strong>seuil <span class="math inline">\(\alpha\)</span> du test</strong>.</p>
 <div class="note">
 <p>
-L’estimation de paramètres d’une population par le biais de calculs sur un échantillon représentatif issu de cette population s’appelle l’<strong>inférence statistique.</strong>
+<strong>Choix du seuil <span class="math inline"><span class="math inline">\(\alpha\)</span></span> d’un test d’hypothèse.</strong> Le seuil <span class="math inline"><span class="math inline">\(\alpha\)</span></span> est choisi <em>avant</em> de réaliser le test. Il est un savant compromis entre le risque de se tromper qui diminue plus <span class="math inline"><span class="math inline">\(\alpha\)</span></span> est petit, et la possibilité d’obtenir le rejet de <span class="math inline"><span class="math inline">\(H_0\)</span></span> lorsqu’elle est fausse qui augmentera avec <span class="math inline"><span class="math inline">\(\alpha\)</span></span>. Si on veut être absolument certain du résultat, on prend <span class="math inline"><span class="math inline">\(\alpha = 0\)</span></span>, mais dans ce cas on ne rejete jamais <span class="math inline"><span class="math inline">\(H_0\)</span></span> et on ne tire donc jamais aucune conclusion utile. Donc, nous devons assouplir les règles et accepter un petit risque de se tromper. <strong>Généralement, les statisticiens choisissent <span class="math inline"><span class="math inline">\(\alpha = 5%\)</span></span> dans les cas courants</strong>, et prennent 1%, ou même 0,1% dans les cas où il faut être plus strict (par exemple, si des vies dépendent du résultat). Nous pouvons nous baser sur ces références, même si nous verrons plus loin qu’elle sont récemment sujettes à caution en science.
 </p>
-<div class="figure">
-<p><img src="images/sdd1_08/inference.png" /></p>
+</div>
+<p>Poursuivons. Nous choisissons <span class="math inline">\(\alpha = 5%\)</span>. Cela définit l’aire la plus extrême de 5% à droite de la distribution <span class="math inline">\(\chi^2\)</span> à 1 ddl comme zone de rejet (en rouge sur la Fig. <a href="test-dhypothese.html#fig:chi2plot2">8.2</a>). Il nous suffit maintenant de voir où se place notre <span class="math inline">\(\chi^2_\mathrm{obs}\)</span>. S’il se situe dans la zone en rouge, nous rejeterons <span class="math inline">\(H–0\)</span>, sinon, nous ne la rejeterons pas.</p>
+<div class="figure" style="text-align: center"><span id="fig:chi2plot2"></span>
+<img src="08-Test-Chi2_files/figure-html/chi2plot2-1.svg" alt="Densité de probabilité sous *H*~0~ (distribution Chi^2^ à 1 ddl), zone de rejet de 5% en rouge et position de la valeur observée (trait vertical rouge)." width="672" />
+<p class="caption">
+Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution Chi<sup>2</sup> à 1 ddl), zone de rejet de 5% en rouge et position de la valeur observée (trait vertical rouge).
+</p>
+</div>
+<p>Où se situe la limite ? Nous pouvons facilement la calculer :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qchisq</span>(<span class="fl">0.05</span>, <span class="dt">df =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code># [1] 3.841459</code></pre>
+<p>Notre <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> = 5,61 est plus grand que cette limite et se situe dans la zone de rejet. <strong>Nous rejetons donc <span class="math inline">\(H_0\)</span> ici</strong> et dirons que les becs croisés à gauche sont significativement plus nombreux que ceux à droite au seuil <span class="math inline">\(\alpha\)</span> de 5% (test <span class="math inline">\(\chi^2\)</span> = 5,61, ddl = 1, valeur <em>P</em> = 0.018). <strong>Notez bien la façon particulière de reporter les résultats d’un test d’hypothèse !</strong></p>
+<p>Il nous manque encore juste un élément… qu’est-ce que cette “valeur <em>P</em>” de 0.018 reportée dans le résultat ? En fait, c’est la valeur de probabilité associée au test et correspond ici à l’aire à droite définie depuis le <span class="math inline">\(\chi^2_\mathrm{obs}\)</span>. Calculons-la :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pchisq</span>(<span class="fl">5.61</span>, <span class="dt">df =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code># [1] 0.01785826</code></pre>
+<p>Le test d’hypothèse reporte la valeur <em>P</em> afin qu’un lecteur qui aurait choisi un autre seuil <span class="math inline">\(\alpha\)</span> pourrait effectuer immédiatement sa propre comparaison sans devoir refaire les calculs.</p>
+<p>Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du Chi^2 dans R. La fonction <code>chisq.test()</code> fait tout cela pour nous. Elle est également disponible dans les snippets à partir du menu <code>hypothesis test : contingency</code> ou <code>.hc</code> (test Chi^2 univarié).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code># 
+#   Chi-squared test for given probabilities
+# 
+# data:  crossbill
+# X-squared = 5.6071, df = 1, p-value = 0.01789</code></pre>
+<div id="conditions-dapplication" class="section level5 unnumbered">
+<h5>Conditions d’application</h5>
+<p>Tout test d’hypothèse impose des <strong>conditions d’application</strong> qu’il faudra vérifier avant d’effectuer le test. Pour le test <span class="math inline">\(\chi^2\)</span>, ce sont :</p>
+<ul>
+<li>échantillonnage aléatoire et observations indépendantes,</li>
+<li>aucun effectif théorique sous <span class="math inline">\(H_0\)</span> nul.</li>
+</ul>
+<p>C’est bien le cas ici.</p>
+
 </div>
 </div>
-<div id="travail-preliminaire" class="section level5 unnumbered">
-<h5>Travail préliminaire</h5>
-<p>Avant de vous lancer dans l’inférence statistique, assurez-vous d’avoir effectué soigneusement les trois étapes suivantes :</p>
-<ol style="list-style-type: decimal">
-<li><p>Vous comprenez bien la question posée, en termes biologiques. Vous connaissez ou vous êtes documenté sur l’état de l’art en la matière (bibliographie). Que sait-on déjà du phénomène étudié ? Quels sont les aspects encore inconnus ou à l’état de simples hypothèses ?</p></li>
-<li><p>Vous avez vérifié que la façon dont les mesures ont été prises permettra effectivement de répondre à la question posée. <em>En particulier, vous avez vérifié que l’échantillonnage a été réalisé dans les règles pour qu’il soit représentatif de la population étudiée.</em> En outre, vous cernez clairement quelle est la population effectivement étudiée. C’est important pour éviter plus tard de sur-généraliser les résultats obtenus (les attribuer à une population plus large que celle effectivement étudiée).</p></li>
-<li><p>Vous avez effectué une analyse exploratoire des données. Vous avez représenté les données à l’aide de graphiques appropriés et vous avez interprété ces graphiques afin de comprendre ce que le jeu de données contient. Vous avez également résumé les données sous forme de tableaux synthétiques et vous avez, si nécessaire, remaniés et nettoyés vos données.</p></li>
+</div>
+<!-- </div> -->
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Faites également le calcul manuellement à la calculatrice pour vérifier que vous avez bien compris.<a href="test-dhypothese.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Les fonctions qui permettent les calculs relatifs à la distribution Chi<sup>2</sup> dans R sont <code>&lt;x&gt;chisq()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.ic</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="test-dhypothese.html#fnref2">↩</a></p></li>
 </ol>
-</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -387,8 +459,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="chi2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="test-dhypothese.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="echantillonnage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="moyenne.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
