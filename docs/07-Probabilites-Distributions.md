@@ -403,6 +403,14 @@ Etant donné que les sciences des données reposent sur un nombre (si possible i
 Avant d'explorer ces lois de distributions statistiques, nous devons d'abord introduire la distinction entre **probabilité discrète** et **probabilité continue**. Une probabilité discrète est associée à une variable qualitative ou à la rigueur, à une variable continue discrète qui peut prendre un nombre fini -et généralement relativement petit- de valeurs. A chaque valeur est associé un événement, et chaque événement a une certaine probabilité de se produire dans un contexte donné. *Jusqu'à présent, nous n'avons traité que ce cas-là.* Par contre, une variable quantitative continue peut prendre un nombre infini de valeurs matérialisées généralement par l'ensemble des nombres réels. Dans ce cas, l'association d'un événement à une valeur de la variable, et d'une probabilité à chaque événement reste vraie en théorie. Mais en pratique, ces probabilités dites continues ne sont pas calculables par les équations étudiées jusqu'ici. Par contre, les **lois de distributions continues** permettent des calculs, moyennant une petite astuce que nous étudierons plus loin dans ce chapitre.
 
 
+##### A vous de jouer {-}
+
+Tout au long de cette section des questions sous la forme d'un learnr vous sont proposées. Complétez progressivement le learnr avec vos nouvelles connaissances
+
+\BeginKnitrBlock{bdd}<div class="bdd">Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("07b_distri")</div>\EndKnitrBlock{bdd}
+
 ## Distribution uniforme
 
 La loi de la distribution uniforme se rapporte à un mécanisme qui génère **tous les événements de manière équiprobable**.
@@ -681,7 +689,8 @@ factorial(1600)
 ```
 
 ```
-# Warning in factorial(1600): value out of range in 'gammafn'
+# Warning in factorial(1600): valeur d'argument hors intervalle dans
+# 'gammafn'
 ```
 
 ```
@@ -848,7 +857,7 @@ chart(data = eggs, ~ area) +
   geom_histogram(bins = 12)
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-38-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" />
 
 Sur base de l'histogramme, nous voyons bien que la distribution est soit unimodale et asymétrique, soit bimodale. L'histogramme des données transformées log devrait être plus symétrique si les données originelles suivent bien une distributino log-normale unimodale.
 
@@ -858,7 +867,7 @@ chart(data = eggs, ~ log_area) +
   geom_histogram(bins = 12)
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-40-1.svg" width="672" style="display: block; margin: auto;" />
 
 C'est légèrement mieux, mais la distribution ne parait pas parfaitement symétrique, voire peut-être encore bimodale (pas flagrant toutefois). L'histogramme est un bon outil pour visualiser globalement une distribution, mais le **graphique quantile-quantile** offre une représentation plus précise pour *comparer* précisément deux distributions. Comme nous avons 50 observations à disposition, nous pouvons calculer les quantiles tous les 2% à l'aide de la fonction `quantile()`. De même, nous pouvons utiliser `qnorm()` pour calculer les quantiles théoriques selon une distribution normale réduite. Cela donne\ :
 
@@ -934,3 +943,4 @@ car::qqPlot(eggs[["log_area"]], distribution = "norm",
 ##### Interprétation {-}
 
 Si quasiment tous les points sont compris dans l'enveloppe de confiance à 95%, le graphique indique que les deux distributions ne sont pas fondamentalement différentes. Ici les points correspondant aux valeurs les plus élevées sortent de l'enveloppe pour un certain nombre d'entre eux d'affilée, et les points 11 et 30 sont considérés comme suspects. Ceci indique que les effectifs observés dans l'échantillon sont plus nombreux en queue droite de distribution que ce que la distribution normale prédit en théorie. Ceci confirme l'impression de distribution asymétrique et/ou bimodale. Il est probable qu'on ait au moins deux types d'oeufs allongés différents dans l'échantillon, avec le second type moins nombreux, mais représenté par des oeufs plus gros, ce qui enfle la partie droite de la distribution.
+

@@ -346,7 +346,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">100</span>)</code></pre></div>
 <pre><code># [1] 9.332622e+157</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">factorial</span>(<span class="dv">1600</span>)</code></pre></div>
-<pre><code># Warning in factorial(1600): value out of range in &#39;gammafn&#39;</code></pre>
+<pre><code># Warning in factorial(1600): valeur d&#39;argument hors intervalle dans
+# &#39;gammafn&#39;</code></pre>
 <pre><code># [1] Inf</code></pre>
 <p>Or, le factoriel est un nombre qui grandit très, très vite. Déjà le factoriel de 100 est un nombre à 157 chiffres. Nous voyons que R est incapable de calculer précisément le factoriel de 1000. Ce nombre est supérieur au plus grand nombre que l’ordinateur peut représenter pour un <code>double</code> en R (1.797693110^{308}). Donc, nous sommes incapables de répondre à la question à l’aide de la loi binomiale.</p>
 <div id="evenements-rares" class="section level3">
