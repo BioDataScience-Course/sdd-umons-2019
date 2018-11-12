@@ -3,3 +3,36 @@
 
 
 Restitution globale concernant l’évaluation de rapports par les pairs. Test de Chi2, et application sur base d’une courte manip réalisée par les étudiants (par exemple, sur des coraux).
+
+
+##### Objectifs {-}
+
+- Appréhender l'inférence statistique
+
+- Etre capable d'effectuer un échantillonnage correctement
+
+- Comprendre ce qu'est un test d'hypothèse
+
+- Connaitre la distribution Chi^2^ et les tests d'hypothèses basés sur cette distribution
+
+
+##### Prérequis {-}
+
+Les probabilités et lois de distributions statistiques vues au module \@ref(proba) doivent être comprises avant d'attaquer cette section.
+
+
+## Echantillonnage
+
+Si nous pouvions mesurer **tous** les individus d'une population statistique à chaque fois, nous n'aurions pas besoin des statistiques. Mais ce n'est pratiquement jamais possible. Tout d'abord, le nombre d'individus est potentiellement très grand. Le travail nécessaire risque alors d'être démesuré. Afin de limiter les mesures à un nombre raisonnable de cas, nous effectuons un **échantillonnage** qui conssite à prélever un petit sous-ensemble de taille $n$ donné depuis la population de départ. Il existe différentes stratégies d'échantillonnage, mais la plus fréquente est l'**échantillonnage aléatoire** pour lequel\ :
+
+- chaque individu dans la population a la même probabilité d'être pris dans l'échantillon,
+- les mesures et les individu sont indépendants les uns des autres.
+
+Nous n'avons pas forcément accès à tous les individus d'une population. Dans ce cas, nous devons la limiter à un sous-ensemble raisonnable. Par exemple, il est impossible de mesurer *toutes* les souris. Par contre, nous pouvons décider d'étudier la ou les souches de souris disponibles dans l'animalerie, ou chez nos fournisseurs.
+
+Quoi qu'il en soit, l'échantillon n'est qu'un petit sous-ensemble sélectionné par un mécanisme faisant intervenir le hasard. Donc, deux échantillons de la même population ont un très forte probabilité d'être différents l'un de l'autre. Il en va également des statistiques calculées sur ces échantillons, comme les effectifs observés pour chaque niveau de variables qualitatives ou les valeurs moyennes pour les variables quantitatives, par exemple. **Cette variabilité d'un échantillon à l'autre ne nous intéresse pas car elle n'apporte pas d'information sur la population elle-même.** Ce qui nous intéresse, c'est d'estimer au mieux les valeurs (effectifs, moyennes, etc.) dans la population.
+
+<div class="note">
+<p>L'estimation de paramètres d'une population par le biais de calculs sur un échantillon représentatif issu de cette population s'appelle l'<strong>inférence statistique.</strong></p>
+</div>
+

@@ -627,7 +627,7 @@ La situation la plus probable est donc d'avoir 5 enfants sains sur 6. Nous pouvo
 
 ## Distribution de poisson
 
-Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à leur descendance\ ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu'une personne sur 20 est porteuse du gène défectueux sans être malade en Belgique, la probabilité de former un couple hétérozygote qui pourrait transmettre la maladie est de :
+Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au hasard en Belgique, quelle est la probabilité que ce couple transmette la mucoviscidose à leur descendance\ ? Ne considérons pas ici les personnes elles-même atteintes de la maladie qui prendront certainement des précautions particulières. Sachant qu'une personne sur 20 est porteuse du gène défectueux (hétérozygote) dans la population saine belge, la probabilité de former un couple doublement hétérozygote qui pourrait transmettre la maladie est de^[Comme il y a la même proportion d'hommes et de femmes porteurs, nous avons 1/20 des hommes et 1/20 des femmes qui sont porteurs. Nous formons des couples au hasard en piochant un homme dans la population masculine et une femme dans la population féminine de manière indépendante. Dans ce cas, nous obtenons un couple double porteur à une fréquence de 1/20 * 1/20 = 1/400.] :
 
 
 ```r
@@ -638,7 +638,7 @@ Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au 
 # [1] 0.0025
 ```
 
-... soit un couple sur 400. Donc, globalement, les probabilités d'avoir des enfants sains est beaucoup plus grande que 0.75 si nous incluons tous les couples belges de parents sains porteurs ou non. Cette probabilité est de :
+... soit un couple sur 400. Donc, globalement, les probabilités d'avoir des enfants sains est beaucoup plus grande que 0.75 si nous incluons tous les couples belges de parents sains porteurs ou non. Cette probabilité est de^[Sur 400 couples, 399 ont une probabilité d'engendrer des enfants sains (porteurs hétérozygotes ou non porteurs confondus) de 100%. A cela il faut ajouter un couple sur 400 qui aura une probabilité de 75% de faire des enfants non atteints car non homozygotes.] :
 
 
 ```r
@@ -815,4 +815,122 @@ Les fonctions relatives à la distribution log-normale dans R sont `<x>lnorm()`.
 
 ## Graphique quantile-quantile
 
-TODO...
+Il n'est pas toujours facile de déterminer quelle est la loi de distribution qui correspond le mieux à la population étudiée. Par contre, une comparaison est possible entre une **distribution observée** (sur base d'un échantillon, donc, d'un jeu de données) et une **distribution théorique** (sur base d'une loi théorique). Nous pouvons calculer les quantiles d'un échantillon via une méthode similaire à celle que nous avons employée pour calculer les quartiles et tracer la boite de dispersion dans le module \@ref(visu3).
+
+<div class="note">
+<p>Un <strong>quantile</strong> divise des données quantitatives en deux sous-groupes de telle manière que le groupe contenant les observations plus petites que ce quantile représente un effectif équivalent à la fraction considérée. Donc, un quantile 10% correspondra à la valeur qui sépare le jeu de données en 10% des observations les plus petites et 90% des observations les plus grandes.</p>
+</div>
+
+Ce quantile dit **observé** est comparable au quantile dit **théorique** que nous pouvons calculer sur base d'une probabilité équivalente à la fraction considérée. Prenons un exemple simple pour fixer les idées. Dans les données relatives au plancton, nous avons 50 oeufs allongés mesurés. Nous nous demandons si leur taille mesurée ici par la surface (`area`) de la particule à l'image suit une distribution log-normale. Dans ce cas, il est plus facile de transformer les données en log et de comparer les valeurs ainsi recalculées à une distribution normale.
+
+
+```r
+eggs <- read("zooplankton", package = "data.io") %>.%
+  filter(., class == "Egg_elongated") %>.%
+  mutate(., log_area = log10(area)) %>.%
+  select(., area, log_area)
+summary(eggs)
+```
+
+```
+#       area           log_area      
+#  Min.   :0.4121   Min.   :-0.3850  
+#  1st Qu.:0.4714   1st Qu.:-0.3266  
+#  Median :0.4950   Median :-0.3054  
+#  Mean   :0.5100   Mean   :-0.2950  
+#  3rd Qu.:0.5347   3rd Qu.:-0.2719  
+#  Max.   :0.6718   Max.   :-0.1728
+```
+
+
+```r
+chart(data = eggs, ~ area) +
+  geom_histogram(bins = 12)
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-38-1.svg" width="672" style="display: block; margin: auto;" />
+
+Sur base de l'histogramme, nous voyons bien que la distribution est soit unimodale et asymétrique, soit bimodale. L'histogramme des données transformées log devrait être plus symétrique si les données originelles suivent bien une distributino log-normale unimodale.
+
+
+```r
+chart(data = eggs, ~ log_area) +
+  geom_histogram(bins = 12)
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" />
+
+C'est légèrement mieux, mais la distribution ne parait pas parfaitement symétrique, voire peut-être encore bimodale (pas flagrant toutefois). L'histogramme est un bon outil pour visualiser globalement une distribution, mais le **graphique quantile-quantile** offre une représentation plus précise pour *comparer* précisément deux distributions. Comme nous avons 50 observations à disposition, nous pouvons calculer les quantiles tous les 2% à l'aide de la fonction `quantile()`. De même, nous pouvons utiliser `qnorm()` pour calculer les quantiles théoriques selon une distribution normale réduite. Cela donne\ :
+
+
+```r
+(probas <- seq(from = 0.02, to = 0.98, by = 0.02))
+```
+
+```
+#  [1] 0.02 0.04 0.06 0.08 0.10 0.12 0.14 0.16 0.18 0.20 0.22 0.24 0.26 0.28
+# [15] 0.30 0.32 0.34 0.36 0.38 0.40 0.42 0.44 0.46 0.48 0.50 0.52 0.54 0.56
+# [29] 0.58 0.60 0.62 0.64 0.66 0.68 0.70 0.72 0.74 0.76 0.78 0.80 0.82 0.84
+# [43] 0.86 0.88 0.90 0.92 0.94 0.96 0.98
+```
+
+```r
+# Quantiles observés dans l'échantillon
+q_obs <- quantile(eggs$log_area, probs = probas)
+# quantiles theoriques selon la distribution normale réduite
+q_theo <- qnorm(probas, mean = 0, sd = 1)
+qq <- tibble(q_obs = q_obs, q_theo = q_theo)
+qq
+```
+
+```
+# # A tibble: 49 x 2
+#     q_obs q_theo
+#     <dbl>  <dbl>
+#  1 -0.373 -2.05 
+#  2 -0.367 -1.75 
+#  3 -0.351 -1.55 
+#  4 -0.348 -1.41 
+#  5 -0.346 -1.28 
+#  6 -0.343 -1.17 
+#  7 -0.343 -1.08 
+#  8 -0.336 -0.994
+#  9 -0.333 -0.915
+# 10 -0.332 -0.842
+# # ... with 39 more rows
+```
+
+Si les deux distributions sont compatibles, nous devrions avoir proportionnalité entre les quantiles théoriques et les quantiles observés. Cela devrait donc se marquer par un **alignement** des points sur un graphique des quantiles observés en fonction des quantiles théoriques (Fig. \@ref(fig:qqplot1)).
+
+
+```r
+chart(data = qq, q_obs ~ q_theo) +
+  geom_point()
+```
+
+<div class="figure" style="text-align: center">
+<img src="07-Probabilites-Distributions_files/figure-html/qqplot1-1.svg" alt="Graphique quantile-quantile construit à la main." width="672" />
+<p class="caption">(\#fig:qqplot1)Graphique quantile-quantile construit à la main.</p>
+</div>
+
+Cet alignement n'est pas flagrant. Le graphique proposé par la fonction `car::qqPlot()` (Fig. \@ref(fig:qqplot2)) et accessible depuis le snippet `.cuqqnorm` est le même, mais il ajoute différents éléments qui aident à l'interprétation\ :
+
+1. Une droite (ligne continue bleue) selon laquelle les points devraient s'aligner en cas de concordance parfaite entre les deux distributions
+2. Une **enveloppe de confiance** (lignes pointillées bleues) qui tient compte de la variabilité aléatoire d'un échantillon à l'autre pour inclure une enveloppe de tolérance avec une fiabilité de 95%. Cela signifie que 95% des points doivent, en principe, se trouver à l'intérieur de l'enveloppe.
+3. Une individualisation des points les plus suspects éventuels, en indiquant le numéro de la ligne dans le jeu de donnée de chaque point suspect.
+
+
+```r
+car::qqPlot(eggs[["log_area"]], distribution = "norm",
+  envelope = 0.95, col = "Black", ylab = "log(area [mm^2])")
+```
+
+<div class="figure" style="text-align: center">
+<img src="07-Probabilites-Distributions_files/figure-html/qqplot2-1.svg" alt="Graphique quantile-quantile comparant le log(area) en fonction d'une distribution normale obtenu à l'aide de `car::qqPlot()`." width="672" />
+<p class="caption">(\#fig:qqplot2)Graphique quantile-quantile comparant le log(area) en fonction d'une distribution normale obtenu à l'aide de `car::qqPlot()`.</p>
+</div>
+
+
+##### Interprétation {-}
+
+Si quasiment tous les points sont compris dans l'enveloppe de confiance à 95%, le graphique indique que les deux distributions ne sont pas fondamentalement différentes. Ici les points correspondant aux valeurs les plus élevées sortent de l'enveloppe pour un certain nombre d'entre eux d'affilée, et les points 11 et 30 sont considérés comme suspects. Ceci indique que les effectifs observés dans l'échantillon sont plus nombreux en queue droite de distribution que ce que la distribution normale prédit en théorie. Ceci confirme l'impression de distribution asymétrique et/ou bimodale. Il est probable qu'on ait au moins deux types d'oeufs allongés différents dans l'échantillon, avec le second type moins nombreux, mais représenté par des oeufs plus gros, ce qui enfle la partie droite de la distribution.

@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="graphique-quantile-quantile.html">
-<link rel="next" href="moyenne.html">
+<link rel="next" href="echantillonnage.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -62,46 +62,6 @@
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -255,17 +215,19 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="7.8" data-path="graphique-quantile-quantile.html"><a href="graphique-quantile-quantile.html"><i class="fa fa-check"></i><b>7.8</b> Graphique quantile-quantile</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a></li>
+<li class="chapter" data-level="8" data-path="chi2.html"><a href="chi2.html"><i class="fa fa-check"></i><b>8</b> Test Chi carré</a><ul>
+<li class="chapter" data-level="8.1" data-path="echantillonnage.html"><a href="echantillonnage.html"><i class="fa fa-check"></i><b>8.1</b> Echantillonnage</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a></li>
 <li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
 <li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
 <li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
-<li class="chapter" data-level="A.1" data-path="prerequis-6.html"><a href="prerequis-6.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="prerequis-6.html"><a href="prerequis-6.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis-6.html"><a href="prerequis-6.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
-<li class="chapter" data-level="A.1.3" data-path="prerequis-6.html"><a href="prerequis-6.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
+<li class="chapter" data-level="A.1" data-path="prerequis-7.html"><a href="prerequis-7.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-7.html"><a href="prerequis-7.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-7.html"><a href="prerequis-7.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+<li class="chapter" data-level="A.1.3" data-path="prerequis-7.html"><a href="prerequis-7.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="install.html"><a href="install.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -331,7 +293,19 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="chi2" class="section level1">
 <h1><span class="header-section-number">Module 8</span> Test Chi carré</h1>
 <p>Restitution globale concernant l’évaluation de rapports par les pairs. Test de Chi2, et application sur base d’une courte manip réalisée par les étudiants (par exemple, sur des coraux).</p>
-
+<div id="objectifs-7" class="section level5 unnumbered">
+<h5>Objectifs</h5>
+<ul>
+<li><p>Appréhender l’inférence statistique</p></li>
+<li><p>Etre capable d’effectuer un échantillonnage correctement</p></li>
+<li><p>Comprendre ce qu’est un test d’hypothèse</p></li>
+<li><p>Connaitre la distribution Chi<sup>2</sup> et les tests d’hypothèses basés sur cette distribution</p></li>
+</ul>
+</div>
+<div id="prerequis-6" class="section level5 unnumbered">
+<h5>Prérequis</h5>
+<p>Les probabilités et lois de distributions statistiques vues au module <a href="proba.html#proba">7</a> doivent être comprises avant d’attaquer cette section.</p>
+</div> 
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -359,7 +333,7 @@ s.setAttribute('data-timestamp', +new Date());
         </div>
       </div>
 <a href="graphique-quantile-quantile.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="moyenne.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="echantillonnage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
