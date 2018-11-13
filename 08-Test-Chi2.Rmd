@@ -12,7 +12,7 @@ Dans ce module, nous entrons dans le monde de l'inférence statistique et des te
 
 - Appréhender l'inférence statistique
 
-- Etre capable d'effectuer un échantillonnage correctement
+- Être capable d'effectuer un échantillonnage correctement
 
 - Comprendre ce qu'est un test d'hypothèse
 
@@ -80,15 +80,18 @@ Comme des individus à bec croisé à gauche et d'autres à bec croisé à droit
 
 Les scientifiques pensent que les variétés gauches et droites se rencontrent avec un ratio 1:1 dans la population étudiée suite à une sélection présumée basée sur le rapport des deux variétés. La question se traduit sous forme d'un test d'hypothèse comme ceci\ :
 
-- $H_0: left = right$
-- $H_1:left \neq right$
+- $H_0: \mathrm{P}(left) = \frac{1}{2}\ \mathrm{et}\ \mathrm{P}(right) = \frac{1}{2}$
+- $H_1: \mathrm{P}(left) \neq \frac{1}{2}\ \mathrm{ou}\ \mathrm{P}(right) \neq \frac{1}{2}$ 
 
 Pouvons-nous rejeter $H_0$ ici\ ?
 
 
-### Test Chi^2^ de Pearson
+### Test Chi^2^ univarié
 
-Le test Chi^2^ (ou $\chi^2$) de Pearson est un test d'hypothèse qui permet de comparer des effectifs observés notés $a_i$ à des effectifs théoriques $\alpha_i$ sous l'hypothèse nulle pour les différents niveaux $i$ allant de 1 à $n$ d'une variable qualitative. Notre tableau de contingence à simple entrée `crossbill` contient nos $a_i$. Nous devons donc calculer quels sont les effectifs théoriques $\alpha_i$. Le nombre total d'oiseaux observés est\ :
+Le test Chi^2^ (ou $\chi^2$) de Pearson est un test d'hypothèse qui permet de comparer des effectifs observés notés $a_i$ à des effectifs théoriques $\alpha_i$ sous l'hypothèse nulle pour les différents niveaux $i$ allant de 1 à $n$ d'une variable qualitative (version dite univariée du test). A noter que par rapport à la définition des hypothèses ci-dessus, ce ne sont **pas** les probabilités qui sont testées, mais les effectifs.
+
+
+Notre tableau de contingence à simple entrée `crossbill` contient nos $a_i$. Nous devons donc calculer quels sont les effectifs théoriques $\alpha_i$. Le nombre total d'oiseaux observés est\ :
 
 ```{r}
 sum(crossbill)
@@ -98,6 +101,11 @@ sum(crossbill)
 ```{r}
 (alpha_i <- c(left = sum(crossbill)/2, right = sum(crossbill)/2))
 ```
+
+Les hypothèses du test $\chi^2$ univarié se définissent comme ceci\ :
+
+- $H_0: a_i = \alpha_i$ pour tout $i$
+- $H_1: a_i \neq \alpha_i$ pour au moins un $i$ 
 
 Le principe de la **statistique $\chi^2$** consiste à sommer les écarts au carré par rapport aux $\alpha_i$ de référence divisés par ces mêmes $\alpha_i$ pour quantifier l'écart entre les valeurs observées et les valeurs théoriques. Donc\ :
 
@@ -111,7 +119,7 @@ Calculons $\chi^2_\mathrm{obs}$ dans notre cas^[Faites également le calcul manu
 (chi2_obs <- sum((crossbill - alpha_i)^2 / alpha_i))
 ```
 
-Pour répondre à la question, il nous faut une loi de distribution statistique qui permette d'associer une probabilité au quantile $\chi^2_\mathrm{obs}$ sous $H_0$. C'est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du $\chi^2$. La loi du même nom admet un seul paramètre, les **degrés de libertés** (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée $n$ moins un. Ici, ddl = 2 - 1 = 1. La Fig. \@ref(fig:chi2plot) représente la densité de probabilité d'une loi $\chi^2$ typique^[Les fonctions qui permettent les calculs relatifs à la distribution $\chi^2$ dans R sont `<x>chisq()`, et les snippets correspondants dans la SciViews Box sont disponibles à partir de `.ic`. Leur utilisation est similaire à celle des distributions vues au module \@ref(proba).]. C'est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à + infini.
+Pour répondre à la question, il nous faut une loi de distribution statistique qui permette d'associer une probabilité au quantile $\chi^2_\mathrm{obs}$ sous $H_0$. C'est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du $\chi^2$. La loi du même nom admet un seul paramètre, les **degrés de libertés** (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée $n$ moins un. Ici, ddl = 2 - 1 = 1. La Fig. \@ref(fig:chi2plot) représente la densité de probabilité d'une loi $\chi^2$ typique^[Les fonctions qui permettent les calculs relatifs à la distribution $\chi^2$ dans R sont `<x>chisq()`, et les snippets correspondants dans la SciViews Box sont disponibles à partir de `.ic`. Leur utilisation est similaire à celle des distributions vues au module \@ref(proba).]. C'est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à $+\infty$.
 
 ```{r chi2plot, echo=FALSE, fig.cap = "Allure typique de la densité de probabilité de la distribution Chi^2^ (ici ddl = 3)."}
 # Chi-square distribution (density probability) with parameter:
@@ -135,10 +143,10 @@ chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
 
 ### Seuil α du test
 
-Le raisonnement du test d'hypothèse pour répondre à notre question est le suivant. Connaissant la densité de probabilité théorique sous $H_0$, nous savons que, plus le $\chi^2_\mathrm{obs}$ est grand, moins il est plausible. Nous devons décider d'une limite à partir de laquelle nous considèrerons que la valeur observée est suffisamment grande pour considérer $H_0$ comme non plausible et nous pourrons alors la rejeter. Cette limite se définit sous la forme d'une **probabilité** correspondant à une zone de rejet définie dans la distribution théorique de référence sous $H_0$. Cette limite s'appelle le **seuil $\alpha$ du test**.
+Le raisonnement du test d'hypothèse pour répondre à notre question est le suivant. Connaissant la densité de probabilité théorique sous $H_0$, nous savons que, plus le $\chi^2_\mathrm{obs}$ est grand, moins il est plausible. Nous devons décider d'une limite à partir de laquelle nous considèrerons que la valeur observée est suffisamment grande pour que $H_0$ devienne trop peu plausible et nous pourrons alors la rejeter. Cette limite se définit sous la forme d'une **probabilité** correspondant à une zone ou aire de rejet définie dans la distribution théorique de référence sous $H_0$. Cette limite s'appelle le **seuil $\alpha$ du test**.
 
 ```{block, type='note'}
-**Choix du seuil $\alpha$ d'un test d'hypothèse.** Le seuil $\alpha$ est choisi *avant* de réaliser le test. Il est un savant compromis entre le risque de se tromper qui diminue plus $\alpha$ est petit, et la possibilité d'obtenir le rejet de $H_0$ lorsqu'elle est fausse qui augmentera avec $\alpha$. Si on veut être absolument certain du résultat, on prend $\alpha = 0$, mais dans ce cas on ne rejete jamais $H_0$ et on ne tire donc jamais aucune conclusion utile. Donc, nous devons assouplir les règles et accepter un petit risque de se tromper. **Généralement, les statisticiens choisissent $\alpha$ = 5% dans les cas courants**, et prennent 1%, ou même 0,1% dans les cas où il faut être plus strict (par exemple, si des vies dépendent du résultat). Nous pouvons nous baser sur ces références, même si nous verrons plus loin qu'elle sont récemment sujettes à caution en science.
+**Choix du seuil $\alpha$ d'un test d'hypothèse.** Le seuil $\alpha$ est choisi *avant* de réaliser le test. Il est un savant compromis entre le risque de se tromper qui diminue plus $\alpha$ est petit, et la possibilité d'obtenir le rejet de $H_0$ lorsqu'elle est fausse qui augmentera avec $\alpha$. Si on veut être absolument certain du résultat, on prend $\alpha = 0$, mais dans ce cas on ne rejete jamais $H_0$ et on ne tire donc jamais aucune conclusion utile. Donc, nous devons assouplir les règles et accepter un petit risque de se tromper. **Généralement, les statisticiens choisissent $\alpha$ = 5% dans les cas courants**, et prennent 1%, ou même 0,1% dans les cas où il faut être plus strict (par exemple, si des vies dépendent du résultat). Nous pouvons nous baser sur ces références, même si nous verrons plus loin que cette pratique est de plus en plus remise en cause dans la littérature scientifique.
 ```
 
 Poursuivons. Nous choisissons notre seuil $\alpha$ = 5%. Cela définit l'aire la plus extrême de 5% à droite de la distribution $\chi^2$ à 1 ddl comme zone de rejet (remplie en rouge sur la Fig. \@ref(fig:chi2plot2)). Il nous suffit maintenant de voir où se place notre $\chi^2_\mathrm{obs}$. S'il se situe dans la zone en rouge, nous rejeterons $H_0$, sinon, nous ne la rejeterons pas.
@@ -195,7 +203,7 @@ Le test d'hypothèse reporte la valeur *P* afin qu'un lecteur qui aurait choisi 
 - valeur *P* < seuil $\alpha$, $=> \mathrm{R}H_0$ (on rejete $H_0$),
 - valeur *P* ≥ seuil $\alpha$, $=> \rlap{\mathrm{R}} \diagup H_0$ (on ne rejete pas $H_0$).
 
-Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du $\chi^2$ dans R. La fonction `chisq.test()` fait tout cela pour nous. Elle est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2^ univarié).
+Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du $\chi^2$ dans R. La fonction `chisq.test()` fait tout cela pour nous^[Avec `chisq.test()`, l'argument `p = ` est la liste des probabilités attendues sous $H_0$ et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser `rescale.p = TRUE`.]. Elle est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2^ univarié).
 
 ```{r}
 chisq.test(crossbill, p = c(1/2, 1/2), rescale.p = FALSE)
@@ -210,3 +218,35 @@ Tout test d'hypothèse impose des **conditions d'application** qu'il faudra vér
 - aucun effectif théorique sous $H_0$ nul.
 
 C'est bien le cas ici.
+
+
+### Effet de l'effectif étudié
+
+En inférence, la qualité des données (échantillons *représentatifs*) est importante, mais la quantité aussi. **Plus vous pourrez mesurer d'individus, mieux c'est.** Par contre, dès que la taille de l'échantillon (ici, l'effectif total mesuré) est suffisant pour rejeter $H_0$, vous n'avez plus besoin d'augmenter la taille de votre échantillon^[Attention\ ! Vous devez fixer la taille de l'échantillon dès le départ *a priori*. Vous ne pouvez pas accumuler des données jusqu'à obtenir un rejet de $H_0$, sans quoi votre analyse sera biaisée.]. Voyons l'effet de la taille de l'échantillon sur l'étude des becs croisés des sapins. Nous n'avons pas besoin d'un effectif plus grand que celui mesuré, car nous rejetons $H_0$ ici. Qu'aurait donné notre test $\chi^2$, par contre, si l'auteur avait mesuré disons 10 fois moins d'oiseaux, les proportions restant par ailleurs identiques entre becs croisés à gauche et à droite\ ?
+
+```{r}
+# Proportions équivalents, mais échantillon 10x plus petit
+(crossbill2 <- as.table(c(left = 190, right = 175)))
+chisq.test(crossbill2, p = c(1/2, 1/2), rescale.p = FALSE)
+```
+
+Nous constatons que la valeur du $\chi^2_{obs}$ dépend de l'effectif. Sa valeur est plus petite ici. Par conséquent, la valeur *P* a également changé et elle vaut à présent 43%. Cette valeur est *supérieure* maintenant à notre seuil $\alpha$ de 5%. Donc, nous ne pouvons pas rejeter $H_0$. Dans un pareil cas, nous conclurons que les becs croisés à gauche sont **pas significativement** plus nombreux que ceux à droite au seuil $\alpha$ de 5% (test $\chi^2$ = 0,62, ddl = 1, valeur *P* = 0.43). Notez, c'est important, que nous n'avons pas écrit "ne sont **pas**", mais nous avons précisé "ne sont **pas significativement**" plus nombreux. C'est un détail très important. En effet, cela veut dire que l'on ne peut pas conclure qu'il y ait des différences sur base de l'échantillon utilisé, mais il se peut aussi que l'échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (`crossbill`), et nous savons bien que c'est effectivement le cas. Est-ce que vous saisissez bien ce que le mot **significativement** veut dire, et la subtilité qui apparait lorsqu'un test d'hypothèse ne rejette **pas** $H_0$\ ? Les conclusions tirées avec `crossbill` et `crossbill2` et le même test d'hypothèse sont diamétralement opposées car l'un rejete et l'autre ne rejete pas $H_0$. Pourtant ces deux analyses ne se contredisent pas\ ! Les deux interprétations sont *simultanément* correctes. C'est l'interprétation asymétrique du test qui permet cela, et l'adverbe **significativement** est indispensable pour introduire cette nuance dans le texte.
+
+
+## Evaluation par les pairs
+
+En science, l'évaluation par les pairs ("peer-reviewing" en anglais) est le mécanisme le plus efficace pour améliorer la qualité des travaux publiés (articles scientifiques ou ouvrages plus conséquents). Par définition, les résultats publiés en science sont à la frontière de l'inconnu. Il est donc difficile de vérifier si le travail est correct. Les personnes les plus à même de le faire sont les collègues qui travaillent sur le même sujet, ou dans un domaine proche, les "pairs".
+
+Avant d'être rendus publics, les travaux scientifiques font l'objet d'un ou plusieurs rapports par des pairs. Cette phase est la **révision** de l'article. Le rapport se veut constructif dans le but d'améliorer la qualité du travail. Il ne s'agit pas d'"enfoncer" les auteurs initiaux, mais le "referee" se doit d'être honnête et donc, de mettre le doigt sur les défauts et lacunes du travail également.
+
+```{block, type='bdd'}
+Vous allez vous initier au travail de referee sur base du rapport sur la biométrie de l'oursin violet. Vous partagerez votre dépôt Github avec un de vos collègue, et vous recevrez également un accès au dépôt de quelqu'un d'autre. Votre travail consistera à lire avec un oeil critique et constructif le travail que vous recevrez.
+
+Vous ajouterez un fichier `review.md` à la racine du projet où vous consignerez vos remarques générales. Pour les remarques particulières directement dans le rapport, utilisez la balise de citation de Markdown (commencez le paragraphe par `> `), par exemple\ :
+
+> Ceci est un commentaire dans le texte.
+
+N'effacer, ni ne modifiez aucun texte directement dans ce rapport. Si vous devez suggérer l'élimination de texte, utilisez la balise Markdown qui sert à biffer ce texte sous forme de deux tildes devant et derrière (`~~~`, ce qui donne ~~texte biffé~~). Ensuite, effectuez un commit de vos commentaires sur le dépôt Github de votre collègue.
+
+De votre côté, lorsque vous recevrez le rapport relatif à votre propre projet, lisez les commentaires (ne modifiez **pas** le fichier `review.md`, mais par contre, éditez le texte et éliminez les commentaires directement dans le rapport au fur et à mesure que vous le corriger en tenant compte de ces remarques). Vous pourrez éventuellement apporter des réponses ou des justifications aux commentaires globaux du fichier `review.md`.
+```
