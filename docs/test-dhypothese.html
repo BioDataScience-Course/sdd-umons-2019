@@ -408,10 +408,10 @@ Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution C
 <pre><code># [1] 0.01785826</code></pre>
 <p>Le test d’hypothèse reporte la valeur <em>P</em> afin qu’un lecteur qui aurait choisi un autre seuil <span class="math inline">\(\alpha\)</span> pourrait effectuer immédiatement sa propre comparaison sans devoir refaire les calculs. La règle est simple :</p>
 <ul>
-<li>valeur <em>P</em> &lt; seuil <span class="math inline">\(\alpha\)</span>, alors on rejete <span class="math inline">\(H_0\)</span> (on écrit aussi <span class="math inline">\(\mathrm{R}H_0\)</span>),</li>
-<li>valeur <span class="math inline">\(P\)</span> ≥ seuil <span class="math inline">\(\alpha\)</span>, alors on ne rejete pas <span class="math inline">\(H_0\)</span>, ou <span class="math inline">\(\rlap{\mathrm{R}} \diagup H_0\)</span></li>
+<li>valeur <em>P</em> &lt; seuil <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(=&gt; \mathrm{R}H_0\)</span> (on rejete <span class="math inline">\(H_0\)</span>),</li>
+<li>valeur <em>P</em> ≥ seuil <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(=&gt; \rlap{\mathrm{R}} \diagup H_0\)</span> (on ne rejete pas <span class="math inline">\(H_0\)</span>).</li>
 </ul>
-<p>Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du Chi^2 dans R. La fonction <code>chisq.test()</code> fait tout cela pour nous. Elle est également disponible dans les snippets à partir du menu <code>hypothesis test : contingency</code> ou <code>.hc</code> (test Chi^2 univarié).</p>
+<p>Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du <span class="math inline">\(\chi^2\)</span> dans R. La fonction <code>chisq.test()</code> fait tout cela pour nous. Elle est également disponible dans les snippets à partir du menu <code>hypothesis test : contingency</code> ou <code>.hc</code> (test Chi<sup>2</sup> univarié).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre></div>
 <pre><code># 
 #   Chi-squared test for given probabilities

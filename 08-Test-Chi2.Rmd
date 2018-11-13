@@ -192,10 +192,10 @@ pchisq(5.61, df = 1, lower.tail = FALSE)
 
 Le test d'hypothèse reporte la valeur *P* afin qu'un lecteur qui aurait choisi un autre seuil $\alpha$ pourrait effectuer immédiatement sa propre comparaison sans devoir refaire les calculs. La règle est simple\ :
 
-- valeur *P* < seuil $\alpha$, alors on rejete $H_0$ (on écrit aussi $\mathrm{R}H_0$),
-- valeur $P$ ≥ seuil $\alpha$, alors on ne rejete pas $H_0$, ou $\rlap{\mathrm{R}} \diagup H_0$
+- valeur *P* < seuil $\alpha$, $=> \mathrm{R}H_0$ (on rejete $H_0$),
+- valeur *P* ≥ seuil $\alpha$, $=> \rlap{\mathrm{R}} \diagup H_0$ (on ne rejete pas $H_0$).
 
-Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du Chi^2 dans R. La fonction `chisq.test()` fait tout cela pour nous. Elle est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2 univarié).
+Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du $\chi^2$ dans R. La fonction `chisq.test()` fait tout cela pour nous. Elle est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2^ univarié).
 
 ```{r}
 chisq.test(crossbill, p = c(1/2, 1/2), rescale.p = FALSE)
