@@ -25,20 +25,6 @@ Dans ce module, nous entrons dans le monde de l'inférence statistique et des te
 
 Les probabilités et lois de distributions statistiques vues au module \@ref(proba) doivent être comprises avant d'attaquer cette section.
 
-##### A vous de jouer ! {-}
-
-La collaboration est importante et indispensable dans la recherche scientifique actuelle. La tâche suivante qui vous est proposée est de réaliser une correction par les pairs : 
-
-suivez les intructions suivantes : 
-
-```{block2, type='bdd'}
-La collaboration est importante et indispensable dans la recherche scientifique actuelle. La tâche suivante qui vous est proposée est de réaliser une correction par les pairs : 
-
-suivez les intructions suivantes :
-  <https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_08/presentations/correction.md>
-  
-```
-
 ## Échantillonnage
 
 Si nous pouvions mesurer **tous** les individus d'une population statistique à chaque fois, nous n'aurions pas besoin des statistiques. Mais ce n'est pratiquement jamais possible. Tout d'abord, le nombre d'individus est potentiellement très grand. Le travail nécessaire risque alors d'être démesuré. Afin de limiter les mesures à un nombre raisonnable de cas, nous effectuons un **échantillonnage** qui consiste à prélever un petit sous-ensemble de taille $n$ donné depuis la population de départ. Il existe différentes stratégies d'échantillonnage, mais la plus fréquente est l'**échantillonnage aléatoire** pour lequel\ :
@@ -78,6 +64,15 @@ Le test d'hypothèse ou test statistique est l'outil le plus simple pour répond
 
 Les deux hypothèses ne sont pas symétriques. Notre intention est de **rejeter $H_0$**. Dans ce cas, nous pourrons considérer que $H_1$ est vraie, avec un certain degré de certitude que nous pourrons également quantifier. Si nous n'y arrivons pas, nous dirons que nous ne pouvons pas rejeter $H_0$, mais nous ne pourrons jamais dire que que nous l'**acceptons** car dans ce cas, deux explications resteront possibles\ : (1) $H_0$ est effectivement vraie, ou (2) $H_0$ est fausse mais nous n'avons pas *assez* de données à disposition pour le démontrer avec le niveau de certitude recherché.
 
+##### A vous de jouer ! {-}
+
+```{block2, type='bdd'}
+
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("08a_chi2")
+
+```
 
 ### Becs croisés des sapins
 
@@ -262,4 +257,8 @@ Vous ajouterez un fichier `review.md` à la racine du projet où vous consignere
 N'effacer, ni ne modifiez aucun texte directement dans ce rapport. Si vous devez suggérer l'élimination de texte, utilisez la balise Markdown qui sert à biffer ce texte sous forme de deux tildes devant et derrière (`~~~`, ce qui donne ~~texte biffé~~). Ensuite, effectuez un commit de vos commentaires sur le dépôt Github de votre collègue.
 
 De votre côté, lorsque vous recevrez le rapport relatif à votre propre projet, lisez les commentaires (ne modifiez **pas** le fichier `review.md`, mais par contre, éditez le texte et éliminez les commentaires directement dans le rapport au fur et à mesure que vous le corriger en tenant compte de ces remarques). Vous pourrez éventuellement apporter des réponses ou des justifications aux commentaires globaux du fichier `review.md`.
+
+suivez les intructions suivantes :
+  <https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_08/presentations/correction.md>
+
 ```
