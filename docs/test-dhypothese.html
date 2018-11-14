@@ -263,6 +263,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="8.2.3" data-path="test-dhypothese.html"><a href="test-dhypothese.html#seuil--du-test"><i class="fa fa-check"></i><b>8.2.3</b> Seuil α du test</a></li>
 <li class="chapter" data-level="8.2.4" data-path="test-dhypothese.html"><a href="test-dhypothese.html#effet-de-leffectif-etudie"><i class="fa fa-check"></i><b>8.2.4</b> Effet de l’effectif étudié</a></li>
 <li class="chapter" data-level="8.2.5" data-path="test-dhypothese.html"><a href="test-dhypothese.html#test-chi2-dindependance"><i class="fa fa-check"></i><b>8.2.5</b> Test Chi<sup>2</sup> d’indépendance</a></li>
+<li class="chapter" data-level="8.2.6" data-path="test-dhypothese.html"><a href="test-dhypothese.html#autres-tests-chi2"><i class="fa fa-check"></i><b>8.2.6</b> Autres tests Chi<sup>2</sup></a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="evaluation-par-les-pairs.html"><a href="evaluation-par-les-pairs.html"><i class="fa fa-check"></i><b>8.3</b> Evaluation par les pairs</a></li>
 </ul></li>
@@ -441,7 +442,8 @@ Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution C
 <p>Tout test d’hypothèse impose des <strong>conditions d’application</strong> qu’il faudra vérifier avant d’effectuer le test. Pour le test <span class="math inline">\(\chi^2\)</span>, ce sont :</p>
 <ul>
 <li>échantillonnage aléatoire et observations indépendantes,</li>
-<li>aucun effectif théorique sous <span class="math inline">\(H_0\)</span> nul.</li>
+<li>aucun effectif théorique sous <span class="math inline">\(H_0\)</span> nul,</li>
+<li>aucun effectif observé, si possible, inférieur à 5 (pas condition stricte).</li>
 </ul>
 <p>C’est bien le cas ici.</p>
 </div>
@@ -517,6 +519,33 @@ timolol_table</code></pre></div>
 # 
 # data:  timolol_table
 # X-squared = 9.9782, df = 1, p-value = 0.001584</code></pre>
+</div>
+<div id="conditions-dapplication-1" class="section level5 unnumbered">
+<h5>Conditions d’application</h5>
+<ul>
+<li>échantillon représentatif (échantillonnage aléatoire et individus indépendants les uns des autres),</li>
+<li>attribution des traitements aux individus de manière aléatoire,</li>
+<li>aucun effectif théorique nul,</li>
+<li>Si possible, aucun effectif observé inférieur à 5 (pas règle strict, mais voir à utiliser un test exact de Fisher ci-dessous dans ce cas).</li>
+</ul>
+</div>
+</div>
+<div id="autres-tests-chi2" class="section level3">
+<h3><span class="header-section-number">8.2.6</span> Autres tests Chi<sup>2</sup></h3>
+<p>Les test du <span class="math inline">\(\chi^2\)</span> est également utilisé, dans sa forme univariée, pour comparer les effectifs observés par rapport à des effectifs théoriques suivant un loi de distribution discrète. Ce test s’appelle un <strong>test de qualité d’ajustement</strong> (“goodness-of-fit test” en anglais). Dans ce cas, le nombre de degrés de liberté est le nombre de catégories moins le monbre de paramètres de la distribution moins un.</p>
+<p>Pour l’ajustement à une loi de distribution continue, il est possible de découper les données en classes et d’appliquer un test <span class="math inline">\(\chi^2\)</span> dessus ensuite. Il existe cependant d’autres tests considérés comme plus efficaces dans ce cas, comme le test de <a href="https://mistis.inrialpes.fr/software/SMEL/cours/ts/node7.html">Komogorov-Smirnov</a>, notamment avec les corrections introduites par <a href="http://www.statsoft.fr/concepts-statistiques/glossaire/t/test-lilliefors.html">Lillefors</a>. Pour l’ajustement à une distribution normale, des tests spécialisés existent comme le test de <a href="http://www.sthda.com/french/wiki/test-de-normalite-avec-r-test-de-shapiro-wilk">Shapiro-Wilk</a>. Ce dernier est disponible depuis les snippets de la SciViews Box dans le menu <code>Hypothesis tests: distribution</code> ou <code>.hd</code>, et puis <code>Shapiro-Wilk test of normality</code>.</p>
+<div class="info">
+<p>
+Gardez toujours à l’esprit que, quelle que soit la qualité d’un test d’ajustement, vous n’aurez jamais qu’une réponse binaire (oui ou non l’échantillon s’ajuste à telle distribution théorique). Les causes de dérive sont innombrables et seules des bonnes représentations graphiques (histogramme, graphe en violon, et surtout, graphique quantile-quantile) sont suffisamment riche en information pour explorer <em>pourquoi</em> et <em>comment</em> la distribution différe d’une distribution théorique.
+</p>
+</div>
+<div id="pour-en-savoir-plus-14" class="section level5 unnumbered">
+<h5>Pour en savoir plus</h5>
+<ul>
+<li><p>Le <a href="http://www.sthda.com/french/wiki/test-de-chi2-avec-r">test de Chi2 avec R</a>,</p></li>
+<li><p>Le <a href="http://www.biostathandbook.com/gtestgof.html">test G</a> est considéré comme une bonne alternative dans certains cas (voir aussi <a href="http://www.biostathandbook.com/gtestgof.html#chivsg">Chi-square vs. G-test</a>).</p></li>
+<li><p>Le <a href="http://www.sthda.com/french/wiki/test-exact-de-fisher-avec-r">test exact de Fisher</a> comme test alternatif, en particulier lorsque les effectifs sont faibles.</p></li>
+</ul>
 </div>
 </div>
 </div>

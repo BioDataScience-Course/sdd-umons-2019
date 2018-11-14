@@ -218,7 +218,8 @@ chisq.test(crossbill, p = c(1/2, 1/2), rescale.p = FALSE)
 Tout test d'hypothèse impose des **conditions d'application** qu'il faudra vérifier avant d'effectuer le test. Pour le test $\chi^2$, ce sont\ :
 
 - échantillonnage aléatoire et observations indépendantes,
-- aucun effectif théorique sous $H_0$ nul.
+- aucun effectif théorique sous $H_0$ nul,
+- aucun effectif observé, si possible, inférieur à 5 (pas condition stricte).
 
 C'est bien le cas ici.
 
@@ -354,6 +355,32 @@ chisq.test(timolol_table, correct = FALSE)
 ```
 
 
+##### Conditions d'application {-}
+
+- échantillon représentatif (échantillonnage aléatoire et individus indépendants les uns des autres),
+- attribution des traitements aux individus de manière aléatoire,
+- aucun effectif théorique nul,
+- Si possible, aucun effectif observé inférieur à 5 (pas règle strict, mais voir à utiliser un test exact de Fisher ci-dessous dans ce cas).
+
+
+### Autres tests Chi^2^
+
+Les test du $\chi^2$ est également utilisé, dans sa forme univariée, pour comparer les effectifs observés par rapport à des effectifs théoriques suivant un loi de distribution discrète. Ce test s'appelle un **test de qualité d'ajustement** ("goodness-of-fit test" en anglais). Dans ce cas, le nombre de degrés de liberté est le nombre de catégories moins le monbre de paramètres de la distribution moins un.
+
+Pour l'ajustement à une loi de distribution continue, il est possible de découper les données en classes et d'appliquer un test $\chi^2$ dessus ensuite. Il existe cependant d'autres tests considérés comme plus efficaces dans ce cas, comme le test de [Komogorov-Smirnov](https://mistis.inrialpes.fr/software/SMEL/cours/ts/node7.html), notamment avec les corrections introduites par [Lillefors](http://www.statsoft.fr/concepts-statistiques/glossaire/t/test-lilliefors.html). Pour l'ajustement à une distribution normale, des tests spécialisés existent comme le test de [Shapiro-Wilk](http://www.sthda.com/french/wiki/test-de-normalite-avec-r-test-de-shapiro-wilk). Ce dernier est disponible depuis les snippets de la SciViews Box dans le menu `Hypothesis tests: distribution` ou `.hd`, et puis `Shapiro-Wilk test of normality`.
+
+<div class="info">
+<p>Gardez toujours à l'esprit que, quelle que soit la qualité d'un test d'ajustement, vous n'aurez jamais qu'une réponse binaire (oui ou non l'échantillon s'ajuste à telle distribution théorique). Les causes de dérive sont innombrables et seules des bonnes représentations graphiques (histogramme, graphe en violon, et surtout, graphique quantile-quantile) sont suffisamment riche en information pour explorer <em>pourquoi</em> et <em>comment</em> la distribution différe d'une distribution théorique.</p>
+</div>
+
+
+##### Pour en savoir plus {-}
+
+- Le [test de Chi2 avec R](http://www.sthda.com/french/wiki/test-de-chi2-avec-r),
+
+- Le [test G](http://www.biostathandbook.com/gtestgof.html) est considéré comme une bonne alternative dans certains cas (voir aussi [Chi-square vs. G-test](http://www.biostathandbook.com/gtestgof.html#chivsg)).
+
+- Le [test exact de Fisher](http://www.sthda.com/french/wiki/test-exact-de-fisher-avec-r) comme test alternatif, en particulier lorsque les effectifs sont faibles.
 
 
 ## Evaluation par les pairs
