@@ -246,6 +246,16 @@ Nous constatons que la valeur du $\chi^2_{obs}$ dépend de l'effectif. Sa valeur
 
 ### Test Chi^2^ d'indépendance
 
+##### A vous de jouer ! {-}
+
+```{block2, type='bdd'}
+Une séance d'exercice vous est proposée en lien avec le Test Chi^2^ d'indépendance
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+
+    BioDataScience::run("08b_chi2")
+
+```
+
 Dans le cas d'un tableau de contingence à **double entrée**, qui croise les niveaux de deux variables qualitatives, nous pouvons effectuer également un test $\chi^2$. Celui-ci sera calculé légèrement différemment et surtout, les hypothèses testées sont différentes. Reprenos le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
 
 ```{r}
@@ -283,7 +293,6 @@ Enfin, nous comparons cette valeur à la distribution théorique de $\chi^2$  à
 ##### Interprétation {-}
 
 La valeur *p* de 0,0026 est inférieure au seuil $\alpha$ choisi de 0,01. Donc, nous rejetons $H_0$. Il n'y a pas indépendance entre les deux variables. Pour voir quels sont les effets de la dépendance entre les variables, nous devons comparer les effectifs théoriques affichés ci-dessus avec les effectifs observés. Dans le cas du placébo, sous $H_0$, nous aurions du obtenir 117 malades contre 30 patients guéris. Or, nous en avons 128 malades et seulement 19 guéris. D'un autre côté, sous $H_0$ nous aurions du observer 127 patients malades et 33 sains avec le timolol. Or, nous en observons 116 malades et 44 sains. Donc, les valeurs observées sont en faveur d'un meilleur effet avec le timolol. Nous pourrons dire\ : le timolol a un effet positif significatif sur la guérison de la maladie au seuil $\alpha$ de 1% ($\chi^2$ d'indépendance = 9,10, ddl = 1, valeur *P* - 0,0026).
-
 
 ##### Correction de Yates {-}
 
@@ -330,12 +339,21 @@ Gardez toujours à l'esprit que, quelle que soit la qualité d'un test d'ajustem
 
 - Le [test exact de Fisher](http://www.sthda.com/french/wiki/test-exact-de-fisher-avec-r) comme test alternatif, en particulier lorsque les effectifs sont faibles.
 
+##### A vous de jouer ! {-}
+
+```{block2, type='bdd'}
+
+Employez le test d'hypothèse que vous venez d'apprendre dans votre rapport sur la biométrie humaine :
+  sdd1_biometry-...(nom du groupe)
+```
 
 ## Evaluation par les pairs
 
 En science, l'évaluation par les pairs ("peer-reviewing" en anglais) est le mécanisme le plus efficace pour améliorer la qualité des travaux publiés (articles scientifiques ou ouvrages plus conséquents). Par définition, les résultats publiés en science sont à la frontière de l'inconnu. Il est donc difficile de vérifier si le travail est correct. Les personnes les plus à même de le faire sont les collègues qui travaillent sur le même sujet, ou dans un domaine proche, les "pairs".
 
 Avant d'être rendus publics, les travaux scientifiques font l'objet d'un ou plusieurs rapports par des pairs. Cette phase est la **révision** de l'article. Le rapport se veut constructif dans le but d'améliorer la qualité du travail. Il ne s'agit pas d'"enfoncer" les auteurs initiaux, mais le "referee" se doit d'être honnête et donc, de mettre le doigt sur les défauts et lacunes du travail également.
+
+##### A vous de jouer ! {-}
 
 ```{block, type='bdd'}
 Vous allez vous initier au travail de referee sur base du rapport sur la biométrie de l'oursin violet. Vous partagerez votre dépôt Github avec un de vos collègue, et vous recevrez également un accès au dépôt de quelqu'un d'autre. Votre travail consistera à lire avec un oeil critique et constructif le travail que vous recevrez.
