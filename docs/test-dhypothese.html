@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-13">
+<meta name="date" content="2018-11-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -262,6 +262,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="8.2.2" data-path="test-dhypothese.html"><a href="test-dhypothese.html#test-chi2-univarie"><i class="fa fa-check"></i><b>8.2.2</b> Test Chi<sup>2</sup> univarié</a></li>
 <li class="chapter" data-level="8.2.3" data-path="test-dhypothese.html"><a href="test-dhypothese.html#seuil--du-test"><i class="fa fa-check"></i><b>8.2.3</b> Seuil α du test</a></li>
 <li class="chapter" data-level="8.2.4" data-path="test-dhypothese.html"><a href="test-dhypothese.html#effet-de-leffectif-etudie"><i class="fa fa-check"></i><b>8.2.4</b> Effet de l’effectif étudié</a></li>
+<li class="chapter" data-level="8.2.5" data-path="test-dhypothese.html"><a href="test-dhypothese.html#test-chi2-dindependance"><i class="fa fa-check"></i><b>8.2.5</b> Test Chi<sup>2</sup> d’indépendance</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="evaluation-par-les-pairs.html"><a href="evaluation-par-les-pairs.html"><i class="fa fa-check"></i><b>8.3</b> Evaluation par les pairs</a></li>
 </ul></li>
@@ -459,6 +460,64 @@ Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution C
 # data:  crossbill2
 # X-squared = 0.61644, df = 1, p-value = 0.4324</code></pre>
 <p>Nous constatons que la valeur du <span class="math inline">\(\chi^2_{obs}\)</span> dépend de l’effectif. Sa valeur est plus petite ici. Par conséquent, la valeur <em>P</em> a également changé et elle vaut à présent 43%. Cette valeur est <em>supérieure</em> maintenant à notre seuil <span class="math inline">\(\alpha\)</span> de 5%. Donc, nous ne pouvons pas rejeter <span class="math inline">\(H_0\)</span>. Dans un pareil cas, nous conclurons que les becs croisés à gauche ne sont <strong>pas significativement</strong> plus nombreux que ceux à droite au seuil <span class="math inline">\(\alpha\)</span> de 5% (test <span class="math inline">\(\chi^2\)</span> = 0,62, ddl = 1, valeur <em>P</em> = 0,43). Notez, c’est important, que nous n’avons pas écrit “ne sont <strong>pas</strong>”, mais nous avons précisé “ne sont <strong>pas significativement</strong>” plus nombreux. C’est un détail très important. En effet, cela veut dire que l’on ne peut pas conclure qu’il y ait des différences sur base de l’échantillon utilisé, mais il se peut aussi que l’échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (<code>crossbill</code>), et nous savons bien que c’est effectivement le cas. Est-ce que vous saisissez bien ce que le mot <strong>significativement</strong> veut dire, et la subtilité qui apparait lorsqu’un test d’hypothèse ne rejette <strong>pas</strong> <span class="math inline">\(H_0\)</span> ? Les conclusions tirées avec <code>crossbill</code> et <code>crossbill2</code> et le même test d’hypothèse sont diamétralement opposées car l’un rejete et l’autre ne rejete pas <span class="math inline">\(H_0\)</span>. Pourtant ces deux analyses ne se contredisent pas ! Les deux interprétations sont <em>simultanément</em> correctes. C’est l’interprétation asymétrique du test qui permet cela, et l’adverbe <strong>significativement</strong> est indispensable pour introduire cette nuance dans le texte.</p>
+</div>
+<div id="test-chi2-dindependance" class="section level3">
+<h3><span class="header-section-number">8.2.5</span> Test Chi<sup>2</sup> d’indépendance</h3>
+<p>Dans le cas d’un tableau de contingence à <strong>double entrée</strong>, qui croise les niveaux de deux variables qualitatives, nous pouvons effectuer également un test <span class="math inline">\(\chi^2\)</span>. Celui-ci sera calculé légèrement différemment et surtout, les hypothèses testées sont différentes. Reprenos le jeu de données concernant le test d’une molécule potentiellement anti-cancéreuse, le timolol :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">timolol &lt;-<span class="st"> </span><span class="kw">tibble</span>(
+  <span class="dt">traitement =</span> <span class="kw">c</span>(<span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;placebo&quot;</span>),
+  <span class="dt">patient    =</span> <span class="kw">c</span>(<span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>,  <span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>),
+  <span class="dt">freq       =</span> <span class="kw">c</span>(<span class="dv">44</span>,        <span class="dv">116</span>,       <span class="dv">19</span>,        <span class="dv">128</span>)
+)
+<span class="co"># Création du tableau de contingence </span>
+timolol_table &lt;-<span class="st"> </span><span class="kw">xtabs</span>(<span class="dt">data =</span> timolol, freq <span class="op">~</span><span class="st"> </span>patient <span class="op">+</span><span class="st"> </span>traitement)
+timolol_table</code></pre></div>
+<pre><code>#         traitement
+# patient  placebo timolol
+#   malade     128     116
+#   sain        19      44</code></pre>
+<p>Nous avons ici un tableau de contingence à double entrée qui répertorie le nombre de cas attribués aléatoirement au traitement avec placebo (somme de la première colonne, soit 128 + 19 = 147 patients) et le nombre de cas qui ont reçu du timolol (116 + 44 = 160), tout autre traitement étant par ailleurs équivalent. Nous avons donc un total général de 307 patients étudiés.</p>
+<p>La répartition dans le tableau selon les ligne est, elle, tributaire des effets respectifs des deux traitements ? La clé ici est de <strong>considérer comme <span class="math inline">\(H_0\)</span> un partitionnement des cas équivalent entre les deux traitements.</strong> Ceci revient au même que de dire que l’effet d’une variable (le traitement administré) est <em>indépendant</em> de l’effet de l’autre variable (le fait d’être guéri ou non). C’est pour cette raison qu’on parle de <strong>test <span class="math inline">\(\chi^2\)</span> d’indépendance.</strong> Les hypothèses sont :</p>
+<ul>
+<li><span class="math inline">\(H_0:\)</span> indépendance entre les deux variables</li>
+<li><span class="math inline">\(H_1:\)</span> dépendance entre les deux variables</li>
+</ul>
+<p>Toute la difficulté est de déterminer les <span class="math inline">\(\alpha_i\)</span>, les effectifs qui devraient être observés sous <span class="math inline">\(H_0\)</span>. Si le partitionnement était identique selon tous les niveaux des deux variables, nous aurions autant de cas dans chaque cellule du tableau, soit 307/4 = 76,75. Mais n’oublions pas que nous avons attribués plus de patients au traitement timolol qu’au traitement placébo. De même, nous ne contrôlons pas le taux de guérison de la malide qui n’est d’ailleurs généralement pas d’un patient sur 2. Il faut donc <em>pondérer</em> les effectifs dans les lignes et les colonnes par rapprt aux totals dans les différents niveaux des variables (en colonne pour la variable <code>traitement</code>, en ligne pour la variable <code>patient</code>). Donc, si nous indiçons les lignes avec <span class="math inline">\(i = 1 ..m\)</span> et les colonnes avec <span class="math inline">\(j = 1..n\)</span>, nos effectifs théoriques <span class="math inline">\(\alpha_{i,j}\)</span> sous hypothèse d’indépendance entre les deux variables sont :</p>
+<p><span class="math display">\[\alpha_{i, j} =\frac{total\ ligne_i \times total\ colonne_j}{total\ général}\]</span></p>
+<p>Nous pouvons dès lors calculer le <span class="math inline">\(\chi^2_{obs}\)</span> pratiquement comme d’habitude via :</p>
+<p><span class="math display">\[\chi^2_{obs} = \sum_{i=1}^m{\sum_{j=1}^n{\frac{(a_{i,j} - \alpha_{i,j})^2}{\alpha_{i,j}}}}\]</span></p>
+<p>Enfin, nous comparons cette valeur à la distribution théorique de <span class="math inline">\(\chi^2\)</span> à <span class="math inline">\((m - 1) \times (n - 1)\)</span> degrés de liberté. Dans le cas d’un tableau 2 par 2, nous avons 1 degré de liberté. Voici le test effectué à l’aide de la fonction <code>chisq.test()</code> suivi de l’affichage des effectifs théoriques. Vous accédez facilement à ce code depuis le snippet <code>Chi2 test (independence)</code> dans le menu <code>hypothesis tests: contingency</code> à partir de <code>.hc</code>. Mais avant toute chose, nous devons choisir le seuil <span class="math inline">\(\alpha\)</span> <strong>avant de réaliser le test</strong>. Nous prendrons ici, par exemple, 1% puisque l’analyse est effectuée dans un contexte critique (maladie mortelle).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(chi2. &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(timolol_table)); <span class="kw">cat</span>(<span class="st">&quot;Expected frequencies:</span><span class="ch">\n</span><span class="st">&quot;</span>); chi2.[[<span class="st">&quot;expected&quot;</span>]]</code></pre></div>
+<pre><code># 
+#   Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+# 
+# data:  timolol_table
+# X-squared = 9.1046, df = 1, p-value = 0.00255</code></pre>
+<pre><code># Expected frequencies:</code></pre>
+<pre><code>#         traitement
+# patient    placebo   timolol
+#   malade 116.83388 127.16612
+#   sain    30.16612  32.83388</code></pre>
+<div id="interpretation-1" class="section level5 unnumbered">
+<h5>Interprétation</h5>
+<p>La valeur <em>p</em> de 0,0026 est inférieure au seuil <span class="math inline">\(\alpha\)</span> choisi de 0,01. Donc, nous rejetons <span class="math inline">\(H_0\)</span>. Il n’y a pas indépendance entre les deux variables. Pour voir quels sont les effets de la dépendance entre les variables, nous devons comparer les effectifs théoriques affichés ci-dessus avec les effectifs observés. Dans le cas du placébo, sous <span class="math inline">\(H_0\)</span>, nous aurions du obtenir 117 malades contre 30 patients guéris. Or, nous en avons 128 malades et seulement 19 guéris. D’un autre côté, sous <span class="math inline">\(H_0\)</span> nous aurions du observer 127 patients malades et 33 sains avec le timolol. Or, nous en observons 116 malades et 44 sains. Donc, les valeurs observées sont en faveur d’un meilleur effet avec le timolol. Nous pourrons dire : le timolol a un effet positif significatif sur la guérison de la maladie au seuil <span class="math inline">\(\alpha\)</span> de 1% (<span class="math inline">\(\chi^2\)</span> d’indépendance = 9,10, ddl = 1, valeur <em>P</em> - 0,0026).</p>
+</div>
+<div id="correction-de-yates" class="section level5 unnumbered">
+<h5>Correction de Yates</h5>
+<p>Si nous calculons le <span class="math inline">\(\chi^2_{obs}\)</span> à la main, nous obtenons :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alpha_ij &lt;-<span class="st"> </span>chi2.[[<span class="st">&quot;expected&quot;</span>]]
+<span class="co"># Les a_i,j sont dans timolol_table</span>
+<span class="kw">sum</span>((timolol_table <span class="op">-</span><span class="st"> </span>alpha_ij)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>alpha_ij)</code></pre></div>
+<pre><code># [1] 9.978202</code></pre>
+<p>Cela donne 9,98. Or notre test renvoie la valeur de 9,10. A quoi est dûe cette différence ? Lisez bien l’intitulé du test réalisé. Il s’agit de “Pearson’s Chi-squared test <strong>with Yates’ continuity correction</strong>”. Il s’agit d’une correction introduite par R dans le cas d’un tableau 2 par 2 uniquement et qui tient compte de ce que la distribution sous <span class="math inline">\(H_0\)</span> est estimée à partir des mêmes données que celle utilisées pour le test, ce qui introduit un biais ainsi corrigé. Il est donc déconseillé de désactiver cette correction, même si nous pouvons le faire en indiquant <code>correct = FALSE</code> (ci-dessous, juste pour vérifier notre calcul du <span class="math inline">\(\chi^2_{obs}\)</span> qui est maintenant identique, 9,98).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Test d&#39;indépendance sans correction de Yates</span>
+<span class="kw">chisq.test</span>(timolol_table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code># 
+#   Pearson&#39;s Chi-squared test
+# 
+# data:  timolol_table
+# X-squared = 9.9782, df = 1, p-value = 0.001584</code></pre>
+</div>
 </div>
 </div>
 <div class="footnotes">

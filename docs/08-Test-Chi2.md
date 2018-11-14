@@ -253,6 +253,109 @@ chisq.test(crossbill2, p = c(1/2, 1/2), rescale.p = FALSE)
 Nous constatons que la valeur du $\chi^2_{obs}$ dépend de l'effectif. Sa valeur est plus petite ici. Par conséquent, la valeur *P* a également changé et elle vaut à présent 43%. Cette valeur est *supérieure* maintenant à notre seuil $\alpha$ de 5%. Donc, nous ne pouvons pas rejeter $H_0$. Dans un pareil cas, nous conclurons que les becs croisés à gauche ne sont **pas significativement** plus nombreux que ceux à droite au seuil $\alpha$ de 5% (test $\chi^2$ = 0,62, ddl = 1, valeur *P* = 0,43). Notez, c'est important, que nous n'avons pas écrit "ne sont **pas**", mais nous avons précisé "ne sont **pas significativement**" plus nombreux. C'est un détail très important. En effet, cela veut dire que l'on ne peut pas conclure qu'il y ait des différences sur base de l'échantillon utilisé, mais il se peut aussi que l'échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (`crossbill`), et nous savons bien que c'est effectivement le cas. Est-ce que vous saisissez bien ce que le mot **significativement** veut dire, et la subtilité qui apparait lorsqu'un test d'hypothèse ne rejette **pas** $H_0$\ ? Les conclusions tirées avec `crossbill` et `crossbill2` et le même test d'hypothèse sont diamétralement opposées car l'un rejete et l'autre ne rejete pas $H_0$. Pourtant ces deux analyses ne se contredisent pas\ ! Les deux interprétations sont *simultanément* correctes. C'est l'interprétation asymétrique du test qui permet cela, et l'adverbe **significativement** est indispensable pour introduire cette nuance dans le texte.
 
 
+### Test Chi^2^ d'indépendance
+
+Dans le cas d'un tableau de contingence à **double entrée**, qui croise les niveaux de deux variables qualitatives, nous pouvons effectuer également un test $\chi^2$. Celui-ci sera calculé légèrement différemment et surtout, les hypothèses testées sont différentes. Reprenos le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
+
+
+```r
+timolol <- tibble(
+  traitement = c("timolol", "timolol", "placebo", "placebo"),
+  patient    = c("sain",    "malade",  "sain",    "malade"),
+  freq       = c(44,        116,       19,        128)
+)
+# Création du tableau de contingence 
+timolol_table <- xtabs(data = timolol, freq ~ patient + traitement)
+timolol_table
+```
+
+```
+#         traitement
+# patient  placebo timolol
+#   malade     128     116
+#   sain        19      44
+```
+
+Nous avons ici un tableau de contingence à double entrée qui répertorie le nombre de cas attribués aléatoirement au traitement avec placebo (somme de la première colonne, soit 128 + 19 = 147 patients) et le nombre de cas qui ont reçu du timolol (116 + 44 = 160), tout autre traitement étant par ailleurs équivalent. Nous avons donc un total général de 307 patients étudiés.
+
+La répartition dans le tableau selon les ligne est, elle, tributaire des effets respectifs des deux traitements\ ? La clé ici est de **considérer comme $H_0$ un partitionnement des cas équivalent entre les deux traitements.** Ceci revient au même que de dire que l'effet d'une variable (le traitement administré) est *indépendant* de l'effet de l'autre variable (le fait d'être guéri ou non). C'est pour cette raison qu'on parle de **test $\chi^2$ d'indépendance.** Les hypothèses sont\ :
+
+- $H_0:$ indépendance entre les deux variables
+- $H_1:$ dépendance entre les deux variables
+
+Toute la difficulté est de déterminer les $\alpha_i$, les effectifs qui devraient être observés sous $H_0$. Si le partitionnement était identique selon tous les niveaux des deux variables, nous aurions autant de cas dans chaque cellule du tableau, soit 307/4 = 76,75. Mais n'oublions pas que nous avons attribués plus de patients au traitement timolol qu'au traitement placébo. De même, nous ne contrôlons pas le taux de guérison de la malide qui n'est d'ailleurs généralement pas d'un patient sur 2. Il faut donc *pondérer* les effectifs dans les lignes et les colonnes par rapprt aux totals dans les différents niveaux des variables (en colonne pour la variable `traitement`, en ligne pour la variable `patient`). Donc, si nous indiçons les lignes avec $i = 1 ..m$ et les colonnes avec $j = 1..n$, nos effectifs théoriques $\alpha_{i,j}$ sous hypothèse d'indépendance entre les deux variables sont\ :
+
+$$\alpha_{i, j} =\frac{total\ ligne_i \times total\ colonne_j}{total\ général}$$
+
+Nous pouvons dès lors calculer le $\chi^2_{obs}$ pratiquement comme d'habitude via\ :
+
+$$\chi^2_{obs} = \sum_{i=1}^m{\sum_{j=1}^n{\frac{(a_{i,j} - \alpha_{i,j})^2}{\alpha_{i,j}}}}$$
+
+Enfin, nous comparons cette valeur à la distribution théorique de $\chi^2$  à $(m - 1) \times (n - 1)$ degrés de liberté. Dans le cas d'un tableau 2 par 2, nous avons 1 degré de liberté. Voici le test effectué à l'aide de la fonction `chisq.test()` suivi de l'affichage des effectifs théoriques. Vous accédez facilement à ce code depuis le snippet `Chi2 test (independence)` dans le menu `hypothesis tests: contingency` à partir de `.hc`. Mais avant toute chose, nous devons choisir le seuil $\alpha$ **avant de réaliser le test**. Nous prendrons ici, par exemple, 1% puisque l'analyse est effectuée dans un contexte critique (maladie mortelle).
+
+
+```r
+(chi2. <- chisq.test(timolol_table)); cat("Expected frequencies:\n"); chi2.[["expected"]]
+```
+
+```
+# 
+# 	Pearson's Chi-squared test with Yates' continuity correction
+# 
+# data:  timolol_table
+# X-squared = 9.1046, df = 1, p-value = 0.00255
+```
+
+```
+# Expected frequencies:
+```
+
+```
+#         traitement
+# patient    placebo   timolol
+#   malade 116.83388 127.16612
+#   sain    30.16612  32.83388
+```
+
+##### Interprétation {-}
+
+La valeur *p* de 0,0026 est inférieure au seuil $\alpha$ choisi de 0,01. Donc, nous rejetons $H_0$. Il n'y a pas indépendance entre les deux variables. Pour voir quels sont les effets de la dépendance entre les variables, nous devons comparer les effectifs théoriques affichés ci-dessus avec les effectifs observés. Dans le cas du placébo, sous $H_0$, nous aurions du obtenir 117 malades contre 30 patients guéris. Or, nous en avons 128 malades et seulement 19 guéris. D'un autre côté, sous $H_0$ nous aurions du observer 127 patients malades et 33 sains avec le timolol. Or, nous en observons 116 malades et 44 sains. Donc, les valeurs observées sont en faveur d'un meilleur effet avec le timolol. Nous pourrons dire\ : le timolol a un effet positif significatif sur la guérison de la maladie au seuil $\alpha$ de 1% ($\chi^2$ d'indépendance = 9,10, ddl = 1, valeur *P* - 0,0026).
+
+
+##### Correction de Yates {-}
+
+Si nous calculons le $\chi^2_{obs}$ à la main, nous obtenons\ :
+
+
+```r
+alpha_ij <- chi2.[["expected"]]
+# Les a_i,j sont dans timolol_table
+sum((timolol_table - alpha_ij)^2 / alpha_ij)
+```
+
+```
+# [1] 9.978202
+```
+
+Cela donne 9,98. Or notre test renvoie la valeur de 9,10. A quoi est dûe cette différence\ ? Lisez bien l'intitulé du test réalisé. Il s'agit de "Pearson's Chi-squared test **with Yates' continuity correction**". Il s'agit d'une correction introduite par R dans le cas d'un tableau 2 par 2 uniquement et qui tient compte de ce que la distribution sous $H_0$ est estimée à partir des mêmes données que celle utilisées pour le test, ce qui introduit un biais ainsi corrigé. Il est donc déconseillé de désactiver cette correction, même si nous pouvons le faire en indiquant `correct = FALSE` (ci-dessous, juste pour vérifier notre calcul du $\chi^2_{obs}$ qui est maintenant identique, 9,98).
+
+
+```r
+# Test d'indépendance sans correction de Yates
+chisq.test(timolol_table, correct = FALSE)
+```
+
+```
+# 
+# 	Pearson's Chi-squared test
+# 
+# data:  timolol_table
+# X-squared = 9.9782, df = 1, p-value = 0.001584
+```
+
+
+
+
 ## Evaluation par les pairs
 
 En science, l'évaluation par les pairs ("peer-reviewing" en anglais) est le mécanisme le plus efficace pour améliorer la qualité des travaux publiés (articles scientifiques ou ouvrages plus conséquents). Par définition, les résultats publiés en science sont à la frontière de l'inconnu. Il est donc difficile de vérifier si le travail est correct. Les personnes les plus à même de le faire sont les collègues qui travaillent sur le même sujet, ou dans un domaine proche, les "pairs".
