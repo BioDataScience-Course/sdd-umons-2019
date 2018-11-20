@@ -647,7 +647,7 @@ knitr::kable(tooth_summary2, digits = 2,
 ```
 
 
-## Chainage des instructions
+## Chaînage des instructions
 
 Le chaînage (ou "pipe" en anglais) permet de combiner une suite d'instructions R. Il permet une représentation facilement lisible et compréhensible d'un traitement décomposé en plusieurs étapes simples de remaniement des données.
 

@@ -196,7 +196,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="5.4.4" data-path="remaniement-des-donnees.html"><a href="remaniement-des-donnees.html#group_by"><i class="fa fa-check"></i><b>5.4.4</b> <code>group_by()</code></a></li>
 <li class="chapter" data-level="5.4.5" data-path="remaniement-des-donnees.html"><a href="remaniement-des-donnees.html#summarise"><i class="fa fa-check"></i><b>5.4.5</b> <code>summarise()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="chainage-des-instructions.html"><a href="chainage-des-instructions.html"><i class="fa fa-check"></i><b>5.5</b> Chainage des instructions</a></li>
+<li class="chapter" data-level="5.5" data-path="chainage-des-instructions.html"><a href="chainage-des-instructions.html"><i class="fa fa-check"></i><b>5.5</b> Chaînage des instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Traitement des données II</a><ul>
 <li class="chapter" data-level="6.1" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html"><i class="fa fa-check"></i><b>6.1</b> Tableaux de données</a><ul>
@@ -385,7 +385,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>De même, vous allez devoir attribuer un code <strong>unique</strong> à chaque individu mesuré. Enfin, vous devez vous assurer que toutes les mesures sont réalisées de la même manière et avec des instruments qui, s’ils sont différents, seront cependant <strong>intercalibrés</strong>. Comment faire ? Réfléchissez à cette question sur base d’une mesure de la masse des individus à l’aide de pèse-personnes différents !</p>
 <div id="respect-de-la-vie-privee" class="section level4">
 <h4><span class="header-section-number">6.3.2.1</span> Respect de la vie privée</h4>
-<p>Lors d’expérience sur des personnes, le respect de la vie privée <strong>doit</strong> être pris en compte<a href="references.html#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a>. Le nom et le prénom, ou toute autre information permettant de retrouver les individus étudiés (adresse mail, numéro de sécurité sociale, etc.) ne <em>peut pas</em> apparaître dans la base de données consolidée. En outre, il vous faudra un accord explicite des personnes que vous voulez mesurer, et il faudra leur expliquer <em>ce que</em> vous faites, et <em>comment</em> les données seront ensuite utilisées. Une question se pose : comment pouvoir revenir vers les enregistrements liés à un individu en particulier (en cas d’erreur d’encodage, par exemple) si les informations relatives directement à ces individus ne sont pas consignées dans le tableau final ? Réfléchissez à la façon dont vous vous y prendriez avant de lire la suite…</p>
+<p>Lors d’expérience sur des personnes, le respect de la vie privée <strong>doit</strong> être pris en compte<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. Le nom et le prénom, ou toute autre information permettant de retrouver les individus étudiés (adresse mail, numéro de sécurité sociale, etc.) ne <em>peut pas</em> apparaître dans la base de données consolidée. En outre, il vous faudra un accord explicite des personnes que vous voulez mesurer, et il faudra leur expliquer <em>ce que</em> vous faites, et <em>comment</em> les données seront ensuite utilisées. Une question se pose : comment pouvoir revenir vers les enregistrements liés à un individu en particulier (en cas d’erreur d’encodage, par exemple) si les informations relatives directement à ces individus ne sont pas consignées dans le tableau final ? Réfléchissez à la façon dont vous vous y prendriez avant de lire la suite…</p>
 <p>Voici un petit tableau qui correspond à ce que vous ne pourrez <strong>pas</strong> faire (nom et prénom explicitement mentionnés dans le tableau) :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(biometry_marvel &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tribble</span>(
   <span class="op">~</span>id,                 <span class="op">~</span>sex ,<span class="op">~</span>weight, <span class="op">~</span>height,
@@ -434,15 +434,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Votre objectif est d’acquérir des données pour étudier la prévalence de l’obésité dans la population. En classe, vous allez réfléchir par équipes aux données qu’il vous faudra mesurer : <em>quoi ?</em> <em>pourquoi ?</em> <em>comment ?</em> Les résultats de votre réflexion seront ensuite consolidées pour arriver à un <em>consensus</em> général. Ensuite, le fruit de cette réflexion ainsi que l’analyse que vous réaliserez seront à ajouter dans le projet <strong>sdd1_biometry</strong>. Une feuille Google Sheets sera mise à disposition pour encoder vos données de manière collaborative sur base des spécifications que vous aurez formulées.</p>
 
 <div class="bdd">
-<p>La tableau de données que vous devez completer est disponible via le lien suivant :</p>
+<p>La tableau de données que vous devez completer est disponible via le lien suivant :</p>
 <ul>
 <li><a href="https://docs.google.com/spreadsheets/d/1UfpZvx1_nd7d10vIMAfGVZ1vWyIuzeiKxPL0jfkNSQM/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1UfpZvx1_nd7d10vIMAfGVZ1vWyIuzeiKxPL0jfkNSQM/edit?usp=sharing</a></li>
 </ul>
-<p>Le dictionnaire des données est disponible via le lien suivant :</p>
+<p>Le dictionnaire des données est disponible via le lien suivant :</p>
 <ul>
 <li><a href="https://docs.google.com/document/d/1lgYD39W7vmVYyS5ea0wEl9ArE1dhuDRkIIBzZ4K6d_o/edit?usp=sharing" class="uri">https://docs.google.com/document/d/1lgYD39W7vmVYyS5ea0wEl9ArE1dhuDRkIIBzZ4K6d_o/edit?usp=sharing</a></li>
 </ul>
-<p>Le tableau de données est téléchargeable via le lien suivant :</p>
+<p>Le tableau de données est téléchargeable via le lien suivant :</p>
 <ul>
 <li><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQoVtSWbENWzxbALxD0qyNDqxV4uSYqzLCtJgcNGE7ciT6nkWOjA9b6dMBHaSUY8Nw5f-mSpUEeN-3S/pub?output=csv" class="uri">https://docs.google.com/spreadsheets/d/e/2PACX-1vQoVtSWbENWzxbALxD0qyNDqxV4uSYqzLCtJgcNGE7ciT6nkWOjA9b6dMBHaSUY8Nw5f-mSpUEeN-3S/pub?output=csv</a>
 </div>
@@ -455,8 +455,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div class="footnotes">
 <hr />
-<ol start="26">
-<li id="fn26"><p>En Europe, les données numériques concernant les personnes sont soumises à des règles strictes édictées dans le <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/principles-gdpr_fr">Règlement Général pour la Protection des Données</a> ou <strong>RGPD</strong> en abrégé, en vigueur depuis le 25 mai 2018. Vous devez vous assurer de respecter ce règlement lors de la collecte et de l’utilisation de données relatives à des personnes. Pour les autres type de données, le droit d’auteur ou des copyrights peuvent aussi limiter votre champ d’action. Renseignez-vous !<a href="acquisition-de-donnees.html#fnref26">↩</a></p></li>
+<ol start="3">
+<li id="fn3"><p>En Europe, les données numériques concernant les personnes sont soumises à des règles strictes édictées dans le <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/principles-gdpr_fr">Règlement Général pour la Protection des Données</a> ou <strong>RGPD</strong> en abrégé, en vigueur depuis le 25 mai 2018. Vous devez vous assurer de respecter ce règlement lors de la collecte et de l’utilisation de données relatives à des personnes. Pour les autres type de données, le droit d’auteur ou des copyrights peuvent aussi limiter votre champ d’action. Renseignez-vous !<a href="acquisition-de-donnees.html#fnref3">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

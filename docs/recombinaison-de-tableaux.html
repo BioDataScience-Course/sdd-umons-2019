@@ -196,7 +196,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="5.4.4" data-path="remaniement-des-donnees.html"><a href="remaniement-des-donnees.html#group_by"><i class="fa fa-check"></i><b>5.4.4</b> <code>group_by()</code></a></li>
 <li class="chapter" data-level="5.4.5" data-path="remaniement-des-donnees.html"><a href="remaniement-des-donnees.html#summarise"><i class="fa fa-check"></i><b>5.4.5</b> <code>summarise()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="chainage-des-instructions.html"><a href="chainage-des-instructions.html"><i class="fa fa-check"></i><b>5.5</b> Chainage des instructions</a></li>
+<li class="chapter" data-level="5.5" data-path="chainage-des-instructions.html"><a href="chainage-des-instructions.html"><i class="fa fa-check"></i><b>5.5</b> Chaînage des instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="qualit.html"><a href="qualit.html"><i class="fa fa-check"></i><b>6</b> Traitement des données II</a><ul>
 <li class="chapter" data-level="6.1" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html"><i class="fa fa-check"></i><b>6.1</b> Tableaux de données</a><ul>
@@ -378,7 +378,7 @@ L’aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/da
 L’utilisation des fonction <code>gather()</code> et <code>spread()</code> provenant du package <strong>tidyr</strong> est également décrite en détails dans <a href="https://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering">R for Data Science</a>.
 </p>
 </div>
-<p>Prenons l’exemple d’un jeu de données provenant de l’article scientifique suivant : <a href="http://di.umons.ac.be/details.aspx?pub=0a0de102-c145-403f-9e1c-8ad4fdc1fc39">Paleomicrobiology to investigate copper resistance in bacteria : isolation and description of Cupriavidus necator B9 in the soil of a medieval foundry</a>. L’article est basé sur l’analyse métagénomique de type “shotgun” pour quatre communautés microbiennes (notées <code>c1</code>, <code>c4</code>, <code>c7</code>et <code>c10</code>, respectivement)<a href="references.html#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a>. Il en résulte une longue liste de séquences que l’on peut attribuer à des règnes.</p>
+<p>Prenons l’exemple d’un jeu de données provenant de l’article scientifique suivant : <a href="http://di.umons.ac.be/details.aspx?pub=0a0de102-c145-403f-9e1c-8ad4fdc1fc39">Paleomicrobiology to investigate copper resistance in bacteria : isolation and description of Cupriavidus necator B9 in the soil of a medieval foundry</a>. L’article est basé sur l’analyse métagénomique de type “shotgun” pour quatre communautés microbiennes (notées <code>c1</code>, <code>c4</code>, <code>c7</code>et <code>c10</code>, respectivement)<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. Il en résulte une longue liste de séquences que l’on peut attribuer à des règnes.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shotgun_wide &lt;-<span class="st"> </span><span class="kw">tibble</span>(
   <span class="dt">kingdom =</span> <span class="kw">c</span>(<span class="st">&quot;Archaea&quot;</span>, <span class="st">&quot;Bacteria&quot;</span>, <span class="st">&quot;Eukaryota&quot;</span>, <span class="st">&quot;Viruses&quot;</span>,
               <span class="st">&quot;other sequences&quot;</span>, <span class="st">&quot;unassigned&quot;</span>, <span class="st">&quot;unclassified sequences&quot;</span>),
@@ -408,7 +408,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(shotgun_l
 <img src="images/sdd1_06/gather.gif" alt="gather() par apreshill." />
 <p class="caption"><code>gather()</code> par <a href="https://github.com/apreshill/teachthat/blob/master/gather/gather.gif">apreshill</a>.</p>
 </div>
-<p>Vous conviendrez que le tableau nommé <code>shotgun_long</code> est moins compact et moins aisé à lire comparé à <code>shotgun_wide</code>. C’est une raison qui fait que beaucoup de scientifiques sont tentés d’utiliser le format large alors qu’ici il ne correspond <strong>pas</strong> à un tableau cas par variables correct, puisqu’il est impossible que les <em>mêmes</em> individus soient présents dans les différents lots (il s’agit de communautés microbiennes <em>indépendantes</em> les unes des autres). De plus, seul le format <code>shotgun_long</code> permet de produire des graphiques pertinents<a href="references.html#fn28" class="footnoteRef" id="fnref28"><sup>28</sup></a>.</p>
+<p>Vous conviendrez que le tableau nommé <code>shotgun_long</code> est moins compact et moins aisé à lire comparé à <code>shotgun_wide</code>. C’est une raison qui fait que beaucoup de scientifiques sont tentés d’utiliser le format large alors qu’ici il ne correspond <strong>pas</strong> à un tableau cas par variables correct, puisqu’il est impossible que les <em>mêmes</em> individus soient présents dans les différents lots (il s’agit de communautés microbiennes <em>indépendantes</em> les unes des autres). De plus, seul le format <code>shotgun_long</code> permet de produire des graphiques pertinents<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> shotgun_long, sequences <span class="op">~</span><span class="st"> </span>batch <span class="op">%fill=%</span><span class="st"> </span>kingdom) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre></div>
 <p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-29-1.svg" width="672" style="display: block; margin: auto;" /></p>
@@ -478,9 +478,9 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(crabs)</c
 </div>
 <div class="footnotes">
 <hr />
-<ol start="27">
-<li id="fn27"><p>Les analyses métagénomiques coûtent très cher. Il est souvent impossible de faire des réplicats. Un seul échantillon d’ADN a donc été séquencé ici pour chaque communauté.<a href="recombinaison-de-tableaux.html#fnref27">↩</a></p></li>
-<li id="fn28"><p>Notez malgré tout que, à condition de bien en comprendre les implications, le format complémentaire peut se justifier dans une publication pour y présenter un tableau le plus lisible possible, ce qui est le cas ici. Mais pour les analyses, c’est le format qui correspond à un tableau cas par variables qui <strong>doit</strong> être utilisé.<a href="recombinaison-de-tableaux.html#fnref28">↩</a></p></li>
+<ol start="4">
+<li id="fn4"><p>Les analyses métagénomiques coûtent très cher. Il est souvent impossible de faire des réplicats. Un seul échantillon d’ADN a donc été séquencé ici pour chaque communauté.<a href="recombinaison-de-tableaux.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>Notez malgré tout que, à condition de bien en comprendre les implications, le format complémentaire peut se justifier dans une publication pour y présenter un tableau le plus lisible possible, ce qui est le cas ici. Mais pour les analyses, c’est le format qui correspond à un tableau cas par variables qui <strong>doit</strong> être utilisé.<a href="recombinaison-de-tableaux.html#fnref5">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

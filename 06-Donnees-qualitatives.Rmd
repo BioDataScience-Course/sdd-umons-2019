@@ -326,15 +326,15 @@ Votre objectif est d'acquérir des données pour étudier la prévalence de l'ob
 
 
 ```{block2, type='bdd'}
-La tableau de données que vous devez completer est disponible via le lien suivant :
+La tableau de données que vous devez completer est disponible via le lien suivant\ :
 
 - <https://docs.google.com/spreadsheets/d/1UfpZvx1_nd7d10vIMAfGVZ1vWyIuzeiKxPL0jfkNSQM/edit?usp=sharing>
 
-Le dictionnaire des données est disponible via le lien suivant :
+Le dictionnaire des données est disponible via le lien suivant\ :
 
 - <https://docs.google.com/document/d/1lgYD39W7vmVYyS5ea0wEl9ArE1dhuDRkIIBzZ4K6d_o/edit?usp=sharing>
 
-Le tableau de données est téléchargeable via le lien suivant :
+Le tableau de données est téléchargeable via le lien suivant\ :
   
 - <https://docs.google.com/spreadsheets/d/e/2PACX-1vQoVtSWbENWzxbALxD0qyNDqxV4uSYqzLCtJgcNGE7ciT6nkWOjA9b6dMBHaSUY8Nw5f-mSpUEeN-3S/pub?output=csv>
   
@@ -607,3 +607,8 @@ Il existe, en fait, plusieurs versions pour la fusion de tableaux, représentée
 ##### A vous de jouer {-}
 
 TODO
+
+
+##### Pour en savoir plus {-}
+
+- Un [aide-mémoire général](https://www.business-science.io/r-cheatsheet.html) en science des données avec lien vers les sites webs importants et les autres aide-mémoires.
