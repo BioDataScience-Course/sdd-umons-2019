@@ -55,7 +55,7 @@ chart(data = copepoda, ~ class) +
         axis.line.y = element_line(colour = "#a80039"))
 ```
 
-Outre les barres elles-mêmes, prêtez toujours attention aux élements suivants du graphique (ici mis en évidence en couleurs) :
+Outre les barres elles-mêmes, prêtez toujours attention aux éléments suivants du graphique (ici mis en évidence en couleurs) :
 
 - les axes avec les graduations (en rouge)
 - les niveaux de la variable facteur (en rouge également)
@@ -149,7 +149,7 @@ chart(data = zooplankton, ~ class) +
   ylab("Effectifs")
 ```
 
-Avec la fonction `coord_flip()` ajoutée à votre graphique, vous pouvez effectuer une rotation des axes pour obtenir un **graphique en barres horizontales**. De plus, l'oeil humain perçoit plus distinctement les différences de longueurs horizontales que verticales. Donc, de ce point de vue, le graphe en barres horizontal est considéré comme meilleur que le graphe en barres verticales.
+Avec la fonction `coord_flip()` ajoutée à votre graphique, vous pouvez effectuer une rotation des axes pour obtenir un **graphique en barres horizontales**. De plus, l’œil humain perçoit plus distinctement les différences de longueurs horizontales que verticales. Donc, de ce point de vue, le graphe en barres horizontal est considéré comme meilleur que le graphe en barres verticales.
 
 ```{r, fig.cap="Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales)."}
 chart(data = zooplankton, ~ class) +
@@ -206,7 +206,7 @@ chart(data = copepoda, size ~ class) +
 Ici, nous faisons appel à une autre famille de fonctions : celles qui effectuent des calculs sur les données avant de les représenter graphiquement.
 
 ```{block2, type='warning'}
-Le graphe en barres pour représenter les moyennes est très répandu dans le domaine scientifique malgré le grand nombre d'arguments en sa défaveur et que vous pouvez lire dans la section **pour en savoir plus** ci-dessous. L'un des arguments le plus important est la faible information qu'il véhicule puisque l'ensemble des données n'est plus représentée que par une valeur (la moyenne) pour chaque niveau de la variable facteur. Pour un petit nombre d'observations, il vaut mieux toutes les représenter à l'aide d'un nuage de points. Si le nombre d'observation devient très grand (dizianes ou plus), le graphique en boites de dispersion est plus indiqué (voir plus loin dans ce module).
+Le graphe en barres pour représenter les moyennes est très répandu dans le domaine scientifique malgré le grand nombre d'arguments en sa défaveur et que vous pouvez lire dans la section **pour en savoir plus** ci-dessous. L'un des arguments le plus important est la faible information qu'il véhicule puisque l'ensemble des données n'est plus représenté que par une valeur (la moyenne) pour chaque niveau de la variable facteur. Pour un petit nombre d'observations, il vaut mieux toutes les représenter à l'aide d'un nuage de points. Si le nombre d'observations devient très grand (dizaines ou plus), le graphique en boites de dispersion est plus indiqué (voir plus loin dans ce module).
 ```
 
 
@@ -229,7 +229,7 @@ chart(data = copepoda, ~ factor(0) %fill=% class) +
   scale_fill_viridis_d()
 ```
 
-Ce graphique est plus difficile à réaliser à l'aide de `chart()` ou `ggplot()`. En fait, il faut ruser ici, et l'auteur du package **ggplot2** n'avait tout simplement pas l'intention d'ajouter ce type de graphique dans la panoplie proposée. En effet, il faut savoir que l'oeil humain est nettement moins bon pour repérer des angles que pour comparer des longueurs. **Donc, le diagramme en barres est souvent meilleur pour comparer des effectifs par classes.** Mais d'une part, le graphique en camembert est (malheureusement) un graphique très répandu et il faut savoir l'interpréter, et d'autre part, il peut s'avérer quand même utile dans certaines situations. Notez l'utilisation de la fonction `theme_void()` qui crée un graphique sans axes.
+Ce graphique est plus difficile à réaliser à l'aide de `chart()` ou `ggplot()`. En fait, il faut ruser ici, et l'auteur du package **ggplot2** n'avait tout simplement pas l'intention d'ajouter ce type de graphique dans la panoplie proposée. En effet, il faut savoir que l’œil humain est nettement moins bon pour repérer des angles que pour comparer des longueurs. **Donc, le diagramme en barres est souvent meilleur pour comparer des effectifs par classes.** Mais d'une part, le graphique en camembert est (malheureusement) un graphique très répandu et il faut savoir l'interpréter, et d'autre part, il peut s'avérer quand même utile dans certaines situations. Notez l'utilisation de la fonction `theme_void()` qui crée un graphique sans axes.
 
 
 ##### Pièges et astuces {-}
@@ -351,7 +351,7 @@ combine_charts(list(a, b))
 Vous observez à la Fig. \@ref(fig:boxplot-construct) que certaines valeurs minimales et maximales ne sont pas reliées à la boite de dispersion, il s'agit de **valeurs extrêmes**.
 
 ```{block2, type='note'}
-**Règle pour déterminer s'il y a des valeurs extrêmes avec une boite de dispersion :** une valeur est considérée comme extrême si son écart par rapport à la boite est supérieur à une fois et demi la hauteur de la boite (encore appelée **espace inter-quartile** correspondant à Q3 - Q1). Les tiges (ou "moustaches") qui prolongent la boite de dispersion s'arrêtent donc aux dernières valeurs les plus petites et plus grandes, mais qui rentrent encore dans une fois et demi l'IQR. Les valeurs extrêmes sont ensuite représentées individuellement par un point au dessus et en dessous.
+**Règle pour déterminer s'il y a des valeurs extrêmes avec une boite de dispersion\ :** une valeur est considérée comme extrême si son écart par rapport à la boite est supérieur à une fois et demi la hauteur de la boite (encore appelée **espace inter-quartile** IQR correspondant à Q3 - Q1). Les tiges (ou "moustaches") qui prolongent la boite de dispersion s'arrêtent donc aux dernières valeurs les plus petites et plus grandes, mais qui rentrent encore dans une fois et demi l'IQR. Les valeurs extrêmes sont ensuite représentées individuellement par un point au dessus et en dessous.
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -571,7 +571,7 @@ chart(data = chick_weight, weight ~ Time %col=% Diet) +
   labs(x = "Age [j]", y = "Masse [g]")
 ```
 
-Le graphique à la Fig. \@ref(fig:chick1) est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremélés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L'information est la même mais la lecture est beaucoup plus aisée.
+Le graphique à la Fig. \@ref(fig:chick1) est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremêlés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L'information est la même mais la lecture est beaucoup plus aisée.
 
 ```{r, fig.cap= "Croissance de poulets en utilisant quatre aliments différents (1-4)."}
 chart(data = chick_weight, weight ~ Time | Diet) +
@@ -605,13 +605,13 @@ Il existe d'autres fonctions permettant de combiner plusieurs graphiques comme [
 
 ##### Pour en savoir plus {-} 
 
-- [Partitionnement des graphiques en facettes](http://www.sthda.com/french/wiki/ggplot2-facet-diviser-un-graphique-en-plusieurs-panneaux-logiciel-r-et-visualisation-de-donnees). Differentes options sont présentées ici.
+- [Partitionnement des graphiques en facettes](http://www.sthda.com/french/wiki/ggplot2-facet-diviser-un-graphique-en-plusieurs-panneaux-logiciel-r-et-visualisation-de-donnees). Différentes options sont présentées ici.
 
 - [Figures composées à l'aide de `grid.arrange()`](http://lightonphiri.org/blog/ggplot2-multiple-plots-in-one-graph-using-gridextra). Une autre option, mais moins flexible et moins riche que `combine_charts()`. 
 
 - [Figures composées à l'aide de `plot_grid()`](https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html) avec les différentes options, aussi disponibles avec `combine_charts()`.
 
-- [Troisième possibilité pour des figures composées à l'aide de `ggarrange()`](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggarrange.html). `combine_charts()` fait la même chose, mais avec des valeurs par défaut légèrement différentes (`labels = "auto"` par défault pour ce dernier, mais `labels = NULL` pour `ggarrange()). 
+- [Troisième possibilité pour des figures composées à l'aide de `ggarrange()`](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggarrange.html). `combine_charts()` fait la même chose, mais avec des valeurs par défaut légèrement différentes (`labels = "auto"` par défaut pour ce dernier, mais `labels = NULL` pour `ggarrange()`). 
 
 
 ## Différents moteurs graphiques
@@ -650,7 +650,7 @@ ggplot(data = urchin, mapping = aes(x = weight, y = height, col = origin)) +
 
 En comparant les Figs. \@ref(fig:chart-example) et \@ref(fig:ggplot2-example) (en faisant abstraction des instructions R utilisées pour l'instant), plusieurs points sautent immédiatement aux yeux:
 
-- Le thème par défaut de **ggplot2** est très reconnaissable avec un quadrillage blanc sur fond gris clair. On aime ou on n'aime pas, mais il est clair que (1) ce n'est pas une présentation "standard" d'un graphique scientifique, et (2) le thème tord un peu le cou à une règle importante pour réaliser un graphique de qualité : **minimiser la quantité d'"encre" nécessaire pour représenter un graphique**, autrement dit, plus le graphique est simple et sobre, mieux c'est. Le thème par défaut de `chart()` respecte mieux tout ceci^[Notez que plusieurs thèmes existent dans **ggplot2**. Il est facile d'en changer et des les customiser... mais c'est toujours appréciable d'avoir un rendu impeccable dès le premier essai.].
+- Le thème par défaut de **ggplot2** est très reconnaissable avec un quadrillage blanc sur fond gris clair. On aime ou on n'aime pas, mais il est clair que (1) ce n'est pas une présentation "standard" d'un graphique scientifique, et (2) le thème tord un peu le cou à une règle importante pour réaliser un graphique de qualité : **minimiser la quantité d'"encre" nécessaire pour représenter un graphique**, autrement dit, plus le graphique est simple et sobre, mieux c'est. Le thème par défaut de `chart()` respecte mieux tout ceci^[Notez que plusieurs thèmes existent dans **ggplot2**. Il est facile d'en changer et des les personnaliser... mais c'est toujours appréciable d'avoir un rendu impeccable dès le premier essai.].
 
 - La taille des caractères est légèrement plus grande dans la Fig. \@ref(fig:chart-example) réalisée avec `chart()`. Le manque de lisibilité des parties textuelles dans un graphique est un défaut fréquent, dépendant de la résolution et de la taille de reproduction du graphique dans le document final. Le choix de `chart()` recule un peu ce risque.
 
@@ -709,7 +709,7 @@ b <- chart(data = urchin, height ~ weight %col=% origin) +
 combine_charts(list(a, b))
 ```
 
-La quantité d'instructions nécessaires pour rendre la version **lattice** proche de la version **ggplot2** devrait disparaitre dans les prochaines versions de `chart()`. Un autre objectif est aussi de gommer le plus possible les différences entre les rendus des différents moteurs de graphiques R, et en particuliers entre **ggplot2** et **lattice**. Comparez la Fig. \@ref(fig:chart-lattice-example)A avec la Fig. \@ref(fig:lattice-example) pour apprécier le gain déjà obtenu en matière d'homogénéisation.
+La quantité d'instructions nécessaires pour rendre la version **lattice** proche de la version **ggplot2** devrait disparaître dans les prochaines versions de `chart()`. Un autre objectif est aussi de gommer le plus possible les différences entre les rendus des différents moteurs de graphiques R, et en particuliers entre **ggplot2** et **lattice**. Comparez la Fig. \@ref(fig:chart-lattice-example)A avec la Fig. \@ref(fig:lattice-example) pour apprécier le gain déjà obtenu en matière d'homogénéisation.
 
 ```{block2, type='info'}
 Par rapport à **ggplot2**, les graphiques **lattice** sont moins flexibles du fait qu'ils doivent être spécifiés en une seule instruction. Cependant, ils sont beaucoup plus rapides à générer (appréciable quand il y a beaucoup de points à tracer) ! **lattice** offre également quelques types de graphiques non supportés par **ggplot2** comme les graphiques en 3D à facettes, par exemple.
@@ -772,13 +772,13 @@ chart$base({
 Notez que le graphique est généré deux fois : une première fois dans un format propre aux graphiques R de base, et ensuite, il est traduit en une forme compatible avec les autres graphiques **ggplot2** et **lattice** (et au passage, il gagne la grille en traits grisés). Dans le chunck, nous devons spécifier `fig.keep = 2` pour éviter d'imprimer la première version dans le rapport lorsqu'on utilise `chart$base()`.
 ```
 
-Pour l'instant, le seul avantage de `chart()` avec les graphiques de base est qu'il les convertit en une forme combinable avec les autres graphiques dans une figure composite (sinon, ce n'est pas possible). A part cela, il faut fournir à `chart$base()` tout le code nécessaire pour tracer et customiser le graphique. Comme on peut le voir sur cet exemple, cela demande une quantité considérable de code. C'est aussi un autre aspect pénible de ce moteur graphique : il est très flexible, mais l'interface n'est pas optimale. Pour finir, les graphiques de base ont plus de mal avec les facettes, mais il peuvent quand même générer les versions les plus simples, par exemple à l'aide de la fonction `coplot()` qui accepte une formule très similaire à ce qui s'utilise avec **lattice** :
+Pour l'instant, le seul avantage de `chart()` avec les graphiques de base est qu'il les convertit en une forme combinable avec les autres graphiques dans une figure composite (sinon, ce n'est pas possible). A part cela, il faut fournir à `chart$base()` tout le code nécessaire pour tracer et personnaliser le graphique. Comme on peut le voir sur cet exemple, cela demande une quantité considérable de code. C'est aussi un autre aspect pénible de ce moteur graphique : il est très flexible, mais l'interface n'est pas optimale. Pour finir, les graphiques de base ont plus de mal avec les facettes, mais il peuvent quand même générer les versions les plus simples, par exemple à l'aide de la fonction `coplot()` qui accepte une formule très similaire à ce qui s'utilise avec **lattice** :
 
 ```{r, fig.cap="Graphique à facettes avec le moteur graphique de base."}
 coplot(data = urchin, height ~ weight | origin)
 ```
 
-A l'issue de cette comparaison, vous pourrez décider du moteur graphique que vous préfèrerez utiliser. Dans le cadre de ce cours, nous n'utiliserons en tous cas que quasi-exclusivement des graphiques **ggplot2** créés à l'aide la fonction `chart()`.
+A l'issue de cette comparaison, vous pourrez décider du moteur graphique que vous préférerez utiliser. Dans le cadre de ce cours, nous n'utiliserons en tous cas que quasi-exclusivement des graphiques **ggplot2** créés à l'aide la fonction `chart()`.
 
 
 ##### A vous de jouer {-}

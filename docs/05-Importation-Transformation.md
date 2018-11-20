@@ -21,7 +21,7 @@ Le contenu du module \@ref(intro) doit être parfaitement maîtrisé. Il est ég
 
 ## Importation des données
 
-Il est possible d'encoder des très petits jeux de données dans R. La fonction `tribble()` permet de le faire facilement. Notez que les noms des colonnes du tableau sont à rentrer sous forme de **formules** (`~var`), que chaque entrée est séparée par une virgule, et que les chaines de caractères sont entourées de guillements. Les espaces sont optionnels et peuvent ête utilisés pour aligner les données afin que le tout soit plus lisible. Des commentaires peuvent être utilisés éventuellement en fin de ligne (un dièse `#` suivi du commentaire).
+Il est possible d'encoder des très petits jeux de données dans R. La fonction `tribble()` permet de le faire facilement. Notez que les noms des colonnes du tableau sont à rentrer sous forme de **formules** (`~var`), que chaque entrée est séparée par une virgule, et que les chaines de caractères sont entourées de guillemets. Les espaces sont optionnels et peuvent être utilisés pour aligner les données afin que le tout soit plus lisible. Des commentaires peuvent être utilisés éventuellement en fin de ligne (un dièse `#` suivi du commentaire).
 
 
 ```r
@@ -127,7 +127,7 @@ Lorsque l'extension du fichier reflète le format des données, il vous suffit j
 <p>N'oubliez pas que le chemin d'accès à votre fichier peut s'écrire de manière absolue ou bien de manière relative. <strong>Vous devez autant que possible employer des chemins relatifs</strong> pour que votre projet soit <strong>portable</strong>. Si vous avez du mal à déterminer le chemin relatif par rapport à vos données, le snippet <code>filerelchoose</code> vous sera très utile :</p>
 <ol style="list-style-type: decimal">
 <li><p>Assurez-vous que le chemin actif dans la fenêtre <strong>Console</strong> est le même que le répertoire contenant le fichier édité. Pour cela, utilisez l'entrée de menu RStudio <code>Session -&gt; Set Working Directory -&gt; To Source File Location</code>.</p></li>
-<li><p>Utilisez le snippet <code>filerelchoose</code> que vous activez dans une zone de code R (dans un script R, ou à l'intérieur d'un chunk dans un document R Markdown/R Notebook). Entrez <code>file</code>, attendez que le menu contextuel de complétion apparaisse, sélectionnez <code>filerelchoose</code> dans la liste et tapez <code>Entrée</code>. Une boite de dialogue de sélection de fichier apparait. Sélectionnez le fichier qui vous intéresse et ... <code>file</code> est <strong>remplacé par le chemin relatif vers votre fichier</strong> dans l'éditeur.</p></li>
+<li><p>Utilisez le snippet <code>filerelchoose</code> que vous activez dans une zone de code R (dans un script R, ou à l'intérieur d'un chunk dans un document R Markdown/R Notebook). Entrez <code>file</code>, attendez que le menu contextuel de complétion apparaisse, sélectionnez <code>filerelchoose</code> dans la liste et tapez <code>Entrée</code>. Une boite de dialogue de sélection de fichier apparaît. Sélectionnez le fichier qui vous intéresse et ... <code>file</code> est <strong>remplacé par le chemin relatif vers votre fichier</strong> dans l'éditeur.</p></li>
 </ol>
 </div>
 
@@ -205,7 +205,7 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 # #   gain_std <dbl>
 ```
 
-Lorsque vous travaillez sur des données issues d'une source externe, et donc susceptibles d'être modifiées ou même pire, de disparaître. Il est préférable d'enregistrer une **copie locale** de ces données dans votre projet (dans le sous-dossier `data` de préférence). Si vous travaillez exclusivement avec R, l'un des meilleurs formats est RDS, un format natif qui conservera toutes les caractéristiques de votre objet, y compris sa classe, et d'éventuels attributs^[Si vous devez aussi accéder à vos données à partir d'autres languages comme Python, Java ou C++, utilisez un format commun reconnu par les différents logiciels. Le CSV fonctionne généralement bien, mais des formats binaires plus performants sont également disponibles. Parmi ces formats "inter-languages", gardez un oeil sur [Apache Arrow](https://arrow.apache.org) très prometteur et avec une version pour R qui sera disponible prochainement.]. Par défault, les données seront stockées non compressées, mais vous pourrez aussi décider de compresser avec les algorithmes `"gz"` (plus rapide et répandu), `"bz2"` (intermédaire), ou `"xz"` (le plus efficace en taux de compression mais aussi le plus lent et gourmand en ressources CPU). Par exemple, pour enregistrer les données avec compression `"gz"`, vous écrirez :
+Lorsque vous travaillez sur des données issues d'une source externe, et donc susceptibles d'être modifiées ou même pire, de disparaître. Il est préférable d'enregistrer une **copie locale** de ces données dans votre projet (dans le sous-dossier `data` de préférence). Si vous travaillez exclusivement avec R, l'un des meilleurs formats est RDS, un format natif qui conservera toutes les caractéristiques de votre objet, y compris sa classe, et d'éventuels attributs^[Si vous devez aussi accéder à vos données à partir d'autres langages comme Python, Java ou C++, utilisez un format commun reconnu par les différents logiciels. Le CSV fonctionne généralement bien, mais des formats binaires plus performants sont également disponibles. Parmi ces formats "inter-langages", gardez un œil sur [Apache Arrow](https://arrow.apache.org) très prometteur et avec une version pour R qui sera disponible prochainement.]. Par défaut, les données seront stockées non compressées, mais vous pourrez aussi décider de compresser avec les algorithmes `"gz"` (plus rapide et répandu), `"bz2"` (intermédiaire), ou `"xz"` (le plus efficace en taux de compression mais aussi le plus lent et gourmand en ressources CPU). Par exemple, pour enregistrer les données avec compression `"gz"`, vous écrirez :
 
 
 ```r
@@ -219,7 +219,7 @@ Ensuite, vous pourrez simplement charger ces données plus loin depuis la versio
 coral <- read("../data/coral.rds")
 ```
 
-**Attention, ne supprimez jamais l'instruction permettant de retrouver vos données sur Internet** sous prétexte que vous avez maintenant une copie locale à disposition. C'est le lien, le fil conducteur vers les données originales. Vous pouvez soit mettre l'instruction en commentaire en ajoutant un dièse devant, soit soustraire le chunk de l'évaluation en indiquant `eval=FALSE` dans son entête. Faites-en de même avec l'instruction `write()`. Ainsi, le traitement de vos données commencera à l'instruction `read()` et vous partirez de la copie locale. Si jamais vous voulez effectuer une mise à jour depuis la source initiale, il sera toujours possible de décommenter les instructions, ou de passer le chunk à `eval=TRUE` temporairement (ou encore plus simplement, forcez l'exécution du chunk dans l'éditeur en cliquant sur la petite flèche verte en haut à gauche du chunk).
+**Attention, ne supprimez jamais l'instruction permettant de retrouver vos données sur Internet** sous prétexte que vous avez maintenant une copie locale à disposition. C'est le lien, le fil conducteur vers les données originales. Vous pouvez soit mettre l'instruction en commentaire en ajoutant un dièse devant, soit soustraire le chunk de l'évaluation en indiquant `eval=FALSE` dans son entête. Faites-en de même avec l'instruction `write()`. Ainsi, le traitement de vos données commencera à l'instruction `read()` et vous partirez de la copie locale. Si jamais vous voulez effectuer une mise à jour depuis la source initiale, il sera toujours possible de dé-commenter les instructions, ou de passer le chunk à `eval=TRUE` temporairement (ou encore plus simplement, forcez l'exécution du chunk dans l'éditeur en cliquant sur la petite flèche verte en haut à gauche du chunk).
 
 
 ##### Pièges et astuces {-}
@@ -228,7 +228,7 @@ coral <- read("../data/coral.rds")
 
 - Les données originales ne sont peut-être pas présentées de la façon qui vous convient. Cela peut nécessiter un travail important de **préparation du tableau de données.** Au fur et à mesure que le ou les chunks d'importation/préparation des données augmentent en taille, ils deviennent de plus en plus gênants dans un document consacré à l'**analyse** de ces données. Si c'est le cas, vous avez deux options possibles :
     1. Séparer votre R Markdown en deux. Un premier document dédié à l'importation/préparation des données et un second qui se concentre sur l'analyse. Une bonne pratique consiste à numéroter les fichiers en tête pour qu'ils apparaissent par ordre logique lorsqu'ils sont listés par ordre alphabétique (`01_import.Rmd`, `02_analysis.Rmd`).
-    2. Effectuer le travail d'importation/préparation du tableau de données dans un script R. Dans le R Markdown, vous pouvez ajouter l'instruction (commentée ou placée dans un chunk `eval=FALSE`) pour sourcer ce script R afin de réimporter/retraiter vos données :
+    2. Effectuer le travail d'importation/préparation du tableau de données dans un script R. Dans le R Markdown, vous pouvez ajouter l'instruction (commentée ou placée dans un chunk `eval=FALSE`) pour "sourcer" ce script R afin de réimporter/retraiter vos données\ :
     ```r
     #source("../R/data-import.R")
     ```
@@ -248,7 +248,7 @@ Les packages R comme **data.io**, **chart** ou encore **flow**, fournissent une 
 data("urchin_bio", package = "data.io") # package = optionnel si déjà chargé
 ```
 
-Le jeu de données `urchin_bio` n'est pas véritablement chargé dans l'environnement utilisateur avec `data()`. Seulement une "promesse" de chargement (`Promise`) est enregistrée. Voyez dans l'onglet **Environnement** ce qui apparait. Ce n'est qu'à la première utilisation du jeu de données que le tableau est véritablement chargé. Par exemple :
+Le jeu de données `urchin_bio` n'est pas véritablement chargé dans l'environnement utilisateur avec `data()`. Seulement une "promesse" de chargement (`Promise`) est enregistrée. Voyez dans l'onglet **Environnement** ce qui apparaît. Ce n'est qu'à la première utilisation du jeu de données que le tableau est véritablement chargé. Par exemple :
 
 
 ```r
@@ -279,7 +279,7 @@ head(urchin_bio)
 # 6          0       NA      NA     NA     NA        0 <NA>
 ```
 
-Regardez à nouveau dans l'onglet **Environnement**. Ce coup-ci `urchin_bio` apparait bien dans la section **Data** et l'icône en forme de petit tableau à la droite qui permet de le visualiser est enfin accessible.
+Regardez à nouveau dans l'onglet **Environnement**. Ce coup-ci `urchin_bio` apparaît bien dans la section **Data** et l'icône en forme de petit tableau à la droite qui permet de le visualiser est enfin accessible.
 
 La fonction `read()` permet de choisir librement le nom que nous souhaitons donner à notre jeu de données. Si nous voulons l'appeler `urchin` au lieu de `urchin_bio`, pas de problèmes. De plus, il est directement chargé et accessible dans l'onglet **Environnement** (en effet, si on utilise une instruction qui charge un jeu de données, c'est *très vraissemblablement* parce que l'on souhaite ensuite le manipuler depuis R, non ?). 
 
@@ -334,9 +334,9 @@ combine_charts(list(a, b, c, d))
 <img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-17-1.svg" width="672" style="display: block; margin: auto;" />
 
  
-- A & B: l'argument lang par défaut est `lang = "en"`. Il utilise les labels et unités en anglais avec les unités dans le système international.
-- C : l'argument `lang = "fr"` utilise les labels et unités en français. Il laisse cependant les niveaux des variables facteurs en anglais (`Farm` et `Fishery`) afin d'éviter de devoir changer les instructions de manipulation des données qui feraient référence à ces niveaux.
-- D : l'argument `lang = "FR"` ajoute les labels et unités en français. De plus, il traduit également les niveaux des variables facteurs (`Culture` et `Pêcherie`).
+- A & B\ : l'argument `lang =` par défaut est `lang = "en"`. Il utilise les labels et unités en anglais avec les unités dans le système international.
+- C\ : l'argument `lang = "fr"` utilise les labels et unités en français. Il laisse cependant les niveaux des variables facteurs en anglais (`Farm` et `Fishery`) afin d'éviter de devoir changer les instructions de manipulation des données qui feraient référence à ces niveaux.
+- D\ : l'argument `lang = "FR"` ajoute les labels et unités en français. De plus, il traduit également les niveaux des variables facteurs (`Culture` et `Pêcherie`).
 
 Il vous est conseillé d'employé l'argument `lang = "fr"` lors de vos différents travaux. La langue internationale en science est l'anglais et vous serez très certainement amené dans votre carrière scientifique à produire des documents en français et en anglais. L'utilisation de `lang = "fr"`rend le **même** code réutilisable sur la version française ou anglaise, contrairement à `lang = "FR"`. Observez les exemples ci-dessous.
 
@@ -462,7 +462,7 @@ combine_charts(list(a, b), common.legend = TRUE)
 <p class="caption">(\#fig:two-boxplots)Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de gender`</p>
 </div>
 
-C'est la figure \@ref(fig:two-boxplots)B qui tente de représenter une variable quantitative numérique `height`sous forme de boites de dispersion parallèles (correct), mais en fonction d'une variable de découpage en sous-ensemble (`weight`) qui est elle-même une variable quantitative, ... alors qu'une variable qualitative telle que `gender` aurait dû être utilisée (comme dans la Fig. \@ref(fig:two-boxplots)A). Dans le cas présent, R a bien voulu réaliser le graphique (avec juste une petit warning), mais comment l'interpréter ? Dans d'autres situations, il vous renverra purement et simplement un message d'erreur.
+C'est la figure \@ref(fig:two-boxplots)B qui tente de représenter une variable quantitative numérique `height`sous forme de boites de dispersion parallèles (correct), mais en fonction d'une variable de découpage en sous-ensemble (`weight`) qui est elle-même une variable quantitative, ... alors qu'une variable qualitative telle que `gender` aurait dû être utilisée (comme dans la Fig. \@ref(fig:two-boxplots)A). Dans le cas présent, R a bien voulu réaliser le graphique (avec juste un petit message d'avertissement), mais comment l'interpréter\ ? Dans d'autres situations, il vous renverra purement et simplement un message d'erreur.
 
 
 Les jeux de données, lorsqu'ils sont bien encodés (**tableaux "cas par variables"**, en anglais on parlera de [tidy data](http://vita.had.co.nz/papers/tidy-data.html)) sont en fait un ensemble de variables en colonnes mesurées sur un ensemble d'individus en lignes. Vous avez à votre disposition plusieurs *types* de variables pour personnaliser le jeu de données. Deux catégories principales de variables existent, chacune avec deux sous-catégories :
@@ -472,7 +472,7 @@ Les jeux de données, lorsqu'ils sont bien encodés (**tableaux "cas par variabl
     + Les variables quantitatives **discrètes** sont typiquement représentées par des entiers (`integer` dans R)
     
 - Les variables **qualitatives** sont constituées d'un petit nombre de valeurs possibles (on parle des niveaux de la variables ou de leurs modalités)
-    + Les variables qualitatives **ordonnées** ont des niveaux qui penvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets `ordered`.
+    + Les variables qualitatives **ordonnées** ont des niveaux qui peuvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets `ordered`.
     + Les variables qualitatives **non ordonnées** ont des niveaux qui ne peuvent être rangés et sont typiquement représentées par des objets `factor` en R
 
 Il existe naturellement encore d'autres types de variables. Les dates sont représentées, par exemple, par des objets `Date`, les nombres complexes par `complex`, les données binaires par `raw`, etc.
@@ -489,15 +489,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ────────────────────────────────────────────────────────────────
+# ── Variable type:Date ──────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -580,7 +580,7 @@ Voici un jeu de données qui étudie l'allongement des dents chez le cobaye en f
 tooth <- read("ToothGrowth", package = "datasets", lang = "fr")
 ```
 
-Le jeu de données comprend 60 observations effectuées sur des cochons d'Inde. Ces derniers reçoivent deux types de suppléments alimentaires : soit du jus d'orange (`OJ`), soit de la vitamine C (`VC`). Des lots différents recoivent des doses différentes d'acide ascorbique via ces suppléments, soit 0.5, 1, ou 2 mg/j. Vous pouvez inspecter ces données rapidement avec la fonction `skim()`.
+Le jeu de données comprend 60 observations effectuées sur des cochons d'Inde. Ces derniers reçoivent deux types de suppléments alimentaires : soit du jus d'orange (`OJ`), soit de la vitamine C (`VC`). Des lots différents reçoivent des doses différentes d'acide ascorbique via ces suppléments, soit 0.5, 1, ou 2 mg/j. Vous pouvez inspecter ces données rapidement avec la fonction `skim()`.
 
 
 ```r
@@ -592,11 +592,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -626,7 +626,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -634,7 +634,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -655,7 +655,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -663,7 +663,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -770,7 +770,7 @@ skimr::skim(df)
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -822,7 +822,7 @@ levels(iris20$species)
 # [1] "setosa"     "versicolor" "virginica"
 ```
 
-Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l'espèce *I. setosa*. Dans ce cas, `droplevels()` permettra de faire disparaitre les autres niveaux de la variable `species`.
+Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l'espèce *I. setosa*. Dans ce cas, `droplevels()` permettra de faire disparaître les autres niveaux de la variable `species`.
 
 
 ```r
@@ -847,7 +847,7 @@ table(iris20$species)
 
 ## Remaniement des données
 
-Dans le module \@ref(visu3), vous avez réalisé vos premiers remaniements de données dans le cadre des graphiques en barres. Nous ne nous sommes pas étendu sur les fonctions utilisées à cette occasion. Le **remaniement des données est une étape cruciale en analyse des données** et il faut en maitriser au moins les principaux outils. Heureusement, il est déjà possible d'aller loin en combinant une petite dizaine d'outils simples. Les cinq principaux (les plus utilisés) en tout cas dans l'approche [Tidyverse](https://www.tidyverse.org) utilisée ici sont : 
+Dans le module \@ref(visu3), vous avez réalisé vos premiers remaniements de données dans le cadre des graphiques en barres. Nous ne nous sommes pas étendu sur les fonctions utilisées à cette occasion. Le **remaniement des données est une étape cruciale en analyse des données** et il faut en maîtriser au moins les principaux outils. Heureusement, il est déjà possible d'aller loin en combinant une petite dizaine d'outils simples. Les cinq principaux (les plus utilisés) en tout cas dans l'approche [Tidyverse](https://www.tidyverse.org) utilisée ici sont : 
 
 - sélectionner des colonnes au sein d'un jeu de données avec `select()`
 
@@ -946,11 +946,11 @@ rmarkdown::paged_table(urchin2)
   </script>
 </div>
 
-Si vous voulez sélectionner uniquement un niveau `lvl` d'une variable facteur `fact`, vous pouvez utiliser un **test de condition** "égal à" (`==`) : `fact == "lvl"`. Notez bien le **double** signe égal ici, et n'oubliez pas d'indiquer le niveau entre guillements. De même, vous pouvez sélectionner tout **sauf** ce niveau avec l'opérateur "différent de" (`!=`). Les opérateur "plus petit que" (`<`) ou "plus grand que" (`>`) fonctionnent sur les chaines de caractère selon une logique d'ordre alphabétique, donc, `"a" < "b"`^[L'ordre alphabétique qui fait également intervenir les caractères accentués diffère en fonction de la configuration du système (langue). L'état du système tel que vu par R pour le tri alphabétique est obtenu par `Sys.getlocale("LC_COLLATE")`. Dans la SciViews Box, ceci est **toujours** `"en_US.UTF-8"`, ceci afin de rendre le traitement reproductible d'un PC à l'autre, qu'il soit en anglais, français, espagnol, chinois, ou n'importe quelle autre langue.].
+Si vous voulez sélectionner uniquement un niveau `lvl` d'une variable facteur `fact`, vous pouvez utiliser un **test de condition** "égal à" (`==`) : `fact == "lvl"`. Notez bien le **double** signe égal ici, et n'oubliez pas d'indiquer le niveau entre guillemets. De même, vous pouvez sélectionner tout **sauf** ce niveau avec l'opérateur "différent de" (`!=`). Les opérateur "plus petit que" (`<`) ou "plus grand que" (`>`) fonctionnent sur les chaines de caractère selon une logique d'ordre alphabétique, donc, `"a" < "b"`^[L'ordre alphabétique qui fait également intervenir les caractères accentués diffère en fonction de la configuration du système (langue). L'état du système tel que vu par R pour le tri alphabétique est obtenu par `Sys.getlocale("LC_COLLATE")`. Dans la SciViews Box, ceci est **toujours** `"en_US.UTF-8"`, ceci afin de rendre le traitement reproductible d'un PC à l'autre, qu'il soit en anglais, français, espagnol, chinois, ou n'importe quelle autre langue.].
 
-| Comparaison           | Opérateur | Example         |
+| Comparaison           | Opérateur | Exemple         |
 |:----------------------|:---------:|:----------------|
-| Egal à                |    `==`   | `fact == "lvl"` |
+| Égal à                |    `==`   | `fact == "lvl"` |
 | Différent de          |    `!=`   | `fact != "lvl"` |
 | Plus grand que        |    `>`    | `fact >  "lvl"` |
 | Plus grand ou égal à  |    `>=`   | `fact >= "lvl"` |
@@ -1000,7 +1000,7 @@ rmarkdown::paged_table(urchin_sub3)
   </script>
 </div>
 
-Avec des variables facteurs composées des nombreux niveaux comme on peut en retrouver dans le jeu de données `zooplankton` du package **BioDataScience**, vous pouvez être amené à sélectionner plusieurs niveaux au sein de cette variable. L'opérateur `%in%` permet d'indiquer que ous souhaitons garder tous les niveaux qui sont dans une liste. Il n'existe pas d'opérateur `%not_in%`, mais il suffit d'inverser le résultat en précédent l'instruction de `!` pour obtenir cet effet. Par exemple, `!letters %in% c("a", "d", "f")` conserve toutes les lettres *sauf* a, d et f. L'opérateur `!` est d'ailleurs utilisable avec toutes les comparaisons pour en inverser les effets. Ainsi, `!x == 1` est équivalent à `x != 1`.
+Avec des variables facteurs composées des nombreux niveaux comme on peut en retrouver dans le jeu de données `zooplankton` du package **BioDataScience**, vous pouvez être amené à sélectionner plusieurs niveaux au sein de cette variable. L'opérateur `%in%` permet d'indiquer que nous souhaitons garder tous les niveaux qui sont dans une liste. Il n'existe pas d'opérateur `%not_in%`, mais il suffit d'inverser le résultat en précédent l'instruction de `!` pour obtenir cet effet. Par exemple, `!letters %in% c("a", "d", "f")` conserve toutes les lettres *sauf* a, d et f. L'opérateur `!` est d'ailleurs utilisable avec toutes les comparaisons pour en inverser les effets. Ainsi, `!x == 1` est équivalent à `x != 1`.
 
 
 ```r
@@ -1064,7 +1064,7 @@ rmarkdown::paged_table(select(urchin, skeleton:spines, sum_skel:skeleton2))
 
 - les fonctions mathématiques :
     + `ln()` ou `log()` (logarithme népérien), `lg()` ou `log10()` (logarithme en base 10)
-    + `ln1p()` ou `log1p()` (log. népérien de x + 1), ou `lg1p()` (log. en base 10 de x + 1)
+    + `ln1p()` ou `log1p()` (logarithme népérien de x + 1), ou `lg1p()` (logarithme en base 10 de x + 1)
     + `exp()` (exponentielle, e^x^) et `expm1()` (e^x^ - 1)
     + `sqrt()` (racine carrée)
     + `sin()`, `cos()`, `tan()`
@@ -1205,9 +1205,9 @@ VC        16.96       4.2      16.5      33.9   30
 
 ## Chainage des instructions
 
-Le chainage (ou "pipe" en anglais) permet de combiner une suite d'instructions R. Il permet une représentation facilement lisible et compréhensible d'un traitement décomposé en plusieurs étapes simples de remaniement des données.
+Le chaînage (ou "pipe" en anglais) permet de combiner une suite d'instructions R. Il permet une représentation facilement lisible et compréhensible d'un traitement décomposé en plusieurs étapes simples de remaniement des données.
 
-Différents opérateurs de chainage existent dans R. Le [Tidyverse](https://www.tidyverse.org) et RStudio sont en faveur de l'adoption d'un opérateur de chainage **`%>%`** issu du package **[magrittr](https://magrittr.tidyverse.org)**. Si nous sommes sensibles au clin d'oeil fait ici à un artiste belge bien connu ("ceci n'est pas un pipe"), nous n'adhérons pas à ce choix pour des raisons multiples et plutôt techniques qui n'ont pas leur place dans ce document^[Le lecteur intéressé pourra lire les différents articles suivants : [more pipes in R](http://www.win-vector.com/blog/2017/12/more-pipes-in-r/), y compris les liens qui s'y trouvent, permet de se faire une idée de la diversité des opérateurs de chainage dans R et de leur historique. [Dot pipe](https://winvector.github.io/wrapr/articles/dot_pipe.html) présente l'opérateur `%.>%` du package **wrapr** très proche du nôtre et [in praise of syntactic sugar](http://www.win-vector.com/blog/2017/07/in-praise-of-syntactic-sugar/) explique ses avantages. Nous partageons l'idée que le "pipe de base" ne devrait pas modifier l'instruction de droite contrairement à ce que fait `%>%` de **magrittr**, et notre opérateur `%>.%` va en outre plus loin encore que `%.>%` dans la facilité de déboggage du code chainé. ]. Nous vous présentons ici l'un des opérateurs de chainage du package **flow** : **`%>.%`**. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d'un tableau de données avec et sans l'utilisation du chainage.
+Différents opérateurs de chaînage existent dans R. Le [Tidyverse](https://www.tidyverse.org) et RStudio sont en faveur de l'adoption d'un opérateur de chaînage **`%>%`** issu du package **[magrittr](https://magrittr.tidyverse.org)**. Si nous sommes sensibles au clin d’œil fait ici à un artiste belge bien connu ("ceci n'est pas un pipe"), nous n'adhérons pas à ce choix pour des raisons multiples et plutôt techniques qui n'ont pas leur place dans ce document^[Le lecteur intéressé pourra lire les différents articles suivants : [more pipes in R](http://www.win-vector.com/blog/2017/12/more-pipes-in-r/), y compris les liens qui s'y trouvent, permet de se faire une idée de la diversité des opérateurs de chaînage dans R et de leur historique. [Dot pipe](https://winvector.github.io/wrapr/articles/dot_pipe.html) présente l'opérateur `%.>%` du package **wrapr** très proche du nôtre et [in praise of syntactic sugar](http://www.win-vector.com/blog/2017/07/in-praise-of-syntactic-sugar/) explique ses avantages. Nous partageons l'idée que le "pipe de base" ne devrait pas modifier l'instruction de droite contrairement à ce que fait `%>%` de **magrittr**, et notre opérateur `%>.%` va en outre plus loin encore que `%.>%` dans la facilité de débogage du code chaîne. ]. Nous vous présentons ici l'un des opérateurs de chaînage du package **flow** : **`%>.%`**. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d'un tableau de données avec et sans l'utilisation du chaînage.
 
 
 ```r
@@ -1216,14 +1216,14 @@ biometry <- read("biometry", package = "BioDataScience", lang = "fr")
 
 Vous vous intéressez à l'indice de masse corporelle ou IMC (BMI en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d'observations de manière séparée pour les hommes et les femmes. Pour obtenir ces résultats vous devez : 
 
-- calculer le bmi,
-- filter le tableau pour ne retenir que les individus de moins de 25 ans,
+- calculer le BMI,
+- filtrer le tableau pour ne retenir que les individus de moins de 25 ans,
 - résumer les données afin d'obtenir la moyenne et la médiane par genre,
 - afficher un tableau de données avec ces résultats.
 
-Il est très clair ici que le traitement peut être décomposé en étapes plus simples. Cela apparait naturellement rien que dans la description de ce qui doit être fait. Sans l'utilisation de l'opérateur de chainage, deux approches sont possibles :
+Il est très clair ici que le traitement peut être décomposé en étapes plus simples. Cela apparaît naturellement rien que dans la description de ce qui doit être fait. Sans l'utilisation de l'opérateur de chaînage, deux approches sont possibles :
 
-- Imbriquer les instructions les unes dans les autres (très difficile à lire et à débogger) :
+- Imbriquer les instructions les unes dans les autres (très difficile à lire et à déboguer) :
 
 
 ```r
@@ -1277,7 +1277,7 @@ Genre    Moyenne   Médiane   Observations
 M           22.3      22.1             97
 W           21.8      21.0             94
 
-- Des trois approches, la version ci-dessous ave chainage des opérations est la plus lisible et la plus pratique^[Le chainage n'est cependant pas forcément plus facile à débogger que la version avec variables intermédiaires. Le package **flow** propose la fonction `debug_flow()` à appeler directement après un plantage pour inspecter la dernière instruction qui a causé l'erreur, voir `?debug_flow`.].
+- Des trois approches, la version ci-dessous avec chaînage des opérations est la plus lisible et la plus pratique^[Le chaînage n'est cependant pas forcément plus facile à déboguer que la version avec variables intermédiaires. Le package **flow** propose la fonction `debug_flow()` à appeler directement après un plantage pour inspecter la dernière instruction qui a causé l'erreur, voir `?debug_flow`.].
 
 
 ```r
@@ -1303,26 +1303,25 @@ Genre    Moyenne   Médiane   Observations
 M           22.3      22.1             97
 W           21.8      21.0             94
 
-Le pipe `%>.%` injecte le résultat précédent dans l'instruction suivante à travers l'objet `.` Ainsi, en seconde ligne `mutate(.)`, `.` se réfère à `biometry`. A la ligne suivante, `filter(.)`, le `.` se réfère au résultat issu de l'opération `mutate()`, et ainsi de suite. La logique d'enchainement des opérations sur le résultat, à chaque fois, du calcul précédent est donc le fondement de cet opérateur "pipe".
+Le pipe `%>.%` injecte le résultat précédent dans l'instruction suivante à travers l'objet `.` Ainsi, en seconde ligne `mutate(.)`, `.` se réfère à `biometry`. A la ligne suivante, `filter(.)`, le `.` se réfère au résultat issu de l'opération `mutate()`, et ainsi de suite. La logique d’enchaînement des opérations sur le résultat, à chaque fois, du calcul précédent est donc le fondement de cet opérateur "pipe".
 
-Le pipe permet d'éviter de répéter le nom des objets (version avec variables intermédiaires), ce qui alourdit inutilement le code et le rend moins agréable à la lecture. L'imbrication des fonctions dans la première version est catastrophique pour la compréhension du code car les arguments des fonctions de plus haut niveau sont repoussés loin. Par exemple, l'argument de l'appel à `group_by()` (`gender`) se retrouve quatre lignes plus loin. Et encore, nous avons pris soin d'indenter le code pour repérer sur un plan vertical qui appartient à qui, mais imaginez ce que cela donne si l'instruction est mise à plat sur une seule ligne ! Le code le plus clair à la lecture est définitivement celui avec chainage des opérations. Or, un code plus lisible est plus compréhensible... et donc, moins boggé.
+Le pipe permet d'éviter de répéter le nom des objets (version avec variables intermédiaires), ce qui alourdit inutilement le code et le rend moins agréable à la lecture. L'imbrication des fonctions dans la première version est catastrophique pour la compréhension du code car les arguments des fonctions de plus haut niveau sont repoussés loin. Par exemple, l'argument de l'appel à `group_by()` (`gender`) se retrouve quatre lignes plus loin. Et encore, nous avons pris soin d'indenter le code pour repérer sur un plan vertical qui appartient à qui, mais imaginez ce que cela donne si l'instruction est mise à plat sur une seule ligne ! Le code le plus clair à la lecture est définitivement celui avec chaînage des opérations. Or, un code plus lisible est plus compréhensible... et donc, moins bogué.
 
 
 ##### A vous de jouer {-}
 
-Maintenant que vous venez d'apprendre à importer correctement vos données, à les remanier avec quelques-uns des opérateurs les plus fréquents, et que vous savez chainer vos instructions, il est temps de vous exercer sur un cas concret.
+Maintenant que vous venez d'apprendre à importer correctement vos données, à les remanier avec quelques-uns des opérateurs les plus fréquents, et que vous savez chaîner vos instructions, il est temps de vous exercer sur un cas concret.
 
-\BeginKnitrBlock{bdd}<div class="bdd">Une tâche individuelle vous est assignée via l'URL suivante :
+\BeginKnitrBlock{bdd}<div class="bdd">Une tâche individuelle vous est assignée via l'URL suivante\ :
 
 - <https://classroom.github.com/a/WfxTmH4b>
 
 Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md` de ce dépôt GitHub Classroom.</div>\EndKnitrBlock{bdd}
 
-
-Terminez ce module en vérifiant que vous en avez acquis les notions principales. 
+Terminez ce module en vérifiant que vous en avez acquis les notions principales.
 
 \BeginKnitrBlock{bdd}<div class="bdd">
-Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
     BioDataScience::run("05a_test")
 </div>\EndKnitrBlock{bdd}

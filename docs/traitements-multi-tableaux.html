@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -427,7 +427,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(nutrients
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"2.438","4":"0.443"},{"1":"B0","2":"st1","3":"0.388","4":"0.593"},{"1":"A0","2":"st2","3":"2.441","4":"0.477"},{"1":"B0","2":"st2","3":"0.372","4":"0.167"},{"1":"A0","2":"st3","3":"2.445","4":"0.450"},{"1":"B0","2":"st3","3":"0.390","4":"0.125"},{"1":"A0","2":"st4","3":"2.445","4":"1.145"},{"1":"B0","2":"st4","3":"0.374","4":"0.104"},{"1":"A0","2":"st5","3":"2.433","4":"0.439"},{"1":"B0","2":"st5","3":"0.361","4":"0.093"},{"1":"A0","2":"st6","3":"2.446","4":"0.447"},{"1":"B0","2":"st6","3":"0.394","4":"0.066"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Le tableau <code>nutrients2</code> a maintenant les données présentées dnas le ma^me ordre (en lignes) que le tableau <code>physico</code>. Nous pouvons donc rassembler ces deux tableaux à l’aide de <code>bind_cols()</code> :</p>
+<p>Le tableau <code>nutrients2</code> a maintenant les données présentées dans le ma^me ordre (en lignes) que le tableau <code>physico</code>. Nous pouvons donc rassembler ces deux tableaux à l’aide de <code>bind_cols()</code> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oceano &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(nutrients2, physico)
 rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</code></pre></div>
 <div data-pagedtable="false">
@@ -439,7 +439,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</
 </div>
 <div id="fusion-de-tableaux" class="section level3">
 <h3><span class="header-section-number">6.5.3</span> Fusion de tableaux</h3>
-<p>La fusion fera intervenir une ou plusieurs colonnes communes des deux tableaux pour déterminer quelles lignes du premier correspondent aux lignes du second. Ainsi, la fusion des tableaux est assurée d’être réalisée correctement quel que soit l’odre des lignes dans les deux tableaux d’origine. Utilisons <code>full_join()</code> en joignant les lignes en fonction des valeurs de <code>student</code> et <code>sample</code> :</p>
+<p>La fusion fera intervenir une ou plusieurs colonnes communes des deux tableaux pour déterminer quelles lignes du premier correspondent aux lignes du second. Ainsi, la fusion des tableaux est assurée d’être réalisée correctement quel que soit l’ordre des lignes dans les deux tableaux d’origine. Utilisons <code>full_join()</code> en joignant les lignes en fonction des valeurs de <code>student</code> et <code>sample</code> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oceano &lt;-<span class="st"> </span><span class="kw">full_join</span>(nutrients, physico, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;student&quot;</span>, <span class="st">&quot;sample&quot;</span>))
 rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</code></pre></div>
 <div data-pagedtable="false">

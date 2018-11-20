@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -376,7 +376,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 Figure 4.10: Croissance de poulets en utilisant quatre aliments différents.
 </p>
 </div>
-<p>Le graphique à la Fig. <a href="figures-composees.html#fig:chick1">4.10</a> est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremélés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L’information est la même mais la lecture est beaucoup plus aisée.</p>
+<p>Le graphique à la Fig. <a href="figures-composees.html#fig:chick1">4.10</a> est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremêlés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L’information est la même mais la lecture est beaucoup plus aisée.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> chick_weight, weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age [j]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Masse [g]&quot;</span>)</code></pre></div>
@@ -412,10 +412,10 @@ Figure 4.12: A) Masse d’oursins en fonction de leur taille et de leur origine.
 <div id="pour-en-savoir-plus-11" class="section level5 unnumbered">
 <h5>Pour en savoir plus</h5>
 <ul>
-<li><p><a href="http://www.sthda.com/french/wiki/ggplot2-facet-diviser-un-graphique-en-plusieurs-panneaux-logiciel-r-et-visualisation-de-donnees">Partitionnement des graphiques en facettes</a>. Differentes options sont présentées ici.</p></li>
+<li><p><a href="http://www.sthda.com/french/wiki/ggplot2-facet-diviser-un-graphique-en-plusieurs-panneaux-logiciel-r-et-visualisation-de-donnees">Partitionnement des graphiques en facettes</a>. Différentes options sont présentées ici.</p></li>
 <li><p><a href="http://lightonphiri.org/blog/ggplot2-multiple-plots-in-one-graph-using-gridextra">Figures composées à l’aide de <code>grid.arrange()</code></a>. Une autre option, mais moins flexible et moins riche que <code>combine_charts()</code>.</p></li>
 <li><p><a href="https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html">Figures composées à l’aide de <code>plot_grid()</code></a> avec les différentes options, aussi disponibles avec <code>combine_charts()</code>.</p></li>
-<li><p><a href="http://www.sthda.com/english/rpkgs/ggpubr/reference/ggarrange.html">Troisième possibilité pour des figures composées à l’aide de <code>ggarrange()</code></a>. <code>combine_charts()</code> fait la même chose, mais avec des valeurs par défaut légèrement différentes (<code>labels = &quot;auto&quot;</code> par défault pour ce dernier, mais <code>labels = NULL</code> pour `ggarrange()).</p></li>
+<li><p><a href="http://www.sthda.com/english/rpkgs/ggpubr/reference/ggarrange.html">Troisième possibilité pour des figures composées à l’aide de <code>ggarrange()</code></a>. <code>combine_charts()</code> fait la même chose, mais avec des valeurs par défaut légèrement différentes (<code>labels = &quot;auto&quot;</code> par défaut pour ce dernier, mais <code>labels = NULL</code> pour <code>ggarrange()</code>).</p></li>
 </ul>
 </div>
 </div>

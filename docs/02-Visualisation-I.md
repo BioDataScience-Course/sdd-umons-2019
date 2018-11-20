@@ -13,12 +13,12 @@
 
 - Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez
 
-- Comparer de manière critique un workflow 'classique' en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown ; Prendre conscience de l'énorme potentiel de R
+- Comparer de manière critique un flux de travail "classique" en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown\ ; Prendre conscience de l'énorme potentiel de R
 
 
 ##### Prérequis {-}
 
-Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio, Markdown. Vous devez aussi maîtriser les bases de Git et de GitHub (avoir un compte GitHub, savoir clôner un dépôt localement, travailler avec GitHub Desktop pour faire ses "commits", "push" et "pull"). L'ensemble de ces outils a été abordé lors de la création de votre site personnel professionnel du module \@ref(intro).
+Si ce n'est déjà fait, vous devez installer et vous familiariser avec la 'SciViews Box', RStudio, Markdown. Vous devez aussi maîtriser les bases de Git et de GitHub (avoir un compte GitHub, savoir cloner un dépôt localement, travailler avec GitHub Desktop pour faire ses "commits", "push" et "pull"). L'ensemble de ces outils a été abordé lors de la création de votre site personnel professionnel du module \@ref(intro).
 
 Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels^[Reportez-vous à l'Appendice \@ref(learnr) pour apprendre à utiliser ces tutoriels.].
 
@@ -122,7 +122,7 @@ Vous devez être vigilant lors de la réalisation d'un nuage de point particuli�
 
 - Quels est la précision des mesures effectuées ?
 
-Dans certains cas, la forme du nuage de points peut être distendu par la présence de valeurs aberrantes. Ce n'est pas le cas ici, mais nous pouvons le simuler en distandant artificiellement soit l'axe X, soit l'axe Y, soit les deux :
+Dans certains cas, la forme du nuage de points peut être distendu par la présence de valeurs aberrantes. Ce n'est pas le cas ici, mais nous pouvons le simuler en distendant artificiellement soit l'axe X, soit l'axe Y, soit les deux :
 
 <div class="figure" style="text-align: center">
 <img src="02-Visualisation-I_files/figure-html/unnamed-chunk-5-1.svg" alt="Piège du nuage de points. A) graphique initial montrant la variation de la hauteur [mm] en fonction de la masse [g]. B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification simultanée des deux axes." width="672" />
@@ -132,7 +132,7 @@ Dans certains cas, la forme du nuage de points peut être distendu par la prése
 
 ### Transformation des données
 
-Vous avez la possibilité d'appliquer une transformation de vos données (il est même conseillé de le faire) afin qu'elles soient plus facilement analysables. Par exemple, il est possible d'utiliser des fonctions de puissance, racines, logarithmes, exponentielles^[Pour les proportions (`prop`) ou les pourcentages (`perc`) (valeurs bornées entre 0 et 1 ou 0 et 100%) la transformation arcsin est souvent utilisée : $prop′ = \arcsin \sqrt{prop}$ ou $perc′ = \arcsin \sqrt{perc / 100}$.] pour modifier l'apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d'analyser statistiquement des données qui s'alignent le long d'une droite). Par exemple, sur nos données de hauteurs et masses d'oursins, la transformation double-log (log(x) *et* log(Y)) fonctionne très bien pour rendre le nuage de points plus linéaire :
+Vous avez la possibilité d'appliquer une transformation de vos données (il est même conseillé de le faire) afin qu'elles soient plus facilement analysables. Par exemple, il est possible d'utiliser des fonctions de puissance, racines, logarithmes, exponentielles^[Pour les proportions (`prop`) ou les pourcentages (`perc`) (valeurs bornées entre 0 et 1 ou 0 et 100%) la transformation arc-sinus est souvent utilisée : $prop′ = \arcsin \sqrt{prop}$ ou $perc′ = \arcsin \sqrt{perc / 100}$.] pour modifier l'apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d'analyser statistiquement des données qui s'alignent le long d'une droite). Par exemple, sur nos données de hauteurs et masses d'oursins, la transformation double-logarithmique (log(x) *et* log(Y)) fonctionne très bien pour rendre le nuage de points plus linéaire :
 
 
 ```r
@@ -162,19 +162,19 @@ chart(data = DF, YNUM ~ XNUM) +
   geom_point()
 ```
 
-Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver dans l'aide-mémoire consacré à [**SciViews**](https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf). Vous avez également à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/)) qui utilise la fonction `ggplot()` plutôt que `chart()` et une interface légèrement différente pour spécifier les variables à utiliser pour réaliser le graphique (`aes(x = ..., y = ...)).
+Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver dans l'aide-mémoire consacré à [**SciViews**](https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf). Vous avez également à votre disposition l'aide-mémoire sur la visualisation des données ([**Data Visualization Cheat Sheet**](https://www.rstudio.com/resources/cheatsheets/)) qui utilise la fonction `ggplot()` plutôt que `chart()` et une interface légèrement différente pour spécifier les variables à utiliser pour réaliser le graphique (`aes(x = ..., y = ...)`).
 
 
 ##### A vous de jouer {-}
 
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **individuel**. Une fois votre assignation réalisée, faites un clône local de votre dépôt et placez-le dans le sous-dossier `projects` de votre dossier partagé avec la SciViews Box `shared`. Vous aurez alors un nouveau projet RStudio \@ref(rs-projet)
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **individuel**. Une fois votre assignation réalisée, faites un clone local de votre dépôt et placez-le dans le sous-dossier `projects` de votre dossier partagé avec la SciViews Box `shared`. Vous aurez alors un nouveau projet RStudio \@ref(rs-projet)
 
-\BeginKnitrBlock{bdd}<div class="bdd">Les instructions R que vous expérimentées dans un learnR peuvent être employées également dans un script d'analyse. Sur base du jeu de données `urchin_bio`, explorez différents graphiques en nuages de points. Utilisez l'URL suivante pour accéder à votre tâche :
+\BeginKnitrBlock{bdd}<div class="bdd">Les instructions R que vous expérimentez dans un learnR peuvent être employées également dans un script d'analyse. Sur base du jeu de données `urchin_bio`, explorez différents graphiques en nuages de points. Utilisez l'URL suivante pour accéder à votre tâche\ :
 
 - <https://classroom.github.com/a/eYrXLy_u>
 </div>\EndKnitrBlock{bdd}
 
-Inspirez-vous du script dans le dépôt `sdd1_iris`. Vous devez commencer par faire un "fork" du dépôt, puis un clône sur votre ordinateur en local pour pouvoir l'utiliser. 
+Inspirez-vous du script dans le dépôt `sdd1_iris`. Vous devez commencer par faire un "fork" du dépôt, puis un clone sur votre ordinateur en local pour pouvoir l'utiliser. 
 
 - <https://github.com/BioDataScience-Course/sdd1_iris>
 
@@ -259,9 +259,9 @@ Partez du projet `sdd1_urchin_bio` que vous avez obtenu via le lien GitHub Class
 Votre objectif est de comprendre les données proposées, en utilisant des visualisations graphiques appropriées et en documentant le fruit de votre étude dans un rapport R Notebook. Utilisez le graphique en nuage de points que vous venez d'étudier, bien sûr, mais vous êtes aussi encouragés à expérimenter d'autres formes de visualisation graphique.
 </div>\EndKnitrBlock{bdd}
 
-- Workflow "classique" en biologie (Microsoft Excel et Word) comparé à R et R Markdown.
+- Flux de travail "classique" en biologie (Microsoft Excel et Word) comparé à R et R Markdown.
 
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faites un clône de votre dépôt et placez-le dans le dossier `shared/projects`.
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faites un clone de votre dépôt et placez-le dans le dossier `shared/projects`.
 
 \BeginKnitrBlock{bdd}<div class="bdd">
 Comparez le workflow classique en biologie via Microsoft Office avec l'utilisation de R - R Markdown en suivant les explications dans le fichier `README.md`du dépôt accessible depuis\ :

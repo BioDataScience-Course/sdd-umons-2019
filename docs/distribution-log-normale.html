@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -348,7 +348,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p><span class="math display">\[X \sim log{\text -}N(0, 0.5)\]</span></p>
 <p>alors</p>
 <p><span class="math display">\[log(X) \sim N(0, 0.5)\]</span></p>
-<p>Par facilité, on défini ses deux paramètres de manière relative à la moyenne <span class="math inline">\(\mu\)</span> et à l’écart type <span class="math inline">\(\sigma\)</span> qu’a la distribution normale obtenue après transformation log. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig <a href="distribution-log-normale.html#fig:lognormal">7.11</a>). C’est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.</p>
+<p>Par facilité, on défini ses deux paramètres de manière relative à la moyenne <span class="math inline">\(\mu\)</span> et à l’écart type <span class="math inline">\(\sigma\)</span> qu’a la distribution normale obtenue après transformation logarithmique. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig <a href="distribution-log-normale.html#fig:lognormal">7.11</a>). C’est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.</p>
 <div class="figure" style="text-align: center"><span id="fig:lognormal"></span>
 <img src="07-Probabilites-Distributions_files/figure-html/lognormal-1.svg" alt="Un exemple de distribution log-normale." width="672" />
 <p class="caption">
@@ -358,7 +358,7 @@ Figure 7.11: Un exemple de distribution log-normale.
 </div>
 <div id="snippets" class="section level3">
 <h3><span class="header-section-number">7.7.2</span> Snippets</h3>
-<p>Les fonctions relatives à la distribution log-normale dans R sont <code>&lt;x&gt;lnorm()</code>. Le calcul de probabilités se fait à l’aide de <code>plnorm()</code>, les quantiles se déterminent à partir de <code>qlnorm()</code> et un échantillon pseudo-aléatoire se calcule en utilisant <code>rlnorm()</code>. Les snippets relatifs à la loi log-normale dans la SciViews Box sont accessibles à partir du menu <code>(d)istributions: log-normal</code> à partir de <code>.il</code>) :</p>
+<p>Les fonctions relatives à la distribution log-normale dans R sont <code>&lt;x&gt;lnorm()</code>. Le calcul de probabilités se fait à l’aide de <code>plnorm()</code>, les quantiles se déterminent à partir de <code>qlnorm()</code> et un échantillon pseudo-aléatoire se calcule en utilisant <code>rlnorm()</code>. Les snippets relatifs à la loi log-normale dans la SciViews Box sont accessibles à partir du menu <code>(d)istributions: log-normal</code> à partir de <code>.il</code>) :</p>
 <div class="figure">
 <img src="images/sdd1_07/snippets-lognormal.png" />
 

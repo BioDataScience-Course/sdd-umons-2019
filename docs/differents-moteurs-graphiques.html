@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -456,7 +456,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">d
 Figure 4.17: Graphique exemple réalisé avec <code>chart()</code> A. avec le moteur <strong>lattice</strong>, B. avec le moteur <strong>ggplot2</strong>.
 </p>
 </div>
-<p>La quantité d’instructions nécessaires pour rendre la version <strong>lattice</strong> proche de la version <strong>ggplot2</strong> devrait disparaitre dans les prochaines versions de <code>chart()</code>. Un autre objectif est aussi de gommer le plus possible les différences entre les rendus des différents moteurs de graphiques R, et en particuliers entre <strong>ggplot2</strong> et <strong>lattice</strong>. Comparez la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-lattice-example">4.17</a>A avec la Fig. <a href="differents-moteurs-graphiques.html#fig:lattice-example">4.16</a> pour apprécier le gain déjà obtenu en matière d’homogénéisation.</p>
+<p>La quantité d’instructions nécessaires pour rendre la version <strong>lattice</strong> proche de la version <strong>ggplot2</strong> devrait disparaître dans les prochaines versions de <code>chart()</code>. Un autre objectif est aussi de gommer le plus possible les différences entre les rendus des différents moteurs de graphiques R, et en particuliers entre <strong>ggplot2</strong> et <strong>lattice</strong>. Comparez la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-lattice-example">4.17</a>A avec la Fig. <a href="differents-moteurs-graphiques.html#fig:lattice-example">4.16</a> pour apprécier le gain déjà obtenu en matière d’homogénéisation.</p>
 
 <div class="info">
 Par rapport à <strong>ggplot2</strong>, les graphiques <strong>lattice</strong> sont moins flexibles du fait qu’ils doivent être spécifiés en une seule instruction. Cependant, ils sont beaucoup plus rapides à générer (appréciable quand il y a beaucoup de points à tracer) ! <strong>lattice</strong> offre également quelques types de graphiques non supportés par <strong>ggplot2</strong> comme les graphiques en 3D à facettes, par exemple.
@@ -516,7 +516,7 @@ Figure 4.21: Graphique exemple réalisé avec le moteur graphique de base et la 
 Notez que le graphique est généré deux fois : une première fois dans un format propre aux graphiques R de base, et ensuite, il est traduit en une forme compatible avec les autres graphiques <strong>ggplot2</strong> et <strong>lattice</strong> (et au passage, il gagne la grille en traits grisés). Dans le chunck, nous devons spécifier <code>fig.keep = 2</code> pour éviter d’imprimer la première version dans le rapport lorsqu’on utilise <code>chart$base()</code>.
 </div>
 
-<p>Pour l’instant, le seul avantage de <code>chart()</code> avec les graphiques de base est qu’il les convertit en une forme combinable avec les autres graphiques dans une figure composite (sinon, ce n’est pas possible). A part cela, il faut fournir à <code>chart$base()</code> tout le code nécessaire pour tracer et customiser le graphique. Comme on peut le voir sur cet exemple, cela demande une quantité considérable de code. C’est aussi un autre aspect pénible de ce moteur graphique : il est très flexible, mais l’interface n’est pas optimale. Pour finir, les graphiques de base ont plus de mal avec les facettes, mais il peuvent quand même générer les versions les plus simples, par exemple à l’aide de la fonction <code>coplot()</code> qui accepte une formule très similaire à ce qui s’utilise avec <strong>lattice</strong> :</p>
+<p>Pour l’instant, le seul avantage de <code>chart()</code> avec les graphiques de base est qu’il les convertit en une forme combinable avec les autres graphiques dans une figure composite (sinon, ce n’est pas possible). A part cela, il faut fournir à <code>chart$base()</code> tout le code nécessaire pour tracer et personnaliser le graphique. Comme on peut le voir sur cet exemple, cela demande une quantité considérable de code. C’est aussi un autre aspect pénible de ce moteur graphique : il est très flexible, mais l’interface n’est pas optimale. Pour finir, les graphiques de base ont plus de mal avec les facettes, mais il peuvent quand même générer les versions les plus simples, par exemple à l’aide de la fonction <code>coplot()</code> qui accepte une formule très similaire à ce qui s’utilise avec <strong>lattice</strong> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coplot</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin)</code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-33"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-33-1.svg" alt="Graphique à facettes avec le moteur graphique de base." width="672" />
@@ -524,7 +524,7 @@ Notez que le graphique est généré deux fois : une première fois dans un form
 Figure 4.22: Graphique à facettes avec le moteur graphique de base.
 </p>
 </div>
-<p>A l’issue de cette comparaison, vous pourrez décider du moteur graphique que vous préfèrerez utiliser. Dans le cadre de ce cours, nous n’utiliserons en tous cas que quasi-exclusivement des graphiques <strong>ggplot2</strong> créés à l’aide la fonction <code>chart()</code>.</p>
+<p>A l’issue de cette comparaison, vous pourrez décider du moteur graphique que vous préférerez utiliser. Dans le cadre de ce cours, nous n’utiliserons en tous cas que quasi-exclusivement des graphiques <strong>ggplot2</strong> créés à l’aide la fonction <code>chart()</code>.</p>
 <div id="a-vous-de-jouer-5" class="section level5 unnumbered">
 <h5>A vous de jouer</h5>
 <p>Proposez cinq graphiques inédits (qui n’ont pas été vu jusqu’ici) dans vos différents projets. Employez par exemple les liens suivants pour vous inspirer :</p>
@@ -560,7 +560,7 @@ Figure 4.22: Graphique à facettes avec le moteur graphique de base.
 <div class="footnotes">
 <hr />
 <ol start="15">
-<li id="fn15"><p>Notez que plusieurs thèmes existent dans <strong>ggplot2</strong>. Il est facile d’en changer et des les customiser… mais c’est toujours appréciable d’avoir un rendu impeccable dès le premier essai.<a href="differents-moteurs-graphiques.html#fnref15">↩</a></p></li>
+<li id="fn15"><p>Notez que plusieurs thèmes existent dans <strong>ggplot2</strong>. Il est facile d’en changer et des les personnaliser… mais c’est toujours appréciable d’avoir un rendu impeccable dès le premier essai.<a href="differents-moteurs-graphiques.html#fnref15">↩</a></p></li>
 <li id="fn16"><p>Etant donné l’abondante littérature écrite sur <strong>ggplot2</strong>, il est utile de pouvoir convertir des exemples <strong>ggplot2</strong> en graphiques <code>chart()</code>, si vous êtes convaincu par cette nouvelle interface.<a href="differents-moteurs-graphiques.html#fnref16">↩</a></p></li>
 </ol>
 </div>

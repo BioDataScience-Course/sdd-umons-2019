@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -348,12 +348,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 <h5>A vous de jouer</h5>
 <div class="bdd">
 <p>
-Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre site web professionnel via l’addresse suivante : <a href="https://github.com/BioDataScience-Course/blogdown.source" class="uri">https://github.com/BioDataScience-Course/blogdown.source</a>. Les instructions détaillées sont dans le fichier <code>README.md</code> sur ce dépôt.
+Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre site web professionnel via l’adresse suivante : <a href="https://github.com/BioDataScience-Course/blogdown.source" class="uri">https://github.com/BioDataScience-Course/blogdown.source</a>. Les instructions détaillées sont dans le fichier <code>README.md</code> sur ce dépôt.
 </p>
 </div>
 <p>Lorsque vous éditez votre site blogdown, faites attention à ceci :</p>
 <ul>
-<li><p>Hugo (le logiciel qui compile le site Web) n’est pas très tolérant. Vous <strong>devez</strong> respecter la syntaxe qu’il impose. Faites attention aux détails, comme les <strong>virgules</strong> indispensables pour séparer les items dans une liste. Par exemple, dans la liste <code>[interests]</code> qui apparait dans <code>content/home/about.md</code>, si vous ajoutez des items comme ceci, Hugo ne compilera plus le site correctement.</p>
+<li><p>Hugo (le logiciel qui compile le site Web) n’est pas très tolérant. Vous <strong>devez</strong> respecter la syntaxe qu’il impose. Faites attention aux détails, comme les <strong>virgules</strong> indispensables pour séparer les items dans une liste. Par exemple, dans la liste <code>[interests]</code> qui apparaît dans <code>content/home/about.md</code>, si vous ajoutez des items comme ceci, Hugo ne compilera plus le site correctement.</p>
 <pre><code>  interests = [
     &quot;Biology&quot;,
     &quot;Ecology&quot;
@@ -366,8 +366,8 @@ Maintenant que vous avez appréhendé les différents outils, lancez vous dans l
     &quot;Movies&quot;
   ]</code></pre></li>
 <li><p><strong>Ne cliquez pas sur le bouton <code>Preview</code></strong> lorsque vous éditez un fichier <code>.md</code>. Normalement dans RStudio, c’est effectivement avec ce bouton qu’on obtient une visualisation du rendu final du document. Mais avec blogdown, il <em>faut</em> passer par <code>Addins -&gt; BLOGDOWN -&gt; Serve Site</code>. De plus, si vous avez cliqué sur <code>Preview</code>, le fichier <code>.html</code> généré peut empêcher la bonne construction du site. Donc, <strong>effacez tous les fichiers <code>.html</code> correspondant aux <code>.md</code> présents dans un sous-dossier de <code>content</code></strong>.</p></li>
-<li><p>S’il vous semble que la compilation du site est bloquée, redémarrez R. Dans le menu de RStudio, faites <code>Session -&gt; Restart R</code>, ensuite relancez la compilation du site avec <code>Addins -&gt; BLOGDOWN -&gt; Serve Site</code>. Traquez un message d’erreur éventuel qui apparaitrait dans l’onglet <code>Console</code>, et sinon, vérifiez la syntaxe dans <code>config.toml</code>, les entêtes de tous les fichiers <code>.md</code>, ainsi que l’absence de fichiers <code>.html</code>associés.</p></li>
-<li><p>N’oubliez pas de commiter vos changements à partir de l’onglet <code>Git</code> dans RStudio. A ce stade, vous avez mis à jour les <strong>sources</strong> de votre site, mais pas votre site lui-même. Pour mettre à jour votre site en ligne, il faut aussi commiter les changements dans <code>&lt;your_login&gt;.github.io</code>. Ouvrez ce dernier dépôt dans <code>Github Desktop</code> et effectuez-y un commit. Ensuite, naviguez vers <code>http://&lt;your_login&gt;.github.io</code> pour vérifer ce qui apparait en ligne. Attention, il se peut que le cache du navigateur ou d’un routeur vous renvoie encore une ancienne version. Rafraichissez la page deux ou trois fois pour voir apparaitre la dernière version de votre oeuvre.</p></li>
+<li><p>S’il vous semble que la compilation du site est bloquée, redémarrez R. Dans le menu de RStudio, faites <code>Session -&gt; Restart R</code>, ensuite relancez la compilation du site avec <code>Addins -&gt; BLOGDOWN -&gt; Serve Site</code>. Traquez un message d’erreur éventuel qui apparaîtrait dans l’onglet <code>Console</code>, et sinon, vérifiez la syntaxe dans <code>config.toml</code>, les entêtes de tous les fichiers <code>.md</code>, ainsi que l’absence de fichiers <code>.html</code>associés.</p></li>
+<li><p>N’oubliez pas de “commiter” vos changements à partir de l’onglet <code>Git</code> dans RStudio. A ce stade, vous avez mis à jour les <strong>sources</strong> de votre site, mais pas votre site lui-même. Pour mettre à jour votre site en ligne, il faut aussi “commiter” les changements dans <code>&lt;your_login&gt;.github.io</code>. Ouvrez ce dernier dépôt dans <code>Github Desktop</code> et effectuez-y un “commit”. Ensuite, naviguez vers <code>http://&lt;your_login&gt;.github.io</code> pour vérifier ce qui apparaît en ligne. Attention, il se peut que le cache du navigateur ou d’un routeur vous renvoie encore une ancienne version. Rafraîchissez la page deux ou trois fois pour voir apparaître la dernière version de votre oeuvre.</p></li>
 </ul>
 </div>
 <div id="pour-en-savoir-plus-3" class="section level5 unnumbered">

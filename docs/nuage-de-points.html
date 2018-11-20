@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -411,7 +411,7 @@ N’oubliez pas d’appuyer sur la touche <code>ESC</code> pour reprendre la mai
 <li><p>Est ce que l’axe représente des valeurs plausibles de hauteurs et de masses de ces oursins appartenant à l’espèce <em>Paracentrotus lividus</em> ?</p></li>
 <li><p>Quels est la précision des mesures effectuées ?</p></li>
 </ul>
-<p>Dans certains cas, la forme du nuage de points peut être distendu par la présence de valeurs aberrantes. Ce n’est pas le cas ici, mais nous pouvons le simuler en distandant artificiellement soit l’axe X, soit l’axe Y, soit les deux :</p>
+<p>Dans certains cas, la forme du nuage de points peut être distendu par la présence de valeurs aberrantes. Ce n’est pas le cas ici, mais nous pouvons le simuler en distendant artificiellement soit l’axe X, soit l’axe Y, soit les deux :</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="02-Visualisation-I_files/figure-html/unnamed-chunk-5-1.svg" alt="Piège du nuage de points. A) graphique initial montrant la variation de la hauteur [mm] en fonction de la masse [g]. B) graphique A avec la modification de l'échelle de l'axe X. C) Graphique A avec une seconde modification de l'axe X. D) Graphique A avec modification simultanée des deux axes." width="672" />
 <p class="caption">
@@ -421,7 +421,7 @@ Figure 2.3: Piège du nuage de points. A) graphique initial montrant la variatio
 </div>
 <div id="transformation-des-donnees" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Transformation des données</h3>
-<p>Vous avez la possibilité d’appliquer une transformation de vos données (il est même conseillé de le faire) afin qu’elles soient plus facilement analysables. Par exemple, il est possible d’utiliser des fonctions de puissance, racines, logarithmes, exponentielles<a href="references.html#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> pour modifier l’apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d’analyser statistiquement des données qui s’alignent le long d’une droite). Par exemple, sur nos données de hauteurs et masses d’oursins, la transformation double-log (log(x) <em>et</em> log(Y)) fonctionne très bien pour rendre le nuage de points plus linéaire :</p>
+<p>Vous avez la possibilité d’appliquer une transformation de vos données (il est même conseillé de le faire) afin qu’elles soient plus facilement analysables. Par exemple, il est possible d’utiliser des fonctions de puissance, racines, logarithmes, exponentielles<a href="references.html#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> pour modifier l’apparence du nuage de points dans le but de le rendre plus linéaire (car il est plus facile d’analyser statistiquement des données qui s’alignent le long d’une droite). Par exemple, sur nos données de hauteurs et masses d’oursins, la transformation double-logarithmique (log(x) <em>et</em> log(Y)) fonctionne très bien pour rendre le nuage de points plus linéaire :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique de la hauteur en fonction de la masse</span>
 a &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin, height <span class="op">~</span><span class="st">  </span>weight) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>()
@@ -442,20 +442,20 @@ Figure 2.4: A) Hauteur [mm] en fonction de la masse [g] d’oursins violets. B) 
 <p>RStudio permet de récupérer rapidement des instructions à partir d’une banque de solutions toutes prêtes. Cela s’appelle des <strong>snippets</strong>. Vous avez une série de snippets disponibles dans la SciViews Box. Celui qui vous permet de réaliser un graphique en nuage de points s’appelle <code>.cbxy</code> (pour <strong>c</strong>hart -&gt; <strong>b</strong>ivariate -&gt; <strong>xy</strong>-plot). Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci dans la fenêtre d’édition :</p>
 <pre><code>chart(data = DF, YNUM ~ XNUM) +
   geom_point()</code></pre>
-<p>Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver dans l’aide-mémoire consacré à <a href="https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf"><strong>SciViews</strong></a>. Vous avez également à votre disposition l’aide-mémoire sur la visualisation des données (<a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Data Visualization Cheat Sheet</strong></a>) qui utilise la fonction <code>ggplot()</code> plutôt que <code>chart()</code> et une interface légèrement différente pour spécifier les variables à utiliser pour réaliser le graphique (`aes(x = …, y = …)).</p>
+<p>Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver dans l’aide-mémoire consacré à <a href="https://github.com/BioDataScience-Course/cheatsheets/blob/master/keynote/sciviews_cheatsheet.pdf"><strong>SciViews</strong></a>. Vous avez également à votre disposition l’aide-mémoire sur la visualisation des données (<a href="https://www.rstudio.com/resources/cheatsheets/"><strong>Data Visualization Cheat Sheet</strong></a>) qui utilise la fonction <code>ggplot()</code> plutôt que <code>chart()</code> et une interface légèrement différente pour spécifier les variables à utiliser pour réaliser le graphique (<code>aes(x = ..., y = ...)</code>).</p>
 </div>
 <div id="a-vous-de-jouer-2" class="section level5 unnumbered">
 <h5>A vous de jouer</h5>
-<p>Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom <a href="decouverte-des-outils.html#classroom">1.2.4.3</a>. Cette tâche est un travail <strong>individuel</strong>. Une fois votre assignation réalisée, faites un clône local de votre dépôt et placez-le dans le sous-dossier <code>projects</code> de votre dossier partagé avec la SciViews Box <code>shared</code>. Vous aurez alors un nouveau projet RStudio <a href="rs.html#rs-projet">B.1.1</a></p>
+<p>Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom <a href="decouverte-des-outils.html#classroom">1.2.4.3</a>. Cette tâche est un travail <strong>individuel</strong>. Une fois votre assignation réalisée, faites un clone local de votre dépôt et placez-le dans le sous-dossier <code>projects</code> de votre dossier partagé avec la SciViews Box <code>shared</code>. Vous aurez alors un nouveau projet RStudio <a href="rs.html#rs-projet">B.1.1</a></p>
 
 <div class="bdd">
-<p>Les instructions R que vous expérimentées dans un learnR peuvent être employées également dans un script d’analyse. Sur base du jeu de données <code>urchin_bio</code>, explorez différents graphiques en nuages de points. Utilisez l’URL suivante pour accéder à votre tâche :</p>
+<p>Les instructions R que vous expérimentez dans un learnR peuvent être employées également dans un script d’analyse. Sur base du jeu de données <code>urchin_bio</code>, explorez différents graphiques en nuages de points. Utilisez l’URL suivante pour accéder à votre tâche :</p>
 <ul>
 <li><a href="https://classroom.github.com/a/eYrXLy_u" class="uri">https://classroom.github.com/a/eYrXLy_u</a></li>
 </ul>
 </div>
 
-<p>Inspirez-vous du script dans le dépôt <code>sdd1_iris</code>. Vous devez commencer par faire un “fork” du dépôt, puis un clône sur votre ordinateur en local pour pouvoir l’utiliser.</p>
+<p>Inspirez-vous du script dans le dépôt <code>sdd1_iris</code>. Vous devez commencer par faire un “fork” du dépôt, puis un clone sur votre ordinateur en local pour pouvoir l’utiliser.</p>
 <ul>
 <li><a href="https://github.com/BioDataScience-Course/sdd1_iris" class="uri">https://github.com/BioDataScience-Course/sdd1_iris</a></li>
 </ul>
@@ -487,7 +487,7 @@ N’oubliez pas de vous enregistrer (login GitHub et email UMONS) au début, et 
 <hr />
 <ol start="3">
 <li id="fn3"><p>Dans R, une <strong>formule</strong> permet de spécifier les variables avec lesquelles on souhaite travailler, et leur rôle. Par exemple ici, la variable <em>x</em> sur l’axe des abscisses et la variable <em>y</em> sur l’axe des ordonnées.<a href="nuage-de-points.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>Pour les proportions (<code>prop</code>) ou les pourcentages (<code>perc</code>) (valeurs bornées entre 0 et 1 ou 0 et 100%) la transformation arcsin est souvent utilisée : <span class="math inline">\(prop′ = \arcsin \sqrt{prop}\)</span> ou <span class="math inline">\(perc′ = \arcsin \sqrt{perc / 100}\)</span>.<a href="nuage-de-points.html#fnref4">↩</a></p></li>
+<li id="fn4"><p>Pour les proportions (<code>prop</code>) ou les pourcentages (<code>perc</code>) (valeurs bornées entre 0 et 1 ou 0 et 100%) la transformation arc-sinus est souvent utilisée : <span class="math inline">\(prop′ = \arcsin \sqrt{prop}\)</span> ou <span class="math inline">\(perc′ = \arcsin \sqrt{perc / 100}\)</span>.<a href="nuage-de-points.html#fnref4">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

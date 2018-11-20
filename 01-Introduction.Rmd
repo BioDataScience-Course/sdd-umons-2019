@@ -10,7 +10,7 @@ knitr::opts_chunk$set(comment = "#", fig.align = "center")
 
 - Appréhender ce qu'est la science des données et les (bio)statistiques.
 
-- S'initier à des outils de base (SciViews Box, RStudio, Markdown, Git, Github).
+- S'initier à des outils de base (SciViews Box, RStudio, Markdown, Git, GitHub).
 
 - Se sensibiliser à l'importance d'une présence web au niveau professionnel.
 
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(comment = "#", fig.align = "center")
 
 Il y a 25 ans, pas d'internet, pas de smartphone. Essayez d'imaginer ce que serait votre vie aujourd'hui si ces outils qui font partie de votre quotidien n'existaient pas.
 
-- Les révolutions indistrielles:
+- Les révolutions industrielles:
     * 1770 (1756) révolution 1: mécanisation
     * 1870 révolution 2: maîtrise de l'énergie
     * 1970 (1979) révolution 3: informatique
@@ -27,7 +27,7 @@ Il y a 25 ans, pas d'internet, pas de smartphone. Essayez d'imaginer ce que sera
     * 2000 révolution 5: numérique. GAFA = Google - Apple - Facebook - Amazon + Microsoft = GAFAM aux USA et BATX en Chine = Baidu - Alibaba - Tencent - Xiaomi. Aussi NATU = Netflix - Airbnb - Tesla - Uber.
     * 2010 révolution 6: NBIC = nanotechnologies - biotechnologies - informatique - sciences cognitives.
     * 2020 = date prévue pour que l'ordinateur ait la même puissance de traitement de l'information que le cerveau humain
-    * 2030 = transhumanisme: ordinateur plus puissant que l'homme et le remplacera probablement dans de nombreuses tâches.
+    * 2030 = trans-humanisme: ordinateur plus puissant que l'homme et le remplacera probablement dans de nombreuses tâches.
 
 - Valeur estimée des données et informations mises à disposition par les utilisateurs du net: 1000 milliards de dollar par an (écrivez ce nombre en chiffres pour vous donner une meilleure idée de ce que cela représente) !
 
@@ -37,7 +37,7 @@ Il y a 25 ans, pas d'internet, pas de smartphone. Essayez d'imaginer ce que sera
 
 - Consommation électrique du supercalculateur: se mesure en mégawatts, alors que le cerveau humain consomme 12-13W seulement!
 
-- "Le **transhumanisme** est une approche interdisciplinaire qui nous amène à comprendre et à évaluer les avenues qui nous permettrons de surmonter nos limites biologiques par les progrès technologiques. Les transhumanistes cherchent à développer les possibilités techniques afin que les gens vivent plus longtemps et ..."
+- "Le **transhumanisme** est une approche interdisciplinaire qui nous amène à comprendre et à évaluer les avenues qui nous permettrons de surmonter nos limites biologiques par les progrès technologiques. Les trans-humanistes cherchent à développer les possibilités techniques afin que les gens vivent plus longtemps et ..."
 
 Vous pouvez maintenant avoir un aperçu de l'importance d'avoir des outils performants afin d'appréhender les données dont le nombre croit de manière exponentielle. Pour ce cours de sciences des données,  plusieurs outils puissants sont mis à votre disposition (Vous trouverez sur l'hyperlien suivant, un poster présentant la philosophie du cours <https://github.com/BioDataScience-Course/RencontresRRennes2018>)
 
@@ -57,7 +57,7 @@ knitr::include_graphics('images/sdd1_01/svBox-256.png')
 ```
 
 ```{block, type = 'bdd'}
-Une fois loggé dans la machine virtuelle, réalisez l'activité : **Découverte de la machine virtuelle**
+Une fois connecté au compte `sv` dans la machine virtuelle, réalisez l'activité : **Découverte de la machine virtuelle**
 <https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_svbox.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
@@ -92,7 +92,7 @@ Des explications détaillées se trouvent dans l'annexe \@ref(rs) qui présente 
 
 ##### Pour en savoir plus {-}
 
-- [RStudio](https://www.rstudio.com/). Site Web de RStudio comprennant un ensemble de ressources en anglais
+- [RStudio](https://www.rstudio.com/). Site Web de RStudio comprenant un ensemble de ressources en anglais
 
 - [RStudio, un environnement de développement pour R](https://quanti.hypotheses.org/488/). Brève explication de RStudio en français.
 
@@ -101,7 +101,7 @@ Des explications détaillées se trouvent dans l'annexe \@ref(rs) qui présente 
 
 ### Markdown
 
-Dans RStudio, les rapports sont rédigés en utilisant le language **Markdown** dans la zone d'édition. Il permet de baliser le texte pour indiquer le sens des différentes parties (par exemple, pour indiquer les différents niveaux de titres). Il permet de se concentrer sur l'écriture dans un premier temps en dissociant le fond de la mise en forme. En effet, vous vous préoccupez de l'aspect final du document dans un second temps, et même, vous pouvez changer radicalement d'avis pratiquement sans rien changer dans le texte (par exemple, il est possible de passer d'une page Web à un document PDF ou Word, ou même encore à une présentation).
+Dans RStudio, les rapports sont rédigés en utilisant le langage **Markdown** dans la zone d'édition. Il permet de baliser le texte pour indiquer le sens des différentes parties (par exemple, pour indiquer les différents niveaux de titres). Il permet de se concentrer sur l'écriture dans un premier temps en dissociant le fond de la mise en forme. En effet, vous vous préoccupez de l'aspect final du document dans un second temps, et même, vous pouvez changer radicalement d'avis pratiquement sans rien changer dans le texte (par exemple, il est possible de passer d'une page Web à un document PDF ou Word, ou même encore à une présentation).
 
 ![](images/sdd1_01/markdown.gif)
 
@@ -109,10 +109,10 @@ Dans RStudio, les rapports sont rédigés en utilisant le language **Markdown** 
 
 Vous avez à votre disposition deux aide-mémoires pour apprendre **Markdown** : [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) et [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) plus détaillé.
 
-Après avoir rédiger votre document, vous devez cliquer sur le bouton `Preview` ou `Knit` (selon le type de document édité) dans la barre d'outils de la zone d'édition pour obtenir la version finale formattée.
+Après avoir rédiger votre document, vous devez cliquer sur le bouton `Preview` ou `Knit` (selon le type de document édité) dans la barre d'outils de la zone d'édition pour obtenir la version finale formatée.
 
 ```{block, type = 'bdd'}
-Une fois loggé dans la machine virtuelle, réalisez l'activité : **Découverte de RStudio et R Markdown**
+Une fois connecté au compte `sv` dans la machine virtuelle, réalisez l'activité : **Découverte de RStudio et R Markdown**
 <https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_markdown.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
@@ -122,7 +122,7 @@ Après avoir réalisé l'activité, un document récapitulatif est mis à votre 
 
 ##### Pour en savoir plus {-}
 
-- [Markdown](https://daringfireball.net/projects/markdown/). Explication en anglais de l'intérêt d'employer Markdown ainsi que la syntax à employer.
+- [Markdown](https://daringfireball.net/projects/markdown/). Explication en anglais de l'intérêt d'employer Markdown ainsi que la syntaxe à employer.
 
 - [Rédigez en Markdown !](https://openclassrooms.com/fr/courses/1304236-redigez-en-markdown)
 
@@ -147,11 +147,11 @@ Lors de la rédaction de travaux un petit peu conséquents, comme un travail de 
 - TFE_final...
 - TFE_final99
 
-Lors de différents essais, on va avoir tendance à tout garder dans différents fichiers afin de ne rien supprimer d'important. Cette pratique bien que très courante comporte le gros désavantage de prendre énormément de place sur le disque de votre ordinateur et de n'être pas pratique. Les questions suivantes peuvent se poser : 
+Lors de différents essais, on va avoir tendance à tout garder dans différents fichiers afin de ne rien supprimer d'important. Cette pratique bien que très courante comporte le gros désavantage de prendre énormément de place sur le disque de votre ordinateur et de n'être pas pratique. Les questions suivantes peuvent se poser\ :
 
-- Que se cache t'il dans la version TFE_finalX ? Après 1 mois sans travailler sur le projet, seriez-vous encore capable de faire facilement la différence entre TFE_final2 et le TFE_final3 ? 
+- Que se cache-t-il dans la version TFE_finalX ? Après un mois sans travailler sur le projet, seriez-vous encore capable de faire facilement la différence entre TFE_final2 et le TFE_final3\ ? 
 
-- Cela se complique encore plus lorsque plusieurs personnes collaborent sur un même projet. Ils vont, par exemple, s'échanger par mail différentes versions du travail avec chacun qui y place ses commentaires et modifie différentes parties du texte. Cela peut donner quelque chose comme ceci : 
+- Cela se complique encore plus lorsque plusieurs personnes collaborent sur un même projet. Ils vont, par exemple, s'échanger par email différentes versions du travail avec chacun qui y place ses commentaires et modifie différentes parties du texte. Cela peut donner quelque chose comme ceci\ : 
 
 - TFE_final
 - TFE_final1
@@ -166,7 +166,7 @@ Dans quel fichier se trouve la dernière version de chaque personne ayant collab
 
 Différents outils informatiques existent pour faciliter le travail collaboratif comme :
 
-- Le partage de fichiers en ligne ([Dropbox](https://www.dropbox.com/business/landing-t68fl?_tk=sem_b_goog&_camp=sem-b-goog-emea-be-fre-exact-restructure&_kw=dropbox|e&_ad=244691468861|1t1|c&gclid=CjwKCAjwzenbBRB3EiwAItS-u3vb9iSK6F4MFnw3oWaEq0gwxQk74_ekOASIah0P-9u_pYFis8hxFxoCdOIQAvD_BwE), [Google Drive](https://www.google.com/drive/), [One Drive](https://onedrive.live.com/about/fr-be/)). Ces espaces de stockage sur le cloud ne règlent toujours pas le problème de collaboration sur le même fichier.
+- Le partage de fichiers en ligne ([Dropbox](https://www.dropbox.com/business/landing-t68fl?_tk=sem_b_goog&_camp=sem-b-goog-emea-be-fre-exact-restructure&_kw=dropbox|e&_ad=244691468861|1t1|c&gclid=CjwKCAjwzenbBRB3EiwAItS-u3vb9iSK6F4MFnw3oWaEq0gwxQk74_ekOASIah0P-9u_pYFis8hxFxoCdOIQAvD_BwE), [Google Drive](https://www.google.com/drive/), [One Drive](https://onedrive.live.com/about/fr-be/)). Ces espaces de stockage sur le "cloud" ne règlent toujours pas le problème de collaboration sur le même fichier.
 
 - L'utilisation d'un programme d'édition collaboratif en temps réel ([Etherpad](http://etherpad.org/), [Google Drive - Docs](https://www.google.com/intl/fr_be/docs/about/), [Gobby](https://gobby.github.io/)). Il est possible de travailler en même temps sur un même fichier. Cette option ne règle pas le problème du retour vers une ancienne version. Lorsqu'une modification a été réalisée l'ancienne version est tout simplement écrasée.
 
@@ -184,31 +184,31 @@ Comme vous pouvez le voir ci-dessus, on peut suivre la progression de notre proj
 
 #### GitHub
 
-Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le cloud, les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org), mais dans ce cours, nous utiliserons GitHub ensemble, sachant que les notions apprises ici seront réutilisables ailleurs.
+Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le "cloud", les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org), mais dans ce cours, nous utiliserons GitHub ensemble, sachant que les notions apprises ici seront réutilisables ailleurs.
 
 Lorsque l'on travaille seul tout en utilisant GitHub, l'évolution de notre projet va ressembler à l'arbre ci-dessous : 
 
 ![Représentation des versions successives d'un projet avec GitHub.](images/sdd1_01/github.png)
 
-On réalise un envoi (**push**) lorsque l'on souhaite synchroniser nos changements locaux avec la version sur le cloud. Plusieurs **commit**s peuvent être envoyés avec un seul **push** sur le réseau, et c'est d'ailleurs généralement comme cela que l'on procède. L'inverse (rappatrier localement les changements que d'autres collaborateurs ont envoyé sur la version réseau de notre projet) s'appelle faire un "**pull**".
+On réalise un envoi (**push**) lorsque l'on souhaite synchroniser nos changements locaux avec la version sur le "cloud". Plusieurs **commit**s peuvent être envoyés avec un seul **push** sur le réseau, et c'est d'ailleurs généralement comme cela que l'on procède. L'inverse (rapatrier localement les changements que d'autres collaborateurs ont envoyé sur la version réseau de notre projet) s'appelle faire un "**pull**".
 
-L'avantage principal de **GitHub** ne réside pas vraiment dans la posibilité de réaliser une sauvegarde en ligne mais plutôt dans la possibilité de collaborer avec d'autres personnes présentes sur ce réseau comme l'illustre la figure ci-dessous. Deux scientifiques (les versions représentées par des boules bleues et des boules vertes) collaborent sur un même projet que l'on appele un **dépôt** (**repository** en anglais) lorsqu'il est en ligne. Le premier chercheur (boules bleues) va initier le dépôt et réaliser un "push"" pour rendre son travail accessible sur le réseau (boules oranges). Son collaborateur (boules vertes) va **clôner** (**clone** en anglais) le dépôt sur son ordinateur afin d'y travailler également en local sur son PC. Après avoir fait des changements, il réalise également un **push** sur le réseau. Le premier scientifique, avant de travailler à nouveau sur le projet, va donc réaliser un **pull** afin d'obtenir en local l'ensemble des modifications fournies par son ou ses collaborateurs, et ensuite après modifications en local il effectuera à nouveau un "push". 
+L'avantage principal de **GitHub** ne réside pas vraiment dans la possibilité de réaliser une sauvegarde en ligne mais plutôt dans la possibilité de collaborer avec d'autres personnes présentes sur ce réseau comme l'illustre la figure ci-dessous. Deux scientifiques (les versions représentées par des boules bleues et des boules vertes) collaborent sur un même projet que l'on appelle un **dépôt** (**repository** en anglais) lorsqu'il est en ligne. Le premier chercheur (boules bleues) va initier le dépôt et réaliser un "push"" pour rendre son travail accessible sur le réseau (boules oranges). Son collaborateur (boules vertes) va **clôner** (**clone** en anglais) le dépôt sur son ordinateur afin d'y travailler également en local sur son PC. Après avoir fait des changements, il réalise également un **push** sur le réseau. Le premier scientifique, avant de travailler à nouveau sur le projet, va donc réaliser un **pull** afin d'obtenir en local l'ensemble des modifications fournies par son ou ses collaborateurs, et ensuite après modifications en local il effectuera à nouveau un "pus". 
 
 ![Différentes versions d'un projet sur GitHub lorsque deux personnes différentes collaborent sur le même dépôt.](images/sdd1_01/github1.png)
 
-Vous venez d'apprendre le B-A-BA de la terminologie nécessaire à la bonne compréhension de Git et GitBub :
+Vous venez d'apprendre le B-A-BA de la terminologie nécessaire à la bonne compréhension de Git et GitHub\ :
 
-- **repository** : espace de stockage sous gestion de version Git.
+- **repository**\ : espace de stockage sous gestion de version Git.
 
-- **commit** : enregistrer une version du projet.
+- **commit**\ : enregistrer une version du projet.
 
-- **clone** : créer un double local d'un dépôt GitHub.
+- **clone**\ : créer un double local d'un dépôt GitHub.
 
-- **push** : envoyer ses modifications locales vers le dépôt GitHub.
+- **push**\ : envoyer ses modifications locales vers le dépôt GitHub.
 
-- **pull** : rapatrier les modifications que les autres utilisateurs ont appliqué dans le dépôt GitHub vers sa propre version locale.
+- **pull**\ : rapatrier les modifications que les autres utilisateurs ont appliqué dans le dépôt GitHub vers sa propre version locale.
 
-Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails dans les liens ci-dessous et dans les Appendices. Il est, par exemple, possible de travailler sur une version en parallèle d'un dépôt original pour lequel on n'a pas de droits en écriture. Dans ce cas, il faudra faire une copie dans notre propre compte GitHub du dépôt. Cela s'appelle faire un **fork**. Il n'est pas possible de faire un **push** vers le dépôt d'origine puisqu'on n'a pas les droits en écriture. Dans ce cas, on fera un **pull request**, suggérant ainsi à l'auteur d'origine que nous avons fait des modifications qui pourraient l'intéresser. Si c'est effectivement le cas, il pourra accepter notre "pull request" et intégrer nos suggestions dans le dépôt d'origine. Vous serez amenés à "forker" des dépôts GitHub pour vos exercices, et vous effectuerez également un "pull request" lorsque vous serez suffisamment aguéris avec les autres techniques de gestion de vos projets sous Git et GitHub.
+Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails dans les liens ci-dessous et dans les Appendices. Il est, par exemple, possible de travailler sur une version en parallèle d'un dépôt original pour lequel on n'a pas de droits en écriture. Dans ce cas, il faudra faire une copie dans notre propre compte GitHub du dépôt. Cela s'appelle faire un **fork**. Il n'est pas possible de faire un **push** vers le dépôt d'origine puisqu'on n'a pas les droits en écriture. Dans ce cas, on fera un **pull request**, suggérant ainsi à l'auteur d'origine que nous avons fait des modifications qui pourraient l'intéresser. Si c'est effectivement le cas, il pourra accepter notre "pull request" et intégrer nos suggestions dans le dépôt d'origine. Vous serez amenés à "forker" des dépôts GitHub pour vos exercices, et vous effectuerez également un "pull request" lorsque vous serez suffisamment aguerris avec les autres techniques de gestion de vos projets sous Git et GitHub.
 
 
 ##### Pour en savoir plus {-}
@@ -225,14 +225,14 @@ Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails d
 
 - Installation et première utilisation de [Git et GitHub](http://r-pkgs.had.co.nz/git.html) dans R. En anglais.
 
-- [Git](https://git-scm.com/). Site en anglais comprendant toute la documentation de Git.
+- [Git](https://git-scm.com/). Site en anglais comprenant toute la documentation de Git.
 
 - [GitHub pour les nuls : pas de panique, lancez-vous !](https://www.christopheducamp.com/2013/12/15/github-pour-nuls-partie-1/).
 
 
 #### GitHub Classroom {#classroom}
 
-**GitHub Classroom** est une extension de GitHub qui facilite le travail avec GitHub dans le contexte d'exercices à réaliser dans le cadre d'un cours. Vous serez amené à clôner et modifier des dépots issus de GitHub ClassRoom pour réaliser vos exercices. **Ces dépôts seront privés**. Cela signifique que, seuls vous-mêmes et vos enseignants auront accès à ces dépôts. A la fin de la formation, tous ces dépôts seront détruits. **Donc, si vous voulez les conserver, il faudra les "forker" sur votre propre compte.** Rassurez-vous : nous vous préviendrons avant de faire le ménage ! 
+**GitHub Classroom** est une extension de GitHub qui facilite le travail avec GitHub dans le contexte d'exercices à réaliser dans le cadre d'un cours. Vous serez amené à cloner et modifier des dépôts issus de GitHub Classroom pour réaliser vos exercices. **Ces dépôts seront privés**. Cela signifie que, seuls vous-mêmes et vos enseignants auront accès à ces dépôts. A la fin de la formation, tous ces dépôts seront détruits. **Donc, si vous voulez les conserver, il faudra les "forker" sur votre propre compte.** Rassurez-vous : nous vous préviendrons avant de faire le ménage ! 
 
 *Maintenant que vous comprenez mieux avec quels outils informatiques nous allons travaillez, vous pouvez passer à votre premier exercice pour découvrir la SciViews Box, RStudio, Markdown, Git et GitHub : vous allez réaliser un site web professionnel en ligne...*
 
@@ -249,12 +249,12 @@ Dans le cadre de ce premier module, vous allez réaliser votre premier site web 
 ##### A vous de jouer {-}
 
 ```{block, type = 'bdd'}
-Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre site web professionnel via l'addresse suivante : <https://github.com/BioDataScience-Course/blogdown.source>. Les instructions détaillées sont dans le fichier `README.md` sur ce dépôt.
+Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre site web professionnel via l’adresse suivante : <https://github.com/BioDataScience-Course/blogdown.source>. Les instructions détaillées sont dans le fichier `README.md` sur ce dépôt.
 ```
 
 Lorsque vous éditez votre site blogdown, faites attention à ceci :
 
-- Hugo (le logiciel qui compile le site Web) n'est pas très tolérant. Vous **devez** respecter la syntaxe qu'il impose. Faites attention aux détails, comme les **virgules** indispensables pour séparer les items dans une liste. Par exemple, dans la liste `[interests]` qui apparait dans `content/home/about.md`, si vous ajoutez des items comme ceci, Hugo ne compilera plus le site correctement.
+- Hugo (le logiciel qui compile le site Web) n'est pas très tolérant. Vous **devez** respecter la syntaxe qu'il impose. Faites attention aux détails, comme les **virgules** indispensables pour séparer les items dans une liste. Par exemple, dans la liste `[interests]` qui apparaît dans `content/home/about.md`, si vous ajoutez des items comme ceci, Hugo ne compilera plus le site correctement.
     ```
       interests = [
         "Biology",
@@ -273,9 +273,9 @@ Lorsque vous éditez votre site blogdown, faites attention à ceci :
 
 - **Ne cliquez pas sur le bouton `Preview`** lorsque vous éditez un fichier `.md`. Normalement dans RStudio, c'est effectivement avec ce bouton qu'on obtient une visualisation du rendu final du document. Mais avec blogdown, il *faut* passer par `Addins -> BLOGDOWN -> Serve Site`. De plus, si vous avez cliqué sur `Preview`, le fichier `.html` généré peut empêcher la bonne construction du site. Donc, **effacez tous les fichiers `.html` correspondant aux `.md` présents dans un sous-dossier de `content`**.
 
-- S'il vous semble que la compilation du site est bloquée, redémarrez R. Dans le menu de RStudio, faites `Session -> Restart R`, ensuite relancez la compilation du site avec `Addins -> BLOGDOWN -> Serve Site`. Traquez un message d'erreur éventuel qui apparaitrait dans l'onglet `Console`, et sinon, vérifiez la syntaxe dans `config.toml`, les entêtes de tous les fichiers `.md`, ainsi que l'absence de fichiers `.html`associés.
+- S'il vous semble que la compilation du site est bloquée, redémarrez R. Dans le menu de RStudio, faites `Session -> Restart R`, ensuite relancez la compilation du site avec `Addins -> BLOGDOWN -> Serve Site`. Traquez un message d'erreur éventuel qui apparaîtrait dans l'onglet `Console`, et sinon, vérifiez la syntaxe dans `config.toml`, les entêtes de tous les fichiers `.md`, ainsi que l'absence de fichiers `.html`associés.
 
-- N'oubliez pas de commiter vos changements à partir de l'onglet `Git` dans RStudio. A ce stade, vous avez mis à jour les **sources** de votre site, mais pas votre site lui-même. Pour mettre à jour votre site en ligne, il faut aussi commiter les changements dans `<your_login>.github.io`. Ouvrez ce dernier dépôt dans `Github Desktop` et effectuez-y un commit. Ensuite, naviguez vers `http://<your_login>.github.io` pour vérifer ce qui apparait en ligne. Attention, il se peut que le cache du navigateur ou d'un routeur vous renvoie encore une ancienne version. Rafraichissez la page deux ou trois fois pour voir apparaitre la dernière version de votre oeuvre.
+- N'oubliez pas de "commiter" vos changements à partir de l'onglet `Git` dans RStudio. A ce stade, vous avez mis à jour les **sources** de votre site, mais pas votre site lui-même. Pour mettre à jour votre site en ligne, il faut aussi "commiter" les changements dans `<your_login>.github.io`. Ouvrez ce dernier dépôt dans `Github Desktop` et effectuez-y un "commit". Ensuite, naviguez vers `http://<your_login>.github.io` pour vérifier ce qui apparaît en ligne. Attention, il se peut que le cache du navigateur ou d'un routeur vous renvoie encore une ancienne version. Rafraîchissez la page deux ou trois fois pour voir apparaître la dernière version de votre oeuvre.
 
 
 ##### Pour en savoir plus {-}

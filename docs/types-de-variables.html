@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -372,7 +372,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, height <
 Figure 5.1: Boites de dispersion parallèles de la taille (<code>height</code>) en fonction de A. une variable qualitative (<code>gender</code>) et B. une variable quantitative (<code>weight</code>) et couleur en fonction de gender`
 </p>
 </div>
-<p>C’est la figure <a href="types-de-variables.html#fig:two-boxplots">5.1</a>B qui tente de représenter une variable quantitative numérique <code>height</code>sous forme de boites de dispersion parallèles (correct), mais en fonction d’une variable de découpage en sous-ensemble (<code>weight</code>) qui est elle-même une variable quantitative, … alors qu’une variable qualitative telle que <code>gender</code> aurait dû être utilisée (comme dans la Fig. <a href="types-de-variables.html#fig:two-boxplots">5.1</a>A). Dans le cas présent, R a bien voulu réaliser le graphique (avec juste une petit warning), mais comment l’interpréter ? Dans d’autres situations, il vous renverra purement et simplement un message d’erreur.</p>
+<p>C’est la figure <a href="types-de-variables.html#fig:two-boxplots">5.1</a>B qui tente de représenter une variable quantitative numérique <code>height</code>sous forme de boites de dispersion parallèles (correct), mais en fonction d’une variable de découpage en sous-ensemble (<code>weight</code>) qui est elle-même une variable quantitative, … alors qu’une variable qualitative telle que <code>gender</code> aurait dû être utilisée (comme dans la Fig. <a href="types-de-variables.html#fig:two-boxplots">5.1</a>A). Dans le cas présent, R a bien voulu réaliser le graphique (avec juste un petit message d’avertissement), mais comment l’interpréter ? Dans d’autres situations, il vous renverra purement et simplement un message d’erreur.</p>
 <p>Les jeux de données, lorsqu’ils sont bien encodés (<strong>tableaux “cas par variables”</strong>, en anglais on parlera de <a href="http://vita.had.co.nz/papers/tidy-data.html">tidy data</a>) sont en fait un ensemble de variables en colonnes mesurées sur un ensemble d’individus en lignes. Vous avez à votre disposition plusieurs <em>types</em> de variables pour personnaliser le jeu de données. Deux catégories principales de variables existent, chacune avec deux sous-catégories :</p>
 <ul>
 <li>Les variables <strong>quantitatives</strong> sont issues de mesures quantitatives ou de dénombrements
@@ -382,7 +382,7 @@ Figure 5.1: Boites de dispersion parallèles de la taille (<code>height</code>) 
 </ul></li>
 <li>Les variables <strong>qualitatives</strong> sont constituées d’un petit nombre de valeurs possibles (on parle des niveaux de la variables ou de leurs modalités)
 <ul>
-<li>Les variables qualitatives <strong>ordonnées</strong> ont des niveaux qui penvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets <code>ordered</code>.</li>
+<li>Les variables qualitatives <strong>ordonnées</strong> ont des niveaux qui peuvent être classés dans un ordre du plus petit au plus grand. elles sont typiquement représentées dans R par des objets <code>ordered</code>.</li>
 <li>Les variables qualitatives <strong>non ordonnées</strong> ont des niveaux qui ne peuvent être rangés et sont typiquement représentées par des objets <code>factor</code> en R</li>
 </ul></li>
 </ul>
@@ -393,15 +393,15 @@ Figure 5.1: Boites de dispersion parallèles de la taille (<code>height</code>) 
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ────────────────────────────────────────────────────────────────
+# ── Variable type:Date ──────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177

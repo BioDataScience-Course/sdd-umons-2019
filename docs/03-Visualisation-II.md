@@ -14,12 +14,12 @@
 
 ##### Prérequis {-}
 
-Pour réaliser les exercices dans ce module, vous devez être capables de travailler dans la SciViews Box et dans RStudio. Vous devez également maîtriser les bases de Git et GitHub. Tout ceci est enseigné dans le module \@ref(intro). Vous devez également être familiés avec les graphiques dans R et R Markdown, une matière qui fait l'objet du module \@ref(visu1).
+Pour réaliser les exercices dans ce module, vous devez être capables de travailler dans la SciViews Box et dans RStudio. Vous devez également maîtriser les bases de Git et GitHub. Tout ceci est enseigné dans le module \@ref(intro). Vous devez également être familiarisés avec les graphiques dans R et R Markdown, une matière qui fait l'objet du module \@ref(visu1).
 
 
 #####  Préparatifs {-}
 
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Une fois votre assignation réalisée, faites un clône de votre dépôt et placez-le dans le dossier `shared/projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs-projet) que vous obtiendrez via une tâche GitHub Classroom.
+Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Une fois votre assignation réalisée, faites un clone de votre dépôt et placez-le dans le dossier `shared/projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs-projet) que vous obtiendrez via une tâche GitHub Classroom.
 
 \BeginKnitrBlock{bdd}<div class="bdd">Un projet sur le zooplancton provenant de Madagascar est mis à votre disposition. Utilisez l'URL suivante qui va vous donner accès à votre tâche. **Cette tâche est un travail en binôme**
 
@@ -41,7 +41,7 @@ Vous souhaitez visualiser l'étalement de vos données sur un axe (on parle de *
 
 Outre l'histogramme lui-même, représenté par des barres de hauteur équivalentes au nombre de fois que les observations ont été réalisées dans les différentes classes, les éléments suivants sont également indispensables à la compréhension du graphique (ici mis en évidence en couleur)
 
-- Les axes avec les graduations (en rouge). Su l'axe des abscisses, les classes de tailles, et sur l'axe des ordonnées, le nombre d'occurence
+- Les axes avec les graduations (en rouge). Su l'axe des abscisses, les classes de tailles, et sur l'axe des ordonnées, le nombre d’occurrence
 - les labels des axes et l'unité (pour l'axe des abscisses uniquement ici) (en bleu)
 
 Les instructions dans R afin de produire un histogramme à l'aide de la fonction `chart()` sont :
@@ -89,7 +89,7 @@ chart(data = zooplankton, ~ size) +
 
 La fonction `chart()` requiert comme argument le jeu de donnée (`zooplankton`), ainsi que la formule à employer dans laquelle vous avez indiqué le nom de la variable que vous voulez sur l'axe des abscisses à droite de la formule, après le tilde `~`. Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter `size`, Jusqu'ici, nous avons spécifié _ce que_ nous voulons représenter, mais pas encore _comment_ (sous quelle apparence), nous voulons matérialiser cela sur le graphique. Pour un histogramme, nous devons ajouter la fonction `geom_histogram()`. L'argument `bins` dans cette fonction permet de préciser le nombre de classes souhaitées. Le découpage en classe se fait automatiquement dans R à partir de la variable `size` d'origine.
 
-Vous pouvez décrypter votre histogramme sur base des **modes**^[Les **modes** d'un histogramme correspondent à des classes plus abondantes localement, c'est-à-dire que les classes à gauche et à droite du mode comptent moins d'occurences que lui.] et de la **symétrie**^[Un histogramme est dit **symétrique** lorsque son profil à gauche est identique ou très similaire à son profil à droite autour d'un mode.] de ces derniers. Un histogramme peut être unimodal (un seul mode), bimodal (deux modes) ou multimodal (plus de deux modes). En général, s'il y a plus d'un mode, nous pouvons suspecter que des sous-populations existent au sein de notre échantillon.
+Vous pouvez décrypter votre histogramme sur base des **modes**^[Les **modes** d'un histogramme correspondent à des classes plus abondantes localement, c'est-à-dire que les classes à gauche et à droite du mode comptent moins d’occurrences que lui.] et de la **symétrie**^[Un histogramme est dit **symétrique** lorsque son profil à gauche est identique ou très similaire à son profil à droite autour d'un mode.] de ces derniers. Un histogramme peut être unimodal (un seul mode), bimodal (deux modes) ou multimodal (plus de deux modes). En général, s'il y a plus d'un mode, nous pouvons suspecter que des sous-populations existent au sein de notre échantillon.
 
 <div class="figure" style="text-align: center">
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
@@ -203,7 +203,7 @@ chart(data = iris, ~ sepal_length | species) +
 <p class="caption">(\#fig:unnamed-chunk-6)Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces).</p>
 </div>
 
-L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec `|` et l'argument `%fill=%`^[Astuce proposée [ici](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2).]. Il faut ensuite ajouter par derriere un histogramme grisé de l'ensemble des données.
+L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec `|` et l'argument `%fill=%`^[Astuce proposée [ici](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2).]. Il faut ensuite ajouter par derrière un histogramme grisé de l'ensemble des données.
 
 
 ```r

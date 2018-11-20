@@ -62,13 +62,15 @@ Le test d'hypothèse ou test statistique est l'outil le plus simple pour répond
 
 Les deux hypothèses ne sont pas symétriques. Notre intention est de **rejeter $H_0$**. Dans ce cas, nous pourrons considérer que $H_1$ est vraie, avec un certain degré de certitude que nous pourrons également quantifier. Si nous n'y arrivons pas, nous dirons que nous ne pouvons pas rejeter $H_0$, mais nous ne pourrons jamais dire que que nous l'**acceptons** car dans ce cas, deux explications resteront possibles\ : (1) $H_0$ est effectivement vraie, ou (2) $H_0$ est fausse mais nous n'avons pas *assez* de données à disposition pour le démontrer avec le niveau de certitude recherché.
 
+
 ##### A vous de jouer ! {-}
 
 \BeginKnitrBlock{bdd}<div class="bdd">
-Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
     BioDataScience::run("08a_chi2")
 </div>\EndKnitrBlock{bdd}
+
 
 ### Becs croisés des sapins
 
@@ -155,13 +157,13 @@ Pour répondre à la question, il nous faut une loi de distribution statistique 
 
 ### Seuil α du test
 
-Le raisonnement du test d'hypothèse pour répondre à notre question est le suivant. Connaissant la densité de probabilité théorique sous $H_0$, nous savons que, plus le $\chi^2_\mathrm{obs}$ est grand, moins il est plausible. Nous devons décider d'une limite à partir de laquelle nous considèrerons que la valeur observée est suffisamment grande pour que $H_0$ devienne trop peu plausible et nous pourrons alors la rejeter. Cette limite se définit sous la forme d'une **probabilité** correspondant à une zone ou aire de rejet définie dans la distribution théorique de référence sous $H_0$. Cette limite s'appelle le **seuil $\alpha$ du test**.
+Le raisonnement du test d'hypothèse pour répondre à notre question est le suivant. Connaissant la densité de probabilité théorique sous $H_0$, nous savons que, plus le $\chi^2_\mathrm{obs}$ est grand, moins il est plausible. Nous devons décider d'une limite à partir de laquelle nous considérerons que la valeur observée est suffisamment grande pour que $H_0$ devienne trop peu plausible et nous pourrons alors la rejeter. Cette limite se définit sous la forme d'une **probabilité** correspondant à une zone ou aire de rejet définie dans la distribution théorique de référence sous $H_0$. Cette limite s'appelle le **seuil $\alpha$ du test**.
 
 <div class="note">
-<p><strong>Choix du seuil <span class="math inline">\(\alpha\)</span> d'un test d'hypothèse.</strong> Le seuil <span class="math inline">\(\alpha\)</span> est choisi <em>avant</em> de réaliser le test. Il est un savant compromis entre le risque de se tromper qui diminue plus <span class="math inline">\(\alpha\)</span> est petit, et la possibilité d'obtenir le rejet de <span class="math inline">\(H_0\)</span> lorsqu'elle est fausse qui augmentera avec <span class="math inline">\(\alpha\)</span>. Si on veut être absolument certain du résultat, on prend <span class="math inline">\(\alpha = 0\)</span>, mais dans ce cas on ne rejete jamais <span class="math inline">\(H_0\)</span> et on ne tire donc jamais aucune conclusion utile. Donc, nous devons assouplir les règles et accepter un petit risque de se tromper. <strong>Généralement, les statisticiens choisissent <span class="math inline">\(\alpha\)</span> = 5% dans les cas courants</strong>, et prennent 1%, ou même 0,1% dans les cas où il faut être plus strict (par exemple, si des vies dépendent du résultat). Nous pouvons nous baser sur ces références, même si nous verrons plus loin que cette pratique est de plus en plus remise en cause dans la littérature scientifique.</p>
+<p><strong>Choix du seuil <span class="math inline">\(\alpha\)</span> d'un test d'hypothèse.</strong> Le seuil <span class="math inline">\(\alpha\)</span> est choisi <em>avant</em> de réaliser le test. Il est un savant compromis entre le risque de se tromper qui diminue plus <span class="math inline">\(\alpha\)</span> est petit, et la possibilité d'obtenir le rejet de <span class="math inline">\(H_0\)</span> lorsqu'elle est fausse qui augmentera avec <span class="math inline">\(\alpha\)</span>. Si on veut être absolument certain du résultat, on prend <span class="math inline">\(\alpha = 0\)</span>, mais dans ce cas on ne rejette jamais <span class="math inline">\(H_0\)</span> et on ne tire donc jamais aucune conclusion utile. Donc, nous devons assouplir les règles et accepter un petit risque de se tromper. <strong>Généralement, les statisticiens choisissent <span class="math inline">\(\alpha\)</span> = 5% dans les cas courants</strong>, et prennent 1%, ou même 0,1% dans les cas où il faut être plus strict (par exemple, si des vies dépendent du résultat). Nous pouvons nous baser sur ces références, même si nous verrons plus loin que cette pratique est de plus en plus remise en cause dans la littérature scientifique.</p>
 </div>
 
-Poursuivons. Nous choisissons notre seuil $\alpha$ = 5%. Cela définit l'aire la plus extrême de 5% à droite de la distribution $\chi^2$ à 1 ddl comme zone de rejet (remplie en rouge sur la Fig. \@ref(fig:chi2plot2)). Il nous suffit maintenant de voir où se place notre $\chi^2_\mathrm{obs}$. S'il se situe dans la zone en rouge, nous rejeterons $H_0$, sinon, nous ne la rejeterons pas.
+Poursuivons. Nous choisissons notre seuil $\alpha$ = 5%. Cela définit l'aire la plus extrême de 5% à droite de la distribution $\chi^2$ à 1 ddl comme zone de rejet (remplie en rouge sur la Fig. \@ref(fig:chi2plot2)). Il nous suffit maintenant de voir où se place notre $\chi^2_\mathrm{obs}$. S'il se situe dans la zone en rouge, nous rejetterons $H_0$, sinon, nous ne la rejetterons pas.
 
 <div class="figure" style="text-align: center">
 <img src="08-Test-Chi2_files/figure-html/chi2plot2-1.svg" alt="Densité de probabilité sous *H*~0~ (distribution Chi^2^ à 1 ddl), zone de rejet de 5% en rouge et position de la valeur observée (trait vertical rouge)." width="672" />
@@ -194,8 +196,8 @@ pchisq(5.61, df = 1, lower.tail = FALSE)
 
 Le test d'hypothèse reporte la valeur *P* afin qu'un lecteur qui aurait choisi un autre seuil $\alpha$ pourrait effectuer immédiatement sa propre comparaison sans devoir refaire les calculs. La règle est simple\ :
 
-- valeur *P* < seuil $\alpha$, $=> \mathrm{R}H_0$ (on rejete $H_0$),
-- valeur *P* ≥ seuil $\alpha$, $=> \rlap{\mathrm{R}} \diagup H_0$ (on ne rejete pas $H_0$).
+- valeur *P* < seuil $\alpha$, $=> \mathrm{R}H_0$ (on rejette $H_0$),
+- valeur *P* ≥ seuil $\alpha$, $=> \rlap{\mathrm{R}} \diagup H_0$ (on ne rejette pas $H_0$).
 
 Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du $\chi^2$ dans R. La fonction `chisq.test()` fait tout cela pour nous^[Avec `chisq.test()`, l'argument `p = ` est la liste des probabilités attendues sous $H_0$ et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser `rescale.p = TRUE`.]. Elle est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2^ univarié).
 
@@ -251,20 +253,22 @@ chisq.test(crossbill2, p = c(1/2, 1/2), rescale.p = FALSE)
 # X-squared = 0.61644, df = 1, p-value = 0.4324
 ```
 
-Nous constatons que la valeur du $\chi^2_{obs}$ dépend de l'effectif. Sa valeur est plus petite ici. Par conséquent, la valeur *P* a également changé et elle vaut à présent 43%. Cette valeur est *supérieure* maintenant à notre seuil $\alpha$ de 5%. Donc, nous ne pouvons pas rejeter $H_0$. Dans un pareil cas, nous conclurons que les becs croisés à gauche ne sont **pas significativement** plus nombreux que ceux à droite au seuil $\alpha$ de 5% (test $\chi^2$ = 0,62, ddl = 1, valeur *P* = 0,43). Notez, c'est important, que nous n'avons pas écrit "ne sont **pas**", mais nous avons précisé "ne sont **pas significativement**" plus nombreux. C'est un détail très important. En effet, cela veut dire que l'on ne peut pas conclure qu'il y ait des différences sur base de l'échantillon utilisé, mais il se peut aussi que l'échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (`crossbill`), et nous savons bien que c'est effectivement le cas. Est-ce que vous saisissez bien ce que le mot **significativement** veut dire, et la subtilité qui apparait lorsqu'un test d'hypothèse ne rejette **pas** $H_0$\ ? Les conclusions tirées avec `crossbill` et `crossbill2` et le même test d'hypothèse sont diamétralement opposées car l'un rejete et l'autre ne rejete pas $H_0$. Pourtant ces deux analyses ne se contredisent pas\ ! Les deux interprétations sont *simultanément* correctes. C'est l'interprétation asymétrique du test qui permet cela, et l'adverbe **significativement** est indispensable pour introduire cette nuance dans le texte.
+Nous constatons que la valeur du $\chi^2_{obs}$ dépend de l'effectif. Sa valeur est plus petite ici. Par conséquent, la valeur *P* a également changé et elle vaut à présent 43%. Cette valeur est *supérieure* maintenant à notre seuil $\alpha$ de 5%. Donc, nous ne pouvons pas rejeter $H_0$. Dans un pareil cas, nous conclurons que les becs croisés à gauche ne sont **pas significativement** plus nombreux que ceux à droite au seuil $\alpha$ de 5% (test $\chi^2$ = 0,62, ddl = 1, valeur *P* = 0,43). Notez, c'est important, que nous n'avons pas écrit "ne sont **pas**", mais nous avons précisé "ne sont **pas significativement**" plus nombreux. C'est un détail très important. En effet, cela veut dire que l'on ne peut pas conclure qu'il y ait des différences sur base de l'échantillon utilisé, mais il se peut aussi que l'échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (`crossbill`), et nous savons bien que c'est effectivement le cas. Est-ce que vous saisissez bien ce que le mot **significativement** veut dire, et la subtilité qui apparaît lorsqu'un test d'hypothèse ne rejette **pas** $H_0$\ ? Les conclusions tirées avec `crossbill` et `crossbill2` et le même test d'hypothèse sont diamétralement opposées car l'un rejette et l'autre ne rejette pas $H_0$. Pourtant ces deux analyses ne se contredisent pas\ ! Les deux interprétations sont *simultanément* correctes. C'est l'interprétation asymétrique du test qui permet cela, et l'adverbe **significativement** est indispensable pour introduire cette nuance dans le texte.
 
 
 ### Test Chi^2^ d'indépendance
 
+Dans le cas d'un tableau de contingence à **double entrée**, qui croise les niveaux de deux variables qualitatives, nous pouvons effectuer également un test $\chi^2$. Celui-ci sera calculé légèrement différemment et surtout, les hypothèses testées sont différentes.
+
+
 ##### A vous de jouer ! {-}
 
-\BeginKnitrBlock{bdd}<div class="bdd">Une séance d'exercice vous est proposée en lien avec le Test Chi^2^ d'indépendance
-Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+\BeginKnitrBlock{bdd}<div class="bdd">Une séance d'exercice vous est proposée en lien avec le test Chi^2^ d'indépendance. Vous pouvez réaliser ces exercices en parallèle à la lecture de la présente section. Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
     BioDataScience::run("08b_chi2")
 </div>\EndKnitrBlock{bdd}
 
-Dans le cas d'un tableau de contingence à **double entrée**, qui croise les niveaux de deux variables qualitatives, nous pouvons effectuer également un test $\chi^2$. Celui-ci sera calculé légèrement différemment et surtout, les hypothèses testées sont différentes. Reprenos le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
+Reprenons le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
 
 
 ```r
@@ -292,7 +296,7 @@ La répartition dans le tableau selon les ligne est, elle, tributaire des effets
 - $H_0:$ indépendance entre les deux variables
 - $H_1:$ dépendance entre les deux variables
 
-Toute la difficulté est de déterminer les $\alpha_i$, les effectifs qui devraient être observés sous $H_0$. Si le partitionnement était identique selon tous les niveaux des deux variables, nous aurions autant de cas dans chaque cellule du tableau, soit 307/4 = 76,75. Mais n'oublions pas que nous avons attribués plus de patients au traitement timolol qu'au traitement placébo. De même, nous ne contrôlons pas le taux de guérison de la malide qui n'est d'ailleurs généralement pas d'un patient sur 2. Il faut donc *pondérer* les effectifs dans les lignes et les colonnes par rapprt aux totals dans les différents niveaux des variables (en colonne pour la variable `traitement`, en ligne pour la variable `patient`). Donc, si nous indiçons les lignes avec $i = 1 ..m$ et les colonnes avec $j = 1..n$, nos effectifs théoriques $\alpha_{i,j}$ sous hypothèse d'indépendance entre les deux variables sont\ :
+Toute la difficulté est de déterminer les $\alpha_i$, les effectifs qui devraient être observés sous $H_0$. Si le partitionnement était identique selon tous les niveaux des deux variables, nous aurions autant de cas dans chaque cellule du tableau, soit 307/4 = 76,75. Mais n'oublions pas que nous avons attribués plus de patients au traitement timolol qu'au traitement placebo. De même, nous ne contrôlons pas le taux de guérison de la maladie qui n'est d'ailleurs généralement pas d'un patient sur 2. Il faut donc *pondérer* les effectifs dans les lignes et les colonnes par rapport aux totaux dans les différents niveaux des variables (en colonne pour la variable `traitement`, en ligne pour la variable `patient`). Donc, si nous indiçons les lignes avec $i = 1 ..m$ et les colonnes avec $j = 1..n$, nos effectifs théoriques $\alpha_{i,j}$ sous hypothèse d'indépendance entre les deux variables sont\ :
 
 $$\alpha_{i, j} =\frac{total\ ligne_i \times total\ colonne_j}{total\ général}$$
 
@@ -328,7 +332,8 @@ Enfin, nous comparons cette valeur à la distribution théorique de $\chi^2$  à
 
 ##### Interprétation {-}
 
-La valeur *p* de 0,0026 est inférieure au seuil $\alpha$ choisi de 0,01. Donc, nous rejetons $H_0$. Il n'y a pas indépendance entre les deux variables. Pour voir quels sont les effets de la dépendance entre les variables, nous devons comparer les effectifs théoriques affichés ci-dessus avec les effectifs observés. Dans le cas du placébo, sous $H_0$, nous aurions du obtenir 117 malades contre 30 patients guéris. Or, nous en avons 128 malades et seulement 19 guéris. D'un autre côté, sous $H_0$ nous aurions du observer 127 patients malades et 33 sains avec le timolol. Or, nous en observons 116 malades et 44 sains. Donc, les valeurs observées sont en faveur d'un meilleur effet avec le timolol. Nous pourrons dire\ : le timolol a un effet positif significatif sur la guérison de la maladie au seuil $\alpha$ de 1% ($\chi^2$ d'indépendance = 9,10, ddl = 1, valeur *P* - 0,0026).
+La valeur *p* de 0,0026 est inférieure au seuil $\alpha$ choisi de 0,01. Donc, nous rejetons $H_0$. Il n'y a pas indépendance entre les deux variables. Pour voir quels sont les effets de la dépendance entre les variables, nous devons comparer les effectifs théoriques affichés ci-dessus avec les effectifs observés. Dans le cas du placebo, sous $H_0$, nous aurions du obtenir 117 malades contre 30 patients guéris. Or, nous en avons 128 malades et seulement 19 guéris. D'un autre côté, sous $H_0$ nous aurions du observer 127 patients malades et 33 sains avec le timolol. Or, nous en observons 116 malades et 44 sains. Donc, les valeurs observées sont en faveur d'un meilleur effet avec le timolol. Nous pourrons dire\ : le timolol a un effet positif significatif sur la guérison de la maladie au seuil $\alpha$ de 1% ($\chi^2$ d'indépendance = 9,10, ddl = 1, valeur *P* = 0,0026).
+
 
 ##### Correction de Yates {-}
 
@@ -345,7 +350,7 @@ sum((timolol_table - alpha_ij)^2 / alpha_ij)
 # [1] 9.978202
 ```
 
-Cela donne 9,98. Or notre test renvoie la valeur de 9,10. A quoi est dûe cette différence\ ? Lisez bien l'intitulé du test réalisé. Il s'agit de "Pearson's Chi-squared test **with Yates' continuity correction**". Il s'agit d'une correction introduite par R dans le cas d'un tableau 2 par 2 uniquement et qui tient compte de ce que la distribution sous $H_0$ est estimée à partir des mêmes données que celle utilisées pour le test, ce qui introduit un biais ainsi corrigé. Il est donc déconseillé de désactiver cette correction, même si nous pouvons le faire en indiquant `correct = FALSE` (ci-dessous, juste pour vérifier notre calcul du $\chi^2_{obs}$ qui est maintenant identique, 9,98).
+Cela donne 9,98. Or notre test renvoie la valeur de 9,10. A quoi est due cette différence\ ? Lisez bien l'intitulé du test réalisé. Il s'agit de "Pearson's Chi-squared test **with Yates' continuity correction**". Il s'agit d'une correction introduite par R dans le cas d'un tableau 2 par 2 uniquement et qui tient compte de ce que la distribution sous $H_0$ est estimée à partir des mêmes données que celle utilisées pour le test, ce qui introduit un biais ainsi corrigé. Il est donc déconseillé de désactiver cette correction, même si nous pouvons le faire en indiquant `correct = FALSE` (ci-dessous, juste pour vérifier notre calcul du $\chi^2_{obs}$ qui est maintenant identique, 9,98).
 
 
 ```r
@@ -372,13 +377,22 @@ chisq.test(timolol_table, correct = FALSE)
 
 ### Autres tests Chi^2^
 
-Les test du $\chi^2$ est également utilisé, dans sa forme univariée, pour comparer les effectifs observés par rapport à des effectifs théoriques suivant un loi de distribution discrète. Ce test s'appelle un **test de qualité d'ajustement** ("goodness-of-fit test" en anglais). Dans ce cas, le nombre de degrés de liberté est le nombre de catégories moins le monbre de paramètres de la distribution moins un.
+Les test du $\chi^2$ est également utilisé, dans sa forme univariée, pour comparer les effectifs observés par rapport à des effectifs théoriques suivant un loi de distribution discrète. Ce test s'appelle un **test de qualité d'ajustement** ("goodness-of-fit test" en anglais). Dans ce cas, le nombre de degrés de liberté est le nombre de catégories moins le nombre de paramètres de la distribution moins un.
 
 Pour l'ajustement à une loi de distribution continue, il est possible de découper les données en classes et d'appliquer un test $\chi^2$ dessus ensuite. Il existe cependant d'autres tests considérés comme plus efficaces dans ce cas, comme le test de [Komogorov-Smirnov](https://mistis.inrialpes.fr/software/SMEL/cours/ts/node7.html), notamment avec les corrections introduites par [Lillefors](http://www.statsoft.fr/concepts-statistiques/glossaire/t/test-lilliefors.html). Pour l'ajustement à une distribution normale, des tests spécialisés existent comme le test de [Shapiro-Wilk](http://www.sthda.com/french/wiki/test-de-normalite-avec-r-test-de-shapiro-wilk). Ce dernier est disponible depuis les snippets de la SciViews Box dans le menu `Hypothesis tests: distribution` ou `.hd`, et puis `Shapiro-Wilk test of normality`.
 
 <div class="info">
-<p>Gardez toujours à l'esprit que, quelle que soit la qualité d'un test d'ajustement, vous n'aurez jamais qu'une réponse binaire (oui ou non l'échantillon s'ajuste à telle distribution théorique). Les causes de dérive sont innombrables et seules des bonnes représentations graphiques (histogramme, graphe en violon, et surtout, graphique quantile-quantile) sont suffisamment riche en information pour explorer <em>pourquoi</em> et <em>comment</em> la distribution différe d'une distribution théorique.</p>
+<p>Gardez toujours à l'esprit que, quelle que soit la qualité d'un test d'ajustement, vous n'aurez jamais qu'une réponse binaire (oui ou non l'échantillon s'ajuste à telle distribution théorique). Les causes de dérive sont innombrables et seules des bonnes représentations graphiques (histogramme, graphe en violon, et surtout, graphique quantile-quantile) sont suffisamment riche en information pour explorer <em>pourquoi</em> et <em>comment</em> la distribution diffère d'une distribution théorique.</p>
 </div>
+
+
+##### A vous de jouer ! {-}
+
+\BeginKnitrBlock{bdd}<div class="bdd">
+Employez le test d'hypothèse que vous venez d'apprendre dans votre rapport sur la biométrie humaine\ :
+    
+    sdd1_biometry-...(nom du groupe)
+</div>\EndKnitrBlock{bdd}
 
 
 ##### Pour en savoir plus {-}
@@ -389,11 +403,6 @@ Pour l'ajustement à une loi de distribution continue, il est possible de décou
 
 - Le [test exact de Fisher](http://www.sthda.com/french/wiki/test-exact-de-fisher-avec-r) comme test alternatif, en particulier lorsque les effectifs sont faibles.
 
-##### A vous de jouer ! {-}
-
-\BeginKnitrBlock{bdd}<div class="bdd">
-Employez le test d'hypothèse que vous venez d'apprendre dans votre rapport sur la biométrie humaine :
-  sdd1_biometry-...(nom du groupe)</div>\EndKnitrBlock{bdd}
 
 ## Evaluation par les pairs
 
@@ -404,12 +413,12 @@ Avant d'être rendus publics, les travaux scientifiques font l'objet d'un ou plu
 ##### A vous de jouer ! {-}
 
 <div class="bdd">
-<p>Vous allez vous initier au travail de referee sur base du rapport sur la biométrie de l'oursin violet. Vous partagerez votre dépôt Github avec un de vos collègue, et vous recevrez également un accès au dépôt de quelqu'un d'autre. Votre travail consistera à lire avec un oeil critique et constructif le travail que vous recevrez.</p>
+<p>Vous allez vous initier au travail d'arbitrage (&quot;referee&quot; scientifique) sur base du rapport sur la biométrie de l'oursin violet. Vous partagerez votre dépôt Github avec un de vos collègue. Vous recevrez également un accès au dépôt de quelqu'un d'autre. Votre travail consistera à lire avec un œil critique et constructif le travail que vous recevrez.</p>
 <p>Vous ajouterez un fichier <code>review.md</code> à la racine du projet où vous consignerez vos remarques générales. Pour les remarques particulières directement dans le rapport, utilisez la balise de citation de Markdown (commencez le paragraphe par <code>&gt;</code>), par exemple :</p>
 <blockquote>
 <p>Ceci est un commentaire dans le texte.</p>
 </blockquote>
-<p>N'effacer, ni ne modifiez aucun texte directement dans ce rapport. Si vous devez suggérer l'élimination de texte, utilisez la balise Markdown qui sert à biffer ce texte sous forme de deux tildes devant et derrière (<code>~~~</code>, ce qui donne <del>texte biffé</del>). Ensuite, effectuez un commit de vos commentaires sur le dépôt Github de votre collègue.</p>
-<p>De votre côté, lorsque vous recevrez le rapport relatif à votre propre projet, lisez les commentaires (ne modifiez <strong>pas</strong> le fichier <code>review.md</code>, mais par contre, éditez le texte et éliminez les commentaires directement dans le rapport au fur et à mesure que vous le corriger en tenant compte de ces remarques). Vous pourrez éventuellement apporter des réponses ou des justifications aux commentaires globaux du fichier <code>review.md</code>.</p>
-<p>suivez les intructions suivantes : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_08/presentations/correction.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_08/presentations/correction.md</a></p>
+<p>N'effacer, ni ne modifiez aucun texte directement dans ce rapport. Si vous devez suggérer l'élimination de texte, utilisez la balise Markdown qui sert à biffer ce texte sous forme de deux tildes devant et derrière (<code>~~</code>, ce qui donne <del>texte biffé</del>). Ensuite, effectuez un &quot;commit&quot; de vos commentaires sur le dépôt Github de votre collègue.</p>
+<p>De votre côté, lorsque vous recevrez le rapport relatif à votre propre projet, lisez les commentaires. Ne modifiez <strong>pas</strong> le fichier <code>review.md</code>, mais par contre, éditez le texte et éliminez les commentaires directement dans le rapport au fur et à mesure que vous le corriger en tenant compte des remarques. Vous pourrez éventuellement apporter des réponses ou des justifications aux commentaires globaux du fichier <code>review.md</code>.</p>
+<p>Les intructions sont détaillées ici : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_08/presentations/correction.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_08/presentations/correction.md</a></p>
 </div>

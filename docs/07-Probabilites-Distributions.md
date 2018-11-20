@@ -11,7 +11,7 @@
 
 ##### Prérequis {-}
 
-Vous devez être à l'aise avec l'utilisation de R, RStudio et R Markdown. Vous avez appris à maitriser ces outils dans les modules \@ref(intro) & \@ref(visu1).
+Vous devez être à l'aise avec l'utilisation de R, RStudio et R Markdown. Vous avez appris à maîtriser ces outils dans les modules \@ref(intro) & \@ref(visu1).
 
 
 ## Probabilités
@@ -33,7 +33,7 @@ $$0 \leq \mathrm{P}(E) \leq 1$$
 
 > Voyons tout de suite une application plus proche de la biologie : le dépistage d'une maladie qui touche 8% de la population. Le test de dépistage mis en place détecte 95% des malades. De plus, le test se trompe dans 10% des cas pour les personnes saines. Comment connaitre le risque d'être malade si on est diagnostiqué positif par ce test ?
 
-Pour résoudre ce problème, nous devons d'abord apprendre à *combiner* des probabilités. Ce n'est pas bien compliqué. Si on a affaire à des **événements successifs indépendants** (c'est-à-dire que l'occurence de l'un ne dépend pas de l'occurence de l'autre), la **probabilité que les deux événements successifs indépendants se produisent tous les deux est la multiplication des deux probabiltés**. On pourra écrire :
+Pour résoudre ce problème, nous devons d'abord apprendre à *combiner* des probabilités. Ce n'est pas bien compliqué. Si on a affaire à des **événements successifs indépendants** (c'est-à-dire que l’occurrence de l'un ne dépend pas de l’occurrence de l'autre), la **probabilité que les deux événements successifs indépendants se produisent tous les deux est la multiplication des deux probabiltés**. On pourra écrire :
 
 $$\mathrm{P}(E_1 \,\mathrm{et}\, E_2) = \mathrm{P}(E_1) * \mathrm{P}(E_2)$$
 
@@ -92,7 +92,7 @@ p_sick_positive / p_positive
 
 ... seulement 45,2% qui sont effectivement malades (on parle de **vrais positifs**) ! Ceci ne correspond pas du tout aux indications de départ sur les performances du test.
 
-\BeginKnitrBlock{note}<div class="note">Dans le cas de deux faits successifs qui ne peuvent chacun que résulter en deux événements, nous avons seulement quatre situations possibles. Si l'un des cas est qualifié de positif et l'autre de négatif, nous aurons:
+\BeginKnitrBlock{note}<div class="note">Dans le cas de deux faits successifs qui ne peuvent chacun que résulter en deux événements, nous avons seulement quatre situations possibles. Si l'un des cas est qualifié de positif et l'autre de négatif, nous aurons\ :
   
 - les **vrais positifs** (test positif alors que la personne est malade), ici 0.08 * 0.95
 
@@ -103,7 +103,7 @@ p_sick_positive / p_positive
 - **les faux négatifs** (test négatif alors que la personne est malade), ici 0.08 * 0.05
 </div>\EndKnitrBlock{note}
 
-En fait, les performances finales du test de dépistage dépendent *aussi* de la prévalence de la maladie. Ainsi pour une maladie très commune qui affecterait 80% de la population, nous obtenons :
+En fait, les performances finales du test de dépistage dépendent *aussi* de la prévalence de la maladie. Ainsi pour une maladie très commune qui affecterait 80% de la population, nous obtenons\ :
 
 
 ```r
@@ -142,7 +142,7 @@ En fait, les performances finales du test de dépistage dépendent *aussi* de la
 # [1] 0.974359
 ```
 
-Ouf ! Dans ca cas-ci le test positif est correct dans 97,4% des cas. Mais qu'en serait-il si la maladie est très rare (probabilité de 0,008)\ ?
+Ouf\ ! Dans ce cas-ci le test positif est correct dans 97,4% des cas. Mais qu'en serait-il si la maladie est très rare (probabilité de 0,008)\ ?
 
 
 ```r
@@ -181,20 +181,20 @@ Ouf ! Dans ca cas-ci le test positif est correct dans 97,4% des cas. Mais qu'en 
 # [1] 0.07116105
 ```
 
-Gasp ! Dans ce cas, un test positif n'aura effectivement détecté un malade que dans ... 7,1% des cas ! Les 92,9% autres cas positifs seront en fait des personnes saines.
+Dans ce cas, un test positif n'aura effectivement détecté un malade que dans ... 7,1% des cas\ ! Les 92,9% autres cas positifs seront en fait des personnes saines.
 
-> Comme nous pouvons le constater ici, le calcul des probabilités est relativement simple. Mais en même temps, les résultats obtenus peuvent être complètement **contre-intuitifs**. D'où l'intérêt de faire ce genre de calcul, justement.
+> Comme nous pouvons le constater ici, le calcul des probabilités est relativement simple. Mais en même temps, les résultats obtenus peuvent être complètement **contre-intuitifs**. D'où l'intérêt de faire ce genre de calcul justement.
 
 
 ### Arbre des probabilités
 
-Il se peut que tout cela vous paraisse très (trop) abstrait. Vous êtes peut-être quelqu'un de visuel qui comprend mieux les concepts en image. Dans ce cas, la méthode alternative de résolution des calculs de probabilités via les **arbres de probabilités** devrait vous éclairer. Le principe consiste à représenter un arbre constitué de noeuds (des faits qui se produisent). De ces noeuds, vous représentez autant de branches (des segments de droites) que d'événements possibles. La figure suivante est l'arbre des probabilités correspondant au cas du dépistage de la maladie qui touche 8% de la population.
+Il se peut que tout cela vous paraisse très (trop) abstrait. Vous êtes peut-être quelqu'un de visuel qui comprend mieux les concepts en image. Dans ce cas, la méthode alternative de résolution des calculs de probabilités via les **arbres de probabilités** devrait vous éclairer. Le principe consiste à représenter un arbre constitué de nœuds (des faits qui se produisent). De ces nœuds, vous représentez autant de branches (des segments de droites) que d'événements possibles. La figure suivante est l'arbre des probabilités correspondant au cas du dépistage de la maladie qui touche 8% de la population.
 
 ![Arbre de probabilités permettant de déterminer la probabilité d'avoir un résultat positif au test.](images/sdd1_07/probtree.png)
 
-Du premier noeud (le fait qu'une personne est atteinte ou non de la maladie), nous avons deux branches menant aux deux événements "malade" et "sain". Chacune de ces deux situations est un nouveau noeud d'où deux événements sont possibles à chaque fois (2 fois 2 nouvelles branches) : un test "positif", ou un test "négatif". Les noeuds terminaux (les "négatifs" et "positifs" ici) sont aussi appelés les feuilles de l'arbre. L'arbre reprend donc tous les cas possibles depuis le noeud de départ (sa racine), jusqu'aux feuilles.
+Du premier nœud (le fait qu'une personne est atteinte ou non de la maladie), nous avons deux branches menant aux deux événements "malade" et "sain". Chacune de ces deux situations est un nouveau nœud d'où deux événements sont possibles à chaque fois (2 fois 2 nouvelles branches) : un test "positif", ou un test "négatif". Les nœuds terminaux (les "négatifs" et "positifs" ici) sont aussi appelés les feuilles de l'arbre. L'arbre reprend donc tous les cas possibles depuis le nœud de départ (sa racine), jusqu'aux feuilles.
 
-L'étape suivante consiste à aller indiquer le long des branches les probabilités associées à chaque événement : 0.08 pour "malade", 0.95 pour un dépistage "positif" si la personne est malade, etc. A ce stade, une petite vérification peut être faite. La somme des probabilités aux feuilles doit toujours valoir un, et il en est de même de la somme de toutes les branches issues d'un même noeud.
+L'étape suivante consiste à aller indiquer le long des branches les probabilités associées à chaque événement : 0.08 pour "malade", 0.95 pour un dépistage "positif" si la personne est malade, etc. A ce stade, une petite vérification peut être faite. La somme des probabilités aux feuilles doit toujours valoir un, et il en est de même de la somme de toutes les branches issues d'un même nœud.
 
 Le calcul se fait ensuite comme suit. On repère tous les cas qui nous intéressent. Ici, il s'agit de toutes les trajectoires qui mènent à un test "positif". Le calcul des probabilités se fait en **multipliant les probabilités lorsqu'on passe d'un noeud à l'autre et en additionnant les probabilités ainsi calculées le long des feuilles terminales de l'arbre considéré.** Donc, le chemin "malade" -> "positif" correspond à 0.08 \* 0.95 = 0.076. Le chemin "sain" -> "positif" correspond à 0.92 \* 0.10 = 0.092. Enfin, nous sommons les probabilités ainsi calculées pour toutes les feuilles de l'arbre qui nous intéressent. Ici, ce sont toutes les feuilles qui correspondent à un test "positif", soit 0.076 + 0.092 = 0.168. *Et voilà ! Nous avons répondu au problème : la probabilité d'avoir un résultat positif avec le test de dépistage dans un population dont 8% est atteint de la maladie est de 16.8%.*
 
@@ -211,24 +211,24 @@ Vous noterez que l'arbre des probabilités représente, en réalité, des probab
 
 ![Arbre de probabilités avec probabilités conditionnelles en rouge.](images/sdd1_07/probtree2.png)
 
-On pourra considérer, donc, la probabilité conditionnelle d'avoir un résultat positif au test, si la personne est malade $\mathrm{P}(positif|malade)$. Vous l'avez indiquée plus haut dans l'arbre des probabilités, c'est 0.95. Maintenant, la probabilité qu'une personne soit malade si elle est positive au test $\mathrm{P}(malade|positif)$ est une information capitable ici. Le lien entre les deux n'est pas facile à faire. C'est grâce aux travaux du révérend **Thomas Bayes** au 18^ème^ siècle que ce problème a été résolu. Les implications du **théorème de Bayes** sont énormes car cela permet de déterminer des probabilités dites *a posteriori* en fonction de connaissances *a priori*.
+On pourra considérer, donc, la probabilité conditionnelle d'avoir un résultat positif au test, si la personne est malade $\mathrm{P}(positif|malade)$. Vous l'avez indiquée plus haut dans l'arbre des probabilités, c'est 0.95. Maintenant, la probabilité qu'une personne soit malade si elle est positive au test $\mathrm{P}(malade|positif)$ est une information capitale ici. Le lien entre les deux n'est pas facile à faire. C'est grâce aux travaux du révérend **Thomas Bayes** au 18^ème^ siècle que ce problème a été résolu. Les implications du **théorème de Bayes** sont énormes car cela permet de déterminer des probabilités dites *a posteriori* en fonction de connaissances *a priori*.
 
 Si nous réanalysons le raisonnement qui est fait dans l'arbre de probabilités, on peut remarquer que le premier calcul ("malade" -> "positif") correspond en fait à la probabilité que le test soit positif si le patient est malade $\mathrm{P}(positif|malade)$ multipliée par la probabilité que le patient soit malade $\mathrm{P}(malade)$, et ceci est aussi égal à $\mathrm{P}(positif\, et\, malade)$. Donc,
 
 $$\mathrm{P}(positif|malade) * \mathrm{P}(malade) = \mathrm{P}(positif\, et\, malade)$$
 
-Par un raisonnement symmétrique, on peut aussi dire que :
+Par un raisonnement symétrique, on peut aussi dire que\ :
 
 $$\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif\, et\, malade)$$
 
-Donc, nous avons aussi :
+Donc, nous avons aussi\ :
 
 $$\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif|malade) * \mathrm{P}(malade)$$
-... et en divisant les deux termes par $\mathrm{P}(positif)$, on obtient :
+... et en divisant les deux termes par $\mathrm{P}(positif)$, on obtient\ :
 
 $$\mathrm{P}(malade|positif) = \frac{\mathrm{P}(positif|malade) * \mathrm{P}(malade)}{\mathrm{P}(positif)}$$
 
-\BeginKnitrBlock{note}<div class="note">De manière générale, le **théorème de Bayes** s'écrit :
+\BeginKnitrBlock{note}<div class="note">De manière générale, le **théorème de Bayes** s'écrit\ :
 
 $$\mathrm{P}(A|B) = \frac{\mathrm{P}(B|A) * \mathrm{P}(A)}{\mathrm{P}(B)}$$
 </div>\EndKnitrBlock{note}
@@ -238,7 +238,7 @@ Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positi
 <div class="note">
 <p><strong>A retenir</strong></p>
 <ul>
-<li>Probabilité d'un événement :</li>
+<li>Probabilité d'un événement :</li>
 </ul>
 <p><span class="math display">\[\mathrm{P}(E) = \frac{\mathrm{nbr\ occurences\ } E}{\mathrm{nbr\ total\ essais}}\]</span></p>
 <ul>
@@ -246,7 +246,7 @@ Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positi
 </ul>
 <p><span class="math display">\[\mathrm{P(A\, \mathrm{et}\, B)} = \mathrm{P}(B|A) * \mathrm{P(A)}\]</span></p>
 <ul>
-<li>Probabilité qu'un parmi deux événements se produise (cas général) :</li>
+<li>Probabilité qu'un parmi deux événements se produise (cas général) :</li>
 </ul>
 <p><span class="math display">\[\mathrm{P(A\, \mathrm{ou}\, B)} = \mathrm{P}(A) + \mathrm{P(B)} - \mathrm{P}(A\, \mathrm{et}\, B)\]</span></p>
 </div>
@@ -279,7 +279,7 @@ fume                     634            332            247    1213
 ne fume pas             1846           1622           1868    5336
 total                   2480           1954           2115    6549
 
-- Quelle est la probabilité d'être un fumeur $\mathrm{P}(fumeur)$\ ? Rappelons-nous de la définition de probabilité\ : nombre de cas où l'événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l'échantillon de 6549 personnes, soit :
+- Quelle est la probabilité d'être un fumeur $\mathrm{P}(fumeur)$\ ? Rappelons-nous de la définition de probabilité\ : nombre de cas où l'événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l'échantillon de 6549 personnes, soit\ :
 
 
 ```r
@@ -380,7 +380,7 @@ Il s'agit d'événements successifs **non-indépendants**. En effet, le retrait 
 ##### A vous de jouer {-}
 
 \BeginKnitrBlock{bdd}<div class="bdd">
-Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
     BioDataScience::run("07a_proba")
 </div>\EndKnitrBlock{bdd}
@@ -388,7 +388,7 @@ Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante da
 
 ## Lois de distributions
 
-Etant donné que les sciences des données reposent sur un nombre (si possible important) de répétitions d’une mesure -des réplicas-, il est possible de déterminer à quelle fréquence un événement *E* se produit de manière expérimentale. La **probabilité observée** est quantifiable sur base d’un échantillon comme nous venons de le voir dans la section précédente. La **probabilité théorique** est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique. Cependant, dans des situations particulières les statisticiens ont calculé les probabilités théoriques. Ce sont des **lois de distribution**. Elles associent une probabilité théorique à chaque événement possible.
+Étant donné que les sciences des données reposent sur un nombre (si possible important) de répétitions d’une mesure -des réplicats-, il est possible de déterminer à quelle fréquence un événement *E* se produit de manière expérimentale. La **probabilité observée** est quantifiable sur base d’un échantillon comme nous venons de le voir dans la section précédente. La **probabilité théorique** est connue si le mécanisme sous-jacent est parfaitement connu. Donc, en situation réelle, seule la probabilité observée est accessible, et ce n’est qu’une approximation de la vraie valeur, ou valeur théorique. Cependant, dans des situations particulières les statisticiens ont calculé les probabilités théoriques. Ce sont des **lois de distribution**. Elles associent une probabilité théorique à chaque événement possible.
 
 <div class="info">
 <p>La comparaison des probabilités théoriques et observées constitue l’un des piliers des statistiques. Le raisonnement est le suivant : si les probabilités observées sont suffisamment proches des probabilités théoriques, alors, nous pouvons considérer que les événements sont générés selon un mécanisme identique ou proche de celui qui est à la base de la loi de distribution théorique correspondante.</p>
@@ -407,10 +407,11 @@ Avant d'explorer ces lois de distributions statistiques, nous devons d'abord int
 
 Tout au long de cette section des questions sous la forme d'un learnr vous sont proposées. Complétez progressivement le learnr avec vos nouvelles connaissances
 
-\BeginKnitrBlock{bdd}<div class="bdd">Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :
+\BeginKnitrBlock{bdd}<div class="bdd">Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
 BioDataScience::run("07b_distri")
 </div>\EndKnitrBlock{bdd}
+
 
 ## Distribution uniforme
 
@@ -423,7 +424,7 @@ Dans le cas d'événements discrets, si $n_E$ est le nombre total d'événements
 
 $$\mathrm{P}(E) = \frac{1}{n_E}$$
 
-La distribution uniforme est d'application pour les jeux de hasard (dés, boules de lotto, ...). En biologie, elle est plus rare. Dans le cas d'un sexe ratio de 1:1 (autant de mâles que de femelles), la probabilité qu'un nouveau né soit un mâle ou une femelle suit une distribution uniforme et vaut 1/2. La distribution spatiale des individus dans une population biologique peut être uniforme lorsque les individus interagissent de telle manière que la distance entre eux soit identique (par exemple, dans un groupe de manchots *Aptenodytes patagonicus* sur la banquise). Imaginons un animal hypothétique pour lequel la portée peut être de 1 à 4 petits de manière équiprobable. Nous avons alors 1/4 des portées qui présentent respectivement, 1, 2, 3 ou 4 petits (Fig.\ \@ref(fig:unif1)).
+La distribution uniforme est d'application pour les jeux de hasard (dés, boules de loto, ...). En biologie, elle est plus rare. Dans le cas d'un sexe ratio de 1:1 (autant de mâles que de femelles), la probabilité qu'un nouveau né soit un mâle ou une femelle suit une distribution uniforme et vaut 1/2. La distribution spatiale des individus dans une population biologique peut être uniforme lorsque les individus interagissent de telle manière que la distance entre eux soit identique (par exemple, dans un groupe de manchots *Aptenodytes patagonicus* sur la banquise). Imaginons un animal hypothétique pour lequel la portée peut être de 1 à 4 petits de manière équiprobable. Nous avons alors 1/4 des portées qui présentent respectivement, 1, 2, 3 ou 4 petits (Fig.\ \@ref(fig:unif1)).
 
 <div class="figure" style="text-align: center">
 <img src="07-Probabilites-Distributions_files/figure-html/unif1-1.svg" alt="Probabilité du nombre de petits dans une portée qui suivrait un distribution strictement uniforme entre 1 et 4." width="672" />
@@ -553,7 +554,7 @@ La SciViews Box propose différents snippets pour nous aider à effectuer nos di
 - `.iullabel` : ajout d'un label sur le graphique à gauche
 - `.iurlabel`: ajout d'un label sur le graphique à droite
 
-Le snippet `.iurandom` nécessite quelques explications supplémentaires. R est capable de *simuler* la génération de nombres aléatoires selon différentes lois de distribution (`r<distri>()`). `runif()` est la fonction qui le fait pour une distribution uniforme continue. Comme il ne s'agit pas réellement de nombres aléatoires, on parle de générateur de nombres **pseudo-aléatoires**. En fait, il s'agit d'une série de nombres qui a les mêmes propriétés que des nombres réellement aléatoires. R se positionne au hasard dans cette série. Donc, à chaque fois que vous appelez la fonction `runif()`, vous obtenez logiquement des valeurs différentes. A des fins de reproductibilité, il est possible de *forcer* R à partir en un point précis de la série avec la fonction `set.seed()` avec un nombre comme argument qui donne la position. Par exemple `set.seed(281)`^[Si vous utilisez `set.seed()` prenez soin de spécifier toujours une valeur différente prise au hasard comme argument\ !]. La génération de nombres aléatoires dans les instructions qui suivent seront alors toujours les mêmes. Voici un exemple de 10 nombres aléatoires générés depuis une distribution uniforme standard (cmpris entre 0 et 1). Chaque fois que vous exécuterez ces deux instructions exactement l'une après l'autre, vous obtiendrez toujours la même suite. Si vous réexécutez la seconde instruction sans la première, vous obtiendrez une suite différente.
+Le snippet `.iurandom` nécessite quelques explications supplémentaires. R est capable de *simuler* la génération de nombres aléatoires selon différentes lois de distribution (`r<distri>()`). `runif()` est la fonction qui le fait pour une distribution uniforme continue. Comme il ne s'agit pas réellement de nombres aléatoires, on parle de générateur de nombres **pseudo-aléatoires**. En fait, il s'agit d'une série de nombres qui a les mêmes propriétés que des nombres réellement aléatoires. R se positionne au hasard dans cette série. Donc, à chaque fois que vous appelez la fonction `runif()`, vous obtenez logiquement des valeurs différentes. A des fins de reproductibilité, il est possible de *forcer* R à partir en un point précis de la série avec la fonction `set.seed()` avec un nombre comme argument qui donne la position. Par exemple `set.seed(281)`^[Si vous utilisez `set.seed()` prenez soin de spécifier toujours une valeur différente prise au hasard comme argument\ !]. La génération de nombres aléatoires dans les instructions qui suivent seront alors toujours les mêmes. Voici un exemple de 10 nombres aléatoires générés depuis une distribution uniforme standard (compris entre 0 et 1). Chaque fois que vous exécuterez ces deux instructions exactement l'une après l'autre, vous obtiendrez toujours la même suite. Si vous ré-exécutez la seconde instruction sans la première, vous obtiendrez une suite différente.
 
 
 ```r
@@ -569,7 +570,7 @@ runif(10, min = 0, max = 1)
 
 ## Distribution binomiale
 
-Partons d'un exemple pratique pour découvrir cette distribution. La [mucoviscidose](http://www.muco.be/fr/mucoviscidose/maladie-génétique) est, dans la population européenne, la plus fréquente des maladies génétiques héréditaires. Elle se caractérise par un mucus (voies respiratoires) anormalement épais qui est à l'orgine de diverses complications. L'altération d'une protéine CFTR est à l'origine de cette maladie. Comme le gène qui code pour cette protéine est récessif, il faut que le deux allèles soient porteurs simultanément de la mutation pour que la maladie apparaisse. Parmi des familles de six enfants dont le père et la mère normaux sont tous deux porteurs hétérozygotes du gène altéré, quelle est la probabilité d'obtenir 0, 1, 2, ..., 6 enfants atteints de mucoviscidose\ ?
+Partons d'un exemple pratique pour découvrir cette distribution. La [mucoviscidose](http://www.muco.be/fr/mucoviscidose/maladie-génétique) est, dans la population européenne, la plus fréquente des maladies génétiques héréditaires. Elle se caractérise par un mucus (voies respiratoires) anormalement épais qui est à l’origine de diverses complications. L'altération d'une protéine CFTR est à l'origine de cette maladie. Comme le gène qui code pour cette protéine est récessif, il faut que le deux allèles soient porteurs simultanément de la mutation pour que la maladie apparaisse. Parmi des familles de six enfants dont le père et la mère normaux sont tous deux porteurs hétérozygotes du gène altéré, quelle est la probabilité d'obtenir 0, 1, 2, ..., 6 enfants atteints de mucoviscidose\ ?
 
 
 ### Epreuve de Benouilli
@@ -690,8 +691,7 @@ factorial(1600)
 ```
 
 ```
-# Warning in factorial(1600): valeur d'argument hors intervalle dans
-# 'gammafn'
+# Warning in factorial(1600): value out of range in 'gammafn'
 ```
 
 ```
@@ -809,7 +809,7 @@ alors
 
 $$log(X) \sim N(0, 0.5)$$
 
-Par facilité, on défini ses deux paramètres de manière relative à la moyenne $\mu$ et à l'écart type $\sigma$ qu'a la distribution normale obtenue après transformation log. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig \@ref(fig:lognormal)). C'est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.
+Par facilité, on défini ses deux paramètres de manière relative à la moyenne $\mu$ et à l'écart type $\sigma$ qu'a la distribution normale obtenue après transformation logarithmique. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig \@ref(fig:lognormal)). C'est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.
 
 <div class="figure" style="text-align: center">
 <img src="07-Probabilites-Distributions_files/figure-html/lognormal-1.svg" alt="Un exemple de distribution log-normale." width="672" />
@@ -818,7 +818,7 @@ Par facilité, on défini ses deux paramètres de manière relative à la moyenn
 
 ### Snippets
 
-Les fonctions relatives à la distribution log-normale dans R sont `<x>lnorm()`. Le calcul de probabilités se fait à l'aide de `plnorm()`, les quantiles se déterminent à partir de `qlnorm()` et un échantillon pseudo-aléatoire se calcule en utilisant `rlnorm()`. Les snippets relatifs à la loi log-normale dans la SciViews Box sont accessibles à partir du menu `(d)istributions: log-normal` à partir de `.il`) :
+Les fonctions relatives à la distribution log-normale dans R sont `<x>lnorm()`. Le calcul de probabilités se fait à l'aide de `plnorm()`, les quantiles se déterminent à partir de `qlnorm()` et un échantillon pseudo-aléatoire se calcule en utilisant `rlnorm()`. Les snippets relatifs à la loi log-normale dans la SciViews Box sont accessibles à partir du menu `(d)istributions: log-normal` à partir de `.il`)\ :
 
 ![](images/sdd1_07/snippets-lognormal.png)
 
@@ -831,7 +831,7 @@ Il n'est pas toujours facile de déterminer quelle est la loi de distribution qu
 <p>Un <strong>quantile</strong> divise des données quantitatives en deux sous-groupes de telle manière que le groupe contenant les observations plus petites que ce quantile représente un effectif équivalent à la fraction considérée. Donc, un quantile 10% correspondra à la valeur qui sépare le jeu de données en 10% des observations les plus petites et 90% des observations les plus grandes.</p>
 </div>
 
-Ce quantile dit **observé** est comparable au quantile dit **théorique** que nous pouvons calculer sur base d'une probabilité équivalente à la fraction considérée. Prenons un exemple simple pour fixer les idées. Dans les données relatives au plancton, nous avons 50 oeufs allongés mesurés. Nous nous demandons si leur taille mesurée ici par la surface (`area`) de la particule à l'image suit une distribution log-normale. Dans ce cas, il est plus facile de transformer les données en log et de comparer les valeurs ainsi recalculées à une distribution normale.
+Ce quantile dit **observé** est comparable au quantile dit **théorique** que nous pouvons calculer sur base d'une probabilité équivalente à la fraction considérée. Prenons un exemple simple pour fixer les idées. Dans les données relatives au plancton, nous avons 50 œufs allongés mesurés. Nous nous demandons si leur taille mesurée ici par la surface (`area`) de la particule à l'image suit une distribution log-normale. Dans ce cas, il est plus facile de transformer les données en log et de comparer les valeurs ainsi recalculées à une distribution normale.
 
 
 ```r
@@ -860,7 +860,7 @@ chart(data = eggs, ~ area) +
 
 <img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" />
 
-Sur base de l'histogramme, nous voyons bien que la distribution est soit unimodale et asymétrique, soit bimodale. L'histogramme des données transformées log devrait être plus symétrique si les données originelles suivent bien une distributino log-normale unimodale.
+Sur base de l'histogramme, nous voyons bien que la distribution est soit unimodale et asymétrique, soit bimodale. L'histogramme des données transformées log devrait être plus symétrique si les données originelles suivent bien une distribution log-normale unimodale.
 
 
 ```r
@@ -943,5 +943,5 @@ car::qqPlot(eggs[["log_area"]], distribution = "norm",
 
 ##### Interprétation {-}
 
-Si quasiment tous les points sont compris dans l'enveloppe de confiance à 95%, le graphique indique que les deux distributions ne sont pas fondamentalement différentes. Ici les points correspondant aux valeurs les plus élevées sortent de l'enveloppe pour un certain nombre d'entre eux d'affilée, et les points 11 et 30 sont considérés comme suspects. Ceci indique que les effectifs observés dans l'échantillon sont plus nombreux en queue droite de distribution que ce que la distribution normale prédit en théorie. Ceci confirme l'impression de distribution asymétrique et/ou bimodale. Il est probable qu'on ait au moins deux types d'oeufs allongés différents dans l'échantillon, avec le second type moins nombreux, mais représenté par des oeufs plus gros, ce qui enfle la partie droite de la distribution.
+Si quasiment tous les points sont compris dans l'enveloppe de confiance à 95%, le graphique indique que les deux distributions ne sont pas fondamentalement différentes. Ici les points correspondant aux valeurs les plus élevées sortent de l'enveloppe pour un certain nombre d'entre eux d'affilée, et les points 11 et 30 sont considérés comme suspects. Ceci indique que les effectifs observés dans l'échantillon sont plus nombreux en queue droite de distribution que ce que la distribution normale prédit en théorie. Ceci confirme l'impression de distribution asymétrique et/ou bimodale. Il est probable qu'on ait au moins deux types d’œufs allongés différents dans l'échantillon, avec le second type moins nombreux, mais représenté par des œufs plus gros, ce qui enfle la partie droite de la distribution.
 

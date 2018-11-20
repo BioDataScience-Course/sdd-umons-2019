@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -373,7 +373,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Nous traitons ici des premières étapes qui visent à acquérir les données.</p>
 <div id="precision-et-exactitude" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> Précision et exactitude</h3>
-<p>Les erreurs de mesures sont inévitables lors de l’acquisition de nos données. Cependant, il est possible de les minimiser en choisissant un instrument plus précis (precise en anglais) et plus exact (accurate en anglais). La figure ci-dessous illustre de manière visuelle la différence qu’il y a entre précision et exactitude.</p>
+<p>Les erreurs de mesures sont inévitables lors de l’acquisition de nos données. Cependant, il est possible de les minimiser en choisissant un instrument plus précis (“precise” en anglais) et plus exact (“accurate” en anglais). La figure ci-dessous illustre de manière visuelle la différence qu’il y a entre précision et exactitude.</p>
 <div class="figure">
 <img src="images/sdd1_06/targets.png" />
 
@@ -401,7 +401,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 # 2 Stark Tonny      M         80   1.79
 # 3 Fury Nicholas    M         82   1.93
 # 4 Romanoff Natasha F         53   1.7</code></pre>
-<p>Vous devez fournir une code permettant de garder l’anonymat des sondés à l’ensemble des personnes étudiées vis à vis des analystes qui vont utiliser ces données. Cependant, le code doit permettre au chercheur ayant pris ces mesures de les retrouver dans son cahier de laboratoire, si besoin. Une façon de procéder consiste à attributer un numéro au hasard par tirage dans une urne à chacune des personnes chargées des mesures. Ensuite, chaque expérimentateur attribue lui-même un second numéro aux différentes personnes qu’il mesure. Prenons par exemple le scientifique n°24 (seul lui sait qu’il porte ce numéro). Il attribue un code de 1 à n à chaque personne étudiée. En combinant le code secret de l’expérimentateur et le code individu, cela donne un identifiant unique de la forme <code>24_1</code>, <code>24_2</code>, etc. Il pourra alors encoder sa partie comme suit :</p>
+<p>Vous devez fournir une code permettant de garder l’anonymat des sondés à l’ensemble des personnes étudiées vis à vis des analystes qui vont utiliser ces données. Cependant, le code doit permettre au chercheur ayant pris ces mesures de les retrouver dans son cahier de laboratoire, si besoin. Une façon de procéder consiste à attribuer un numéro au hasard par tirage dans une urne à chacune des personnes chargées des mesures. Ensuite, chaque expérimentateur attribue lui-même un second numéro aux différentes personnes qu’il mesure. Prenons par exemple le scientifique n°24 (seul lui sait qu’il porte ce numéro). Il attribue un code de 1 à n à chaque personne étudiée. En combinant le code secret de l’expérimentateur et le code individu, cela donne un identifiant unique de la forme <code>24_1</code>, <code>24_2</code>, etc. Il pourra alors encoder sa partie comme suit :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(biometry_marvel1 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tribble</span>(
   <span class="op">~</span>id,     <span class="op">~</span>sex , <span class="op">~</span>weight, <span class="op">~</span>height,
    <span class="st">&quot;24_1&quot;</span>,  <span class="st">&quot;M&quot;</span>,  <span class="dv">95</span>,      <span class="fl">1.91</span>,
@@ -456,7 +456,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="footnotes">
 <hr />
 <ol start="26">
-<li id="fn26"><p>En Europe, les données numériques concernant les personnes sont soumises à des règles strictes édictées dans le <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/principles-gdpr_fr">Règlement Général pour la Protection des Données</a> ou <strong>RGPD</strong> en abbrégé, en vigueur depuis le 25 mai 2018. Vous devez vous assurer de respecter ce règlement lors de la collecte et de l’utilisation de données relatives à des personnes. Pour les autres type de données, le droit d’auteur ou des copyrights peuvent aussi limiter votre champ d’action. Renseignez-vous !<a href="acquisition-de-donnees.html#fnref26">↩</a></p></li>
+<li id="fn26"><p>En Europe, les données numériques concernant les personnes sont soumises à des règles strictes édictées dans le <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/principles-gdpr_fr">Règlement Général pour la Protection des Données</a> ou <strong>RGPD</strong> en abrégé, en vigueur depuis le 25 mai 2018. Vous devez vous assurer de respecter ce règlement lors de la collecte et de l’utilisation de données relatives à des personnes. Pour les autres type de données, le droit d’auteur ou des copyrights peuvent aussi limiter votre champ d’action. Renseignez-vous !<a href="acquisition-de-donnees.html#fnref26">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

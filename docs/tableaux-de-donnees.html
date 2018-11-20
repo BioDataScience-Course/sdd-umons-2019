@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -401,7 +401,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div id="tableaux-de-contingence" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Tableaux de contingence</h3>
-<p>C’est le dénombrement de l’occurence de chaque niveau d’une (tableau à une entrée) ou de deux variables <strong>qualitatives</strong> (tableau à double entrée). La fonction <code>table()</code> crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :</p>
+<p>C’est le dénombrement de l’occurrence de chaque niveau d’une (tableau à une entrée) ou de deux variables <strong>qualitatives</strong> (tableau à double entrée). La fonction <code>table()</code> crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry<span class="op">$</span>age_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(biometry<span class="op">$</span>age, <span class="dt">include.lowest =</span> <span class="ot">FALSE</span>, <span class="dt">right =</span> <span class="ot">TRUE</span>,
   <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">27</span>, <span class="dv">90</span>))
 (bio_tab &lt;-<span class="st"> </span><span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))</code></pre></div>
@@ -409,7 +409,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 #     (14,27] (27,90]
 #   M     106      92
 #   W      97     100</code></pre>
-<p>Le tableau de contingence peut toujours être calculé à partir d’un tableau cas par variable, mais il peut également être encodé directement si nécessaire. Voic un petit tableau de contingence à simple entrée encodé directement comme tel (vecteur nommé transformé en objet <code>table</code> à l’aide de la fonction <code>as.table()</code>) :</p>
+<p>Le tableau de contingence peut toujours être calculé à partir d’un tableau cas par variable, mais il peut également être encodé directement si nécessaire. Voici un petit tableau de contingence à simple entrée encodé directement comme tel (vecteur nommé transformé en objet <code>table</code> à l’aide de la fonction <code>as.table()</code>) :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">anthirrhinum &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(
   <span class="st">&quot;fleur rouge&quot;</span>   =<span class="st"> </span><span class="dv">54</span>,
   <span class="st">&quot;fleur rose&quot;</span>    =<span class="st"> </span><span class="dv">122</span>,
@@ -418,7 +418,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 anthirrhinum</code></pre></div>
 <pre><code>#   fleur rouge    fleur rose fleur blanche 
 #            54           122            58</code></pre>
-<p>Une troisième possibilité est d’utiliser un tableau indiquant les <strong>fréquences d’occurence</strong> dans une colonne (<code>freq</code> ci-dessus). Ce n’est <strong>pas</strong> un tableau cas par variable, mais une forme bien plus concise et pratique pour préencoder les données qui devront être ensuite transformées en tableau de contingence à l’aide de la fonction <code>xtabs()</code>. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction <code>rep()</code>).</p>
+<p>Une troisième possibilité est d’utiliser un tableau indiquant les <strong>fréquences d’occurence</strong> dans une colonne (<code>freq</code> ci-dessus). Ce n’est <strong>pas</strong> un tableau cas par variable, mais une forme bien plus concise et pratique pour pré-encoder les données qui devront être ensuite transformées en tableau de contingence à l’aide de la fonction <code>xtabs()</code>. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction <code>rep()</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">timolol &lt;-<span class="st"> </span><span class="kw">tibble</span>(
   <span class="dt">traitement =</span> <span class="kw">c</span>(<span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;placebo&quot;</span>),
   <span class="dt">patient    =</span> <span class="kw">c</span>(<span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>,  <span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>),
@@ -431,7 +431,7 @@ timolol_table</code></pre></div>
 # patient  placebo timolol
 #   malade     128     116
 #   sain        19      44</code></pre>
-<p>La sortie par défaut d’un tableau de contingence n’est pas très esthétique, mais plusieurs options existent pour le formatter d’une façon agréable. En voici deux exemples :</p>
+<p>La sortie par défaut d’un tableau de contingence n’est pas très esthétique, mais plusieurs options existent pour le formater d’une façon agréable. En voici deux exemples :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pander<span class="op">::</span><span class="kw">pander</span>(timolol_table,
   <span class="dt">caption =</span> <span class="st">&quot;Exemple de table de contingence à double entrée.&quot;</span>)</code></pre></div>
 <table style="width:46%;">
@@ -491,7 +491,7 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(tab1, tab2), <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre></div>
 <p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<p>Différentes fonctions dans R existent également pour convertir un tableau de contingence en tableau cas par variables (ou en tous cas, en un tableau similaire). Par exemple, <code>as_dataframe()</code> renvoie un tableau indiquant les fréquences d’occurences :</p>
+<p>Différentes fonctions dans R existent également pour convertir un tableau de contingence en tableau cas par variables (ou en tous cas, en un tableau similaire). Par exemple, <code>as_dataframe()</code> renvoie un tableau indiquant les fréquences d’occurrences :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(timolol2 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(timolol_table, <span class="dt">n =</span> <span class="st">&quot;freq&quot;</span>))</code></pre></div>
 <pre><code># # A tibble: 4 x 3
 #   patient traitement  freq
@@ -519,9 +519,9 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 </div>
 <div id="metadonnees" class="section level3">
 <h3><span class="header-section-number">6.1.3</span> Métadonnées</h3>
-<p>Les données dans un tableau de données doivent <strong>impérativement</strong> être associées à un ensemble de métadonnées. Les métadonnées (metadata en anglais) apportent des informations complémentaires nécessaires pour une interprétation corrrecte des données. Elles permettent donc de replacer les données dans leur contexte et de spécifier des caractéristiques liées aux pesures réalisées comme les unités de mesure par exemple.</p>
+<p>Les données dans un tableau de données doivent <strong>impérativement</strong> être associées à un ensemble de métadonnées. Les métadonnées (“metadata” en anglais) apportent des informations complémentaires nécessaires pour une interprétation correcte des données. Elles permettent donc de replacer les données dans leur contexte et de spécifier des caractéristiques liées aux mesures réalisées comme les unités de mesure par exemple.</p>
 <p><span class="math display">\[Donn\acute{e}es \ de \ qualit\acute{e} \ = \ tableau \ de \ donn\acute{e}es + \ m\acute{e}tadonn\acute{e}es\]</span></p>
-<p>Les données correctement qualifiées et documentée sont les seules qui penvent être utilisées par un collaborateur externe. C’est à dire qu’une personne externe à l’expérience ne peut interpréter le tableau de données que si les métadonnées sont complètes et explicites.</p>
+<p>Les données correctement qualifiées et documentée sont les seules qui peuvent être utilisées par un collaborateur externe. C’est à dire qu’une personne externe à l’expérience ne peut interpréter le tableau de données que si les métadonnées sont complètes et explicites.</p>
 <p>Exemple de métadonnées :</p>
 <ul>
 <li>Unités de mesure (exemple : 3,5 mL, 21,2 °C)</li>
@@ -533,7 +533,7 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 <li>Nom de l’opérateur en charge de la mesure</li>
 <li>…</li>
 </ul>
-<p>Vous avez pu vous aperçevoir que la fonction <code>read()</code> permet d’ajouter certaines métadonnées comme les unités aux variables d’un jeu de données. Cependant, il n’est pas toujours possible de rajouter les métadonnées dans un tableau sous forme électronique, mais il faut toujours les consigner dans un <strong>cahier de laboratoire</strong>, et ensuite les <strong>retranscrire dans le rapport</strong>. La fonction <code>labelise()</code> vous permet de rajouter le <strong>label</strong> et les <strong>unités</strong> de mesure pour vos différentes variables directement dans le tableau. Par exemple, voici l’encodage direct d’un petit jeu de données qui mesure la distance du saut (<code>jump</code>) en cm de grenouilles taureaux en fonction de leur masse (<code>weight</code>) en g pour 5 individus différents (<code>ind</code>). Vous pouvez annoter ce data frame de la façon suivante :</p>
+<p>Vous avez pu vous apercevoir que la fonction <code>read()</code> permet d’ajouter certaines métadonnées comme les unités aux variables d’un jeu de données. Cependant, il n’est pas toujours possible de rajouter les métadonnées dans un tableau sous forme électronique, mais il faut toujours les consigner dans un <strong>cahier de laboratoire</strong>, et ensuite les <strong>retranscrire dans le rapport</strong>. La fonction <code>labelise()</code> vous permet de rajouter le <strong>label</strong> et les <strong>unités</strong> de mesure pour vos différentes variables directement dans le tableau. Par exemple, voici l’encodage direct d’un petit jeu de données qui mesure la distance du saut (<code>jump</code>) en cm de grenouilles taureaux en fonction de leur masse (<code>weight</code>) en g pour 5 individus différents (<code>ind</code>). Vous pouvez annoter ce data frame de la façon suivante :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">frog &lt;-<span class="st"> </span><span class="kw">tribble</span>(
   <span class="op">~</span>ind, <span class="op">~</span>jump, <span class="op">~</span>weight,
    <span class="dv">1</span>,    <span class="dv">71</span>,    <span class="dv">204</span>,
@@ -653,7 +653,7 @@ frog &lt;-<span class="st"> </span><span class="kw">labelise</span>(frog, <span 
 <p>Ce tableau peut-être encodé sous forme textuelle et placé dans le même dossier que le jeu de données lui-même. Il peut aussi être encodé comme feuille supplémentaire dans une fichier Excel.</p>
 <div class="note">
 <p>
-Le dictionnaire des données est un outil important pour comprendre ce que contient le tableau de données, et donc, son inteprétation. <em>Ne le négligez pas !</em>
+Le dictionnaire des données est un outil important pour comprendre ce que contient le tableau de données, et donc, son interprétation. <em>Ne le négligez pas !</em>
 </p>
 </div>
 </div>
@@ -662,7 +662,7 @@ Le dictionnaire des données est un outil important pour comprendre ce que conti
 <hr />
 <ol start="24">
 <li id="fn24"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref24">↩</a></p></li>
-<li id="fn25"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref25">↩</a></p></li>
+<li id="fn25"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurrences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref25">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

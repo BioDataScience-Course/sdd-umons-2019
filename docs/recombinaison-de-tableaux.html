@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -378,7 +378,7 @@ L’aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/da
 L’utilisation des fonction <code>gather()</code> et <code>spread()</code> provenant du package <strong>tidyr</strong> est également décrite en détails dans <a href="https://r4ds.had.co.nz/tidy-data.html#spreading-and-gathering">R for Data Science</a>.
 </p>
 </div>
-<p>Prenons l’exemple d’un jeu de données provenant de l’article scientifique suivant : <a href="http://di.umons.ac.be/details.aspx?pub=0a0de102-c145-403f-9e1c-8ad4fdc1fc39">Paleomicrobiology to investigate copper resistance in bacteria : isolation and description of Cupriavidus necator B9 in the soil of a medieval foundry</a>. L’article est basé sur l’analyse métagénomique de type “shotgun” pour quatre communautés microbiennes (notées <code>c1</code>, <code>c4</code>, <code>c7</code>et <code>c10</code>, respectivement)<a href="references.html#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a>. Il en résulte une longue liste de sequences que l’on peut attribuer à des règnes.</p>
+<p>Prenons l’exemple d’un jeu de données provenant de l’article scientifique suivant : <a href="http://di.umons.ac.be/details.aspx?pub=0a0de102-c145-403f-9e1c-8ad4fdc1fc39">Paleomicrobiology to investigate copper resistance in bacteria : isolation and description of Cupriavidus necator B9 in the soil of a medieval foundry</a>. L’article est basé sur l’analyse métagénomique de type “shotgun” pour quatre communautés microbiennes (notées <code>c1</code>, <code>c4</code>, <code>c7</code>et <code>c10</code>, respectivement)<a href="references.html#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a>. Il en résulte une longue liste de séquences que l’on peut attribuer à des règnes.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">shotgun_wide &lt;-<span class="st"> </span><span class="kw">tibble</span>(
   <span class="dt">kingdom =</span> <span class="kw">c</span>(<span class="st">&quot;Archaea&quot;</span>, <span class="st">&quot;Bacteria&quot;</span>, <span class="st">&quot;Eukaryota&quot;</span>, <span class="st">&quot;Viruses&quot;</span>,
               <span class="st">&quot;other sequences&quot;</span>, <span class="st">&quot;unassigned&quot;</span>, <span class="st">&quot;unclassified sequences&quot;</span>),
@@ -434,7 +434,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(shotgun_w
 </div>
 
 <div class="bdd">
-<p>Une tâche en binome vous est assignée via l’URL suivante :</p>
+<p>Une tâche en binome vous est assignée via l’URL suivante :</p>
 <ul>
 <li><a href="https://classroom.github.com/g/shtUkGbz" class="uri">https://classroom.github.com/g/shtUkGbz</a></li>
 </ul>

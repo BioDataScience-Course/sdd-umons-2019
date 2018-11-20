@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-14">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -364,17 +364,17 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Le traitement diffère selon le nombre de valeurs différentes rencontrées dans le jeu de données. Si une variable numérique contient en réalité un petit nombre de valeurs différentes, il suffit de convertir la <em>classe</em> de l’objet de <code>numeric</code> vers <code>factor</code> ou <code>ordered</code> pour que R comprenne que la variable doit être traitée comme une variable qualitative. Un exemple concret l’illustre ci-dessous. Si, par contre, le nombre de valeurs différentes est important (dizaines ou plus) alors il va falloir créer des regroupements. C’est le <strong>découpage en classes</strong> abordé plus loin.</p>
 <p>Voici un jeu de données qui étudie l’allongement des dents chez le cobaye en fonction de la supplémentation alimentaire en acide ascorbique.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tooth &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ToothGrowth&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div>
-<p>Le jeu de données comprend 60 observations effectuées sur des cochons d’Inde. Ces derniers reçoivent deux types de suppléments alimentaires : soit du jus d’orange (<code>OJ</code>), soit de la vitamine C (<code>VC</code>). Des lots différents recoivent des doses différentes d’acide ascorbique via ces suppléments, soit 0.5, 1, ou 2 mg/j. Vous pouvez inspecter ces données rapidement avec la fonction <code>skim()</code>.</p>
+<p>Le jeu de données comprend 60 observations effectuées sur des cochons d’Inde. Ces derniers reçoivent deux types de suppléments alimentaires : soit du jus d’orange (<code>OJ</code>), soit de la vitamine C (<code>VC</code>). Des lots différents reçoivent des doses différentes d’acide ascorbique via ces suppléments, soit 0.5, 1, ou 2 mg/j. Vous pouvez inspecter ces données rapidement avec la fonction <code>skim()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre></div>
 <pre><code># Skim summary statistics
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -398,7 +398,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -406,7 +406,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -419,7 +419,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -427,7 +427,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre><
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -496,7 +496,7 @@ df</code></pre></div>
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -523,7 +523,7 @@ Les différents niveaux des variables <code>factor</code> ou <code>ordered</code
 <p>Nous voyons que le tableau réduit <code>iris20</code> ne contient des données que d’une seule espèce. Pourtant <code>table()</code> continue de lister les autres niveaux de la variable. Les niveaux connus sont aussi imprimés avec <code>levels()</code> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(iris20<span class="op">$</span>species)</code></pre></div>
 <pre><code># [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;</code></pre>
-<p>Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l’espèce <em>I. setosa</em>. Dans ce cas, <code>droplevels()</code> permettra de faire disparaitre les autres niveaux de la variable <code>species</code>.</p>
+<p>Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l’espèce <em>I. setosa</em>. Dans ce cas, <code>droplevels()</code> permettra de faire disparaître les autres niveaux de la variable <code>species</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris20<span class="op">$</span>species &lt;-<span class="st"> </span><span class="kw">droplevels</span>(iris20<span class="op">$</span>species)
 <span class="kw">levels</span>(iris20<span class="op">$</span>species)</code></pre></div>
 <pre><code># [1] &quot;setosa&quot;</code></pre>
