@@ -2,17 +2,196 @@
 
 
 
-Moyenne, intervalle de confiance et t-test. Présentation graphique: dynamite plot + barres d’erreurs. Transformation des données pour linéariser et ou rendre symétrique autour de la moyenne. Comparaison moyenne/médiane => paramétrique versus non paramétrique.
+##### Objectifs {-}
 
-Exemple d'équation avec référence, voir éq. \@ref(eq:moyenne):
+- De manière générale, pouvoir répondre à différentes questions concernant une ou deux moyennes
+
+- Découvrir la distribution *t* de Student
+
+- Comprendre le principe de la distribution d'un échantillon
+
+- Appréhender l'intervalle de confiance, savoir le calculer et l'utiliser
+
+- Comprendre les différentes variantes du test *t* de Student et être capable de l'utiliser pour résoudre des questions pratiques en biologie
+
+- Connaître également le test de Wilcoxon-Mann-Withney, et pouvoir déterminer quand l'utiliser à la place du test de Student
+
+
+##### Prérequis {-}
+
+Ce module élabore sur les notions vues au module \@ref(proba) concernant les lois de distribution statistiques et sur le concept de test d'hypothèse abordé dans le module \@ref(chi2). Ces deux précédents modules doivent donc être maîtrisés avant d'aller plus avant ici.
+
+
+## Une histoire de bière...
+
+Les belges, c'est connu, apprécient la bière. Mais ils ne sont pas les seuls, et c'est très heureux\ ! Car c'est en effet grâce à un certain William Sealy Gosset, brasseur et statisticien (et oui, ça ne s'invente pas) que l'un des tests d'hypothèses des plus utilisés en biologie a vu le jour\ : le test de "Student" qui permet de comparer des moyennes.
+
+Pour la petite histoire, Gosset a travaillé pour une certaine brasserie irlandaise du nom de Guiness au début du 20^ème^siècle. C'est en étudiant la variabilité de sa bière d'un cru à l'autre que Gosset a découvert la façon dont la moyenne d'un échantillon se distribue. Il a pu dériver une formulation mathématique de cette distribution, la **distribution *t* de Student**, et à partir de là, nous verrons que de nombreuses applications en découlent. Nous pourrons, par exemple, dire si deux moyennes diffèrent *significativement* l'une de l'autre ou pas.
+
+Mais au fait, pourquoi, cette distribution porte-t-elle le nom de "Student"\ ? Visionnez la vidéo suivante (malheureusement en anglais) pour le découvrir^[Vous pouvez activer les sous-titres en anglais via la barre de boutons en bas de la vidéo pour vous aider à comprendre l'histoire.].
+
+<!--html_preserve--><iframe src="https://www.youtube.com/embed/GFzCIA9kppM" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
+
+Le contrat que Gosset a signé avec son employeur l'empêchait de publier des résultats scientifiques sous son vrai nom. Ainsi, il décida de publier sa trouvaille qui occupe aujourd'hui une place très importante en statistiques sous le pseudonyme de "Student" (l'étudiant). Ce n'est qu'à sa mort, en 1937, que l'on pu révéler le nom de l'auteur qui est derrière cette fantastique trouvaille. Mais au fait, de quoi s'agit-il exactement\ ? Nous allons le découvrir dans la section suivante.
+
+
+## La distribution d'échantillonnage
+
+Pour rappel, nous faison de l'**inférence** sur base d'un échantillon parce que nous sommes incapables de mesurer tous les individus d'une population. Il faut au préalable que l'échantillon soit *représentatif*, donc réalisé dans les règles de l'art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d'un échantillon facilement (eq. \@ref(eq:moyenne). 
 
 \begin{equation} 
-  \mu=\sum_{i=1}^n{\frac{x_i}{n}}
+  \bar{x}=\sum_{i=1}^n{\frac{x_i}{n}}
   (\#eq:moyenne)
 \end{equation} 
 
-L'équation suivante n'est pas libellée:
+où $x$ est une variable quantitative (donc `numeric` dans R) et $n$ est la taille de l'échantillon, donc le nombre d'individus mesurés. On notera $\bar{x}$ la moyenne de $x$, que l'on prononcera "x barre".
 
-\begin{equation*} 
-  \mu=\frac{\sum_{i=1}^nx_i}{n}
-\end{equation*}
+En fait, ce qui nous intéresse, ce n'est pas vraiment la moyenne de l'échantillon, mais celle de la population que l'on notera $\mu$^[Notez que les lettres latines sont utilisées pour se référer aux variables et aux descripteurs statistiques telle que la moyenne pour l'échantillon, alors que les paramètres équivalents de la population, qui sont inconnus, sont représentés par des lettres grecques en statistiques.]. D'où la question\ : comment varie la moyenne d'un échantillon à l'autre\ ?
+
+Nous pouvons répondre à cette question de manière empirique en utilisant le générateur pseudo-aléatoire de R. Partons d'une distribution théorique de la population qui soit normale, de moyenne *\mu$ = 8 et d'écart type $\sigma$ = 2. Nous pouvons échantillonner neuf individus. Cela donne\ :
+
+
+```r
+set.seed(8431641)
+smpl1 <- rnorm(9, mean = 8, sd = 2)
+smpl1
+```
+
+```
+# [1]  9.138562  8.496824  9.573743  7.276562  8.300520  5.176688  4.209415
+# [8] 10.700260  7.264703
+```
+
+```r
+mean(smpl1)
+```
+
+```
+# [1] 7.793031
+```
+
+Dans ce cas-ci, nous obtenous une moyenne de 7,8. Ce n'est pas égal à 8. Le hasard de l'échantillonnage en est responsable. La moyenne de l'échantillon tendra vers la moyenne de la population seulement lorsque $n \longrightarrow \infty$. Réalisons un second échantillonnage fictif.
+
+
+```r
+mean(rnorm(9, mean = 8, sd = 2))
+```
+
+```
+# [1] 8.660309
+```
+
+Cette fois-ci, nous obtenons une moyenne de 8,7. Nous savons que la moyenne $\mu$ qui nous intéresse est très probablement différente de la moyenne de notre échantillon, **mais de conbien\ ?** Pour le déterminer, nous devons définir comment la moyenne de l'échantillon varie d'un échantillon à l'autre, c'est ce qu'on appelle la **distribution d'échantillonnage**. Nous pouvons le déterminer expérimentalement en échantillonnant un grand nombre de fois. On appelle cela une **méta-expérience.** En pratique, c'est difficile à faire, mais avec notre ordinateur et le générateur de nombres pseudo-aléatoires de R, pas de problèmes. Donc, comment se distribue la moyenne entre, ... disons dix mille échantillons différents de neufs individus tirés de la même population^[Nous utilisons pour se faire une boucle `for` dans R qui réitère un calcul sur chaque élément d'un vecteur, ici, une séquence 1, 2, 3, ..., 10000 obtenue à l'aide de l'instruction `1:10000`.]\ ?
+
+
+```r
+means_n9 <- numeric(10000) # Vecteur de 10000 valeurs
+for (i in 1:10000)
+  means_n9[i] <- mean(rnorm(9, mean = 8, sd = 2))
+chart(data = NULL, ~ means_n9) +
+  geom_histogram(bins = 30)
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-4-1.svg" width="672" style="display: block; margin: auto;" />
+
+Nous obtenons une distribution symétrique centrée autour de 8. Elle ressemble à une distribution normale, mais ce n'en est pas une. C'est précisément ici que William Gosset intervient. Il est, en effet, arrivé à décrire cette loi de distribution de la moyenne d'échantillonnage. C'est la distribution *t* de Student qui admet trois paramètres\ : une moyenne $\mu$, un écart type $\sigma$, et des degrés de liberté ddl ou $\nu$. Les degrés de liberté sont en lien avec la taille de l'échantillon. Ils valent\ :
+
+$$ddl = n-1$$
+
+Concernant la moyenne, et l'écart type, nous pouvons les calculer sur base de notre distribution d'échantillonnage empirique contenue dans le vecteur `means`\ :
+
+
+```r
+mean(means_n9)
+```
+
+```
+# [1] 8.007725
+```
+
+```r
+sd(means_n9)
+```
+
+```
+# [1] 0.6611474
+```
+
+La moyenne de la distribution d'échantillonnage est donc égale à la moyenne de la population. Elle peut donc être approximée par la moyenne d'un échantillon. Quant à l'écart type, il vaut 2/3 environ, soit l'écart type de la population divisé par 3.
+
+Effectuons une autre méta-expérience toujours à partir de la même population, mais avec des échantillons plus petits, par exemple, avec $n = 4$\ :
+
+
+```r
+means_n4 <- numeric(10000) # Vecteur de 10000 valeurs
+for (i in 1:10000)
+  means_n4[i] <- mean(rnorm(4, mean = 8, sd = 2))
+chart(data = NULL, ~ means_n4) +
+  geom_histogram(bins = 30)
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-6-1.svg" width="672" style="display: block; margin: auto;" />
+
+La distribution est plus étalée. Ses paramètres sont\ :
+
+
+```r
+mean(means_n4)
+```
+
+```
+# [1] 7.995668
+```
+
+```r
+sd(means_n4)
+```
+
+```
+# [1] 1.002102
+```
+
+La moyenne vaut toujours 8, mais cette fois-ci, l'écart type est plus grand, et il vaut 1, soit 2/2. Qu'est-ce que cela donne avec un échantillon nettement plus grand, disons $n = 100$\ ?
+
+
+```r
+means_n100 <- numeric(10000) # Vecteur de 10000 valeurs
+for (i in 1:10000)
+  means_n100[i] <- mean(rnorm(100, mean = 8, sd = 2))
+chart(data = NULL, ~ means_n100) +
+  geom_histogram(bins = 30)
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-8-1.svg" width="672" style="display: block; margin: auto;" />
+
+
+```r
+mean(means_n100)
+```
+
+```
+# [1] 7.999136
+```
+
+```r
+sd(means_n100)
+```
+
+```
+# [1] 0.2005426
+```
+
+On obtient toujours 8 comme moyenne, mais cette fois-ci, l'écart type est de 0,2, soit 2/10.
+
+*Pouvez-vous deviner comment l'écart type de la distribution t de Student varie sur base de ces trois méta-expériences\ ? Réfléchissez un petit peu avant de lire la suite.*
+
+La première bonne nouvelle, c'est que la moyenne des moyennes des échantillons vaut $\mu$, la moyenne de la population que nous recherchons.
+
+La seconde bonne nouvelle, c'est que la distribution des moyennes des échantillons est plus resserrée que la distribution d'origine. En fait, son écart type dépend à la fois de l'écart type de la population de départ *et de $n$, la taille de l'échantillon*. Elle varie, en fait, comme $\frac{\sigma}{\sqrt{n}}$. Ainsi, avec $n = 9$ nous obtenions $\sigma = \frac{2}{\sqrt{9}} = \frac{2}{3}$\ ; avec $n = 4$, nous avions $\sigma = \frac{2}{\sqrt{4}} = \frac{2}{2}$\ ; enfin, avec $n = 100$, nous observions $\sigma = \frac{2}{\sqrt{100}} = \frac{2}{10}$.
+
+
+## Représentation graphique
+
+Présentation graphique: dynamite plot + barres d’erreurs. Transformation des données pour linéariser et ou rendre symétrique autour de la moyenne. Comparaison moyenne/médiane => paramétrique versus non paramétrique.
+
+![Le système judiciaire des statistiques, par Hadley Wickham.](images/sdd1_09/statistical-justice.jpg)
