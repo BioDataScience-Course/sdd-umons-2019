@@ -269,7 +269,11 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a><ul>
 <li class="chapter" data-level="9.1" data-path="une-histoire-de-biere.html"><a href="une-histoire-de-biere.html"><i class="fa fa-check"></i><b>9.1</b> Une histoire de bière…</a></li>
-<li class="chapter" data-level="9.2" data-path="la-distribution-dechantillonnage.html"><a href="la-distribution-dechantillonnage.html"><i class="fa fa-check"></i><b>9.2</b> La distribution d’échantillonnage</a></li>
+<li class="chapter" data-level="9.2" data-path="distribution-dechantillonnage.html"><a href="distribution-dechantillonnage.html"><i class="fa fa-check"></i><b>9.2</b> Distribution d’échantillonnage</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="distribution-dechantillonnage.html"><a href="distribution-dechantillonnage.html#loi-de-distribution-de-student"><i class="fa fa-check"></i><b>9.2.1</b> Loi de distribution de Student</a></li>
+<li class="chapter" data-level="9.2.2" data-path="distribution-dechantillonnage.html"><a href="distribution-dechantillonnage.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>9.2.2</b> Intervalle de confiance</a></li>
+<li class="chapter" data-level="9.2.3" data-path="distribution-dechantillonnage.html"><a href="distribution-dechantillonnage.html#theoreme-central-limite-encore"><i class="fa fa-check"></i><b>9.2.3</b> Théorème central limite (encore)</a></li>
+</ul></li>
 <li class="chapter" data-level="9.3" data-path="representation-graphique.html"><a href="representation-graphique.html"><i class="fa fa-check"></i><b>9.3</b> Représentation graphique</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
@@ -345,9 +349,9 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="la-distribution-dechantillonnage" class="section level2">
-<h2><span class="header-section-number">9.2</span> La distribution d’échantillonnage</h2>
-<p>Pour rappel, nous faison de l’<strong>inférence</strong> sur base d’un échantillon parce que nous sommes incapables de mesurer tous les individus d’une population. Il faut au préalable que l’échantillon soit <em>représentatif</em>, donc réalisé dans les règles de l’art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d’un échantillon facilement (eq. <a href="la-distribution-dechantillonnage.html#eq:moyenne">(9.1)</a>.</p>
+<div id="distribution-dechantillonnage" class="section level2">
+<h2><span class="header-section-number">9.2</span> Distribution d’échantillonnage</h2>
+<p>Pour rappel, nous faisons de l’<strong>inférence</strong> sur base d’un échantillon parce que nous sommes incapables de mesurer tous les individus d’une population. Il faut au préalable que l’échantillon soit <em>représentatif</em>, donc réalisé dans les règles de l’art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d’un échantillon facilement (eq. <a href="distribution-dechantillonnage.html#eq:moyenne">(9.1)</a>.</p>
 <span class="math display" id="eq:moyenne">\[\begin{equation} 
   \bar{x}=\sum_{i=1}^n{\frac{x_i}{n}}
   \tag{9.1}
@@ -407,12 +411,163 @@ smpl1</code></pre></div>
 <p><em>Pouvez-vous deviner comment l’écart type de la distribution t de Student varie sur base de ces trois méta-expériences ? Réfléchissez un petit peu avant de lire la suite.</em></p>
 <p>La première bonne nouvelle, c’est que la moyenne des moyennes des échantillons vaut <span class="math inline">\(\mu_x = \mu\)</span>, la moyenne de la population que nous recherchons.</p>
 <p>La seconde bonne nouvelle, c’est que la distribution des moyennes des échantillons est plus resserrée que la distribution d’origine. En fait, son écart type dépend à la fois de l’écart type de la population de départ et de <span class="math inline">\(n\)</span>, la taille de l’échantillon. Elle varie, en fait, comme <span class="math inline">\(\sigma_x = \frac{\sigma}{\sqrt{n}}\)</span>. Ainsi, avec <span class="math inline">\(n = 9\)</span> nous obtenions <span class="math inline">\(\sigma_x = \frac{2}{\sqrt{9}} = \frac{2}{3}\)</span> ; avec <span class="math inline">\(n = 4\)</span>, nous avions <span class="math inline">\(\sigma_x = \frac{2}{\sqrt{4}} = \frac{2}{2}\)</span> ; enfin, avec <span class="math inline">\(n = 100\)</span>, nous observions <span class="math inline">\(\sigma_x = \frac{2}{\sqrt{100}} = \frac{2}{10}\)</span>.</p>
+<div id="loi-de-distribution-de-student" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Loi de distribution de Student</h3>
+<p>On dira :</p>
+<p><span class="math display">\[\mu_x \sim t(\mu, \frac{\sigma}{\sqrt{n}}, n-1)\]</span></p>
+<p>La moyenne de l’échantillon suit une distribution <em>t</em> de Student avec pour moyenne, la moyenne de la population, pour écart type, l’écart type de la population divisé par la racine carrée de <em>n</em>, et comme degrés de liberté <em>n</em> moins un. La distribution <em>t</em> de Student dans R est représentée par <code>&lt;x&gt;t()</code>. Donc, <code>qt()</code> calcule un quantile à partir d’une probabilité, <code>pt()</code> une probabilité à partir d’un quantile, <code>rt()</code> renvoie un ou plusieurs nombres pseudo-aléatoires selon une distribution <em>t</em>, et <code>dt()</code> renvoie la densité de probabilité de la distribution. Dans la SciViews Box, vous y accédez également via les “snippets” à partie de <code>.it</code> pour <code>(d)istribution: t (Student)</code> :</p>
+<div class="figure">
+<img src="images/sdd1_09/t-distribution-snippets.png" />
+
+</div>
+<p>Le calcul est un peu plus complexe car les fonctions <code>&lt;x&gt;t()</code> ne considèrent que les distributions <em>t</em> de Student <em>réduites</em> (donc avec moyenne valant zéro et écart type de un). Nous devons ruser pour transformer le résultat en fonction des valeurs désirées. Mais heureusement, les “snippets” nous aident en nous prémâchant la besogne. Considérons le cas <span class="math inline">\(n = 9\)</span> avec un moyenne de 8 et un écart type de 2/3. Voici quelques exemples de calculs réalisables :</p>
+<ul>
+<li>Quelle est la probabilité que la moyenne d’un échantillon soit égale ou supérieure à 8,5 ?</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.mu &lt;-<span class="st"> </span><span class="dv">8</span>; .s &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; <span class="kw">pt</span>((<span class="fl">8.5</span> <span class="op">-</span><span class="st"> </span>.mu)<span class="op">/</span>.s, <span class="dt">df =</span> <span class="dv">8</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code># [1] 0.2373656</code></pre>
+<p>Elle est de 24% environ. Notez que nous avons renseigné la moyenne et l’écart type de la distribution <em>t</em> dans <code>.mu</code> et <code>.s</code>, respectivement. Ensuite, les degrés de liberté (9 - 1) sont indiqués dans l’argument <code>df =</code>. Enfin, nous avons précisé <code>lower.tail =  FALSE</code> pour obtenir l’aire à droite dans la distribution.</p>
+<ul>
+<li>Considérant une aire à gauche de 5%, quelle est la moyenne de l’échantillon qui la délimite ?</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.mu &lt;-<span class="st"> </span><span class="dv">8</span>; .s &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; .mu <span class="op">+</span><span class="st"> </span>.s <span class="op">*</span><span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.05</span>, <span class="dt">df =</span> <span class="dv">8</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code># [1] 6.760301</code></pre>
+<p>Il s’agit du quantile 6,76. Le graphique correspondant est le suivant :</p>
+<div class="figure" style="text-align: center"><span id="fig:tdistri1"></span>
+<img src="09-Moyenne_files/figure-html/tdistri1-1.svg" alt="Une distribution de Student avec aire à gauche de 5% mise en évidence en rouge. La distribution normale équivalente est superposée en bleu clair." width="672" />
+<p class="caption">
+Figure 9.1: Une distribution de Student avec aire à gauche de 5% mise en évidence en rouge. La distribution normale équivalente est superposée en bleu clair.
+</p>
+</div>
+<p>Nous pouvons voir sur la Fig. <a href="distribution-dechantillonnage.html#fig:tdistri1">9.1</a> que la distribution <em>t</em> de Student est plus resserrée en son centre, mais plus étalée aux extrémités que la distribution normale de même moyenne et écart type. Néanmoins, elle est d’autant plus proche d’une normale que les degrés de libertés sont grands. On dit qu’elle converge vers une normale lorsque <span class="math inline">\(dll \longrightarrow \infty\)</span>. En pratique, pour des degrés de liberté égaux ou supérieurs à 30, nous pourrons considérer que les deux distributions sont pratiquement confondues.</p>
+<p>Revenons à nos calculs de quantiles et probabilités. Les questions que l’on se posera seront plutôt :</p>
+<ul>
+<li>Quelle est la probabilité que la moyenne d’un échantillon diffère de 0,5 unités de la vraie valeur ? Au lieu de considérer l’aire à gauche ou à droite, on considèrera <strong>une aire répartie symétriquement à moitié à gauche et à moitié à droite</strong>. La réponse à la question est :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Aire à gauche de 8 -0.5 :</span>
+.mu &lt;-<span class="st"> </span><span class="dv">8</span>; .s &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>
+(left_area &lt;-<span class="st"> </span><span class="kw">pt</span>((<span class="fl">7.5</span> <span class="op">-</span><span class="st"> </span>.mu)<span class="op">/</span>.s, <span class="dt">df =</span> <span class="dv">8</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code># [1] 0.2373656</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Aire à droite de 8 + 0.5 :</span>
+(right_area &lt;-<span class="st"> </span><span class="kw">pt</span>((<span class="fl">8.5</span> <span class="op">-</span><span class="st"> </span>.mu)<span class="op">/</span>.s, <span class="dt">df =</span> <span class="dv">8</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>))</code></pre></div>
+<pre><code># [1] 0.2373656</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Résultat final</span>
+left_area <span class="op">+</span><span class="st"> </span>right_area</code></pre></div>
+<pre><code># [1] 0.4747312</code></pre>
+<p>Vous avez remarqué quelque chose de particulier ? Oui, les deux aires sont identiques. C’est parce que la distribution est symétrique. On peut donc simplifier le calcul en calculant d’un seul côté et en multipliant le résultat par deux :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.mu &lt;-<span class="st"> </span><span class="dv">8</span>; .s &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>
+<span class="kw">pt</span>((<span class="fl">7.5</span> <span class="op">-</span><span class="st"> </span>.mu)<span class="op">/</span>.s, <span class="dt">df =</span> <span class="dv">8</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code># [1] 0.4747312</code></pre>
+<p>Dans l’autre sens, il suffit donc de diviser la probabilité (= l’aire) par deux, parce qu’elle se répartit à parts égales à gauche et à droite dans les régions les plus extrêmes de la distribution. Ainsi, les quantiles qui définissent une aire extrême de 5% dans notre distribution sont (notez que la valeur de probabilité utilisée ici est 0,025, soit 2,5%) :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Quantile à gauche</span>
+.mu &lt;-<span class="st"> </span><span class="dv">8</span>; .s &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; .mu <span class="op">+</span><span class="st"> </span>.s <span class="op">*</span><span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.025</span>, <span class="dt">df =</span> <span class="dv">8</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code># [1] 6.462664</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Quantile à droite</span>
+.mu &lt;-<span class="st"> </span><span class="dv">8</span>; .s &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">3</span>; .mu <span class="op">+</span><span class="st"> </span>.s <span class="op">*</span><span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.025</span>, <span class="dt">df =</span> <span class="dv">8</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code># [1] 9.537336</code></pre>
+
+<div class="note">
+On pourra aussi dire que la moyenne d’un échantillon de neuf observations issu de notre population théorique de référence sera comprise entre 6,5 et 9,5 (ou 8 ± 1,5) dans 95% des cas. La Fig. <a href="distribution-dechantillonnage.html#fig:tdistri2">9.2</a> le montre graphiquement.
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:tdistri2"></span>
+<img src="09-Moyenne_files/figure-html/tdistri2-1.svg" alt="Une distribution de Student avec aire extrême de 5% mise en évidence en rouge." width="672" />
+<p class="caption">
+Figure 9.2: Une distribution de Student avec aire extrême de 5% mise en évidence en rouge.
+</p>
+</div>
+</div>
+<div id="intervalle-de-confiance" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Intervalle de confiance</h3>
+<p>Le dernier exemple que nous venons de calculer (Fig. <a href="distribution-dechantillonnage.html#fig:tdistri2">9.2</a>) n’est rien d’autre que l’<strong>intervalle de confiance à 95%</strong> de la moyenne.</p>
+
+<div class="note">
+Un <strong>intervalle de confiance</strong> à x% autour d’une valeur estimée définit une zone à gauche et à droite de la valeur estimée telle que la vraie valeur se situe x% du temps dans cet intervalle.
+</div>
+
+<p>En fait, la distribution est centrée sur <span class="math inline">\(\mu\)</span>, la valeur inconnue que l’on recherche, mais l’intervalle peut être translaté sur l’axe pour se centrer sur la moyenne <span class="math inline">\(\bar{x}\)</span> d’un échantillon en particulier. Il définit alors une région sur l’axe qui comprend avec une probabilité correspondante, <span class="math inline">\(\mu\)</span> la moyenne inconnue.</p>
+<p>Avec ce nouvel outil, nous pouvons donc préciser nos estimations de la moyenne de la population <span class="math inline">\(\mu\)</span> en associant à la valeur estimée <em>via</em> la moyenne de l’échantillon <span class="math inline">\(\bar{x}\)</span> un intervalle de confiance. Si nous notons <span class="math inline">\(t_p^{n-1}\)</span> le quantile correspondant à l’aire à gauche valant <em>p</em> pour une distribution <em>t</em> réduite de <span class="math inline">\(n-1\)</span> degrés de liberté, on pourra écrire :</p>
+<p><span class="math display">\[\mathrm{IC}(1 - \alpha) = \mu_x \pm t_{\alpha/2}^{n-1} \cdot \sigma_x\]</span></p>
+<p>On notera aussi <span class="math inline">\(\hat{\mu}\)</span> ou “mu chapeau” comme l’<strong>estimateur</strong> de <span class="math inline">\(\mu\)</span>, c’est-à-dire, la valeur que nous utilisons pour l’approximer au mieux. Ici, il s’agit de <span class="math inline">\(\bar{x}\)</span>, la moyenne de notre échantillon. De même, <span class="math inline">\(\hat{\sigma}\)</span> est l’estimateur de l’écart type de la population. La valeur que nous avons à disposition est <span class="math inline">\(s_x\)</span>, l’écart type de notre échantillon. Nous pourrons aussi écrire :</p>
+<p><span class="math display">\[\mathrm{IC}(1 - \alpha) \simeq \hat{\mu} \pm t_{\alpha/2}^{n-1} \cdot \frac{\hat{\sigma}}{\sqrt{n}}\]</span></p>
+<p>… et en remplaçant les estimateurs :</p>
+<p><span class="math display">\[\mathrm{IC}(1 - \alpha) \simeq \bar{x} \pm t_{\alpha/2}^{n-1} \cdot \frac{s_x}{\sqrt{n}}\]</span></p>
+<p>Ce qui est intéressant avec cette dernière formulation, c’est que l’IC est calculable sur base de notre échantillon uniquement.</p>
+<div class="info">
+<p>
+Analogie avec l’homme invisible qui promène son chien. Si vous avez des difficultés à comprendre l’IC, imaginez plutôt que vous recherchez l’homme invisible (c’est <span class="math inline"><span class="math inline">\(\mu\)</span></span>). Vous ne savez pas où il est, mais vous savez qu’il promène son chien en laisse. Or, le chien est visible (c’est <span class="math inline"><span class="math inline">\(\bar{x}\)</span></span> la moyenne de l’échantillon). La laisse est également invisible, mais vous connaissez sa longueur maximale (c’est votre IC). Donc, vous pouvez dire, voyant le chien que l’homme invisible est à distance maximale d’une longueur de laisse du chien.
+</p>
+</div>
+<div id="valeur-" class="section level5 unnumbered">
+<h5>Valeur α</h5>
+<p>Quel est l’impact du choix de <span class="math inline">\(\alpha\)</span> sur le calcul de l’IC ? Plus <span class="math inline">\(\alpha\)</span> sera petit, plus le risque de se tromper sera faible. Cela peut paraître intéressant, donc, de réduire <span class="math inline">\(\alpha\)</span> le plus possible. Mais alors, la longueur de l’IC augmente. Si nous poussons à l’extrême, pour <span class="math inline">\(\alpha\)</span> = 0%, nous aurons toujours un IC compris entre <span class="math inline">\(-\infty\)</span> et <span class="math inline">\(+\infty\)</span>. Et cela, nous en sommes certains à 100% ! Trivial, non? Et pas très utile.</p>
+<p>Comme pour tout en statistique, nous devons accepter un certain risque de nous tromper si nous voulons obtenir des résultats utilisables. Plus ce risque est grand, plus la réponse est précise (ici, plus l’IC sera petit, voir Fig. <a href="distribution-dechantillonnage.html#fig:tdistri3">9.3</a>), mais plus le risque de se tromper augmente. On cherchera alors un compromis qui se matérialise souvent par le choix de <span class="math inline">\(\alpha\)</span> = 5%. Nous nous tromperons une fois sur vingt, et nous aurons un IC généralement raisonnable pour ce prix. Naturellement, rien ne vous oblige à utiliser 5%. Vous pouvez aussi choisir 1% ou 0,1% si vous voulez limiter les risques.</p>
+<div class="figure" style="text-align: center"><span id="fig:tdistri3"></span>
+<img src="09-Moyenne_files/figure-html/tdistri3-1.svg" alt="Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange)." width="672" />
+<p class="caption">
+Figure 9.3: Une distribution de Student avec comparaison de l’IC 95% (entre les aires en rouge) et l’IC 90% (entre les aires en orange).
+</p>
+</div>
+</div>
+</div>
+<div id="theoreme-central-limite-encore" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Théorème central limite (encore)</h3>
+<p>Jusqu’ici, nous avons considéré une population au départ qui a une distribution normale, mais rien ne dit que ce soit le cas. Que se passe-t-il lorsque la distribution est différentes ? Ici encore, nous pouvons effectuer une méta-expérience. Considérons, par exemple, une distribution uniforme de même moyenne = 8 et écart type = 2. Sachant que l’écart type d’une distribution uniforme vaut <span class="math inline">\(\frac{max - min}{\sqrt{12}}\)</span>, voir <a href="https://fr.wikiversity.org/wiki/Variables_aléatoires_continues/Loi_uniforme">ici</a>, l’intervalle est de : <span class="math inline">\(2 \cdot \sqrt{12} = 6,928\)</span>. Nous avons donc :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(xmin &lt;-<span class="st"> </span><span class="dv">8</span> <span class="op">-</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">12</span>))</code></pre></div>
+<pre><code># [1] 4.535898</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(xmax &lt;-<span class="st"> </span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="dv">12</span>))</code></pre></div>
+<pre><code># [1] 11.4641</code></pre>
+<p>Vérification :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(<span class="kw">runif</span>(<span class="dv">10000</span>, <span class="dt">min =</span> xmin, <span class="dt">max =</span> xmax))</code></pre></div>
+<pre><code># [1] 1.986923</code></pre>
+<p>Quelle est la distribution de la moyenne d’échantillonnage lorsque <span class="math inline">\(n\)</span> = 4 ?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">678336</span>)
+m_unif_n4 &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">10000</span>) <span class="co"># Vecteur de 10000 valeurs</span>
+<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>)
+  m_unif_n4[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">runif</span>(<span class="dv">4</span>, <span class="dt">min =</span> xmin, <span class="dt">max =</span> xmax))
+<span class="co"># Distribution de Student correspondante pour comparaison</span>
+.mu &lt;-<span class="st"> </span><span class="dv">8</span>; .s &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span>; .df &lt;-<span class="st"> </span><span class="dv">3</span> <span class="co"># .mu, .s (sigma) and .df</span>
+.x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="fl">4.5</span><span class="op">*</span>.s <span class="op">+</span><span class="st"> </span>.mu, <span class="fl">4.5</span><span class="op">*</span>.s <span class="op">+</span><span class="st"> </span>.mu, <span class="dt">l =</span> <span class="dv">1000</span>) <span class="co"># Quantiles</span>
+.d &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">dt</span>((x <span class="op">-</span><span class="st"> </span>.mu)<span class="op">/</span>.s, <span class="dt">df =</span> .df)<span class="op">/</span>.s  <span class="co"># Distribution function</span>
+<span class="kw">chart</span>(<span class="dt">data =</span> <span class="ot">NULL</span>, <span class="op">~</span><span class="st"> </span>m_unif_n4) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">30</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> .x, <span class="dt">y =</span> <span class="kw">.d</span>(.x) <span class="op">*</span><span class="st"> </span><span class="dv">3000</span>))</code></pre></div>
+<p><img src="09-Moyenne_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Cette distribution <em>n’est pas</em> une Student. Par contre, elle y ressemble plus qu’à la distribution uniforme de départ. Avec <span class="math inline">\(n\)</span> = 9 elle s’en rapproche très, très fort, et pour <span class="math inline">\(n\)</span> = 100, nous avons une <em>t</em> de Student parfaite.</p>
+<div class="figure" style="text-align: center"><span id="fig:tdistri4"></span>
+<img src="09-Moyenne_files/figure-html/tdistri4-1.svg" alt="Distribution d'échantillonnage à partir d'une distribution uniforme, n = 9. Ajustement d'une distribution de Student équivalente par dessus l'histogramme." width="672" />
+<p class="caption">
+Figure 9.4: Distribution d’échantillonnage à partir d’une distribution uniforme, n = 9. Ajustement d’une distribution de Student équivalente par dessus l’histogramme.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:tdistri5"></span>
+<img src="09-Moyenne_files/figure-html/tdistri5-1.svg" alt="Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange)." width="672" />
+<p class="caption">
+Figure 9.5: Une distribution de Student avec comparaison de l’IC 95% (entre les aires en rouge) et l’IC 90% (entre les aires en orange).
+</p>
+</div>
+<p>Nous venons de montrer de manière empirique que lorsque la distribution de la population est différente d’une distribution normale, la distribution d’échantillonnage tend vers une <em>t</em> de Student pour un <span class="math inline">\(n\)</span> grand. Ceci se démontre de manière mathématique par le fameux <strong>théorème central limite</strong> que nous avons déjà abordé et qui est si cher aux statisticiens (nous vous épargnons cette démonstration ici).</p>
+<div id="conditions-de-validite-de-lic" class="section level5 unnumbered">
+<h5>Conditions de validité de l’IC</h5>
+<p>L’IC sera pertinent si :</p>
+<ul>
+<li>l’échantillon est représentatif (par exemple, échantillonnage aléatoire),</li>
+<li>les observations au sein de l’échantillon sont indépendantes les unes des autres,</li>
+<li>la distribution de la population…
+<ul>
+<li>est normale, alors l’IC basé sur la distribution <em>t</em> de Student sera exact,</li>
+<li>est approximativement normale, l’IC sera approximativement exact,</li>
+<li>est non normale, l’IC sera approximativement exact si <span class="math inline">\(n\)</span> est grand.</li>
+</ul></li>
+</ul>
+</div>
+</div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="2">
-<li id="fn2"><p>Notez que les lettres latines sont utilisées pour se référer aux variables et aux descripteurs statistiques telle que la moyenne pour l’échantillon, alors que les paramètres équivalents de la population, qui sont inconnus, sont représentés par des lettres grecques en statistiques.<a href="la-distribution-dechantillonnage.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Nous utilisons pour se faire une boucle <code>for</code> dans R qui réitère un calcul sur chaque élément d’un vecteur, ici, une séquence 1, 2, 3, …, 10000 obtenue à l’aide de l’instruction <code>1:10000</code>.<a href="la-distribution-dechantillonnage.html#fnref3">↩</a></p></li>
+<li id="fn2"><p>Notez que les lettres latines sont utilisées pour se référer aux variables et aux descripteurs statistiques telle que la moyenne pour l’échantillon, alors que les paramètres équivalents de la population, qui sont inconnus, sont représentés par des lettres grecques en statistiques.<a href="distribution-dechantillonnage.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Nous utilisons pour se faire une boucle <code>for</code> dans R qui réitère un calcul sur chaque élément d’un vecteur, ici, une séquence 1, 2, 3, …, 10000 obtenue à l’aide de l’instruction <code>1:10000</code>.<a href="distribution-dechantillonnage.html#fnref3">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
