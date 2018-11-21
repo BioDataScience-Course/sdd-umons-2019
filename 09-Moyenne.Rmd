@@ -504,6 +504,14 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 
 Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio `rear / length` comme exercice et déterminer si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de `rear` seul.
 
+##### A vous de jouer ! {-}
+
+```{block2, type='bdd'}
+
+Appliquez les test de student dans votre projet portant sur la biométrie humaine.
+
+```
+
 
 ##### Pour en savoir plus {-}
 
