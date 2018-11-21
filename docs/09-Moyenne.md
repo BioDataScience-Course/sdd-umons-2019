@@ -579,6 +579,12 @@ Nous pouvons effectivement interpréter le test de cette façon, mais le test *t
 
 Le raisonnement est le suivant. Sous $H_0$, la distribution de $\Delta rear$ est connue. Elle suit une distribution *t* de Student de moyenne égale à la vraie valeur de la différence des moyennes, d'écart type égal à l'erreur standard sur cette différence, et avec $n - 2$ degrés de liberté. En pratique, nous remplaçons les valeurs de la population pour la différence des moyennes et pour les erreurs standard par celles estimées par l'intermédiaire de l'échantillon. Comme dans le cas du test $\chi^2$, nous définissons les zones de rejet et de non rejet par rapport à cette distribution théorique. Dans le cas du test de Student bilatéral, l'aire $\alpha$ est répartie à moitié à gauche et à moitié à droite (Fig. \@ref(fig:ttest1)).
 
+<div class="figure" style="text-align: center">
+<img src="09-Moyenne_files/figure-html/ttest1-1.svg" alt="Visualisation de la distribution de Student réduite sous l'hypothèse nulle du test bilatéral au seuil de 5%." width="672" />
+<p class="caption">(\#fig:ttest1)Visualisation de la distribution de Student réduite sous l'hypothèse nulle du test bilatéral au seuil de 5%.</p>
+</div>
+
+
 Nous pouvons calculer la valeur *P* nous-même comme ceci, sachant la valeur de $t_{obs} = \frac{\Delta rear}{SE_{\Delta rear}}$ parce que nous travaillons avec une distribution *t* réduite\ :
 
 
@@ -626,7 +632,19 @@ t.test(data = crabs, rear ~ sex,
 
 Nous retrouvons exactement toutes les valeurs que nous avons calculées à la main. Dans le cas présent, rappelez-vous la façon d'interpréter le test. Nous comparons la valeur *P* à $\alpha$. Si elle est plus petit, nous rejettons $h_0$, sinon, nous ne la rejettons pas. Ici, nous rejettons $H_0$ et pourrons dire que la largeur à l'arrière de la carapace de *L. variegatus* diffère de manière significative entre les mâles et les femelles au seuil $\alpha$ de 5% (test t bilatéral, *t* = 4,29, ddl = 198, valeur *P* << 10^-3^).
 
-Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio `rear / length` comme exercice et déterminer si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de `rear` seul.
+
+##### Conditions d'application {-}
+
+- échantillon représentatif (échantillonnage aléatoire et individus indépendants les uns des autres),
+- observations indépendantes les unes des autres,
+- distribution de la population...
+    + normale, alors le test basé sur la distribution *t* de Student sera exact,
+    + approximativement normale, le test sera approximativement exact,
+    + non normale, le test sera approximativement exact si $n$ est grand.
+
+<div class="info">
+<p>Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio <code>rear / length</code> comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de <code>rear</code> seul.</p>
+</div>
 
 
 ##### Pour en savoir plus {-}
