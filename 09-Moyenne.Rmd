@@ -42,6 +42,13 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 
 ## Distribution d'échantillonnage
 
+```{block2, type='bdd'}
+Afin d'appliquer directement les concepts vu durant ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("09a_ttest")
+
+```
+
 Pour rappel, nous faisons de l'**inférence** sur base d'un échantillon parce que nous sommes incapables de mesurer tous les individus d'une population. Il faut au préalable que l'échantillon soit *représentatif*, donc réalisé dans les règles de l'art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d'un échantillon facilement (eq. \@ref(eq:moyenne). 
 
 \begin{equation} 
@@ -542,6 +549,14 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 
 ```{block, type='info'}
 Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio `rear / length` comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de `rear` seul.
+```
+
+##### A vous de jouer ! {-}
+
+```{block2, type='bdd'}
+
+Appliquez les test de student dans votre projet portant sur la biométrie humaine.
+
 ```
 
 
