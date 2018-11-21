@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="une-histoire-de-biere.html">
-<link rel="next" href="representation-graphique.html">
+<link rel="next" href="test-de-student.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -274,7 +274,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="9.2.2" data-path="distribution-dechantillonnage.html"><a href="distribution-dechantillonnage.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>9.2.2</b> Intervalle de confiance</a></li>
 <li class="chapter" data-level="9.2.3" data-path="distribution-dechantillonnage.html"><a href="distribution-dechantillonnage.html#theoreme-central-limite-encore"><i class="fa fa-check"></i><b>9.2.3</b> Théorème central limite (encore)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="representation-graphique.html"><a href="representation-graphique.html"><i class="fa fa-check"></i><b>9.3</b> Représentation graphique</a></li>
+<li class="chapter" data-level="9.3" data-path="test-de-student.html"><a href="test-de-student.html"><i class="fa fa-check"></i><b>9.3</b> Test de Student</a></li>
+<li class="chapter" data-level="9.4" data-path="representation-graphique.html"><a href="representation-graphique.html"><i class="fa fa-check"></i><b>9.4</b> Représentation graphique</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
 <li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
@@ -357,7 +358,13 @@ code > span. { color: #1f1c1b; } /* Normal */
   \tag{9.1}
 \end{equation}\]</span>
 <p>où <span class="math inline">\(x\)</span> est une variable quantitative (donc <code>numeric</code> dans R) et <span class="math inline">\(n\)</span> est la taille de l’échantillon, donc le nombre d’individus mesurés. On notera <span class="math inline">\(\bar{x}\)</span> la moyenne de <span class="math inline">\(x\)</span>, que l’on prononcera “x barre”.</p>
-<p>En fait, ce qui nous intéresse, ce n’est pas vraiment la moyenne de l’échantillon, mais celle de la population que l’on notera <span class="math inline">\(\mu\)</span><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. D’où la question : comment varie la moyenne d’un échantillon à l’autre ?</p>
+<p>Nous utiliserons également l’écart type, noté <span class="math inline">\(\sigma_x\)</span> pour la population et <span class="math inline">\(s_x\)</span> pour l’échantillon qui se calcule sur base de la somme des écarts à la moyenne au carré (eq. <a href="distribution-dechantillonnage.html#eq:sd">(9.2)</a>) :</p>
+<span class="math display" id="eq:sd">\[\begin{equation} 
+  s_x = \sqrt{\sum_{i=1}^n{\frac{(x_i - \bar{x})^2}{n-1}}}
+  \tag{9.2}
+\end{equation}\]</span>
+<p>A noter que <span class="math inline">\(s^2\)</span> est également appelée la <strong>variance</strong><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+<p>En fait, ce qui nous intéresse, ce n’est pas vraiment la moyenne de l’échantillon, mais celle de la population que l’on notera <span class="math inline">\(\mu\)</span><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. D’où la question : comment varie la moyenne d’un échantillon à l’autre ?</p>
 <p>Nous pouvons répondre à cette question de manière empirique en utilisant le générateur pseudo-aléatoire de R. Partons d’une distribution théorique de la population qui soit normale, de moyenne *$ = 8 et d’écart type <span class="math inline">\(\sigma\)</span> = 2. Nous pouvons échantillonner neuf individus. Cela donne :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">8431641</span>)
 smpl1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">9</span>, <span class="dt">mean =</span> <span class="dv">8</span>, <span class="dt">sd =</span> <span class="dv">2</span>)
@@ -369,7 +376,7 @@ smpl1</code></pre></div>
 <p>Dans ce cas-ci, nous obtenons une moyenne de 7,8. Ce n’est pas égal à 8. Le hasard de l’échantillonnage en est responsable. La moyenne de l’échantillon tendra vers la moyenne de la population seulement lorsque <span class="math inline">\(n \longrightarrow \infty\)</span>. Réalisons un second échantillonnage fictif.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>, <span class="dt">mean =</span> <span class="dv">8</span>, <span class="dt">sd =</span> <span class="dv">2</span>))</code></pre></div>
 <pre><code># [1] 8.660309</code></pre>
-<p>Cette fois-ci, nous obtenons une moyenne de 8,7. Nous savons que la moyenne <span class="math inline">\(\mu\)</span> qui nous intéresse est très probablement différente de la moyenne de notre échantillon, <strong>mais de conbien ?</strong> Pour le déterminer, nous devons définir comment la moyenne de l’échantillon varie d’un échantillon à l’autre, c’est ce qu’on appelle la <strong>distribution d’échantillonnage</strong>. Nous pouvons le déterminer expérimentalement en échantillonnant un grand nombre de fois. On appelle cela une <strong>méta-expérience.</strong> En pratique, c’est difficile à faire, mais avec notre ordinateur et le générateur de nombres pseudo-aléatoires de R, pas de problèmes. Donc, comment se distribue la moyenne entre, … disons dix mille échantillons différents de neufs individus tirés de la même population<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> ?</p>
+<p>Cette fois-ci, nous obtenons une moyenne de 8,7. Nous savons que la moyenne <span class="math inline">\(\mu\)</span> qui nous intéresse est très probablement différente de la moyenne de notre échantillon, <strong>mais de conbien ?</strong> Pour le déterminer, nous devons définir comment la moyenne de l’échantillon varie d’un échantillon à l’autre, c’est ce qu’on appelle la <strong>distribution d’échantillonnage</strong>. Nous pouvons le déterminer expérimentalement en échantillonnant un grand nombre de fois. On appelle cela une <strong>méta-expérience.</strong> En pratique, c’est difficile à faire, mais avec notre ordinateur et le générateur de nombres pseudo-aléatoires de R, pas de problèmes. Donc, comment se distribue la moyenne entre, … disons dix mille échantillons différents de neufs individus tirés de la même population<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> ?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">means_n9 &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">10000</span>) <span class="co"># Vecteur de 10000 valeurs</span>
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>)
   means_n9[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>, <span class="dt">mean =</span> <span class="dv">8</span>, <span class="dt">sd =</span> <span class="dv">2</span>))
@@ -492,7 +499,14 @@ Un <strong>intervalle de confiance</strong> à x% autour d’une valeur estimée
 <p><span class="math display">\[\mathrm{IC}(1 - \alpha) \simeq \hat{\mu} \pm t_{\alpha/2}^{n-1} \cdot \frac{\hat{\sigma}}{\sqrt{n}}\]</span></p>
 <p>… et en remplaçant les estimateurs :</p>
 <p><span class="math display">\[\mathrm{IC}(1 - \alpha) \simeq \bar{x} \pm t_{\alpha/2}^{n-1} \cdot \frac{s_x}{\sqrt{n}}\]</span></p>
-<p>Ce qui est intéressant avec cette dernière formulation, c’est que l’IC est calculable sur base de notre échantillon uniquement.</p>
+
+<div class="note">
+<p>Etant donné l’importance que revet <span class="math inline">\(\frac{s_x}{\sqrt{n}}\)</span>, nous appelerons cette quantité <strong>erreur standard</strong> de x et nous la noterons <span class="math inline">\(SE_x\)</span>.</p>
+</div>
+
+<p>Nous pouvons tout aussi bien écrire plus simplement :</p>
+<p><span class="math display">\[\mathrm{IC}(1 - \alpha) \simeq \bar{x} \pm t_{\alpha/2}^{n-1} \cdot SE_x\]</span></p>
+<p>Ce qui est intéressant avec ces deux dernières formulations, c’est que l’IC est calculable sur base de notre échantillon uniquement.</p>
 <div class="info">
 <p>
 Analogie avec l’homme invisible qui promène son chien. Si vous avez des difficultés à comprendre l’IC, imaginez plutôt que vous recherchez l’homme invisible (c’est <span class="math inline"><span class="math inline">\(\mu\)</span></span>). Vous ne savez pas où il est, mais vous savez qu’il promène son chien en laisse. Or, le chien est visible (c’est <span class="math inline"><span class="math inline">\(\bar{x}\)</span></span> la moyenne de l’échantillon). La laisse est également invisible, mais vous connaissez sa longueur maximale (c’est votre IC). Donc, vous pouvez dire, voyant le chien que l’homme invisible est à distance maximale d’une longueur de laisse du chien.
@@ -532,7 +546,7 @@ m_unif_n4 &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span cl
 <span class="kw">chart</span>(<span class="dt">data =</span> <span class="ot">NULL</span>, <span class="op">~</span><span class="st"> </span>m_unif_n4) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">30</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> .x, <span class="dt">y =</span> <span class="kw">.d</span>(.x) <span class="op">*</span><span class="st"> </span><span class="dv">3000</span>))</code></pre></div>
-<p><img src="09-Moyenne_files/figure-html/unnamed-chunk-20-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="09-Moyenne_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Cette distribution <em>n’est pas</em> une Student. Par contre, elle y ressemble plus qu’à la distribution uniforme de départ. Avec <span class="math inline">\(n\)</span> = 9 elle s’en rapproche très, très fort, et pour <span class="math inline">\(n\)</span> = 100, nous avons une <em>t</em> de Student parfaite.</p>
 <div class="figure" style="text-align: center"><span id="fig:tdistri4"></span>
 <img src="09-Moyenne_files/figure-html/tdistri4-1.svg" alt="Distribution d'échantillonnage à partir d'une distribution uniforme, n = 9. Ajustement d'une distribution de Student équivalente par dessus l'histogramme." width="672" />
@@ -566,8 +580,9 @@ Figure 9.5: Une distribution de Student avec comparaison de l’IC 95% (entre le
 <div class="footnotes">
 <hr />
 <ol start="2">
-<li id="fn2"><p>Notez que les lettres latines sont utilisées pour se référer aux variables et aux descripteurs statistiques telle que la moyenne pour l’échantillon, alors que les paramètres équivalents de la population, qui sont inconnus, sont représentés par des lettres grecques en statistiques.<a href="distribution-dechantillonnage.html#fnref2">↩</a></p></li>
-<li id="fn3"><p>Nous utilisons pour se faire une boucle <code>for</code> dans R qui réitère un calcul sur chaque élément d’un vecteur, ici, une séquence 1, 2, 3, …, 10000 obtenue à l’aide de l’instruction <code>1:10000</code>.<a href="distribution-dechantillonnage.html#fnref3">↩</a></p></li>
+<li id="fn2"><p>L’équation proposée est, en fait, valable pour un échantillon, et est calculé comme tel par R à l’aide des fonctions <code>sd()</code> pour l’écart type ou <code>var()</code> pour la variance. Pour la population ou pour un échantillon de taille très grande, voire infinie, nous pourrions plutôt diviser par <span class="math inline">\(n\)</span> au lieu de <span class="math inline">\(n - 1\)</span>, … mais puisque <span class="math inline">\(n\)</span> est très grand, cela ne change pas grand chose au final.<a href="distribution-dechantillonnage.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Notez que les lettres latines sont utilisées pour se référer aux variables et aux descripteurs statistiques telle que la moyenne pour l’échantillon, alors que les paramètres équivalents de la population, qui sont inconnus, sont représentés par des lettres grecques en statistiques.<a href="distribution-dechantillonnage.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>Nous utilisons pour se faire une boucle <code>for</code> dans R qui réitère un calcul sur chaque élément d’un vecteur, ici, une séquence 1, 2, 3, …, 10000 obtenue à l’aide de l’instruction <code>1:10000</code>.<a href="distribution-dechantillonnage.html#fnref4">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -596,7 +611,7 @@ s.setAttribute('data-timestamp', +new Date());
         </div>
       </div>
 <a href="une-histoire-de-biere.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="representation-graphique.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="test-de-student.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
