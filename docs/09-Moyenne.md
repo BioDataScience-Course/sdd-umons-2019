@@ -37,6 +37,11 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 
 ## Distribution d'échantillonnage
 
+\BeginKnitrBlock{bdd}<div class="bdd">Afin d'appliquer directement les concepts vu durant ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("09a_ttest")
+</div>\EndKnitrBlock{bdd}
+
 Pour rappel, nous faisons de l'**inférence** sur base d'un échantillon parce que nous sommes incapables de mesurer tous les individus d'une population. Il faut au préalable que l'échantillon soit *représentatif*, donc réalisé dans les règles de l'art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d'un échantillon facilement (eq. \@ref(eq:moyenne). 
 
 \begin{equation} 
@@ -101,7 +106,7 @@ chart(data = NULL, ~ means_n9) +
   geom_histogram(bins = 30)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-4-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-5-1.svg" width="672" style="display: block; margin: auto;" />
 
 Nous obtenons une distribution symétrique centrée autour de 8. Elle ressemble à une distribution normale, mais ce n'en est pas une. C'est précisément ici que William Gosset intervient. Il est, en effet, arrivé à décrire cette loi de distribution de la moyenne d'échantillonnage. C'est la distribution *t* de Student qui admet trois paramètres\ : une moyenne $\mu_x$, un écart type $\sigma_x$, et des degrés de liberté ddl ou $\nu$. Les degrés de liberté sont en lien avec la taille de l'échantillon. Ils valent\ :
 
@@ -139,7 +144,7 @@ chart(data = NULL, ~ means_n4) +
   geom_histogram(bins = 30)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-6-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-7-1.svg" width="672" style="display: block; margin: auto;" />
 
 La distribution est plus étalée. Ses paramètres sont\ :
 
@@ -171,7 +176,7 @@ chart(data = NULL, ~ means_n100) +
   geom_histogram(bins = 30)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-8-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-9-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -413,7 +418,7 @@ chart(data = NULL, ~ m_unif_n4) +
   geom_line(aes(x = .x, y = .d(.x) * 3000))
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-21-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" />
 
 Cette distribution *n'est pas* une Student. Par contre, elle y ressemble plus qu'à la distribution uniforme de départ. Avec $n$ = 9 elle s'en rapproche très, très fort, et pour $n$ = 100, nous avons une *t* de Student parfaite.
 
@@ -463,16 +468,16 @@ skimr::skim(crabs)
 #  n obs: 200 
 #  n variables: 8 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# ── Variable type:integer ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:integer ────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -499,7 +504,7 @@ chart(data = crabs, rear ~ sex) +
   geom_boxplot()
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-23-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
 
 Sur le graphique, il semble que les femelles (`sex == "F"`) tendent à avoir une carapace plus large à l'arrière -variable `rear`- que les mâles (`sex == "M"`), mais cette différence est-elle *significative* ou peut-elle être juste liée au hasard de l'échantillonnage\ ? Pour y répondre, nous devons élaborer un test d'hypothèse qui va confronter les hypothèses suivantes (en se basant sur les moyennes)\ :
 

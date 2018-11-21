@@ -42,6 +42,13 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 
 ## Distribution d'échantillonnage
 
+```{block2, type='bdd'}
+Afin d'appliquer directement les concepts vu durant ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("09a_ttest")
+
+```
+
 Pour rappel, nous faisons de l'**inférence** sur base d'un échantillon parce que nous sommes incapables de mesurer tous les individus d'une population. Il faut au préalable que l'échantillon soit *représentatif*, donc réalisé dans les règles de l'art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d'un échantillon facilement (eq. \@ref(eq:moyenne). 
 
 \begin{equation} 
