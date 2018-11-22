@@ -42,8 +42,8 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 
 ## Distribution d'échantillonnage
 
-```{block2, type='bdd'}
-Afin d'appliquer directement les concepts vu durant ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+```{block, type='bdd'}
+Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
     BioDataScience::run("09a_ttest")
 
@@ -495,7 +495,7 @@ Le raisonnement est le suivant. Sous $H_0$, la distribution de $\Delta rear$ est
 .x1[.x > qt(0.025, df = 198, lower.tail = TRUE)] <- NA
 .x2[.x < qt(0.025, df = 198, lower.tail = FALSE)] <- NA
 
-chart(data = tibble(Quantiles = .x, Prob = .d(.x), Prob_N = .d2(.x)),
+chart(data = tibble(Quantiles = .x, Prob = .d(.x)),
   Prob ~ Quantiles) +
   geom_hline(yintercept = 0, col = "gray") +
   geom_ribbon(x = .x, ymin = 0, ymax = .d(.x), fill = "gray", alpha = 0.2) +
@@ -551,9 +551,10 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio `rear / length` comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de `rear` seul.
 ```
 
+
 ##### A vous de jouer ! {-}
 
-```{block2, type='bdd'}
+```{block, type='bdd'}
 
 Appliquez les test de student dans votre projet portant sur la biométrie humaine.
 
@@ -563,6 +564,84 @@ Appliquez les test de student dans votre projet portant sur la biométrie humain
 ##### Pour en savoir plus {-}
 
 - Une [vidéo en anglais](https://www.youtube.com/watch?v=QoV_TL0IDGA) qui explique le test *t* de Student un peu différemment.
+
+
+## Variantes du test *t*
+
+Nous venons de voir ce qu'on appelle très précisément le **test *t* de Student indépendant bilatéral avec variances égales**. Nous allons maintenant étudier d'autres variantes. 
+
+
+### Variances inégales
+
+Dans le test précédent, nous avons supposé que les variances entre les valeurs $rear_F$ et $rear_M$ étaient égales, mais rien ne dit que cela soit le cas^[Il existe des tests pour le vérifier, comme le **test de Bartlett**, mais ce n'est pas le propos ici.]. Si nous ne voulons pas de cette contrainte, une variante du test permet de comparer deux moyennes même en présence de variances inégales\ : le **test de Welch**. Il consiste à ajuster les degrés de liberté en cas de variances inégales. Il suffit de préciser `var.equal = FALSE`.
+
+```{r}
+t.test(data = crabs, rear ~ sex,
+  alternative = "two.sided", conf.level = 0.95, var.equal = FALSE)
+```
+
+
+### Test unilatéral
+
+Pour rappel, nous avions considéré ceci\ :
+
+- $H_0: \overline{rear_F} - \overline{rear_M} = 0$
+- $H_1: \overline{rear_F} - \overline{rear_M} \neq 0$
+
+L'hypothèse alternative $H_1$ est ici la plus générale. Parfois, nous avons plus d'information qui nous permet de dire que si $H_0$ n'est pas rencontrée, $\overline{rear_F} - \overline{rear_M}$ ne peut alors qu'être négatif (on parle de test **unilatéral à gauche**) ou positif (test **unilatéral à droite**). En effet, dans ce cas nous placerons la zone de rejet complètement à la gauche ou à la droite de la distribution.
+
+En épluchant la littérature, nous réalisons que les crabes de la famille des Grapsidae dont *L. variegatus* fait partie ont systématiquement un arrière plus large chez la femelle lorsqu'un dymorphisme sexuel existe. Nous pouvons modifier nos hypothèses comme suit\ :
+
+- $H_0: \overline{rear_F} - \overline{rear_M} = 0$
+- $H_1: \overline{rear_F} - \overline{rear_M} > 0$
+
+Notez la différence pour $H_1$. Nous avons alors ici un test unilatéral à droite. Nous indiquons `alternative = "greater"`. Pour un test unilatéral à gauche, nous utilisons `alternative = "less"`.
+
+```{r}
+t.test(data = crabs, rear ~ sex,
+  alternative = "greater", conf.level = 0.95, var.equal = FALSE)
+```
+
+Notez que la valeur *P* a été divisée par deux par rapport au test bilatéral. Ceci est le résultat d'une répartition différente de l'aire de rejet qui est placée ici entièrement sur la droite (Fig. \@ref(fig:ttest2)). Nous n'avons donc plus dû multiplier la valeur calculée par deux pour la répartir également de l'autre côté de la distribution.
+
+```{r ttest2, echo=FALSE, fig.cap="Visualisation de la distribution de Student réduite sous l'hypothèse nulle d'un test unilatéral à droite au seuil de 5%. Toute la zone de rejet est à droite."}
+# Student's t distribution (density probability) with parameters:
+.mu <- 0; .s <- 1; .df <- 198 # .mu, .s (sigma) and .df
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(-4.5*.s + .mu, 4.5*.s + .mu, l = 1000) # Quantiles
+.d <- function(x) dt((x - .mu)/.s, df = .df)/.s  # Distribution function
+.q <- function(p) qt(p, df = .df) * .s + .mu     # Quantile for lower-tail prob
+
+# Data to represent the 2.5% area at both extremes in red
+.x1 <- .x
+.x1[.x < qt(0.05, df = 198, lower.tail = FALSE)] <- NA
+
+chart(data = tibble(Quantiles = .x, Prob = .d(.x)),
+  Prob ~ Quantiles) +
+  geom_hline(yintercept = 0, col = "gray") +
+  geom_ribbon(x = .x, ymin = 0, ymax = .d(.x), fill = "gray", alpha = 0.2) +
+  geom_ribbon(x = .x1, ymin = 0, ymax = .d(.x1), fill = "red", alpha = 0.2) +
+  geom_line() +
+  xlab("Quantile") +
+  ylab("Densité de probabilité") +
+  annotate("text", x = 2.1, y = 0.015, label = "5%", col = "red") +
+  geom_vline(xintercept = 4.29, col = "red") +
+  annotate("text", x = 0, y = 0.11, label = "Zone de non rejet", col = "black") +
+  annotate("text", x = 3, y = 0.11, label = "Zone de rejet", col = "red") +
+  annotate("segment", x = 3, y = 0.09, xend = 2.6, yend = 0.01,
+    size = 0.5, col = "red", arrow = arrow(length = unit(0.2, "cm"))) +
+  annotate("text", x = 3.5, y = 0.3, label = "t[obs] == 4.29", parse = TRUE,
+    col = "red", fontface = "bold.italic")
+```
+
+Un autre exemple évident de test unilatéral\ : si nous mesurons la concentration d'une substance en solution $[S]$ et que nous nous demandons si cette substance est présente, nous aurons\ :
+
+- $H_0: \overline{[S]} = 0$
+- $H_1: \overline{[S]} > 0$
+
+Ce test sera nécessairement unilatéral à droite car des concentrations négatives ne sont pas possibles.
+
+
 
 
 ## Représentation graphique

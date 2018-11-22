@@ -37,10 +37,10 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 
 ## Distribution d'échantillonnage
 
-\BeginKnitrBlock{bdd}<div class="bdd">Afin d'appliquer directement les concepts vu durant ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
-
-    BioDataScience::run("09a_ttest")
-</div>\EndKnitrBlock{bdd}
+<div class="bdd">
+<p>Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;09a_ttest&quot;)</code></pre>
+</div>
 
 Pour rappel, nous faisons de l'**inférence** sur base d'un échantillon parce que nous sommes incapables de mesurer tous les individus d'une population. Il faut au préalable que l'échantillon soit *représentatif*, donc réalisé dans les règles de l'art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d'un échantillon facilement (eq. \@ref(eq:moyenne). 
 
@@ -468,16 +468,16 @@ skimr::skim(crabs)
 #  n obs: 200 
 #  n variables: 8 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# ── Variable type:integer ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:integer ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -651,16 +651,100 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 <p>Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio <code>rear / length</code> comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de <code>rear</code> seul.</p>
 </div>
 
+
 ##### A vous de jouer ! {-}
 
-\BeginKnitrBlock{bdd}<div class="bdd">
-Appliquez les test de student dans votre projet portant sur la biométrie humaine.
-</div>\EndKnitrBlock{bdd}
+<div class="bdd">
+<p>Appliquez les test de student dans votre projet portant sur la biométrie humaine.</p>
+</div>
 
 
 ##### Pour en savoir plus {-}
 
 - Une [vidéo en anglais](https://www.youtube.com/watch?v=QoV_TL0IDGA) qui explique le test *t* de Student un peu différemment.
+
+
+## Variantes du test *t*
+
+Nous venons de voir ce qu'on appelle très précisément le **test *t* de Student indépendant bilatéral avec variances égales**. Nous allons maintenant étudier d'autres variantes. 
+
+
+### Variances inégales
+
+Dans le test précédent, nous avons supposé que les variances entre les valeurs $rear_F$ et $rear_M$ étaient égales, mais rien ne dit que cela soit le cas^[Il existe des tests pour le vérifier, comme le **test de Bartlett**, mais ce n'est pas le propos ici.]. Si nous ne voulons pas de cette contrainte, une variante du test permet de comparer deux moyennes même en présence de variances inégales\ : le **test de Welch**. Il consiste à ajuster les degrés de liberté en cas de variances inégales. Il suffit de préciser `var.equal = FALSE`.
+
+
+```r
+t.test(data = crabs, rear ~ sex,
+  alternative = "two.sided", conf.level = 0.95, var.equal = FALSE)
+```
+
+```
+# 
+# 	Welch Two Sample t-test
+# 
+# data:  rear by sex
+# t = 4.2896, df = 187.76, p-value = 2.862e-05
+# alternative hypothesis: true difference in means is not equal to 0
+# 95 percent confidence interval:
+#  0.8085599 2.1854401
+# sample estimates:
+# mean in group F mean in group M 
+#          13.487          11.990
+```
+
+
+### Test unilatéral
+
+Pour rappel, nous avions considéré ceci\ :
+
+- $H_0: \overline{rear_F} - \overline{rear_M} = 0$
+- $H_1: \overline{rear_F} - \overline{rear_M} \neq 0$
+
+L'hypothèse alternative $H_1$ est ici la plus générale. Parfois, nous avons plus d'information qui nous permet de dire que si $H_0$ n'est pas rencontrée, $\overline{rear_F} - \overline{rear_M}$ ne peut alors qu'être négatif (on parle de test **unilatéral à gauche**) ou positif (test **unilatéral à droite**). En effet, dans ce cas nous placerons la zone de rejet complètement à la gauche ou à la droite de la distribution.
+
+En épluchant la littérature, nous réalisons que les crabes de la famille des Grapsidae dont *L. variegatus* fait partie ont systématiquement un arrière plus large chez la femelle lorsqu'un dymorphisme sexuel existe. Nous pouvons modifier nos hypothèses comme suit\ :
+
+- $H_0: \overline{rear_F} - \overline{rear_M} = 0$
+- $H_1: \overline{rear_F} - \overline{rear_M} > 0$
+
+Notez la différence pour $H_1$. Nous avons alors ici un test unilatéral à droite. Nous indiquons `alternative = "greater"`. Pour un test unilatéral à gauche, nous utilisons `alternative = "less"`.
+
+
+```r
+t.test(data = crabs, rear ~ sex,
+  alternative = "greater", conf.level = 0.95, var.equal = FALSE)
+```
+
+```
+# 
+# 	Welch Two Sample t-test
+# 
+# data:  rear by sex
+# t = 4.2896, df = 187.76, p-value = 1.431e-05
+# alternative hypothesis: true difference in means is greater than 0
+# 95 percent confidence interval:
+#  0.9201205       Inf
+# sample estimates:
+# mean in group F mean in group M 
+#          13.487          11.990
+```
+
+Notez que la valeur *P* a été divisée par deux par rapport au test bilatéral. Ceci est le résultat d'une répartition différente de l'aire de rejet qui est placée ici entièrement sur la droite (Fig. \@ref(fig:ttest2)). Nous n'avons donc plus dû multiplier la valeur calculée par deux pour la répartir également de l'autre côté de la distribution.
+
+<div class="figure" style="text-align: center">
+<img src="09-Moyenne_files/figure-html/ttest2-1.svg" alt="Visualisation de la distribution de Student réduite sous l'hypothèse nulle d'un test unilatéral à droite au seuil de 5%. Toute la zone de rejet est à droite." width="672" />
+<p class="caption">(\#fig:ttest2)Visualisation de la distribution de Student réduite sous l'hypothèse nulle d'un test unilatéral à droite au seuil de 5%. Toute la zone de rejet est à droite.</p>
+</div>
+
+Un autre exemple évident de test unilatéral\ : si nous mesurons la concentration d'une substance en solution $[S]$ et que nous nous demandons si cette substance est présente, nous aurons\ :
+
+- $H_0: \overline{[S]} = 0$
+- $H_1: \overline{[S]} > 0$
+
+Ce test sera nécessairement unilatéral à droite car des concentrations négatives ne sont pas possibles.
+
+
 
 
 ## Représentation graphique

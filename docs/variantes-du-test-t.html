@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="site.html">
-<link rel="next" href="nuage-de-points.html">
+<link rel="prev" href="test-de-student.html">
+<link rel="next" href="representation-graphique.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -354,46 +354,72 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="visu1" class="section level1">
-<h1><span class="header-section-number">Module 2</span> Visualisation I</h1>
-<div id="objectifs-1" class="section level5 unnumbered">
-<h5>Objectifs</h5>
+<div id="variantes-du-test-t" class="section level2">
+<h2><span class="header-section-number">9.4</span> Variantes du test <em>t</em></h2>
+<p>Nous venons de voir ce qu’on appelle très précisément le <strong>test <em>t</em> de Student indépendant bilatéral avec variances égales</strong>. Nous allons maintenant étudier d’autres variantes.</p>
+<div id="variances-inegales" class="section level3">
+<h3><span class="header-section-number">9.4.1</span> Variances inégales</h3>
+<p>Dans le test précédent, nous avons supposé que les variances entre les valeurs <span class="math inline">\(rear_F\)</span> et <span class="math inline">\(rear_M\)</span> étaient égales, mais rien ne dit que cela soit le cas<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>. Si nous ne voulons pas de cette contrainte, une variante du test permet de comparer deux moyennes même en présence de variances inégales : le <strong>test de Welch</strong>. Il consiste à ajuster les degrés de liberté en cas de variances inégales. Il suffit de préciser <code>var.equal = FALSE</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code># 
+#   Welch Two Sample t-test
+# 
+# data:  rear by sex
+# t = 4.2896, df = 187.76, p-value = 2.862e-05
+# alternative hypothesis: true difference in means is not equal to 0
+# 95 percent confidence interval:
+#  0.8085599 2.1854401
+# sample estimates:
+# mean in group F mean in group M 
+#          13.487          11.990</code></pre>
+</div>
+<div id="test-unilateral" class="section level3">
+<h3><span class="header-section-number">9.4.2</span> Test unilatéral</h3>
+<p>Pour rappel, nous avions considéré ceci :</p>
 <ul>
-<li><p>Découvrir –et vous émerveiller de– ce que l’on peut faire avec le <a href="http://www.r-project.org">logiciel R</a> <span class="citation">(R Core Team <a href="#ref-R-base">2018</a>)</span></p></li>
-<li><p>Savoir réaliser différentes variantes d’un graphique en nuage de points dans R avec la fonction <code>chart()</code></p></li>
-<li><p>Découvrir le format R Markdown <span class="citation">(Allaire et al. <a href="#ref-R-rmarkdown">2018</a>)</span> et la recherche reproductible</p></li>
-<li><p>Intégrer ensuite des graphiques dans un rapport et y décrire ce que que vous observez</p></li>
-<li><p>Comparer de manière critique un flux de travail “classique” en biologie utilisant Microsoft Excel et Word avec une approche utilisant R et R Markdown ; Prendre conscience de l’énorme potentiel de R</p></li>
+<li><span class="math inline">\(H_0: \overline{rear_F} - \overline{rear_M} = 0\)</span></li>
+<li><span class="math inline">\(H_1: \overline{rear_F} - \overline{rear_M} \neq 0\)</span></li>
 </ul>
+<p>L’hypothèse alternative <span class="math inline">\(H_1\)</span> est ici la plus générale. Parfois, nous avons plus d’information qui nous permet de dire que si <span class="math inline">\(H_0\)</span> n’est pas rencontrée, <span class="math inline">\(\overline{rear_F} - \overline{rear_M}\)</span> ne peut alors qu’être négatif (on parle de test <strong>unilatéral à gauche</strong>) ou positif (test <strong>unilatéral à droite</strong>). En effet, dans ce cas nous placerons la zone de rejet complètement à la gauche ou à la droite de la distribution.</p>
+<p>En épluchant la littérature, nous réalisons que les crabes de la famille des Grapsidae dont <em>L. variegatus</em> fait partie ont systématiquement un arrière plus large chez la femelle lorsqu’un dymorphisme sexuel existe. Nous pouvons modifier nos hypothèses comme suit :</p>
+<ul>
+<li><span class="math inline">\(H_0: \overline{rear_F} - \overline{rear_M} = 0\)</span></li>
+<li><span class="math inline">\(H_1: \overline{rear_F} - \overline{rear_M} &gt; 0\)</span></li>
+</ul>
+<p>Notez la différence pour <span class="math inline">\(H_1\)</span>. Nous avons alors ici un test unilatéral à droite. Nous indiquons <code>alternative = &quot;greater&quot;</code>. Pour un test unilatéral à gauche, nous utilisons <code>alternative = &quot;less&quot;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex,
+  <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code># 
+#   Welch Two Sample t-test
+# 
+# data:  rear by sex
+# t = 4.2896, df = 187.76, p-value = 1.431e-05
+# alternative hypothesis: true difference in means is greater than 0
+# 95 percent confidence interval:
+#  0.9201205       Inf
+# sample estimates:
+# mean in group F mean in group M 
+#          13.487          11.990</code></pre>
+<p>Notez que la valeur <em>P</em> a été divisée par deux par rapport au test bilatéral. Ceci est le résultat d’une répartition différente de l’aire de rejet qui est placée ici entièrement sur la droite (Fig. <a href="variantes-du-test-t.html#fig:ttest2">9.7</a>). Nous n’avons donc plus dû multiplier la valeur calculée par deux pour la répartir également de l’autre côté de la distribution.</p>
+<div class="figure" style="text-align: center"><span id="fig:ttest2"></span>
+<img src="09-Moyenne_files/figure-html/ttest2-1.svg" alt="Visualisation de la distribution de Student réduite sous l'hypothèse nulle d'un test unilatéral à droite au seuil de 5%. Toute la zone de rejet est à droite." width="672" />
+<p class="caption">
+Figure 9.7: Visualisation de la distribution de Student réduite sous l’hypothèse nulle d’un test unilatéral à droite au seuil de 5%. Toute la zone de rejet est à droite.
+</p>
 </div>
-<div id="prerequis" class="section level5 unnumbered">
-<h5>Prérequis</h5>
-<p>Si ce n’est déjà fait, vous devez installer et vous familiariser avec la ‘SciViews Box’, RStudio, Markdown. Vous devez aussi maîtriser les bases de Git et de GitHub (avoir un compte GitHub, savoir cloner un dépôt localement, travailler avec GitHub Desktop pour faire ses “commits”, “push” et “pull”). L’ensemble de ces outils a été abordé lors de la création de votre site personnel professionnel du module <a href="intro.html#intro">1</a>.</p>
-<p>Avant de poursuivre, vous allez devoir découvrir les premiers rudiments de R afin de pouvoir réaliser par la suite vos premiers graphiques. Pour cela, vous aurez à lire attentivement et effectuer tous les exercices de deux tutoriels<a href="references.html#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
-
-<div class="bdd">
-<p>Démarrez la SciViews Box et RStudio. Dans la fenêtre <strong>Console</strong> de RStudio, entrez l’instruction suivante suivie de la touche <code>Entrée</code> pour ouvrir le tutoriel concernant les bases de R :</p>
-<pre><code>BioDataScience::run(&quot;02a_base&quot;)</code></pre>
-<p>Ensuite, vous pouvez également parcourir le tutoriel qui vous permettra de découvrir R sur base d’une analyse concrète (cliquez dans la fenêtre <strong>Console</strong> de RStudio et appuyez sur la touche <code>ESC</code> pour reprendre la main dans R à la fin d’un tutoriel) :</p>
-<pre><code>BioDataScience::run(&quot;02b_decouverte&quot;)</code></pre>
-(<a href="https://github.com/BioDataScience-Course/BioDataScience">BioDataScience</a> est un package R spécialement développé pour ce cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice <a href="configuration.html#install-tuto">A.3.3</a>).
-</div>
-
-</div> 
-</div>
-<h3>Références</h3>
-<div id="refs" class="references">
-<div id="ref-R-base">
-<p>R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
-</div>
-<div id="ref-R-rmarkdown">
-<p>Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, and Winston Chang. 2018. <em>Rmarkdown: Dynamic Documents for R</em>. <a href="https://CRAN.R-project.org/package=rmarkdown" class="uri">https://CRAN.R-project.org/package=rmarkdown</a>.</p>
+<p>Un autre exemple évident de test unilatéral : si nous mesurons la concentration d’une substance en solution <span class="math inline">\([S]\)</span> et que nous nous demandons si cette substance est présente, nous aurons :</p>
+<ul>
+<li><span class="math inline">\(H_0: \overline{[S]} = 0\)</span></li>
+<li><span class="math inline">\(H_1: \overline{[S]} &gt; 0\)</span></li>
+</ul>
+<p>Ce test sera nécessairement unilatéral à droite car des concentrations négatives ne sont pas possibles.</p>
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p>Reportez-vous à l’Appendice <a href="learnr.html#learnr">C</a> pour apprendre à utiliser ces tutoriels.<a href="visu1.html#fnref2">↩</a></p></li>
+<ol start="5">
+<li id="fn5"><p>Il existe des tests pour le vérifier, comme le <strong>test de Bartlett</strong>, mais ce n’est pas le propos ici.<a href="variantes-du-test-t.html#fnref5">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -421,8 +447,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="site.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="nuage-de-points.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="test-de-student.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="representation-graphique.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -452,7 +478,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/02-Visualisation-I.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/09-Moyenne.Rmd",
 "text": "Editer"
 },
 "download": null,
