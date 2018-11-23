@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="test-de-student.html">
-<link rel="next" href="representation-graphique.html">
+<link rel="prev" href="test-t-de-student.html">
+<link rel="next" href="test-de-wilcoxon.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -274,12 +274,15 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="9.2.2" data-path="distribution-dechantillonnage.html"><a href="distribution-dechantillonnage.html#intervalle-de-confiance"><i class="fa fa-check"></i><b>9.2.2</b> Intervalle de confiance</a></li>
 <li class="chapter" data-level="9.2.3" data-path="distribution-dechantillonnage.html"><a href="distribution-dechantillonnage.html#theoreme-central-limite-encore"><i class="fa fa-check"></i><b>9.2.3</b> Théorème central limite (encore)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="test-de-student.html"><a href="test-de-student.html"><i class="fa fa-check"></i><b>9.3</b> Test de Student</a></li>
+<li class="chapter" data-level="9.3" data-path="test-t-de-student.html"><a href="test-t-de-student.html"><i class="fa fa-check"></i><b>9.3</b> Test <em>t</em> de Student</a></li>
 <li class="chapter" data-level="9.4" data-path="variantes-du-test-t.html"><a href="variantes-du-test-t.html"><i class="fa fa-check"></i><b>9.4</b> Variantes du test <em>t</em></a><ul>
 <li class="chapter" data-level="9.4.1" data-path="variantes-du-test-t.html"><a href="variantes-du-test-t.html#variances-inegales"><i class="fa fa-check"></i><b>9.4.1</b> Variances inégales</a></li>
 <li class="chapter" data-level="9.4.2" data-path="variantes-du-test-t.html"><a href="variantes-du-test-t.html#test-unilateral"><i class="fa fa-check"></i><b>9.4.2</b> Test unilatéral</a></li>
+<li class="chapter" data-level="9.4.3" data-path="variantes-du-test-t.html"><a href="variantes-du-test-t.html#test-t-apparie"><i class="fa fa-check"></i><b>9.4.3</b> Test <em>t</em> apparié</a></li>
+<li class="chapter" data-level="9.4.4" data-path="variantes-du-test-t.html"><a href="variantes-du-test-t.html#test-t-univarie"><i class="fa fa-check"></i><b>9.4.4</b> Test <em>t</em> univarié</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="representation-graphique.html"><a href="representation-graphique.html"><i class="fa fa-check"></i><b>9.5</b> Représentation graphique</a></li>
+<li class="chapter" data-level="9.5" data-path="test-de-wilcoxon.html"><a href="test-de-wilcoxon.html"><i class="fa fa-check"></i><b>9.5</b> Test de Wilcoxon</a></li>
+<li class="chapter" data-level="9.6" data-path="representation-graphique.html"><a href="representation-graphique.html"><i class="fa fa-check"></i><b>9.6</b> Représentation graphique</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a></li>
 <li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
@@ -415,11 +418,187 @@ Figure 9.7: Visualisation de la distribution de Student réduite sous l’hypoth
 </ul>
 <p>Ce test sera nécessairement unilatéral à droite car des concentrations négatives ne sont pas possibles.</p>
 </div>
+<div id="test-t-apparie" class="section level3">
+<h3><span class="header-section-number">9.4.3</span> Test <em>t</em> apparié</h3>
+<p>Dans le cas du test indépendant, nous comparons des <em>individus différents</em> dans les deux conditions. Le tableau de données se présente comme suit :</p>
+<div class="figure">
+<img src="images/sdd1_09/t-test-independent.png" alt="Un test t indépendant nécessite une variable numérique et une variable facteur à deux niveaux." />
+<p class="caption">Un test <em>t</em> indépendant nécessite une variable numérique et une variable facteur à deux niveaux.</p>
+</div>
+<p>Un autre cas de figure se présente si nous comparons des mesures réalisées sur les <em>mêmes</em> individus. Dans ce cas, le tableau de données se présente différemment :</p>
+<div class="figure">
+<img src="images/sdd1_09/t-tests-paired.png" alt="Un test t apparié nécessite deux variables numériques mesurées sur les mêmes individus, donc les mêmes lignes dans un tableau cas par variables." />
+<p class="caption">Un test <em>t</em> apparié nécessite deux variables numériques mesurées sur les mêmes individus, donc les mêmes lignes dans un tableau cas par variables.</p>
+</div>
+<p>Par exemple, si nous voulons déterminer si la largeur de la carapace de <em>L. variegatus</em> diffère entre l’avant (variable <code>front</code>) et l’arrière, nous testerons (test bilatéral par défaut sans plus d’information) :</p>
+<ul>
+<li><span class="math inline">\(H_0: \overline{front - rear} = 0\)</span></li>
+<li><span class="math inline">\(H_1: \overline{front - rear} \neq 0\)</span></li>
+</ul>
+<p>A chaque fois, les dimensions <code>front</code> et <code>rear</code> sont mesurées sur les mêmes individus. Nous soustrayons l’un de l’autre <em>d’abord</em> individu par individu.</p>
+<div class="warning">
+<p>
+Attention ! Les hypothèses se formulent différemment. Il s’agit de la difference des moyennes pour le test <em>t</em> indépendant et la moyenne des différences pour le test <em>t</em> apparié. Si le résultat du calcul en ce qui concerne la moyenne ne diffère pas, la distribution des valeurs est différente (variance, écart type, erreur standard, …).
+</p>
+</div>
+<p>Nous calculons la moyenne de cette différence notée <code>delta_f_r</code>. Nous résumons ces résultats en calculant successivement :</p>
+<ul>
+<li>la moyenne des différences dans <code>mean_f_r</code>,</li>
+<li>l’erreur standard dans <code>se_f_r</code> (pour rappel, <span class="math inline">\(SE = \frac{s_x}{\sqrt{n}}\)</span>),</li>
+<li>la valeur de <code>t_obs</code> reportée selon la distribution <em>t</em> réduite, donc, en divisant <code>mean_f_r</code> par <code>se_f_r</code>.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">delta_f_r =</span> front <span class="op">-</span><span class="st"> </span>rear) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">summarise</span>(., <span class="dt">mean_f_r =</span> <span class="kw">mean</span>(delta_f_r),
+               <span class="dt">se_f_r   =</span> <span class="kw">sd</span>(delta_f_r) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">n</span>()),
+               <span class="dt">t_obs    =</span> mean_f_r <span class="op">/</span><span class="st"> </span>se_f_r)</code></pre></div>
+<pre><code># # A tibble: 1 x 3
+#   mean_f_r se_f_r t_obs
+#      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+# 1     2.84  0.112  25.3</code></pre>
+<p>La distribution de référence sous <span class="math inline">\(H_0\)</span> à partir de ces calculs est une <span class="math inline">\(t(0, 1, 199)\)</span>, donc avec <span class="math inline">\(n - 1\)</span> comme degrés de liberté. Donc, la valeur <em>P</em> peut se calculer comme suit (n’oubliez pas de multiplier par deux pour reporter l’aire des deux côtés de la distribution pour un test bilatéral) :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pt</span>(<span class="fl">25.324</span>, <span class="dt">df =</span> <span class="dv">199</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code># [1] 3.667686e-64</code></pre>
+<p>Avant d’effectuer le test, pensez toujours à visualiser vos données avec la représentation la plus judicieuse. Ici, la boite de dispersion parallèle n’est pas très indiquée car elle ne prend pas en compte l’appariement des données. Un graphique en nuage de points avec la bissectrice (pente de un et ordonnée à l’origine de zéro) ajoutée comme référence convient bien mieux. Sous <span class="math inline">\(H_0\)</span>, le nuage de points est sensé se concentrer sur cette bissectrice.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>front) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">1</span>, <span class="dt">intercept =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="09-Moyenne_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Nous voyons très clairement que tous les points se situent du même côté de la bissectrice, ce qui suggère très fortement que <span class="math inline">\(H_0\)</span> ne tient pas la route ici.</p>
+<p>Le test correspondant s’obtient dans la SciViews Box à partir du menu <code>.hm</code> pour <code>hypothesis tests: means</code> et dans le menu qui apparait, on sélectionne le “snippet” <code>paired Student's t test</code>. Il s’agit toujours de la fonction <code>t.test()</code> mais cette fois-ci au lieu d’une formule, nous indiquons les deux variables suivant la notation <code>&lt;data.frame&gt;$&lt;variable&gt;</code>, et nous spécifions <code>paired = TRUE</code>. Fixons notre seuil <span class="math inline">\(\alpha\)</span> à 5% avant de faire le test, puis exécutons l’instruction suivante :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(crabs<span class="op">$</span>front, crabs<span class="op">$</span>rear,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code># 
+#   Paired t-test
+# 
+# data:  crabs$front and crabs$rear
+# t = 25.324, df = 199, p-value &lt; 2.2e-16
+# alternative hypothesis: true difference in means is not equal to 0
+# 95 percent confidence interval:
+#  2.623004 3.065996
+# sample estimates:
+# mean of the differences 
+#                  2.8445</code></pre>
+<p>Nous rejettons <span class="math inline">\(H_0\)</span> car la valeur <em>P</em> est inférieure à <span class="math inline">\(\alpha\)</span>. Nous en concluons que le crabe <em>L. variegatus</em> a une carapace significativement plus large à l’avant qu’à l’arrière (t test apparié = 25,3, ddl = 199, valeur <em>P</em> &lt;&lt; 10<sup>-3</sup>). Naturellement, les variantes unilatérales à gauche et à droite existent aussi pour ce test. Par contre, la question des variances égales ou non ne se pose pas dans ce cas<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a>. Notez que le test se limite à indiquer que la valeur <em>P</em> &lt; 2,2 . 10<sup>-16</sup>. Effectivement, notre calcul donne 3.7 . 10<sup>-64</sup>.</p>
+<div id="conditions-dapplication-3" class="section level5 unnumbered">
+<h5>Conditions d’application</h5>
+<ul>
+<li>échantillon représentatif (échantillonnage aléatoires),</li>
+<li>individus appariés (mesures sur les mêmes individus pour les deux conditions comparées),</li>
+<li>observations indépendantes les unes des autres,</li>
+<li>deux variables numériques,</li>
+<li>distribution de la population…
+<ul>
+<li>normale, alors le test basé sur la distribution <em>t</em> de Student sera exact,</li>
+<li>approximativement normale, le test sera approximativement exact,</li>
+<li>non normale, le test sera approximativement exact si <span class="math inline">\(n\)</span> est grand.</li>
+</ul></li>
+</ul>
+<div class="warning">
+<p>
+Avant de réaliser une expérience, vous vous demanderez certainement s’il vaut mieux vous orienter vers une design pour un test apparié ou indépendant. Le test apparié n’est pas toujours possible. Par exemple, si vous comparez deux espèces, il est évident qu’un même individu ne peut appartenir simultanément aux deux espèces ! Mais dans tous les cas où c’est possible, <strong>le design apparié est à préférer</strong>. Il permet d’éliminer une bonne part de la variabilité inter-individuelle de l’analyse, puisque cet effet joue de manière équivalente sur les deux mesures pour chaque paire d’observations sur le même individu. Le choix du test apparié permet d’observer des différentes plus subtiles indétectables en mode indépendant pour un même nombre de réplicats, ou alors, il permet d’observer les mêmes effets mais avec un nombre de mesures bien plus faible. Dans tous les cas, on est gagnant.
+</p>
+</div>
+</div>
+<div id="encodage-correct" class="section level5 unnumbered">
+<h5>Encodage correct</h5>
+<p>Faites très attention à l’encodage des données. Il vous faut un tableau cas par variables correct, sinon vous risquez de vous orienter vers un mauvais test. Prenez le jeu de données <code>sleep</code> du package <code>datasets</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sleep &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;sleep&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["extra"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["group"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["ID"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"0.7","2":"1","3":"1"},{"1":"-1.6","2":"1","3":"2"},{"1":"-0.2","2":"1","3":"3"},{"1":"-1.2","2":"1","3":"4"},{"1":"-0.1","2":"1","3":"5"},{"1":"3.4","2":"1","3":"6"},{"1":"3.7","2":"1","3":"7"},{"1":"0.8","2":"1","3":"8"},{"1":"0.0","2":"1","3":"9"},{"1":"2.0","2":"1","3":"10"},{"1":"1.9","2":"2","3":"1"},{"1":"0.8","2":"2","3":"2"},{"1":"1.1","2":"2","3":"3"},{"1":"0.1","2":"2","3":"4"},{"1":"-0.1","2":"2","3":"5"},{"1":"4.4","2":"2","3":"6"},{"1":"5.5","2":"2","3":"7"},{"1":"1.6","2":"2","3":"8"},{"1":"4.6","2":"2","3":"9"},{"1":"3.4","2":"2","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Nous avons <code>extra</code>, le nombre d’heures supplémentaires de sommeil suite à l’administration de médicaments, soit le <code>1</code>, soit le <code>2</code>. Le tableau se présente comme pour effectuer un test <em>t</em> indépendant (une variable numérique <code>extra</code> et une variable facteur à deux niveaux <code>group</code>). Cependant, regardez aussi la variable <code>ID</code> qui est l’identifiant de la personne testée. <strong>Vous constatez que les mêmes identifiants</strong> reviennent parmi les deux groupes. C’est en réalité un design apparié, mais mal encodé. Nous allons d’abord restructurer ce tableau correctement avant d’appliquer le test adéquat.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sleep2 &lt;-<span class="st"> </span><span class="kw">spread</span>(sleep, <span class="dt">key =</span> group, <span class="dt">value =</span> extra)
+<span class="kw">names</span>(sleep2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;med1&quot;</span>, <span class="st">&quot;med2&quot;</span>)
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep2)</code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["id"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["med1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["med2"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"0.7","3":"1.9"},{"1":"2","2":"-1.6","3":"0.8"},{"1":"3","2":"-0.2","3":"1.1"},{"1":"4","2":"-1.2","3":"0.1"},{"1":"5","2":"-0.1","3":"-0.1"},{"1":"6","2":"3.4","3":"4.4"},{"1":"7","2":"3.7","3":"5.5"},{"1":"8","2":"0.8","3":"1.6"},{"1":"9","2":"0.0","3":"4.6"},{"1":"10","2":"2.0","3":"3.4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Dans <code>sleep2</code>nous avons un véritable tableau cas par variable c’est-à-dire, une ligne par individu. Nous avons alors deux variables numériques <code>med1</code> et <code>med2</code> mesurées sur les mêmes individus. Le test apparié suivant est correct. Un test indépendant effectué sur <code>sleep</code> aurait été <strong>incorrect</strong> !</p>
+<ul>
+<li><span class="math inline">\(H_0: \overline{med1 - med2} = 0\)</span></li>
+<li><span class="math inline">\(H_1: \overline{med1 - med2} \neq 0\)</span></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep2, med2 <span class="op">~</span><span class="st"> </span>med1) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">1</span>, <span class="dt">intercept =</span> <span class="dv">0</span>)</code></pre></div>
+<p><img src="09-Moyenne_files/figure-html/unnamed-chunk-41-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sleep2<span class="op">$</span>med1, sleep2<span class="op">$</span>med2,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code># 
+#   Paired t-test
+# 
+# data:  sleep2$med1 and sleep2$med2
+# t = -4.0621, df = 9, p-value = 0.002833
+# alternative hypothesis: true difference in means is not equal to 0
+# 95 percent confidence interval:
+#  -2.4598858 -0.7001142
+# sample estimates:
+# mean of the differences 
+#                   -1.58</code></pre>
+</div>
+<div id="pour-en-savoir-plus-17" class="section level5 unnumbered">
+<h5>Pour en savoir plus</h5>
+<ul>
+<li>Une <a href="http://www.sthda.com/french/wiki/test-de-student-apparie-avec-r-comparaison-de-moyennes-de-deux-series-appariees">autre explication</a> avec un autre exemple et une explication de la façon d’accéder aux résultats stockés dans l’objet <code>htest</code> renvoyé par la fonction <code>t.test()</code>.</li>
+</ul>
+</div>
+</div>
+<div id="test-t-univarie" class="section level3">
+<h3><span class="header-section-number">9.4.4</span> Test <em>t</em> univarié</h3>
+<p>Dans le cas du test <em>t</em> de Student univarié, nous comparons la moyenne d’une seule variable à une constante de référence. Le calcul est le même que dans le cas du test <em>t</em> apparié, avec l’étape de soustration <code>x1 - x2</code> en moins. Par exemple dans le jeu de données <code>sleep2</code> nous pouvons nous demander si le médicament <code>med1</code> change la durée du sommeil. Les hypothèses sont les suivantes :</p>
+<ul>
+<li><span class="math inline">\(H_0: \overline{med1} = 0\)</span></li>
+<li><span class="math inline">\(H_1: \overline{med1} \neq 0\)</span></li>
+</ul>
+<p>N’oublions pas une représentation graphique adéquate. Icic, une boite de dispersion avec un trait horizontal superposé pour indiquer la valeur cible convient très bien.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep2, med1 <span class="op">~</span><span class="st"> &quot;&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Sommeil supplémentaire avec med1 [h]&quot;</span>)</code></pre></div>
+<p><img src="09-Moyenne_files/figure-html/unnamed-chunk-43-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Le graphique suggère peut-être que les patient dorment plus, mais la boite de dispersion chevauche quand même le trait horizontal à zéro. Donc, qu’en est-il exactement ? Le test s’obtient à partir du “snippet” <code>univariate Student's t-test</code> depuis <code>.hm</code> pour <code>hypothesis tests: means</code>. Notez l’argument supplémentaire <code>mu =</code> qui permet de spécifier la valeur de référence (ici zéro). Fixons <span class="math inline">\(\alpha\)</span> avant d’effectuer le test. Ici, nous prenons toujours 5%.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sleep2<span class="op">$</span>med1,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>)</code></pre></div>
+<pre><code># 
+#   One Sample t-test
+# 
+# data:  sleep2$med1
+# t = 1.3257, df = 9, p-value = 0.2176
+# alternative hypothesis: true mean is not equal to 0
+# 95 percent confidence interval:
+#  -0.5297804  2.0297804
+# sample estimates:
+# mean of x 
+#      0.75</code></pre>
+<p>La valeur <em>P</em> est supérieure à <span class="math inline">\(\alpha\)</span>. Nous ne rejettons pas <span class="math inline">\(H_0\)</span>. Nous ne pouvons pas dire que le médicament 1 change de manière significative la durée de sommeil chez les patients au seuil <span class="math inline">\(\alpha\)</span> de 5% (test t univarié = 1,33, ddl = 9, valeur <em>P</em> = 0,22). Notez également que dans le cas présent, l’intervalle de confiance [-0,53, 2,03] contient zéro.</p>
+<div id="conditions-dapplication-4" class="section level5 unnumbered">
+<h5>Conditions d’application</h5>
+<ul>
+<li>échantillon représentatif (échantillonnage aléatoires),</li>
+<li>observations indépendantes les unes des autres,</li>
+<li>une variable numérique,</li>
+<li>distribution de la population…
+<ul>
+<li>normale, alors le test basé sur la distribution <em>t</em> de Student sera exact,</li>
+<li>approximativement normale, le test sera approximativement exact,</li>
+<li>non normale, le test sera approximativement exact si <span class="math inline">\(n\)</span> est grand.</li>
+</ul></li>
+</ul>
+</div>
+</div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="5">
 <li id="fn5"><p>Il existe des tests pour le vérifier, comme le <strong>test de Bartlett</strong>, mais ce n’est pas le propos ici.<a href="variantes-du-test-t.html#fnref5">↩</a></p></li>
+<li id="fn6"><p>Pouvez-vous expliquer pourquoi ? Réfléchissez, c’est assez évident.<a href="variantes-du-test-t.html#fnref6">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -447,8 +626,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="test-de-student.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="representation-graphique.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="test-t-de-student.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="test-de-wilcoxon.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

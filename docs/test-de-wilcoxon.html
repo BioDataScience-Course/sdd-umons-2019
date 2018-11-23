@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="moyenne.html">
-<link rel="next" href="distribution-dechantillonnage.html">
+<link rel="prev" href="variantes-du-test-t-de-student.html">
+<link rel="next" href="representation-graphique.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -357,18 +357,106 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="une-histoire-de-biere" class="section level2">
-<h2><span class="header-section-number">9.1</span> Une histoire de bière…</h2>
-<p>Les belges, c’est connu, apprécient la bière. Mais ils ne sont pas les seuls, et c’est très heureux ! Car c’est en effet grâce à un certain William Sealy Gosset, brasseur et statisticien (et oui, ça ne s’invente pas) que l’un des tests d’hypothèses des plus utilisés en biologie a vu le jour : le test de “Student” qui permet de comparer des moyennes.</p>
-<p>Pour la petite histoire, Gosset a travaillé pour une certaine brasserie irlandaise du nom de Guiness au début du 20<sup>ème</sup>siècle. C’est en étudiant la variabilité de sa bière d’un cru à l’autre que Gosset a découvert la façon dont la moyenne d’un échantillon se distribue. Il a pu dériver une formulation mathématique de cette distribution, la <strong>distribution <em>t</em> de Student</strong>, et à partir de là, nous verrons que de nombreuses applications en découlent. Nous pourrons, par exemple, dire si deux moyennes diffèrent <em>significativement</em> l’une de l’autre ou pas.</p>
-<p>Mais au fait, pourquoi, cette distribution porte-t-elle le nom de “Student” ? Visionnez la vidéo suivante (malheureusement en anglais) pour le découvrir<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
-<iframe src="https://www.youtube.com/embed/GFzCIA9kppM" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
-<p>Le contrat que Gosset a signé avec son employeur l’empêchait de publier des résultats scientifiques sous son vrai nom. Ainsi, il décida de publier sa trouvaille qui occupe aujourd’hui une place très importante en statistiques sous le pseudonyme de “Student” (l’étudiant). Ce n’est qu’à sa mort, en 1937, que l’on pu révéler le nom de l’auteur qui est derrière cette fantastique trouvaille. Mais au fait, de quoi s’agit-il exactement ? Nous allons le découvrir dans la section suivante.</p>
+<div id="test-de-wilcoxon" class="section level2">
+<h2><span class="header-section-number">9.5</span> Test de Wilcoxon</h2>
+<p>Nous avons vu que le test <em>t</em> de Student se réfère à une distribution qui n’est exacte que si la population de départ est normale. Même si le théorème central limite permet encore d’utiliser le test dans le cas contraire lorsque <em>n</em> est grand, tous les cas ne sont pas rencontrés. Si <em>n</em> est petit et que l’on soupçonne une distribution non normale (pensez au graphique quantile-quantile pour visualiser la distribution) que faire ?</p>
+<p>En fait, il existe un test similaire qui ne fait <strong>aucune</strong> hypothèse sur la distribution des données : le test de Wilcoxon. Comme il ne se réfère pas aux paramètres d’une distribution théorique, ce type de test est appelé <strong>non paramétrique</strong>, par opposition au test <em>t</em> de Student qui est qualifié de <strong>paramétrique</strong>. Les mêmes variantes existent (test indépendant, test apparié, bilatéral <em>versus</em> unilatéral). Ce test se réalise à partir de la fonction <code>wilcox.test()</code> accessible à partir des “snippets” dans le menu <code>.hn</code> pour <code>hypothesis tests: nonparametric</code>. Bien que ce test ne travaille plus sur les moyennes mais est associé aux médianes, nous le présentons ici parce qu’il représente une alternative au test <em>t</em> de Student.</p>
+<p>Pour les données relatives à <code>med1</code> de <code>sleep2</code>, cela donne<a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> :</p>
+<ul>
+<li><span class="math inline">\(H_0: mediane_{med1} = 0\)</span></li>
+<li><span class="math inline">\(H_1: mediane_{med1} \neq 0\)</span></li>
+</ul>
+<p>Et dans R, nous faisons (à part le nom de la fonction, les arguments sont identiques) :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(sleep2<span class="op">$</span>med1,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>)</code></pre></div>
+<pre><code># Warning in wilcox.test.default(sleep2$med1, alternative = &quot;two.sided&quot;, mu =
+# 0, : cannot compute exact p-value with zeroes</code></pre>
+<pre><code># 
+#   Wilcoxon signed rank test with continuity correction
+# 
+# data:  sleep2$med1
+# V = 31, p-value = 0.3433
+# alternative hypothesis: true location is not equal to 0</code></pre>
+<p>Le test n’aime pas les ex-aequos et les valeurs nulles, mais ce n’est pas dramatique. C’est la raison pour laquelle R nous averti seulement mais effectue quand même le calcul. La conclusion est la même que pour le test <em>t</em> de Student, nous ne pouvons pas rejetter <span class="math inline">\(H_0\)</span>.</p>
+<p>Dans le cas d’un test indépendant (comparaison de la largeur de carapace à l’arrière <code>rear</code> en fonction du sexe chez <em>L. variegatus</em> en considérant que les femelles sont potentiellement plus grosses), nous obtenons :</p>
+<ul>
+<li><span class="math inline">\(H_0: P(rear_F &gt; rear_M) = P(rear_F &lt; rear_M)\)</span></li>
+<li><span class="math inline">\(H_1: P(rear_F &gt; rear_M) &gt; P(rear_F &lt; rear_M)\)</span></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wilcox.test</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex,
+  <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>)</code></pre></div>
+<pre><code># 
+#   Wilcoxon rank sum test with continuity correction
+# 
+# data:  rear by sex
+# W = 6710, p-value = 1.473e-05
+# alternative hypothesis: true location shift is greater than 0</code></pre>
+<p>Nous obtenons un résultat similaire au test <em>t</em> de Student indépendant. Nous rejettons <span class="math inline">\(H_0\)</span>. Concernant les conditions d’application, elles sont les mêmes que pour le test <em>t</em> de Student équivalent à part les contraintes sur la distribution qui disparaissent.</p>
+<p>Quand choisir le test <em>t</em> de Student ou le test de Wilcoxon ? Nous serions tentés d’effectuer un test de Wilcoxon à chaque fois puisqu’ainsi nous sommes certains de ne pas comettre d’impair concernant la distribution des données. Mais en fait, le test <em>t</em> de Student est à préférer à chaque fois que c’est possible car il est plus <strong>puissant</strong>. Cela signifie qu’il sera capable de détecter un effet significatif plus tôt que le Wilcoxon. La bonne stratégie est donc d’utiliser le test <em>t</em> de Student autant que possible et de ne se rabattre sur le test de Wilcoxon que si on ne peut pas faire autrement, soit <em>n</em> petit et distribution non normale ou inconnue. A noter que quand <em>n</em> est vraiment petit, il est impossible d’étudier valablement la distribution des données sur cet échantillon. On doit alors se baser sur un échantillon plus grand prélevé sur des données similaires ou alors jouer la sécurité et effectuer un test de Wilcoxon.</p>
+<p>Cette analyse est valable pour toute paire de test paramétrique <em>versus</em> non paramétrique. Le tableau suivant résume cela.</p>
+<table>
+<colgroup>
+<col width="40%" />
+<col width="22%" />
+<col width="37%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="left">Test paramétrique</th>
+<th align="left">Test non paramétrique</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong>Contrainte (distribution)</strong></td>
+<td align="left">à vérifier</td>
+<td align="left">indépendant de toute distribution</td>
+</tr>
+<tr class="even">
+<td align="left"><strong>Puissance (même jeu de données)</strong></td>
+<td align="left">plus puissant</td>
+<td align="left">moins puissant</td>
+</tr>
+<tr class="odd">
+<td align="left"><strong>Choix</strong></td>
+<td align="left">à privilégier</td>
+<td align="left">à utiliser seulement si test paramétrique non applicable</td>
+</tr>
+</tbody>
+</table>
+<p>Mais au fait, c’est quoi la “puissance” d’un test d’hypothèse ? Considérons les quatres cas possibles.</p>
+<ul>
+<li>Ne pas rejetter <span class="math inline">\(H_0\)</span> lorsque <span class="math inline">\(H_0\)</span> est vraie (correct)</li>
+<li>Rejetter <span class="math inline">\(H_0\)</span> lorsque <span class="math inline">\(H_0\)</span> est fausse (correct)</li>
+<li>Rejetter <span class="math inline">\(H_0\)</span> lorsque <span class="math inline">\(H_0\)</span> est vraie (erreur de 1<sup>ère</sup> espèce <span class="math inline">\(\alpha\)</span>)</li>
+<li>Ne pas rejetter <span class="math inline">\(H_0\)</span> lorsque <span class="math inline">\(H_0\)</span> est fausse (erreur de 2<sup>ème</sup> espèce <span class="math inline">\(\beta\)</span>)</li>
+</ul>
+<div class="figure">
+<img src="images/sdd1_09/type_I_and_II_error.jpg" />
+
+</div>
+<p>L’erreur de 1<sup>ère</sup> espèce est associée au risque <span class="math inline">\(\alpha\)</span>. L’erreur de seconde espèce est associée au risque <span class="math inline">\(\beta\)</span>. Plus <span class="math inline">\(\beta\)</span> est petit, plus le test est puissant. La puissance est <span class="math inline">\(1 - \beta\)</span>. La puissance d’un test peut se calculer à l’aide des fonctions <code>pwr.xxx()</code> du package <code>pwr</code>. Par exemple dans le test <em>t</em> univarié concernant <code>med1</code> nous ferons :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pwr<span class="op">::</span><span class="kw">pwr.t.test</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">d =</span> <span class="fl">1.3</span>, <span class="dt">sig.level =</span> <span class="fl">0.05</span>,
+  <span class="dt">type =</span> <span class="st">&quot;one.sample&quot;</span>, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</code></pre></div>
+<pre><code># 
+#      One-sample t test power calculation 
+# 
+#               n = 10
+#               d = 1.3
+#       sig.level = 0.05
+#           power = 0.9538774
+#     alternative = two.sided</code></pre>
+<p>La puissance est de 0,954. Donc, <span class="math inline">\(\beta\)</span> vaut 1 - 0,954 = 0,046 ou pratiquement 5%. On a un test bien équilibré entre <span class="math inline">\(\alpha\)</span> et <span class="math inline">\(\beta\)</span>, et de plus, <span class="math inline">\(\beta\)</span> nous concerne particulièrement puisqu’ici nous ne rejettons pas <span class="math inline">\(H_0\)</span>.</p>
+<div class="figure">
+<img src="images/sdd1_09/statistical-justice.jpg" alt="Le système judiciaire des statistiques, par Hadley Wickham." />
+<p class="caption">Le système judiciaire des statistiques, par Hadley Wickham.</p>
+</div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Vous pouvez activer les sous-titres en anglais via la barre de boutons en bas de la vidéo pour vous aider à comprendre l’histoire.<a href="une-histoire-de-biere.html#fnref1">↩</a></p></li>
+<ol start="7">
+<li id="fn7"><p>Dans le cas d’un test de Wilcoxon apparié, on a <span class="math inline">\(H_0: mediane_x = mediane_y\)</span>.<a href="test-de-wilcoxon.html#fnref7">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -396,8 +484,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="moyenne.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="distribution-dechantillonnage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="variantes-du-test-t-de-student.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="representation-graphique.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

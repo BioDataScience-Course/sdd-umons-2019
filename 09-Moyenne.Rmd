@@ -415,7 +415,7 @@ L'IC sera pertinent si\ :
     + est non normale, l'IC sera approximativement exact si $n$ est grand.
 
 
-## Test de Student
+## Test *t* de Student
 
 Nous allons également pouvoir utiliser la distribution *t* de Student comme distribution de référence pour comparer une moyenne par rapport à une valeur cible ou pour comparer deux moyennes. C'est le test *t* de Student... ou plutôt *les* tests de Student puisqu'il en existe plusieurs variantes.
 
@@ -542,6 +542,7 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 
 - échantillon représentatif (échantillonnage aléatoire et individus indépendants les uns des autres),
 - observations indépendantes les unes des autres,
+- une variable numérique et une variable facteur à deux niveaux,
 - distribution de la population...
     + normale, alors le test basé sur la distribution *t* de Student sera exact,
     + approximativement normale, le test sera approximativement exact,
@@ -549,6 +550,8 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 
 ```{block, type='info'}
 Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio `rear / length` comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de `rear` seul.
+
+Vous pouvez également comparer les crabes bleus (`species = "B"`) avec les crabes oranges (`species = "O"`) à l'aide du même test.
 ```
 
 
@@ -566,7 +569,7 @@ Appliquez les test de student dans votre projet portant sur la biométrie humain
 - Une [vidéo en anglais](https://www.youtube.com/watch?v=QoV_TL0IDGA) qui explique le test *t* de Student un peu différemment.
 
 
-## Variantes du test *t*
+## Variantes du test *t* de Student
 
 Nous venons de voir ce qu'on appelle très précisément le **test *t* de Student indépendant bilatéral avec variances égales**. Nous allons maintenant étudier d'autres variantes. 
 
@@ -642,15 +645,233 @@ Un autre exemple évident de test unilatéral\ : si nous mesurons la concentrati
 Ce test sera nécessairement unilatéral à droite car des concentrations négatives ne sont pas possibles.
 
 
+### Test *t* apparié
+
+Dans le cas du test indépendant, nous comparons des *individus différents* dans les deux conditions. Le tableau de données se présente comme suit\ :
+
+![Un test *t* indépendant nécessite une variable numérique et une variable facteur à deux niveaux.](images/sdd1_09/t-test-independent.png)
+
+Un autre cas de figure se présente si nous comparons des mesures réalisées sur les *mêmes* individus. Dans ce cas, le tableau de données se présente différemment\ :
+
+![Un test *t* apparié nécessite deux variables numériques mesurées sur les mêmes individus, donc les mêmes lignes dans un tableau cas par variables.](images/sdd1_09/t-tests-paired.png)
+
+Par exemple, si nous voulons déterminer si la largeur de la carapace de *L. variegatus* diffère entre l'avant (variable `front`) et l'arrière, nous testerons (test bilatéral par défaut sans plus d'information)\ :
+
+- $H_0: \overline{front - rear} = 0$
+- $H_1: \overline{front - rear} \neq 0$
+
+A chaque fois, les dimensions `front` et `rear` sont mesurées sur les mêmes individus. Nous soustrayons l'un de l'autre *d'abord* individu par individu.
+
+```{block, type='warning'}
+Attention\ ! Les hypothèses se formulent différemment. Il s'agit de la difference des moyennes pour le test *t* indépendant et la moyenne des différences pour le test *t* apparié. Si le résultat du calcul en ce qui concerne la moyenne ne diffère pas, la distribution des valeurs est différente (variance, écart type, erreur standard, ...). 
+```
+
+Nous calculons la moyenne de cette différence notée `delta_f_r`. Nous résumons ces résultats en calculant successivement\ :
+
+- la moyenne des différences dans `mean_f_r`,
+- l'erreur standard dans `se_f_r` (pour rappel, $SE = \frac{s_x}{\sqrt{n}}$),
+- la valeur de `t_obs` reportée selon la distribution *t* réduite, donc, en divisant `mean_f_r` par `se_f_r`.
+
+```{r}
+crabs %>.%
+  mutate(., delta_f_r = front - rear) %>.%
+  summarise(., mean_f_r = mean(delta_f_r),
+               se_f_r   = sd(delta_f_r) / sqrt(n()),
+               t_obs    = mean_f_r / se_f_r)
+```
+
+La distribution de référence sous $H_0$ à partir de ces calculs est une $t(0, 1, 199)$, donc avec $n - 1$ comme degrés de liberté. Donc, la valeur *P* peut se calculer comme suit (n'oubliez pas de multiplier par deux pour reporter l'aire des deux côtés de la distribution pour un test bilatéral)\ :
+
+```{r}
+pt(25.324, df = 199, lower.tail = FALSE) * 2
+```
+
+Avant d'effectuer le test, pensez toujours à visualiser vos données avec la représentation la plus judicieuse. Ici, la boite de dispersion parallèle n'est pas très indiquée car elle ne prend pas en compte l'appariement des données. Un graphique en nuage de points avec la bissectrice (pente de un et ordonnée à l'origine de zéro) ajoutée comme référence convient bien mieux. Sous $H_0$, le nuage de points est sensé se concentrer sur cette bissectrice.
+
+```{r}
+chart(data = crabs, rear ~ front) +
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0)
+```
+
+Nous voyons très clairement que tous les points se situent du même côté de la bissectrice, ce qui suggère très fortement que $H_0$ ne tient pas la route ici.
+
+Le test correspondant s'obtient dans la SciViews Box à partir du menu `.hm` pour `hypothesis tests: means` et dans le menu qui apparait, on sélectionne le "snippet" `paired Student's t test`. Il s'agit toujours de la fonction `t.test()` mais cette fois-ci au lieu d'une formule, nous indiquons les deux variables suivant la notation `<data.frame>$<variable>`, et nous spécifions `paired = TRUE`. Fixons notre seuil $\alpha$ à 5% avant de faire le test, puis exécutons l'instruction suivante\ :
+
+```{r}
+t.test(crabs$front, crabs$rear,
+  alternative = "two.sided", conf.level = 0.95, paired = TRUE)
+```
+
+Nous rejettons $H_0$ car la valeur *P* est inférieure à $\alpha$. Nous en concluons que le crabe *L. variegatus* a une carapace significativement plus large à l'avant qu'à l'arrière (t test apparié = 25,3, ddl = 199, valeur *P* << 10^-3^). Naturellement, les variantes unilatérales à gauche et à droite existent aussi pour ce test. Par contre, la question des variances égales ou non ne se pose pas dans ce cas^[Pouvez-vous expliquer pourquoi\ ? Réfléchissez, c'est assez évident.]. Notez que le test se limite à indiquer que la valeur *P* < 2,2 . 10^-16^. Effectivement, notre calcul donne 3.7 . 10^-64^.
+
+
+##### Conditions d'application {-}
+
+- échantillon représentatif (échantillonnage aléatoires),
+- individus appariés (mesures sur les mêmes individus pour les deux conditions comparées),
+- observations indépendantes les unes des autres,
+- deux variables numériques,
+- distribution de la population...
+    + normale, alors le test basé sur la distribution *t* de Student sera exact,
+    + approximativement normale, le test sera approximativement exact,
+    + non normale, le test sera approximativement exact si $n$ est grand.
+
+
+```{block, type='warning'}
+Avant de réaliser une expérience, vous vous demanderez certainement s'il vaut mieux vous orienter vers une design pour un test apparié ou indépendant. Le test apparié n'est pas toujours possible. Par exemple, si vous comparez deux espèces, il est évident qu'un même individu ne peut appartenir simultanément aux deux espèces\ ! Mais dans tous les cas où c'est possible, **le design apparié est à préférer**. Il permet d'éliminer une bonne part de la variabilité inter-individuelle de l'analyse, puisque cet effet joue de manière équivalente sur les deux mesures pour chaque paire d'observations sur le même individu. Le choix du test apparié permet d'observer des différentes plus subtiles indétectables en mode indépendant pour un même nombre de réplicats, ou alors, il permet d'observer les mêmes effets mais avec un nombre de mesures bien plus faible. Dans tous les cas, on est gagnant.
+```
+
+
+##### Encodage correct {-}
+
+Faites très attention à l'encodage des données. Il vous faut un tableau cas par variables correct, sinon vous risquez de vous orienter vers un mauvais test. Prenez le jeu de données `sleep` du package `datasets`.
+
+```{r}
+sleep <- read("sleep", package = "datasets")
+rmarkdown::paged_table(sleep)
+```
+
+Nous avons `extra`, le nombre d'heures supplémentaires de sommeil suite à l'administration de médicaments, soit le `1`, soit le `2`. Le tableau se présente comme pour effectuer un test *t* indépendant (une variable numérique `extra` et une variable facteur à deux niveaux `group`). Cependant, regardez aussi la variable `ID` qui est l'identifiant de la personne testée. **Vous constatez que les mêmes identifiants** reviennent parmi les deux groupes. C'est en réalité un design apparié, mais mal encodé. Nous allons d'abord restructurer ce tableau correctement avant d'appliquer le test adéquat.
+
+```{r}
+sleep2 <- spread(sleep, key = group, value = extra)
+names(sleep2) <- c("id", "med1", "med2")
+rmarkdown::paged_table(sleep2)
+```
+
+Dans `sleep2`nous avons un véritable tableau cas par variable c'est-à-dire, une ligne par individu. Nous avons alors deux variables numériques `med1` et `med2` mesurées sur les mêmes individus. Le test apparié suivant est correct. Un test indépendant effectué sur `sleep` aurait été **incorrect**\ !
+
+- $H_0: \overline{med1 - med2} = 0$
+- $H_1: \overline{med1 - med2} \neq 0$
+
+```{r}
+chart(data = sleep2, med2 ~ med1) +
+  geom_point() +
+  geom_abline(slope = 1, intercept = 0)
+```
+
+
+```{r}
+t.test(sleep2$med1, sleep2$med2,
+  alternative = "two.sided", conf.level = 0.95, paired = TRUE)
+```
+
+
+##### Pour en savoir plus {-}
+
+- Une [autre explication](http://www.sthda.com/french/wiki/test-de-student-apparie-avec-r-comparaison-de-moyennes-de-deux-series-appariees) avec un autre exemple et une explication de la façon d'accéder aux résultats stockés dans l'objet `htest` renvoyé par la fonction `t.test()`.
+
+
+### Test *t* univarié
+
+Dans le cas du test *t* de Student univarié, nous comparons la moyenne d'une seule variable à une constante de référence. Le calcul est le même que dans le cas du test *t* apparié, avec l'étape de soustration `x1 - x2` en moins. Par exemple dans le jeu de données `sleep2` nous pouvons nous demander si le médicament `med1` change la durée du sommeil. Les hypothèses sont les suivantes\ :
+
+- $H_0: \overline{med1} = 0$
+- $H_1: \overline{med1} \neq 0$
+
+N'oublions pas une représentation graphique adéquate. Icic, une boite de dispersion avec un trait horizontal superposé pour indiquer la valeur cible convient très bien.
+
+```{r}
+chart(data = sleep2, med1 ~ "") +
+  geom_boxplot() +
+  geom_hline(yintercept = 0, col = "red") +
+  xlab("") +
+  ylab("Sommeil supplémentaire avec med1 [h]")
+```
+
+Le graphique suggère peut-être que les patient dorment plus, mais la boite de dispersion chevauche quand même le trait horizontal à zéro. Donc, qu'en est-il exactement\ ? Le test s'obtient à partir du "snippet" `univariate Student's t-test` depuis `.hm` pour `hypothesis tests: means`. Notez l'argument supplémentaire `mu =` qui permet de spécifier la valeur de référence (ici zéro). Fixons $\alpha$ avant d'effectuer le test. Ici, nous prenons toujours 5%.
+
+```{r}
+t.test(sleep2$med1,
+  alternative = "two.sided", mu = 0, conf.level = 0.95)
+```
+
+La valeur *P* est supérieure à $\alpha$. Nous ne rejettons pas $H_0$. Nous ne pouvons pas dire que le médicament 1 change de manière significative la durée de sommeil chez les patients au seuil $\alpha$ de 5% (test t univarié = 1,33, ddl = 9, valeur *P* = 0,22). Notez également que dans le cas présent, l'intervalle de confiance [-0,53, 2,03] contient zéro.
+
+
+##### Conditions d'application {-}
+
+- échantillon représentatif (échantillonnage aléatoires),
+- observations indépendantes les unes des autres,
+- une variable numérique,
+- distribution de la population...
+    + normale, alors le test basé sur la distribution *t* de Student sera exact,
+    + approximativement normale, le test sera approximativement exact,
+    + non normale, le test sera approximativement exact si $n$ est grand.
+
+
+## Test de Wilcoxon
+
+Nous avons vu que le test *t* de Student se réfère à une distribution qui n'est exacte que si la population de départ est normale. Même si le théorème central limite permet encore d'utiliser le test dans le cas contraire lorsque *n* est grand, tous les cas ne sont pas rencontrés. Si *n* est petit et que l'on soupçonne une distribution non normale (pensez au graphique quantile-quantile pour visualiser la distribution) que faire\ ?
+
+En fait, il existe un test similaire qui ne fait **aucune** hypothèse sur la distribution des données\ : le test de Wilcoxon. Comme il ne se réfère pas aux paramètres d'une distribution théorique, ce type de test est appelé **non paramétrique**, par opposition au test *t* de Student qui est qualifié de **paramétrique**. Les mêmes variantes existent (test indépendant, test apparié, bilatéral *versus* unilatéral). Ce test se réalise à partir de la fonction `wilcox.test()` accessible à partir des "snippets" dans le menu `.hn` pour `hypothesis tests: nonparametric`. Bien que ce test ne travaille plus sur les moyennes mais est associé aux médianes, nous le présentons ici parce qu'il représente une alternative au test *t* de Student.
+
+Pour les données relatives à `med1` de `sleep2`, cela donne^[Dans le cas d'un test de Wilcoxon apparié, on a $H_0: mediane_x = mediane_y$.]\ : 
+
+- $H_0: mediane_{med1} = 0$
+- $H_1: mediane_{med1} \neq 0$
+
+Et dans R, nous faisons (à part le nom de la fonction, les arguments sont identiques)\ :
+
+```{r}
+wilcox.test(sleep2$med1,
+  alternative = "two.sided", mu = 0, conf.level = 0.95)
+
+```
+
+Le test n'aime pas les ex-aequos et les valeurs nulles, mais ce n'est pas dramatique. C'est la raison pour laquelle R nous averti seulement mais effectue quand même le calcul. La conclusion est la même que pour le test *t* de Student, nous ne pouvons pas rejetter $H_0$.
+
+Dans le cas d'un test indépendant (comparaison de la largeur de carapace à l'arrière `rear` en fonction du sexe chez *L. variegatus* en considérant que les femelles sont potentiellement plus grosses), nous obtenons\ :
+
+- $H_0: P(rear_F > rear_M) = P(rear_F < rear_M)$
+- $H_1: P(rear_F > rear_M) > P(rear_F < rear_M)$
+
+```{r}
+wilcox.test(data = crabs, rear ~ sex,
+  alternative = "greater", conf.level = 0.95)
+```
+
+Nous obtenons un résultat similaire au test *t* de Student indépendant. Nous rejettons $H_0$. Concernant les conditions d'application, elles sont les mêmes que pour le test *t* de Student équivalent à part les contraintes sur la distribution qui disparaissent.
+
+Quand choisir le test *t* de Student ou le test de Wilcoxon\ ? Nous serions tentés d'effectuer un test de Wilcoxon à chaque fois puisqu'ainsi nous sommes certains de ne pas comettre d'impair concernant la distribution des données. Mais en fait, le test *t* de Student est à préférer à chaque fois que c'est possible car il est plus **puissant**. Cela signifie qu'il sera capable de détecter un effet significatif plus tôt que le Wilcoxon. La bonne stratégie est donc d'utiliser le test *t* de Student autant que possible et de ne se rabattre sur le test de Wilcoxon que si on ne peut pas faire autrement, soit *n*  petit et distribution non normale ou inconnue. A noter que quand *n* est vraiment petit, il est impossible d'étudier valablement la distribution des données sur cet échantillon. On doit alors se baser sur un échantillon plus grand prélevé sur des données similaires ou alors jouer la sécurité et effectuer un test de Wilcoxon.
+
+Cette analyse est valable pour toute paire de test paramétrique *versus* non paramétrique. Le tableau suivant résume cela.
+
+|                                     | Test paramétrique  | Test non paramétrique             |
+|:------------------------------------|:-------------------|:----------------------------------|
+| **Contrainte (distribution)**       | à vérifier         | indépendant de toute distribution |
+| **Puissance (même jeu de données)** | plus puissant      | moins puissant                    |
+| **Choix**                           | à privilégier      | à utiliser seulement si test paramétrique non applicable  |
+
+Mais au fait, c'est quoi la "puissance" d'un test d'hypothèse\ ? Considérons les quatres cas possibles.
+
+- Ne pas rejetter $H_0$ lorsque $H_0$ est vraie (correct)
+- Rejetter $H_0$ lorsque $H_0$ est fausse (correct)
+- Rejetter $H_0$ lorsque $H_0$ est vraie (erreur de 1^ère^ espèce $\alpha$)
+- Ne pas rejetter $H_0$ lorsque $H_0$ est fausse (erreur de 2^ème^ espèce $\beta$)
+
+![](images/sdd1_09/type_I_and_II_error.jpg)
+
+L'erreur de 1^ère^ espèce est associée au risque $\alpha$. L'erreur de seconde espèce est associée au risque $\beta$. Plus $\beta$ est petit, plus le test est puissant. La puissance est $1 - \beta$. La puissance d'un test peut se calculer à l'aide des fonctions `pwr.xxx()` du package `pwr`. Par exemple dans le test *t* univarié concernant `med1` nous ferons\ :
+
+```{r}
+pwr::pwr.t.test(n = 10, d = 1.3, sig.level = 0.05,
+  type = "one.sample", alternative = "two.sided")
+```
+
+La puissance est de 0,954. Donc, $\beta$ vaut 1 - 0,954 = 0,046 ou pratiquement 5%. On a un test bien équilibré entre $\alpha$ et $\beta$, et de plus, $\beta$ nous concerne particulièrement puisqu'ici nous ne rejettons pas $H_0$.
+
+![Le système judiciaire des statistiques, par Hadley Wickham.](images/sdd1_09/statistical-justice.jpg)
+
 
 
 ## Représentation graphique
 
-Présentation graphique: dynamite plot + barres d’erreurs. Transformation des données pour linéariser et ou rendre symétrique autour de la moyenne. Comparaison moyenne/médiane => paramétrique versus non paramétrique.
+Présentation graphique: dynamite plot + barres d’erreurs. Transformation des données pour linéariser et ou rendre symétrique autour de la moyenne.
 
-![Le système judiciaire des statistiques, par Hadley Wickham.](images/sdd1_09/statistical-justice.jpg)
 
-Pour terminer, bien que la moyenne est un descripteur statistique très utile, il est parfois utilisé de manière abusive. Une distribution statistique ne se résume pas à un nombre, fût-ce la moyenne. De plus, si la distribution est *asymétrique*, la moyenne est un mauvais choix (préférer alors la médiane, ou transformer les données pour rendre la distribution plus symétrique). La vidéo suivante détaille le problème qui peut se produire\ :
+Pour terminer, bien que la moyenne soit un descripteur statistique très utile, il est parfois utilisé de manière abusive. Une distribution statistique ne se résume pas à un nombre, fût-ce la moyenne. De plus, si la distribution est *asymétrique*, la moyenne est un mauvais choix (préférer alors la médiane, ou transformer les données pour rendre la distribution plus symétrique). La vidéo suivante détaille le problème qui peut se produire\ :
 
 
 ```{r, echo=FALSE}
