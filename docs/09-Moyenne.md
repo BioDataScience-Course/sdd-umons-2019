@@ -37,6 +37,8 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 
 ## Distribution d'échantillonnage
 
+##### A vous de jouer ! {-}
+
 <div class="bdd">
 <p>Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;09a_ttest&quot;)</code></pre>
@@ -468,16 +470,16 @@ skimr::skim(crabs)
 #  n obs: 200 
 #  n variables: 8 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:integer ───────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -668,6 +670,13 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 
 ## Variantes du test *t* de Student
 
+##### A vous de jouer ! {-}
+
+<div class="bdd">
+<p>Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;09b_ttest_wmw&quot;)</code></pre>
+</div>
+
 Nous venons de voir ce qu'on appelle très précisément le **test *t* de Student indépendant bilatéral avec variances égales**. Nous allons maintenant étudier d'autres variantes. 
 
 
@@ -810,7 +819,7 @@ chart(data = crabs, rear ~ front) +
   geom_abline(slope = 1, intercept = 0)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-36-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-37-1.svg" width="672" style="display: block; margin: auto;" />
 
 Nous voyons très clairement que tous les points se situent du même côté de la bissectrice, ce qui suggère très fortement que $H_0$ ne tient pas la route ici.
 
@@ -899,7 +908,7 @@ chart(data = sleep2, med2 ~ med1) +
   geom_abline(slope = 1, intercept = 0)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-41-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-42-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -946,7 +955,7 @@ chart(data = sleep2, med1 ~ "") +
   ylab("Sommeil supplémentaire avec med1 [h]")
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-43-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-44-1.svg" width="672" style="display: block; margin: auto;" />
 
 Le graphique suggère peut-être que les patient dorment plus, mais la boite de dispersion chevauche quand même le trait horizontal à zéro. Donc, qu'en est-il exactement\ ? Le test s'obtient à partir du "snippet" `univariate Student's t-test` depuis `.hm` pour `hypothesis tests: means`. Notez l'argument supplémentaire `mu =` qui permet de spécifier la valeur de référence (ici zéro). Fixons $\alpha$ avant d'effectuer le test. Ici, nous prenons toujours 5%.
 
@@ -1082,6 +1091,14 @@ pwr::pwr.t.test(n = 10, d = 1.3, sig.level = 0.05,
 La puissance est de 0,954. Donc, $\beta$ vaut 1 - 0,954 = 0,046 ou pratiquement 5%. On a un test bien équilibré entre $\alpha$ et $\beta$, et de plus, $\beta$ nous concerne particulièrement puisqu'ici nous ne rejettons pas $H_0$.
 
 ![Le système judiciaire des statistiques, par Hadley Wickham.](images/sdd1_09/statistical-justice.jpg)
+
+
+##### A vous de jouer ! {-}
+
+<div class="bdd">
+<p>Appliquez les test de student et ses variantes dans vos projets portant sur la biométrie humaine, sur la croissance des oursins et sur le zooplankton.</p>
+</div>
+
 
 
 
