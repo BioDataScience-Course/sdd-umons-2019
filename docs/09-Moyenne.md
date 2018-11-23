@@ -470,16 +470,16 @@ skimr::skim(crabs)
 #  n obs: 200 
 #  n variables: 8 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# ── Variable type:integer ───────────────────────────────────────────────────────────────────
+# ── Variable type:integer ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -939,7 +939,11 @@ t.test(sleep2$med1, sleep2$med2,
 
 ### Test *t* univarié
 
-Dans le cas du test *t* de Student univarié, nous comparons la moyenne d'une seule variable à une constante de référence. Le calcul est le même que dans le cas du test *t* apparié, avec l'étape de soustration `x1 - x2` en moins. Par exemple dans le jeu de données `sleep2` nous pouvons nous demander si le médicament `med1` change la durée du sommeil. Les hypothèses sont les suivantes\ :
+Dans le cas du test *t* de Student univarié, nous comparons la moyenne d'une seule variable à une constante de référence. Le schéma suivant indique qu'une seule variable quantitative (`numeric`) est nécessaire.
+
+![](images/sdd1_09/t-tests-univariate.png)
+
+Le calcul est le même que dans le cas du test *t* apparié, avec l'étape de soustration `x1 - x2` en moins. Par exemple dans le jeu de données `sleep2` nous pouvons nous demander si le médicament `med1` change la durée du sommeil. Les hypothèses sont les suivantes\ :
 
 - $H_0: \overline{med1} = 0$
 - $H_1: \overline{med1} \neq 0$

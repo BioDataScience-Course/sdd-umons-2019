@@ -776,7 +776,11 @@ t.test(sleep2$med1, sleep2$med2,
 
 ### Test *t* univarié
 
-Dans le cas du test *t* de Student univarié, nous comparons la moyenne d'une seule variable à une constante de référence. Le calcul est le même que dans le cas du test *t* apparié, avec l'étape de soustration `x1 - x2` en moins. Par exemple dans le jeu de données `sleep2` nous pouvons nous demander si le médicament `med1` change la durée du sommeil. Les hypothèses sont les suivantes\ :
+Dans le cas du test *t* de Student univarié, nous comparons la moyenne d'une seule variable à une constante de référence. Le schéma suivant indique qu'une seule variable quantitative (`numeric`) est nécessaire.
+
+![](images/sdd1_09/t-tests-univariate.png)
+
+Le calcul est le même que dans le cas du test *t* apparié, avec l'étape de soustration `x1 - x2` en moins. Par exemple dans le jeu de données `sleep2` nous pouvons nous demander si le médicament `med1` change la durée du sommeil. Les hypothèses sont les suivantes\ :
 
 - $H_0: \overline{med1} = 0$
 - $H_1: \overline{med1} \neq 0$
