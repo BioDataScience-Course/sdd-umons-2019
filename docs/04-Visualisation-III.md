@@ -363,7 +363,7 @@ Dans ce dernier cas, c'est bien plus facile : il y a effectivement 24 observatio
 - [Les côtés positifs du graphe en camembert](https://www.displayr.com/why-pie-charts-are-better-than-bar-charts/) sont mis en évidence dans ce document (en anglais).
 
 
-## Boite de dispersion {boxplot}
+## Boite de dispersion {#boxplot}
 
 Vous souhaitez représenter graphiquement cette fois *un résumé* d'une variable numérique mesurée sur un nombre (relativement) important d'individus, soit depuis une dizaine jusqu'à plusieurs millions. Vous souhaitez également conserver de l'information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d'une variable facteur. Nous avons déjà vu au module \@ref(visu2) les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les **boites de dispersion** (encore appelée boite à moustaches) comme option alternative intéressante. La boite de dispersion va représenter graphiquement cinq descripteurs appelés les **cinq nombres**.
 
