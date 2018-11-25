@@ -258,6 +258,11 @@ Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positi
 </center>
 
 
+##### Pour en savoir plus {-}
+
+- Une [autre explication](https://youtu.be/R13BD8qKeTg) du théorème de Bayes (en anglais).
+
+
 ### Probabilités et contingence
 
 Comme un tableau de contingence indique le nombre de fois que des événements ont pu être observés, il peut servir de base à des calculs de probabilités. Partons du dénombrement de fumeur en fonction du revenu dans une population.
@@ -691,8 +696,7 @@ factorial(1600)
 ```
 
 ```
-# Warning in factorial(1600): valeur d'argument hors intervalle dans
-# 'gammafn'
+# Warning in factorial(1600): value out of range in 'gammafn'
 ```
 
 ```

@@ -2,4 +2,110 @@
 
 
 
-Comparaison de deux populations (suite): Wilcoxon-Mann-Withney + comparaison au t-test. Variance, ANOVAs, test de Bartlett. Graphiques associés. Petite recherche biblio concernant l’application en pratique de ces tests à faire par les étudiants.
+##### Objectifs {-}
+
+- Pouvoir comparer plus de deux populations simultanément en utilisant des techniques de décomposition de la variance
+ 
+- Découvrir le modèle linéaire, anciennement analyse de variance (ANOVA)
+ 
+- Savoir effectuer des tests de comparaison multiples
+
+- Connaitre l'équivalent non paramétrique à un facteur (test de Kruskal-Wallis)
+
+
+##### Prérequis {-}
+
+Ce module continue la comparaison de moyennes entamée, pour deux populations au module \@ref(moyenne). Assurez-vous d'avoir bien compris le test *t* de Student et les subtilités des tests d'hypothèse avant d'entamer la présente section.
+
+
+## Le danger des tests multiples
+
+Les tests *t* de Student et de Wilcoxon sont limités à la comparaison de deux populations. Poursuivons notre analyse des crabes *L. variegatus*. Rappelez-vous, nous avons deux variétés (variable `species`, `B` pour bleue et `O`pour orange). Si nous voulons comparer simultanément les mâles et les femelles des deux variétés, cela nous fait quatre sous-populations à comparer (nous utilisons ici la fonction `paste()` qui rassemble des chaînes de caractère avec trait comme caractère séparateur `sep ="-"` pour former une variable facteur à quatre niveaux, `B-F`, `B-M`, `O-F`, `O-M`). Nous en profitons également pour essayer l'astuce proposée au module précédent. Au lieu de travailler sur la variable `rear` seule, nous allons étudier l'aspect ratio entre largeur à l'arrière (`rear`) et largeur maximale (`width`) de la carapace afin de nous débarrasser d'une source de variabilité triviale qui est qu'un grand crabe est grand partout, et de même un petit crabe est petit pour toutes ses mesures\ :
+
+
+```r
+crabs <- read("crabs", package = "MASS", lang = "fr")
+crabs %>.%
+  mutate(.,
+    group  = factor(paste(species, sex, sep = "-")),
+    aspect = rear / width) %>.%
+  select(., group, aspect) ->
+  crabs2
+skimr::skim(crabs2)
+```
+
+```
+# Skim summary statistics
+#  n obs: 200 
+#  n variables: 2 
+# 
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete   n n_unique                         top_counts
+#     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
+#  ordered
+#    FALSE
+# 
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
+#    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
+```
+
+Nous avons 50 individus dans chacun des quatre groupes. **Lorsqu'il y a le même nombre de réplicats dans tous les groupes, on appelle cela un plan balancé**. C'est une situation optimale. Nous devons toujours essayer de nous en rapprocher le plus possible car, si le nombre d'individus mesurés diffère fortement d'un groupe à l'autre, nous aurons forcément moins d'information disponible dans le ou les groupes moins nombreux, ce qui déforcera notre analyse.
+
+Nous voyons également que la variable `aspect` semble avoir une distribution bimodale. Comment comparer ces quatre groupes\ ? Comme nous savons maintenant comparer deux groupes à l'aide d'un test *t* de Student, il est tentant d'effectuer toutes les comparaisons deux à deux et de résumer l'ensemble, par exemple, dans un tableau synthétique. Ca fait quant même beaucoup de comparaisons (`B-F` <-> `B-M`, `B-F` <-> `O-F`, `B-F` <-> `O-M`, `B-M` <-> `O-F`, `B-M`<-> `O-M`, et finalement `O-F` <-> `O-M`). Cela fait six comparaisons à réaliser.
+
+N'oublions pas que, à chaque test, nous prenons un risque de nous tromper. **Le risque de se tromper au moins une fois dans l'ensemble des tests est alors décuplé en cas de tests multiples.** Prenons un point de vue naïf, mais qui suffira ici pour démontrer le problème qui apparaît. Admettons que le risque de nous tromper est constant, que nous rejettons ou non $H_0$, et qu'il est de l'ordre de 10% dans chaque test individuellement^[Attention\ ! vous savez bien que c'est plus compliqué que cela. D'une part, le risque de se tromper est probablement différent si on rejette $H_0$ ($\alpha$) ou non ($\beta$), et ces risques sont encore à moduler en fonction de la probabilité *a priori*, un cas similaire au dépistage d'une maladie plus ou moins rare, rappelez-vous, au module \@ref(proba).]. La seule solution acceptable est que *tous* les tests soeijnt corrects. Considérant chaque interprétation indépendante, nous pouvons multiplier les probabilités d'avoir un test correct (90%) le nombre de fois que nous faisons le test, soit $0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 = 0,9^6 = 0,53$. Tous les autres cas ayant au moins un test faux, nous constatons que notre analyse globale sera incorrecte $1 - 0,53 = 47\%$ du temps^[Dans R, vous pouvez utiliser `choose(n, j)` pour calculer le coefficient binomial. Donc votre calcul du risque de se tromper au moins une fois dans un ensemble de `n` tests dont le risque individuel est `r` sera `1 - (1 - r)^choose(n, 2)`.]. **Notre analyse sera incorrecte une fois sur deux envirion.**
+
+<div class="info">
+<p>De manière générale, le nombre de combinaisons deux à deux possibles dans un set de <code>n</code> groupes distincts sera calculé à l'aide du coefficient binomial que nous avions déjà rencontré avec la distribution du même nom, ici avec <span class="math inline">\(j\)</span> valant deux.</p>
+<p><span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
+<p>Toujours avec notre approche naïve du risque d'erreur individuel pour un test <span class="math inline">\(r\)</span> de 10%, le risque de se tromper au moins une fois est alors :</p>
+<p><span class="math display">\[1 - (1 - r)^{C^2_n}\]</span></p>
+<p>Voici ce que cela donne comme risque de se tromper dans au moins un des tests en fonction du nombre de groupes à comparer  :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Groupes comparés 2 à 2</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">6</th>
+<th align="center">8</th>
+<th align="center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Risque individuel = 10%</td>
+<td align="center">10%</td>
+<td align="center">27%</td>
+<td align="center">47%</td>
+<td align="center">79%</td>
+<td align="center">95%</td>
+<td align="center">99%</td>
+</tr>
+</tbody>
+</table>
+<p>Clairement, on oublie cette façon de faire ! Prendre le risque de se tromper 99 fois sur 100 en comparant 10 groupes différents n'est pas du tout intéressante comme perspective.</p>
+</div>
+
+Nous allons donc travailler différemment... Ci-après nous verrons qu'une simplification des hypothèses et l'approche par décomposition de la variance est une option bien plus intéressante. Ensuite, nous reviendrons vers ces comparaisons multiples deux à deux, mais en prenant des précautions pour éviter l'inflation du risque global de nous tromper.
+
+
+## Modèle linéaire & ANOVA
+
+Variance, ANOVAs, test de Bartlett. Graphiques associés. 
+
+
+##### Pour en savoir plus {-}
+
+- [L'ANOVA expliquée en trois minutes](https://www.youtube.com/watch?v=lITNHx2z5FE)
+
+- Introduction to ANOVA (en anglais). [Part I](https://youtu.be/QUQ6YppWCeg), [part II] (https://youtu.be/fFnOD7KBSbw), [part III](https://youtu.be/XdZ7BRqznSA), [part IV](https://youtu.be/WUoVftXvjiQ), et [part V](https://youtu.be/kO8t_q-AXHE).
+
+- Explication de l'analyse de variance en détaillant le calcul par la Kahn academy. [Partie I](https://www.youtube.com/watch?v=tjolTrwJhjM), [partie II](https://youtu.be/DMo9yofC5C8) et [partie III](https://youtu.be/y8nRhsixBPs). Assez long\ : près de 3/4h en tout. Ne regardez que si vous n'avez pas compris ce que sont les sommes des carrés.
+
+
+## Les sciences des données dans la littérature
+
+Petite recherche biblio concernant l’application en pratique de ces tests à faire par les étudiants...

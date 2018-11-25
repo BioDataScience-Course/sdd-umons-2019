@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="distribution-uniforme.html">
-<link rel="next" href="distribution-de-poisson.html">
+<link rel="prev" href="modele-lineaire-anova.html">
+<link rel="next" href="correlation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -361,65 +361,12 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="distribution-binomiale" class="section level2">
-<h2><span class="header-section-number">7.4</span> Distribution binomiale</h2>
-<p>Partons d’un exemple pratique pour découvrir cette distribution. La <a href="http://www.muco.be/fr/mucoviscidose/maladie-génétique">mucoviscidose</a> est, dans la population européenne, la plus fréquente des maladies génétiques héréditaires. Elle se caractérise par un mucus (voies respiratoires) anormalement épais qui est à l’origine de diverses complications. L’altération d’une protéine CFTR est à l’origine de cette maladie. Comme le gène qui code pour cette protéine est récessif, il faut que le deux allèles soient porteurs simultanément de la mutation pour que la maladie apparaisse. Parmi des familles de six enfants dont le père et la mère normaux sont tous deux porteurs hétérozygotes du gène altéré, quelle est la probabilité d’obtenir 0, 1, 2, …, 6 enfants atteints de mucoviscidose ?</p>
-<div id="epreuve-de-benouilli" class="section level3">
-<h3><span class="header-section-number">7.4.1</span> Epreuve de Benouilli</h3>
-<p>La <strong>distribution binomiale</strong> est un loi de distribution discrète qui répond à ce genre de question. Ses conditions d’applications sont :</p>
-<ul>
-<li>résultats binaire (deux événements possibles uniquement ; l’un sera nommé “succès” et l’autre “échec” par convention),</li>
-<li>essais indépendants (les probabilités ne changement pas d’un essai à l’autre),</li>
-<li><em>n</em> le nombre d’essais totaux est fixé à l’avance,</li>
-<li>probabilité du “succès” <em>p</em> constante (probabilité de l’“échec” = 1 - <em>p</em>).</li>
-</ul>
-<p>Les conditions particulières de cette situation sont appelées <strong>épreuve de Bernouilli</strong>. Mathématiquement, nous l’écrirons comme suit. Soit une variable aléatoire <span class="math inline">\(Y\)</span> qui comptabilise le nombre de succès, la probabilité d’obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais est :</p>
-<p><span class="math display">\[P(Y=j)= C^j_n \times p^j \times (1-p)^{n-j}\]</span></p>
-<p>Le <strong>coefficient binomial</strong> <span class="math inline">\(C^j_n\)</span> vaut<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> : <span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
-<p><span class="math inline">\(C^j_n\)</span> représente le nombre de combinaisons possibles pour obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais réalisés dans un ordre quelconque. On pourra écrire aussi :</p>
-<p><span class="math display">\[Y \sim B(n,p)\]</span></p>
-<p>Notre exemple rentre parfaitement dans le cadre de l’épreuve de Bernouilli avec <em>n</em> = 6 et <em>p</em>, la probabilité du succès, c’est-à-dire, d’avoir un enfant qui ne développe pas la maladie de 3/4 : <span class="math inline">\(Y \sim B(6, 0.75)\)</span>.</p>
-</div>
-<div id="calculs-et-graphiques" class="section level3">
-<h3><span class="header-section-number">7.4.2</span> Calculs et graphiques</h3>
-<p>Les calculs sur base d’une distribution binomiale sont assez similaires à ceux de la distribution uniforme dans R, en remplaçant <code>unif</code> par <code>binom</code> dans le nom des fonction. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu <code>(d)istributions: binomial</code> à partir de <code>.ib</code>) :</p>
-<div class="figure">
-<img src="images/sdd1_07/snippets-binomial.png" />
+<div id="les-sciences-des-donnees-dans-la-litterature" class="section level2">
+<h2><span class="header-section-number">10.3</span> Les sciences des données dans la littérature</h2>
+<p>Petite recherche biblio concernant l’application en pratique de ces tests à faire par les étudiants…</p>
 
 </div>
-<p>Puisqu’il s’agit d’une distribution discrète, un petit nombre d’événements possibles existent. Le snippet <code>.ibtable</code> retourne l’ensemble des valeurs possibles pour <span class="math inline">\(j\)</span> allant de 1 à <span class="math inline">\(n\)</span> en une seule étape. Les autres snippets devraient vous être familiers.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(.table &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">success =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">6</span>,
-  <span class="dt">probability =</span> <span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">prob =</span> <span class="fl">0.75</span>)))</code></pre></div>
-<pre><code>#   success  probability
-# 1       0 0.0002441406
-# 2       1 0.0043945312
-# 3       2 0.0329589844
-# 4       3 0.1318359375
-# 5       4 0.2966308594
-# 6       5 0.3559570312
-# 7       6 0.1779785156</code></pre>
-<p>La représentation graphique donne la Fig. <a href="distribution-binomiale.html#fig:binom">7.6</a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:binom"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/binom-1.svg" alt="Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose." width="672" />
-<p class="caption">
-Figure 7.6: Probabilité d’avoir <em>j</em> enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose.
-</p>
-</div>
-<p>La situation la plus probable est donc d’avoir 5 enfants sains sur 6. Nous pouvons aussi observer que, lorsque <span class="math inline">\(p\)</span> s’éloigne de 0,5, les probabilités à l’extrême opposée tendent assez rapidement vers zéro (ici, la probabilité de n’avoir qu’un seul, ou aucun enfant sain). La distribution binomiale trouve de très nombreuses applications en biologie, en écologie, en génétique et dans d’autres disciplines. Elle permet même de représenter vos chances de réussite à l’examen de science des données biologiques ! Voici, pour finir, l’allure d’une distribution binomiale pour laquelle la probabilité du succès est égale à la probabilité d’échec (0,5). Cette distribution est symétrique.</p>
-<div class="figure" style="text-align: center"><span id="fig:binom2"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/binom2-1.svg" alt="Probabilité d'avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1)." width="672" />
-<p class="caption">
-Figure 7.7: Probabilité d’avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1).
-</p>
-</div>
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="6">
-<li id="fn6"><p>Le factoriel d’un nombre <span class="math inline">\(n\)</span>, noté <span class="math inline">\(n!\)</span> est <span class="math inline">\(1 \times 2 \times 3 \times ... \times n\)</span>, avec <span class="math inline">\(0! = 1\)</span>.<a href="distribution-binomiale.html#fnref6">↩</a></p></li>
-</ol>
-</div>
+<!-- </div> -->
 <div id="disqus_thread"></div>
 <script>
 
@@ -445,8 +392,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="distribution-uniforme.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="distribution-de-poisson.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modele-lineaire-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -476,7 +423,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/07-Probabilites-Distributions.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/10-Variance.Rmd",
 "text": "Editer"
 },
 "download": null,
