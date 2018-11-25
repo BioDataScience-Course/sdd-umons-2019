@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="representation-graphique.html">
-<link rel="next" href="le-danger-des-tests-multiples.html">
+<link rel="prev" href="le-danger-des-tests-multiples.html">
+<link rel="next" href="les-sciences-des-donnees-dans-la-litterature.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -363,21 +363,47 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="variance" class="section level1">
-<h1><span class="header-section-number">Module 10</span> Variance</h1>
-<div id="objectifs-9" class="section level5 unnumbered">
-<h5>Objectifs</h5>
+<div id="anova-modele-lineaire" class="section level2">
+<h2><span class="header-section-number">10.2</span> ANOVA &amp; modèle linéaire</h2>
+<p>Au lieu de s’attaquer aux comparaisons deux à deux, nous pouvons aussi considérer une hypothèse unique que les moyennes de <span class="math inline">\(k\)</span> populations (nos quatre groupes différents de crabes, par exemple) sont égales. L’hypothèse alternative sera qu’au moins une des moyennes diffère des autres. En formulation mathématique, cela donne :</p>
 <ul>
-<li><p>Pouvoir comparer plus de deux populations simultanément en utilisant des techniques de décomposition de la variance</p></li>
-<li><p>Découvrir le modèle linéaire, anciennement analyse de variance (ANOVA)</p></li>
-<li><p>Savoir effectuer des tests de comparaison multiples</p></li>
-<li><p>Connaitre l’équivalent non paramétrique à un facteur (test de Kruskal-Wallis)</p></li>
+<li><p><span class="math inline">\(H_0: \mu_1 = \mu_2 = ... = \mu_k\)</span></p></li>
+<li><p><span class="math inline">\(H_1: \exists(i, j) \mathrm{\ tel\ que\ } \mu_i \neq \mu_j\)</span></p></li>
+</ul>
+<p>Notre hypothèse nulle est très restrictive, mais par contre, l’hypothèse alternative est très vague car nous ne savons pas <strong>où</strong> sont les différences à ce stade si nous rejettons <span class="math inline">\(H_0\)</span>, mais nous nous en occuperons plus tard.</p>
+<div class="info">
+<p>
+<strong>Propriété d’additivité des parts de variance</strong>. La variance se calcule comme :
+</p>
+<p>
+<span class="math display"><span class="math display">\[var_x = \frac{SCT}{ddl}\]</span></span>
+</p>
+<p>
+Avec <span class="math inline"><span class="math inline">\(SCT\)</span></span>, la somme des carrés totaux, soit <span class="math inline"><span class="math inline">\(\sum (x_i - \bar{x})^2\)</span></span>, la somme des carrés des écarts à la moyenne générale. Les ddl sont les degrés de liberté déjà rencontrés à plusieurs reprises qui valent <span class="math inline"><span class="math inline">\(n - 1\)</span></span> dans le cas de la variance d’un échantillon.
+</p>
+<p>
+Cette variance peut être <em>partitionnée</em>. C’est-à-dire que, si la variance totale se mesure d’un point A à un point C, l’on peut mesurer la part de variance d’un point A à un point B, puis l’autre part d’un point B à un point C, et dans ce cas,
+</p>
+<p>
+<span class="math display"><span class="math display">\[SCT = SC_{A-C} = SC_{A-B} + SC_{B-C}\]</span></span>
+</p>
+<p>
+Cette propriété, dite d’additivité des variances, permet de décomposer la variance totale à souhait tout en sachant que la somme des différentes composantes donne toujours la même valeur que la variance totale.
+</p>
+</div>
+<div id="modele-de-lanova" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> Modèle de l’ANOVA</h3>
+<p>Mais qu’est-ce que cette propriété d’additivité des variances vient faire ici ? Nous souhaitons comparer des moyennes, non ? Effectivement, mais considérons le <strong>modèle mathématique suivant</strong> le graphique à la Fig. <a href="#fig:anova1"><strong>??</strong></a>.</p>
+<p>Variance, ANOVAs, test de Bartlett. Graphiques associés.</p>
+<div id="pour-en-savoir-plus-19" class="section level5 unnumbered">
+<h5>Pour en savoir plus</h5>
+<ul>
+<li><p><a href="https://www.youtube.com/watch?v=lITNHx2z5FE">L’ANOVA expliquée en trois minutes</a></p></li>
+<li><p>Introduction to ANOVA (en anglais). <a href="https://youtu.be/QUQ6YppWCeg">Part I</a>, <a href="https://youtu.be/fFnOD7KBSbw">part II</a>, <a href="https://youtu.be/XdZ7BRqznSA">part III</a>, <a href="https://youtu.be/WUoVftXvjiQ">part IV</a>, and <a href="https://youtu.be/kO8t_q-AXHE">part V</a>.</p></li>
+<li><p>Explication de l’analyse de variance en détaillant le calcul par la Kahn academy. <a href="https://www.youtube.com/watch?v=tjolTrwJhjM">Partie I</a>, <a href="https://youtu.be/DMo9yofC5C8">partie II</a> et <a href="https://youtu.be/y8nRhsixBPs">partie III</a>. Assez long : près de 3/4h en tout. Ne regardez que si vous n’avez pas compris ce que sont les sommes des carrés.</p></li>
 </ul>
 </div>
-<div id="prerequis-8" class="section level5 unnumbered">
-<h5>Prérequis</h5>
-<p>Ce module continue la comparaison de moyennes entamée, pour deux populations au module <a href="moyenne.html#moyenne">9</a>. Assurez-vous d’avoir bien compris le test <em>t</em> de Student et les subtilités des tests d’hypothèse avant d’entamer la présente section.</p>
-</div> 
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -404,8 +430,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="representation-graphique.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="le-danger-des-tests-multiples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="le-danger-des-tests-multiples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="les-sciences-des-donnees-dans-la-litterature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
