@@ -293,7 +293,8 @@ chart(data = crabs2, exp3_aspect ~ group) +
   geom_jitter(width = 0.05, alpha = 0.5) +
   geom_point(data = group_by(crabs2, group) %>.%
     summarise(., means = mean(exp3_aspect, na.rm = TRUE)),
-    f_aes(means ~ group), size = 3, col = "red")
+    f_aes(means ~ group), size = 3, col = "red") +
+  ylab("exp(exp(exp(ratio)))")
 ```
 
 <div class="figure" style="text-align: center">
