@@ -67,7 +67,7 @@ skimr::skim(crabs2)
 #  n obs: 200 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -77,7 +77,7 @@ skimr::skim(crabs2)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
 ```
@@ -399,10 +399,220 @@ Ce n'est qu'une fois l'ANOVA réalisée que nous pouvons calculer et visionner l
 
 - Explication de l'analyse de variance en détaillant le calcul par la Kahn academy. [Partie I](https://www.youtube.com/watch?v=tjolTrwJhjM), [partie II](https://youtu.be/DMo9yofC5C8) et [partie III](https://youtu.be/y8nRhsixBPs). Assez long\ : près de 3/4h en tout. Ne regardez que si vous n'avez pas compris ce que sont les sommes des carrés.
 
-##### A vous de jouer ! {-}
+
+## Test "post-hoc"
+
+Lorsque nous rejettons $H_0$ dans l'ANOVA comme dans le cas de notre exemple, nous savons qu'il y a au moins deux moyennes qui diffèrent l'une de l'autre, mais nous ne savons pas lesquelles. Notre analyse n'est pas terminée. Nous allons revisiter les tests de comparaison multiples deux à deux, mais en prenant des précautions particulières pour éviter l'inflation du risque d'erreur.
+
+Tout d'abort, nous mettons en place un garde-fou. Nous effectuons *toujours* une ANOVA en premier lieu, et nous n'envisageons les comparaisons multiples que lorsque $H_0$ est rejettée. Cela évite beaucoup de faux positifs. On appelle cela des tests "post hoc" car ils ne sont pas planifiés d'amblée, mais suivent un conclusion préalable (ici, le rejet de $H_0$ dans un test ANOVA).
+
+Une approche simple consisterait à modifier notre seuil $\alpha$ pour chaque test individuel vers le bas afin que le risque de se tromper dans au moins un des tests ne dépasse pas la valeur de $/alpha$ que nous nous sommes fixée. C'est la **correction de Bonferroni**. Elle consiste à diviser la valeur de $/alpha$ par le nombre de tests simultanés nécessaires, et d'utiliser cette valeur corrigée comme seuil $\alpha$ de chaque test de Student individuel. Dans le cas de quatre populations, nous avons vu qu'il y a six comparaisons multiples deux à deux. Donc, en appliquant un seuil corrigé de $\alpha/6 = 0,05 / 6 = 0,00833$ pour chaque test, on aura la probabilité suivante pour $1 - \alpha$\ :
+
+$$(1 - 0,05/6)^6 = 0,951$$
+
+Donc, le risque *global* pour l'ensemble des six tests est bien de 1 - 0,951 = 0,049, soit 5%. Si elle a le mérite d'être simple, cette façon de faire n'est pas considérée comme la plus efficace. Actuellement, la méthode **HSD de Tukey** est préférée. HSD veut dire "Honest Significant Difference". La technique consiste à calculer l'écart minimal des moyennes pour considérer qu'elles sont significativement différentes l'une de l'autre. Ensuite, pour chaque comparaison deux à deux, l'écart entre les moyennes est comparée à cette valeur de référence^[Nous ne détaillons pas le calcul du test de Tukey ici, mais vous pouvez aller voir [ici](https://www.itl.nist.gov/div898/handbook/prc/section4/prc471.htm).]. Le test de comparaisons multiples de Tukey est accessible à partir des "snippets" dans la SciViews Box (`.hm` pour le menu `hypothesis tests: means`, puis `anova - multiple comparisons`). Nous obtenons à la fois une version textuelle et une version graphique qui résume les comparaisons.
+
+
+```r
+summary(anovaComp. <- confint(multcomp::glht(anova.,
+  linfct = multcomp::mcp(group = "Tukey"))))
+```
+
+```
+# 
+# 	 Simultaneous Tests for General Linear Hypotheses
+# 
+# Multiple Comparisons of Means: Tukey Contrasts
+# 
+# 
+# Fit: lm(formula = aspect5 ~ group, data = crabs2)
+# 
+# Linear Hypotheses:
+#                  Estimate Std. Error t value Pr(>|t|)    
+# B-M - B-F == 0 -0.0036378  0.0002538 -14.331  < 0.001 ***
+# O-F - B-F == 0  0.0008441  0.0002538   3.326  0.00569 ** 
+# O-M - B-F == 0 -0.0029979  0.0002538 -11.810  < 0.001 ***
+# O-F - B-M == 0  0.0044820  0.0002538  17.657  < 0.001 ***
+# O-M - B-M == 0  0.0006399  0.0002538   2.521  0.05960 .  
+# O-M - O-F == 0 -0.0038420  0.0002538 -15.136  < 0.001 ***
+# ---
+# Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+# (Adjusted p values reported -- single-step method)
+```
+
+```r
+.oma <- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)
+```
+
+<img src="10-Variance_files/figure-html/unnamed-chunk-11-1.svg" width="672" style="display: block; margin: auto;" />
+
+Si nous gardons notre seuil $\alpha$ de 5%, seuls les mâles ne diffèrent (tout juste) pas entre eux (``O-M - B-M`) avec une valeur *P* de 6%. Toutes les autres comparaisons deux à deux sont significativement différentes. Sur le graphique, si les intervalles autour des différences de moyennes comprennent zéro, matérialisé par un trait pointillé vertical, les différences ne sont pas significatives.
+
+En conclusion, tous les groupes diffèrent de manière siginificative sauf les mâles (test HSD de Tukey, valeur *P* < 5%).
+
+
+##### Conditions d'application {-}
+
+Les conditions d'application pour le test post hoc de Tukey sont les mêmes que pour l'ANOVA.
+
+
+## Test de Kruskal-Wallis
+
+Les conditions d'application de l'ANOVA sont assez restrictives, en particuliers l'homoscédasticité et le normalité des résidus. Dans notre example, nous avons pu stabiliser la variance par une transformation puissance cinq, mais la distribution des résidus n'est pas optimale. Nous pouvons tout aussi bien décider de nous orienter vers la version non paramétrique équivalente\ : le **test de Kruskal-Wallis**.
+
+<div class="warning">
+<p>Le raisonnement entre ANOVA (test paramétrique) et Kruska-Wallis (test non paramétrique) est le même qu'entre le test de Student ou celui de Wilcoxon. Lorsque les conditions sont remplies, l'ANOVA est un test plus puissant à utiliser en priorité. Nous le préfèrerons donc, sauf dans les cas impossibles où aucune transformation des données ne permet d'obtenir une distribution acceptable des résidus et des variances.</p>
+</div>
+
+Le test de Kruskal-Wallis va comparer la localisation des points sur l'axe plutôt que les moyennes. Nous travaillons ici sur les **rangs**. La transformation en rangs consiste à ranger les observations de la plus petite à la plus grande et à remplacer les valeurs par leur position (leur rang) dans ce classement. Les ex-aequos reçoivent des rangs équivalents. Un petit exemple\ :
+
+
+```r
+# Un échantillon
+x <- c(4.5, 2.1, 0.5, 2.4, 2.1, 3.5)
+# Tri par ordre croissant
+sort(x)
+```
+
+```
+# [1] 0.5 2.1 2.1 2.4 3.5 4.5
+```
+
+```r
+# Remplacement par les rangs
+rank(sort(x))
+```
+
+```
+# [1] 1.0 2.5 2.5 4.0 5.0 6.0
+```
+
+Donc 0,5 donne 1, 2,1 apparait deux fois en position 2 et 3, donc on leurs attribue à tous les deux le rang 2,5. 2,4 est remplacé par 4, 3,5 par 5 et enfin 4,5 est remplacé par 6.
+
+Dans le test de Kruskal-Wallis, sous $H_0$ nous avons le même rang moyen (noté $mr$) pour chaque groupe parmi $k$. Sous $H_1$, au moins deux groupes ont des rangs moyens différents. 
+
+- $H_0:mr_1 = mr_2 = ... = mr_k$
+
+- $H_1: \exists(i, j) \mathrm{\ tel\ que\ } mr_i \neq mr_j$
+
+Nous ne détaillons pas les calculs (mais voyez [ici](http://vassarstats.net/textbook/ch14a.html)). Le calcul aboutit en fait à une valeur de $\chi^2_{obs}$ à $k - 1$ degrés de liberté lorsque *k* populations sont comparées. Ainsi, nous avons déjà un loi de distribution théorique pour le calcul de la valeur *P*. La zone de rejet est située à la droite de la distribution comme dans le cas de l'ANOVA et du test de $\chi^2$.
+
+Le test est réalisé dans R avec la fonction `kruskal.test()`. Notez que les arguments sont les mêmes que pour l'ANOVA à un facteur. Un "snippet" est disponible dans la SciViews Box (`.hn` pour `hypothesis tests: nonparametric`, ensuite `Kruskal-Wallis test`).
+
+
+```r
+kruskal.test(data = crabs2, aspect ~ group)
+```
+
+```
+# 
+# 	Kruskal-Wallis rank sum test
+# 
+# data:  aspect by group
+# Kruskal-Wallis chi-squared = 139.68, df = 3, p-value < 2.2e-16
+```
+
+Ici, nous rejettons $H_0$ au seuil $\alpha$ de 5%. Nous pouvons dire qu'il y a au moins une différence significative entre les ratios au seuil $\alpha$ de 5% (test Kruskal-Wallis, $\chi^2$ = 140, ddl = 3, valeur *P* << 10^-3^).
+
+
+##### Conditions d'application {-}
+
+Le test de Kruskal-Wallis est naturellement moins contraignant que l'ANOVA.
+
+- échantillon représentatif (par exemple, aléatoire),
+- observations indépendantes,
+- variable dite **réponse** quantitative,
+- une variable dite **explicative** qualitative à trois niveaux ou plus,
+- les distributions au sein des différentes sous-population sont, si possible, similaires mais de forme quelconque.
+
+
+### Test "post hoc" non paramétrique
+
+Nous devrions également réaliser des tests "pot hoc" lorsque nous rejettons $H_0$ du Kruskal-Wallis. Les version non paramétriques des tests de comparaisons multiples sont moins connus. Nous pourrions effectuer des comparaisons deux à deux avec des tests de Wilcoxon en appliquant une correction de Bonferroni.
+
+Une autre option consiste à utiliser une version non paramétrique du test de Tukey basée sur les rangs, dit test pot hoc non paramétrique asymptotique. Les explications assez techniques sont disponibles [ici](https://onlinelibrary.wiley.com/doi/abs/10.1002/1521-4036%28200109%2943%3A5%3C553%3A%3AAID-BIMJ553%3E3.0.CO%3B2-N). Ce test est également disponible dans la SciViews Box depuis `.hn`, en sélectionnant l'entrée `Kruskal-Wallis: multiple comparisons` dans le menu déroulant.
+
+
+```r
+summary(kw_comp. <- nparcomp::nparcomp(data = crabs2, aspect ~ group))
+```
+
+```
+# 
+#  #------Nonparametric Multiple Comparisons for relative contrast effects-----# 
+#  
+#  - Alternative Hypothesis:  True relative contrast effect p is less or equal than 1/2 
+#  - Type of Contrast : Tukey 
+#  - Confidence level: 95 % 
+#  - Method = Logit - Transformation 
+#  - Estimation Method: Pairwise rankings 
+#  
+#  #---------------------------Interpretation----------------------------------# 
+#  p(a,b) > 1/2 : b tends to be larger than a 
+#  #---------------------------------------------------------------------------# 
+#  
+# 
+#  #------------Nonparametric Multiple Comparisons for relative contrast effects----------# 
+#  
+#  - Alternative Hypothesis:  True relative contrast effect p is less or equal than 1/2 
+#  - Estimation Method: Global Pseudo ranks 
+#  - Type of Contrast : Tukey 
+#  - Confidence Level: 95 % 
+#  - Method = Logit - Transformation 
+#  
+#  - Estimation Method: Pairwise rankings 
+#  
+#  #---------------------------Interpretation--------------------------------------------# 
+#  p(a,b) > 1/2 : b tends to be larger than a 
+#  #-------------------------------------------------------------------------------------# 
+#  
+#  #----Data Info-------------------------------------------------------------------------# 
+#   Sample Size
+# 1    B-F   50
+# 2    B-M   50
+# 3    O-F   50
+# 4    O-M   50
+# 
+#  #----Contrast--------------------------------------------------------------------------# 
+#           B-F B-M O-F O-M
+# B-M - B-F  -1   1   0   0
+# O-F - B-F  -1   0   1   0
+# O-M - B-F  -1   0   0   1
+# O-F - B-M   0  -1   1   0
+# O-M - B-M   0  -1   0   1
+# O-M - O-F   0   0  -1   1
+# 
+#  #----Analysis--------------------------------------------------------------------------# 
+#       Comparison Estimator Lower Upper Statistic      p.Value
+# 1 p( B-F , B-M )     0.017 0.004 0.070 -7.229567 1.552980e-12
+# 2 p( B-F , O-F )     0.695 0.542 0.815  3.257267 6.084974e-03
+# 3 p( B-F , O-M )     0.051 0.018 0.137 -7.014700 9.799161e-12
+# 4 p( B-M , O-F )     0.990 0.949 0.998  7.210499 1.743827e-12
+# 5 p( B-M , O-M )     0.654 0.501 0.781  2.606445 4.826269e-02
+# 6 p( O-F , O-M )     0.027 0.008 0.088 -7.385440 4.359846e-13
+# 
+#  #----Overall---------------------------------------------------------------------------# 
+#   Quantile      p.Value
+# 1 2.594705 4.359846e-13
+# 
+#  #--------------------------------------------------------------------------------------#
+```
+
+```r
+plot(kw_comp.)
+```
+
+<img src="10-Variance_files/figure-html/unnamed-chunk-15-1.svg" width="672" style="display: block; margin: auto;" />
+
+La présentation des résultats est plus détaillée que pour le HSD de Tukey. Le graphique est très imilaire. Ici, toutes les différences sont considérées comme significatives, même si la comparaison des mâles `B-M - O-M` avec une valeur *P* tout juste significative de 0,049 est à prendre avec des pincettes étant donné sa proximité du seuil.
+
+Au final que conclure\ ? Lorsque l'ANOVA peut être utilisée, elle est à préférer. Ici avec une transformation puissance cinq, nous stabilisons la variance qui est le critère le plus sensible. De plus tant avec l'ANOVA qu'avec le Kruskal-Wallis, nous détectons des différences significatives. Les tests "post hoc" nous indiquent des différences significatives au seuil $\alpha$ de 5% sauf peut-être pour les mâles (il faudrait prévoir des mesures supplémentaires pour confirmer ou infirmer à ce niveau).
+
+
+##### A vous de jouer {-}
 
 <div class="bdd">
-<p>Appliquez l'analyse de variances dans vos projets portant sur la biométrie humaine et sur le zooplankton.</p>
+<p>Appliquez l'analyse de variances ou le test de Kruskal-Wallis dans vos projets portant sur la biométrie humaine et sur le zooplankton.</p>
 </div>
 
 
