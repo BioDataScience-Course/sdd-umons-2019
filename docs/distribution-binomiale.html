@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-23">
+<meta name="date" content="2018-11-26">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -286,7 +286,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="10" data-path="variance.html"><a href="variance.html"><i class="fa fa-check"></i><b>10</b> Variance</a><ul>
 <li class="chapter" data-level="10.1" data-path="le-danger-des-tests-multiples.html"><a href="le-danger-des-tests-multiples.html"><i class="fa fa-check"></i><b>10.1</b> Le danger des tests multiples</a></li>
-<li class="chapter" data-level="10.2" data-path="modele-lineaire-anova.html"><a href="modele-lineaire-anova.html"><i class="fa fa-check"></i><b>10.2</b> Modèle linéaire &amp; ANOVA</a></li>
+<li class="chapter" data-level="10.2" data-path="anova-a-un-facteur.html"><a href="anova-a-un-facteur.html"><i class="fa fa-check"></i><b>10.2</b> ANOVA à un facteur</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="anova-a-un-facteur.html"><a href="anova-a-un-facteur.html#modele-de-lanova"><i class="fa fa-check"></i><b>10.2.1</b> Modèle de l’ANOVA</a></li>
+<li class="chapter" data-level="10.2.2" data-path="anova-a-un-facteur.html"><a href="anova-a-un-facteur.html#distribution-f"><i class="fa fa-check"></i><b>10.2.2</b> Distribution <em>F</em></a></li>
+</ul></li>
 <li class="chapter" data-level="10.3" data-path="les-sciences-des-donnees-dans-la-litterature.html"><a href="les-sciences-des-donnees-dans-la-litterature.html"><i class="fa fa-check"></i><b>10.3</b> Les sciences des données dans la littérature</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
@@ -375,7 +378,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul>
 <p>Les conditions particulières de cette situation sont appelées <strong>épreuve de Bernouilli</strong>. Mathématiquement, nous l’écrirons comme suit. Soit une variable aléatoire <span class="math inline">\(Y\)</span> qui comptabilise le nombre de succès, la probabilité d’obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais est :</p>
 <p><span class="math display">\[P(Y=j)= C^j_n \times p^j \times (1-p)^{n-j}\]</span></p>
-<p>Le <strong>coefficient binomial</strong> <span class="math inline">\(C^j_n\)</span> vaut<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> : <span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
+<p>Le <strong>coefficient binomial</strong> <span class="math inline">\(C^j_n\)</span> vaut<a href="references.html#fn34" class="footnoteRef" id="fnref34"><sup>34</sup></a> : <span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
 <p><span class="math inline">\(C^j_n\)</span> représente le nombre de combinaisons possibles pour obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais réalisés dans un ordre quelconque. On pourra écrire aussi :</p>
 <p><span class="math display">\[Y \sim B(n,p)\]</span></p>
 <p>Notre exemple rentre parfaitement dans le cadre de l’épreuve de Bernouilli avec <em>n</em> = 6 et <em>p</em>, la probabilité du succès, c’est-à-dire, d’avoir un enfant qui ne développe pas la maladie de 3/4 : <span class="math inline">\(Y \sim B(6, 0.75)\)</span>.</p>
@@ -416,8 +419,8 @@ Figure 7.7: Probabilité d’avoir des garçons parmi une fratrie de 6 enfants (
 </div>
 <div class="footnotes">
 <hr />
-<ol start="6">
-<li id="fn6"><p>Le factoriel d’un nombre <span class="math inline">\(n\)</span>, noté <span class="math inline">\(n!\)</span> est <span class="math inline">\(1 \times 2 \times 3 \times ... \times n\)</span>, avec <span class="math inline">\(0! = 1\)</span>.<a href="distribution-binomiale.html#fnref6">↩</a></p></li>
+<ol start="34">
+<li id="fn34"><p>Le factoriel d’un nombre <span class="math inline">\(n\)</span>, noté <span class="math inline">\(n!\)</span> est <span class="math inline">\(1 \times 2 \times 3 \times ... \times n\)</span>, avec <span class="math inline">\(0! = 1\)</span>.<a href="distribution-binomiale.html#fnref34">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
