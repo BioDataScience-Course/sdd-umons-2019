@@ -79,7 +79,7 @@ Clairement, on oublie cette façon de faire\ ! Prendre le risque de se tromper 9
 
 ```
 
-Nous allons donc travailler différemment... Ci-après nous verrons qu'une simplification des hypothèses et l'approche par décomposition de la variance est une option bien plus intéressante. Ensuite, nous reviendrons vers ces comparaisons multiples deux à deux, mais en prenant des précautions pour éviter l'inflation du risque global de nous tromper.
+Nous allons donc travailler différemment... Ci-après nous verrons qu'une simplification des hypothèses et l'approche par décomposition de la variance est une option bien plus intéressante (ANalysis Of VAriance ou ANOVA). Ensuite, nous reviendrons vers ces comparaisons multiples deux à deux, mais en prenant des précautions pour éviter l'inflation du risque global de nous tromper.
 
 
 ## ANOVA & modèle linéaire
@@ -110,10 +110,254 @@ Cette propriété, dite d'additivité des variances, permet de décomposer la va
 
 ### Modèle de l'ANOVA
 
-Mais qu'est-ce que cette propriété d'additivité des variances vient faire ici\ ? Nous souhaitons comparer des moyennes, non\ ? Effectivement, mais considérons le **modèle mathématique suivant** le graphique à la Fig. \@ref(fig:anova1).
+Mais qu'est-ce que cette propriété d'additivité des variances vient faire ici\ ? Nous souhaitons comparer des moyennes, non\ ? Effectivement, mais considérons le **modèle mathématique suivant\ :**
+
+$$y_{ij} = \mu + \tau_j ± \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)$$
+
+Avec l'indice $j = 1 .. k$ populations et l'indice $i = 1 .. n$ observations du jeu de données. Chaque observation $y_{ij}$ correspond à deux écarts successifs de la moyenne globale $\mu$\ : une constante "tau" par population $\tau_j$ d'une part et un terme $\epsilon_i$ que l'on appelle les **résidus** et qui est propre à chaque observation individuelle. C'est ce dernier terme qui représente la partie statistique du modèle avec une distribution normale centrée sur zéro et avec un écart type $\sigma$ que nous admettrons constant et identique pour toutes les populations par construction.
+
+Le graphique à la Fig. \@ref(fig:anova1) représente une situation typique à trois sous-populations.
+
+```{r anova1, echo = FALSE, fig.cap="Décomposition de la variance dans un cas à trois populations A, B et C fictives."}
+dat <- data.frame(Population = c("A", "A", "A", "B", "B", "B", "C", "C", "C"),
+  Réponse = c(2.2, 2.4, 3.3, 4.9, 5.2, 6.1, 4.3, 6.4, 6.5))
+means <- c(mean(dat$Réponse), tapply(dat$Réponse, dat$Population, mean))
+annot <- data.frame(x = c(1.1, 1.4, 1.7, 2.1, 2.4, 2.7),
+  ystart = c(means[1], means[1], means[2], means[1], means[1], means[3]),
+  yend = c(2.2, means[2], 2.2, 4.9, means[3], 4.9),
+  color = c(2L, 2L, 2L, 3L, 3L, 3L))
+annot2 <- data.frame(xstart = c(0.95, 1.95), xend = c(1.75, 2.75),
+  y = c(2.2, 4.9), color = 2:3)
+library(ggplot2)
+chart(data = dat, Réponse ~ Population %col=% Population) +
+  geom_point() +
+  theme(legend.position = "none") +
+  geom_hline(yintercept = means, col = 1:4, linetype = "dashed", size = 0.5) +
+  geom_segment(data = annot2, aes(x = xstart, xend = xend, y = y , yend = y),
+    color = annot2$color, linetype = "dotted", size = 0.5) +
+  geom_segment(data = annot, aes(x = x, xend = x, y = ystart, yend = yend),
+    color = annot$color, size = 0.5, arrow = arrow(length = unit(0.2, "cm"))) +
+  #annotate("text", x = 1, y = means[1] + 0.2, color = 1,
+  #  label = "moyenne ~ générale ~ mu", parse = TRUE) +
+  annotate("text", x = 1, y = means[1] + 0.2, color = 1,
+    label = "moyenne ~ globale ~ mu", parse = TRUE) +
+  annotate("text", x = 3.1, y = means[2] + 0.2, color = 2,
+    label = "moyenne pour A") +
+  annotate("text", x = 3.1, y = means[3] + 0.2, color = 3,
+    label = "moyenne pour B") +
+  annotate("text", x = 3.1, y = means[4] + 0.2, color = 4,
+    label = "moyenne pour C") +
+  annotate("text", x = 1.25, y = 3.25, color = 2, label = "total") +
+  annotate("text", x = 1.55, y = 3.6, color = 2, label = "inter ~ tau[A]", parse = TRUE) +
+  annotate("text", x = 1.85, y = 2.5, color = 2, label = "intra ~ epsilon[i]", parse = TRUE) +
+  annotate("text", x = 2.25, y = 4.8, color = 3, label = "total") +
+  annotate("text", x = 2.55, y = 5.1, color = 3, label = "inter ~ tau[B]", parse = TRUE) +
+  annotate("text", x = 2.85, y = 5.2, color = 3, label = "intra ~epsilon[i]", parse = TRUE)
+```
+
+Notons que ce modèle à trois termes représente bien la situation qui nous intéresse, mais aussi, qu'il décompose la variance totale (entre $\mu$ et chaque point observé) en deux\ : ce que nous appelerons le terme **inter** représentant l'écart entre la moyenne globale $\mu$ et la moyenne de la sous-population concernées ($\tau_j$) et le terme **intra** depuis cette moyenne de la sous-population jusqu'au point observé ($\epsilon_i$).
+
+D'une part, nous nous trouvons dans une situation d'additivité de la variance si nous décidons de calculer ces "variance inter" et "variance intra". D'autre part, sous $H_0$ nous sommes sensés avoir toutes les moyennes égales à $\mu$, et donc, tous les $\tau_j = 0$. Donc, les valeurs non nulles de $\tau_j$ ne doivent qu'être dus au hasard de l'échantillonnage et être par conséquent largement inférieurs à la variabilité entre les individus, ou variance intra $\epsilon_i$. La Fig. \@ref(fig:anova2) représente deux cas avec à gauche une situation où $H_0$ est plausible, et à droite une situation où elle est très peu plausible. Notez qu'à gauche la variation entre les observations (intra) est bien plus grande que l'écart entre les moyennes (inter), alors qu'à droite c'est l'inverse.
+
+```{r anova2, echo=FALSE, fig.cap="A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes \"inter\" bien plus grand que l'étalement des points en \"intra\"-population)."}
+set.seed(25431)
+dat1 <- data_frame(
+  Y = rnorm(30, sd = 0.3),
+  Population = rep(c("A", "B", "C"), each = 10))
+dat2 <- data_frame(
+  Y = rnorm(30, sd = 0.1) + rep(c(0, -1, 1), each = 10),
+  Population = rep(c("A", "B", "C"), each = 10))
+pl1 <- chart(data = dat1, Y ~ Population) +
+  geom_boxplot() +
+  geom_jitter(width = 0.05) +
+  geom_point(data = group_by(dat1, Population) %>.%
+    summarise(., means = mean(Y, na.rm = TRUE)),
+    f_aes(means ~ Population), size = 3, col = "red") +
+  ylim(-1.5, 1.5)
+pl2 <- chart(data = dat2, Y ~ Population) +
+  geom_boxplot() +
+  geom_jitter(width = 0.05) +
+  geom_point(data = group_by(dat2, Population) %>.%
+    summarise(., means = mean(Y, na.rm = TRUE)),
+    f_aes(means ~ Population), size = 3, col = "red") +
+  ylim(-1.5, 1.5)
+combine_charts(list(pl1, pl2))
+```
+
+Intuitivement, une comparaison de "inter" et "intra" permet de différencier la situation de gauche de celle de droite dans la Fig. \@ref(fig:anova2). Si cette comparaison est faite sous forme d'un ratio "inter"/"intra", alors ce ratio sera faible et tendra vers zéro sous $H_0$ (cas A), alors qu'il sera d'autant plus élevé que $H_0$ devient de moins en moins plausible (cas B).
 
 
-Variance, ANOVAs, test de Bartlett. Graphiques associés. 
+##### Calcul de l'ANOVA {-}
+
+Calcul des sommes des carrés (inter- et intragroupes). Considérant\ :
+
+- _i_ = indice des observations au sein du jeu de données de 1 à _n_,
+- _j_ = facteurs (sous-populations de 1 à _k_),
+- $\bar{y}$ = moyenne generale de l'échantillon,
+- $\bar{y_j}$ = moyenne de la _j_^ème^ population.
+
+La somme des carrés inter $SC_{inter}$ et la somme des carrés intra $SC_{intra}$ se calculent comme suit\ :
+
+$$
+\begin{aligned}
+SC_{inter} = \sum_{i=1}^n{(\bar{y_j} - \bar{y})^2} && SC_{intra} = \sum_{i=1}^n{(y_{ij} - \bar{y_j})^2}
+\end{aligned}
+$$
+
+A ces sommes des carrés, nous pouvons associer les degrés de liberté suivants\ :
+
+- _k_ – 1 pour l’intergroupe
+- _n_ – _k_ pour l’intragroupe
+
+Sachant que les parts de variances sont les $\frac{SC}{ddl}$ et sont appelés "carrés moyens", nous construisons ce qu'on appelle le **tableau de l’ANOVA** de la façon suivante\ :
+
+| Type            |    Ddl    | Somme carrés | Carré moyen (_CM_)  |       Statistique _F_~obs~       | P (>_F_) |
+|:----------------|:---------:|:------------:|:-------------------:|:----------------------------------:|:-----:|
+| Inter (facteur) | _k_ - 1   | _SC~inter~_ | _SC~inter~/ddl~inter~_ | _CM~inter~/CM~intra~_ |  ...  |
+| Intra (résidus) | _n_ - _k_ | _SC~intra~_  | _SC~intra~/ddl~intra~_ |  |  |
+
+La **statistique _F_~obs~ est le rapport des carrés moyens inter/intra.** Elle représente donc le ratio que nous avons évoqué plus haut comme moyen de quantifier l'écart par rapport à $H_0$. Le test consiste à calculer la valeur *P* associée à cette statistique. Pour cela, il nous faut une distribution statistique théorique de *F* sous $H_0$. C'est un biologiste - statisticien célèbre nommé Ronald Aylmer Fisher qui l'a calculée. C'est la distribution *F* de Fisher.
+
+
+### Distribution *F*
+
+La distribution *F* est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d'une allure assez similaire à la distribution du $\chi^2$ que nous avons étudiée au module \@ref(chi2). Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à $+\infty$. La distribution *F* admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. \@ref(fig:fplot) représente la densité de probabilité d'une loi *F* typique^[Les fonctions qui permettent les calculs relatifs à la distribution *F* dans R sont `<x>f()`, et les snippets correspondants dans la SciViews Box sont disponibles à partir de `.if`. Leur utilisation est similaire à celle des distributions vues au module \@ref(proba).].
+
+```{r fplot, echo=FALSE, fig.cap = "Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)."}
+# Fisher-Snedecor's F distribution (density probability) with parameter:
+.df1 <- 5; .df2 <- 20 # numerator (.df1) and denominator (.df2) df
+.col <- 1; .add <- FALSE # Plot parameters
+.x <- seq(0, qf(0.999, df1 = .df1, df2 = .df2), l = 1000)  # Quantiles
+.d <- function(x) df(x, df1 = .df1, df2 = .df2)            # Distribution function
+.q <- function(p) qf(p, df1 = .df1, df2 = .df2)            # Quantile for lower-tail prob
+.label <- bquote(F(.(.df1), .(.df2)))                      # Curve parameters
+#curve(.d(x), xlim = range(.x), xaxs = "i", n = 1000, col = .col,
+#  add = .add, xlab = "Quantiles", ylab = "Probability density") # Curve
+#abline(h = 0, col = "gray") # Baseline
+
+q_ref <- qf(0.05, df1 = .df1, df2 = .df2, lower.tail = FALSE)
+.x2 <- .x
+.x2[.x2 < q_ref] <- NA
+
+chart(data = tibble(Quantiles = .x, Prob = .d(.x)), Prob ~ Quantiles) +
+  geom_hline(yintercept = 0, col = "gray") +
+  geom_ribbon(x = .x, ymin = 0, ymax = .d(.x), fill = "gray", alpha = 0.2) +
+  geom_ribbon(x = .x2, ymin = 0, ymax = .d(.x2), fill = "red", alpha = 0.2) +
+  geom_line() +
+  xlab("Quantile") +
+  ylab("Densité de probabilité") +
+  geom_vline(xintercept = 3.5, col = "red") +
+  annotate("text", x = 1.2, y = 0.1, label = "Zone de non rejet", col = "black") +
+  annotate("text", x = 5, y = 0.1, label = "plain(Zone ~ de ~ rejet) == plain(seuil) ~ alpha", parse = TRUE, col = "red") +
+  annotate("segment", x = 4.5, y = 0.09, xend = 4.2, yend = 0.01,
+    size = 0.5, col = "red", arrow = arrow(length = unit(0.2, "cm"))) +
+  annotate("text", x = 3.8, y = 0.35, label = "F[obs]", parse = TRUE,
+    col = "red", fontface = "bold.italic") +
+  annotate("text", x = 4.7, y = 0.3, label = "(aire à droite = valeur P)",
+    col = "red", fontface = "bold.italic")
+```
+
+Nous commençons à avoir l'habitude maintenant. La valeur *P* est calculée comme l'aire à droite du quantile correspondant à *F~obs~*. Enfin, nous rejetterons $H_0$ seulement si la valeur *P* est inférieure au seuil $\alpha$ qui a été choisi préalablement au test. Ceci revient à constater que, graphiquement, *F~obs~* vient se positionner dans la zone de rejet en rouge comme sur la Fig. \@ref(fig:fplot).
+
+##### Conditions d’application {-}
+
+- échantillon représentatif (par exemple, aléatoire),
+- observations indépendantes,
+- variable dite **réponse** quantitative,
+- une variable dite **explicative** qualitative à trois niveaux ou plus,
+- distribution **normale** des résidus $\epsilon_i$,
+- **homoscédasticité** (même variance intragroupes, "homoscedasticity" en anglais, opposé à hétéroscédasticité = variance différente entre les groupes).
+
+Les deux dernières conditions d'applications doivent être vérifiées. La nomralité des résidus doit être rencontrée aussi bien que possible. Un graphique quantile-quantile des résidus permet de se faire une idée, comme sur la Fig. \@ref(fig:resid1). Néanmoins, le test étant relativement robuste à des petites variations par rapport à la distribution normale, surtout si ces variations sont symétriques, nous ne seront pas excessivement stricts ici.
+
+```{r resid1, echo = FALSE, results='hide', fig.cap="Graphique quantile-quantile appliqué aux résidus d'une ANOVA pour déterminer si leur distribution se rapproche d'un loi normale."}
+trees <- read("trees", package = "datasets")
+.anova <- lm(data = trees, volume ~ diameter)
+#anova(anova.)
+#plot(anova., which = 2)
+#anova. %>.%
+#  chart(broom::augment(.), aes(sample = .std.resid)) +
+#  geom_qq() +
+  #geom_qq_line() +
+  #geom_abline(
+  #  slope = diff(quantile(.$.std.resid[!is.na(.$.std.resid)], c(0.25, 0.75))) /
+  #    diff(qnorm(c(0.25, 0.75))),
+  #  intercept = quantile(.$.std.resid[!is.na(.$.std.resid)], 0.25) - .slope * qnorm(0.25),
+  #    colour = "darkgray") +
+#  labs(x = "Theoretical quantiles", y = "Standardized residuals") +
+#  ggtitle("Normal Q-Q")
+.anova2 <- broom::augment(.anova)
+car::qqPlot(.anova2[[".std.resid"]], distribution = "norm",
+  envelope = 0.95, col = "Black", xlab = "Quantiles théoriques (distri. normale)",
+  ylab = "Résidus")
+```
+
+La condition d'homoscédasticité est plus sensible. Elle mérite donc d'être vérifiée systématiquement et précisément. Différents tests d'hypothèse existent pour le vérifier, comme le test de Batlett, le test de Levene, etc. Nous vous proposns ici d'utiliser le test de Batlett. Ses hypothèses sont\ :
+
+- $H_0: homoscédasticité \longrightarrow var_1 = var_2 = ... = var_k$
+- $H_1: hétéroscédasticité \longrightarrow \exists(i, j) \mathrm{\ tel\ que\ } var_i \neq var_j$
+
+Si la valeur *P* est inférieure au seuil $\alpha$ fixé au préalable, nous devrons rechercher une transformation des variables qui stabilisera la variance. La première transformation à essayer en biologie et la transformation logarithmique surtout si les valeurs négatives de la variable réponse ne sont pas possibles, signe d'une distribution qui peut être plutôt de type log-normale pour cette variable. Si aucune transformation ne stabilise la variance, nous devrons nous rabattre vers un test non paramétrique équivalent, le test de Kruskal-Wallis que nous aborderons plus loin dans ce module.
+
+La SciViews Box propose des snippets pour accéder à ces différentes analyses. Dans le menu `hypothesis tests: variances` ou `.hv` nous trouvons trois tests dont celui de Bartlett. Dans le menu `hypothesis tests: means` ou `.hm` se trouvent les templates pour l'ANOVA, ainsi que les graphiques d'analyse des résidus dont le graphique quantile-quantile.
+
+
+##### Résolution de notre exemple {-}
+
+Nous commençons par déterminer si nous avons homoscédasticité. Cosidérons un seuil $\alpha$ de 5% pour tous nos tests. Ensuite\ :
+
+```{r}
+bartlett.test(data = crabs2, aspect ~ group)
+```
+
+Nous rejettons $H_0$. Il n'y a pas homoscédasticité. Calculons par exemple le logarithme népérien de `aspect` et réessayons\ :
+
+```{r}
+crabs2 %>.%
+  mutate(., log_aspect = ln(aspect)) ->
+  crabs2
+bartlett.test(data = crabs2, log_aspect ~ group)
+```
+
+Ici cela ne fonctionne pas. Cela fait pire qu'avant. La transformation inverse (`exp()`) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s'avère qu'une triple exponentielle arrive à un résultat satisfaisant.
+
+```{r}
+crabs2 %>.%
+  mutate(., exp3_aspect = exp(exp(exp(aspect)))) ->
+  crabs2
+bartlett.test(data = crabs2, exp3_aspect ~ group)
+```
+
+La Fig. \@ref(fig:crabs1) montre la distribution dans les différents groupes de la variable transformée.
+
+```{r crabs1, fig.cap="Transformation tripe exponentielle du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*."}
+chart(data = crabs2, exp3_aspect ~ group) +
+  geom_violin() +
+  geom_jitter(width = 0.05, alpha = 0.5) +
+  geom_point(data = group_by(crabs2, group) %>.%
+    summarise(., means = mean(exp3_aspect, na.rm = TRUE)),
+    f_aes(means ~ group), size = 3, col = "red")
+  
+```
+
+Nous poursuivons sur une description des données utile pour l'ANOVA^[Un snippet dédié est disponible dans le menu `hypothesis tests: means` à partir de `.hm`.]\ :
+
+```{r}
+crabs2 %>.%
+  group_by(., group) %>.%
+  summarise(.,
+    mean  = mean(exp3_aspect),
+    sd    = sd(exp3_aspect),
+    count = sum(!is.na(exp3_aspect)))
+```
+
+Ensuite l'ANOVA prprement dite\ :
+
+```{r}
+anova(anova. <- lm(data = crabs2, exp3_aspect ~ group))
+```
+
+Nous retrouvons ici le tableau de l'ANOVA. La valeur *P* est très faible et inférieure à $\alpha$. Nous rejettons $H_0$. Nous pouvons dire que le ratio largeur arrière / max diffère significativement entre les groupes (ANOVA, F = 150, ddl = 3 & 196, valeur *P* << 10^-3^).
 
 
 ##### Pour en savoir plus {-}
