@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="le-danger-des-tests-multiples.html">
-<link rel="next" href="sciences-des-donnees-et-litterature.html">
+<link rel="prev" href="anova-a-un-facteur.html">
+<link rel="next" href="correlation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -364,255 +364,12 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="anova-a-un-facteur" class="section level2">
-<h2><span class="header-section-number">10.2</span> ANOVA à un facteur</h2>
-<p>Au lieu de s’attaquer aux comparaisons deux à deux, nous pouvons aussi considérer une hypothèse unique que les moyennes de <span class="math inline">\(k\)</span> populations (nos quatre groupes différents de crabes, par exemple) sont égales. L’hypothèse alternative sera qu’au moins une des moyennes diffère des autres. En formulation mathématique, cela donne :</p>
-<ul>
-<li><p><span class="math inline">\(H_0: \mu_1 = \mu_2 = ... = \mu_k\)</span></p></li>
-<li><p><span class="math inline">\(H_1: \exists(i, j) \mathrm{\ tel\ que\ } \mu_i \neq \mu_j\)</span></p></li>
-</ul>
-<p>Notre hypothèse nulle est très restrictive, mais par contre, l’hypothèse alternative est très vague car nous ne savons pas <strong>où</strong> sont les différences à ce stade si nous rejettons <span class="math inline">\(H_0\)</span>, mais nous nous en occuperons plus tard.</p>
-<div class="info">
-<p>
-<strong>Propriété d’additivité des parts de variance</strong>. La variance se calcule comme :
-</p>
-<p>
-<span class="math display"><span class="math display">\[var_x = \frac{SCT}{ddl}\]</span></span>
-</p>
-<p>
-Avec <span class="math inline"><span class="math inline">\(SCT\)</span></span>, la somme des carrés totaux, soit <span class="math inline"><span class="math inline">\(\sum_{i = 1}^n (x_i - \bar{x})^2\)</span></span>, la somme des carrés des écarts à la moyenne générale. Les ddl sont les degrés de liberté déjà rencontrés à plusieurs reprises qui valent <span class="math inline"><span class="math inline">\(n - 1\)</span></span> dans le cas de la variance d’un échantillon.
-</p>
-<p>
-Cette variance peut être <em>partitionnée</em>. C’est-à-dire que, si la variance totale se mesure d’un point A à un point C, l’on peut mesurer la part de variance d’un point A à un point B, puis l’autre part d’un point B à un point C, et dans ce cas,
-</p>
-<p>
-<span class="math display"><span class="math display">\[SCT = SC_{A-C} = SC_{A-B} + SC_{B-C}\]</span></span>
-</p>
-<p>
-Cette propriété, dite d’additivité des variances, permet de décomposer la variance totale à souhait tout en sachant que la somme des différentes composantes donne toujours la même valeur que la variance totale.
-</p>
+<div id="sciences-des-donnees-et-litterature" class="section level2">
+<h2><span class="header-section-number">10.3</span> Sciences des données et littérature</h2>
+<p>Petite recherche biblio concernant l’application en pratique de ces tests à faire par les étudiants…</p>
+
 </div>
-<div id="modele-de-lanova" class="section level3">
-<h3><span class="header-section-number">10.2.1</span> Modèle de l’ANOVA</h3>
-<p>Mais qu’est-ce que cette propriété d’additivité des variances vient faire ici ? Nous souhaitons comparer des moyennes, non ? Effectivement, mais considérons le <strong>modèle mathématique suivant :</strong></p>
-<p><span class="math display">\[y_{ij} = \mu + \tau_j ± \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)\]</span></p>
-<p>Avec l’indice <span class="math inline">\(j = 1 .. k\)</span> populations et l’indice <span class="math inline">\(i = 1 .. n\)</span> observations du jeu de données. Chaque observation <span class="math inline">\(y_{ij}\)</span> correspond à deux écarts successifs de la moyenne globale <span class="math inline">\(\mu\)</span> : une constante “tau” par population <span class="math inline">\(\tau_j\)</span> d’une part et un terme <span class="math inline">\(\epsilon_i\)</span> que l’on appelle les <strong>résidus</strong> et qui est propre à chaque observation individuelle. C’est ce dernier terme qui représente la partie statistique du modèle avec une distribution normale centrée sur zéro et avec un écart type <span class="math inline">\(\sigma\)</span> que nous admettrons constant et identique pour toutes les populations par construction.</p>
-<p>Le graphique à la Fig. <a href="anova-a-un-facteur.html#fig:anova1">10.3</a> représente une situation typique à trois sous-populations.</p>
-<div class="figure" style="text-align: center"><span id="fig:anova1"></span>
-<img src="10-Variance_files/figure-html/anova1-1.svg" alt="Décomposition de la variance dans un cas à trois populations A, B et C fictives." width="672" />
-<p class="caption">
-Figure 10.3: Décomposition de la variance dans un cas à trois populations A, B et C fictives.
-</p>
-</div>
-<p>Notons que ce modèle à trois termes représente bien la situation qui nous intéresse, mais aussi, qu’il décompose la variance totale (entre <span class="math inline">\(\mu\)</span> et chaque point observé) en deux : ce que nous appelerons le terme <strong>inter</strong> représentant l’écart entre la moyenne globale <span class="math inline">\(\mu\)</span> et la moyenne de la sous-population concernées (<span class="math inline">\(\tau_j\)</span>) et le terme <strong>intra</strong> depuis cette moyenne de la sous-population jusqu’au point observé (<span class="math inline">\(\epsilon_i\)</span>).</p>
-<p>D’une part, nous nous trouvons dans une situation d’additivité de la variance si nous décidons de calculer ces “variance inter” et “variance intra”. D’autre part, sous <span class="math inline">\(H_0\)</span> nous sommes sensés avoir toutes les moyennes égales à <span class="math inline">\(\mu\)</span>, et donc, tous les <span class="math inline">\(\tau_j = 0\)</span>. Donc, les valeurs non nulles de <span class="math inline">\(\tau_j\)</span> ne doivent qu’être dus au hasard de l’échantillonnage et être par conséquent largement inférieurs à la variabilité entre les individus, ou variance intra <span class="math inline">\(\epsilon_i\)</span>. La Fig. <a href="anova-a-un-facteur.html#fig:anova2">10.4</a> représente deux cas avec à gauche une situation où <span class="math inline">\(H_0\)</span> est plausible, et à droite une situation où elle est très peu plausible. Notez qu’à gauche la variation entre les observations (intra) est bien plus grande que l’écart entre les moyennes (inter), alors qu’à droite c’est l’inverse.</p>
-<div class="figure" style="text-align: center"><span id="fig:anova2"></span>
-<img src="10-Variance_files/figure-html/anova2-1.svg" alt="A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes &quot;inter&quot; bien plus grand que l'étalement des points en &quot;intra&quot;-population)." width="672" />
-<p class="caption">
-Figure 10.4: A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l’écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes “inter” bien plus grand que l’étalement des points en “intra”-population).
-</p>
-</div>
-<p>Intuitivement, une comparaison de “inter” et “intra” permet de différencier la situation de gauche de celle de droite dans la Fig. <a href="anova-a-un-facteur.html#fig:anova2">10.4</a>. Si cette comparaison est faite sous forme d’un ratio “inter”/“intra”, alors ce ratio sera faible et tendra vers zéro sous <span class="math inline">\(H_0\)</span> (cas A), alors qu’il sera d’autant plus élevé que <span class="math inline">\(H_0\)</span> devient de moins en moins plausible (cas B).</p>
-<div id="calcul-de-lanova" class="section level5 unnumbered">
-<h5>Calcul de l’ANOVA</h5>
-<p>Calcul des sommes des carrés (inter- et intragroupes). Considérant :</p>
-<ul>
-<li><em>i</em> = indice des observations au sein du jeu de données de 1 à <em>n</em>,</li>
-<li><em>j</em> = facteurs (sous-populations de 1 à <em>k</em>),</li>
-<li><span class="math inline">\(\bar{y}\)</span> = moyenne generale de l’échantillon,</li>
-<li><span class="math inline">\(\bar{y_j}\)</span> = moyenne de la <em>j</em><sup>ème</sup> population.</li>
-</ul>
-<p>La somme des carrés inter <span class="math inline">\(SC_{inter}\)</span> et la somme des carrés intra <span class="math inline">\(SC_{intra}\)</span> se calculent comme suit :</p>
-<p><span class="math display">\[
-\begin{aligned}
-SC_{inter} = \sum_{i=1}^n{(\bar{y_j} - \bar{y})^2} &amp;&amp; SC_{intra} = \sum_{i=1}^n{(y_{ij} - \bar{y_j})^2}
-\end{aligned}
-\]</span></p>
-<p>A ces sommes des carrés, nous pouvons associer les degrés de liberté suivants :</p>
-<ul>
-<li><em>k</em> – 1 pour l’intergroupe</li>
-<li><em>n</em> – <em>k</em> pour l’intragroupe</li>
-</ul>
-<p>Sachant que les parts de variances sont les <span class="math inline">\(\frac{SC}{ddl}\)</span> et sont appelés “carrés moyens”, nous construisons ce qu’on appelle le <strong>tableau de l’ANOVA</strong> de la façon suivante :</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Type</th>
-<th align="center">Ddl</th>
-<th align="center">Somme carrés</th>
-<th align="center">Carré moyen (<em>CM</em>)</th>
-<th align="center">Statistique <em>F</em><sub>obs</sub></th>
-<th align="center">P (&gt;<em>F</em>)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Inter (facteur)</td>
-<td align="center"><em>k</em> - 1</td>
-<td align="center"><em>SC<sub>inter</sub></em></td>
-<td align="center"><em>SC<sub>inter</sub>/ddl<sub>inter</sub></em></td>
-<td align="center"><em>CM<sub>inter</sub>/CM<sub>intra</sub></em></td>
-<td align="center">…</td>
-</tr>
-<tr class="even">
-<td align="left">Intra (résidus)</td>
-<td align="center"><em>n</em> - <em>k</em></td>
-<td align="center"><em>SC<sub>intra</sub></em></td>
-<td align="center"><em>SC<sub>intra</sub>/ddl<sub>intra</sub></em></td>
-<td align="center"></td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-<p>La <strong>statistique <em>F</em><sub>obs</sub> est le rapport des carrés moyens inter/intra.</strong> Elle représente donc le ratio que nous avons évoqué plus haut comme moyen de quantifier l’écart par rapport à <span class="math inline">\(H_0\)</span>. Le test consiste à calculer la valeur <em>P</em> associée à cette statistique. Pour cela, il nous faut une distribution statistique théorique de <em>F</em> sous <span class="math inline">\(H_0\)</span>. C’est un biologiste - statisticien célèbre nommé Ronald Aylmer Fisher qui l’a calculée. C’est la distribution <em>F</em> de Fisher.</p>
-</div>
-</div>
-<div id="distribution-f" class="section level3">
-<h3><span class="header-section-number">10.2.2</span> Distribution <em>F</em></h3>
-<div id="a-vous-de-jouer-19" class="section level5 unnumbered">
-<h5>A vous de jouer !</h5>
-<div class="bdd">
-<p>
-Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :
-</p>
-<pre><code>BioDataScience::run(&quot;10a_anova&quot;)</code></pre>
-</div>
-<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:fplot"></span>
-<img src="10-Variance_files/figure-html/fplot-1.svg" alt="Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)." width="672" />
-<p class="caption">
-Figure 10.5: Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus <em>F~obs</em> est grand, plus l’hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge).
-</p>
-</div>
-<p>Nous commençons à avoir l’habitude maintenant. La valeur <em>P</em> est calculée comme l’aire à droite du quantile correspondant à <em>F<sub>obs</sub></em>. Enfin, nous rejetterons <span class="math inline">\(H_0\)</span> seulement si la valeur <em>P</em> est inférieure au seuil <span class="math inline">\(\alpha\)</span> qui a été choisi préalablement au test. Ceci revient à constater que, graphiquement, <em>F<sub>obs</sub></em> vient se positionner dans la zone de rejet en rouge comme sur la Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a>.</p>
-</div>
-<div id="conditions-dapplication-5" class="section level5 unnumbered">
-<h5>Conditions d’application</h5>
-<ul>
-<li>échantillon représentatif (par exemple, aléatoire),</li>
-<li>observations indépendantes,</li>
-<li>variable dite <strong>réponse</strong> quantitative,</li>
-<li>une variable dite <strong>explicative</strong> qualitative à trois niveaux ou plus,</li>
-<li>distribution <strong>normale</strong> des résidus <span class="math inline">\(\epsilon_i\)</span>,</li>
-<li><strong>homoscédasticité</strong> (même variance intragroupes, “homoscedasticity” en anglais, opposé à hétéroscédasticité = variance différente entre les groupes).</li>
-</ul>
-<p>Les deux dernières conditions d’applications doivent être vérifiées. La nomralité des résidus doit être rencontrée aussi bien que possible. Un graphique quantile-quantile des résidus permet de se faire une idée, comme sur la Fig. <a href="anova-a-un-facteur.html#fig:resid1">10.6</a>. Néanmoins, le test étant relativement robuste à des petites variations par rapport à la distribution normale, surtout si ces variations sont symétriques, nous ne seront pas excessivement stricts ici.</p>
-<div class="figure" style="text-align: center"><span id="fig:resid1"></span>
-<img src="10-Variance_files/figure-html/resid1-1.svg" alt="Graphique quantile-quantile appliqué aux résidus d'une ANOVA pour déterminer si leur distribution se rapproche d'un loi normale." width="672" />
-<p class="caption">
-Figure 10.6: Graphique quantile-quantile appliqué aux résidus d’une ANOVA pour déterminer si leur distribution se rapproche d’un loi normale.
-</p>
-</div>
-<p>La condition d’homoscédasticité est plus sensible. Elle mérite donc d’être vérifiée systématiquement et précisément. Différents tests d’hypothèse existent pour le vérifier, comme le test de Batlett, le test de Levene, etc. Nous vous proposns ici d’utiliser le test de Batlett. Ses hypothèses sont :</p>
-<ul>
-<li><span class="math inline">\(H_0: var_1 = var_2 = ... = var_k\)</span> (homoscédasticité)</li>
-<li><span class="math inline">\(H_1: \exists(i, j) \mathrm{\ tel\ que\ } var_i \neq var_j\)</span> (hétéroscédasticité)</li>
-</ul>
-<p>Si la valeur <em>P</em> est inférieure au seuil <span class="math inline">\(\alpha\)</span> fixé au préalable, nous devrons rechercher une transformation des variables qui stabilisera la variance. La première transformation à essayer en biologie et la transformation logarithmique surtout si les valeurs négatives de la variable réponse ne sont pas possibles, signe d’une distribution qui peut être plutôt de type log-normale pour cette variable. Si aucune transformation ne stabilise la variance, nous devrons nous rabattre vers un test non paramétrique équivalent, le test de Kruskal-Wallis que nous aborderons plus loin dans ce module.</p>
-<p>La SciViews Box propose des snippets pour accéder à ces différentes analyses. Dans le menu <code>hypothesis tests: variances</code> ou <code>.hv</code> nous trouvons trois tests dont celui de Bartlett. Dans le menu <code>hypothesis tests: means</code> ou <code>.hm</code> se trouvent les templates pour l’ANOVA, ainsi que les graphiques d’analyse des résidus dont le graphique quantile-quantile.</p>
-</div>
-<div id="resolution-de-notre-exemple" class="section level5 unnumbered">
-<h5>Résolution de notre exemple</h5>
-<p>Nous commençons par déterminer si nous avons homoscédasticité. Cosidérons un seuil <span class="math inline">\(\alpha\)</span> de 5% pour tous nos tests. Ensuite :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect <span class="op">~</span><span class="st"> </span>group)</code></pre></div>
-<pre><code># 
-#   Bartlett test of homogeneity of variances
-# 
-# data:  aspect by group
-# Bartlett&#39;s K-squared = 24.532, df = 3, p-value = 1.935e-05</code></pre>
-<p>Nous rejettons <span class="math inline">\(H_0\)</span>. Il n’y a pas homoscédasticité. Calculons par exemple le logarithme népérien de <code>aspect</code> et réessayons :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">log_aspect =</span> <span class="kw">ln</span>(aspect)) -&gt;
-<span class="st">  </span>crabs2
-<span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, log_aspect <span class="op">~</span><span class="st"> </span>group)</code></pre></div>
-<pre><code># 
-#   Bartlett test of homogeneity of variances
-# 
-# data:  log_aspect by group
-# Bartlett&#39;s K-squared = 37.891, df = 3, p-value = 2.981e-08</code></pre>
-<p>Ici cela ne fonctionne pas. Cela fait pire qu’avant. La transformation inverse (<code>exp()</code>) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s’avère qu’une transformation puissance cinq stabilise bien la variance.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">aspect5 =</span> aspect<span class="op">^</span><span class="dv">5</span>) -&gt;
-<span class="st">  </span>crabs2
-<span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group)</code></pre></div>
-<pre><code># 
-#   Bartlett test of homogeneity of variances
-# 
-# data:  aspect5 by group
-# Bartlett&#39;s K-squared = 1.7948, df = 3, p-value = 0.6161</code></pre>
-<p>La Fig. <a href="anova-a-un-facteur.html#fig:crabs1">10.7</a> montre la distribution dans les différents groupes de la variable transformée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(crabs2, group) <span class="op">%&gt;.%</span>
-<span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(aspect5, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
-    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>group), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;(ratio largeur arrière/max)^5&quot;</span>)</code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:crabs1"></span>
-<img src="10-Variance_files/figure-html/crabs1-1.svg" alt="Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*." width="672" />
-<p class="caption">
-Figure 10.7: Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes <em>L. variegatus</em>.
-</p>
-</div>
-<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">group_by</span>(., group) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">summarise</span>(.,
-    <span class="dt">mean  =</span> <span class="kw">mean</span>(aspect5),
-    <span class="dt">sd    =</span> <span class="kw">sd</span>(aspect5),
-    <span class="dt">count =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(aspect5)))</code></pre></div>
-<pre><code># # A tibble: 4 x 4
-#   group    mean      sd count
-#   &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
-# 1 B-F   0.00727 0.00115    50
-# 2 B-M   0.00363 0.00124    50
-# 3 O-F   0.00811 0.00138    50
-# 4 O-M   0.00427 0.00130    50</code></pre>
-<p>Ensuite l’ANOVA proprement dite :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group))</code></pre></div>
-<pre><code># Analysis of Variance Table
-# 
-# Response: aspect5
-#            Df     Sum Sq    Mean Sq F value    Pr(&gt;F)    
-# group       3 0.00072741 2.4247e-04  150.53 &lt; 2.2e-16 ***
-# Residuals 196 0.00031572 1.6110e-06                      
-# ---
-# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>Nous retrouvons ici le tableau de l’ANOVA. La valeur <em>P</em> est très faible et inférieure à <span class="math inline">\(\alpha\)</span>. Nous rejettons <span class="math inline">\(H_0\)</span>. Nous pouvons dire que le ratio largeur arrière / max à la puissance cinq diffère significativement entre les groupes (ANOVA, F = 150, ddl = 3 &amp; 196, valeur <em>P</em> &lt;&lt; 10<sup>-3</sup>).</p>
-<p>Ce n’est qu’une fois l’ANOVA réalisée que nous pouvons calculer et visionner la distribution des résidus (Fig. <a href="anova-a-un-facteur.html#fig:anova-resid">10.8</a>). Cette distribution s’éloigne aux extrêmes de la distribution normale. Nous sommes dans un cas un peu limite. Soit nous considérons que l’écart est suffisamment léger pour ne pas trop influer sur l’ANOVA, soit nous devons passer à un test non paramétrique. Nous ferons les deux ici à des fins de comparaison.</p>
-<div class="figure" style="text-align: center"><span id="fig:anova-resid"></span>
-<img src="10-Variance_files/figure-html/anova-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'analyse de `aspect^5`." width="672" />
-<p class="caption">
-Figure 10.8: Graphique quantile-quantile des résidus pour l’analyse de <code>aspect^5</code>.
-</p>
-</div>
-<pre><code># [1]  65 103</code></pre>
-</div>
-<div id="pour-en-savoir-plus-19" class="section level5 unnumbered">
-<h5>Pour en savoir plus</h5>
-<ul>
-<li><p><a href="https://www.youtube.com/watch?v=lITNHx2z5FE">L’ANOVA expliquée en trois minutes</a></p></li>
-<li><p>Introduction to ANOVA (en anglais). <a href="https://youtu.be/QUQ6YppWCeg">Part I</a>, <a href="https://youtu.be/fFnOD7KBSbw">part II</a>, <a href="https://youtu.be/XdZ7BRqznSA">part III</a>, <a href="https://youtu.be/WUoVftXvjiQ">part IV</a>, and <a href="https://youtu.be/kO8t_q-AXHE">part V</a>.</p></li>
-<li><p>Explication de l’analyse de variance en détaillant le calcul par la Kahn academy. <a href="https://www.youtube.com/watch?v=tjolTrwJhjM">Partie I</a>, <a href="https://youtu.be/DMo9yofC5C8">partie II</a> et <a href="https://youtu.be/y8nRhsixBPs">partie III</a>. Assez long : près de 3/4h en tout. Ne regardez que si vous n’avez pas compris ce que sont les sommes des carrés.</p></li>
-</ul>
-</div>
-<div id="a-vous-de-jouer-20" class="section level5 unnumbered">
-<h5>A vous de jouer !</h5>
-<div class="bdd">
-<p>
-Appliquez l’analyse de variances dans vos projets portant sur la biométrie humaine et sur le zooplankton.
-</p>
-</div>
-</div>
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="3">
-<li id="fn3"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref4">↩</a></p></li>
-</ol>
-</div>
+<!-- </div> -->
 <div id="disqus_thread"></div>
 <script>
 
@@ -638,8 +395,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="le-danger-des-tests-multiples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sciences-des-donnees-et-litterature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="anova-a-un-facteur.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

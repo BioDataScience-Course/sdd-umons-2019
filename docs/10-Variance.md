@@ -379,6 +379,17 @@ anova(anova. <- lm(data = crabs2, aspect5 ~ group))
 
 Nous retrouvons ici le tableau de l'ANOVA. La valeur *P* est très faible et inférieure à $\alpha$. Nous rejettons $H_0$. Nous pouvons dire que le ratio largeur arrière / max à la puissance cinq diffère significativement entre les groupes (ANOVA, F = 150, ddl = 3 & 196, valeur *P* << 10^-3^).
 
+Ce n'est qu'une fois l'ANOVA réalisée que nous pouvons calculer et visionner la distribution des résidus (Fig. \@ref(fig:anova-resid)). Cette distribution s'éloigne aux extrêmes de la distribution normale. Nous sommes dans un cas un peu limite. Soit nous considérons que l'écart est suffisamment léger pour ne pas trop influer sur l'ANOVA, soit nous devons passer à un test non paramétrique. Nous ferons les deux ici à des fins de comparaison.
+
+<div class="figure" style="text-align: center">
+<img src="10-Variance_files/figure-html/anova-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'analyse de `aspect^5`." width="672" />
+<p class="caption">(\#fig:anova-resid)Graphique quantile-quantile des résidus pour l'analyse de `aspect^5`.</p>
+</div>
+
+```
+# [1]  65 103
+```
+
 
 ##### Pour en savoir plus {-}
 
@@ -395,6 +406,6 @@ Nous retrouvons ici le tableau de l'ANOVA. La valeur *P* est très faible et inf
 </div>
 
 
-## Les sciences des données dans la littérature
+## Sciences des données et littérature
 
 Petite recherche biblio concernant l’application en pratique de ces tests à faire par les étudiants...
