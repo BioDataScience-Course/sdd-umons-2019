@@ -349,25 +349,25 @@ crabs2 %>.%
 bartlett.test(data = crabs2, log_aspect ~ group)
 ```
 
-Ici cela ne fonctionne pas. Cela fait pire qu'avant. La transformation inverse (`exp()`) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s'avère qu'une transformation 100000^aspect^ stabilise bien la variance.
+Ici cela ne fonctionne pas. Cela fait pire qu'avant. La transformation inverse (`exp()`) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s'avère qu'une transformation puissance cinq stabilise bien la variance.
 
 ```{r}
 crabs2 %>.%
-  mutate(., aspect2 = 1e5^aspect) ->
+  mutate(., aspect5 = aspect^5) ->
   crabs2
-bartlett.test(data = crabs2, aspect2 ~ group)
+bartlett.test(data = crabs2, aspect5 ~ group)
 ```
 
 La Fig. \@ref(fig:crabs1) montre la distribution dans les différents groupes de la variable transformée.
 
-```{r crabs1, fig.cap="Transformation tripe exponentielle du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*."}
-chart(data = crabs2, aspect2 ~ group) +
+```{r crabs1, fig.cap="Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*."}
+chart(data = crabs2, aspect5 ~ group) +
   geom_violin() +
   geom_jitter(width = 0.05, alpha = 0.5) +
   geom_point(data = group_by(crabs2, group) %>.%
-    summarise(., means = mean(aspect2, na.rm = TRUE)),
+    summarise(., means = mean(aspect5, na.rm = TRUE)),
     f_aes(means ~ group), size = 3, col = "red") +
-  ylab("1e5^aspect ratio")
+  ylab("(ratio largeur arrière/max)^5")
   
 ```
 
@@ -377,18 +377,18 @@ Nous poursuivons sur une description des données utile pour l'ANOVA^[Un snippet
 crabs2 %>.%
   group_by(., group) %>.%
   summarise(.,
-    mean  = mean(aspect2),
-    sd    = sd(aspect2),
-    count = sum(!is.na(aspect2)))
+    mean  = mean(aspect5),
+    sd    = sd(aspect5),
+    count = sum(!is.na(aspect5)))
 ```
 
 Ensuite l'ANOVA proprement dite\ :
 
 ```{r}
-anova(anova. <- lm(data = crabs2, aspect2 ~ group))
+anova(anova. <- lm(data = crabs2, aspect5 ~ group))
 ```
 
-Nous retrouvons ici le tableau de l'ANOVA. La valeur *P* est très faible et inférieure à $\alpha$. Nous rejettons $H_0$. Nous pouvons dire que le ratio largeur arrière / max diffère significativement entre les groupes (ANOVA, F = 150, ddl = 3 & 196, valeur *P* << 10^-3^).
+Nous retrouvons ici le tableau de l'ANOVA. La valeur *P* est très faible et inférieure à $\alpha$. Nous rejettons $H_0$. Nous pouvons dire que le ratio largeur arrière / max à la puissance cinq diffère significativement entre les groupes (ANOVA, F = 150, ddl = 3 & 196, valeur *P* << 10^-3^).
 
 
 ##### Pour en savoir plus {-}

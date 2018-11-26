@@ -294,40 +294,40 @@ bartlett.test(data = crabs2, log_aspect ~ group)
 # Bartlett's K-squared = 37.891, df = 3, p-value = 2.981e-08
 ```
 
-Ici cela ne fonctionne pas. Cela fait pire qu'avant. La transformation inverse (`exp()`) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s'avère qu'une transformation 100000^aspect^ stabilise bien la variance.
+Ici cela ne fonctionne pas. Cela fait pire qu'avant. La transformation inverse (`exp()`) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s'avère qu'une transformation puissance cinq stabilise bien la variance.
 
 
 ```r
 crabs2 %>.%
-  mutate(., aspect2 = 1e5^aspect) ->
+  mutate(., aspect5 = aspect^5) ->
   crabs2
-bartlett.test(data = crabs2, aspect2 ~ group)
+bartlett.test(data = crabs2, aspect5 ~ group)
 ```
 
 ```
 # 
 # 	Bartlett test of homogeneity of variances
 # 
-# data:  aspect2 by group
-# Bartlett's K-squared = 1.8707, df = 3, p-value = 0.5997
+# data:  aspect5 by group
+# Bartlett's K-squared = 1.7948, df = 3, p-value = 0.6161
 ```
 
 La Fig. \@ref(fig:crabs1) montre la distribution dans les différents groupes de la variable transformée.
 
 
 ```r
-chart(data = crabs2, aspect2 ~ group) +
+chart(data = crabs2, aspect5 ~ group) +
   geom_violin() +
   geom_jitter(width = 0.05, alpha = 0.5) +
   geom_point(data = group_by(crabs2, group) %>.%
-    summarise(., means = mean(aspect2, na.rm = TRUE)),
+    summarise(., means = mean(aspect5, na.rm = TRUE)),
     f_aes(means ~ group), size = 3, col = "red") +
-  ylab("1e5^aspect ratio")
+  ylab("(ratio largeur arrière/max)^5")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/crabs1-1.svg" alt="Transformation tripe exponentielle du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*." width="672" />
-<p class="caption">(\#fig:crabs1)Transformation tripe exponentielle du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*.</p>
+<img src="10-Variance_files/figure-html/crabs1-1.svg" alt="Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*." width="672" />
+<p class="caption">(\#fig:crabs1)Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*.</p>
 </div>
 
 Nous poursuivons sur une description des données utile pour l'ANOVA^[Un snippet dédié est disponible dans le menu `hypothesis tests: means` à partir de `.hm`.]\ :
@@ -337,40 +337,40 @@ Nous poursuivons sur une description des données utile pour l'ANOVA^[Un snippet
 crabs2 %>.%
   group_by(., group) %>.%
   summarise(.,
-    mean  = mean(aspect2),
-    sd    = sd(aspect2),
-    count = sum(!is.na(aspect2)))
+    mean  = mean(aspect5),
+    sd    = sd(aspect5),
+    count = sum(!is.na(aspect5)))
 ```
 
 ```
 # # A tibble: 4 x 4
-#   group  mean    sd count
-#   <fct> <dbl> <dbl> <int>
-# 1 B-F    73.8  10.1    50
-# 2 B-M    42.1  10.8    50
-# 3 O-F    81.2  12.2    50
-# 4 O-M    47.7  11.2    50
+#   group    mean      sd count
+#   <fct>   <dbl>   <dbl> <int>
+# 1 B-F   0.00727 0.00115    50
+# 2 B-M   0.00363 0.00124    50
+# 3 O-F   0.00811 0.00138    50
+# 4 O-M   0.00427 0.00130    50
 ```
 
 Ensuite l'ANOVA proprement dite\ :
 
 
 ```r
-anova(anova. <- lm(data = crabs2, aspect2 ~ group))
+anova(anova. <- lm(data = crabs2, aspect5 ~ group))
 ```
 
 ```
 # Analysis of Variance Table
 # 
-# Response: aspect2
-#            Df Sum Sq Mean Sq F value    Pr(>F)    
-# group       3  55082 18360.7  148.95 < 2.2e-16 ***
-# Residuals 196  24161   123.3                      
+# Response: aspect5
+#            Df     Sum Sq    Mean Sq F value    Pr(>F)    
+# group       3 0.00072741 2.4247e-04  150.53 < 2.2e-16 ***
+# Residuals 196 0.00031572 1.6110e-06                      
 # ---
 # Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
-Nous retrouvons ici le tableau de l'ANOVA. La valeur *P* est très faible et inférieure à $\alpha$. Nous rejettons $H_0$. Nous pouvons dire que le ratio largeur arrière / max diffère significativement entre les groupes (ANOVA, F = 150, ddl = 3 & 196, valeur *P* << 10^-3^).
+Nous retrouvons ici le tableau de l'ANOVA. La valeur *P* est très faible et inférieure à $\alpha$. Nous rejettons $H_0$. Nous pouvons dire que le ratio largeur arrière / max à la puissance cinq diffère significativement entre les groupes (ANOVA, F = 150, ddl = 3 & 196, valeur *P* << 10^-3^).
 
 
 ##### Pour en savoir plus {-}
