@@ -20,20 +20,44 @@ Ce module continue la comparaison de moyennes entamée, pour deux populations au
 
 ## Le danger des tests multiples
 
-Les tests *t* de Student et de Wilcoxon sont limités à la comparaison de deux populations. Poursuivons notre analyse des crabes *L. variegatus*. Rappelez-vous, nous avons deux variétés (variable `species`, `B` pour bleue et `O`pour orange). Si nous voulons comparer simultanément les mâles et les femelles des deux variétés, cela nous fait quatre sous-populations à comparer (nous utilisons ici la fonction `paste()` qui rassemble des chaînes de caractère avec trait comme caractère séparateur `sep ="-"` pour former une variable facteur à quatre niveaux, `B-F`, `B-M`, `O-F`, `O-M`). Nous en profitons également pour essayer l'astuce proposée au module précédent. Au lieu de travailler sur la variable `rear` seule, nous allons étudier l'aspect ratio entre largeur à l'arrière (`rear`) et largeur maximale (`width`) de la carapace afin de nous débarrasser d'une source de variabilité triviale qui est qu'un grand crabe est grand partout, et de même un petit crabe est petit pour toutes ses mesures. Nous prenons soin également de libellé ces nouvelles variables correctement\ :
+Les tests *t* de Student et de Wilcoxon sont limités à la comparaison de deux populations. Poursuivons notre analyse des crabes *L. variegatus*. Rappelez-vous, nous avons deux variétés (variable `species`, `B` pour bleue et `O`pour orange). Si nous voulons comparer simultanément les mâles et les femelles des deux variétés, cela nous fait quatre sous-populations à comparer (nous utilisons ici la fonction `paste()` qui rassemble des chaînes de caractère avec trait comme caractère séparateur `sep ="-"` pour former une variable facteur à quatre niveaux, `B-F`, `B-M`, `O-F`, `O-M`). Nous transformaons cette variable en facteur à l'aide de `factor()` et nous ajoutons un label avec `labelise()`.
 
 
 ```r
 crabs <- read("crabs", package = "MASS", lang = "fr")
 crabs %>.%
-  mutate(.,
-    group  = labelise(
-      factor(paste(species, sex, sep = "-")),
-      "Groupe espèce - sexe", units = NA),
-    aspect = labelise(
-      as.numeric(rear / width),
-      "Ratio largeur arrière / max", units = NA)) %>.%
-  select(., group, aspect) ->
+  mutate(., group  = labelise(
+    factor(paste(species, sex, sep = "-")),
+    "Groupe espèce - sexe", units = NA)) ->
+  crabs2
+```
+
+La Fig. \@ref(fig:crabs-rear) montre la largeur à l'arrière de la carapace chez les quatre groupes ainsi individualisés. Une représentation graphique adéquate avant de réaliser notre analyse ici lorsque le nombre de répliquats est important est le graphique en violon sur lequel nous superposons au moins les moyennes, et de préférence, les points également. Si le nombre de répliquats est plus faible, mais toujours supérieur à 7-8, nous pourrions utiliser le même type de graphique mais avec des boites de dispersion plutôt (voir plus loin, Fig. \@ref(fig:anova2)). Avec encore moins de répliquats nous présenterons les points et les moyennes uniquement.
+
+
+```r
+chart(data = crabs2, rear ~ group) +
+  geom_violin() +
+  geom_jitter(width = 0.05, alpha = 0.5) +
+  geom_point(data = group_by(crabs2, group) %>.%
+    summarise(., means = mean(rear, na.rm = TRUE)),
+    f_aes(means ~ group), size = 3, col = "red")
+```
+
+<div class="figure" style="text-align: center">
+<img src="10-Variance_files/figure-html/crabs-rear-1.svg" alt="Largeur arrière en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquats (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
+<p class="caption">(\#fig:crabs-rear)Largeur arrière en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquats (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon).</p>
+</div>
+
+Nous en profitons également pour essayer l'astuce proposée au module précédent. Au lieu de travailler sur la variable `rear` seule, nous allons étudier l'aspect ratio entre largeur à l'arrière (`rear`) et largeur maximale (`width`) de la carapace afin de nous débarrasser d'une source de variabilité triviale qui est qu'un grand crabe est grand partout, et de même un petit crabe est petit pour toutes ses mesures. Nous prenons soin également de libeller cette nouvelle variable correctement avec `labelise()`. Enfin, nous ne conservons que les variables `species`, `sex`, `group` et `aspect` avec `select()\ :
+
+
+```r
+crabs2 %>.%
+  mutate(., aspect = labelise(
+    as.numeric(rear / width),
+    "Ratio largeur arrière / max", units = NA)) %>.%
+  select(., species, sex, group, aspect) ->
   crabs2
 skimr::skim(crabs2)
 ```
@@ -41,22 +65,26 @@ skimr::skim(crabs2)
 ```
 # Skim summary statistics
 #  n obs: 200 
-#  n variables: 2 
+#  n variables: 4 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
+#       sex       0      200 200        2              F: 100, M: 100, NA: 0
+#   species       0      200 200        2              B: 100, O: 100, NA: 0
 #  ordered
 #    FALSE
+#    FALSE
+#    FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
 ```
 
 Nous avons 50 individus dans chacun des quatre groupes. **Lorsqu'il y a le même nombre de réplicats dans tous les groupes, on appelle cela un plan balancé**. C'est une situation optimale. Nous devons toujours essayer de nous en rapprocher le plus possible car, si le nombre d'individus mesurés diffère fortement d'un groupe à l'autre, nous aurons forcément moins d'information disponible dans le ou les groupes moins nombreux, ce qui déforcera notre analyse.
 
-Nous voyons également que la variable `aspect` semble avoir une distribution bimodale d'après le petit histogramme représenté dans le résumé. Une représentation graphique adéquate avant de réaliser notre analyse ici lorsque le nombre de répliquats est important est le graphique en violon sur lequel nous superposons au moins les moyennes, et de préférence, les points également, voir Fig. \@ref(fig:anova0). Si le nombre de répliquats est plus faible, mais toujours supérieur à 7-8, nous pourrions utiliser le même type de graphique mais avec des boites de dispersion plutôt. Avec encore moins de répliquats nous présenterons les points et les moyennes uniquement.
+Nous voyons également que la variable `aspect` semble avoir une distribution bimodale d'après le petit histogramme représenté dans le résumé. La Fig. \@ref(fig:anova0) avec `aspect montre une différence plus qu'avec `rear` seul, à la Fig. \@ref(fig:crabs_rear).
 
 
 ```r
@@ -77,7 +105,7 @@ Nous voyons ici beaucoup mieux que la distribution bimodale est essentiellement 
 
 Comment comparer valablement ces quatre groupes\ ? Comme nous savons maintenant comparer deux groupes à l'aide d'un test *t* de Student, il est tentant d'effectuer toutes les comparaisons deux à deux et de résumer l'ensemble, par exemple, dans un tableau synthétique. Ca fait quant même beaucoup de comparaisons (`B-F` <-> `B-M`, `B-F` <-> `O-F`, `B-F` <-> `O-M`, `B-M` <-> `O-F`, `B-M`<-> `O-M`, et finalement `O-F` <-> `O-M`). Cela fait six comparaisons à réaliser.
 
-N'oublions pas que, à chaque test, nous prenons un risque de nous tromper. **Le risque de se tromper au moins une fois dans l'ensemble des tests est alors décuplé en cas de tests multiples.** Prenons un point de vue naïf, mais qui suffira ici pour démontrer le problème qui apparaît. Admettons que le risque de nous tromper est constant, que nous rejettons ou non $H_0$, et qu'il est de l'ordre de 10% dans chaque test individuellement^[Attention\ ! vous savez bien que c'est plus compliqué que cela. D'une part, le risque de se tromper est probablement différent si on rejette $H_0$ ($\alpha$) ou non ($\beta$), et ces risques sont encore à moduler en fonction de la probabilité *a priori*, un cas similaire au dépistage d'une maladie plus ou moins rare, rappelez-vous, au module \@ref(proba).]. La seule solution acceptable est que *tous* les tests soeijnt corrects. Considérant chaque interprétation indépendante, nous pouvons multiplier les probabilités d'avoir un test correct (90%) le nombre de fois que nous faisons le test, soit $0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 = 0,9^6 = 0,53$. Tous les autres cas ayant au moins un test faux, nous constatons que notre analyse globale sera incorrecte $1 - 0,53 = 47\%$ du temps^[Dans R, vous pouvez utiliser `choose(n, j)` pour calculer le coefficient binomial. Donc votre calcul du risque de se tromper au moins une fois dans un ensemble de `n` tests dont le risque individuel est `r` sera `1 - (1 - r)^choose(n, 2)`.]. **Notre analyse sera incorrecte une fois sur deux envirion.**
+N'oublions pas que, à chaque test, nous prenons un risque de nous tromper. **Le risque de se tromper au moins une fois dans l'ensemble des tests est alors décuplé en cas de tests multiples.** Prenons un point de vue naïf, mais qui suffira ici pour démontrer le problème qui apparaît. Admettons que le risque de nous tromper est constant, que nous rejettons ou non $H_0$, et qu'il est de l'ordre de 10% dans chaque test individuellement^[Attention\ ! vous savez bien que c'est plus compliqué que cela. D'une part, le risque de se tromper est probablement différent si on rejette $H_0$ ($\alpha$) ou non ($\beta$), et ces risques sont encore à moduler en fonction de la probabilité *a priori*, un cas similaire au dépistage d'une maladie plus ou moins rare, rappelez-vous, au module \@ref(proba).]. La seule solution acceptable est que *tous* les tests soeijnt corrects. Considérant chaque interprétation indépendante, nous pouvons multiplier les probabilités d'avoir un test correct (90%) le nombre de fois que nous faisons le test, soit $0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 = 0,9^6 = 0,53$. Tous les autres cas ayant au moins un test faux, nous constatons que notre analyse globale sera incorrecte $1 - 0,53 = 47\%$ du temps^[Dans R, vous pouvez utiliser `choose(n, j)` pour calculer le coefficient binomial. Donc votre calcul du risque de se tromper au moins une fois dans un ensemble de `n` tests dont le risque individuel est `r` sera `1 - (1 - r)^choose(n, 2)`.]. **Notre analyse sera incorrecte une fois sur deux environ.**
 
 <div class="info">
 <p>De manière générale, le nombre de combinaisons deux à deux possibles dans un set de <code>n</code> groupes distincts sera calculé à l'aide du coefficient binomial que nous avions déjà rencontré avec la distribution du même nom, ici avec <span class="math inline">\(j\)</span> valant deux.</p>
@@ -115,7 +143,7 @@ N'oublions pas que, à chaque test, nous prenons un risque de nous tromper. **Le
 Nous allons donc travailler différemment... Ci-après nous verrons qu'une simplification des hypothèses et l'approche par décomposition de la variance est une option bien plus intéressante (ANalysis Of VAriance ou ANOVA). Ensuite, nous reviendrons vers ces comparaisons multiples deux à deux, mais en prenant des précautions pour éviter l'inflation du risque global de nous tromper.
 
 
-## ANOVA & modèle linéaire
+## ANOVA à un facteur
 
 Au lieu de s'attaquer aux comparaisons deux à deux, nous pouvons aussi considérer une hypothèse unique que les moyennes de $k$ populations (nos quatre groupes différents de crabes, par exemple) sont égales. L'hypothèse alternative sera qu'au moins une des moyennes diffère des autres. En formulation mathématique, cela donne\ :
 
@@ -128,7 +156,7 @@ Notre hypothèse nulle est très restrictive, mais par contre, l'hypothèse alte
 <div class="info">
 <p><strong>Propriété d'additivité des parts de variance</strong>. La variance se calcule comme :</p>
 <p><span class="math display">\[var_x = \frac{SCT}{ddl}\]</span></p>
-<p>Avec <span class="math inline">\(SCT\)</span>, la somme des carrés totaux, soit <span class="math inline">\(\sum (x_i - \bar{x})^2\)</span>, la somme des carrés des écarts à la moyenne générale. Les ddl sont les degrés de liberté déjà rencontrés à plusieurs reprises qui valent <span class="math inline">\(n - 1\)</span> dans le cas de la variance d'un échantillon.</p>
+<p>Avec <span class="math inline">\(SCT\)</span>, la somme des carrés totaux, soit <span class="math inline">\(\sum_{i = 1}^n (x_i - \bar{x})^2\)</span>, la somme des carrés des écarts à la moyenne générale. Les ddl sont les degrés de liberté déjà rencontrés à plusieurs reprises qui valent <span class="math inline">\(n - 1\)</span> dans le cas de la variance d'un échantillon.</p>
 <p>Cette variance peut être <em>partitionnée</em>. C'est-à-dire que, si la variance totale se mesure d'un point A à un point C, l'on peut mesurer la part de variance d'un point A à un point B, puis l'autre part d'un point B à un point C, et dans ce cas,</p>
 <p><span class="math display">\[SCT = SC_{A-C} = SC_{A-B} + SC_{B-C}\]</span></p>
 <p>Cette propriété, dite d'additivité des variances, permet de décomposer la variance totale à souhait tout en sachant que la somme des différentes composantes donne toujours la même valeur que la variance totale.</p>
@@ -223,8 +251,8 @@ Les deux dernières conditions d'applications doivent être vérifiées. La nomr
 
 La condition d'homoscédasticité est plus sensible. Elle mérite donc d'être vérifiée systématiquement et précisément. Différents tests d'hypothèse existent pour le vérifier, comme le test de Batlett, le test de Levene, etc. Nous vous proposns ici d'utiliser le test de Batlett. Ses hypothèses sont\ :
 
-- $H_0: homoscédasticité \longrightarrow var_1 = var_2 = ... = var_k$
-- $H_1: hétéroscédasticité \longrightarrow \exists(i, j) \mathrm{\ tel\ que\ } var_i \neq var_j$
+- $H_0: var_1 = var_2 = ... = var_k$ (homoscédasticité)
+- $H_1: \exists(i, j) \mathrm{\ tel\ que\ } var_i \neq var_j$ (hétéroscédasticité)
 
 Si la valeur *P* est inférieure au seuil $\alpha$ fixé au préalable, nous devrons rechercher une transformation des variables qui stabilisera la variance. La première transformation à essayer en biologie et la transformation logarithmique surtout si les valeurs négatives de la variable réponse ne sont pas possibles, signe d'une distribution qui peut être plutôt de type log-normale pour cette variable. Si aucune transformation ne stabilise la variance, nous devrons nous rabattre vers un test non paramétrique équivalent, le test de Kruskal-Wallis que nous aborderons plus loin dans ce module.
 
@@ -266,35 +294,35 @@ bartlett.test(data = crabs2, log_aspect ~ group)
 # Bartlett's K-squared = 37.891, df = 3, p-value = 2.981e-08
 ```
 
-Ici cela ne fonctionne pas. Cela fait pire qu'avant. La transformation inverse (`exp()`) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s'avère qu'une triple exponentielle arrive à un résultat satisfaisant.
+Ici cela ne fonctionne pas. Cela fait pire qu'avant. La transformation inverse (`exp()`) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s'avère qu'une transformation 100000^aspect^ stabilise bien la variance.
 
 
 ```r
 crabs2 %>.%
-  mutate(., exp3_aspect = exp(exp(exp(aspect)))) ->
+  mutate(., aspect2 = 1e5^aspect) ->
   crabs2
-bartlett.test(data = crabs2, exp3_aspect ~ group)
+bartlett.test(data = crabs2, aspect2 ~ group)
 ```
 
 ```
 # 
 # 	Bartlett test of homogeneity of variances
 # 
-# data:  exp3_aspect by group
-# Bartlett's K-squared = 2.921, df = 3, p-value = 0.404
+# data:  aspect2 by group
+# Bartlett's K-squared = 1.8707, df = 3, p-value = 0.5997
 ```
 
 La Fig. \@ref(fig:crabs1) montre la distribution dans les différents groupes de la variable transformée.
 
 
 ```r
-chart(data = crabs2, exp3_aspect ~ group) +
+chart(data = crabs2, aspect2 ~ group) +
   geom_violin() +
   geom_jitter(width = 0.05, alpha = 0.5) +
   geom_point(data = group_by(crabs2, group) %>.%
-    summarise(., means = mean(exp3_aspect, na.rm = TRUE)),
+    summarise(., means = mean(aspect2, na.rm = TRUE)),
     f_aes(means ~ group), size = 3, col = "red") +
-  ylab("exp(exp(exp(ratio)))")
+  ylab("1e5^aspect ratio")
 ```
 
 <div class="figure" style="text-align: center">
@@ -309,35 +337,35 @@ Nous poursuivons sur une description des données utile pour l'ANOVA^[Un snippet
 crabs2 %>.%
   group_by(., group) %>.%
   summarise(.,
-    mean  = mean(exp3_aspect),
-    sd    = sd(exp3_aspect),
-    count = sum(!is.na(exp3_aspect)))
+    mean  = mean(aspect2),
+    sd    = sd(aspect2),
+    count = sum(!is.na(aspect2)))
 ```
 
 ```
 # # A tibble: 4 x 4
 #   group  mean    sd count
 #   <fct> <dbl> <dbl> <int>
-# 1 B-F    71.8  5.26    50
-# 2 B-M    53.8  6.52    50
-# 3 O-F    75.7  6.27    50
-# 4 O-M    57.3  6.54    50
+# 1 B-F    73.8  10.1    50
+# 2 B-M    42.1  10.8    50
+# 3 O-F    81.2  12.2    50
+# 4 O-M    47.7  11.2    50
 ```
 
-Ensuite l'ANOVA prprement dite\ :
+Ensuite l'ANOVA proprement dite\ :
 
 
 ```r
-anova(anova. <- lm(data = crabs2, exp3_aspect ~ group))
+anova(anova. <- lm(data = crabs2, aspect2 ~ group))
 ```
 
 ```
 # Analysis of Variance Table
 # 
-# Response: exp3_aspect
+# Response: aspect2
 #            Df Sum Sq Mean Sq F value    Pr(>F)    
-# group       3  17225  5741.6  150.75 < 2.2e-16 ***
-# Residuals 196   7465    38.1                      
+# group       3  55082 18360.7  148.95 < 2.2e-16 ***
+# Residuals 196  24161   123.3                      
 # ---
 # Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
