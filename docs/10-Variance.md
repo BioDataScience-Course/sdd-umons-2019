@@ -627,6 +627,6 @@ Vous avez à présent vu l'utilisation de plusieurs tests statistiques très cou
 <div class="bdd">
 <p>Intéressez-vous à la restitution de résultat statistique au sein de la littérature. Un projet individuel est mis à votre disposition</p>
 <ul>
-<li><a href="https://classroom.github.com/a/zxMX_MR7" class="uri">https://classroom.github.com/a/zxMX_MR7</a></li>
+<li><a href="https://classroom.github.com/g/bc3Lh7C6" class="uri">https://classroom.github.com/g/bc3Lh7C6</a></li>
 </ul>
 </div>
