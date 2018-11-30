@@ -67,7 +67,7 @@ skimr::skim(crabs2)
 #  n obs: 200 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -77,7 +77,7 @@ skimr::skim(crabs2)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
 ```
@@ -612,10 +612,21 @@ Au final que conclure\ ? Lorsque l'ANOVA peut être utilisée, elle est à préf
 ##### A vous de jouer {-}
 
 <div class="bdd">
+<p>Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;10b_anova_kruskal&quot;)</code></pre>
+</div>
+
+<div class="bdd">
 <p>Appliquez l'analyse de variances ou le test de Kruskal-Wallis dans vos projets portant sur la biométrie humaine et sur le zooplankton.</p>
 </div>
 
-
 ## Sciences des données et littérature
 
-Petite recherche biblio concernant l’application en pratique de ces tests à faire par les étudiants...
+Vous avez à présent vu l'utilisation de plusieurs tests statistiques très courant en science (t-test, Anova, $\chi^2$,...). La restitution correcte de ce test au sein d'un publication scientifique est très importante.
+
+<div class="bdd">
+<p>Intéressez-vous à la restitution de résultat statistique au sein de la littérature. Un projet individuel est mis à votre disposition</p>
+<ul>
+<li><a href="https://classroom.github.com/a/zxMX_MR7" class="uri">https://classroom.github.com/a/zxMX_MR7</a></li>
+</ul>
+</div>

@@ -516,11 +516,26 @@ Au final que conclure\ ? Lorsque l'ANOVA peut être utilisée, elle est à préf
 
 ```{block, type='bdd'}
 
+Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("10b_anova_kruskal")
+
+```
+
+```{block, type='bdd'}
+
 Appliquez l'analyse de variances ou le test de Kruskal-Wallis dans vos projets portant sur la biométrie humaine et sur le zooplankton.
 
 ```
 
-
 ## Sciences des données et littérature
 
-Petite recherche biblio concernant l’application en pratique de ces tests à faire par les étudiants...
+Vous avez à présent vu l'utilisation de plusieurs tests statistiques très courant en science (t-test, Anova, $\chi^2$,...). La restitution correcte de ce test au sein d'un publication scientifique est très importante.
+
+```{block, type='bdd'}
+
+Intéressez-vous à la restitution de résultat statistique au sein de la littérature. Un projet individuel est mis à votre disposition 
+
+- <https://classroom.github.com/a/zxMX_MR7>
+
+```
