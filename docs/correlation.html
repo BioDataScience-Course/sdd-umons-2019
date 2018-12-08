@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Science des données biologiques, UMONS</title>
+  <title>Module 12 Corrélation | Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Science des données biologiques, UMONS" />
+  <meta property="og:title" content="Module 12 Corrélation | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="Module 12 Corrélation | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,17 +25,18 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-30">
+<meta name="date" content="2018-12-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="sciences-des-donnees-et-litterature.html">
-<link rel="next" href="design.html">
+<link rel="prev" href="anova-a-deux-facteurs.html">
+<link rel="next" href="graphiques-a-faire-et-ne-pas-faire.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -62,46 +63,6 @@
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -296,16 +257,18 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="sciences-des-donnees-et-litterature.html"><a href="sciences-des-donnees-et-litterature.html"><i class="fa fa-check"></i><b>10.5</b> Sciences des données et littérature</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
-<li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a><ul>
+<li class="chapter" data-level="11" data-path="variance2.html"><a href="variance2.html"><i class="fa fa-check"></i><b>11</b> Variance II</a><ul>
+<li class="chapter" data-level="11.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html"><i class="fa fa-check"></i><b>11.1</b> ANOVA à deux facteurs</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Corrélation</a><ul>
 <li class="chapter" data-level="12.1" data-path="graphiques-a-faire-et-ne-pas-faire.html"><a href="graphiques-a-faire-et-ne-pas-faire.html"><i class="fa fa-check"></i><b>12.1</b> Graphiques : à faire et ne pas faire</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
-<li class="chapter" data-level="A.1" data-path="prerequis-9.html"><a href="prerequis-9.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="prerequis-9.html"><a href="prerequis-9.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis-9.html"><a href="prerequis-9.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
-<li class="chapter" data-level="A.1.3" data-path="prerequis-9.html"><a href="prerequis-9.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
+<li class="chapter" data-level="A.1" data-path="prerequis-10.html"><a href="prerequis-10.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-10.html"><a href="prerequis-10.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-10.html"><a href="prerequis-10.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+<li class="chapter" data-level="A.1.3" data-path="prerequis-10.html"><a href="prerequis-10.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="install.html"><a href="install.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -369,10 +332,22 @@ code > span. { color: #1f1c1b; } /* Normal */
 
             <section class="normal" id="section-">
 <div id="correlation" class="section level1">
-<h1><span class="header-section-number">Module 11</span> Corrélation</h1>
-<p>Suite ANOVA (ANOVA à deux facteurs) + correlation + graphes et tests. Restitution participation à l’élaboration du bookdown commun.</p>
+<h1><span class="header-section-number">Module 12</span> Corrélation</h1>
 <iframe src="https://www.youtube.com/embed/4EWKAoKGAyg" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
+<p>Design de l’expérience, choix du nombre de réplicas et puissance d’un test. Critique stat + “bad graphs” + pseudo-réplication. “Challenges” sur base de la critique statistique. Débriefing général.</p>
+<p>Savoir communiquer ses résultats est vital en science des données. Ce n’est pas si facile car il faut pouvoir simplifier les analyses et utiliser au mieux les visuels (c’est-à-dire, les graphiques) pour raconter une histoire qui soit à la fois captivante et compréhensible. <strong>Communiquer le fruit de ses recherches de la meilleure façon qui soit pour que les non-initiés puissent le comprendre fait partie du bagage indispensable du scientifique des données</strong>.</p>
+<div class="figure">
+<img src="images/sdd1_12/data-scientist-useful.jpg" />
 
+</div>
+<p>Hans Rosling est sans nuls doute très doué pour communiquer des résultats statistiques. La vidéo suivante est un peu longue (20min) et en anglais, mais elle en vaut vraiment la peine<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. De plus, il explique à quel point il est important de partager et de rassembler les données dans des grandes bases de données, et ensuite d’en tirer des études <em>utiles</em> pour l’humanité. C’est l’avenir des sciences des données, y compris en biologie, qu’il est en train de prédire là.</p>
+<iframe src="https://www.youtube.com/embed/hVimVzgtD6w" width="770" height="433" frameborder="0" allowfullscreen=""></iframe> 
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Vous pouvez activer les sous-titres en anglais via la barre de boutons en bas de la vidéo.<a href="correlation.html#fnref1">↩</a></p></li>
+</ol>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -399,8 +374,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="sciences-des-donnees-et-litterature.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="anova-a-deux-facteurs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphiques-a-faire-et-ne-pas-faire.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -420,7 +395,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -430,8 +405,12 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/11-Correlation.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/12-Correlation.Rmd",
 "text": "Editer"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -441,19 +420,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

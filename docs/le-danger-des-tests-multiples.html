@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Science des données biologiques, UMONS</title>
+  <title>10.1 Le danger des tests multiples | Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Science des données biologiques, UMONS" />
+  <meta property="og:title" content="10.1 Le danger des tests multiples | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="10.1 Le danger des tests multiples | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-30">
+<meta name="date" content="2018-12-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="anova-a-un-facteur.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -296,16 +297,20 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="sciences-des-donnees-et-litterature.html"><a href="sciences-des-donnees-et-litterature.html"><i class="fa fa-check"></i><b>10.5</b> Sciences des données et littérature</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
-<li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a><ul>
+<li class="chapter" data-level="11" data-path="variance2.html"><a href="variance2.html"><i class="fa fa-check"></i><b>11</b> Variance II</a><ul>
+<li class="chapter" data-level="11.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html"><i class="fa fa-check"></i><b>11.1</b> ANOVA à deux facteurs</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html#facteurs-croises-sans-interactions"><i class="fa fa-check"></i><b>11.1.1</b> Facteurs croisés sans interactions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Corrélation</a><ul>
 <li class="chapter" data-level="12.1" data-path="graphiques-a-faire-et-ne-pas-faire.html"><a href="graphiques-a-faire-et-ne-pas-faire.html"><i class="fa fa-check"></i><b>12.1</b> Graphiques : à faire et ne pas faire</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
-<li class="chapter" data-level="A.1" data-path="prerequis-9.html"><a href="prerequis-9.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="prerequis-9.html"><a href="prerequis-9.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis-9.html"><a href="prerequis-9.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
-<li class="chapter" data-level="A.1.3" data-path="prerequis-9.html"><a href="prerequis-9.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
+<li class="chapter" data-level="A.1" data-path="prerequis-10.html"><a href="prerequis-10.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-10.html"><a href="prerequis-10.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-10.html"><a href="prerequis-10.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+<li class="chapter" data-level="A.1.3" data-path="prerequis-10.html"><a href="prerequis-10.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="install.html"><a href="install.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -402,7 +407,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(crabs2)</code></pre>
 #  n obs: 200 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -412,7 +417,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(crabs2)</code></pre>
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁</code></pre>
 <p>Nous avons 50 individus dans chacun des quatre groupes. <strong>Lorsqu’il y a le même nombre de réplicats dans tous les groupes, on appelle cela un plan balancé</strong>. C’est une situation optimale. Nous devons toujours essayer de nous en rapprocher le plus possible car, si le nombre d’individus mesurés diffère fortement d’un groupe à l’autre, nous aurons forcément moins d’information disponible dans le ou les groupes moins nombreux, ce qui déforcera notre analyse.</p>
@@ -431,7 +436,7 @@ Figure 10.2: Ratio largeur arrière/largeur max en fonction du groupe de crabes 
 </div>
 <p>Nous voyons ici beaucoup mieux que la distribution bimodale est essentiellement dûe au dymorphiqme sexuel plutôt qu’à des différences entre les variétés, mais qu’en est-il plus précisément car si nous regardons attentivement, il semble que les moyennes pour les crabes bleus sont légèrement inférieures à ces des crabes oranges.</p>
 <p>Comment comparer valablement ces quatre groupes ? Comme nous savons maintenant comparer deux groupes à l’aide d’un test <em>t</em> de Student, il est tentant d’effectuer toutes les comparaisons deux à deux et de résumer l’ensemble, par exemple, dans un tableau synthétique. Ca fait quant même beaucoup de comparaisons (<code>B-F</code> &lt;-&gt; <code>B-M</code>, <code>B-F</code> &lt;-&gt; <code>O-F</code>, <code>B-F</code> &lt;-&gt; <code>O-M</code>, <code>B-M</code> &lt;-&gt; <code>O-F</code>, <code>B-M</code>&lt;-&gt; <code>O-M</code>, et finalement <code>O-F</code> &lt;-&gt; <code>O-M</code>). Cela fait six comparaisons à réaliser.</p>
-<p>N’oublions pas que, à chaque test, nous prenons un risque de nous tromper. <strong>Le risque de se tromper au moins une fois dans l’ensemble des tests est alors décuplé en cas de tests multiples.</strong> Prenons un point de vue naïf, mais qui suffira ici pour démontrer le problème qui apparaît. Admettons que le risque de nous tromper est constant, que nous rejettons ou non <span class="math inline">\(H_0\)</span>, et qu’il est de l’ordre de 10% dans chaque test individuellement<a href="references.html#fn48" class="footnoteRef" id="fnref48"><sup>48</sup></a>. La seule solution acceptable est que <em>tous</em> les tests soeijnt corrects. Considérant chaque interprétation indépendante, nous pouvons multiplier les probabilités d’avoir un test correct (90%) le nombre de fois que nous faisons le test, soit <span class="math inline">\(0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 = 0,9^6 = 0,53\)</span>. Tous les autres cas ayant au moins un test faux, nous constatons que notre analyse globale sera incorrecte <span class="math inline">\(1 - 0,53 = 47\%\)</span> du temps<a href="references.html#fn49" class="footnoteRef" id="fnref49"><sup>49</sup></a>. <strong>Notre analyse sera incorrecte une fois sur deux environ.</strong></p>
+<p>N’oublions pas que, à chaque test, nous prenons un risque de nous tromper. <strong>Le risque de se tromper au moins une fois dans l’ensemble des tests est alors décuplé en cas de tests multiples.</strong> Prenons un point de vue naïf, mais qui suffira ici pour démontrer le problème qui apparaît. Admettons que le risque de nous tromper est constant, que nous rejettons ou non <span class="math inline">\(H_0\)</span>, et qu’il est de l’ordre de 10% dans chaque test individuellement<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. La seule solution acceptable est que <em>tous</em> les tests soeijnt corrects. Considérant chaque interprétation indépendante, nous pouvons multiplier les probabilités d’avoir un test correct (90%) le nombre de fois que nous faisons le test, soit <span class="math inline">\(0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 = 0,9^6 = 0,53\)</span>. Tous les autres cas ayant au moins un test faux, nous constatons que notre analyse globale sera incorrecte <span class="math inline">\(1 - 0,53 = 47\%\)</span> du temps<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. <strong>Notre analyse sera incorrecte une fois sur deux environ.</strong></p>
 <div class="info">
 <p>
 De manière générale, le nombre de combinaisons deux à deux possibles dans un set de <code>n</code> groupes distincts sera calculé à l’aide du coefficient binomial que nous avions déjà rencontré avec la distribution du même nom, ici avec <span class="math inline"><span class="math inline">\(j\)</span></span> valant deux.
@@ -508,9 +513,9 @@ Clairement, on oublie cette façon de faire ! Prendre le risque de se tromper 9
 </div>
 <div class="footnotes">
 <hr />
-<ol start="48">
-<li id="fn48"><p>Attention ! vous savez bien que c’est plus compliqué que cela. D’une part, le risque de se tromper est probablement différent si on rejette <span class="math inline">\(H_0\)</span> (<span class="math inline">\(\alpha\)</span>) ou non (<span class="math inline">\(\beta\)</span>), et ces risques sont encore à moduler en fonction de la probabilité <em>a priori</em>, un cas similaire au dépistage d’une maladie plus ou moins rare, rappelez-vous, au module <a href="proba.html#proba">7</a>.<a href="le-danger-des-tests-multiples.html#fnref48">↩</a></p></li>
-<li id="fn49"><p>Dans R, vous pouvez utiliser <code>choose(n, j)</code> pour calculer le coefficient binomial. Donc votre calcul du risque de se tromper au moins une fois dans un ensemble de <code>n</code> tests dont le risque individuel est <code>r</code> sera <code>1 - (1 - r)^choose(n, 2)</code>.<a href="le-danger-des-tests-multiples.html#fnref49">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Attention ! vous savez bien que c’est plus compliqué que cela. D’une part, le risque de se tromper est probablement différent si on rejette <span class="math inline">\(H_0\)</span> (<span class="math inline">\(\alpha\)</span>) ou non (<span class="math inline">\(\beta\)</span>), et ces risques sont encore à moduler en fonction de la probabilité <em>a priori</em>, un cas similaire au dépistage d’une maladie plus ou moins rare, rappelez-vous, au module <a href="proba.html#proba">7</a>.<a href="le-danger-des-tests-multiples.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Dans R, vous pouvez utiliser <code>choose(n, j)</code> pour calculer le coefficient binomial. Donc votre calcul du risque de se tromper au moins une fois dans un ensemble de <code>n</code> tests dont le risque individuel est <code>r</code> sera <code>1 - (1 - r)^choose(n, 2)</code>.<a href="le-danger-des-tests-multiples.html#fnref2">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -559,7 +564,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -571,6 +576,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/10-Variance.Rmd",
 "text": "Editer"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -586,7 +595,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

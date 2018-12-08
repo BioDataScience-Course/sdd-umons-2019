@@ -177,11 +177,11 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 # cols(
 #   localisation = col_character(),
 #   species = col_character(),
-#   id = col_integer(),
+#   id = col_double(),
 #   salinity = col_double(),
 #   temperature = col_double(),
 #   date = col_datetime(format = ""),
-#   time = col_integer(),
+#   time = col_double(),
 #   gain = col_double(),
 #   gain_std = col_double()
 # )
@@ -190,7 +190,7 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 ```
 # # A tibble: 98 x 9
 #    localisation species    id salinity temperature date               
-#    <chr>        <chr>   <int>    <dbl>       <dbl> <dttm>             
+#    <chr>        <chr>   <dbl>    <dbl>       <dbl> <dttm>             
 #  1 A0           s.hyst…     1     34.7        24.5 2018-04-24 09:10:00
 #  2 A0           s.hyst…     2     34.7        24.5 2018-04-24 09:10:00
 #  3 A0           s.hyst…     3     34.7        24.5 2018-04-24 09:10:00
@@ -201,7 +201,7 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 #  8 A0           s.hyst…     8     34.7        24.5 2018-04-24 09:10:00
 #  9 A0           s.hyst…     9     34.7        24.5 2018-04-24 09:10:00
 # 10 A0           s.hyst…    10     34.7        24.5 2018-04-24 09:10:00
-# # ... with 88 more rows, and 3 more variables: time <int>, gain <dbl>,
+# # ... with 88 more rows, and 3 more variables: time <dbl>, gain <dbl>,
 # #   gain_std <dbl>
 ```
 
@@ -489,15 +489,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ─────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:Date ───────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -592,11 +592,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -626,7 +626,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -634,7 +634,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -655,7 +655,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -663,7 +663,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -770,7 +770,7 @@ skimr::skim(df)
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0

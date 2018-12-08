@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Science des données biologiques, UMONS</title>
+  <title>10.2 ANOVA à un facteur | Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Science des données biologiques, UMONS" />
+  <meta property="og:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-30">
+<meta name="date" content="2018-12-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="test-post-hoc.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -296,16 +297,20 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="sciences-des-donnees-et-litterature.html"><a href="sciences-des-donnees-et-litterature.html"><i class="fa fa-check"></i><b>10.5</b> Sciences des données et littérature</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
-<li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a><ul>
+<li class="chapter" data-level="11" data-path="variance2.html"><a href="variance2.html"><i class="fa fa-check"></i><b>11</b> Variance II</a><ul>
+<li class="chapter" data-level="11.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html"><i class="fa fa-check"></i><b>11.1</b> ANOVA à deux facteurs</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html#facteurs-croises-sans-interactions"><i class="fa fa-check"></i><b>11.1.1</b> Facteurs croisés sans interactions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Corrélation</a><ul>
 <li class="chapter" data-level="12.1" data-path="graphiques-a-faire-et-ne-pas-faire.html"><a href="graphiques-a-faire-et-ne-pas-faire.html"><i class="fa fa-check"></i><b>12.1</b> Graphiques : à faire et ne pas faire</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
-<li class="chapter" data-level="A.1" data-path="prerequis-9.html"><a href="prerequis-9.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="prerequis-9.html"><a href="prerequis-9.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis-9.html"><a href="prerequis-9.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
-<li class="chapter" data-level="A.1.3" data-path="prerequis-9.html"><a href="prerequis-9.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
+<li class="chapter" data-level="A.1" data-path="prerequis-10.html"><a href="prerequis-10.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-10.html"><a href="prerequis-10.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-10.html"><a href="prerequis-10.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+<li class="chapter" data-level="A.1.3" data-path="prerequis-10.html"><a href="prerequis-10.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="install.html"><a href="install.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -399,7 +404,7 @@ Cette propriété, dite d’additivité des variances, permet de décomposer la 
 <div id="modele-de-lanova" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> Modèle de l’ANOVA</h3>
 <p>Mais qu’est-ce que cette propriété d’additivité des variances vient faire ici ? Nous souhaitons comparer des moyennes, non ? Effectivement, mais considérons le <strong>modèle mathématique suivant :</strong></p>
-<p><span class="math display">\[y_{ij} = \mu + \tau_j ± \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)\]</span></p>
+<p><span class="math display">\[y_{ij} = \mu + \tau_j + \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)\]</span></p>
 <p>Avec l’indice <span class="math inline">\(j = 1 .. k\)</span> populations et l’indice <span class="math inline">\(i = 1 .. n\)</span> observations du jeu de données. Chaque observation <span class="math inline">\(y_{ij}\)</span> correspond à deux écarts successifs de la moyenne globale <span class="math inline">\(\mu\)</span> : une constante “tau” par population <span class="math inline">\(\tau_j\)</span> d’une part et un terme <span class="math inline">\(\epsilon_i\)</span> que l’on appelle les <strong>résidus</strong> et qui est propre à chaque observation individuelle. C’est ce dernier terme qui représente la partie statistique du modèle avec une distribution normale centrée sur zéro et avec un écart type <span class="math inline">\(\sigma\)</span> que nous admettrons constant et identique pour toutes les populations par construction.</p>
 <p>Le graphique à la Fig. <a href="anova-a-un-facteur.html#fig:anova1">10.3</a> représente une situation typique à trois sous-populations.</p>
 <div class="figure" style="text-align: center"><span id="fig:anova1"></span>
@@ -481,7 +486,7 @@ Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio da
 </p>
 <pre><code>BioDataScience::run(&quot;10a_anova&quot;)</code></pre>
 </div>
-<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="references.html#fn50" class="footnoteRef" id="fnref50"><sup>50</sup></a>.</p>
+<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:fplot"></span>
 <img src="10-Variance_files/figure-html/fplot-1.svg" alt="Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)." width="672" />
 <p class="caption">
@@ -558,7 +563,7 @@ Figure 10.6: Graphique quantile-quantile appliqué aux résidus d’une ANOVA po
 Figure 10.7: Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes <em>L. variegatus</em>.
 </p>
 </div>
-<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="references.html#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a> :</p>
+<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">group_by</span>(., group) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">summarise</span>(.,
@@ -604,9 +609,9 @@ Figure 10.8: Graphique quantile-quantile des résidus pour l’analyse de <code>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="50">
-<li id="fn50"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref50">↩</a></p></li>
-<li id="fn51"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref51">↩</a></p></li>
+<ol start="3">
+<li id="fn3"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref3">↩</a></p></li>
+<li id="fn4"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref4">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -655,7 +660,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -667,6 +672,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/10-Variance.Rmd",
 "text": "Editer"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -682,7 +691,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

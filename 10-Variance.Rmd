@@ -130,7 +130,7 @@ Cette propriété, dite d'additivité des variances, permet de décomposer la va
 
 Mais qu'est-ce que cette propriété d'additivité des variances vient faire ici\ ? Nous souhaitons comparer des moyennes, non\ ? Effectivement, mais considérons le **modèle mathématique suivant\ :**
 
-$$y_{ij} = \mu + \tau_j ± \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)$$
+$$y_{ij} = \mu + \tau_j + \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)$$
 
 Avec l'indice $j = 1 .. k$ populations et l'indice $i = 1 .. n$ observations du jeu de données. Chaque observation $y_{ij}$ correspond à deux écarts successifs de la moyenne globale $\mu$\ : une constante "tau" par population $\tau_j$ d'une part et un terme $\epsilon_i$ que l'on appelle les **résidus** et qui est propre à chaque observation individuelle. C'est ce dernier terme qui représente la partie statistique du modèle avec une distribution normale centrée sur zéro et avec un écart type $\sigma$ que nous admettrons constant et identique pour toutes les populations par construction.
 

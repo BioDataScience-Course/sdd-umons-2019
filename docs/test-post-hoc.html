@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Science des données biologiques, UMONS</title>
+  <title>10.3 Test “post-hoc” | Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Science des données biologiques, UMONS" />
+  <meta property="og:title" content="10.3 Test “post-hoc” | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="10.3 Test “post-hoc” | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-11-30">
+<meta name="date" content="2018-12-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="test-de-kruskal-wallis.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -296,16 +297,20 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="sciences-des-donnees-et-litterature.html"><a href="sciences-des-donnees-et-litterature.html"><i class="fa fa-check"></i><b>10.5</b> Sciences des données et littérature</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>11</b> Corrélation</a></li>
-<li class="chapter" data-level="12" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>12</b> Design expérimental &amp; critique statistique</a><ul>
+<li class="chapter" data-level="11" data-path="variance2.html"><a href="variance2.html"><i class="fa fa-check"></i><b>11</b> Variance II</a><ul>
+<li class="chapter" data-level="11.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html"><i class="fa fa-check"></i><b>11.1</b> ANOVA à deux facteurs</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html#facteurs-croises-sans-interactions"><i class="fa fa-check"></i><b>11.1.1</b> Facteurs croisés sans interactions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Corrélation</a><ul>
 <li class="chapter" data-level="12.1" data-path="graphiques-a-faire-et-ne-pas-faire.html"><a href="graphiques-a-faire-et-ne-pas-faire.html"><i class="fa fa-check"></i><b>12.1</b> Graphiques : à faire et ne pas faire</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
 <li class="chapter" data-level="A" data-path="svbox.html"><a href="svbox.html"><i class="fa fa-check"></i><b>A</b> Installation de la SciViews Box</a><ul>
-<li class="chapter" data-level="A.1" data-path="prerequis-9.html"><a href="prerequis-9.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
-<li class="chapter" data-level="A.1.1" data-path="prerequis-9.html"><a href="prerequis-9.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
-<li class="chapter" data-level="A.1.2" data-path="prerequis-9.html"><a href="prerequis-9.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
-<li class="chapter" data-level="A.1.3" data-path="prerequis-9.html"><a href="prerequis-9.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
+<li class="chapter" data-level="A.1" data-path="prerequis-10.html"><a href="prerequis-10.html"><i class="fa fa-check"></i><b>A.1</b> Prérequis</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="prerequis-10.html"><a href="prerequis-10.html#ordi"><i class="fa fa-check"></i><b>A.1.1</b> Ordinateur</a></li>
+<li class="chapter" data-level="A.1.2" data-path="prerequis-10.html"><a href="prerequis-10.html#activation-de-la-virtualisation"><i class="fa fa-check"></i><b>A.1.2</b> Activation de la virtualisation</a></li>
+<li class="chapter" data-level="A.1.3" data-path="prerequis-10.html"><a href="prerequis-10.html#achat_pc"><i class="fa fa-check"></i><b>A.1.3</b> Conseils pour acheter un PC</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>A.2</b> Installation</a><ul>
 <li class="chapter" data-level="A.2.1" data-path="install.html"><a href="install.html#virtualbox"><i class="fa fa-check"></i><b>A.2.1</b> VirtualBox</a></li>
@@ -374,7 +379,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Tout d’abort, nous mettons en place un garde-fou. Nous effectuons <em>toujours</em> une ANOVA en premier lieu, et nous n’envisageons les comparaisons multiples que lorsque <span class="math inline">\(H_0\)</span> est rejettée. Cela évite beaucoup de faux positifs. On appelle cela des tests “post hoc” car ils ne sont pas planifiés d’amblée, mais suivent un conclusion préalable (ici, le rejet de <span class="math inline">\(H_0\)</span> dans un test ANOVA).</p>
 <p>Une approche simple consisterait à modifier notre seuil <span class="math inline">\(\alpha\)</span> pour chaque test individuel vers le bas afin que le risque de se tromper dans au moins un des tests ne dépasse pas la valeur de <span class="math inline">\(/alpha\)</span> que nous nous sommes fixée. C’est la <strong>correction de Bonferroni</strong>. Elle consiste à diviser la valeur de <span class="math inline">\(/alpha\)</span> par le nombre de tests simultanés nécessaires, et d’utiliser cette valeur corrigée comme seuil <span class="math inline">\(\alpha\)</span> de chaque test de Student individuel. Dans le cas de quatre populations, nous avons vu qu’il y a six comparaisons multiples deux à deux. Donc, en appliquant un seuil corrigé de <span class="math inline">\(\alpha/6 = 0,05 / 6 = 0,00833\)</span> pour chaque test, on aura la probabilité suivante pour <span class="math inline">\(1 - \alpha\)</span> :</p>
 <p><span class="math display">\[(1 - 0,05/6)^6 = 0,951\]</span></p>
-<p>Donc, le risque <em>global</em> pour l’ensemble des six tests est bien de 1 - 0,951 = 0,049, soit 5%. Si elle a le mérite d’être simple, cette façon de faire n’est pas considérée comme la plus efficace. Actuellement, la méthode <strong>HSD de Tukey</strong> est préférée. HSD veut dire “Honest Significant Difference”. La technique consiste à calculer l’écart minimal des moyennes pour considérer qu’elles sont significativement différentes l’une de l’autre. Ensuite, pour chaque comparaison deux à deux, l’écart entre les moyennes est comparée à cette valeur de référence<a href="references.html#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a>. Le test de comparaisons multiples de Tukey est accessible à partir des “snippets” dans la SciViews Box (<code>.hm</code> pour le menu <code>hypothesis tests: means</code>, puis <code>anova - multiple comparisons</code>). Nous obtenons à la fois une version textuelle et une version graphique qui résume les comparaisons.</p>
+<p>Donc, le risque <em>global</em> pour l’ensemble des six tests est bien de 1 - 0,951 = 0,049, soit 5%. Si elle a le mérite d’être simple, cette façon de faire n’est pas considérée comme la plus efficace. Actuellement, la méthode <strong>HSD de Tukey</strong> est préférée. HSD veut dire “Honest Significant Difference”. La technique consiste à calculer l’écart minimal des moyennes pour considérer qu’elles sont significativement différentes l’une de l’autre. Ensuite, pour chaque comparaison deux à deux, l’écart entre les moyennes est comparée à cette valeur de référence<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>. Le test de comparaisons multiples de Tukey est accessible à partir des “snippets” dans la SciViews Box (<code>.hm</code> pour le menu <code>hypothesis tests: means</code>, puis <code>anova - multiple comparisons</code>). Nous obtenons à la fois une version textuelle et une version graphique qui résume les comparaisons.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(anovaComp. &lt;-<span class="st"> </span><span class="kw">confint</span>(multcomp<span class="op">::</span><span class="kw">glht</span>(anova.,
   <span class="dt">linfct =</span> multcomp<span class="op">::</span><span class="kw">mcp</span>(<span class="dt">group =</span> <span class="st">&quot;Tukey&quot;</span>))))</code></pre></div>
 <pre><code># 
@@ -407,8 +412,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div class="footnotes">
 <hr />
-<ol start="52">
-<li id="fn52"><p>Nous ne détaillons pas le calcul du test de Tukey ici, mais vous pouvez aller voir <a href="https://www.itl.nist.gov/div898/handbook/prc/section4/prc471.htm">ici</a>.<a href="test-post-hoc.html#fnref52">↩</a></p></li>
+<ol start="5">
+<li id="fn5"><p>Nous ne détaillons pas le calcul du test de Tukey ici, mais vous pouvez aller voir <a href="https://www.itl.nist.gov/div898/handbook/prc/section4/prc471.htm">ici</a>.<a href="test-post-hoc.html#fnref5">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -457,7 +462,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -469,6 +474,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/10-Variance.Rmd",
 "text": "Editer"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -484,7 +493,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

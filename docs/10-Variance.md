@@ -67,7 +67,7 @@ skimr::skim(crabs2)
 #  n obs: 200 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -77,7 +77,7 @@ skimr::skim(crabs2)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
 ```
@@ -167,7 +167,7 @@ Notre hypothèse nulle est très restrictive, mais par contre, l'hypothèse alte
 
 Mais qu'est-ce que cette propriété d'additivité des variances vient faire ici\ ? Nous souhaitons comparer des moyennes, non\ ? Effectivement, mais considérons le **modèle mathématique suivant\ :**
 
-$$y_{ij} = \mu + \tau_j ± \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)$$
+$$y_{ij} = \mu + \tau_j + \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)$$
 
 Avec l'indice $j = 1 .. k$ populations et l'indice $i = 1 .. n$ observations du jeu de données. Chaque observation $y_{ij}$ correspond à deux écarts successifs de la moyenne globale $\mu$\ : une constante "tau" par population $\tau_j$ d'une part et un terme $\epsilon_i$ que l'on appelle les **résidus** et qui est propre à chaque observation individuelle. C'est ce dernier terme qui représente la partie statistique du modèle avec une distribution normale centrée sur zéro et avec un écart type $\sigma$ que nous admettrons constant et identique pour toutes les populations par construction.
 
