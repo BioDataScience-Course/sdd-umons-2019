@@ -376,18 +376,18 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="anova-a-deux-facteurs" class="section level2">
 <h2><span class="header-section-number">11.1</span> ANOVA à deux facteurs</h2>
-<p>Dans le cadre de la’ANOVA à un facteur, nous avions une variable réponse numérique étudiée pour différents niveaux d’<em>une seule</em> variable facteur à <em>j</em> niveaux ou modalités. Le modèle utilisé était :</p>
+<p>Dans le cadre de l’ANOVA à un facteur, nous avions une variable réponse numérique étudiée pour différents niveaux d’<em>une seule</em> variable facteur à <em>j</em> niveaux ou modalités. Le modèle utilisé était :</p>
 <p><span class="math display">\[y_{ij} = \mu + \tau_j + \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)\]</span> Les <span class="math inline">\(\tau_j\)</span> représent les variations entre la moyenne générale <span class="math inline">\(µ\)</span> et les moyennes respectives des <span class="math inline">\(j\)</span> sous-populations. En R, nous avons utilisé la formule suivante :</p>
 <p><span class="math display">\[y \sim fact\]</span></p>
 <p>avec <span class="math inline">\(y\)</span> la variable numérique réponse et <span class="math inline">\(fact\)</span> la variable facteur explicative unique.</p>
-<p>Si nous prenonsnotre exemple des crabes <em>L. variegatus</em>, nous avions travaillé un peu artificiellement sur une seule variable facteur en regroupant les variables <code>species</code> et <code>sex</code> en une seule variable <code>group</code>. Qu’en est-il si nous voulons quand même considérer les deux variables <code>species</code> et <code>sex</code> séparément ? c’est possible avec une ANOVA à deux facteurs</p>
+<p>Si nous prenons notre exemple des crabes <em>L. variegatus</em>, nous avions travaillé un peu artificiellement sur une seule variable facteur en regroupant les variables <code>species</code> et <code>sex</code> en une seule variable <code>group</code>. Qu’en est-il si nous voulons quand même considérer les deux variables <code>species</code> et <code>sex</code> séparément ? c’est possible avec une <strong>ANOVA à deux facteurs</strong>.</p>
 <div id="modele-sans-interactions" class="section level3">
 <h3><span class="header-section-number">11.1.1</span> Modèle sans interactions</h3>
 <p>La version la plus simple consiste à considérer simplement deux facteurs <em>successivement</em>, c’est-à-dire que la variance est décomposée d’abord selon le premier facteur, et ensuite selon le second.</p>
 <p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k + \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)\]</span></p>
 <p>avec <span class="math inline">\(\tau1_j\)</span> correspondant à l’écart de la moyenne générale <span class="math inline">\(µ\)</span> à la moyenne selon la j<sup>ème</sup> population pour la variable <code>fact1</code>, et <span class="math inline">\(\tau2_k\)</span> correspondant à l’écart vers le k<sup>ème</sup> niveau d’une seconde variable <code>fact2</code>. La formule qui spécifie ce modèle dans R avec les trois variables <code>y</code>, <code>fact1</code> et <code>fact2</code> s’écrit :</p>
 <p><span class="math display">\[y \sim fact1 + fact2\]</span></p>
-<p>Notez que, quel que soit le niveau considéré pour <span class="math inline">\(\tau1\)</span>, un niveau donné de <span class="math inline">\(\tau2\)</span> est constant dans l’équation qui décrit ce modèle. Cela siginifie que l’on considère que les écarts pour les moyennes de la variable <code>fact2</code> sont toujours les mêmes depuis les moyennes de <code>fact1</code>. Donc, si une sous-population de <code>fact2</code> tend à avoir une moyenne, disons, supérieure pour la première sous-population de <code>fact1</code>, elle sera considérée comme ayant les mêmes écarts pour toutes les autres sous-populations de <code>fact1</code>. Evidemment, cette condition n’est pas toujours rencontrée dans la pratique. Le <strong>graphique des interactions</strong> (Fig. <a href="anova-a-deux-facteurs.html#fig:interactions">11.1</a>) permet de visualiser les écarts des moyennes respectives des différentes sous-populations.</p>
+<p>Notez que, quel que soit le niveau considéré pour <span class="math inline">\(\tau1\)</span>, un niveau donné de <span class="math inline">\(\tau2\)</span> est constant dans l’équation qui décrit ce modèle. Cela signifie que l’on considère que les écarts pour les moyennes de la variable <code>fact2</code> sont toujours les mêmes depuis les moyennes de <code>fact1</code>. Donc, si une sous-population de <code>fact2</code> tend à avoir une moyenne, disons, supérieure pour la première sous-population de <code>fact1</code>, elle sera considérée comme ayant les mêmes écarts pour toutes les autres sous-populations de <code>fact1</code>. Evidemment, cette condition n’est pas toujours rencontrée dans la pratique. Le <strong>graphique des interactions</strong> (Fig. <a href="anova-a-deux-facteurs.html#fig:interactions">11.1</a>) permet de visualiser les écarts des moyennes respectives des différentes sous-populations.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read</span>(<span class="st">&quot;crabs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;MASS&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">aspect =</span> <span class="kw">labelise</span>(
     <span class="kw">as.numeric</span>(rear <span class="op">/</span><span class="st"> </span>width),
@@ -421,7 +421,41 @@ crabs2 <span class="op">%&gt;.%</span>
 Figure 11.1: Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu’il n’y a pas d’interactions, comme c’est le cas ici.
 </p>
 </div>
-<p>Nous pouvons donc, ici, réaliser notre ANOVA à deux facteurs. Nous devons vérifier l’homoscédasticité, mais le test de Batlett que nous réalisons revient au même que celui que nous avons fait en décomposant toutes les sous-populations. Comme nous n’avons pas nécessairement ce calcul réalisé (la variable <code>group</code> que nous avions calculée au module <a href="variance.html#variance">10</a>), nous utilisons la fonction <code>interaction()</code> qui effectue ce calcu pour nous directement dans la formule :</p>
+<p>Au niveau de la description préliminaire des données, nous pourrons utiliser un tableau qui résume la moyenne, l’écart type et le nombre d’observations pout chaque combinaison des deux variables facteurs. Le template de ce code est disponible dans un “snippet” à partir du menu <code>hypothesis tests: means</code> ou <code>.hm</code>, et ensuite <code>two-way ANOVA (description)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">group_by</span>(., species, sex) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">summarise</span>(., <span class="dt">mean =</span> <span class="kw">mean</span>(aspect5), <span class="dt">sd =</span> <span class="kw">sd</span>(aspect5), <span class="dt">count =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(aspect5)))</code></pre></div>
+<pre><code># # A tibble: 4 x 5
+# # Groups:   species [?]
+#   species sex      mean      sd count
+#   &lt;fct&gt;   &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
+# 1 B       F     0.00727 0.00115    50
+# 2 B       M     0.00363 0.00124    50
+# 3 O       F     0.00811 0.00138    50
+# 4 O       M     0.00427 0.00130    50</code></pre>
+<p>Pour la visualisation graphique, nous sommes tributaires du nombre d’observations. Avec moins d’une petite dizaine d’observations, nous représenterons des points pour chaque observation et superposerons les moyennes. Lorsque le nombre est plus grand nous pourrons utiliser soit les boites de dispersion, soit le graphique en violon si ce nombre est encore plus grand. Voyons cela sur notre exemple (les “snippets” dans le menu <code>chart: bivariate</code> peuvent être utilisés comme point de départ auquel nous ajoutons la seconde variable facteur pour les facettes multi-graphiques séparée par un <code>|</code>). La Fig. <a href="anova-a-deux-facteurs.html#fig:crabs2boxplot">11.2</a> montre ce que cela donne si l’on opte pour les boites de dispersion.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:crabs2boxplot"></span>
+<img src="11-Variance-II_files/figure-html/crabs2boxplot-1.svg" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version simple." width="672" />
+<p class="caption">
+Figure 11.2: Taille relative de la carapace à l’arrière de crabes <em>L. variegatus</em> (deux variétés et deux sexes), version simple.
+</p>
+</div>
+<p>La Fig. <a href="anova-a-deux-facteurs.html#fig:crabs2boxplot2">11.3</a> est une version améliorée avec les observations et les moyennes pour chaque sous-groupe ajoutées au graphique selon la même technique que nous avions utilisé pour représenter les données pour l’ANOVA à un facteur.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(crabs2, species, sex) <span class="op">%&gt;.%</span>
+<span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(aspect5, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
+    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>species), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:crabs2boxplot2"></span>
+<img src="11-Variance-II_files/figure-html/crabs2boxplot2-1.svg" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version annotée." width="672" />
+<p class="caption">
+Figure 11.3: Taille relative de la carapace à l’arrière de crabes <em>L. variegatus</em> (deux variétés et deux sexes), version annotée.
+</p>
+</div>
+<p>Maintenant que nous avons décrit correctement nos données par rapport à l’analyse que nous souhaitons faire, nous pouvons réaliser notre ANOVA à deux facteurs. Nous devons vérifier l’homoscédasticité, mais le test de Batlett que nous réalisons revient au même que celui que nous avons fait en décomposant toutes les sous-populations. Comme nous n’avons pas nécessairement ce calcul réalisé (la variable <code>group</code> que nous avions calculée au module <a href="variance.html#variance">10</a>), nous utilisons la fonction <code>interaction()</code> qui effectue ce calcul pour nous directement dans la formule :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(species, sex))</code></pre></div>
 <pre><code># 
 #   Bartlett test of homogeneity of variances
@@ -439,7 +473,7 @@ Figure 11.1: Graphique des interactions entre les variables facteurs (espèce et
 # Residuals 197 0.00031624 0.00000161                      
 # ---
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>Comme la variance est décomposée en trois étapes (selon l’espèce, puis selon le sexe, puis les résidus), nous avons trois lignes dans le tableau de l’ANOVA. Nous effectuons deux tests. Le premier consiste à comparer les carrés moyens (<code>Mean Sq</code>) pour l’espèce par rapport aux résidus. Donc, la valeur <code>F</code> est le ratio de la somme des carrés <code>species</code> divisé par la somme des carrés des résidus, et cette valeur est reportée sur la loi de distribution théorique <em>F</em> pour obtenir une première valeur <em>P</em> (ici 5,12 . 10<sup>-5</sup>). De même, le seco nd test qui s’intéresse au sexe calcule la valeur <em>F</em> via la ratio de la somme des carrés pour <code>sex</code> divisé par la somme des carrés des résidus, et la loi <em>F</em> nous permet de calculer une seconde valeur <em>P</em> (ici 2,2 . 10<sup>-16</sup>).</p>
+<p>Comme la variance est décomposée en trois étapes (selon l’espèce, puis selon le sexe, puis les résidus), nous avons trois lignes dans le tableau de l’ANOVA. Nous effectuons deux tests. Le premier consiste à comparer les carrés moyens (<code>Mean Sq</code>) pour l’espèce par rapport aux résidus. Donc, la valeur <code>F</code> est le ratio de la somme des carrés <code>species</code> divisé par la somme des carrés des résidus, et cette valeur est reportée sur la loi de distribution théorique <em>F</em> pour obtenir une première valeur <em>P</em> (ici 5,12 . 10<sup>-5</sup>). De même, le second test qui s’intéresse au sexe calcule la valeur <em>F</em> via la ratio de la somme des carrés pour <code>sex</code> divisé par la somme des carrés des résidus, et la loi <em>F</em> nous permet de calculer une seconde valeur <em>P</em> (ici 2,2 . 10<sup>-16</sup>).</p>
 <p>Nous interprétons chacun des deux tests séparément. Dans notre cas, nous pouvons dire avec un seuil <span class="math inline">\(\alpha\)</span> de 5% que nous rejettons <span class="math inline">\(H_0\)</span> dans les deux cas. Donc le rapport largeur arrière sur largeur max de la carapace est significativement différent au seuil <span class="math inline">\(\alpha\)</span> de 5% à la fois en fonction de l’espèce (F = 17,15, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001) et du sexe (F = 436, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001)<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
 <p>La suite logique consiste à réaliser des tests “post hoc”. Ils ne sont pas vraiment nécessaires ici puisque nous n’avons que deux niveaux pour chacune des deux variables, mais nous les réalisons quand même pour montrer le code correspondant. Un template est accessible via le “snippet” <code>anova - multiple comparisons [multcomp]</code> du menu <code>.hm</code>. Pensez juste à rajouter le second facteur <code>sex</code> dans les arguments de la fonction <code>mcp()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(anovaComp. &lt;-<span class="st"> </span><span class="kw">confint</span>(multcomp<span class="op">::</span><span class="kw">glht</span>(anova.,
@@ -460,16 +494,16 @@ Figure 11.1: Graphique des interactions entre les variables facteurs (espèce et
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 # (Adjusted p values reported -- single-step method)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.oma &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">oma =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>)); <span class="kw">plot</span>(anovaComp.); <span class="kw">par</span>(.oma); <span class="kw">rm</span>(.oma)</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-3-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<p>Il ne nous reste plus qu’à vérifier la distribution des résidus de l’ANOVA pour que notre analyse soit complète (Fig. <a href="anova-a-deux-facteurs.html#fig:anova2-resid">11.2</a>).</p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-4-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Ceci confirme que les différences sont significatives au seuil <span class="math inline">\(\alpha\)</span> de 5%. Il ne nous reste plus qu’à vérifier la distribution des résidus de l’ANOVA pour que notre analyse soit complète (Fig. <a href="anova-a-deux-facteurs.html#fig:anova2-resid">11.4</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:anova2-resid"></span>
 <img src="11-Variance-II_files/figure-html/anova2-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs sans interactions de `aspect^5`." width="672" />
 <p class="caption">
-Figure 11.2: Graphique quantile-quantile des résidus pour l’ANOVA à deux facteurs sans interactions de <code>aspect^5</code>.
+Figure 11.4: Graphique quantile-quantile des résidus pour l’ANOVA à deux facteurs sans interactions de <code>aspect^5</code>.
 </p>
 </div>
 <pre><code># [1]  65 103</code></pre>
-<p>Encore une fois, nous voyons que les résidus sont quasiment les mêmes que précédemment, mais cela n’aurait pas été le cas si une interaction existait. La distribution s’éloigne un peu d’une Gaussienne pour les valeurs élevées surtout. Mais comme l’ANOVA est robuste à ce critère, et que l’homoscédasticité a été vérifiée sur la tranformation puissance 5 de nottre variable, nous pouvons conserver notre analyse moyennant une précaution supplémentaire : vérifier que les valeurs <em>P</em> sont <strong>beaucoup</strong> plus petites que notre seuil comme sécurité supplémentaires contre les approximations liées à la légère violoation de la contrainte de distribution normale des résidus. C’est le cas ici, et nous pouvons donc conclure notre analyse.</p>
+<p>Encore une fois, nous voyons que les résidus sont quasiment les mêmes que précédemment, mais cela n’aurait pas été le cas si une interaction existait. La distribution s’éloigne un peu d’une Gaussienne pour les valeurs élevées surtout. Mais comme l’ANOVA est robuste à ce critère, et que l’homoscédasticité a été vérifiée sur la tranformation puissance 5 de notre variable, nous pouvons conserver notre analyse moyennant une précaution supplémentaire : vérifier que les valeurs <em>P</em> sont <strong>beaucoup</strong> plus petites que notre seuil comme sécurité supplémentaires contre les approximations liées à la légère violation de la contrainte de distribution normale des résidus. C’est le cas ici, et nous pouvons donc conclure notre analyse.</p>
 <div id="conditions-dapplication-8" class="section level5 unnumbered">
 <h5>Conditions d’application</h5>
 <ul>
@@ -485,8 +519,43 @@ Figure 11.2: Graphique quantile-quantile des résidus pour l’ANOVA à deux fac
 </div>
 <div id="modele-croise-complet" class="section level3">
 <h3><span class="header-section-number">11.1.2</span> Modèle croisé complet</h3>
-<p>Le modèle ANOVA que nous venons de faire s’appelle un <strong>modèle croisé</strong> parce que … Voyons maintenant le modèle complet qui prend en compte d’éventuelles interactions entre les deux variables facteurs.</p>
-<p><strong>Note:</strong> attention aux pseudo-répliquats !</p>
+<p>Le modèle ANOVA que nous venons de faire s’appelle un <strong>modèle croisé</strong> parce que les mesures sont effectuées pour chaque combinaison des niveaux des deux variables facteurs explicatives, et ce, de manière indépendante (les observations d’un niveau ne sont pas dépendantes de celles d’un autre niveau)<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">count</span>(., species, sex)</code></pre></div>
+<pre><code># # A tibble: 4 x 3
+#   species sex       n
+#   &lt;fct&gt;   &lt;fct&gt; &lt;int&gt;
+# 1 B       F        50
+# 2 B       M        50
+# 3 O       F        50
+# 4 O       M        50</code></pre>
+<p>Le modèle <strong>croisé sans interactions</strong> que nous avions utilisés est cependant <em>incomplet</em> puisque, pour considérer tous les cas possibles, il faut aussi considérer que ces interactions puissent exister et les inclure directement dans le modèle. Le <strong>modèle complet</strong> s’écrit comme ceci :</p>
+<p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k + \tau1\tau2_{jk} + \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)\]</span></p>
+<p>avec le nouveau terme <span class="math inline">\(\tau1\tau2_{jk}\)</span> qui correspond à la distance entre la <em>k</em><sup>ème</sup> moyenne générale (la moyenne quel que soit <em>j</em>) et la moyenne particulière pour les observations des populations particulières à <em>k</em> et <em>j</em> simultanément. Ce modèle permet ainsi que chaque moyenne <span class="math inline">\(\bar{y}_{jk}\)</span> puisse différer librement, et donc, autorise les <strong>interactions</strong>. Toujours considérant les trois variables <code>y</code>, <code>fact1</code> et <code>fact2</code>, ce modèle s’écrit dans R comme suit :</p>
+<p><span class="math display">\[y \sim fact1 + fact2 + fact1:fact2\]</span></p>
+<p>Avec <span class="math inline">\(fact1:fact2\)</span> étant le terme d’interactions. On peut aussi le simplifier en utilisant <code>*</code> à la place de <code>+</code> entre les deux variables facteurs, ce qui signifie implicitement de tenir également compte des interactions :</p>
+<p><span class="math display">\[y \sim fact1 * fact2\]</span></p>
+<p>Cette fois-ci, la décomposition de la variable se fait en quatre étapes : (1) depuis la moyenne générale µ vers les <em>j</em><sup>èmes</sup> moyennes pour <code>fact1</code>, ensuite (2) de ces moyennes vers les <em>k</em><sup>èmes</sup> moyennes pour <code>fact2</code>, puis (3) de ces dernières vers la moyenne particulière pour le sous-groupe <em>jk</em>, et enfin (4) les résidus <span class="math inline">\(\epsilon_i\)</span> pour chaque observation. Voyons ce que donne ce modèle complet sur nos données <code>crabs2</code>. Un “snippets” est utilisable (<code>two-way ANOVA (complete model)</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">*</span><span class="st"> </span>sex))</code></pre></div>
+<pre><code># Analysis of Variance Table
+# 
+# Response: aspect5
+#              Df     Sum Sq    Mean Sq  F value    Pr(&gt;F)    
+# species       1 0.00002753 0.00002753  17.0913 5.279e-05 ***
+# sex           1 0.00069935 0.00069935 434.1610 &lt; 2.2e-16 ***
+# species:sex   1 0.00000052 0.00000052   0.3236    0.5701    
+# Residuals   196 0.00031572 0.00000161                       
+# ---
+# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Notre analyse confirme qu’il n’y a pas d’interactions. La valeur <em>P</em> (0,57) en regard du terme <code>species:sex</code> correspondant est très largement supérieure à <span class="math inline">\(\alpha\)</span> de 5%. Notez aussi que les tests relatifs à <code>species</code> et <code>sex</code> donnent des valeurs différentes de notre modèle sans interactions. Les différences entre les deux seront d’autant plus importantes que les interactions sont fortes. Les conclusions restent les mêmes que précédemment, et ici, nous démontrons par un test d’hypothèse que les interactions ne sont pas significatives. Naturellement, la description des données, les vérifications (homoscédasticité, distribution normale ou quasi-normale des résidus) et les analyses “post-hoc” en cas de rejet de <span class="math inline">\(H_0\)</span> sont à réaliser ici aussi. Nous les avons déjà faites plus haut à peu de choses prêt (les résutats seront ici très proches de ceux du modèle sans interactions, puisque ces dernières sont négligeables).</p>
+<div class="warning">
+<p>
+Faites attention à deux pièges fréquents. Le premier concerne les mesures multiples sur les <em>mêmes</em> individus. Par exemple, si vous étudiez trois populations avec disons, cinq répliquats par population et que vous dénombrez des cellules marquées sur dix coupes histologiques réalisées chaque fois dans un organe du <em>même</em> individu, vous aurez 3x5x10 = 150 mesures, mais vous ne pouvez pas utiliser une ANOVA à deux facteurs croisés car les 150 observations ne sont pas indépendantes les unes des autres. Vous n’avez jamais mesuré que 15 individus au total. Si vous analysez ces données comme si vous en aviez mesuré 150, <strong>votre analyse sera incorrecte</strong>. Il s’agit ici d’une erreur qui s’appelle la <strong>pseudo-réplication</strong>.
+</p>
+<p>
+Le second piège est en relation avec le premier. Avez-vous <em>réellement</em> besoin de deux facteurs ? Votre question porte sur la comparaison des trois populations. La comparaisons d’une lame à l’autre au sein de même individu n’est peut-être pas dans vos préoccupations (sinon, voyez le modèle imbriqué plus bas). Alors vous pouvez simplifier votre analyse en considérant la moyenne des 10 dénombrement comme mesure de départ (notée <code>m10</code> par exemple) et faire une ANOVA à un seul facteur de cette variable en fonction des populations avec la formule <code>m10 ~ pop</code>.
+</p>
+</div>
 
 </div>
 </div>
@@ -495,6 +564,7 @@ Figure 11.2: Graphique quantile-quantile des résidus pour l’ANOVA à deux fac
 <hr />
 <ol start="1">
 <li id="fn1"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="anova-a-deux-facteurs.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>De plus, nous avons ici un <strong>plan balancé</strong> puisque le nombre de répliquats pour chaque niveau est le même. C’est une situation optimale qu’il faut toujours chercher à atteindre pour une ANOVA, même si un nombre différent d’observations par niveau est également accepté.<a href="anova-a-deux-facteurs.html#fnref2">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
