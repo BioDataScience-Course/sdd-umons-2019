@@ -284,3 +284,241 @@ Notre analyse confirme qu'il n'y a pas d'interactions. La valeur *P* (0,57) en r
 <p>Faites attention à deux pièges fréquents. Le premier concerne les mesures multiples sur les <em>mêmes</em> individus. Par exemple, si vous étudiez trois populations avec disons, cinq répliquats par population et que vous dénombrez des cellules marquées sur dix coupes histologiques réalisées chaque fois dans un organe du <em>même</em> individu, vous aurez 3x5x10 = 150 mesures, mais vous ne pouvez pas utiliser une ANOVA à deux facteurs croisés car les 150 observations ne sont pas indépendantes les unes des autres. Vous n'avez jamais mesuré que 15 individus au total. Si vous analysez ces données comme si vous en aviez mesuré 150, <strong>votre analyse sera incorrecte</strong>. Il s'agit ici d'une erreur qui s'appelle la <strong>pseudo-réplication</strong>.</p>
 <p>Le second piège est en relation avec le premier. Avez-vous <em>réellement</em> besoin de deux facteurs ? Votre question porte sur la comparaison des trois populations. La comparaisons d'une lame à l'autre au sein de même individu n'est peut-être pas dans vos préoccupations (sinon, voyez le modèle imbriqué plus bas). Alors vous pouvez simplifier votre analyse en considérant la moyenne des 10 dénombrement comme mesure de départ (notée <code>m10</code> par exemple) et faire une ANOVA à un seul facteur de cette variable en fonction des populations avec la formule <code>m10 ~ pop</code>.</p>
 </div>
+
+
+##### Conditions d'application {-}
+
+Les conditions d'application sont les mêmes que pour l'ANOVA à deux facteurs sans interactions, sauf qu'ici, les interactions sont bien évidemment permises.
+
+
+##### Pour en savoir plus {-}
+
+- Un blog en français qui explique l'[ANOVA à deux facteurs](https://statistique-et-logiciel-r.com/anova-a-2-facteurs-principe/) de manière plus détaillée qu'ici. Ensuite la [résolution de leur exemple dans R](https://statistique-et-logiciel-r.com/anova-a-2-facteurs-avec-r-tutoriel/). Enfin, des suggestions pour annoter un graphique et [indiquer quelles sont les différences qui sont significatives dessus](https://statistique-et-logiciel-r.com/comparaison-de-moyennes-indiquer-les-differences-significatives-sur-le-graph/).
+
+
+### Facteurs hiérarchisés
+
+Nous n'avons pas toujours la possibilité de croiser les deux facteurs. Considérons le cas d'une étude d'intercalibration. Nous avons un ou plusieurs échantillons répartis entre plusieurs laboratoires, et comme les analyses dépendent éventuellement aussi du technicien qui fait la mesure, nous demandons à chaque laboratoire de répéter les mesures avec deux de leurs techniciens. Problème\ : ici, il s'agit bien évidemment de techniciens *différents* dans chaque laboratoire. Comment faire, sachant que pour le modèle croisé, il faudrait que les deux *mêmes* techniciens aient fait toutes les mesures *dans tous* les laboratoires\ ?
+
+La solution est le modèle à facteurs hiérarchisés qui s'écrit\ :
+
+$$y_{ijk} = \mu + \tau1_j + \tau2_k(\tau1_j) + \epsilon_i \mathrm{\ avec\ } \ \epsilon_i \sim N(0, \sigma) $$
+
+... et dans R, nous utiliserons la formule suivante\ :
+
+$$y \sim fact1 + fact2\ \%in\%\ fact2$$
+
+Voici un exemple concret. Un gros échantillon d'oeufs déshydratés homogène est réparti entre six laboratoires différents en vue de la détermination de la teneur en matières grasses dans cet échantillon. Le but de la manoeuvre est de déterminer si les laboratoires donnent des résultats consistants. Les deux techniciens de chaque laboratoire sont labellés `one` et `two`, mais ce sont en fait à chaque fois des techniciens *différents* dans chaque laboratoire^[La variable `Sample valant `G` ou `H` ne sera pas utilisée ici. En fait, au départ, les initiateurs de l'expérience ont fait croire aux laboratoires qu'il s'agissait de deux échantillons différents alors que c'est le même en réalité.].
+
+
+```r
+eggs <- read("eggs", package = "faraway")
+skimr::skim(eggs)
+```
+
+```
+# Skim summary statistics
+#  n obs: 48 
+#  n variables: 4 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
+#    variable missing complete  n n_unique                 top_counts
+#         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
+#      Sample       0       48 48        2        G: 24, H: 24, NA: 0
+#  Technician       0       48 48        2    one: 24, two: 24, NA: 0
+#  ordered
+#    FALSE
+#    FALSE
+#    FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
+#       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
+```
+
+Commençons par corriger l'encodage erroné des techniciens qui ferait penser que seulement deux personnes ont travaillé dans l'ensemble des six laboratoires.
+
+
+```r
+eggs %>.%
+  mutate(., Technician = interaction(Lab, Technician)) -> eggs
+skimr::skim(eggs)
+```
+
+```
+# Skim summary statistics
+#  n obs: 48 
+#  n variables: 4 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
+#    variable missing complete  n n_unique
+#         Lab       0       48 48        6
+#      Sample       0       48 48        2
+#  Technician       0       48 48       12
+#                           top_counts ordered
+#  I: 8, II: 8, III: 8, IV: 8            FALSE
+#         G: 24, H: 24, NA: 0            FALSE
+#                           I.o: 4, II   FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
+#       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
+```
+
+Nous avons à présent douze techniciens notés `I.one`, `I.two`, `II.one`, `II.two`, ... Nous pouvons visualiser ces données. Comme nous n'avons que quatre réplicats par technicien, nous nous limitons à la représentation des observations de départ et des moyennes.
+
+
+```r
+chart(data = eggs, Fat ~ Lab %col=% Technician) +
+  geom_jitter(width = 0.05, alpha = 0.5) +
+  geom_point(data = group_by(eggs, Lab, Technician) %>.%
+    summarise(., means = mean(Fat, na.rm = TRUE)),
+    f_aes(means ~ Lab), size = 3, col = "red")
+```
+
+<div class="figure" style="text-align: center">
+<img src="11-Variance-II_files/figure-html/nested-1.svg" alt="Mesures de fractions en matières grasses dans des oeufs dans six laboratoires, par douze techniciens différents. Les points rouges sont les moyennes par technicien." width="672" />
+<p class="caption">(\#fig:nested)Mesures de fractions en matières grasses dans des oeufs dans six laboratoires, par douze techniciens différents. Les points rouges sont les moyennes par technicien.</p>
+</div>
+
+Vérifions l'homoscédasticité. Ici, il suffit de considérer la variable `Technician` (une fois correctement encodée\ !). Nous utiliserons un seuil $\alpha$ classique de 5% pour l'ensemble de nos tests dans cette étude.
+
+
+```r
+bartlett.test(data = eggs, Fat ~ Technician)
+```
+
+```
+# 
+# 	Bartlett test of homogeneity of variances
+# 
+# data:  Fat by Technician
+# Bartlett's K-squared = 13.891, df = 11, p-value = 0.2391
+```
+
+Avec une valeur *P* de 23,9%, nous pouvons considérer qu'il y a homoscédasticité. Voilà l'ANOVA (utilisez le "snippet" `two-way ANOVA (nested model)` le menu contextuel `hypothesis tests: means` que vous obtenez en tapant `.hm`).
+
+
+```r
+anova(anova. <- lm(data = eggs, Fat ~ Lab + Technician %in% Lab))
+```
+
+```
+# Analysis of Variance Table
+# 
+# Response: Fat
+#                Df  Sum Sq  Mean Sq F value    Pr(>F)    
+# Lab             5 0.44302 0.088605  9.5904 6.989e-06 ***
+# Lab:Technician  6 0.24748 0.041246  4.4644  0.001786 ** 
+# Residuals      36 0.33260 0.009239                      
+# ---
+# Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+Nous voyons que, dans le cas présent, l'effet technicien ne peut pas être testé. Nous avons l'effet labo et les interactions entre les techniciens et les labos qui sont présentés. Les deux sont significatifs ici. Nous avons à la fois des différences significatives qui apparaissent entre labos, mais aussi, des variation d'un labo à l'autre entre techniciens (interactions).
+
+Nous devons maintenant vérifier la distribution normale des résidus dans ce modèle (Fig.\ \@ref(fig:nestedqqplot)). Ici rien à redire, la distribution est conforme à nos attentes.
+
+<div class="figure" style="text-align: center">
+<img src="11-Variance-II_files/figure-html/nestedqqplot-1.svg" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs hiérarchisés pour la variable `Fat` du jeu de données `eggs`." width="672" />
+<p class="caption">(\#fig:nestedqqplot)Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs hiérarchisés pour la variable `Fat` du jeu de données `eggs`.</p>
+</div>
+
+```
+# [1]  4 25
+```
+
+L'effet qui nous intéresse en priorité est l'effet laboratoire. Effectuons des tests "post hoc" sur cet effet pour déterminer quel(s) laboratoire(s) diffèrent entre eux. Le code que nous utilisons habituellement ne fonctionne pas dans le cas d'un modèle hiérarchisé, mais nous pouvons utiliser la fonction `TukeyHSD()` à la place, en partant d'un modèle simialire créé à l'aide de la fonction `aov()`.
+
+
+```r
+aov. <- aov(data = eggs, Fat ~ Lab + Technician %in% Lab)
+#summary(anovaComp. <- confint(multcomp::glht(aov.,
+#  linfct = multcomp::mcp(Lab = "Tukey"))))
+#.oma <- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)
+(anovaComp. <- TukeyHSD(aov., "Lab"))
+```
+
+```
+#   Tukey multiple comparisons of means
+#     95% family-wise confidence level
+# 
+# Fit: aov(formula = Fat ~ Lab + Technician %in% Lab, data = eggs)
+# 
+# $Lab
+#            diff         lwr          upr     p adj
+# II-I   -0.24000 -0.38459081 -0.095409195 0.0002088
+# III-I  -0.17250 -0.31709081 -0.027909195 0.0116356
+# IV-I   -0.20375 -0.34834081 -0.059159195 0.0019225
+# V-I    -0.22625 -0.37084081 -0.081659195 0.0004902
+# VI-I   -0.31250 -0.45709081 -0.167909195 0.0000021
+# III-II  0.06750 -0.07709081  0.212090805 0.7240821
+# IV-II   0.03625 -0.10834081  0.180840805 0.9733269
+# V-II    0.01375 -0.13084081  0.158340805 0.9997181
+# VI-II  -0.07250 -0.21709081  0.072090805 0.6611505
+# IV-III -0.03125 -0.17584081  0.113340805 0.9861403
+# V-III  -0.05375 -0.19834081  0.090840805 0.8705387
+# VI-III -0.14000 -0.28459081  0.004590805 0.0624025
+# V-IV   -0.02250 -0.16709081  0.122090805 0.9969635
+# VI-IV  -0.10875 -0.25334081  0.035840805 0.2356038
+# VI-V   -0.08625 -0.23084081  0.058340805 0.4817411
+```
+
+```r
+plot(anovaComp.)
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" />
+
+Nous pouvons observer des différences significatives au seuil $\alpha$ de 5% entre le labo I et tous les autres labos. Les autres comparaisons n'apparaissent pas significatives.
+
+
+### Effet aléatoire
+
+Jusqu'à présent, nous avons considéré que nous échantillonnons toutes les modalités qui nous intéressent pour les variables facteurs explicatives. Il se peut que les modalités soient trop nombreuses et que nous ne puissons n'en étudier qu'une petite fraction. Nous avons deux possibilités.
+
+- Soit nous choisissons aléatoirement quelques modalités, et nous les étudions *systématiquement* pour les différentes modalités de l'autre variable. Nous nous ramenons à un modèle à facteurs fixes mais nous ne pouvons donner une réponse que pour les modalités échantillonnées (restriction de la population statistique étudiée).
+
+- Soit, nous échantillonnons aléatoirement dans la population *à chaque* mesure. Donc, entre les différentes mesures, il s'agit de cas différents.
+
+Considérez le plan d'expérience classique en agronomie de l'étude de quatre variétés de blé différentes notées ici A, B, C, et D. Nous voulons déterminer quelle variété est la plus productive dans une région donnée constituée de centaines de fermes susceptibles de cultiver ce blé. Nous n'allons pas pouvoir effectuer des tests dans toutes les fermes. Donc, nous allons **échantillonner** quelques fermes au hasard. Si nous tirons au sort trois fermes, notée X, Y et Z, dans la région considérée, et que nous testons nos quatre variétés de blé dans ces trois fermes, et seulement celles-là, nous revenons vers un modèle à facteur fixe comme antérieurement. Malheureusement, le résultat ne sera pas extrapolable aux autres fermes. Si, par contre, nous tirons trois fermes au hasard pour chaque variété (et donc, chaque variété a été testée potentiellement dans des fermes différentes), nous avons ce qu'on appelle un **facteur aléatoire** pour l'effet ferme. Un modèle sans interactions avec un effet aléatoire s'écrit\ :
+
+$$y_{ijk} = \mu + \tau1_j + \tau2_k + \epsilon_i \mathrm{\ avec\ } \tau2_k \sim N(0, \sigma_{\tau2}) \mathrm{\ et\ } \epsilon_i \sim N(0, \sigma) $$
+
+L'équation du modèle n'a pas changé, mais nous avons maintenant un terme aléatoire supplémentaire, $\tau2_k$ dont il faudra tenir compte dans les calculs. Les hypothèses nulle et alternative pour ce facteur s'écrivent également différemment. Nous n'indiquons plus quelles moyennes de toutes les modalités sont égales (il peut éventuellement y en avoir une infinité possibles), mais que l'écart type de la distribution vaut zéro sour $H_0$\ :
+
+- $H_0: \sigma_{\tau2} = 0$
+- $H_1: \sigma_{\tau2} \neq 0$
+
+Dans R, la fonction `lm()` utilisée jusqu'ici ne prend pas en compte les facteurs aléatoires. Nous devons utiliser la fonction `aov()` par exemple **à condition que le plan d'expérience soit bien balancé**.
+
+- Pour une ANOVA à un facteur aléatoire, nous utiliserons (un facteur aléatoire s'annonce pà l'intérieur de la fonction `Error()`)\ :
+
+
+```r
+aov(data = df, y ~ Error(fact1))
+```
+
+- Pour une ANOVA à deux facteurs croisés sans interactions, et un facteur aléatoire comme dans le cas de notre blé testé dans des fermes tirées *à chaque fois* au hasard, nous utiliserons\ :
+
+
+```r
+aov(data = df, y ~ fact1 + fact2 + Error(fact2))
+```
+
+Voici les données correspondantes à notre étude des quatre variétés de blés.
+
+
+```r
+#ble <- tribble(
+#  ~ferme, ~variété, ~rendement,
+#  F1,     A,        0.327,
+#  F2,     A,        
+#  )
+```
+
+
+
+En cas de rejet de *H_0* pour un facteur aléatoire, il n'existe pas de test "post hoc". Ce genre de test ne signifie pas grand chose dans ce cas, puisque le facteur est aléatoire et que chaque modalité étudiée est considére comme une réalisation au hasard issue de la distribution normale.
+
+

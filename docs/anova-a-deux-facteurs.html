@@ -301,6 +301,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="11.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html"><i class="fa fa-check"></i><b>11.1</b> ANOVA à deux facteurs</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html#modele-sans-interactions"><i class="fa fa-check"></i><b>11.1.1</b> Modèle sans interactions</a></li>
 <li class="chapter" data-level="11.1.2" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html#modele-croise-complet"><i class="fa fa-check"></i><b>11.1.2</b> Modèle croisé complet</a></li>
+<li class="chapter" data-level="11.1.3" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html#facteurs-hierarchises"><i class="fa fa-check"></i><b>11.1.3</b> Facteurs hiérarchisés</a></li>
+<li class="chapter" data-level="11.1.4" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html#effet-aleatoire"><i class="fa fa-check"></i><b>11.1.4</b> Effet aléatoire</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Corrélation</a><ul>
@@ -556,6 +558,166 @@ Faites attention à deux pièges fréquents. Le premier concerne les mesures mul
 Le second piège est en relation avec le premier. Avez-vous <em>réellement</em> besoin de deux facteurs ? Votre question porte sur la comparaison des trois populations. La comparaisons d’une lame à l’autre au sein de même individu n’est peut-être pas dans vos préoccupations (sinon, voyez le modèle imbriqué plus bas). Alors vous pouvez simplifier votre analyse en considérant la moyenne des 10 dénombrement comme mesure de départ (notée <code>m10</code> par exemple) et faire une ANOVA à un seul facteur de cette variable en fonction des populations avec la formule <code>m10 ~ pop</code>.
 </p>
 </div>
+<div id="conditions-dapplication-9" class="section level5 unnumbered">
+<h5>Conditions d’application</h5>
+<p>Les conditions d’application sont les mêmes que pour l’ANOVA à deux facteurs sans interactions, sauf qu’ici, les interactions sont bien évidemment permises.</p>
+</div>
+<div id="pour-en-savoir-plus-20" class="section level5 unnumbered">
+<h5>Pour en savoir plus</h5>
+<ul>
+<li>Un blog en français qui explique l’<a href="https://statistique-et-logiciel-r.com/anova-a-2-facteurs-principe/">ANOVA à deux facteurs</a> de manière plus détaillée qu’ici. Ensuite la <a href="https://statistique-et-logiciel-r.com/anova-a-2-facteurs-avec-r-tutoriel/">résolution de leur exemple dans R</a>. Enfin, des suggestions pour annoter un graphique et <a href="https://statistique-et-logiciel-r.com/comparaison-de-moyennes-indiquer-les-differences-significatives-sur-le-graph/">indiquer quelles sont les différences qui sont significatives dessus</a>.</li>
+</ul>
+</div>
+</div>
+<div id="facteurs-hierarchises" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> Facteurs hiérarchisés</h3>
+<p>Nous n’avons pas toujours la possibilité de croiser les deux facteurs. Considérons le cas d’une étude d’intercalibration. Nous avons un ou plusieurs échantillons répartis entre plusieurs laboratoires, et comme les analyses dépendent éventuellement aussi du technicien qui fait la mesure, nous demandons à chaque laboratoire de répéter les mesures avec deux de leurs techniciens. Problème : ici, il s’agit bien évidemment de techniciens <em>différents</em> dans chaque laboratoire. Comment faire, sachant que pour le modèle croisé, il faudrait que les deux <em>mêmes</em> techniciens aient fait toutes les mesures <em>dans tous</em> les laboratoires ?</p>
+<p>La solution est le modèle à facteurs hiérarchisés qui s’écrit :</p>
+<p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k(\tau1_j) + \epsilon_i \mathrm{\ avec\ } \ \epsilon_i \sim N(0, \sigma) \]</span></p>
+<p>… et dans R, nous utiliserons la formule suivante :</p>
+<p><span class="math display">\[y \sim fact1 + fact2\ \%in\%\ fact2\]</span></p>
+<p>Voici un exemple concret. Un gros échantillon d’oeufs déshydratés homogène est réparti entre six laboratoires différents en vue de la détermination de la teneur en matières grasses dans cet échantillon. Le but de la manoeuvre est de déterminer si les laboratoires donnent des résultats consistants. Les deux techniciens de chaque laboratoire sont labellés <code>one</code> et <code>two</code>, mais ce sont en fait à chaque fois des techniciens <em>différents</em> dans chaque laboratoire<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eggs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;eggs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;faraway&quot;</span>)
+skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre></div>
+<pre><code># Skim summary statistics
+#  n obs: 48 
+#  n variables: 4 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
+#    variable missing complete  n n_unique                 top_counts
+#         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
+#      Sample       0       48 48        2        G: 24, H: 24, NA: 0
+#  Technician       0       48 48        2    one: 24, two: 24, NA: 0
+#  ordered
+#    FALSE
+#    FALSE
+#    FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
+#       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
+<p>Commençons par corriger l’encodage erroné des techniciens qui ferait penser que seulement deux personnes ont travaillé dans l’ensemble des six laboratoires.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">eggs <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">Technician =</span> <span class="kw">interaction</span>(Lab, Technician)) -&gt;<span class="st"> </span>eggs
+skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre></div>
+<pre><code># Skim summary statistics
+#  n obs: 48 
+#  n variables: 4 
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
+#    variable missing complete  n n_unique
+#         Lab       0       48 48        6
+#      Sample       0       48 48        2
+#  Technician       0       48 48       12
+#                           top_counts ordered
+#  I: 8, II: 8, III: 8, IV: 8            FALSE
+#         G: 24, H: 24, NA: 0            FALSE
+#                           I.o: 4, II   FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
+#       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
+<p>Nous avons à présent douze techniciens notés <code>I.one</code>, <code>I.two</code>, <code>II.one</code>, <code>II.two</code>, … Nous pouvons visualiser ces données. Comme nous n’avons que quatre réplicats par technicien, nous nous limitons à la représentation des observations de départ et des moyennes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> eggs, Fat <span class="op">~</span><span class="st"> </span>Lab <span class="op">%col=%</span><span class="st"> </span>Technician) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(eggs, Lab, Technician) <span class="op">%&gt;.%</span>
+<span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(Fat, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
+    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>Lab), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:nested"></span>
+<img src="11-Variance-II_files/figure-html/nested-1.svg" alt="Mesures de fractions en matières grasses dans des oeufs dans six laboratoires, par douze techniciens différents. Les points rouges sont les moyennes par technicien." width="672" />
+<p class="caption">
+Figure 11.5: Mesures de fractions en matières grasses dans des oeufs dans six laboratoires, par douze techniciens différents. Les points rouges sont les moyennes par technicien.
+</p>
+</div>
+<p>Vérifions l’homoscédasticité. Ici, il suffit de considérer la variable <code>Technician</code> (une fois correctement encodée !). Nous utiliserons un seuil <span class="math inline">\(\alpha\)</span> classique de 5% pour l’ensemble de nos tests dans cette étude.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> eggs, Fat <span class="op">~</span><span class="st"> </span>Technician)</code></pre></div>
+<pre><code># 
+#   Bartlett test of homogeneity of variances
+# 
+# data:  Fat by Technician
+# Bartlett&#39;s K-squared = 13.891, df = 11, p-value = 0.2391</code></pre>
+<p>Avec une valeur <em>P</em> de 23,9%, nous pouvons considérer qu’il y a homoscédasticité. Voilà l’ANOVA (utilisez le “snippet” <code>two-way ANOVA (nested model)</code> le menu contextuel <code>hypothesis tests: means</code> que vous obtenez en tapant <code>.hm</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> eggs, Fat <span class="op">~</span><span class="st"> </span>Lab <span class="op">+</span><span class="st"> </span>Technician <span class="op">%in%</span><span class="st"> </span>Lab))</code></pre></div>
+<pre><code># Analysis of Variance Table
+# 
+# Response: Fat
+#                Df  Sum Sq  Mean Sq F value    Pr(&gt;F)    
+# Lab             5 0.44302 0.088605  9.5904 6.989e-06 ***
+# Lab:Technician  6 0.24748 0.041246  4.4644  0.001786 ** 
+# Residuals      36 0.33260 0.009239                      
+# ---
+# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Nous voyons que, dans le cas présent, l’effet technicien ne peut pas être testé. Nous avons l’effet labo et les interactions entre les techniciens et les labos qui sont présentés. Les deux sont significatifs ici. Nous avons à la fois des différences significatives qui apparaissent entre labos, mais aussi, des variation d’un labo à l’autre entre techniciens (interactions).</p>
+<p>Nous devons maintenant vérifier la distribution normale des résidus dans ce modèle (Fig. <a href="anova-a-deux-facteurs.html#fig:nestedqqplot">11.6</a>). Ici rien à redire, la distribution est conforme à nos attentes.</p>
+<div class="figure" style="text-align: center"><span id="fig:nestedqqplot"></span>
+<img src="11-Variance-II_files/figure-html/nestedqqplot-1.svg" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs hiérarchisés pour la variable `Fat` du jeu de données `eggs`." width="672" />
+<p class="caption">
+Figure 11.6: Graphique quantile-quantile des résidus pour l’ANOVA à deux facteurs hiérarchisés pour la variable <code>Fat</code> du jeu de données <code>eggs</code>.
+</p>
+</div>
+<pre><code># [1]  4 25</code></pre>
+<p>L’effet qui nous intéresse en priorité est l’effet laboratoire. Effectuons des tests “post hoc” sur cet effet pour déterminer quel(s) laboratoire(s) diffèrent entre eux. Le code que nous utilisons habituellement ne fonctionne pas dans le cas d’un modèle hiérarchisé, mais nous pouvons utiliser la fonction <code>TukeyHSD()</code> à la place, en partant d’un modèle simialire créé à l’aide de la fonction <code>aov()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aov. &lt;-<span class="st"> </span><span class="kw">aov</span>(<span class="dt">data =</span> eggs, Fat <span class="op">~</span><span class="st"> </span>Lab <span class="op">+</span><span class="st"> </span>Technician <span class="op">%in%</span><span class="st"> </span>Lab)
+<span class="co">#summary(anovaComp. &lt;- confint(multcomp::glht(aov.,</span>
+<span class="co">#  linfct = multcomp::mcp(Lab = &quot;Tukey&quot;))))</span>
+<span class="co">#.oma &lt;- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)</span>
+(anovaComp. &lt;-<span class="st"> </span><span class="kw">TukeyHSD</span>(aov., <span class="st">&quot;Lab&quot;</span>))</code></pre></div>
+<pre><code>#   Tukey multiple comparisons of means
+#     95% family-wise confidence level
+# 
+# Fit: aov(formula = Fat ~ Lab + Technician %in% Lab, data = eggs)
+# 
+# $Lab
+#            diff         lwr          upr     p adj
+# II-I   -0.24000 -0.38459081 -0.095409195 0.0002088
+# III-I  -0.17250 -0.31709081 -0.027909195 0.0116356
+# IV-I   -0.20375 -0.34834081 -0.059159195 0.0019225
+# V-I    -0.22625 -0.37084081 -0.081659195 0.0004902
+# VI-I   -0.31250 -0.45709081 -0.167909195 0.0000021
+# III-II  0.06750 -0.07709081  0.212090805 0.7240821
+# IV-II   0.03625 -0.10834081  0.180840805 0.9733269
+# V-II    0.01375 -0.13084081  0.158340805 0.9997181
+# VI-II  -0.07250 -0.21709081  0.072090805 0.6611505
+# IV-III -0.03125 -0.17584081  0.113340805 0.9861403
+# V-III  -0.05375 -0.19834081  0.090840805 0.8705387
+# VI-III -0.14000 -0.28459081  0.004590805 0.0624025
+# V-IV   -0.02250 -0.16709081  0.122090805 0.9969635
+# VI-IV  -0.10875 -0.25334081  0.035840805 0.2356038
+# VI-V   -0.08625 -0.23084081  0.058340805 0.4817411</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(anovaComp.)</code></pre></div>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Nous pouvons observer des différences significatives au seuil <span class="math inline">\(\alpha\)</span> de 5% entre le labo I et tous les autres labos. Les autres comparaisons n’apparaissent pas significatives.</p>
+</div>
+<div id="effet-aleatoire" class="section level3">
+<h3><span class="header-section-number">11.1.4</span> Effet aléatoire</h3>
+<p>Jusqu’à présent, nous avons considéré que nous échantillonnons toutes les modalités qui nous intéressent pour les variables facteurs explicatives. Il se peut que les modalités soient trop nombreuses et que nous ne puissons n’en étudier qu’une petite fraction. Nous avons deux possibilités.</p>
+<ul>
+<li><p>Soit nous choisissons aléatoirement quelques modalités, et nous les étudions <em>systématiquement</em> pour les différentes modalités de l’autre variable. Nous nous ramenons à un modèle à facteurs fixes mais nous ne pouvons donner une réponse que pour les modalités échantillonnées (restriction de la population statistique étudiée).</p></li>
+<li><p>Soit, nous échantillonnons aléatoirement dans la population <em>à chaque</em> mesure. Donc, entre les différentes mesures, il s’agit de cas différents.</p></li>
+</ul>
+<p>Considérez le plan d’expérience classique en agronomie de l’étude de quatre variétés de blé différentes notées ici A, B, C, et D. Nous voulons déterminer quelle variété est la plus productive dans une région donnée constituée de centaines de fermes susceptibles de cultiver ce blé. Nous n’allons pas pouvoir effectuer des tests dans toutes les fermes. Donc, nous allons <strong>échantillonner</strong> quelques fermes au hasard. Si nous tirons au sort trois fermes, notée X, Y et Z, dans la région considérée, et que nous testons nos quatre variétés de blé dans ces trois fermes, et seulement celles-là, nous revenons vers un modèle à facteur fixe comme antérieurement. Malheureusement, le résultat ne sera pas extrapolable aux autres fermes. Si, par contre, nous tirons trois fermes au hasard pour chaque variété (et donc, chaque variété a été testée potentiellement dans des fermes différentes), nous avons ce qu’on appelle un <strong>facteur aléatoire</strong> pour l’effet ferme. Un modèle sans interactions avec un effet aléatoire s’écrit :</p>
+<p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k + \epsilon_i \mathrm{\ avec\ } \tau2_k \sim N(0, \sigma_{\tau2}) \mathrm{\ et\ } \epsilon_i \sim N(0, \sigma) \]</span></p>
+<p>L’équation du modèle n’a pas changé, mais nous avons maintenant un terme aléatoire supplémentaire, <span class="math inline">\(\tau2_k\)</span> dont il faudra tenir compte dans les calculs. Les hypothèses nulle et alternative pour ce facteur s’écrivent également différemment. Nous n’indiquons plus quelles moyennes de toutes les modalités sont égales (il peut éventuellement y en avoir une infinité possibles), mais que l’écart type de la distribution vaut zéro sour <span class="math inline">\(H_0\)</span> :</p>
+<ul>
+<li><span class="math inline">\(H_0: \sigma_{\tau2} = 0\)</span></li>
+<li><span class="math inline">\(H_1: \sigma_{\tau2} \neq 0\)</span></li>
+</ul>
+<p>Dans R, la fonction <code>lm()</code> utilisée jusqu’ici ne prend pas en compte les facteurs aléatoires. Nous devons utiliser la fonction <code>aov()</code> par exemple <strong>à condition que le plan d’expérience soit bien balancé</strong>.</p>
+<ul>
+<li>Pour une ANOVA à un facteur aléatoire, nous utiliserons (un facteur aléatoire s’annonce pà l’intérieur de la fonction <code>Error()</code>) :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aov</span>(<span class="dt">data =</span> df, y <span class="op">~</span><span class="st"> </span><span class="kw">Error</span>(fact1))</code></pre></div>
+<ul>
+<li>Pour une ANOVA à deux facteurs croisés sans interactions, et un facteur aléatoire comme dans le cas de notre blé testé dans des fermes tirées <em>à chaque fois</em> au hasard, nous utiliserons :</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aov</span>(<span class="dt">data =</span> df, y <span class="op">~</span><span class="st"> </span>fact1 <span class="op">+</span><span class="st"> </span>fact2 <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(fact2))</code></pre></div>
+<p>Voici les données correspondantes à notre étude des quatre variétés de blés.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#ble &lt;- tribble(</span>
+<span class="co">#  ~ferme, ~variété, ~rendement,</span>
+<span class="co">#  F1,     A,        0.327,</span>
+<span class="co">#  F2,     A,        </span>
+<span class="co">#  )</span></code></pre></div>
+<p>En cas de rejet de <em>H_0</em> pour un facteur aléatoire, il n’existe pas de test “post hoc”. Ce genre de test ne signifie pas grand chose dans ce cas, puisque le facteur est aléatoire et que chaque modalité étudiée est considére comme une réalisation au hasard issue de la distribution normale.</p>
 
 </div>
 </div>
@@ -565,6 +727,7 @@ Le second piège est en relation avec le premier. Avez-vous <em>réellement</em>
 <ol start="1">
 <li id="fn1"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="anova-a-deux-facteurs.html#fnref1">↩</a></p></li>
 <li id="fn2"><p>De plus, nous avons ici un <strong>plan balancé</strong> puisque le nombre de répliquats pour chaque niveau est le même. C’est une situation optimale qu’il faut toujours chercher à atteindre pour une ANOVA, même si un nombre différent d’observations par niveau est également accepté.<a href="anova-a-deux-facteurs.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>La variable <code>Sample valant</code>G<code>ou</code>H` ne sera pas utilisée ici. En fait, au départ, les initiateurs de l’expérience ont fait croire aux laboratoires qu’il s’agissait de deux échantillons différents alors que c’est le même en réalité.<a href="anova-a-deux-facteurs.html#fnref3">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
