@@ -520,5 +520,3 @@ Voici les données correspondantes à notre étude des quatre variétés de blé
 
 
 En cas de rejet de *H_0* pour un facteur aléatoire, il n'existe pas de test "post hoc". Ce genre de test ne signifie pas grand chose dans ce cas, puisque le facteur est aléatoire et que chaque modalité étudiée est considére comme une réalisation au hasard issue de la distribution normale.
-
-
