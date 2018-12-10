@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>10.4 Test de Kruskal-Wallis | Science des données biologiques, UMONS</title>
+  <title>11.2 Modèle sans interactions | Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="10.4 Test de Kruskal-Wallis | Science des données biologiques, UMONS />
+  <meta property="og:title" content="11.2 Modèle sans interactions | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.4 Test de Kruskal-Wallis | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="11.2 Modèle sans interactions | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="test-post-hoc.html">
-<link rel="next" href="sciences-des-donnees-et-litterature.html">
+<link rel="prev" href="anova-a-deux-facteurs.html">
+<link rel="next" href="modele-croise-complet.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -377,131 +377,147 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="test-de-kruskal-wallis" class="section level2">
-<h2><span class="header-section-number">10.4</span> Test de Kruskal-Wallis</h2>
-<p>Les conditions d’application de l’ANOVA sont assez restrictives, en particuliers l’homoscédasticité et le normalité des résidus. Dans notre example, nous avons pu stabiliser la variance par une transformation puissance cinq, mais la distribution des résidus n’est pas optimale. Nous pouvons tout aussi bien décider de nous orienter vers la version non paramétrique équivalente : le <strong>test de Kruskal-Wallis</strong>.</p>
-<div class="warning">
-<p>
-Le raisonnement entre ANOVA (test paramétrique) et Kruska-Wallis (test non paramétrique) est le même qu’entre le test de Student ou celui de Wilcoxon. Lorsque les conditions sont remplies, l’ANOVA est un test plus puissant à utiliser en priorité. Nous le préfèrerons donc, sauf dans les cas impossibles où aucune transformation des données ne permet d’obtenir une distribution acceptable des résidus et des variances.
+<div id="modele-sans-interactions" class="section level2">
+<h2><span class="header-section-number">11.2</span> Modèle sans interactions</h2>
+<p>La version la plus simple consiste à considérer simplement deux facteurs <em>successivement</em>, c’est-à-dire que la variance est décomposée d’abord selon le premier facteur, et ensuite selon le second.</p>
+<p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k + \epsilon_i \mathrm{\ avec\ } \epsilon \sim N(0, \sigma)\]</span></p>
+<p>avec <span class="math inline">\(\tau1_j\)</span> correspondant à l’écart de la moyenne générale <span class="math inline">\(µ\)</span> à la moyenne selon la j<sup>ème</sup> population pour la variable <code>fact1</code>, et <span class="math inline">\(\tau2_k\)</span> correspondant à l’écart vers le k<sup>ème</sup> niveau d’une seconde variable <code>fact2</code>. La formule qui spécifie ce modèle dans R avec les trois variables <code>y</code>, <code>fact1</code> et <code>fact2</code> s’écrit :</p>
+<p><span class="math display">\[y \sim fact1 + fact2\]</span></p>
+<p>Notez que, quel que soit le niveau considéré pour <span class="math inline">\(\tau1\)</span>, un niveau donné de <span class="math inline">\(\tau2\)</span> est constant dans l’équation qui décrit ce modèle. Cela signifie que l’on considère que les écarts pour les moyennes de la variable <code>fact2</code> sont toujours les mêmes depuis les moyennes de <code>fact1</code>. Donc, si une sous-population de <code>fact2</code> tend à avoir une moyenne, disons, supérieure pour la première sous-population de <code>fact1</code>, elle sera considérée comme ayant les mêmes écarts pour toutes les autres sous-populations de <code>fact1</code>. Evidemment, cette condition n’est pas toujours rencontrée dans la pratique. Le <strong>graphique des interactions</strong> (Fig. <a href="modele-sans-interactions.html#fig:interactions">11.1</a>) permet de visualiser les écarts des moyennes respectives des différentes sous-populations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read</span>(<span class="st">&quot;crabs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;MASS&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">aspect =</span> <span class="kw">labelise</span>(
+    <span class="kw">as.numeric</span>(rear <span class="op">/</span><span class="st"> </span>width),
+    <span class="st">&quot;Ratio largeur arrière / max&quot;</span>, <span class="dt">units =</span> <span class="ot">NA</span>)) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">aspect5 =</span> <span class="kw">labelise</span>(
+    aspect<span class="op">^</span><span class="dv">5</span>,
+    <span class="st">&quot;(Ratio largeur arrière /max)^5&quot;</span>, <span class="dt">units =</span> <span class="ot">NA</span>)) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">select</span>(., species, sex, aspect, aspect5) -&gt;
+<span class="st">  </span>crabs2
+<span class="co"># Graphique de base pour visualiser les interactions</span>
+<span class="co">#chart$base(interaction.plot(crabs2$species, crabs2$sex, crabs2$aspect5))</span>
+<span class="co"># Version avec ggplot2</span>
+crabs2 <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">group_by</span>(., species, sex) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">summarise</span>(., <span class="dt">aspect5_groups =</span> <span class="kw">mean</span>(aspect5)) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">print</span>(.) <span class="op">%&gt;.%</span><span class="st"> </span><span class="co"># Tableau des moyennes par groupes</span>
+<span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., aspect5_groups <span class="op">~</span><span class="st"> </span>species <span class="op">%col=%</span><span class="st"> </span>sex <span class="op">%group=%</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre><code># # A tibble: 4 x 3
+# # Groups:   species [?]
+#   species sex   aspect5_groups
+#   &lt;fct&gt;   &lt;fct&gt;          &lt;dbl&gt;
+# 1 B       F            0.00727
+# 2 B       M            0.00363
+# 3 O       F            0.00811
+# 4 O       M            0.00427</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:interactions"></span>
+<img src="11-Variance-II_files/figure-html/interactions-1.svg" alt="Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu'il n'y a pas d'interactions, comme c'est le cas ici." width="672" />
+<p class="caption">
+Figure 11.1: Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu’il n’y a pas d’interactions, comme c’est le cas ici.
 </p>
 </div>
-<p>Le test de Kruskal-Wallis va comparer la localisation des points sur l’axe plutôt que les moyennes. Nous travaillons ici sur les <strong>rangs</strong>. La transformation en rangs consiste à ranger les observations de la plus petite à la plus grande et à remplacer les valeurs par leur position (leur rang) dans ce classement. Les ex-aequos reçoivent des rangs équivalents. Un petit exemple :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Un échantillon</span>
-x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">2.1</span>, <span class="fl">0.5</span>, <span class="fl">2.4</span>, <span class="fl">2.1</span>, <span class="fl">3.5</span>)
-<span class="co"># Tri par ordre croissant</span>
-<span class="kw">sort</span>(x)</code></pre></div>
-<pre><code># [1] 0.5 2.1 2.1 2.4 3.5 4.5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remplacement par les rangs</span>
-<span class="kw">rank</span>(<span class="kw">sort</span>(x))</code></pre></div>
-<pre><code># [1] 1.0 2.5 2.5 4.0 5.0 6.0</code></pre>
-<p>Donc 0,5 donne 1, 2,1 apparait deux fois en position 2 et 3, donc on leurs attribue à tous les deux le rang 2,5. 2,4 est remplacé par 4, 3,5 par 5 et enfin 4,5 est remplacé par 6.</p>
-<p>Dans le test de Kruskal-Wallis, sous <span class="math inline">\(H_0\)</span> nous avons le même rang moyen (noté <span class="math inline">\(mr\)</span>) pour chaque groupe parmi <span class="math inline">\(k\)</span>. Sous <span class="math inline">\(H_1\)</span>, au moins deux groupes ont des rangs moyens différents.</p>
-<ul>
-<li><p><span class="math inline">\(H_0:mr_1 = mr_2 = ... = mr_k\)</span></p></li>
-<li><p><span class="math inline">\(H_1: \exists(i, j) \mathrm{\ tel\ que\ } mr_i \neq mr_j\)</span></p></li>
-</ul>
-<p>Nous ne détaillons pas les calculs (mais voyez <a href="http://vassarstats.net/textbook/ch14a.html">ici</a>). Le calcul aboutit en fait à une valeur de <span class="math inline">\(\chi^2_{obs}\)</span> à <span class="math inline">\(k - 1\)</span> degrés de liberté lorsque <em>k</em> populations sont comparées. Ainsi, nous avons déjà un loi de distribution théorique pour le calcul de la valeur <em>P</em>. La zone de rejet est située à la droite de la distribution comme dans le cas de l’ANOVA et du test de <span class="math inline">\(\chi^2\)</span>.</p>
-<p>Le test est réalisé dans R avec la fonction <code>kruskal.test()</code>. Notez que les arguments sont les mêmes que pour l’ANOVA à un facteur. Un “snippet” est disponible dans la SciViews Box (<code>.hn</code> pour <code>hypothesis tests: nonparametric</code>, ensuite <code>Kruskal-Wallis test</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kruskal.test</span>(<span class="dt">data =</span> crabs2, aspect <span class="op">~</span><span class="st"> </span>group)</code></pre></div>
+<p>Au niveau de la description préliminaire des données, nous pourrons utiliser un tableau qui résume la moyenne, l’écart type et le nombre d’observations pout chaque combinaison des deux variables facteurs. Le template de ce code est disponible dans un “snippet” à partir du menu <code>hypothesis tests: means</code> ou <code>.hm</code>, et ensuite <code>two-way ANOVA (description)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">group_by</span>(., species, sex) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">summarise</span>(., <span class="dt">mean =</span> <span class="kw">mean</span>(aspect5), <span class="dt">sd =</span> <span class="kw">sd</span>(aspect5), <span class="dt">count =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(aspect5)))</code></pre></div>
+<pre><code># # A tibble: 4 x 5
+# # Groups:   species [?]
+#   species sex      mean      sd count
+#   &lt;fct&gt;   &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
+# 1 B       F     0.00727 0.00115    50
+# 2 B       M     0.00363 0.00124    50
+# 3 O       F     0.00811 0.00138    50
+# 4 O       M     0.00427 0.00130    50</code></pre>
+<p>Pour la visualisation graphique, nous sommes tributaires du nombre d’observations. Avec moins d’une petite dizaine d’observations, nous représenterons des points pour chaque observation et superposerons les moyennes. Lorsque le nombre est plus grand nous pourrons utiliser soit les boites de dispersion, soit le graphique en violon si ce nombre est encore plus grand. Voyons cela sur notre exemple (les “snippets” dans le menu <code>chart: bivariate</code> peuvent être utilisés comme point de départ auquel nous ajoutons la seconde variable facteur pour les facettes multi-graphiques séparée par un <code>|</code>). La Fig. <a href="modele-sans-interactions.html#fig:crabs2boxplot">11.2</a> montre ce que cela donne si l’on opte pour les boites de dispersion.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:crabs2boxplot"></span>
+<img src="11-Variance-II_files/figure-html/crabs2boxplot-1.svg" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version simple." width="672" />
+<p class="caption">
+Figure 11.2: Taille relative de la carapace à l’arrière de crabes <em>L. variegatus</em> (deux variétés et deux sexes), version simple.
+</p>
+</div>
+<p>La Fig. <a href="modele-sans-interactions.html#fig:crabs2boxplot2">11.3</a> est une version améliorée avec les observations et les moyennes pour chaque sous-groupe ajoutées au graphique selon la même technique que nous avions utilisé pour représenter les données pour l’ANOVA à un facteur.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(crabs2, species, sex) <span class="op">%&gt;.%</span>
+<span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(aspect5, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
+    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>species), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:crabs2boxplot2"></span>
+<img src="11-Variance-II_files/figure-html/crabs2boxplot2-1.svg" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version annotée." width="672" />
+<p class="caption">
+Figure 11.3: Taille relative de la carapace à l’arrière de crabes <em>L. variegatus</em> (deux variétés et deux sexes), version annotée.
+</p>
+</div>
+<p>Maintenant que nous avons décrit correctement nos données par rapport à l’analyse que nous souhaitons faire, nous pouvons réaliser notre ANOVA à deux facteurs. Nous devons vérifier l’homoscédasticité, mais le test de Batlett que nous réalisons revient au même que celui que nous avons fait en décomposant toutes les sous-populations. Comme nous n’avons pas nécessairement ce calcul réalisé (la variable <code>group</code> que nous avions calculée au module <a href="variance.html#variance">10</a>), nous utilisons la fonction <code>interaction()</code> qui effectue ce calcul pour nous directement dans la formule :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(species, sex))</code></pre></div>
 <pre><code># 
-#   Kruskal-Wallis rank sum test
+#   Bartlett test of homogeneity of variances
 # 
-# data:  aspect by group
-# Kruskal-Wallis chi-squared = 139.68, df = 3, p-value &lt; 2.2e-16</code></pre>
-<p>Ici, nous rejettons <span class="math inline">\(H_0\)</span> au seuil <span class="math inline">\(\alpha\)</span> de 5%. Nous pouvons dire qu’il y a au moins une différence significative entre les ratios au seuil <span class="math inline">\(\alpha\)</span> de 5% (test Kruskal-Wallis, <span class="math inline">\(\chi^2\)</span> = 140, ddl = 3, valeur <em>P</em> &lt;&lt; 10<sup>-3</sup>).</p>
-<div id="conditions-dapplication-7" class="section level5 unnumbered">
+# data:  aspect5 by interaction(species, sex)
+# Bartlett&#39;s K-squared = 1.7948, df = 3, p-value = 0.6161</code></pre>
+<p>Si vous comparez avec le test que nous avions fait dans le cas de l’ANOVA à un facteur sur la variable <code>group</code>, vous constaterez qu’il donne exectement le même résultat. Nous continuons avec notre ANOVA. Nous avons un “snippet” pour cela dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code> qui se nomme <code>two-way ANOVA (without interactions)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">+</span><span class="st"> </span>sex))</code></pre></div>
+<pre><code># Analysis of Variance Table
+# 
+# Response: aspect5
+#            Df     Sum Sq    Mean Sq F value    Pr(&gt;F)    
+# species     1 0.00002753 0.00002753   17.15  5.12e-05 ***
+# sex         1 0.00069935 0.00069935  435.66 &lt; 2.2e-16 ***
+# Residuals 197 0.00031624 0.00000161                      
+# ---
+# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Comme la variance est décomposée en trois étapes (selon l’espèce, puis selon le sexe, puis les résidus), nous avons trois lignes dans le tableau de l’ANOVA. Nous effectuons deux tests. Le premier consiste à comparer les carrés moyens (<code>Mean Sq</code>) pour l’espèce par rapport aux résidus. Donc, la valeur <code>F</code> est le ratio de la somme des carrés <code>species</code> divisé par la somme des carrés des résidus, et cette valeur est reportée sur la loi de distribution théorique <em>F</em> pour obtenir une première valeur <em>P</em> (ici 5,12 . 10<sup>-5</sup>). De même, le second test qui s’intéresse au sexe calcule la valeur <em>F</em> via la ratio de la somme des carrés pour <code>sex</code> divisé par la somme des carrés des résidus, et la loi <em>F</em> nous permet de calculer une seconde valeur <em>P</em> (ici 2,2 . 10<sup>-16</sup>).</p>
+<p>Nous interprétons chacun des deux tests séparément. Dans notre cas, nous pouvons dire avec un seuil <span class="math inline">\(\alpha\)</span> de 5% que nous rejettons <span class="math inline">\(H_0\)</span> dans les deux cas. Donc le rapport largeur arrière sur largeur max de la carapace est significativement différent au seuil <span class="math inline">\(\alpha\)</span> de 5% à la fois en fonction de l’espèce (F = 17,15, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001) et du sexe (F = 436, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001)<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>La suite logique consiste à réaliser des tests “post hoc”. Ils ne sont pas vraiment nécessaires ici puisque nous n’avons que deux niveaux pour chacune des deux variables, mais nous les réalisons quand même pour montrer le code correspondant. Un template est accessible via le “snippet” <code>anova - multiple comparisons [multcomp]</code> du menu <code>.hm</code>. Pensez juste à rajouter le second facteur <code>sex</code> dans les arguments de la fonction <code>mcp()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(anovaComp. &lt;-<span class="st"> </span><span class="kw">confint</span>(multcomp<span class="op">::</span><span class="kw">glht</span>(anova.,
+  <span class="dt">linfct =</span> multcomp<span class="op">::</span><span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Tukey&quot;</span>, <span class="dt">sex =</span> <span class="st">&quot;Tukey&quot;</span>)))) <span class="co"># Add a second factor if you want</span></code></pre></div>
+<pre><code># 
+#    Simultaneous Tests for General Linear Hypotheses
+# 
+# Multiple Comparisons of Means: Tukey Contrasts
+# 
+# 
+# Fit: lm(formula = aspect5 ~ species + sex, data = crabs2)
+# 
+# Linear Hypotheses:
+#                       Estimate Std. Error t value Pr(&gt;|t|)    
+# species: O - B == 0  0.0007420  0.0001792   4.141 0.000102 ***
+# sex: M - F == 0     -0.0037399  0.0001792 -20.872  &lt; 1e-10 ***
+# ---
+# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+# (Adjusted p values reported -- single-step method)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.oma &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">oma =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>)); <span class="kw">plot</span>(anovaComp.); <span class="kw">par</span>(.oma); <span class="kw">rm</span>(.oma)</code></pre></div>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-4-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p>Ceci confirme que les différences sont significatives au seuil <span class="math inline">\(\alpha\)</span> de 5%. Il ne nous reste plus qu’à vérifier la distribution des résidus de l’ANOVA pour que notre analyse soit complète (Fig. <a href="modele-sans-interactions.html#fig:anova2-resid">11.4</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:anova2-resid"></span>
+<img src="11-Variance-II_files/figure-html/anova2-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs sans interactions de `aspect^5`." width="672" />
+<p class="caption">
+Figure 11.4: Graphique quantile-quantile des résidus pour l’ANOVA à deux facteurs sans interactions de <code>aspect^5</code>.
+</p>
+</div>
+<pre><code># [1]  65 103</code></pre>
+<p>Encore une fois, nous voyons que les résidus sont quasiment les mêmes que précédemment, mais cela n’aurait pas été le cas si une interaction existait. La distribution s’éloigne un peu d’une Gaussienne pour les valeurs élevées surtout. Mais comme l’ANOVA est robuste à ce critère, et que l’homoscédasticité a été vérifiée sur la tranformation puissance 5 de notre variable, nous pouvons conserver notre analyse moyennant une précaution supplémentaire : vérifier que les valeurs <em>P</em> sont <strong>beaucoup</strong> plus petites que notre seuil comme sécurité supplémentaires contre les approximations liées à la légère violation de la contrainte de distribution normale des résidus. C’est le cas ici, et nous pouvons donc conclure notre analyse.</p>
+<div id="conditions-dapplication-8" class="section level5 unnumbered">
 <h5>Conditions d’application</h5>
-<p>Le test de Kruskal-Wallis est naturellement moins contraignant que l’ANOVA.</p>
 <ul>
 <li>échantillon représentatif (par exemple, aléatoire),</li>
 <li>observations indépendantes,</li>
-<li>variable dite <strong>réponse</strong> quantitative,</li>
-<li>une variable dite <strong>explicative</strong> qualitative à trois niveaux ou plus,</li>
-<li>les distributions au sein des différentes sous-population sont, si possible, similaires mais de forme quelconque.</li>
+<li>variable <strong>réponse</strong> quantitative,</li>
+<li>deux variables <strong>explicatives</strong> qualitatives à deux niveaux ou plus,</li>
+<li>distribution <strong>normale</strong> des résidus <span class="math inline">\(\epsilon_i\)</span>,</li>
+<li><strong>homoscédasticité</strong> (même variance intragroupes),</li>
+<li>pas d’<strong>interactions</strong> entre les deux variables explicatives.</li>
 </ul>
 </div>
-<div id="test-post-hoc-non-parametrique" class="section level3">
-<h3><span class="header-section-number">10.4.1</span> Test “post hoc” non paramétrique</h3>
-<p>Nous devrions également réaliser des tests “pot hoc” lorsque nous rejettons <span class="math inline">\(H_0\)</span> du Kruskal-Wallis. Les version non paramétriques des tests de comparaisons multiples sont moins connus. Nous pourrions effectuer des comparaisons deux à deux avec des tests de Wilcoxon en appliquant une correction de Bonferroni.</p>
-<p>Une autre option consiste à utiliser une version non paramétrique du test de Tukey basée sur les rangs, dit test pot hoc non paramétrique asymptotique. Les explications assez techniques sont disponibles <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/1521-4036%28200109%2943%3A5%3C553%3A%3AAID-BIMJ553%3E3.0.CO%3B2-N">ici</a>. Ce test est également disponible dans la SciViews Box depuis <code>.hn</code>, en sélectionnant l’entrée <code>Kruskal-Wallis: multiple comparisons</code> dans le menu déroulant.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(kw_comp. &lt;-<span class="st"> </span>nparcomp<span class="op">::</span><span class="kw">nparcomp</span>(<span class="dt">data =</span> crabs2, aspect <span class="op">~</span><span class="st"> </span>group))</code></pre></div>
-<pre><code># 
-#  #------Nonparametric Multiple Comparisons for relative contrast effects-----# 
-#  
-#  - Alternative Hypothesis:  True relative contrast effect p is less or equal than 1/2 
-#  - Type of Contrast : Tukey 
-#  - Confidence level: 95 % 
-#  - Method = Logit - Transformation 
-#  - Estimation Method: Pairwise rankings 
-#  
-#  #---------------------------Interpretation----------------------------------# 
-#  p(a,b) &gt; 1/2 : b tends to be larger than a 
-#  #---------------------------------------------------------------------------# 
-#  
-# 
-#  #------------Nonparametric Multiple Comparisons for relative contrast effects----------# 
-#  
-#  - Alternative Hypothesis:  True relative contrast effect p is less or equal than 1/2 
-#  - Estimation Method: Global Pseudo ranks 
-#  - Type of Contrast : Tukey 
-#  - Confidence Level: 95 % 
-#  - Method = Logit - Transformation 
-#  
-#  - Estimation Method: Pairwise rankings 
-#  
-#  #---------------------------Interpretation--------------------------------------------# 
-#  p(a,b) &gt; 1/2 : b tends to be larger than a 
-#  #-------------------------------------------------------------------------------------# 
-#  
-#  #----Data Info-------------------------------------------------------------------------# 
-#   Sample Size
-# 1    B-F   50
-# 2    B-M   50
-# 3    O-F   50
-# 4    O-M   50
-# 
-#  #----Contrast--------------------------------------------------------------------------# 
-#           B-F B-M O-F O-M
-# B-M - B-F  -1   1   0   0
-# O-F - B-F  -1   0   1   0
-# O-M - B-F  -1   0   0   1
-# O-F - B-M   0  -1   1   0
-# O-M - B-M   0  -1   0   1
-# O-M - O-F   0   0  -1   1
-# 
-#  #----Analysis--------------------------------------------------------------------------# 
-#       Comparison Estimator Lower Upper Statistic      p.Value
-# 1 p( B-F , B-M )     0.017 0.004 0.070 -7.229567 1.552980e-12
-# 2 p( B-F , O-F )     0.695 0.542 0.815  3.257267 6.084974e-03
-# 3 p( B-F , O-M )     0.051 0.018 0.137 -7.014700 9.799161e-12
-# 4 p( B-M , O-F )     0.990 0.949 0.998  7.210499 1.743827e-12
-# 5 p( B-M , O-M )     0.654 0.501 0.781  2.606445 4.826269e-02
-# 6 p( O-F , O-M )     0.027 0.008 0.088 -7.385440 4.359846e-13
-# 
-#  #----Overall---------------------------------------------------------------------------# 
-#   Quantile      p.Value
-# 1 2.594705 4.359846e-13
-# 
-#  #--------------------------------------------------------------------------------------#</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(kw_comp.)</code></pre></div>
-<p><img src="10-Variance_files/figure-html/unnamed-chunk-15-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<p>La présentation des résultats est plus détaillée que pour le HSD de Tukey. Le graphique est très imilaire. Ici, toutes les différences sont considérées comme significatives, même si la comparaison des mâles <code>B-M - O-M</code> avec une valeur <em>P</em> tout juste significative de 0,049 est à prendre avec des pincettes étant donné sa proximité du seuil.</p>
-<p>Au final que conclure ? Lorsque l’ANOVA peut être utilisée, elle est à préférer. Ici avec une transformation puissance cinq, nous stabilisons la variance qui est le critère le plus sensible. De plus tant avec l’ANOVA qu’avec le Kruskal-Wallis, nous détectons des différences significatives. Les tests “post hoc” nous indiquent des différences significatives au seuil <span class="math inline">\(\alpha\)</span> de 5% sauf peut-être pour les mâles (il faudrait prévoir des mesures supplémentaires pour confirmer ou infirmer à ce niveau).</p>
-<div id="a-vous-de-jouer-20" class="section level5 unnumbered">
-<h5>A vous de jouer</h5>
-<div class="bdd">
-<p>
-Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :
-</p>
-<pre><code>BioDataScience::run(&quot;10b_anova_kruskal&quot;)</code></pre>
 </div>
-<div class="bdd">
-<p>
-Appliquez l’analyse de variances ou le test de Kruskal-Wallis dans vos projets portant sur la biométrie humaine et sur le zooplankton.
-</p>
-</div>
-</div>
-</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="modele-sans-interactions.html#fnref1">↩</a></p></li>
+</ol>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -528,8 +544,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="test-post-hoc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sciences-des-donnees-et-litterature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="anova-a-deux-facteurs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modele-croise-complet.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -559,7 +575,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/10-Variance.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/11-Variance-II.Rmd",
 "text": "Editer"
 },
 "history": {

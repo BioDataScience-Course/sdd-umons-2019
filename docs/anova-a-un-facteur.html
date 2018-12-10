@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-12-08">
+<meta name="date" content="2018-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -298,9 +298,13 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="10.5" data-path="sciences-des-donnees-et-litterature.html"><a href="sciences-des-donnees-et-litterature.html"><i class="fa fa-check"></i><b>10.5</b> Sciences des données et littérature</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="variance2.html"><a href="variance2.html"><i class="fa fa-check"></i><b>11</b> Variance II</a><ul>
-<li class="chapter" data-level="11.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html"><i class="fa fa-check"></i><b>11.1</b> ANOVA à deux facteurs</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html#facteurs-croises-sans-interactions"><i class="fa fa-check"></i><b>11.1.1</b> Facteurs croisés sans interactions</a></li>
+<li class="chapter" data-level="11.1" data-path="anova-a-deux-facteurs.html"><a href="anova-a-deux-facteurs.html"><i class="fa fa-check"></i><b>11.1</b> ANOVA à deux facteurs</a></li>
+<li class="chapter" data-level="11.2" data-path="modele-sans-interactions.html"><a href="modele-sans-interactions.html"><i class="fa fa-check"></i><b>11.2</b> Modèle sans interactions</a></li>
+<li class="chapter" data-level="11.3" data-path="modele-croise-complet.html"><a href="modele-croise-complet.html"><i class="fa fa-check"></i><b>11.3</b> Modèle croisé complet</a></li>
+<li class="chapter" data-level="11.4" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html"><i class="fa fa-check"></i><b>11.4</b> Facteurs hiérarchisés</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html#simplification-du-modele"><i class="fa fa-check"></i><b>11.4.1</b> Simplification du modèle</a></li>
 </ul></li>
+<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Corrélation</a><ul>
 <li class="chapter" data-level="12.1" data-path="graphiques-a-faire-et-ne-pas-faire.html"><a href="graphiques-a-faire-et-ne-pas-faire.html"><i class="fa fa-check"></i><b>12.1</b> Graphiques : à faire et ne pas faire</a></li>
@@ -486,7 +490,7 @@ Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio da
 </p>
 <pre><code>BioDataScience::run(&quot;10a_anova&quot;)</code></pre>
 </div>
-<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>.</p>
+<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="references.html#fn50" class="footnoteRef" id="fnref50"><sup>50</sup></a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:fplot"></span>
 <img src="10-Variance_files/figure-html/fplot-1.svg" alt="Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)." width="672" />
 <p class="caption">
@@ -563,7 +567,7 @@ Figure 10.6: Graphique quantile-quantile appliqué aux résidus d’une ANOVA po
 Figure 10.7: Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes <em>L. variegatus</em>.
 </p>
 </div>
-<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> :</p>
+<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="references.html#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a> :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">group_by</span>(., group) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">summarise</span>(.,
@@ -609,9 +613,9 @@ Figure 10.8: Graphique quantile-quantile des résidus pour l’analyse de <code>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref3">↩</a></p></li>
-<li id="fn4"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref4">↩</a></p></li>
+<ol start="50">
+<li id="fn50"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref50">↩</a></p></li>
+<li id="fn51"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref51">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

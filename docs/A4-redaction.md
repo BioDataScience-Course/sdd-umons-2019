@@ -68,7 +68,7 @@ Package version:
   haven_1.1.2         highr_0.7           Hmisc_4.1-1        
   hms_0.4.2           htmlTable_1.12      htmltools_0.3.6    
   htmlwidgets_1.3     httr_1.3.1          igraph_1.2.2       
-  jsonlite_1.5        knitr_1.20          labeling_0.3       
+  jsonlite_1.6        knitr_1.20          labeling_0.3       
   lattice_0.20-35     latticeExtra_0.6-28 lazyeval_0.2.1     
   lubridate_1.7.4     magrittr_1.5        markdown_0.8       
   MASS_7.3-50         Matrix_1.2-14       methods_3.4.4      

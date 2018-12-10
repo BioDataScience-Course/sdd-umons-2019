@@ -27,10 +27,10 @@ $$y \sim fact$$
 
 avec $y$ la variable numérique réponse et $fact$ la variable facteur explicative unique.
 
-Si nous prenons notre exemple des crabes *L. variegatus*, nous avions travaillé un peu artificiellement sur une seule variable facteur en regroupant les variables `species` et `sex` en une seule variable `group`. Qu'en est-il si nous voulons quand même considérer les deux variables `species` et `sex` séparément\ ? c'est possible avec une **ANOVA à deux facteurs**.
+Si nous prenons notre exemple des crabes *L. variegatus*, nous avions travaillé un peu artificiellement sur une seule variable facteur en regroupant les variables `species` et `sex` en une seule variable `group`. Qu'en est-il si nous voulons quand même considérer les deux variables `species` et `sex` séparément\ ? c'est possible avec une **ANOVA à deux facteurs**. Les sections suivantes vous présentent quelques variantes possibles de cette analyse.
 
 
-### Modèle sans interactions
+## Modèle sans interactions
 
 La version la plus simple consiste à considérer simplement deux facteurs *successivement*, c'est-à-dire que la variance est décomposée d'abord selon le premier facteur, et ensuite selon le second.
 
@@ -226,7 +226,7 @@ Encore une fois, nous voyons que les résidus sont quasiment les mêmes que pré
 - pas d'**interactions** entre les deux variables explicatives.
 
 
-### Modèle croisé complet
+## Modèle croisé complet
 
 Le modèle ANOVA que nous venons de faire s'appelle un **modèle croisé** parce que les mesures sont effectuées pour chaque combinaison des niveaux des deux variables facteurs explicatives, et ce, de manière indépendante (les observations d'un niveau ne sont pas dépendantes de celles d'un autre niveau)^[De plus, nous avons ici un **plan balancé** puisque le nombre de répliquats pour chaque niveau est le même. C'est une situation optimale qu'il faut toujours chercher à atteindre pour une ANOVA, même si un nombre différent d'observations par niveau est également accepté.].
 
@@ -281,8 +281,7 @@ anova(anova. <- lm(data = crabs2, aspect5 ~ species * sex))
 Notre analyse confirme qu'il n'y a pas d'interactions. La valeur *P* (0,57) en regard du terme `species:sex` correspondant est très largement supérieure à $\alpha$ de 5%. Notez aussi que les tests relatifs à `species` et `sex` donnent des valeurs différentes de notre modèle sans interactions. Les différences entre les deux seront d'autant plus importantes que les interactions sont fortes. Les conclusions restent les mêmes que précédemment, et ici, nous démontrons par un test d'hypothèse que les interactions ne sont pas significatives. Naturellement, la description des données, les vérifications (homoscédasticité, distribution normale ou quasi-normale des résidus) et les analyses "post-hoc" en cas de rejet de $H_0$ sont à réaliser ici aussi. Nous les avons déjà faites plus haut à peu de choses prêt (les résutats seront ici très proches de ceux du modèle sans interactions, puisque ces dernières sont négligeables).
 
 <div class="warning">
-<p>Faites attention à deux pièges fréquents. Le premier concerne les mesures multiples sur les <em>mêmes</em> individus. Par exemple, si vous étudiez trois populations avec disons, cinq répliquats par population et que vous dénombrez des cellules marquées sur dix coupes histologiques réalisées chaque fois dans un organe du <em>même</em> individu, vous aurez 3x5x10 = 150 mesures, mais vous ne pouvez pas utiliser une ANOVA à deux facteurs croisés car les 150 observations ne sont pas indépendantes les unes des autres. Vous n'avez jamais mesuré que 15 individus au total. Si vous analysez ces données comme si vous en aviez mesuré 150, <strong>votre analyse sera incorrecte</strong>. Il s'agit ici d'une erreur qui s'appelle la <strong>pseudo-réplication</strong>.</p>
-<p>Le second piège est en relation avec le premier. Avez-vous <em>réellement</em> besoin de deux facteurs ? Votre question porte sur la comparaison des trois populations. La comparaisons d'une lame à l'autre au sein de même individu n'est peut-être pas dans vos préoccupations (sinon, voyez le modèle imbriqué plus bas). Alors vous pouvez simplifier votre analyse en considérant la moyenne des 10 dénombrement comme mesure de départ (notée <code>m10</code> par exemple) et faire une ANOVA à un seul facteur de cette variable en fonction des populations avec la formule <code>m10 ~ pop</code>.</p>
+<p>Faites attention à un piège fréquent lorsque vous avez des mesures multiples sur les <em>mêmes</em> individus. Par exemple, si vous étudiez trois populations avec disons, cinq réplicats par population et que vous dénombrez des cellules marquées sur dix coupes histologiques réalisées chaque fois dans un organe du <em>même</em> individu, vous aurez 3x5x10 = 150 mesures, mais vous ne pouvez pas utiliser une ANOVA à deux facteurs croisés car les 150 observations ne sont pas indépendantes les unes des autres. Vous n'avez jamais mesuré que 15 individus au total. Si vous analysez ces données comme si vous en aviez mesuré 150, <strong>votre analyse sera incorrecte</strong>. Il s'agit ici d'une erreur qui s'appelle la <strong>pseudo-réplication</strong>. Vous devrez utiliser d'autres modèles comme le modèle à facteurs hiérarchisés (voir section suivante).</p>
 </div>
 
 
@@ -296,7 +295,7 @@ Les conditions d'application sont les mêmes que pour l'ANOVA à deux facteurs s
 - Un blog en français qui explique l'[ANOVA à deux facteurs](https://statistique-et-logiciel-r.com/anova-a-2-facteurs-principe/) de manière plus détaillée qu'ici. Ensuite la [résolution de leur exemple dans R](https://statistique-et-logiciel-r.com/anova-a-2-facteurs-avec-r-tutoriel/). Enfin, des suggestions pour annoter un graphique et [indiquer quelles sont les différences qui sont significatives dessus](https://statistique-et-logiciel-r.com/comparaison-de-moyennes-indiquer-les-differences-significatives-sur-le-graph/).
 
 
-### Facteurs hiérarchisés
+## Facteurs hiérarchisés
 
 Nous n'avons pas toujours la possibilité de croiser les deux facteurs. Considérons le cas d'une étude d'intercalibration. Nous avons un ou plusieurs échantillons répartis entre plusieurs laboratoires, et comme les analyses dépendent éventuellement aussi du technicien qui fait la mesure, nous demandons à chaque laboratoire de répéter les mesures avec deux de leurs techniciens. Problème\ : ici, il s'agit bien évidemment de techniciens *différents* dans chaque laboratoire. Comment faire, sachant que pour le modèle croisé, il faudrait que les deux *mêmes* techniciens aient fait toutes les mesures *dans tous* les laboratoires\ ?
 
@@ -321,7 +320,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -331,7 +330,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -350,7 +349,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -360,7 +359,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -428,14 +427,11 @@ Nous devons maintenant vérifier la distribution normale des résidus dans ce mo
 # [1]  4 25
 ```
 
-L'effet qui nous intéresse en priorité est l'effet laboratoire. Effectuons des tests "post hoc" sur cet effet pour déterminer quel(s) laboratoire(s) diffèrent entre eux. Le code que nous utilisons habituellement ne fonctionne pas dans le cas d'un modèle hiérarchisé, mais nous pouvons utiliser la fonction `TukeyHSD()` à la place, en partant d'un modèle simialire créé à l'aide de la fonction `aov()`.
+L'effet qui nous intéresse en priorité est l'effet laboratoire. Effectuons des tests "post hoc" sur cet effet pour déterminer quel(s) laboratoire(s) diffèrent entre eux. Le code que nous utilisons habituellement ne fonctionne pas dans le cas d'un modèle hiérarchisé, mais nous pouvons utiliser la fonction `TukeyHSD()` à la place, en partant d'un modèle similaire créé à l'aide de la fonction `aov()`.
 
 
 ```r
 aov. <- aov(data = eggs, Fat ~ Lab + Technician %in% Lab)
-#summary(anovaComp. <- confint(multcomp::glht(aov.,
-#  linfct = multcomp::mcp(Lab = "Tukey"))))
-#.oma <- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)
 (anovaComp. <- TukeyHSD(aov., "Lab"))
 ```
 
@@ -473,7 +469,120 @@ plot(anovaComp.)
 Nous pouvons observer des différences significatives au seuil $\alpha$ de 5% entre le labo I et tous les autres labos. Les autres comparaisons n'apparaissent pas significatives.
 
 
-### Effet aléatoire
+### Simplification du modèle
+
+Nous pourrions être tentés de simplifier notre analyse en ne testant *que* l'effet laboratoire. Dans ce cas, nous tomberions dans le piège de la **pseudo-réplication**. Nous pourrions aussi travailler sur la mesure moyenne des mesures pour chaque technicien. Du coup, nous aurions deux valeurs par laboratoire, chaque fois réalisée par un technicien différent. Nous pourrions donc considérer que les données sont indépendantes les unes des autres et nous pourrions réduite le problème à un effet unique, celui du laboratoire.
+
+Si nous n'avons plus que deux mesures par laboratoire au lieu de deux fois quatre, nous gagnons d'un autre côté puisque l'écart type de la moyenne d'un échantillon et l'écart type de la population divisé par la racine carré de *n*. Donc, l'écart type sur les mesures moyennes est alors deux fois plus faible, ce qui se répercutera de manière positive sur l'ANOVA. La distribution des résidus sera une distribution de Student, mais elle est symétrique et pas trop différente d'une distribution normale. Cela pourrait passer. Mais il se peut que la réduction de l'information soit telle que le test perde complètement sa puissance. Illustrons ce phénomène avec le jeu de données `eggs`. Nous créons le jeu de données `eggs_means` reprenant les moyennes des quatre mesures par techinicien dans la variable `Fat_mean.
+
+
+```r
+eggs %>.%
+  group_by(., Technician) %>.%
+  summarise(., Fat_mean = mean(Fat), Lab = unique(Lab)) ->
+  eggs_means
+skimr::skim(eggs_means)
+```
+
+```
+# Skim summary statistics
+#  n obs: 12 
+#  n variables: 3 
+# 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+#    variable missing complete  n n_unique
+#         Lab       0       12 12        6
+#  Technician       0       12 12       12
+#                           top_counts ordered
+#  I: 2, II: 2, III: 2, IV: 2            FALSE
+#                           I.o: 1, II   FALSE
+# 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+#  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
+#  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
+```
+
+
+
+```r
+eggs_means %>.%
+  group_by(., Lab) %>.%
+  summarise(., mean = mean(Fat_mean), sd = sd(Fat_mean), count = sum(!is.na(Fat_mean)))
+```
+
+```
+# # A tibble: 6 x 4
+#   Lab    mean      sd count
+#   <fct> <dbl>   <dbl> <int>
+# 1 I     0.58  0.202       2
+# 2 II    0.34  0.0354      2
+# 3 III   0.408 0.0530      2
+# 4 IV    0.376 0.00177     2
+# 5 V     0.354 0.00884     2
+# 6 VI    0.267 0.131       2
+```
+
+Représentation graphique et vérification de l'homoscédasticité.
+
+
+```r
+chart(eggs_means, Fat_mean ~ Lab) +
+  geom_point() +
+  geom_point(data = group_by(eggs_means, Lab) %>.%
+    summarise(., means = mean(Fat_mean, na.rm = TRUE)),
+    f_aes(means ~ Lab), size = 3, col = "red")
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-15-1.svg" width="672" style="display: block; margin: auto;" />
+
+
+```r
+bartlett.test(data = eggs_means, Fat_mean ~ Lab)
+```
+
+```
+# 
+# 	Bartlett test of homogeneity of variances
+# 
+# data:  Fat_mean by Lab
+# Bartlett's K-squared = 10.452, df = 5, p-value = 0.0634
+```
+
+Analyse de variance à un facteur.
+
+
+```r
+anova(anova. <- lm(data = eggs_means, Fat_mean ~ Lab))
+```
+
+```
+# Analysis of Variance Table
+# 
+# Response: Fat_mean
+#           Df   Sum Sq  Mean Sq F value Pr(>F)
+# Lab        5 0.110756 0.022151  2.1482 0.1895
+# Residuals  6 0.061869 0.010311
+```
+
+
+```r
+anova. %>.%
+  broom::augment(.) %>.%
+  car::qqPlot(.$.std.resid, distribution = "norm",
+    envelope = 0.95, col = "Black", xlab = "Quantiles théoriques (distri. normale)",
+    ylab = "Résidus standardisés")
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-18-1.svg" width="672" style="display: block; margin: auto;" />
+
+```
+# [1] 1 7
+```
+
+Nous n'avons plus d'effet significatif, malgré que le labo I obtient, en moyenne, une mesure beaucoup plus forte que les autres. En fait, en réduisant de la sorte nos données, nous avons perdu tellement d'information que le test a perdu toute puissance et n'est plus capable de détecter de manière significative des différences entre moyennes pourtant importantes. Si nous avions quatre techniciens par labo qui auraient tous dosés les échantillons en duplicats (également huit mesures par labo au total), nous n'aurions pas une perte d'information aussi forte en effectuant quatre moyennes de duplicats par labo, et l'analyse simplifiée aurait peut-être été utilisable. Il faut voir au cas par cas...
+
+
+## Effet aléatoire
 
 Jusqu'à présent, nous avons considéré que nous échantillonnons toutes les modalités qui nous intéressent pour les variables facteurs explicatives. Il se peut que les modalités soient trop nombreuses et que nous ne puissons n'en étudier qu'une petite fraction. Nous avons deux possibilités.
 
@@ -506,17 +615,6 @@ aov(data = df, y ~ Error(fact1))
 aov(data = df, y ~ fact1 + fact2 + Error(fact2))
 ```
 
-Voici les données correspondantes à notre étude des quatre variétés de blés.
-
-
-```r
-#ble <- tribble(
-#  ~ferme, ~variété, ~rendement,
-#  F1,     A,        0.327,
-#  F2,     A,        
-#  )
-```
-
-
+**Suite à faire...**
 
 En cas de rejet de *H_0* pour un facteur aléatoire, il n'existe pas de test "post hoc". Ce genre de test ne signifie pas grand chose dans ce cas, puisque le facteur est aléatoire et que chaque modalité étudiée est considére comme une réalisation au hasard issue de la distribution normale.
