@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>B.1 RStudio | Science des données biologiques, UMONS</title>
+  <title>Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="B.1 RStudio | Science des données biologiques, UMONS />
+  <meta property="og:title" content="Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="B.1 RStudio | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-12-10">
+<meta name="date" content="2018-12-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,7 +36,6 @@
 <link rel="next" href="github-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -55,7 +54,7 @@
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -305,6 +304,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="11.4.1" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html#simplification-du-modele"><i class="fa fa-check"></i><b>11.4.1</b> Simplification du modèle</a></li>
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a></li>
+<li class="chapter" data-level="11.6" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html"><i class="fa fa-check"></i><b>11.6</b> Syntaxe de R</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#indicage-dans-r"><i class="fa fa-check"></i><b>11.6.1</b> Indiçage dans R</a></li>
+<li class="chapter" data-level="11.6.2" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#comparaison-de-styles"><i class="fa fa-check"></i><b>11.6.2</b> Comparaison de styles</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="correlation.html"><a href="correlation.html"><i class="fa fa-check"></i><b>12</b> Corrélation</a><ul>
 <li class="chapter" data-level="12.1" data-path="graphiques-a-faire-et-ne-pas-faire.html"><a href="graphiques-a-faire-et-ne-pas-faire.html"><i class="fa fa-check"></i><b>12.1</b> Graphiques : à faire et ne pas faire</a></li>
@@ -429,7 +432,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <img src="images/annexe_a2/project1.png" />
 
 </div>
-<p>Notez que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l’onglet <strong>Console</strong> (<code>~/shared/projects/mon_premier_projet/</code> dans l’exemple), et que l’onglet <strong>Files</strong> affiche son contenu. Un fichier <code>mon_premier_projet.Rproj</code> y est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet<a href="references.html#fn64" class="footnoteRef" id="fnref64"><sup>64</sup></a>. C’est aussi une excellente façon de repérer qu’un répertoire est la base d’un projet RStudio, en repérant ce fameux fichier <code>.Rproj</code>.</p>
+<p>Notez que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l’onglet <strong>Console</strong> (<code>~/shared/projects/mon_premier_projet/</code> dans l’exemple), et que l’onglet <strong>Files</strong> affiche son contenu. Un fichier <code>mon_premier_projet.Rproj</code> y est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet<a href="references.html#fn66" class="footnoteRef" id="fnref66"><sup>66</sup></a>. C’est aussi une excellente façon de repérer qu’un répertoire est la base d’un projet RStudio, en repérant ce fameux fichier <code>.Rproj</code>.</p>
 <div id="creation-dun-projet" class="section level4">
 <h4><span class="header-section-number">B.1.1.1</span> Création d’un projet</h4>
 <p>Créez votre premier projet en suivant les quatre étapes suivantes :</p>
@@ -580,7 +583,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div id="Rmd" class="section level3">
 <h3><span class="header-section-number">B.1.3</span> R Markdown/R Notebook</h3>
-<p>Un document R Markdown est un fichier dont l’extension est <code>.Rmd</code>. Il combine à la fois des instructions R (pour les analyses) et le langage Markdown (pour le texte). le R Markdown ne vous permet pas de visualiser directement le résultat final d’un rapport d’analyse<a href="references.html#fn65" class="footnoteRef" id="fnref65"><sup>65</sup></a></p>
+<p>Un document R Markdown est un fichier dont l’extension est <code>.Rmd</code>. Il combine à la fois des instructions R (pour les analyses) et le langage Markdown (pour le texte). le R Markdown ne vous permet pas de visualiser directement le résultat final d’un rapport d’analyse<a href="references.html#fn67" class="footnoteRef" id="fnref67"><sup>67</sup></a></p>
 <div class="figure">
 <img src="images/annexe_a2/rmd.gif" />
 
@@ -672,9 +675,9 @@ code > span. { color: #1f1c1b; } /* Normal */
 </div>
 <div class="footnotes">
 <hr />
-<ol start="64">
-<li id="fn64"><p>N’éditer <strong>jamais</strong> à la main un fichier <code>.Rproj</code>. Laisser RStudio s’en occuper tout seul.<a href="rs.html#fnref64">↩</a></p></li>
-<li id="fn65"><p>Les systèmes d’édition professionnels dissocient en effet le fond de la forme : vous rédiger d’abord le contenu, et ensuite, vous indiquer le style à lui appliquer.<a href="rs.html#fnref65">↩</a></p></li>
+<ol start="66">
+<li id="fn66"><p>N’éditer <strong>jamais</strong> à la main un fichier <code>.Rproj</code>. Laisser RStudio s’en occuper tout seul.<a href="rs.html#fnref66">↩</a></p></li>
+<li id="fn67"><p>Les systèmes d’édition professionnels dissocient en effet le fond de la forme : vous rédiger d’abord le contenu, et ensuite, vous indiquer le style à lui appliquer.<a href="rs.html#fnref67">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -723,7 +726,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapaper": false,
+"instapper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -735,10 +738,6 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/A2-utilisation-git.Rmd",
 "text": "Editer"
-},
-"history": {
-"link": null,
-"text": null
 },
 "download": null,
 "toc": {
@@ -754,7 +753,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

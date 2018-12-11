@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>11.6 Syntaxe de R | Science des données biologiques, UMONS</title>
+  <title>Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS />
+  <meta property="og:title" content="Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-12-10">
+<meta name="date" content="2018-12-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,7 +36,6 @@
 <link rel="next" href="correlation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -55,7 +54,7 @@
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -388,7 +387,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Dans cette dernière section du module <a href="variance2.html#variance2">11</a>, nous revenons sur nos outils logiciels. C’est bien de connaître les techniques de visualisation et d’analyse des données, mais c’est encore mieux de pouvoir les appliquer en pratique, … et pour cela il faut maîtriser un ou plusieurs logiciels. Nous avons utilisé principalement <strong>R</strong>, via l’interface proposée par RStudio. Nous allons maintenant approfondir quelque peu nos connaissances en R.</p>
 </div>
 
-<p>Vous avez pu vous rendre compte que R n’est pas qu’un logiciel de science des données. Il comprend également un <strong>langage informatique</strong> du même nom<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> dédié à la manipulation, la visualisation et l’analyse des données.</p>
+<p>Vous avez pu vous rendre compte que R n’est pas qu’un logiciel de science des données. Il comprend également un <strong>langage informatique</strong> du même nom<a href="references.html#fn56" class="footnoteRef" id="fnref56"><sup>56</sup></a> dédié à la manipulation, la visualisation et l’analyse des données.</p>
 <p>Les langages informatiques sont, pour la plupart, conçus autour de standards bien définis. Mais R est toujours resté volontairement très libertaire à ce niveau. Comme R permet également de presque tout redéfinir dans son langage, il est apparu au cours du temps différents styles. Ces styles co-existent et co-existeront encore longtemps car ils ont tous des avantages et des inconvénients, ce qui mène à des choix personnels de chaque utilisateur dictés par l’usage qu’il fait de R, ses goûts, son caractère, et comment il a été formé (à quelle “école” il appartient). Nous n’entrerons pas dans les débats stériles autant que passionnés autour de ces questions de styles. Il est cependant utile de comprendre ces différentes approches au moins dans leurs grandes lignes.</p>
 <p>Aujourd’hui, on peut distinguer principalement trois styles dans R, <a href="http://www.amelia.mn/Syntax-cheatsheet.pdf">résumés dans un aide-mémoire</a> :</p>
 <ul>
@@ -515,6 +514,15 @@ df[df<span class="op">$</span>x <span class="op">&gt;</span><span class="st"> </
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>y</code></pre></div>
 <pre><code># [1] 2 5</code></pre>
 <p>Maintenant que nous sommes familiarisés avec les différents modes d’indiçage dans R de base, nous pouvons les comparer à d’autres styles.</p>
+<div id="a-vous-de-jouer-22" class="section level5 unnumbered">
+<h5>A vous de jouer</h5>
+<div class="bdd">
+<p>
+Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :
+</p>
+<pre><code>BioDataScience::run(&quot;11b_syntaxr&quot;)</code></pre>
+</div>
+</div>
 </div>
 <div id="comparaison-de-styles" class="section level3">
 <h3><span class="header-section-number">11.6.2</span> Comparaison de styles</h3>
@@ -526,13 +534,13 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></d
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -635,7 +643,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></d
 # 15 Malacostracé        121
 # 16 Poecilostomatoïde   158
 # 17 Protiste             50</code></pre>
-<p>Le résultat est le même. Comparons maintenant la fonction <code>table()</code> de base et <code>count()</code> de tidyverse du point de vue des arguments. <code>table()</code> prend un vecteur comme argument. A nous de l’extraire du data frame à l’aide de <code>zoo$class</code>, ce qui donne <code>table(zoo$class)</code>. Par contre, <code>count()</code> comme toute fonction tidyverse qui se respecte, prend comme premier argument un <code>tibble</code> ou un <code>data.frame</code>, bref un tableau cas par variables. C’est ensuite au niveau du second argument que l’on spécifie la variable que nous souhaitons utiliser à partir de ce tableau. Ici, plus besoin d’indiquer que c’est une variable qui vient du tableau <code>zoo</code>, car <code>count()</code> le sait déjà. Enfin, ce n’est peut-être pas évident pour vous, mais <code>count()</code> ne respecte <strong>pas</strong> la syntaxe de base de R et évalue <code>class</code> de manière particulière qui permet de ne pas devoir l’indiquer entre guillements<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>. Au final, l’appel à <code>table()</code> nécessite de comprendre ce que fait l’opérateur <code>$</code>. Au contraire, l’instruction tidyverse <code>count(zoo, class)</code> se lit et se comprend très bien presque comme si c’était écrit en anglais. Vous lisez en effet “compte dans zoo la classe”.</p>
+<p>Le résultat est le même. Comparons maintenant la fonction <code>table()</code> de base et <code>count()</code> de tidyverse du point de vue des arguments. <code>table()</code> prend un vecteur comme argument. A nous de l’extraire du data frame à l’aide de <code>zoo$class</code>, ce qui donne <code>table(zoo$class)</code>. Par contre, <code>count()</code> comme toute fonction tidyverse qui se respecte, prend comme premier argument un <code>tibble</code> ou un <code>data.frame</code>, bref un tableau cas par variables. C’est ensuite au niveau du second argument que l’on spécifie la variable que nous souhaitons utiliser à partir de ce tableau. Ici, plus besoin d’indiquer que c’est une variable qui vient du tableau <code>zoo</code>, car <code>count()</code> le sait déjà. Enfin, ce n’est peut-être pas évident pour vous, mais <code>count()</code> ne respecte <strong>pas</strong> la syntaxe de base de R et évalue <code>class</code> de manière particulière qui permet de ne pas devoir l’indiquer entre guillements<a href="references.html#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a>. Au final, l’appel à <code>table()</code> nécessite de comprendre ce que fait l’opérateur <code>$</code>. Au contraire, l’instruction tidyverse <code>count(zoo, class)</code> se lit et se comprend très bien presque comme si c’était écrit en anglais. Vous lisez en effet “compte dans zoo la classe”.</p>
 
 <div class="note">
 Le style SciViews-R accepte à la fois la syntaxe de base et celle de tidyverse, avec une préférence pour cette dernière lorsque la lisibilité des instructions est primordiale. De plus, le style formule est également abondamment utilisé dès qu’il s’agit de réaliser un graphique ou un modèle statistique (les deux étant d’ailleurs souvent associés).
@@ -687,9 +695,9 @@ zoo2</code></pre></div>
 <!-- </div> -->
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>Historiquement, ce langage s’appelait <strong>S</strong> à l’origine dans les années 1970 alors qu’il a été inventé par John Chambers et ses collègues aux laboratoires Bell. R est une implémentation open source de S écrite dans les années 1990 par Ross Ihaka et Robert Gentleman. Ensuite R a pris de l’importance à tel point qu’on parle maintenant du langage R (sachant bien qu’il s’agit d’un <em>dialecte</em> du langage S).<a href="syntaxe-de-r.html#fnref4">↩</a></p></li>
-<li id="fn5"><p>Cette évaluation particulière s’appelle le “tidyeval”. Son explication est hors propos dans cette introduction à la science des données mais si vous êtes curieux, vous pouvez toujours <a href="https://thinkr.fr/tidyeval/">lire ceci</a>.<a href="syntaxe-de-r.html#fnref5">↩</a></p></li>
+<ol start="56">
+<li id="fn56"><p>Historiquement, ce langage s’appelait <strong>S</strong> à l’origine dans les années 1970 alors qu’il a été inventé par John Chambers et ses collègues aux laboratoires Bell. R est une implémentation open source de S écrite dans les années 1990 par Ross Ihaka et Robert Gentleman. Ensuite R a pris de l’importance à tel point qu’on parle maintenant du langage R (sachant bien qu’il s’agit d’un <em>dialecte</em> du langage S).<a href="syntaxe-de-r.html#fnref56">↩</a></p></li>
+<li id="fn57"><p>Cette évaluation particulière s’appelle le “tidyeval”. Son explication est hors propos dans cette introduction à la science des données mais si vous êtes curieux, vous pouvez toujours <a href="https://thinkr.fr/tidyeval/">lire ceci</a>.<a href="syntaxe-de-r.html#fnref57">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -738,7 +746,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapaper": false,
+"instapper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -750,10 +758,6 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/11-Variance-II.Rmd",
 "text": "Editer"
-},
-"history": {
-"link": null,
-"text": null
 },
 "download": null,
 "toc": {
@@ -769,7 +773,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

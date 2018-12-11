@@ -29,6 +29,12 @@ avec $y$ la variable numérique réponse et $fact$ la variable facteur explicati
 
 Si nous prenons notre exemple des crabes *L. variegatus*, nous avions travaillé un peu artificiellement sur une seule variable facteur en regroupant les variables `species` et `sex` en une seule variable `group`. Qu'en est-il si nous voulons quand même considérer les deux variables `species` et `sex` séparément\ ? c'est possible avec une **ANOVA à deux facteurs**. Les sections suivantes vous présentent quelques variantes possibles de cette analyse.
 
+##### A vous de jouer {-}
+
+<div class="bdd">
+<p>Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;11a_anova2&quot;)</code></pre>
+</div>
 
 ## Modèle sans interactions
 
@@ -199,7 +205,7 @@ summary(anovaComp. <- confint(multcomp::glht(anova.,
 .oma <- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-4-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-5-1.svg" width="672" style="display: block; margin: auto;" />
 
 Ceci confirme que les différences sont significatives au seuil $\alpha$ de 5%. Il ne nous reste plus qu'à vérifier la distribution des résidus de l'ANOVA pour que notre analyse soit complète (Fig.\ \@ref(fig:anova2-resid)).
 
@@ -320,7 +326,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -330,7 +336,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -349,7 +355,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -359,7 +365,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -464,7 +470,7 @@ aov. <- aov(data = eggs, Fat ~ Lab + Technician %in% Lab)
 plot(anovaComp.)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-12-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-13-1.svg" width="672" style="display: block; margin: auto;" />
 
 Nous pouvons observer des différences significatives au seuil $\alpha$ de 5% entre le labo I et tous les autres labos. Les autres comparaisons n'apparaissent pas significatives.
 
@@ -489,7 +495,7 @@ skimr::skim(eggs_means)
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -497,7 +503,7 @@ skimr::skim(eggs_means)
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
 ```
@@ -533,7 +539,7 @@ chart(eggs_means, Fat_mean ~ Lab) +
     f_aes(means ~ Lab), size = 3, col = "red")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-15-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-16-1.svg" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -573,7 +579,7 @@ anova. %>.%
     ylab = "Résidus standardisés")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-18-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" />
 
 ```
 # [1] 1 7
@@ -916,6 +922,12 @@ df$y
 
 Maintenant que nous sommes familiarisés avec les différents modes d'indiçage dans R de base, nous pouvons les comparer à d'autres styles.
 
+##### A vous de jouer {-}
+
+<div class="bdd">
+<p>Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;11b_syntaxr&quot;)</code></pre>
+</div>
 
 ### Comparaison de styles
 
@@ -934,13 +946,13 @@ skimr::skim(zoo)
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 

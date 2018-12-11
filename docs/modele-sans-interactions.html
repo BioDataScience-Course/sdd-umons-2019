@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>11.2 Modèle sans interactions | Science des données biologiques, UMONS</title>
+  <title>Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="11.2 Modèle sans interactions | Science des données biologiques, UMONS />
+  <meta property="og:title" content="Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.2 Modèle sans interactions | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-12-10">
+<meta name="date" content="2018-12-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,7 +36,6 @@
 <link rel="next" href="modele-croise-complet.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -55,7 +54,7 @@
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -474,7 +473,7 @@ Figure 11.3: Taille relative de la carapace à l’arrière de crabes <em>L. var
 # ---
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Comme la variance est décomposée en trois étapes (selon l’espèce, puis selon le sexe, puis les résidus), nous avons trois lignes dans le tableau de l’ANOVA. Nous effectuons deux tests. Le premier consiste à comparer les carrés moyens (<code>Mean Sq</code>) pour l’espèce par rapport aux résidus. Donc, la valeur <code>F</code> est le ratio de la somme des carrés <code>species</code> divisé par la somme des carrés des résidus, et cette valeur est reportée sur la loi de distribution théorique <em>F</em> pour obtenir une première valeur <em>P</em> (ici 5,12 . 10<sup>-5</sup>). De même, le second test qui s’intéresse au sexe calcule la valeur <em>F</em> via la ratio de la somme des carrés pour <code>sex</code> divisé par la somme des carrés des résidus, et la loi <em>F</em> nous permet de calculer une seconde valeur <em>P</em> (ici 2,2 . 10<sup>-16</sup>).</p>
-<p>Nous interprétons chacun des deux tests séparément. Dans notre cas, nous pouvons dire avec un seuil <span class="math inline">\(\alpha\)</span> de 5% que nous rejettons <span class="math inline">\(H_0\)</span> dans les deux cas. Donc le rapport largeur arrière sur largeur max de la carapace est significativement différent au seuil <span class="math inline">\(\alpha\)</span> de 5% à la fois en fonction de l’espèce (F = 17,15, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001) et du sexe (F = 436, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001)<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
+<p>Nous interprétons chacun des deux tests séparément. Dans notre cas, nous pouvons dire avec un seuil <span class="math inline">\(\alpha\)</span> de 5% que nous rejettons <span class="math inline">\(H_0\)</span> dans les deux cas. Donc le rapport largeur arrière sur largeur max de la carapace est significativement différent au seuil <span class="math inline">\(\alpha\)</span> de 5% à la fois en fonction de l’espèce (F = 17,15, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001) et du sexe (F = 436, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001)<a href="references.html#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a>.</p>
 <p>La suite logique consiste à réaliser des tests “post hoc”. Ils ne sont pas vraiment nécessaires ici puisque nous n’avons que deux niveaux pour chacune des deux variables, mais nous les réalisons quand même pour montrer le code correspondant. Un template est accessible via le “snippet” <code>anova - multiple comparisons [multcomp]</code> du menu <code>.hm</code>. Pensez juste à rajouter le second facteur <code>sex</code> dans les arguments de la fonction <code>mcp()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(anovaComp. &lt;-<span class="st"> </span><span class="kw">confint</span>(multcomp<span class="op">::</span><span class="kw">glht</span>(anova.,
   <span class="dt">linfct =</span> multcomp<span class="op">::</span><span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Tukey&quot;</span>, <span class="dt">sex =</span> <span class="st">&quot;Tukey&quot;</span>)))) <span class="co"># Add a second factor if you want</span></code></pre></div>
@@ -494,7 +493,7 @@ Figure 11.3: Taille relative de la carapace à l’arrière de crabes <em>L. var
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 # (Adjusted p values reported -- single-step method)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.oma &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">oma =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>)); <span class="kw">plot</span>(anovaComp.); <span class="kw">par</span>(.oma); <span class="kw">rm</span>(.oma)</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-4-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-5-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Ceci confirme que les différences sont significatives au seuil <span class="math inline">\(\alpha\)</span> de 5%. Il ne nous reste plus qu’à vérifier la distribution des résidus de l’ANOVA pour que notre analyse soit complète (Fig. <a href="modele-sans-interactions.html#fig:anova2-resid">11.4</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:anova2-resid"></span>
 <img src="11-Variance-II_files/figure-html/anova2-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs sans interactions de `aspect^5`." width="672" />
@@ -519,8 +518,8 @@ Figure 11.4: Graphique quantile-quantile des résidus pour l’ANOVA à deux fac
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="modele-sans-interactions.html#fnref1">↩</a></p></li>
+<ol start="53">
+<li id="fn53"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="modele-sans-interactions.html#fnref53">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -569,7 +568,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapaper": false,
+"instapper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -581,10 +580,6 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/11-Variance-II.Rmd",
 "text": "Editer"
-},
-"history": {
-"link": null,
-"text": null
 },
 "download": null,
 "toc": {
@@ -600,7 +595,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
     script.src = src;

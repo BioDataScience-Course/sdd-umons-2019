@@ -32,6 +32,15 @@ avec $y$ la variable numérique réponse et $fact$ la variable facteur explicati
 
 Si nous prenons notre exemple des crabes *L. variegatus*, nous avions travaillé un peu artificiellement sur une seule variable facteur en regroupant les variables `species` et `sex` en une seule variable `group`. Qu'en est-il si nous voulons quand même considérer les deux variables `species` et `sex` séparément\ ? c'est possible avec une **ANOVA à deux facteurs**. Les sections suivantes vous présentent quelques variantes possibles de cette analyse.
 
+##### A vous de jouer {-}
+
+```{block, type='bdd'}
+
+Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("11a_anova2")
+
+```
 
 ## Modèle sans interactions
 
@@ -477,6 +486,15 @@ df$y
 
 Maintenant que nous sommes familiarisés avec les différents modes d'indiçage dans R de base, nous pouvons les comparer à d'autres styles.
 
+##### A vous de jouer {-}
+
+```{block, type='bdd'}
+
+Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("11b_syntaxr")
+
+```
 
 ### Comparaison de styles
 
