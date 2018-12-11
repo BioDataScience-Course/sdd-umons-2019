@@ -326,7 +326,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -336,7 +336,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -355,7 +355,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -365,7 +365,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -495,7 +495,7 @@ skimr::skim(eggs_means)
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -503,7 +503,7 @@ skimr::skim(eggs_means)
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
 ```
@@ -725,7 +725,7 @@ La troisième forme d'indiçage nécessite que le vecteur soit nommé, comme c'e
 
 
 ```r
-# Element de v s'appelant 'a'
+# Elément de v s'appelant 'a'
 v['a']
 ```
 
@@ -920,14 +920,47 @@ df$y
 # [1] 2 5
 ```
 
+Pour finir, l'indiçage peut aussi être réalisé à la gauche de l'opérateur d'assignation `<-`. Dans ce cas, la partie concernée du vecteur, de la matrice ou du data frame est remplacée par la ou les valeurs de droite.
+
+
+```r
+# Remplacer la troisième colonne par des nouvelles valeurs
+df[ , 3] <- c(-10, -15)
+df
+```
+
+```
+# # A tibble: 2 x 3
+#       x     y     z
+#   <dbl> <dbl> <dbl>
+# 1     1     2   -10
+# 2     4     5   -15
+```
+
+```r
+# Ceci donne le même résultat
+df$z <- c(-10, -15)
+df
+```
+
+```
+# # A tibble: 2 x 3
+#       x     y     z
+#   <dbl> <dbl> <dbl>
+# 1     1     2   -10
+# 2     4     5   -15
+```
+
 Maintenant que nous sommes familiarisés avec les différents modes d'indiçage dans R de base, nous pouvons les comparer à d'autres styles.
+
 
 ##### A vous de jouer {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d'appliquer directement les concepts vus au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;11b_syntaxr&quot;)</code></pre>
 </div>
+
 
 ### Comparaison de styles
 
@@ -937,6 +970,7 @@ Prenons le jeu de données `zooplankton` qui contient 19 mesures (variables num�
 
 
 ```r
+SciViews::R
 zoo <- read("zooplankton", package = "data.io", lang = "FR")
 skimr::skim(zoo)
 ```
@@ -946,13 +980,13 @@ skimr::skim(zoo)
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -1022,10 +1056,24 @@ Si vous voulez réaliser la même opération à l'aide d'une formule, vous pouve
 
 
 ```r
-#mosaic::tally(data = zoo, ~ class)
+mosaic::tally(data = zoo, ~ class)
 ```
 
-Tidyverse favorise l'assemblage d'un petit nombre de fonction (des "verbes") pour obtenir les mêmes résultats que des fonctions plus spécialisées dans les autres styles. Ainsi, ses instructions seront souvent plus verbeuses (inconvénient), mais aussi beaucoup plus lisibles et compréhensibles par un humain (immense avantage). La réalisation d'un tableau de contingence consiste en fait à regrouper les données en fonction de `class`, et ensuite de compter (contingenter) les observations dans chaque classe. Nous pouvons écrire une instruction qui réalise exactement ce traitement de manière explicite (sachant que la fonction `n()` sert à dénombrer)\ :
+```
+# class
+#          Annélide    Appendiculaire         Calanoïde      Chaetognathe 
+#                50                36               288                51 
+#         Cirripède         Cladocère          Cnidaire        Cyclopoïde 
+#                22                50                22                50 
+#          Décapode      Oeuf_allongé         Oeuf_rond           Poisson 
+#               126                50                49                50 
+#       Gastéropode     Harpacticoïde      Malacostracé Poecilostomatoïde 
+#                50                39               121               158 
+#          Protiste 
+#                50
+```
+
+Tidyverse favorise l'assemblage d'un petit nombre de fonction (des "verbes") pour obtenir les mêmes résultats que des fonctions plus spécialisées dans les autres styles. Ainsi, ses instructions seront souvent plus verbeuses (inconvénient), mais aussi beaucoup plus lisibles et compréhensibles par un humain (immense avantage). La réalisation d'un tableau de contingence consiste en fait à regrouper les données en fonction de `class`, et ensuite à compter (contingenter) les observations dans chaque classe. Nous pouvons écrire une instruction qui réalise exactement ce traitement de manière explicite (sachant que la fonction `n()` sert à dénombrer)\ :
 
 
 ```r
@@ -1057,7 +1105,9 @@ zoo %>%
 # 17 Protiste             50
 ```
 
-Nous obtenons un objet `tibble`, et non pas un objet spécifique au traitement réalisé. C'est dans la philosophie de tidyverse que d'utiliser et réutiliser autant que possible un `tibble` qui permet de contenir des données "bien rangées" (ou "tidy data" en anglais, d'où le nom de ce style, **tidy**verse pour "univers bien rangé"). Ce n'est pas toujours le cas, mais comme contingenter des observations est une opération fréquente, il existe exceptionnellement une fonction dédiée qui fait le travail en une seule opération\ : `count()`
+Nous obtenons un objet `tibble`, et non pas un objet spécifique au traitement réalisé. C'est dans la philosophie de tidyverse que d'utiliser et réutiliser autant que possible un `tibble` qui permet de contenir des données "bien rangées" (ou "tidy data" en anglais, d'où le nom de ce style, **tidy**verse pour "univers bien rangé").
+
+Comme contingenter des observations est une opération fréquente, il existe *exceptionnellement* une fonction dédiée qui fait le travail en une seule opération\ : `count()`.
 
 
 ```r
@@ -1087,64 +1137,204 @@ count(zoo, class)
 # 17 Protiste             50
 ```
 
-Le résultat est le même. Comparons maintenant la fonction `table()` de base et `count()` de tidyverse du point de vue des arguments. `table()` prend un vecteur comme argument. A nous de l'extraire du data frame à l'aide de `zoo$class`, ce qui donne `table(zoo$class)`. Par contre, `count()` comme toute fonction tidyverse qui se respecte, prend comme premier argument un `tibble` ou un `data.frame`, bref un tableau cas par variables. C'est ensuite au niveau du second argument que l'on spécifie la variable que nous souhaitons utiliser à partir de ce tableau. Ici, plus besoin d'indiquer que c'est une variable qui vient du tableau `zoo`, car `count()` le sait déjà. Enfin, ce n'est peut-être pas évident pour vous, mais `count()` ne respecte **pas** la syntaxe de base de R et évalue `class` de manière particulière qui permet de ne pas devoir l'indiquer entre guillements^[Cette évaluation particulière s'appelle le "tidyeval". Son explication est hors propos dans cette introduction à la science des données mais si vous êtes curieux, vous pouvez toujours [lire ceci](https://thinkr.fr/tidyeval/).]. Au final, l'appel à `table()` nécessite de comprendre ce que fait l'opérateur `$`. Au contraire, l'instruction tidyverse `count(zoo, class)` se lit et se comprend très bien presque comme si c'était écrit en anglais. Vous lisez en effet "compte dans zoo la classe".
+Le résultat est le même. Comparons maintenant la fonction `table()` de base et `count()` de tidyverse du point de vue des arguments. `table()` prend un vecteur comme argument. A nous de l'extraire du data frame à l'aide de `zoo$class`, ce qui donne `table(zoo$class)`. Par contre, `count()` comme toute fonction tidyverse qui se respecte, prend comme premier argument un `tibble` ou un `data.frame`, bref un tableau cas par variables. C'est ensuite au niveau du second argument que l'on spécifie la variable que nous souhaitons utiliser à partir de ce tableau. Ici, plus besoin d'indiquer que c'est une variable qui vient du tableau `zoo`, car `count()` le sait déjà. Bien que ce ne soit pas évident au premier cou d'œil, `count()` ne respecte **pas** la syntaxe de base de R et évalue `class` de manière particulière^[Cette évaluation particulière s'appelle le "tidyeval". Son explication est hors de propos dans cette introduction à la science des données mais si vous êtes curieux, vous pouvez toujours [lire ceci](https://thinkr.fr/tidyeval/).]. Au final, l'appel à `table()` nécessite de comprendre ce que fait l'opérateur `$`. Au contraire, l'instruction tidyverse `count(zoo, class)` se lit et se comprend très bien presque comme si c'était écrit en anglais. Vous lisez en effet "compte dans zoo la classe" (avantage), mais le coût en est une évaluation non standard de ses arguments (inconvénient qui ne peut pas apparaître à ce stade mais que vous constaterez plus tard quand vous ferez des choses plus évoluées avec ces instructions).
 
-\BeginKnitrBlock{note}<div class="note">Le style SciViews-R accepte à la fois la syntaxe de base et celle de tidyverse, avec une préférence pour cette dernière lorsque la lisibilité des instructions est primordiale. De plus, le style formule est également abondamment utilisé dès qu'il s'agit de réaliser un graphique ou un modèle statistique (les deux étant d'ailleurs souvent associés).</div>\EndKnitrBlock{note}
+\BeginKnitrBlock{note}<div class="note">Le style de SciViews-R accepte à la fois la syntaxe de base et celle de tidyverse, avec une préférence pour cette dernière lorsque la lisibilité des instructions est primordiale. De plus, le style formule est également abondamment utilisé dès qu'il s'agit de réaliser un graphique ou un modèle statistique (les deux étant d'ailleurs souvent associés).</div>\EndKnitrBlock{note}
 
-Bien. Admettons maintenant que nous voulons représenter la forme des oeufs sur un graphique (en utilisant les variables `major` et `minor`) présents dans notre échantillon de zooplancton. Deux niveaux de la variable `class` les contiennent\ : `Oeuf_allongé` et `Oeuf_rond`. Nous voulons donc filtrer les données du tableau `zoo` pour ne garder que ces deux catégories, et éventuellement, nous voulons aussi restreindre le tableau aux trois variables `major`, `minor` et `class` puisque nous n'avons pas besoin des autres variables. En R de base cela peut se faire en une seule étape à l'aide de l'opérateur d'indiçage `[]`.
+Bien. Admettons maintenant que nous voulons représenter la forme (ratio d'aspect, rapport largeur / longueur) des œufs en fonction de leur taille sur un graphique (en utilisant les variables `aspect` et `area`) présents dans notre échantillon de zooplancton. Deux niveaux de la variable `class` les contiennent\ : `Oeuf_allongé` et `Oeuf_rond`. Nous voulons donc filtrer les données du tableau `zoo` pour ne garder que ces deux catégories, et éventuellement, nous voulons aussi restreindre le tableau aux trois variables `aspect`, `area` et `class` puisque nous n'avons pas besoin des autres variables. En R de base cela peut se faire en une seule étape à l'aide de l'opérateur d'indiçage `[]` comme nous avons vu plus haut.
 
 
 ```r
 zoo2 <- zoo[zoo$class == "Oeuf_allongé" | zoo$class == "Oeuf_rond",
-  c("major", "minor", "class")]
+  c("aspect", "area", "class")]
 zoo2
 ```
 
 ```
 # # A tibble: 99 x 3
-#    major minor class       
-#    <dbl> <dbl> <fct>       
-#  1 0.713 0.688 Oeuf_rond   
-#  2 2.81  2.74  Oeuf_rond   
-#  3 0.598 0.576 Oeuf_rond   
-#  4 0.601 0.548 Oeuf_rond   
-#  5 0.657 0.624 Oeuf_rond   
-#  6 0.666 0.639 Oeuf_rond   
-#  7 0.669 0.653 Oeuf_rond   
-#  8 1.21  1.18  Oeuf_rond   
-#  9 1.19  0.532 Oeuf_allongé
-# 10 1.62  1.59  Oeuf_rond   
+#    aspect  area class       
+#     <dbl> <dbl> <fct>       
+#  1  0.965 0.385 Oeuf_rond   
+#  2  0.976 6.04  Oeuf_rond   
+#  3  0.964 0.271 Oeuf_rond   
+#  4  0.911 0.259 Oeuf_rond   
+#  5  0.950 0.322 Oeuf_rond   
+#  6  0.959 0.335 Oeuf_rond   
+#  7  0.976 0.343 Oeuf_rond   
+#  8  0.975 1.11  Oeuf_rond   
+#  9  0.449 0.495 Oeuf_allongé
+# 10  0.987 2.02  Oeuf_rond   
 # # ... with 89 more rows
 ```
 
-...
-
-En tidyverse, les deux opération successives (filtrage des lignes et sélection des varaibles en colonnes) restent deux opération successives distinctes dans le code (ici, nous repassons à l'opérateur de pipe `%>.%` de SciViews-R que nous avons l'habitude d'utiliser à la place de l'opérateur de tidyverse `%>%`).
+En tidyverse, les deux opérations (filtrage des lignes et sélection des variables en colonnes) restent deux opération successives distinctes dans le code. Notez au passage que nous repassons à l'opérateur de chaînage `%>.%` de SciViews-R que nous avons l'habitude d'utiliser à la place de l'opérateur correspondant de tidyverse `%>%`.
 
 
 ```r
 zoo %>.%
   filter(., class == "Oeuf_allongé" | class == "Oeuf_rond") %>.%
-  select(., major, minor, class) ->
+  select(., aspect, area, class) ->
   zoo2
 zoo2
 ```
 
 ```
 # # A tibble: 99 x 3
-#    major minor class       
-#    <dbl> <dbl> <fct>       
-#  1 0.713 0.688 Oeuf_rond   
-#  2 2.81  2.74  Oeuf_rond   
-#  3 0.598 0.576 Oeuf_rond   
-#  4 0.601 0.548 Oeuf_rond   
-#  5 0.657 0.624 Oeuf_rond   
-#  6 0.666 0.639 Oeuf_rond   
-#  7 0.669 0.653 Oeuf_rond   
-#  8 1.21  1.18  Oeuf_rond   
-#  9 1.19  0.532 Oeuf_allongé
-# 10 1.62  1.59  Oeuf_rond   
+#    aspect  area class       
+#     <dbl> <dbl> <fct>       
+#  1  0.965 0.385 Oeuf_rond   
+#  2  0.976 6.04  Oeuf_rond   
+#  3  0.964 0.271 Oeuf_rond   
+#  4  0.911 0.259 Oeuf_rond   
+#  5  0.950 0.322 Oeuf_rond   
+#  6  0.959 0.335 Oeuf_rond   
+#  7  0.976 0.343 Oeuf_rond   
+#  8  0.975 1.11  Oeuf_rond   
+#  9  0.449 0.495 Oeuf_allongé
+# 10  0.987 2.02  Oeuf_rond   
 # # ... with 89 more rows
 ```
 
-Le résultat est le même, mais la syntaxe est très différente.
+Le résultat est le même, mais la syntaxe est très différente. Notez que les variables dans la syntaxe de base sont complètement qualifiées (`zoo$class`), ce qui nécessite de répéter plusieurs fois le nom du jeu de données `zoo` (inconvénient) mais lève toute ambiguïté (avantage). La version de tidyverse est plus "propre" (avantage), mais cela implique d'utiliser une évaluation non standard de `class` qui n'est pas une variable existante dans l'environnement où le code est évalué (inconvénient). La sélection des variables est également différente. Dans R de base, des chaînes de caractères doivent être compilées dans un vecteur d'indiçage à l'aide de `c()`, alors que `select()` de tidyverse permet de spécifier simplement les noms des variables sans autres fioritures (mais cela doit être évalué de manière non standard, encore une fois).
+
+Pour calculer une nouvelle variable, par exemple le logarithme en base 10 de l'aire dans `log_area`, nous ferons comme ceci en R de base\ :
+
+
+```r
+zoo2$log_area <- log10(zoo2$area)
+head(zoo2)
+```
+
+```
+# # A tibble: 6 x 4
+#   aspect  area class     log_area
+#    <dbl> <dbl> <fct>        <dbl>
+# 1  0.965 0.385 Oeuf_rond   -0.414
+# 2  0.976 6.04  Oeuf_rond    0.781
+# 3  0.964 0.271 Oeuf_rond   -0.568
+# 4  0.911 0.259 Oeuf_rond   -0.587
+# 5  0.950 0.322 Oeuf_rond   -0.492
+# 6  0.959 0.335 Oeuf_rond   -0.475
+```
+
+Avec tidyverse, nous savons déjà que `mutate()` est le verbe à employer pour cette opération.
+
+
+```r
+zoo2 <- mutate(zoo2, log_area = log10(area))
+head(zoo2)
+```
+
+```
+# # A tibble: 6 x 4
+#   aspect  area class     log_area
+#    <dbl> <dbl> <fct>        <dbl>
+# 1  0.965 0.385 Oeuf_rond   -0.414
+# 2  0.976 6.04  Oeuf_rond    0.781
+# 3  0.964 0.271 Oeuf_rond   -0.568
+# 4  0.911 0.259 Oeuf_rond   -0.587
+# 5  0.950 0.322 Oeuf_rond   -0.492
+# 6  0.959 0.335 Oeuf_rond   -0.475
+```
+
+La syntaxe de tidyverse se lit mieux et est plus propre (avantage), mais elle nécessite pour y arriver une évaluation non standard de `area`, ce qui est un inconvénient par rapport à la snytaxe R de base.
+
+Pour finir, revenons sur les différents moteurs graphiques pour faire un nuage de points en utilisant différents styles. Une petite précaution supplémentaire est nécessaire. Pour `class`, nous devons préalablement laisser tomber les niveaux non utilisés à l'aide de `droplevels()`.
+
+
+```r
+# Tous les niveaux sont toujours là
+levels(zoo2$class)
+```
+
+```
+#  [1] "Annélide"          "Appendiculaire"    "Calanoïde"        
+#  [4] "Chaetognathe"      "Cirripède"         "Cladocère"        
+#  [7] "Cnidaire"          "Cyclopoïde"        "Décapode"         
+# [10] "Oeuf_allongé"      "Oeuf_rond"         "Poisson"          
+# [13] "Gastéropode"       "Harpacticoïde"     "Malacostracé"     
+# [16] "Poecilostomatoïde" "Protiste"
+```
+
+```r
+# Ne retenir que les niveaux relatifs aux oeufs
+zoo2$class <- droplevels(zoo2$class)
+# C'est mieux
+levels(zoo2$class)
+```
+
+```
+# [1] "Oeuf_allongé" "Oeuf_rond"
+```
+
+Voici un graphe de base... avec également la syntaxe de base\ :
+
+
+```r
+plot(zoo2$log_area, zoo2$aspect, col = zoo2$class)
+legend("bottomright", legend = c("Oeuf allongé", "Oeuf rond"), col = 1:2, pch = 1)
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-47-1.svg" width="672" style="display: block; margin: auto;" />
+
+Le même graphique, mais en utilisant l'interface formule alternative avec `plot()`\ :
+
+
+```r
+plot(data = zoo2, aspect ~ log_area, col = class)
+legend("bottomright", legend = c("Oeuf allongé", "Oeuf rond"), col = 1:2, pch = 1)
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-48-1.svg" width="672" style="display: block; margin: auto;" />
+
+L'interface formule est également employée avec le moteur lattice via la fonction `xyplot()`. Ici, nous utilisons la version `chart()` en appelant `chart$xyplot()`.
+
+
+```r
+chart$xyplot(data = zoo2, aspect ~ log_area, groups = zoo2$class, auto.key = TRUE)
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-49-1.svg" width="672" style="display: block; margin: auto;" />
+
+Dans tidyverse, c'est le moteur graphique ggplot2 qui est utilisé, avec sa syntaxe propre\ :
+
+
+```r
+ggplot(data = zoo2, aes(x = log_area, y = aspect, col = class)) +
+  geom_point()
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-50-1.svg" width="672" style="display: block; margin: auto;" />
+
+Dans SciViews-R, `chart()` utilise aussi par défaut le moteur graphique ggplot2, mais il est plus flexible et permet soit d'utiliser `aes()` comme `ggplot()`, soit une interface formule élargie (c'est-à-dire qu'il est possible d'y inclure d'autres "aesthetics" à l'aide des opérateurs `%aes=%`)\ :
+
+
+```r
+# chart() et aes() 
+chart(data = zoo2, aes(x = log_area, y = aspect, col = class)) +
+  geom_point()
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-51-1.svg" width="672" style="display: block; margin: auto;" />
+
+
+```r
+# chart() avec une formule élargie
+chart(data = zoo2, aspect ~ log_area %col=% class) +
+  geom_point()
+```
+
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-52-1.svg" width="672" style="display: block; margin: auto;" />
+
+Il y aurait encore beaucoup à dire sur les différents styles de syntaxe dans R, mais nous venons de discuter les éléments essentiels. SciViews-R propose d'utiliser un ensemble cohérent d'instructions qui est soigneusement choisi pour rendre l'utilisation de R plus facile (sur base de nos observations des difficultés et erreurs d'apprentissage principales). Il se base sur tidyverse avec une pincée de R de base et une bonne dose de formules là où elles se montrent utiles. Des fonctions et des opérateurs originaux sont ajoutés dans le but d'homogénéiser et/ou clarifier la syntaxe.
+
+> De votre côté, vous êtes libre d'utiliser le style que vous préférez. si la curiosité vous pousse à essayer autre chose et à adopter un autre style que SciViews-R, nous en serons ravis. R est ouvert, il offre beaucoup et c'est à vous maintenant de créer votre propre boite à outils taillée réellement à *votre* mesure\ !
+
+
+##### Pour en savoir plus {-}
+
+- [Swirl](https://swirlstats.com) vous permet d'apprendre la syntaxe de base de R de manière conviviale et interactive. Le site R maintient une page de documents et tutoriaux [ici](https://cran.r-project.org/other-docs.html) (descendez jusqu'à la section concernant les documents en français si vous préférez travailler dans cette langue). Enfin, les [manuels de R](https://cran.r-project.org/manuals.html) sont un peu techniques, mais ils décrivent dans le détail la syntaxe de base.
+
+- [Mosaic](http://mosaic-web.org) est une initiative américaine qui vise en partie un objectif assez similaire à celui de SciViews-R\ : homogénéiser l'interface de R et en faciliter l'apprentissage. [A student's guide to R](https://github.com/ProjectMOSAIC/LittleBooks/blob/master/StudentGuide/MOSAIC-StudentGuide.pdf) est un ouvrage en ligne qui vous apprendra à utiliser R selon le style mosaic qui fait la part belle à l'interface formule.
+
+- La littérature concernant le tidyverse est abondante. Commencez par le [site web](https://www.tidyverse.org) qui pointe également vers [R for Data Science](https://r4ds.had.co.nz) que nous conseillons comme première source pour apprendre R à la sauce tidyverse (une version en français au format papier est également [disponible](https://www.eyrolles.com/Informatique/Livre/r-pour-les-data-sciences-9782212675719/)). Voyez ensuite la page "[learn the tidyverse](https://www.tidyverse.org/learn/)" pour divers ouvrages et autres matériels d'apprentissage.

@@ -696,8 +696,7 @@ factorial(1600)
 ```
 
 ```
-# Warning in factorial(1600): valeur d'argument hors intervalle dans
-# 'gammafn'
+# Warning in factorial(1600): value out of range in 'gammafn'
 ```
 
 ```
