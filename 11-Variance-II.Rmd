@@ -328,7 +328,7 @@ L'équation du modèle n'a pas changé, mais nous avons maintenant un terme alé
 
 Dans R, la fonction `lm()` utilisée jusqu'ici ne prend pas en compte les facteurs aléatoires. Nous devons utiliser la fonction `aov()` par exemple **à condition que le plan d'expérience soit bien balancé**.
 
-- Pour une ANOVA à un facteur aléatoire, nous utiliserons (un facteur aléatoire s'annonce pà l'intérieur de la fonction `Error()`)\ :
+- Pour une ANOVA à un facteur aléatoire, nous utiliserons (un facteur aléatoire s'annonce à l'intérieur de la fonction `Error()`)\ :
 
 ```{r, eval=FALSE}
 aov(data = df, y ~ Error(fact1))
@@ -343,3 +343,42 @@ aov(data = df, y ~ fact1 + fact2 + Error(fact2))
 **Suite à faire...**
 
 En cas de rejet de *H_0* pour un facteur aléatoire, il n'existe pas de test "post hoc". Ce genre de test ne signifie pas grand chose dans ce cas, puisque le facteur est aléatoire et que chaque modalité étudiée est considére comme une réalisation au hasard issue de la distribution normale.
+
+
+## Syntaxe de R
+
+```{block2, type='info'}
+
+Dans cette dernière section du module \@ref(variance2), nous revenons sur nos outils logiciels. C'est bien de connaître les techniques de visualisation et d'analyse des données, mais c'est encore mieux de pouvoir les appliquer en pratique, ... et pour cela il faut maîtriser un ou plusieurs logiciels. Nous avons utilisé principalement **R**, via l'interface proposée par RStudio. Nous allons maintenant approfondir quelque peu nos connaissances en R.
+
+```
+
+Vous avez pu vous rendre compte que R n'est pas qu'un logiciel de science des données. Il comprend également un **langage informatique** du même nom^[Historiquement, ce langage s'appelait **S** à l'origine dans les années 1970 alors qu'il a été inventé par John Chambers et ses collègues aux laboratoires Bell. R est une implémentation open source de S écrite dans les années 1990 par Ross Ihaka et Robert Gentleman. Ensuite R a pris de l'importance à tel point qu'on parle maintenant du langage R (sachant bien qu'il s'agit d'un *dialecte* du langage S).] dédié à la manipulation, la visualisation et l'analyse des données.
+
+Les langages informatiques sont, pour la plupart, conçus autour de standards bien définis. Mais R est toujours resté volontairement très libertaire à ce niveau. Comme R permet également de presque tout redéfinir dans son langage, il est apparu au cours du temps différents styles. Ces styles co-existent et co-existeront encore longtemps car ils ont tous des avantages et des inconvénients, ce qui mène à des choix personnels de chaque utilisateur dictés par l'usage qu'il fait de R, ses goûts, son caractère, et comment il a été formé (à quelle "école" il appartient). Nous n'entrerons pas dans les débats stériles autant que passionnés autour de ces questions de styles. Il est cependant utile de comprendre ces différentes approches au moins dans leurs grandes lignes.
+
+Aujourd'hui, on peut distinguer principalement trois styles dans R, [résumés dans un aide-mémoire](http://www.amelia.mn/Syntax-cheatsheet.pdf)\ :
+
+- La **syntaxe de base** ou **syntaxe dollar** est celle héritée du langage S. Elle fait la part belle aux instructions d'indiçage comme `v[i]` ou `df[i, j]`, et à l'opérateur dollar `$` pour extraire, par exemple la variable `x` du data frame `df` à l'aide de `df$x`, d'où son nom. Une instruction type en R de base sera `fun(df$x, df$y)`. L'objet central est le `data.frame` qui est conçu pour contenir un tableau de données de type cas par variables.
+
+- La **syntaxe formule** qui utilise une formule (objet ressemblant à une équation mathématique et utilisant le tilde `~` pour séparer le membre de gauche et le membre de droite). Nous avons utilisé des formules dans le cadre de graphiques réalisés à l'aide de `chart()` ou pour nos ANOVAs par exemple. Une instruction se présente typiquement comme `fun(y ~ x, data = df)`, même si nous préférons dans SciViews inverser les deux arguments et écrire `fun(data = df, y ~ x)`. La syntaxe formule est souvent associée également à un `data.frame` (l'argument `data =`), même si une liste, un `tibble` (voir ci-dessous) ou tout autre objet similaire peut aussi souvent être utilisé.
+
+- Le **syntaxe "tidyverse"** qui vise à produire des instruction aussi lisibles que possible (lecture proche d'un langage naturel humain). Cette syntaxe utilise quelques astuces de programmation pour rendre les instructions plus digestes et s'affranchir du `df$x` pour pouvoir écrire uniquement `x` à la place. Elle fait également la part belle au chaînage des instructions (opérateur de "pipe") que nous avons étudié à la fin du module \@ref(import). Une instruction type sera `df %>% fun(x, y)`, même si dans SciViews nous préférons l'opérateur plus explicite `%>.%` qui donne `df %>.% fun(., x, y)`. [Tidyverse](https://www.tidyverse.org) est constitué d'un ensemble de packages R qui se conforme à un style bien défini autour d'une version spéciale de data frame appelée `tibble`.
+
+Dans le cadre de ce cours, nous utilisons un style propre à SciViews, le style **SciViews-R**. Il est associé à une série de packages chargés à partir de l'instruction `SciViews::R`. Ce style tente de rendre l'utilisation de R plus cohérente et plus facile en reprenant le meilleur des trois styles précédents, et en y ajoutant une touche personnelle élaborée pour éliminer autant que possible les erreurs fréquentes observées lors de l'apprentissage de R. Dans la suite de cette section, nous allons comparer quelques instructions équivalentes, mais rédigées dans différents styles pour nous familiariser avec eux et pour comprendre leurs atouts respectifs. Assurez-vous de conserver à proximité l'[aide-mémoire sur les différentes syntaxes de R](http://www.amelia.mn/Syntax-cheatsheet.pdf) pour vous aider. Mais avant toute chose, un petit complément concernant l'indiçage dans R est nécessaire.
+
+
+### Indiçage dans R
+
+A faire\ :
+
+- Indiçage sur un vecteur (entiers positifs, entiers négatifs ou vecteur de booléens). Utilisation de tests de condition pour filtrer le vecteur
+- Indiçage sur un data frame ou un tibble. Travail sur les lignes et les colonnes
+- Utilisation du dollar pour extraire une variable
+
+
+### Comparaison de styles
+
+Maintenant que vous maîtrisez l'indiçage dans R de base, nous allons pouvoir réaliser quelques opérations simples sur un jeu de données cas par variables. Nous allons calculer une nouvelle variable, sélectionner des cas et restreindre les variables du tableau pour finir avec une représentation graphique simple. Nous ferons le même travail en utilisant les différents styles de R à des fins de comparaison.
+
+TODO...

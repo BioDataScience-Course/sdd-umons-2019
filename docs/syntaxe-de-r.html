@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>11.5 Effet aléatoire | Science des données biologiques, UMONS</title>
+  <title>11.6 Syntaxe de R | Science des données biologiques, UMONS</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="11.5 Effet aléatoire | Science des données biologiques, UMONS />
+  <meta property="og:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.5 Effet aléatoire | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="facteurs-hierarchises.html">
-<link rel="next" href="syntaxe-de-r.html">
+<link rel="prev" href="effet-aleatoire.html">
+<link rel="next" href="correlation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -381,31 +381,44 @@ code > span. { color: #1f1c1b; } /* Normal */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="effet-aleatoire" class="section level2">
-<h2><span class="header-section-number">11.5</span> Effet aléatoire</h2>
-<p>Jusqu’à présent, nous avons considéré que nous échantillonnons toutes les modalités qui nous intéressent pour les variables facteurs explicatives. Il se peut que les modalités soient trop nombreuses et que nous ne puissons n’en étudier qu’une petite fraction. Nous avons deux possibilités.</p>
+<div id="syntaxe-de-r" class="section level2">
+<h2><span class="header-section-number">11.6</span> Syntaxe de R</h2>
+
+<div class="info">
+<p>Dans cette dernière section du module <a href="variance2.html#variance2">11</a>, nous revenons sur nos outils logiciels. C’est bien de connaître les techniques de visualisation et d’analyse des données, mais c’est encore mieux de pouvoir les appliquer en pratique, … et pour cela il faut maîtriser un ou plusieurs logiciels. Nous avons utilisé principalement <strong>R</strong>, via l’interface proposée par RStudio. Nous allons maintenant approfondir quelque peu nos connaissances en R.</p>
+</div>
+
+<p>Vous avez pu vous rendre compte que R n’est pas qu’un logiciel de science des données. Il comprend également un <strong>langage informatique</strong> du même nom<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a> dédié à la manipulation, la visualisation et l’analyse des données.</p>
+<p>Les langages informatiques sont, pour la plupart, conçus autour de standards bien définis. Mais R est toujours resté volontairement très libertaire à ce niveau. Comme R permet également de presque tout redéfinir dans son langage, il est apparu au cours du temps différents styles. Ces styles co-existent et co-existeront encore longtemps car ils ont tous des avantages et des inconvénients, ce qui mène à des choix personnels de chaque utilisateur dictés par l’usage qu’il fait de R, ses goûts, son caractère, et comment il a été formé (à quelle “école” il appartient). Nous n’entrerons pas dans les débats stériles autant que passionnés autour de ces questions de styles. Il est cependant utile de comprendre ces différentes approches au moins dans leurs grandes lignes.</p>
+<p>Aujourd’hui, on peut distinguer principalement trois styles dans R, <a href="http://www.amelia.mn/Syntax-cheatsheet.pdf">résumés dans un aide-mémoire</a> :</p>
 <ul>
-<li><p>Soit nous choisissons aléatoirement quelques modalités, et nous les étudions <em>systématiquement</em> pour les différentes modalités de l’autre variable. Nous nous ramenons à un modèle à facteurs fixes mais nous ne pouvons donner une réponse que pour les modalités échantillonnées (restriction de la population statistique étudiée).</p></li>
-<li><p>Soit, nous échantillonnons aléatoirement dans la population <em>à chaque</em> mesure. Donc, entre les différentes mesures, il s’agit de cas différents.</p></li>
+<li><p>La <strong>syntaxe de base</strong> ou <strong>syntaxe dollar</strong> est celle héritée du langage S. Elle fait la part belle aux instructions d’indiçage comme <code>v[i]</code> ou <code>df[i, j]</code>, et à l’opérateur dollar <code>$</code> pour extraire, par exemple la variable <code>x</code> du data frame <code>df</code> à l’aide de <code>df$x</code>, d’où son nom. Une instruction type en R de base sera <code>fun(df$x, df$y)</code>. L’objet central est le <code>data.frame</code> qui est conçu pour contenir un tableau de données de type cas par variables.</p></li>
+<li><p>La <strong>syntaxe formule</strong> qui utilise une formule (objet ressemblant à une équation mathématique et utilisant le tilde <code>~</code> pour séparer le membre de gauche et le membre de droite). Nous avons utilisé des formules dans le cadre de graphiques réalisés à l’aide de <code>chart()</code> ou pour nos ANOVAs par exemple. Une instruction se présente typiquement comme <code>fun(y ~ x, data = df)</code>, même si nous préférons dans SciViews inverser les deux arguments et écrire <code>fun(data = df, y ~ x)</code>. La syntaxe formule est souvent associée également à un <code>data.frame</code> (l’argument <code>data =</code>), même si une liste, un <code>tibble</code> (voir ci-dessous) ou tout autre objet similaire peut aussi souvent être utilisé.</p></li>
+<li><p>Le <strong>syntaxe “tidyverse”</strong> qui vise à produire des instruction aussi lisibles que possible (lecture proche d’un langage naturel humain). Cette syntaxe utilise quelques astuces de programmation pour rendre les instructions plus digestes et s’affranchir du <code>df$x</code> pour pouvoir écrire uniquement <code>x</code> à la place. Elle fait également la part belle au chaînage des instructions (opérateur de “pipe”) que nous avons étudié à la fin du module <a href="import.html#import">5</a>. Une instruction type sera <code>df %&gt;% fun(x, y)</code>, même si dans SciViews nous préférons l’opérateur plus explicite <code>%&gt;.%</code> qui donne <code>df %&gt;.% fun(., x, y)</code>. <a href="https://www.tidyverse.org">Tidyverse</a> est constitué d’un ensemble de packages R qui se conforme à un style bien défini autour d’une version spéciale de data frame appelée <code>tibble</code>.</p></li>
 </ul>
-<p>Considérez le plan d’expérience classique en agronomie de l’étude de quatre variétés de blé différentes notées ici A, B, C, et D. Nous voulons déterminer quelle variété est la plus productive dans une région donnée constituée de centaines de fermes susceptibles de cultiver ce blé. Nous n’allons pas pouvoir effectuer des tests dans toutes les fermes. Donc, nous allons <strong>échantillonner</strong> quelques fermes au hasard. Si nous tirons au sort trois fermes, notée X, Y et Z, dans la région considérée, et que nous testons nos quatre variétés de blé dans ces trois fermes, et seulement celles-là, nous revenons vers un modèle à facteur fixe comme antérieurement. Malheureusement, le résultat ne sera pas extrapolable aux autres fermes. Si, par contre, nous tirons trois fermes au hasard pour chaque variété (et donc, chaque variété a été testée potentiellement dans des fermes différentes), nous avons ce qu’on appelle un <strong>facteur aléatoire</strong> pour l’effet ferme. Un modèle sans interactions avec un effet aléatoire s’écrit :</p>
-<p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k + \epsilon_i \mathrm{\ avec\ } \tau2_k \sim N(0, \sigma_{\tau2}) \mathrm{\ et\ } \epsilon_i \sim N(0, \sigma) \]</span></p>
-<p>L’équation du modèle n’a pas changé, mais nous avons maintenant un terme aléatoire supplémentaire, <span class="math inline">\(\tau2_k\)</span> dont il faudra tenir compte dans les calculs. Les hypothèses nulle et alternative pour ce facteur s’écrivent également différemment. Nous n’indiquons plus quelles moyennes de toutes les modalités sont égales (il peut éventuellement y en avoir une infinité possibles), mais que l’écart type de la distribution vaut zéro sour <span class="math inline">\(H_0\)</span> :</p>
+<p>Dans le cadre de ce cours, nous utilisons un style propre à SciViews, le style <strong>SciViews-R</strong>. Il est associé à une série de packages chargés à partir de l’instruction <code>SciViews::R</code>. Ce style tente de rendre l’utilisation de R plus cohérente et plus facile en reprenant le meilleur des trois styles précédents, et en y ajoutant une touche personnelle élaborée pour éliminer autant que possible les erreurs fréquentes observées lors de l’apprentissage de R. Dans la suite de cette section, nous allons comparer quelques instructions équivalentes, mais rédigées dans différents styles pour nous familiariser avec eux et pour comprendre leurs atouts respectifs. Assurez-vous de conserver à proximité l’<a href="http://www.amelia.mn/Syntax-cheatsheet.pdf">aide-mémoire sur les différentes syntaxes de R</a> pour vous aider. Mais avant toute chose, un petit complément concernant l’indiçage dans R est nécessaire.</p>
+<div id="indicage-dans-r" class="section level3">
+<h3><span class="header-section-number">11.6.1</span> Indiçage dans R</h3>
+<p>A faire :</p>
 <ul>
-<li><span class="math inline">\(H_0: \sigma_{\tau2} = 0\)</span></li>
-<li><span class="math inline">\(H_1: \sigma_{\tau2} \neq 0\)</span></li>
+<li>Indiçage sur un vecteur (entiers positifs, entiers négatifs ou vecteur de booléens). Utilisation de tests de condition pour filtrer le vecteur</li>
+<li>Indiçage sur un data frame ou un tibble. Travail sur les lignes et les colonnes</li>
+<li>Utilisation du dollar pour extraire une variable</li>
 </ul>
-<p>Dans R, la fonction <code>lm()</code> utilisée jusqu’ici ne prend pas en compte les facteurs aléatoires. Nous devons utiliser la fonction <code>aov()</code> par exemple <strong>à condition que le plan d’expérience soit bien balancé</strong>.</p>
-<ul>
-<li>Pour une ANOVA à un facteur aléatoire, nous utiliserons (un facteur aléatoire s’annonce à l’intérieur de la fonction <code>Error()</code>) :</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aov</span>(<span class="dt">data =</span> df, y <span class="op">~</span><span class="st"> </span><span class="kw">Error</span>(fact1))</code></pre></div>
-<ul>
-<li>Pour une ANOVA à deux facteurs croisés sans interactions, et un facteur aléatoire comme dans le cas de notre blé testé dans des fermes tirées <em>à chaque fois</em> au hasard, nous utiliserons :</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aov</span>(<span class="dt">data =</span> df, y <span class="op">~</span><span class="st"> </span>fact1 <span class="op">+</span><span class="st"> </span>fact2 <span class="op">+</span><span class="st"> </span><span class="kw">Error</span>(fact2))</code></pre></div>
-<p><strong>Suite à faire…</strong></p>
-<p>En cas de rejet de <em>H_0</em> pour un facteur aléatoire, il n’existe pas de test “post hoc”. Ce genre de test ne signifie pas grand chose dans ce cas, puisque le facteur est aléatoire et que chaque modalité étudiée est considére comme une réalisation au hasard issue de la distribution normale.</p>
+</div>
+<div id="comparaison-de-styles" class="section level3">
+<h3><span class="header-section-number">11.6.2</span> Comparaison de styles</h3>
+<p>Maintenant que vous maîtrisez l’indiçage dans R de base, nous allons pouvoir réaliser quelques opérations simples sur un jeu de données cas par variables. Nous allons calculer une nouvelle variable, sélectionner des cas et restreindre les variables du tableau pour finir avec une représentation graphique simple. Nous ferons le même travail en utilisant les différents styles de R à des fins de comparaison.</p>
+<p>TODO…</p>
+
+</div>
+</div>
+<!-- </div> -->
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>Historiquement, ce langage s’appelait <strong>S</strong> à l’origine dans les années 1970 alors qu’il a été inventé par John Chambers et ses collègues aux laboratoires Bell. R est une implémentation open source de S écrite dans les années 1990 par Ross Ihaka et Robert Gentleman. Ensuite R a pris de l’importance à tel point qu’on parle maintenant du langage R (sachant bien qu’il s’agit d’un <em>dialecte</em> du langage S).<a href="syntaxe-de-r.html#fnref4">↩</a></p></li>
+</ol>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -432,8 +445,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="facteurs-hierarchises.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="syntaxe-de-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="effet-aleatoire.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
