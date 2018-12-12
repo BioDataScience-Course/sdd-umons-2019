@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Variance II {#variance2}
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, results='hide'}
@@ -231,7 +236,7 @@ chart(data = eggs, Fat ~ Lab %col=% Technician) +
     f_aes(means ~ Lab), size = 3, col = "red")
 ```
 
-Vérifions l'homoscédasticité. Ici, il suffit de considérer la variable `Technician` (une fois correctement encodée\ !). Nous utiliserons un seuil $\alpha$ classique de 5% pour l'ensemble de nos tests dans cette étude.
+Vérifions l'homoscédasticité. Ici, il suffit de considérer la variable `Technician` (une fois correctement encodée\ !) parce que dans cette forme de modèle, le facteur qui est imbriqué (`Technician`) est celui à partir duquel les résidus sont calculés. Nous utiliserons un seuil $\alpha$ classique de 5% pour l'ensemble de nos tests dans cette étude.
 
 ```{r}
 bartlett.test(data = eggs, Fat ~ Technician)
