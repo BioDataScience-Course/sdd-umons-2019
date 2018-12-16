@@ -617,8 +617,6 @@ Même remarque concernant les ex aequos et valeur *P* très similaire ici à cel
 
 ## Communication
 
-Design de l’expérience, choix du nombre de réplicas et puissance d’un test. Critique stat + "bad graphs" + pseudo-réplication. "Challenges" sur base de la critique statistique. Débriefing général.
-
 Savoir communiquer ses résultats est vital en science des données. Ce n'est pas si facile car il faut pouvoir simplifier les analyses et utiliser au mieux les visuels (c'est-à-dire, les graphiques) pour raconter une histoire qui soit à la fois captivante et compréhensible. **Communiquer le fruit de ses recherches de la meilleure façon qui soit pour que les non-initiés puissent le comprendre fait partie du bagage indispensable du scientifique des données**.
 
 ![](images/sdd1_12/data-scientist-useful.jpg)
@@ -630,4 +628,7 @@ Hans Rosling est sans nuls doute très doué pour communiquer des résultats sta
 
 ## Graphiques : les pièges
 
+A faire + critique statistique... mais condenser tout cela car le module est déjà très bien rempli\ ! Design de l’expérience, choix du nombre de réplicas et puissance d’un test. Critique stat + "bad graphs" + pseudo-réplication. "Challenges" sur base de la critique statistique. Débriefing général.
+
 ![](images/sdd1_12/graph-upside-down.jpg)
+
