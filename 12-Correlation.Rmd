@@ -326,6 +326,50 @@ vembedr::embed_youtube("hVimVzgtD6w", width = 770, height = 433)
 ```
 
 
+### Présentations R Markdown
+
+Parmi tous les formats R Markdown, il en existe plusieurs adaptés aux présentations de type "PowerPoint". Le format **R Presentation** est très simple et parfaitement intégré dans RStudio. Divers formats compilés depuis R Markdown s'affichent dans un explorateur Web (**ioslides** ou **Slidy**, ou encore **mdshower** ou **xaringan**). Enfin, le format **Beamer** permet de créer des présentations en PDF.
+
+
+Le format **[R Presentation](https://support.rstudio.com/hc/en-us/sections/200130218-R-Presentations)** (menu `File -> New file -> R Presentation` dans RStudio) est très simple pour créer des diapositives de présentation directement depuis Markdown sous forme HTML, et pouvant s'exécuter dans RStudio ou dans un explorateur Web. 
+
+![](images/sdd1_12/r-presentation1.png)
+
+Ce type de présentation est très bien intégré dans RStudio. Outre l'édition au format R Markdown la présentation elle-même apparait dans un onglet spécial **Presentation** en haut à droite qui n'interfère pas avec les autres onglets. Par contre, les possibilités de personnalisation sont plutôt limitées.
+
+![](images/sdd1_12/r-presentation2.png)
+
+Deux formats basés sur le HTML et JavaScript (comprenez, des formats qui s'exécutent dans un explorateur Web) sont aussi proposés par défaut via les types de documents R Markdown (menu `File -> New File -> R Markdown`, puis `Presentation`).
+
+![](images/sdd1_12/r-markdown-pres1.png)
+
+![](images/sdd1_12/r-markdown-pres2.png)
+
+Ls deux formats par défaut sont **ioslides** et **Slidy**. L'apparence et les fonctionnalités des deux systèmes diffèrent quelque peu. Le mieux est de tester les deux et de choisir celui qu'on préfère. La présentation apparait dans une fenêtre séparée. Les possibilités de personnalisation sont plus poussées, mais elles se font à l'aide de feuilles de styles au format CSS. Cela impose de comprendre leur logique.
+
+![](images/sdd1_12/r-markdown-pres3.png)
+
+Une troisième option est de compiler un document PDF de présentation en passant par le package **Beamer** sous LaTeX. L'avantage est que c'est lisible partout. L'inconvénient\ : seul du *contenu statique* est accepté (pas de gifs animés, pas de vidéos ou difficilement directement dans la présentation). Sinon, les possibilités de personnalisation sont immenses^[Toutes nos présentations dans le cadre du cours sont au format R Markdown/Beamer avec un template UMONS/SDD fortement personnalisé. Dans le cadre de vos exercices, vous aurez accès à un dépôt GotHub Classroom qui vous prose un template similaire.].
+
+Les trois formats **ioslides**, **Slidy** et **Beamer** sont parfaitement intégrés à RStudio, avec un menu contextuel dans le bouton `Knit` qui permet de passer facilement de l'un à l'autre pour autant que vous n'utilisez pas des balises spécifiques à l'un de ces trois formats.
+
+![](images/sdd1_12/r-markdown-pres4.png)
+
+Avec le format **Beamer**, vous voyez le PDF résultant dans une fenêtre séparée. Cette fenêtre ne permet pas de lancer la présentation. Il vous faut l'ouvrir dans un lecteur PDF séparé qui offre cette fonctionnalité (Acrobat Reader, Mac Preview, SumatraPDF, eVince sous Linux, ...) pour visionner votre présentation confortablement.
+
+![](images/sdd1_12/r-markdown-pres5.png)
+
+Enfin, quelques packages R additionnels proposent d'autres formats de présentation. Dans la SciViews Box, vous avez le package `mdshower` qui propose le moteur de présentation `Shower`, et `xaringan` qui propose un moteur particulièrement sophistiqué et flexible. Ces outils sont plus spécialisés, mais aussi plus puissants pour créer des présentations au format HTML à visionner dans un explorateur Web.
+
+![](images/sdd1_12/r-markdown-pres6.png)
+
+```{block, type='info'}
+Quel type de présentation R Markdown choisir au final\ ? Toute cette panoplie d'options ne facilite pas notre choix. En fait, c'est plus une question de goût personnel. Essayez les différentes options par vous-même. Le choix principal est au final entre un format HTML ou PDF. Le format PDF est, par définition, plus portable. Cependant, il ne permet que du contenu statique. Si vous avez des gifs animés, des graphiques interactifs, ou des vidéos, alors orientez-vous plutôt vers un moteur HTML/Javascript.
+
+Dans la prochaine version de la SciViews Box, il sera également possible de générer ses présentations directement au format PowerPoint.
+```
+
+
 ## Graphiques : les pièges
 
 A faire + critique statistique... mais condenser tout cela car le module est déjà très bien rempli\ ! Design de l’expérience, choix du nombre de réplicas et puissance d’un test. Critique stat + "bad graphs" + pseudo-réplication. "Challenges" sur base de la critique statistique. Débriefing général.
