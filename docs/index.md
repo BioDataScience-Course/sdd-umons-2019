@@ -1,7 +1,7 @@
 --- 
 title: "Science des données biologiques, UMONS"
 author: "Philippe Grosjean & Guyliann Engels"
-date: "2018-12-12"
+date: "2018-12-18"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:

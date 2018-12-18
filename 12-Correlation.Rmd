@@ -410,6 +410,7 @@ Pour terminer ce module, nous vous proposons quelques situations (soit des probl
 Profitez-en pour réaliser votre première présentation R Markdown. Choisissez une situation et un type de présentation R Markdown (ioslides, Slidy, Beamer, R Presentation, ...). Ensuite réalisez deux ou trois "slides" de présentation. Dans la première, vous exposez la situation. Dans les suivantes, vous expliquer ce qui est incorrect et vous proposez une bonne façon de faire à la place.
 ```
 
+-----
 
 ##### Graphe en rubans {-}
 
@@ -417,6 +418,7 @@ Profitez-en pour réaliser votre première présentation R Markdown. Choisissez 
 
 ![](images/sdd1_12/bad-graph-ribbon-chart.gif)
 
+-----
 
 ##### Longévité {-}
 
@@ -424,14 +426,15 @@ Un chercheur compile les statistiques de longévité de diverses professions. Po
 
 **_La « profession » d’étudiant est-elle réellement plus dangereuse que celle de policier, chauffeur de taxi, ou cascadeur ? Expliquez..._**
 
+-----
 
 ##### Corrélations {-}
 
 ![](images/sdd1_12/stupid-correlations.jpg)
 
-
 **_Vous en pensez quoi ?_**
 
+-----
 
 ##### Prison {-}
 
@@ -439,6 +442,7 @@ Un chercheur compile les statistiques de longévité de diverses professions. Po
 
 ![](images/sdd1_12/bad-graph-pie-chart-does-not-add-to-one.jpg)
 
+-----
 
 ##### Etendue des axes {-}
 
@@ -454,6 +458,7 @@ Un chercheur compile les statistiques de longévité de diverses professions. Po
 
 ![](images/sdd1_12/bad-graph-truncated5.jpg)
 
+-----
 
 ##### Travaux d'artistes ? {-}
 
@@ -465,6 +470,7 @@ Un chercheur compile les statistiques de longévité de diverses professions. Po
 
 ![](images/sdd1_12/bad-graph-cluttered3.jpg)
 
+-----
 
 ##### Chauve-souris {-}
 
@@ -472,6 +478,7 @@ Un biologiste étudie une chauve-souris insectivore naine. Il trouve dans la lit
 
 **_Vous travaillez aussi sur les chaînes trophiques de ces mêmes forêts. Comment réagissez-vous à la lecture de ce rapport ? Que faites-vous ensuite ?_**
 
+-----
 
 ##### Patinage {-}
 
@@ -479,6 +486,7 @@ Un biologiste étudie une chauve-souris insectivore naine. Il trouve dans la lit
 
 **_Que se passe-t-il si tout le mode respecte cette consigne (considérant qu'il est impossible que tous les patineurs aient exactement la même vitesse) ?_**
 
+-----
 
 ##### Pseudo-perspective {-}
 
@@ -492,6 +500,7 @@ Aidez-vous du schéma suivant pour expliquer ce qui ne va pas...
 
 ![](images/sdd1_12/bad-graph-3Dbars-explication.png)
 
+-----
 
 ##### Homme moyen {-}
 
@@ -499,6 +508,7 @@ Le magazine "Men’s Health" a publié des statistiques qui décrivent l’"homm
 
 **_Sachant que toutes les distributions sont unimodales, donc que les valeurs moyennes correspondent toutes à des observations effectivement mesurées en grand nombres (identiques ou très proches) sur des hommes réels, ce portrait robot de l’"homme moyen" décrit-il effectivement un grand nombre d’individus réellement existants ? Justifiez. Qu’en serait-il de l’"homme médian" ?_**
 
+-----
 
 ##### Public ou privé ? {-}
 
@@ -508,6 +518,7 @@ Le magazine "Men’s Health" a publié des statistiques qui décrivent l’"homm
 
 ![](images/sdd1_12/bad-graph-backward-time-and-3D-bars-revised.gif)
 
+-----
 
 ##### Camemberts, tartes et cie {-}
 
@@ -521,6 +532,7 @@ Le magazine "Men’s Health" a publié des statistiques qui décrivent l’"homm
 
 ![](images/sdd1_12/piechart-joke.jpg)
 
+-----
 
 ##### Espérance de vie {-}
 
@@ -528,6 +540,7 @@ L'espérance de vie est une donnée statistique qui permet de connaître la dur�
 
 **_Calculez le temps que vous pouvez espérer encore vivre en fonction de votre âge. Que pensez-vous de ce calcul ?_**
 
+-----
 
 ##### Femmes au travail {-}
 
@@ -537,6 +550,7 @@ L'espérance de vie est une donnée statistique qui permet de connaître la dur�
 
 ![](images/sdd1_12/bad-graph-3D-and-iportant-thing-is-arrow-revisited.gif)
 
+-----
 
 ##### Moules {-}
 
@@ -544,6 +558,7 @@ Un scientifique mesure la stabilité de la membrane lysosomale (indice de stress
 
 **_Que pensez-vous de cette étude ?_**
 
+-----
 
 ##### République bananière ? {-}
 
@@ -551,6 +566,7 @@ Un scientifique mesure la stabilité de la membrane lysosomale (indice de stress
 
 ![](images/sdd1_12/bad-graph-3D-bars-on-3D-clipart.png)
 
+-----
 
 ##### Euro manquant {-}
 
@@ -558,6 +574,7 @@ Trois clients dans un restaurant payent leur repas\ : 30€ (10€ par personne)
 
 **_Réfléchissez et dénoncer l’erreur de raisonnement dans le récit précédent._**
 
+-----
 
 ##### Stylos et vers verts ? {-}
 
@@ -572,6 +589,7 @@ Trois clients dans un restaurant payent leur repas\ : 30€ (10€ par personne)
 
 ![](images/sdd1_12/bad-graph-improper-scaling3.png)
 
+-----
 
 ##### Insecticides {-}
 
@@ -579,6 +597,7 @@ Un chercheur dans une industrie chimique s’intéresse à l’effet d’un nouv
 
 **_Que pensez-vous de la façon dont cette expérience a été menée et de ses conclusion ?_**
 
+-----
 
 ##### Virus zika {-}
 
@@ -586,12 +605,16 @@ Un chercheur dans une industrie chimique s’intéresse à l’effet d’un nouv
 
 **_Ca ne s'invente pas\ !_**
 
+-----
+
 ##### Lotto {-}
 
 Par le plus grand des hasards, le numéro 8 est sorti 6 fois en 7 tirages successifs du lotto. Sachant qu’une vérification de ce que ce numéro n’a pas plus de chances que les autres d’être tiré au sort, vous ne manquerez pas de constater en bon statisticien(ne) que le numéro 8 est très nettement sur-représenté dans les tirages.
 
 **_La prochaine fois que vous remplirez votre grille de lotto, jouerez-vous le numéro 8 ? Pourquoi ?_**
 
-**_Vous est-il arriver de jouer la suite 1, 2, 3, 4, 5, 6, 7, 8 au lotto (ou rempliriez-vous une grille avec ces nombres si vous deviez y jouer) ? Pourquoi ?_**
+**_Vous est-il arrivé de jouer la suite 1, 2, 3, 4, 5, 6, 7, 8 au lotto (ou rempliriez-vous une grille avec ces nombres si vous deviez y jouer) ? Pourquoi ?_**
+
+-----
 
 ![](images/sdd1_12/rstudio_joke.jpg)
