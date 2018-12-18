@@ -671,14 +671,15 @@ Enfin, quelques packages R additionnels proposent d'autres formats de présentat
 
 ## Critique statistique
 
+![](images/sdd1_12/cars-travolta.gif)
+
 Les statistiques ont mauvaise presse auprès de certaines personnes qui pensent qu'on peut leurs faire dire tout et son contraire. Cela a même donné lieu à des ouvrages comme "[Attention, statistiques\ ! Comment en déjouer les pièges](https://www.editionsladecouverte.fr/catalogue/index-Attention_statistiques__-9782707172389.html)" par Joseph Klatzmann ou "[How to lie with statistics](https://en.wikipedia.org/wiki/How_to_Lie_with_Statistics)" par Darrell Huff. Derrière des titres provocateurs, ces ouvrages présentent, en fait, de manière sérieuse les pièges principaux et les moyens de les déjouer. Car, en réalité, ce n'est pas l'usage des statistiques qui est en cause ici, mais son **mauvais** usage. Voir aussi "[Statistical reasoning for everyday life](https://www.pearson.com/us/higher-education/product/Bennett-Statistical-Reasoning-for-Everyday-Life-5th-Edition/9780134494043.html)", par Bennett, Briggs & Triola.
+
+![](images/sdd1_12/caution-wet-floor.jpg)
 
 <div class="info">
 <p>Dans la littérature scientifique et tout autour de nous, nous pouvons trouver des exemples de mauvais usages des statistiques (application <em>erronée</em> de méthodes statistiques). Quelque fois, il s'agit de triche manifeste, mais la plupart du temps c'est par ignorance. Développer un <strong>esprit critique</strong> statistique est important pour pouvoir démasquer ces diverses situations et ne pas tomber soi-même dans les pièges les plus grossiers.</p>
 </div>
-
-
-
 
 ![](images/sdd1_12/graph-upside-down.jpg)
 
@@ -723,6 +724,14 @@ Un chercheur compile les statistiques de longévité de diverses professions. Po
 **_La « profession » d’étudiant est-elle réellement plus dangereuse que celle de policier, chauffeur de taxi, ou cascadeur ? Expliquez..._**
 
 
+##### Corrélations {-}
+
+![](images/sdd1_12/stupid-correlations.jpg)
+
+
+**_Vous en pensez quoi ?_**
+
+
 ##### Prison {-}
 
 **_Qu'est-ce qui ne va pas dans la figure suivante ?_**
@@ -732,15 +741,17 @@ Un chercheur compile les statistiques de longévité de diverses professions. Po
 
 ##### Etendue des axes {-}
 
-![](images/sdd1_12/bad-graph-troncated1.png)
+![](images/sdd1_12/bad-graph-truncated1.png)
 
-![](images/sdd1_12/bad-graph-troncated2.png)
+![](images/sdd1_12/bad-graph-truncated2.png)
 
 **_Comparez de manière critique les deux graphiques précédents. Aidez-vous des schémas ci-dessous pour étayer votre explication._**
 
-![](images/sdd1_12/bad-graph-troncated3.png)
+![](images/sdd1_12/bad-graph-truncated3.png)
 
-![](images/sdd1_12/bad-graph-troncated4.png)
+![](images/sdd1_12/bad-graph-truncated4.png)
+
+![](images/sdd1_12/bad-graph-truncated5.jpg)
 
 
 ##### Travaux d'artistes ? {-}
@@ -759,6 +770,13 @@ Un chercheur compile les statistiques de longévité de diverses professions. Po
 Un biologiste étudie une chauve-souris insectivore naine. Il trouve dans la littérature que la biomasse totale de cette chauve-souris varie de 0,23 à 1,95 kg/ha dans les forêts recensées. Afin de calculer l'abondance de ces populations de chauve-souris, il détermine le poids moyen d’un individu comme étant (moyenne ± écart type) 55 ± 13 mg (n = 45). Il utilise ces données pour comparer les populations de chauve-souris aux autre animaux présents dans cette forêt. Il en conclu que la population de chauve-souris dans ces forêts est très nettement supérieure à celle des oiseaux et équivalente à celle des insectes. Ce résultat est inattendu et permet de considérer cette chauve-souris comme espèce clé dans la chaîne trophique, alors que son effet a toujours été négligé auparavant, tant elle est discrète et passe inaperçu la plupart du temps.
 
 **_Vous travaillez aussi sur les chaînes trophiques de ces mêmes forêts. Comment réagissez-vous à la lecture de ce rapport ? Que faites-vous ensuite ?_**
+
+
+##### Patinage {-}
+
+![](images/sdd1_12/skaters.jpg)
+
+**_Que se passe-t-il si tout le mode respecte cette consigne (considérant qu'il est impossible que tous les patineurs aient exactement la même vitesse) ?_**
 
 
 ##### Pseudo-perspective {-}
@@ -798,6 +816,10 @@ Le magazine "Men’s Health" a publié des statistiques qui décrivent l’"homm
 
 ![](images/sdd1_12/bad-graph-too-much-data.jpg)
 
+![](images/sdd1_12/bad-graph-pie-chart-vegan.png)
+
+![](images/sdd1_12/piechart-joke.jpg)
+
 
 ##### Espérance de vie {-}
 
@@ -808,7 +830,7 @@ L'espérance de vie est une donnée statistique qui permet de connaître la dur�
 
 ##### Femmes au travail {-}
 
-**_Considérez les deux graphiques suivants qui sont sensés représenter la même information. Comparez-les de manière critique ?_**
+**_Considérez les deux graphiques suivants qui sont sensés représenter la même information (les mêmes données sont utilisées). Comparez-les de manière critique._**
 
 ![](images/sdd1_12/bad-graph-3D-and-iportant-thing-is-arrow.gif)
 
@@ -842,7 +864,7 @@ Trois clients dans un restaurant payent leur repas\ : 30€ (10€ par personne)
 
 ![](images/sdd1_12/bad-graph-cliparted-bars2.png)
 
-**_Que pensez-vous de ces graphiques ? Vous pouvez vous aidez des schémas suivants pour etayer votre réponse._**
+**_Que pensez-vous de ces graphiques ? Vous pouvez vous aidez des schémas suivants pour étayer votre réponse._**
 
 ![](images/sdd1_12/bad-graph-improper-scaling1.png)
 ![](images/sdd1_12/bad-graph-improper-scaling2.png)
@@ -857,6 +879,12 @@ Un chercheur dans une industrie chimique s’intéresse à l’effet d’un nouv
 **_Que pensez-vous de la façon dont cette expérience a été menée et de ses conclusion ?_**
 
 
+##### Virus zika {-}
+
+![](images/sdd1_12/wrong-graph-nbc.jpg)
+
+**_Ca ne s'invente pas\ !_**
+
 ##### Lotto {-}
 
 Par le plus grand des hasards, le numéro 8 est sorti 6 fois en 7 tirages successifs du lotto. Sachant qu’une vérification de ce que ce numéro n’a pas plus de chances que les autres d’être tiré au sort, vous ne manquerez pas de constater en bon statisticien(ne) que le numéro 8 est très nettement sur-représenté dans les tirages.
@@ -865,3 +893,4 @@ Par le plus grand des hasards, le numéro 8 est sorti 6 fois en 7 tirages succes
 
 **_Vous est-il arriver de jouer la suite 1, 2, 3, 4, 5, 6, 7, 8 au lotto (ou rempliriez-vous une grille avec ces nombres si vous deviez y jouer) ? Pourquoi ?_**
 
+![](images/sdd1_12/rstudio_joke.jpg)
