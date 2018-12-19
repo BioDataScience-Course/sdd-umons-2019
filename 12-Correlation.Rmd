@@ -28,6 +28,17 @@ Ce module présente des descripteurs statistiques de l'association de deux varia
 
 ## Association de deux variables
 
+
+##### A vous de jouer {-}
+
+```{block, type='bdd'}
+
+Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("12a_correlation")
+
+```
+
 Nous pouvons décrire l'étendue d'une variable numérique à l'aide de la **variance** qui, pour rappel est la somme des écarts à la moyenne divisée par le nombre de degrés de liberté (*n* dans le cas d'une population et *n* - 1 dans le cas d'un échantillon).
 
 $$var_X = S^2_X = \frac{\sum_{i = 1}^n (x_i - \bar{X})^2}{n-1}$$
@@ -408,6 +419,12 @@ Pour terminer ce module, nous vous proposons quelques situations (soit des probl
 
 ```{block, type='bdd'}
 Profitez-en pour réaliser votre première présentation R Markdown. Choisissez une situation et un type de présentation R Markdown (ioslides, Slidy, Beamer, R Presentation, ...). Ensuite réalisez deux ou trois "slides" de présentation. Dans la première, vous exposez la situation. Dans les suivantes, vous expliquer ce qui est incorrect et vous proposez une bonne façon de faire à la place.
+
+Vous avez à votre disposition une tâche Guthub Classroom
+
+ - <https://classroom.github.com/a/ZLNkeFCo>
+ 
+ 
 ```
 
 -----
