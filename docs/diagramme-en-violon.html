@@ -399,7 +399,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div class="figure" style="text-align: center"><span id="fig:violin-plot"></span>
 <img src="03-Visualisation-II_files/figure-html/violin-plot-1.svg" alt="Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton." width="672" />
 <p class="caption">
-Figure 3.7: Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton.
+Figure 3.10: Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton.
 </p>
 </div>
 <p>Les instructions en R pour produire un diagramme en violon à l’aide de la fonction <code>chart()</code> sont :</p>
@@ -414,10 +414,10 @@ zooplankton_sub &lt;-<span class="st"> </span><span class="kw">filter</span>(zoo
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-10-1.svg" alt="Distribution des tailles pour 4 groupes taxonomiques de zooplancton." width="672" />
 <p class="caption">
-Figure 3.8: Distribution des tailles pour 4 groupes taxonomiques de zooplancton.
+Figure 3.11: Distribution des tailles pour 4 groupes taxonomiques de zooplancton.
 </p>
 </div>
-<p>Ici, la formule fournie à <code>chart()</code> indique la variable numérique à représenter par une graphe de densité <em>dans le terme de gauche</em>, et la variable facteur qui découpe l’échantillon en classes <em>à droite</em> : <code>YNUM (size) ~ XFACT (class)</code>. Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction <code>geom_violin()</code>. Vous pouvez aussi utiliser <code>%fill=%</code> pour colorer vos différents graphes en fonction de la variable facteur également, comme dans la Fig. <a href="diagramme-en-violon.html#fig:violin-plot">3.7</a>.</p>
+<p>Ici, la formule fournie à <code>chart()</code> indique la variable numérique à représenter par une graphe de densité <em>dans le terme de gauche</em>, et la variable facteur qui découpe l’échantillon en classes <em>à droite</em> : <code>YNUM (size) ~ XFACT (class)</code>. Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction <code>geom_violin()</code>. Vous pouvez aussi utiliser <code>%fill=%</code> pour colorer vos différents graphes en fonction de la variable facteur également, comme dans la Fig. <a href="diagramme-en-violon.html#fig:violin-plot">3.10</a>.</p>
 <div id="pieges-et-astuces-2" class="section level5 unnumbered">
 <h5>Pièges et astuces</h5>
 <p>Parfois, les labels sur l’axe des abscisses d’un diagramme en violon apparaissent trop rapprochés et se chevauchent, comme ci-dessous.</p>
@@ -426,7 +426,7 @@ Figure 3.8: Distribution des tailles pour 4 groupes taxonomiques de zooplancton.
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-11-1.svg" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon)." width="672" />
 <p class="caption">
-Figure 3.9: Distribution de tailles des 17 classes d’organismes planctoniques (diagramme en violon).
+Figure 3.12: Distribution de tailles des 17 classes d’organismes planctoniques (diagramme en violon).
 </p>
 </div>
 <p>La fonction <code>coord_flip()</code> permute les axes. Ainsi les labels ne se chevauchent plus sur l’axe des ordonnées.</p>
@@ -436,7 +436,7 @@ Figure 3.9: Distribution de tailles des 17 classes d’organismes planctoniques 
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-12"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-12-1.svg" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`)." width="672" />
 <p class="caption">
-Figure 3.10: Distribution de tailles des 17 classes d’organismes planctoniques (diagramme en violon avec l’ajout de la fonction <code>coord_flip()</code>).
+Figure 3.13: Distribution de tailles des 17 classes d’organismes planctoniques (diagramme en violon avec l’ajout de la fonction <code>coord_flip()</code>).
 </p>
 </div>
 <p>Le package <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html">ggridges</a> propose une seconde solution basée sur le principe de graphique de densité avec la fonction <code>geom_density_ridges()</code> qui crée un graphique en lignes de crêtes. <strong>Attention : remarquez que la notation est ici inverse du diagramme en violon, soit <code>XFACT (class) ~ YNUM (size)</code> !</strong></p>
@@ -445,7 +445,7 @@ Figure 3.10: Distribution de tailles des 17 classes d’organismes planctoniques
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.svg" alt="Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes)." width="672" />
 <p class="caption">
-Figure 3.11: Distribution des tailles des 17 classes d’organismes planctoniques (sous forme de graphique en lignes de crêtes).
+Figure 3.14: Distribution des tailles des 17 classes d’organismes planctoniques (sous forme de graphique en lignes de crêtes).
 </p>
 </div>
 </div>
@@ -521,19 +521,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
