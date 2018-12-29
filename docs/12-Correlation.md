@@ -655,7 +655,7 @@ Les trois formats **ioslides**, **Slidy** et **Beamer** sont parfaitement intég
 
 ![](images/sdd1_12/r-markdown-pres4.png)
 
-Avec le format **Beamer**, vous voyez le PDF résultant dans une fenêtre séparée. Cette fenêtre ne permet pas de lancer la présentation. Il vous faut l'ouvrir dans un lecteur PDF séparé qui offre cette fonctionnalité (Acrobat Reader, Mac Preview, SumatraPDF, eVince sous Linux, ...) pour visionner votre présentation confortablement.
+Avec le format **Beamer**, vous voyez le PDF résultant dans une fenêtre séparée. Cette fenêtre ne permet pas de lancer la présentation. Il vous faut l'ouvrir dans un lecteur PDF séparé qui offre cette fonctionnalité (Acrobat Reader, Mac Preview, SumatraPDF sous Windows, eVince sous Linux, ...) pour visionner votre présentation confortablement.
 
 ![](images/sdd1_12/r-markdown-pres5.png)
 

@@ -1,5 +1,15 @@
 # TODO for the bookdown sdd-umons:
 
+# Science des données biologiques, UMONS - À faire
+
+- Read Moderndive, in particular, the part about hypothesis tests: https://moderndive.com/C-appendixC.html. See also here: https://www-huber.embl.de/msmb/Chap-Testing.html and here http://jonathanweisberg.org/vip/chlindley.html (very interesting).
+
+- Sampling distribution, a whole chapter on this topic in French to cite in *en savoir plus*\ : https://www.math.u-psud.fr/~pansu/web_ifips/echantillonnage.pdf.
+
+- Experimental design and power of hypothesis tests (also show how to correctly interpret tests by adjusting alpha value in function of the context). Package `pwr`, see https://www.statmethods.net/stats/power.html.
+
+- Two-way ANOVA, see http://www.biostathandbook.com/twowayanova.html.
+
 - Deploy on netlify: commit only .md files into /docs, then use Netlify version of Hugo to compile the html pages
 
 - Add the identity plugin to Netlify to allow visitor's logins
@@ -8,9 +18,9 @@
 
 - Use xAPI to return info into a LRS
 
-- Add testimonials: using R (on the web site?), examples of hardware configuration (Annex A))
+- Add testimonials: using R (on the web site?)
 
-- Add warning relative to backup of data and not leaving a Pc in a car.
+- Add warning relative to backup of data.
 
 - Annex A, Github account - Sensitisation to the "netiquette" and building a digital professional identity
 

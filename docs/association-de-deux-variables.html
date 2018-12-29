@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-12-18">
+<meta name="date" content="2018-12-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -532,7 +532,7 @@ Faites bien attention avec le coefficient de corrélation, la matrice de corrél
 <p>Séparons les quatre variables <em>X</em> d’un côté et les quatre variables <em>Y</em> de l’autre.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ans_x &lt;-<span class="st"> </span>anscombe[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
 ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]</code></pre></div>
-<p>Que valent les moyennes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, les variances et les coefficients de corrélation ?</p>
+<p>Que valent les moyennes<a href="references.html#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a>, les variances et les coefficients de corrélation ?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Moyennes des X</span>
 <span class="kw">lapply</span>(ans_x, mean)</code></pre></div>
 <pre><code># $x1
@@ -585,7 +585,7 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 # 
 # $y4
 # [1] 4.123249</code></pre>
-<p>C’est les mêmes valeurs pour les 4 séries. Que donnent les coefficients de corrélation<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> ?</p>
+<p>C’est les mêmes valeurs pour les 4 séries. Que donnent les coefficients de corrélation<a href="references.html#fn59" class="footnoteRef" id="fnref59"><sup>59</sup></a> ?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(<span class="kw">cor</span>(ans_x, ans_y))</code></pre></div>
 <pre><code># [1] 0.8164205 0.8162365 0.8162867 0.8165214</code></pre>
 <p>Nous avons quatre fois la même valeur… et pourtant :</p>
@@ -716,9 +716,9 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>La fonction <code>lapply()</code> distribue la fonction donnée en argument sur tous les éléments du tableau, et calcule ici la moyenne successivement pour les 4 variables.<a href="association-de-deux-variables.html#fnref1">↩</a></p></li>
-<li id="fn2"><p>Ici, nous croisons les X et les Y, et extrayons la diagonale de ce tableau qui correspond aux coefficients entre <em>X1</em> et <em>Y1</em>, entre <em>X2</em> et <em>Y2</em>, entre <em>X3</em> et <em>Y3</em> et entre <em>X4</em> et <em>Y4</em>, respectivement.<a href="association-de-deux-variables.html#fnref2">↩</a></p></li>
+<ol start="58">
+<li id="fn58"><p>La fonction <code>lapply()</code> distribue la fonction donnée en argument sur tous les éléments du tableau, et calcule ici la moyenne successivement pour les 4 variables.<a href="association-de-deux-variables.html#fnref58">↩</a></p></li>
+<li id="fn59"><p>Ici, nous croisons les X et les Y, et extrayons la diagonale de ce tableau qui correspond aux coefficients entre <em>X1</em> et <em>Y1</em>, entre <em>X2</em> et <em>Y2</em>, entre <em>X3</em> et <em>Y3</em> et entre <em>X4</em> et <em>Y4</em>, respectivement.<a href="association-de-deux-variables.html#fnref59">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
