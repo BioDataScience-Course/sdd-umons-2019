@@ -489,6 +489,7 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
+<<<<<<< HEAD
 # ── Variable type:Date ───────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
@@ -498,6 +499,17 @@ skimr::skim(biometry)
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
 # ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+=======
+# ── Variable type:Date ───────────────────────────────────────────────────────────
+#   variable missing complete   n        min        max     median n_unique
+#  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
+# 
+# ── Variable type:factor ─────────────────────────────────────────────────────────
+#  variable missing complete   n n_unique            top_counts ordered
+#    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────
+>>>>>>> 9e91e95ed38afd1d06e54d9617592f40590f649c
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -592,11 +604,19 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
+<<<<<<< HEAD
 # ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
 # ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+=======
+# ── Variable type:factor ─────────────────────────────────────────────────────────
+#  variable missing complete  n n_unique            top_counts ordered
+#      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
+# 
+# ── Variable type:numeric ────────────────────────────────────────────────────────
+>>>>>>> 9e91e95ed38afd1d06e54d9617592f40590f649c
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -626,7 +646,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
+<<<<<<< HEAD
 # ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+=======
+# ── Variable type:factor ─────────────────────────────────────────────────────────
+>>>>>>> 9e91e95ed38afd1d06e54d9617592f40590f649c
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -634,7 +658,11 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
+<<<<<<< HEAD
 # ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+=======
+# ── Variable type:numeric ────────────────────────────────────────────────────────
+>>>>>>> 9e91e95ed38afd1d06e54d9617592f40590f649c
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -655,7 +683,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
+<<<<<<< HEAD
 # ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+=======
+# ── Variable type:factor ─────────────────────────────────────────────────────────
+>>>>>>> 9e91e95ed38afd1d06e54d9617592f40590f649c
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -663,7 +695,11 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
+<<<<<<< HEAD
 # ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+=======
+# ── Variable type:numeric ────────────────────────────────────────────────────────
+>>>>>>> 9e91e95ed38afd1d06e54d9617592f40590f649c
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -770,7 +806,11 @@ skimr::skim(df)
 #  n obs: 5 
 #  n variables: 2 
 # 
+<<<<<<< HEAD
 # ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+=======
+# ── Variable type:factor ─────────────────────────────────────────────────────────
+>>>>>>> 9e91e95ed38afd1d06e54d9617592f40590f649c
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
