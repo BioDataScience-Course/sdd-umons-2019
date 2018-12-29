@@ -1,6 +1,6 @@
 # TODO for the bookdown sdd-umons:
 
-# Science des données biologiques, UMONS - À faire
+- Indicate how to configure RStudio for GitHub authentication, see https://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/.
 
 - Read Moderndive, in particular, the part about hypothesis tests: https://moderndive.com/C-appendixC.html. See also here: https://www-huber.embl.de/msmb/Chap-Testing.html and here http://jonathanweisberg.org/vip/chlindley.html (very interesting).
 
