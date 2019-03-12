@@ -65,7 +65,7 @@ Les instructions dans R pour produire un graphique en barres à l'aide de la fon
 #  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
 #  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
 # 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# # ... with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
+# # … with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
 # #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
 # #   circularity <dbl>, density <dbl>, class <fct>
 ```
@@ -90,7 +90,7 @@ Les instructions dans R pour produire un graphique en barres à l'aide de la fon
 #  8 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
 #  9 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
 # 10 0.725 0.412      7.14 1.90  0.802 0.655 0.209 0.008 0.004 0.732   0.202
-# # ... with 525 more rows, and 9 more variables: range <dbl>, size <dbl>,
+# # … with 525 more rows, and 9 more variables: range <dbl>, size <dbl>,
 # #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
 # #   circularity <dbl>, density <dbl>, class <fct>
 ```
@@ -132,7 +132,7 @@ La fonction `geom_bar()` se charge d'ajouter les barres verticales dans le graph
 #  8 F      1997-06-24     74    180  16           2013    16
 #  9 H      1972-10-26    110    189  19           2013    41
 # 10 H      1945-03-15     82    160  18           2013    68
-# # ... with 385 more rows
+# # … with 385 more rows
 ```
 
 ```r
@@ -335,6 +335,10 @@ Ce graphique est plus difficile à réaliser à l'aide de `chart()` ou `ggplot()
 Partons d'un exemple fictif pour vous convaincre qu'un graphique en barres est souvent plus lisible qu'un graphique en camembert. Combien d'observations comptez-vous pour la lettre **H** ? 
 
 
+```
+# Warning: `data_frame()` is deprecated, use `tibble()`.
+# This warning is displayed once per session.
+```
 
 
 <div class="figure" style="text-align: center">
@@ -506,7 +510,7 @@ La Fig. \@ref(fig:boxplot-tooth) présente un graphique en boites de dispersion 
 #  8  11.2 VC      0.5
 #  9   5.2 VC      0.5
 # 10   7   VC      0.5
-# # ... with 50 more rows
+# # … with 50 more rows
 ```
 
 ```r
@@ -583,7 +587,7 @@ L'une des règles les plus importantes que vous devez impérativement garder à 
 #  8    125    14 1     1    
 #  9    149    16 1     1    
 # 10    171    18 1     1    
-# # ... with 568 more rows
+# # … with 568 more rows
 ```
 
 ```r
@@ -689,7 +693,7 @@ Depuis le début, l'ensemble des graphiques que nous vous avons proposés utilis
 #  8 Pêche…      11.1      11.2    5.7             NA  0.703       0.628
 #  9 Pêche…       9.4       9.2    4.6             NA  0.413       0.375
 # 10 Pêche…      10.1       9.5    4.7             NA  0.449       0.398
-# # ... with 411 more rows, and 12 more variables: integuments <dbl>,
+# # … with 411 more rows, and 12 more variables: integuments <dbl>,
 # #   dry_integuments <dbl>, digestive_tract <dbl>,
 # #   dry_digestive_tract <dbl>, gonads <dbl>, dry_gonads <dbl>,
 # #   skeleton <dbl>, lantern <dbl>, test <dbl>, spines <dbl>,

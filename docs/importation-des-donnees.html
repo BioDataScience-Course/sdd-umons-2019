@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="5.1 Importation des données | Science des données biologiques, UMONS />
+  <meta property="og:title" content="5.1 Importation des données | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Importation des données | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="5.1 Importation des données | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-12-29">
+<meta name="date" content="2019-03-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,15 +52,19 @@
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -140,7 +144,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Nuage de points</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.1</b> Le nuage de points en vidéo</a></li>
-<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#echelles-dun-graphiques"><i class="fa fa-check"></i><b>2.1.2</b> Echelles d’un graphiques</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#echelles-de-graphiques"><i class="fa fa-check"></i><b>2.1.2</b> Echelles de graphiques</a></li>
 <li class="chapter" data-level="2.1.3" data-path="nuage-de-points.html"><a href="nuage-de-points.html#transformation-des-donnees"><i class="fa fa-check"></i><b>2.1.3</b> Transformation des données</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Graphiques dans R Markdown</a><ul>
@@ -430,7 +434,7 @@ small_dataset</code></pre></div>
 #  8 W      1997-06-24     74    180  16           2013    16
 #  9 M      1972-10-26    110    189  19           2013    41
 # 10 M      1945-03-15     82    160  18           2013    68
-# # ... with 385 more rows</code></pre>
+# # … with 385 more rows</code></pre>
 <p>Le jeu de données <code>biometry</code> est disponible dans le package R <strong>BioDataScience</strong>. Dans ce cas, il ne faut pas spécifier de chemin d’accès au fichier : R sait où le trouver tout seul. Il est également spécifié ici que la langue souhaitée est le français avec l’argument <code>lang = &quot;fr&quot;</code>. Le résultat de l’importation est assigné à la variable <code>biometry</code>(mais elle pourrait tout aussi bien porter un autre nom). Pour finir, le tout est entouré, de manière optionnelle, de parenthèses afin de forcer l’impression du résultat.</p>
 <div class="note">
 <p>
@@ -463,19 +467,19 @@ L’impression du tableau de données est une façon de voir cela, mais il y en 
 <p>Souvent ce format est renseigné par l’<strong>extension</strong> du fichier. Par exemple <strong>.xlsx</strong> pour un Microsoft Excel ou <strong>.csv</strong> pour du “comma-separated-value”. Attention ! L’extension du fichier est cachée sous Windows, et parfois sous MacOS. Visualisez vos fichiers dans l’onglet <strong>Files</strong> dans RStudio pour voir leurs noms complets, avec les extensions. Pour l’instant, <code>read()</code> supporte 32 formats de fichiers différents, mais cette liste est amenée à s’agrandir à l’avenir. Pour découvrir les formats supportés, et les fonctions d’importation spécifiques appelées à chaque fois, utilisez :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getOption</span>(<span class="st">&quot;read_write&quot;</span>)</code></pre></div>
 <pre><code># # A tibble: 32 x 5
-#    type  read_fun      read_header    write_fun      comment              
-#    &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;                
-#  1 csv   readr::read_… data.io::hrea… readr::write_… comma separated valu…
-#  2 csv2  readr::read_… data.io::hrea… &lt;NA&gt;           semicolon separated …
-#  3 xlcsv readr::read_… data.io::hrea… readr::write_… write a CSV file mor…
-#  4 tsv   readr::read_… data.io::hrea… readr::write_… tab separated values 
-#  5 fwf   readr::read_… data.io::hrea… &lt;NA&gt;           fixed width file     
-#  6 log   readr::read_… &lt;NA&gt;           &lt;NA&gt;           standard log file    
-#  7 rds   readr::read_… &lt;NA&gt;           readr::write_… R data file (no comp…
-#  8 txt   readr::read_… &lt;NA&gt;           readr::write_… text file (as length…
-#  9 raw   readr::read_… &lt;NA&gt;           &lt;NA&gt;           binary file (read as…
-# 10 ssv   readr::read_… data.io::hrea… &lt;NA&gt;           space separated valu…
-# # ... with 22 more rows</code></pre>
+#    type  read_fun      read_header    write_fun      comment               
+#    &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;                 
+#  1 csv   readr::read_… data.io::hrea… readr::write_… comma separated values
+#  2 csv2  readr::read_… data.io::hrea… &lt;NA&gt;           semicolon separated v…
+#  3 xlcsv readr::read_… data.io::hrea… readr::write_… write a CSV file more…
+#  4 tsv   readr::read_… data.io::hrea… readr::write_… tab separated values  
+#  5 fwf   readr::read_… data.io::hrea… &lt;NA&gt;           fixed width file      
+#  6 log   readr::read_… &lt;NA&gt;           &lt;NA&gt;           standard log file     
+#  7 rds   readr::read_… &lt;NA&gt;           readr::write_… R data file (no compr…
+#  8 txt   readr::read_… &lt;NA&gt;           readr::write_… text file (as length …
+#  9 raw   readr::read_… &lt;NA&gt;           &lt;NA&gt;           binary file (read as …
+# 10 ssv   readr::read_… data.io::hrea… &lt;NA&gt;           space separated value…
+# # … with 22 more rows</code></pre>
 <p>Par la suite, vous allez apprendre à importer vos données depuis différentes sources.</p>
 <div id="donnees-sur-le-disque" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> Données sur le disque</h3>
@@ -550,7 +554,7 @@ coral_id &lt;-<span class="st"> &quot;1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQ
 #  8 A0           s.hyst…     8     34.7        24.5 2018-04-24 09:10:00
 #  9 A0           s.hyst…     9     34.7        24.5 2018-04-24 09:10:00
 # 10 A0           s.hyst…    10     34.7        24.5 2018-04-24 09:10:00
-# # ... with 88 more rows, and 3 more variables: time &lt;dbl&gt;, gain &lt;dbl&gt;,
+# # … with 88 more rows, and 3 more variables: time &lt;dbl&gt;, gain &lt;dbl&gt;,
 # #   gain_std &lt;dbl&gt;</code></pre>
 <p>Lorsque vous travaillez sur des données issues d’une source externe, et donc susceptibles d’être modifiées ou même pire, de disparaître. Il est préférable d’enregistrer une <strong>copie locale</strong> de ces données dans votre projet (dans le sous-dossier <code>data</code> de préférence). Si vous travaillez exclusivement avec R, l’un des meilleurs formats est RDS, un format natif qui conservera toutes les caractéristiques de votre objet, y compris sa classe, et d’éventuels attributs<a href="references.html#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a>. Par défaut, les données seront stockées non compressées, mais vous pourrez aussi décider de compresser avec les algorithmes <code>&quot;gz&quot;</code> (plus rapide et répandu), <code>&quot;bz2&quot;</code> (intermédiaire), ou <code>&quot;xz&quot;</code> (le plus efficace en taux de compression mais aussi le plus lent et gourmand en ressources CPU). Par exemple, pour enregistrer les données avec compression <code>&quot;gz&quot;</code>, vous écrirez :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">write<span class="op">$</span><span class="kw">rds</span>(coral, <span class="dt">file =</span> <span class="st">&quot;../data/coral.rds&quot;</span>, <span class="dt">compress =</span> <span class="st">&quot;gz&quot;</span>)</code></pre></div>
@@ -650,7 +654,7 @@ d &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin_FR, height 
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # ... with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
+# # … with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
 # #   digestive_tract &lt;dbl&gt;, dry_digestive_tract &lt;dbl&gt;, gonads &lt;dbl&gt;,
 # #   dry_gonads &lt;dbl&gt;, skeleton &lt;dbl&gt;, lantern &lt;dbl&gt;, test &lt;dbl&gt;,
 # #   spines &lt;dbl&gt;, maturity &lt;int&gt;, sex &lt;fct&gt;</code></pre>
@@ -666,7 +670,7 @@ d &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin_FR, height 
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # ... with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
+# # … with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
 # #   digestive_tract &lt;dbl&gt;, dry_digestive_tract &lt;dbl&gt;, gonads &lt;dbl&gt;,
 # #   dry_gonads &lt;dbl&gt;, skeleton &lt;dbl&gt;, lantern &lt;dbl&gt;, test &lt;dbl&gt;,
 # #   spines &lt;dbl&gt;, maturity &lt;int&gt;, sex &lt;fct&gt;</code></pre>
@@ -683,7 +687,7 @@ d &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin_FR, height 
 # 4 Pêche…       9.6       9.3    4.6             NA  0.370       0.344
 # 5 Pêche…      10.4      10.7    4.8             NA  0.610       0.559
 # 6 Pêche…      10.5      11.1    5               NA  0.610       0.551
-# # ... with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
+# # … with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
 # #   digestive_tract &lt;dbl&gt;, dry_digestive_tract &lt;dbl&gt;, gonads &lt;dbl&gt;,
 # #   dry_gonads &lt;dbl&gt;, skeleton &lt;dbl&gt;, lantern &lt;dbl&gt;, test &lt;dbl&gt;,
 # #   spines &lt;dbl&gt;, maturity &lt;int&gt;, sex &lt;fct&gt;</code></pre>

@@ -696,7 +696,8 @@ factorial(1600)
 ```
 
 ```
-# Warning in factorial(1600): value out of range in 'gammafn'
+# Warning in factorial(1600): valeur d'argument hors intervalle dans
+# 'gammafn'
 ```
 
 ```
@@ -912,7 +913,7 @@ qq
 #  8 -0.336 -0.994
 #  9 -0.333 -0.915
 # 10 -0.332 -0.842
-# # ... with 39 more rows
+# # … with 39 more rows
 ```
 
 Si les deux distributions sont compatibles, nous devrions avoir proportionnalité entre les quantiles théoriques et les quantiles observés. Cela devrait donc se marquer par un **alignement** des points sur un graphique des quantiles observés en fonction des quantiles théoriques (Fig. \@ref(fig:qqplot1)).

@@ -66,7 +66,7 @@ Les instructions dans R afin de produire un histogramme à l'aide de la fonction
 #  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
 #  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
 # 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# # ... with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
+# # … with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
 # #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
 # #   circularity <dbl>, density <dbl>, class <fct>
 ```
@@ -171,7 +171,7 @@ Lors de l'analyse de jeux de données, vous serez amené à réaliser un histogr
 #  8          5           3.4          1.5         0.2 setosa 
 #  9          4.4         2.9          1.4         0.2 setosa 
 # 10          4.9         3.1          1.5         0.1 setosa 
-# # ... with 140 more rows
+# # … with 140 more rows
 ```
 
 ```r
@@ -260,7 +260,7 @@ Les instructions en R pour produire un graphique de densité avec la fonction `c
 #  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
 #  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
 # 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# # ... with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
+# # … with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
 # #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
 # #   circularity <dbl>, density <dbl>, class <fct>
 ```

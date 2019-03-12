@@ -331,7 +331,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -341,7 +341,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -360,7 +360,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -370,7 +370,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -500,7 +500,7 @@ skimr::skim(eggs_means)
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -508,7 +508,7 @@ skimr::skim(eggs_means)
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
 ```
@@ -985,13 +985,13 @@ skimr::skim(zoo)
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -1061,21 +1061,7 @@ Si vous voulez réaliser la même opération à l'aide d'une formule, vous pouve
 
 
 ```r
-mosaic::tally(data = zoo, ~ class)
-```
-
-```
-# class
-#          Annélide    Appendiculaire         Calanoïde      Chaetognathe 
-#                50                36               288                51 
-#         Cirripède         Cladocère          Cnidaire        Cyclopoïde 
-#                22                50                22                50 
-#          Décapode      Oeuf_allongé         Oeuf_rond           Poisson 
-#               126                50                49                50 
-#       Gastéropode     Harpacticoïde      Malacostracé Poecilostomatoïde 
-#                50                39               121               158 
-#          Protiste 
-#                50
+#mosaic::tally(data = zoo, ~ class)
 ```
 
 Tidyverse favorise l'assemblage d'un petit nombre de fonction (des "verbes") pour obtenir les mêmes résultats que des fonctions plus spécialisées dans les autres styles. Ainsi, ses instructions seront souvent plus verbeuses (inconvénient), mais aussi beaucoup plus lisibles et compréhensibles par un humain (immense avantage). La réalisation d'un tableau de contingence consiste en fait à regrouper les données en fonction de `class`, et ensuite à compter (contingenter) les observations dans chaque classe. Nous pouvons écrire une instruction qui réalise exactement ce traitement de manière explicite (sachant que la fonction `n()` sert à dénombrer)\ :
@@ -1169,7 +1155,7 @@ zoo2
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # ... with 89 more rows
+# # … with 89 more rows
 ```
 
 En tidyverse, les deux opérations (filtrage des lignes et sélection des variables en colonnes) restent deux opération successives distinctes dans le code. Notez au passage que nous repassons à l'opérateur de chaînage `%>.%` de SciViews-R que nous avons l'habitude d'utiliser à la place de l'opérateur correspondant de tidyverse `%>%`.
@@ -1197,7 +1183,7 @@ zoo2
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # ... with 89 more rows
+# # … with 89 more rows
 ```
 
 Le résultat est le même, mais la syntaxe est très différente. Notez que les variables dans la syntaxe de base sont complètement qualifiées (`zoo$class`), ce qui nécessite de répéter plusieurs fois le nom du jeu de données `zoo` (inconvénient) mais lève toute ambiguïté (avantage). La version de tidyverse est plus "propre" (avantage), mais cela implique d'utiliser une évaluation non standard de `class` qui n'est pas une variable existante dans l'environnement où le code est évalué (inconvénient). La sélection des variables est également différente. Dans R de base, des chaînes de caractères doivent être compilées dans un vecteur d'indiçage à l'aide de `c()`, alors que `select()` de tidyverse permet de spécifier simplement les noms des variables sans autres fioritures (mais cela doit être évalué de manière non standard, encore une fois).

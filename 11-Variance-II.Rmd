@@ -537,7 +537,7 @@ La fonction `table()` crée un objet du même nom qui se comporte de manière di
 Si vous voulez réaliser la même opération à l'aide d'une formule, vous pouvez utiliser la fonction `tally()` depuis le package `mosaic`. Vous pouvez charger ce package à l'aide de l'instruction `library(mosaic)`, et ensuite utiliser `tally()` comme si de rien était, ou alors vous spécifiez complètement la fonction à l'aide de `mosaic::tally()` (littéralement, "la fonction tally du package mosaic"). Cette dernière approche est favorisée par SciViews-R car elle permet de comprendre immédiatement d'où vient la fonction et d'éviter aussi d'appeler malencontreusement une fonction du même nom qui serait définie dans un autre package.
 
 ```{r}
-mosaic::tally(data = zoo, ~ class)
+#mosaic::tally(data = zoo, ~ class)
 ```
 
 Tidyverse favorise l'assemblage d'un petit nombre de fonction (des "verbes") pour obtenir les mêmes résultats que des fonctions plus spécialisées dans les autres styles. Ainsi, ses instructions seront souvent plus verbeuses (inconvénient), mais aussi beaucoup plus lisibles et compréhensibles par un humain (immense avantage). La réalisation d'un tableau de contingence consiste en fait à regrouper les données en fonction de `class`, et ensuite à compter (contingenter) les observations dans chaque classe. Nous pouvons écrire une instruction qui réalise exactement ce traitement de manière explicite (sachant que la fonction `n()` sert à dénombrer)\ :

@@ -67,7 +67,7 @@ skimr::skim(crabs2)
 #  n obs: 200 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -77,7 +77,7 @@ skimr::skim(crabs2)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
 ```
@@ -181,6 +181,12 @@ Le graphique à la Fig. \@ref(fig:anova1) représente une situation typique à t
 Notons que ce modèle à trois termes représente bien la situation qui nous intéresse, mais aussi, qu'il décompose la variance totale (entre $\mu$ et chaque point observé) en deux\ : ce que nous appelerons le terme **inter** représentant l'écart entre la moyenne globale $\mu$ et la moyenne de la sous-population concernées ($\tau_j$) et le terme **intra** depuis cette moyenne de la sous-population jusqu'au point observé ($\epsilon_i$).
 
 D'une part, nous nous trouvons dans une situation d'additivité de la variance si nous décidons de calculer ces "variance inter" et "variance intra". D'autre part, sous $H_0$ nous sommes sensés avoir toutes les moyennes égales à $\mu$, et donc, tous les $\tau_j = 0$. Donc, les valeurs non nulles de $\tau_j$ ne doivent qu'être dus au hasard de l'échantillonnage et être par conséquent largement inférieurs à la variabilité entre les individus, ou variance intra $\epsilon_i$. La Fig. \@ref(fig:anova2) représente deux cas avec à gauche une situation où $H_0$ est plausible, et à droite une situation où elle est très peu plausible. Notez qu'à gauche la variation entre les observations (intra) est bien plus grande que l'écart entre les moyennes (inter), alors qu'à droite c'est l'inverse.
+
+
+```
+# Warning: `data_frame()` is deprecated, use `tibble()`.
+# This warning is displayed once per session.
+```
 
 <div class="figure" style="text-align: center">
 <img src="10-Variance_files/figure-html/anova2-1.svg" alt="A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes &quot;inter&quot; bien plus grand que l'étalement des points en &quot;intra&quot;-population)." width="672" />

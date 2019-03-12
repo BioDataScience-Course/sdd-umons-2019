@@ -70,7 +70,7 @@ Dans la plupart des cas, vous utiliserez ou collecterez des données stockées d
 #  8 W      1997-06-24     74    180  16           2013    16
 #  9 M      1972-10-26    110    189  19           2013    41
 # 10 M      1945-03-15     82    160  18           2013    68
-# # ... with 385 more rows
+# # … with 385 more rows
 ```
 
 Le jeu de données `biometry` est disponible dans le package R **BioDataScience**. Dans ce cas, il ne faut pas spécifier de chemin d'accès au fichier : R sait où le trouver tout seul. Il est également spécifié ici que la langue souhaitée est le français avec l'argument `lang = "fr"`. Le résultat de l'importation est assigné à la variable `biometry`(mais elle pourrait tout aussi bien porter un autre nom). Pour finir, le tout est entouré, de manière optionnelle, de parenthèses afin de forcer l'impression du résultat.
@@ -101,19 +101,19 @@ getOption("read_write")
 
 ```
 # # A tibble: 32 x 5
-#    type  read_fun      read_header    write_fun      comment              
-#    <chr> <chr>         <chr>          <chr>          <chr>                
-#  1 csv   readr::read_… data.io::hrea… readr::write_… comma separated valu…
-#  2 csv2  readr::read_… data.io::hrea… <NA>           semicolon separated …
-#  3 xlcsv readr::read_… data.io::hrea… readr::write_… write a CSV file mor…
-#  4 tsv   readr::read_… data.io::hrea… readr::write_… tab separated values 
-#  5 fwf   readr::read_… data.io::hrea… <NA>           fixed width file     
-#  6 log   readr::read_… <NA>           <NA>           standard log file    
-#  7 rds   readr::read_… <NA>           readr::write_… R data file (no comp…
-#  8 txt   readr::read_… <NA>           readr::write_… text file (as length…
-#  9 raw   readr::read_… <NA>           <NA>           binary file (read as…
-# 10 ssv   readr::read_… data.io::hrea… <NA>           space separated valu…
-# # ... with 22 more rows
+#    type  read_fun      read_header    write_fun      comment               
+#    <chr> <chr>         <chr>          <chr>          <chr>                 
+#  1 csv   readr::read_… data.io::hrea… readr::write_… comma separated values
+#  2 csv2  readr::read_… data.io::hrea… <NA>           semicolon separated v…
+#  3 xlcsv readr::read_… data.io::hrea… readr::write_… write a CSV file more…
+#  4 tsv   readr::read_… data.io::hrea… readr::write_… tab separated values  
+#  5 fwf   readr::read_… data.io::hrea… <NA>           fixed width file      
+#  6 log   readr::read_… <NA>           <NA>           standard log file     
+#  7 rds   readr::read_… <NA>           readr::write_… R data file (no compr…
+#  8 txt   readr::read_… <NA>           readr::write_… text file (as length …
+#  9 raw   readr::read_… <NA>           <NA>           binary file (read as …
+# 10 ssv   readr::read_… data.io::hrea… <NA>           space separated value…
+# # … with 22 more rows
 ```
 
 Par la suite, vous allez apprendre à importer vos données depuis différentes sources.
@@ -201,7 +201,7 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 #  8 A0           s.hyst…     8     34.7        24.5 2018-04-24 09:10:00
 #  9 A0           s.hyst…     9     34.7        24.5 2018-04-24 09:10:00
 # 10 A0           s.hyst…    10     34.7        24.5 2018-04-24 09:10:00
-# # ... with 88 more rows, and 3 more variables: time <dbl>, gain <dbl>,
+# # … with 88 more rows, and 3 more variables: time <dbl>, gain <dbl>,
 # #   gain_std <dbl>
 ```
 
@@ -357,7 +357,7 @@ urchin_en %>.%
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -380,7 +380,7 @@ urchin_fr %>.%
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -405,7 +405,7 @@ urchin_FR %>.%
 # 4 Pêche…       9.6       9.3    4.6             NA  0.370       0.344
 # 5 Pêche…      10.4      10.7    4.8             NA  0.610       0.559
 # 6 Pêche…      10.5      11.1    5               NA  0.610       0.551
-# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -437,7 +437,7 @@ Lors de la réalisation de graphiques dans les modules précédents vous avez co
 #  8 W      1997-06-24     74    180  16           2013    16
 #  9 M      1972-10-26    110    189  19           2013    41
 # 10 M      1945-03-15     82    160  18           2013    68
-# # ... with 385 more rows
+# # … with 385 more rows
 ```
 
 La Figure \@ref(fig:two-boxplots) montre deux boites de dispersion parallèles différentes. Laquelle de ces deux représentations est incorrecte et pourquoi ? 
@@ -489,15 +489,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ───────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:Date ─────────────────────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -592,11 +592,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -626,7 +626,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -634,7 +634,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -655,7 +655,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -663,7 +663,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -770,7 +770,7 @@ skimr::skim(df)
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -1110,7 +1110,7 @@ head(urchin_by_orig)
 # 4 Fishe…       9.6       9.3    4.6             NA  0.370       0.344
 # 5 Fishe…      10.4      10.7    4.8             NA  0.610       0.559
 # 6 Fishe…      10.5      11.1    5               NA  0.610       0.551
-# # ... with 17 more variables: integuments <dbl>, dry_integuments <dbl>,
+# # … with 17 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>, sum_skel <dbl>, ratio <dbl>,

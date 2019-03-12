@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS />
+  <meta property="og:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-12-29">
+<meta name="date" content="2019-03-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,15 +52,19 @@
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -140,7 +144,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Nuage de points</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.1</b> Le nuage de points en vidéo</a></li>
-<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#echelles-dun-graphiques"><i class="fa fa-check"></i><b>2.1.2</b> Echelles d’un graphiques</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#echelles-de-graphiques"><i class="fa fa-check"></i><b>2.1.2</b> Echelles de graphiques</a></li>
 <li class="chapter" data-level="2.1.3" data-path="nuage-de-points.html"><a href="nuage-de-points.html#transformation-des-donnees"><i class="fa fa-check"></i><b>2.1.3</b> Transformation des données</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Graphiques dans R Markdown</a><ul>
@@ -565,13 +569,13 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></d
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -627,18 +631,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></d
 #                50</code></pre>
 <p>La fonction <code>table()</code> crée un objet du même nom qui se comporte de manière différente d’un data frame. Ainsi, l’impression de l’objet se présente comme un ensemble de valeurs nommées par le niveau dénombré pour un tableau de contingence à une seule entrée.</p>
 <p>Si vous voulez réaliser la même opération à l’aide d’une formule, vous pouvez utiliser la fonction <code>tally()</code> depuis le package <code>mosaic</code>. Vous pouvez charger ce package à l’aide de l’instruction <code>library(mosaic)</code>, et ensuite utiliser <code>tally()</code> comme si de rien était, ou alors vous spécifiez complètement la fonction à l’aide de <code>mosaic::tally()</code> (littéralement, “la fonction tally du package mosaic”). Cette dernière approche est favorisée par SciViews-R car elle permet de comprendre immédiatement d’où vient la fonction et d’éviter aussi d’appeler malencontreusement une fonction du même nom qui serait définie dans un autre package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mosaic<span class="op">::</span><span class="kw">tally</span>(<span class="dt">data =</span> zoo, <span class="op">~</span><span class="st"> </span>class)</code></pre></div>
-<pre><code># class
-#          Annélide    Appendiculaire         Calanoïde      Chaetognathe 
-#                50                36               288                51 
-#         Cirripède         Cladocère          Cnidaire        Cyclopoïde 
-#                22                50                22                50 
-#          Décapode      Oeuf_allongé         Oeuf_rond           Poisson 
-#               126                50                49                50 
-#       Gastéropode     Harpacticoïde      Malacostracé Poecilostomatoïde 
-#                50                39               121               158 
-#          Protiste 
-#                50</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#mosaic::tally(data = zoo, ~ class)</span></code></pre></div>
 <p>Tidyverse favorise l’assemblage d’un petit nombre de fonction (des “verbes”) pour obtenir les mêmes résultats que des fonctions plus spécialisées dans les autres styles. Ainsi, ses instructions seront souvent plus verbeuses (inconvénient), mais aussi beaucoup plus lisibles et compréhensibles par un humain (immense avantage). La réalisation d’un tableau de contingence consiste en fait à regrouper les données en fonction de <code>class</code>, et ensuite à compter (contingenter) les observations dans chaque classe. Nous pouvons écrire une instruction qui réalise exactement ce traitement de manière explicite (sachant que la fonction <code>n()</code> sert à dénombrer) :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span>
@@ -709,7 +702,7 @@ zoo2</code></pre></div>
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # ... with 89 more rows</code></pre>
+# # … with 89 more rows</code></pre>
 <p>En tidyverse, les deux opérations (filtrage des lignes et sélection des variables en colonnes) restent deux opération successives distinctes dans le code. Notez au passage que nous repassons à l’opérateur de chaînage <code>%&gt;.%</code> de SciViews-R que nous avons l’habitude d’utiliser à la place de l’opérateur correspondant de tidyverse <code>%&gt;%</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">filter</span>(., class <span class="op">==</span><span class="st"> &quot;Oeuf_allongé&quot;</span> <span class="op">|</span><span class="st"> </span>class <span class="op">==</span><span class="st"> &quot;Oeuf_rond&quot;</span>) <span class="op">%&gt;.%</span>
@@ -729,7 +722,7 @@ zoo2</code></pre></div>
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # ... with 89 more rows</code></pre>
+# # … with 89 more rows</code></pre>
 <p>Le résultat est le même, mais la syntaxe est très différente. Notez que les variables dans la syntaxe de base sont complètement qualifiées (<code>zoo$class</code>), ce qui nécessite de répéter plusieurs fois le nom du jeu de données <code>zoo</code> (inconvénient) mais lève toute ambiguïté (avantage). La version de tidyverse est plus “propre” (avantage), mais cela implique d’utiliser une évaluation non standard de <code>class</code> qui n’est pas une variable existante dans l’environnement où le code est évalué (inconvénient). La sélection des variables est également différente. Dans R de base, des chaînes de caractères doivent être compilées dans un vecteur d’indiçage à l’aide de <code>c()</code>, alors que <code>select()</code> de tidyverse permet de spécifier simplement les noms des variables sans autres fioritures (mais cela doit être évalué de manière non standard, encore une fois).</p>
 <p>Pour calculer une nouvelle variable, par exemple le logarithme en base 10 de l’aire dans <code>log_area</code>, nous ferons comme ceci en R de base :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo2<span class="op">$</span>log_area &lt;-<span class="st"> </span><span class="kw">log10</span>(zoo2<span class="op">$</span>area)

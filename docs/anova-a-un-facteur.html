@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS />
+  <meta property="og:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2018-12-29">
+<meta name="date" content="2019-03-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -52,15 +52,19 @@
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -140,7 +144,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="2" data-path="visu1.html"><a href="visu1.html"><i class="fa fa-check"></i><b>2</b> Visualisation I</a><ul>
 <li class="chapter" data-level="2.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html"><i class="fa fa-check"></i><b>2.1</b> Nuage de points</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="nuage-de-points.html"><a href="nuage-de-points.html#le-nuage-de-points-en-video"><i class="fa fa-check"></i><b>2.1.1</b> Le nuage de points en vidéo</a></li>
-<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#echelles-dun-graphiques"><i class="fa fa-check"></i><b>2.1.2</b> Echelles d’un graphiques</a></li>
+<li class="chapter" data-level="2.1.2" data-path="nuage-de-points.html"><a href="nuage-de-points.html#echelles-de-graphiques"><i class="fa fa-check"></i><b>2.1.2</b> Echelles de graphiques</a></li>
 <li class="chapter" data-level="2.1.3" data-path="nuage-de-points.html"><a href="nuage-de-points.html#transformation-des-donnees"><i class="fa fa-check"></i><b>2.1.3</b> Transformation des données</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="graphiques-dans-r-markdown.html"><a href="graphiques-dans-r-markdown.html"><i class="fa fa-check"></i><b>2.2</b> Graphiques dans R Markdown</a><ul>
@@ -435,6 +439,8 @@ Figure 10.3: Décomposition de la variance dans un cas à trois populations A, B
 </div>
 <p>Notons que ce modèle à trois termes représente bien la situation qui nous intéresse, mais aussi, qu’il décompose la variance totale (entre <span class="math inline">\(\mu\)</span> et chaque point observé) en deux : ce que nous appelerons le terme <strong>inter</strong> représentant l’écart entre la moyenne globale <span class="math inline">\(\mu\)</span> et la moyenne de la sous-population concernées (<span class="math inline">\(\tau_j\)</span>) et le terme <strong>intra</strong> depuis cette moyenne de la sous-population jusqu’au point observé (<span class="math inline">\(\epsilon_i\)</span>).</p>
 <p>D’une part, nous nous trouvons dans une situation d’additivité de la variance si nous décidons de calculer ces “variance inter” et “variance intra”. D’autre part, sous <span class="math inline">\(H_0\)</span> nous sommes sensés avoir toutes les moyennes égales à <span class="math inline">\(\mu\)</span>, et donc, tous les <span class="math inline">\(\tau_j = 0\)</span>. Donc, les valeurs non nulles de <span class="math inline">\(\tau_j\)</span> ne doivent qu’être dus au hasard de l’échantillonnage et être par conséquent largement inférieurs à la variabilité entre les individus, ou variance intra <span class="math inline">\(\epsilon_i\)</span>. La Fig. <a href="anova-a-un-facteur.html#fig:anova2">10.4</a> représente deux cas avec à gauche une situation où <span class="math inline">\(H_0\)</span> est plausible, et à droite une situation où elle est très peu plausible. Notez qu’à gauche la variation entre les observations (intra) est bien plus grande que l’écart entre les moyennes (inter), alors qu’à droite c’est l’inverse.</p>
+<pre><code># Warning: `data_frame()` is deprecated, use `tibble()`.
+# This warning is displayed once per session.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:anova2"></span>
 <img src="10-Variance_files/figure-html/anova2-1.svg" alt="A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes &quot;inter&quot; bien plus grand que l'étalement des points en &quot;intra&quot;-population)." width="672" />
 <p class="caption">
