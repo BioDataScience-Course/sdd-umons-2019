@@ -241,7 +241,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li class="chapter" data-level="7.3.5" data-path="distribution-uniforme.html"><a href="distribution-uniforme.html#calcul-avec-les-snippets"><i class="fa fa-check"></i><b>7.3.5</b> Calcul avec les snippets</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="distribution-binomiale.html"><a href="distribution-binomiale.html"><i class="fa fa-check"></i><b>7.4</b> Distribution binomiale</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="distribution-binomiale.html"><a href="distribution-binomiale.html#epreuve-de-benouilli"><i class="fa fa-check"></i><b>7.4.1</b> Epreuve de Benouilli</a></li>
+<li class="chapter" data-level="7.4.1" data-path="distribution-binomiale.html"><a href="distribution-binomiale.html#epreuve-de-benoulli"><i class="fa fa-check"></i><b>7.4.1</b> Epreuve de Bernoulli</a></li>
 <li class="chapter" data-level="7.4.2" data-path="distribution-binomiale.html"><a href="distribution-binomiale.html#calculs-et-graphiques"><i class="fa fa-check"></i><b>7.4.2</b> Calculs et graphiques</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="distribution-de-poisson.html"><a href="distribution-de-poisson.html"><i class="fa fa-check"></i><b>7.5</b> Distribution de poisson</a><ul>
@@ -400,8 +400,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="distribution-binomiale" class="section level2">
 <h2><span class="header-section-number">7.4</span> Distribution binomiale</h2>
 <p>Partons d’un exemple pratique pour découvrir cette distribution. La <a href="http://www.muco.be/fr/mucoviscidose/maladie-génétique">mucoviscidose</a> est, dans la population européenne, la plus fréquente des maladies génétiques héréditaires. Elle se caractérise par un mucus (voies respiratoires) anormalement épais qui est à l’origine de diverses complications. L’altération d’une protéine CFTR est à l’origine de cette maladie. Comme le gène qui code pour cette protéine est récessif, il faut que le deux allèles soient porteurs simultanément de la mutation pour que la maladie apparaisse. Parmi des familles de six enfants dont le père et la mère normaux sont tous deux porteurs hétérozygotes du gène altéré, quelle est la probabilité d’obtenir 0, 1, 2, …, 6 enfants atteints de mucoviscidose ?</p>
-<div id="epreuve-de-benouilli" class="section level3">
-<h3><span class="header-section-number">7.4.1</span> Epreuve de Benouilli</h3>
+<div id="epreuve-de-benoulli" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Epreuve de Benroulli</h3>
 <p>La <strong>distribution binomiale</strong> est un loi de distribution discrète qui répond à ce genre de question. Ses conditions d’applications sont :</p>
 <ul>
 <li>résultats binaire (deux événements possibles uniquement ; l’un sera nommé “succès” et l’autre “échec” par convention),</li>
@@ -409,12 +409,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li><em>n</em> le nombre d’essais totaux est fixé à l’avance,</li>
 <li>probabilité du “succès” <em>p</em> constante (probabilité de l’“échec” = 1 - <em>p</em>).</li>
 </ul>
-<p>Les conditions particulières de cette situation sont appelées <strong>épreuve de Bernouilli</strong>. Mathématiquement, nous l’écrirons comme suit. Soit une variable aléatoire <span class="math inline">\(Y\)</span> qui comptabilise le nombre de succès, la probabilité d’obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais est :</p>
+<p>Les conditions particulières de cette situation sont appelées <strong>épreuve de Bernoulli</strong>. Mathématiquement, nous l’écrirons comme suit. Soit une variable aléatoire <span class="math inline">\(Y\)</span> qui comptabilise le nombre de succès, la probabilité d’obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais est :</p>
 <p><span class="math display">\[P(Y=j)= C^j_n \times p^j \times (1-p)^{n-j}\]</span></p>
 <p>Le <strong>coefficient binomial</strong> <span class="math inline">\(C^j_n\)</span> vaut<a href="references.html#fn34" class="footnoteRef" id="fnref34"><sup>34</sup></a> : <span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
 <p><span class="math inline">\(C^j_n\)</span> représente le nombre de combinaisons possibles pour obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais réalisés dans un ordre quelconque. On pourra écrire aussi :</p>
 <p><span class="math display">\[Y \sim B(n,p)\]</span></p>
-<p>Notre exemple rentre parfaitement dans le cadre de l’épreuve de Bernouilli avec <em>n</em> = 6 et <em>p</em>, la probabilité du succès, c’est-à-dire, d’avoir un enfant qui ne développe pas la maladie de 3/4 : <span class="math inline">\(Y \sim B(6, 0.75)\)</span>.</p>
+<p>Notre exemple rentre parfaitement dans le cadre de l’épreuve de Bernoulli avec <em>n</em> = 6 et <em>p</em>, la probabilité du succès, c’est-à-dire, d’avoir un enfant qui ne développe pas la maladie de 3/4 : <span class="math inline">\(Y \sim B(6, 0.75)\)</span>.</p>
 </div>
 <div id="calculs-et-graphiques" class="section level3">
 <h3><span class="header-section-number">7.4.2</span> Calculs et graphiques</h3>

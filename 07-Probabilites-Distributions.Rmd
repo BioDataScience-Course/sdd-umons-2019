@@ -490,7 +490,7 @@ runif(10, min = 0, max = 1)
 Partons d'un exemple pratique pour découvrir cette distribution. La [mucoviscidose](http://www.muco.be/fr/mucoviscidose/maladie-génétique) est, dans la population européenne, la plus fréquente des maladies génétiques héréditaires. Elle se caractérise par un mucus (voies respiratoires) anormalement épais qui est à l’origine de diverses complications. L'altération d'une protéine CFTR est à l'origine de cette maladie. Comme le gène qui code pour cette protéine est récessif, il faut que le deux allèles soient porteurs simultanément de la mutation pour que la maladie apparaisse. Parmi des familles de six enfants dont le père et la mère normaux sont tous deux porteurs hétérozygotes du gène altéré, quelle est la probabilité d'obtenir 0, 1, 2, ..., 6 enfants atteints de mucoviscidose\ ?
 
 
-### Epreuve de Benouilli
+### Epreuve de Bernoulli
 
 La **distribution binomiale** est un loi de distribution discrète qui répond à ce genre de question. Ses conditions d'applications sont\ :
 
@@ -499,7 +499,7 @@ La **distribution binomiale** est un loi de distribution discrète qui répond �
 - *n* le nombre d'essais totaux est fixé à l'avance,
 - probabilité du "succès" *p* constante (probabilité de l'"échec" = 1 - *p*). 
 
-Les conditions particulières de cette situation sont appelées **épreuve de Bernouilli**. Mathématiquement, nous l'écrirons comme suit. Soit une variable aléatoire $Y$ qui comptabilise le nombre de succès, la probabilité d’obtenir $j$ succès parmi $n$ essais est\ :
+Les conditions particulières de cette situation sont appelées **épreuve de Bernoulli**. Mathématiquement, nous l'écrirons comme suit. Soit une variable aléatoire $Y$ qui comptabilise le nombre de succès, la probabilité d’obtenir $j$ succès parmi $n$ essais est\ :
 
 $$P(Y=j)= C^j_n \times p^j \times (1-p)^{n-j}$$
 
@@ -509,7 +509,7 @@ $C^j_n$ représente le nombre de combinaisons possibles pour obtenir $j$ succès
 
 $$Y \sim B(n,p)$$
 
-Notre exemple rentre parfaitement dans le cadre de l'épreuve de Bernouilli avec *n* = 6 et *p*, la probabilité du succès, c'est-à-dire, d'avoir un enfant qui ne développe pas la maladie de 3/4\ : $Y \sim B(6, 0.75)$.
+Notre exemple rentre parfaitement dans le cadre de l'épreuve de Bernoulli avec *n* = 6 et *p*, la probabilité du succès, c'est-à-dire, d'avoir un enfant qui ne développe pas la maladie de 3/4\ : $Y \sim B(6, 0.75)$.
 
 
 ### Calculs et graphiques
