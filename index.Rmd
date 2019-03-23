@@ -146,3 +146,11 @@ L'évaluation sera basée sur une somme de petites contributions qui matérialis
 ----
 
 _Le matériel dans cet ouvrage est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)._
+
+----
+
+##### System information {-}
+
+```{r}
+sessioninfo::session_info()
+```

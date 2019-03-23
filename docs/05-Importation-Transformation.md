@@ -41,12 +41,12 @@ small_dataset
 # # A tibble: 6 x 3
 #   treatment  dose response
 #   <chr>     <dbl>    <dbl>
-# 1 control     0.5     18.4
-# 2 control     1       26.4
-# 3 control     2       51.1
-# 4 test        0.5     10.3
-# 5 test        1       19.9
-# 6 test        2       41.1
+# 1 control   0.500     18.4
+# 2 control   1.00      26.4
+# 3 control   2.00      51.1
+# 4 test      0.500     10.3
+# 5 test      1.00      19.9
+# 6 test      2.00      41.1
 ```
 
 Dans la plupart des cas, vous utiliserez ou collecterez des données stockées dans des formats divers : feuilles Excel, fichiers CSV ("comma-separated-values", un format standard d'encodage d'un tableau de données sous forme textuelle), formats spécifiques à divers logiciels statistiques comme SAS, Stata ou Systat, ... Ces données peuvent être sur un disque local ou disponibles depuis un lien URL sur le net^[R permet également d'interroger des bases de données spécialisées, mais nous n'aborderons ce sujet spécifique qu'au cours de Science des Données Biologique 5 en Master 2.]. De nombreuses fonctions existent dans R pour importer toutes ces données. La fonction `read()` du package `data.io` est l'une des plus simples et conviviales d'entre-elles. Vous l'avez déjà utilisée, mais reprenons un exemple pour en discuter les détails.
@@ -60,17 +60,17 @@ Dans la plupart des cas, vous utiliserez ou collecterez des données stockées d
 # # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
-#  1 M      1995-03-11     69    182  15           2013    18
-#  2 M      1998-04-03     74    190  16           2013    15
-#  3 M      1967-04-04     83    185  17.5         2013    46
-#  4 M      1994-02-10     60    175  15           2013    19
-#  5 W      1990-12-02     48    167  14           2013    23
-#  6 W      1994-07-15     52    179  14           2013    19
-#  7 W      1971-03-03     72    167  15.5         2013    42
-#  8 W      1997-06-24     74    180  16           2013    16
-#  9 M      1972-10-26    110    189  19           2013    41
-# 10 M      1945-03-15     82    160  18           2013    68
-# # … with 385 more rows
+#  1 M      1995-03-11    69.   182.  15.0        2013.   18.
+#  2 M      1998-04-03    74.   190.  16.0        2013.   15.
+#  3 M      1967-04-04    83.   185.  17.5        2013.   46.
+#  4 M      1994-02-10    60.   175.  15.0        2013.   19.
+#  5 W      1990-12-02    48.   167.  14.0        2013.   23.
+#  6 W      1994-07-15    52.   179.  14.0        2013.   19.
+#  7 W      1971-03-03    72.   167.  15.5        2013.   42.
+#  8 W      1997-06-24    74.   180.  16.0        2013.   16.
+#  9 M      1972-10-26   110.   189.  19.0        2013.   41.
+# 10 M      1945-03-15    82.   160.  18.0        2013.   68.
+# # ... with 385 more rows
 ```
 
 Le jeu de données `biometry` est disponible dans le package R **BioDataScience**. Dans ce cas, il ne faut pas spécifier de chemin d'accès au fichier : R sait où le trouver tout seul. Il est également spécifié ici que la langue souhaitée est le français avec l'argument `lang = "fr"`. Le résultat de l'importation est assigné à la variable `biometry`(mais elle pourrait tout aussi bien porter un autre nom). Pour finir, le tout est entouré, de manière optionnelle, de parenthèses afin de forcer l'impression du résultat.
@@ -101,19 +101,19 @@ getOption("read_write")
 
 ```
 # # A tibble: 32 x 5
-#    type  read_fun      read_header    write_fun      comment               
-#    <chr> <chr>         <chr>          <chr>          <chr>                 
-#  1 csv   readr::read_… data.io::hrea… readr::write_… comma separated values
-#  2 csv2  readr::read_… data.io::hrea… <NA>           semicolon separated v…
-#  3 xlcsv readr::read_… data.io::hrea… readr::write_… write a CSV file more…
-#  4 tsv   readr::read_… data.io::hrea… readr::write_… tab separated values  
-#  5 fwf   readr::read_… data.io::hrea… <NA>           fixed width file      
-#  6 log   readr::read_… <NA>           <NA>           standard log file     
-#  7 rds   readr::read_… <NA>           readr::write_… R data file (no compr…
-#  8 txt   readr::read_… <NA>           readr::write_… text file (as length …
-#  9 raw   readr::read_… <NA>           <NA>           binary file (read as …
-# 10 ssv   readr::read_… data.io::hrea… <NA>           space separated value…
-# # … with 22 more rows
+#    type  read_fun             read_header         write_fun   comment     
+#    <chr> <chr>                <chr>               <chr>       <chr>       
+#  1 csv   readr::read_csv      data.io::hread_text readr::wri… comma separ…
+#  2 csv2  readr::read_csv2     data.io::hread_text <NA>        semicolon s…
+#  3 xlcsv readr::read_csv      data.io::hread_text readr::wri… write a CSV…
+#  4 tsv   readr::read_tsv      data.io::hread_text readr::wri… tab separat…
+#  5 fwf   readr::read_fwf      data.io::hread_text <NA>        fixed width…
+#  6 log   readr::read_log      <NA>                <NA>        standard lo…
+#  7 rds   readr::read_rds      <NA>                readr::wri… R data file…
+#  8 txt   readr::read_file     <NA>                readr::wri… text file (…
+#  9 raw   readr::read_file_raw <NA>                <NA>        binary file…
+# 10 ssv   readr::read_table    data.io::hread_text <NA>        space separ…
+# # ... with 22 more rows
 ```
 
 Par la suite, vous allez apprendre à importer vos données depuis différentes sources.
@@ -177,11 +177,11 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 # cols(
 #   localisation = col_character(),
 #   species = col_character(),
-#   id = col_double(),
+#   id = col_integer(),
 #   salinity = col_double(),
 #   temperature = col_double(),
 #   date = col_datetime(format = ""),
-#   time = col_double(),
+#   time = col_integer(),
 #   gain = col_double(),
 #   gain_std = col_double()
 # )
@@ -189,19 +189,19 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 
 ```
 # # A tibble: 98 x 9
-#    localisation species    id salinity temperature date               
-#    <chr>        <chr>   <dbl>    <dbl>       <dbl> <dttm>             
-#  1 A0           s.hyst…     1     34.7        24.5 2018-04-24 09:10:00
-#  2 A0           s.hyst…     2     34.7        24.5 2018-04-24 09:10:00
-#  3 A0           s.hyst…     3     34.7        24.5 2018-04-24 09:10:00
-#  4 A0           s.hyst…     4     34.7        24.5 2018-04-24 09:10:00
-#  5 A0           s.hyst…     5     34.7        24.5 2018-04-24 09:10:00
-#  6 A0           s.hyst…     6     34.7        24.5 2018-04-24 09:10:00
-#  7 A0           s.hyst…     7     34.7        24.5 2018-04-24 09:10:00
-#  8 A0           s.hyst…     8     34.7        24.5 2018-04-24 09:10:00
-#  9 A0           s.hyst…     9     34.7        24.5 2018-04-24 09:10:00
-# 10 A0           s.hyst…    10     34.7        24.5 2018-04-24 09:10:00
-# # … with 88 more rows, and 3 more variables: time <dbl>, gain <dbl>,
+#    localisation species      id salinity temperature date               
+#    <chr>        <chr>     <int>    <dbl>       <dbl> <dttm>             
+#  1 A0           s.hystrix     1     34.7        24.5 2018-04-24 09:10:00
+#  2 A0           s.hystrix     2     34.7        24.5 2018-04-24 09:10:00
+#  3 A0           s.hystrix     3     34.7        24.5 2018-04-24 09:10:00
+#  4 A0           s.hystrix     4     34.7        24.5 2018-04-24 09:10:00
+#  5 A0           s.hystrix     5     34.7        24.5 2018-04-24 09:10:00
+#  6 A0           s.hystrix     6     34.7        24.5 2018-04-24 09:10:00
+#  7 A0           s.hystrix     7     34.7        24.5 2018-04-24 09:10:00
+#  8 A0           s.hystrix     8     34.7        24.5 2018-04-24 09:10:00
+#  9 A0           s.hystrix     9     34.7        24.5 2018-04-24 09:10:00
+# 10 A0           s.hystrix    10     34.7        24.5 2018-04-24 09:10:00
+# # ... with 88 more rows, and 3 more variables: time <int>, gain <dbl>,
 # #   gain_std <dbl>
 ```
 
@@ -353,11 +353,11 @@ urchin_en %>.%
 #   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
 # 1 Farm        53.1      54.5   26.3           9.57   60.2        41.7
 # 2 Farm        52.7      52.7   25.9          10.8    63.2        46.6
-# 3 Farm        54        54.2   24.5          10.7    64.4        44.3
+# 3 Farm        54.0      54.2   24.5          10.7    64.4        44.3
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -376,11 +376,11 @@ urchin_fr %>.%
 #   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
 # 1 Farm        53.1      54.5   26.3           9.57   60.2        41.7
 # 2 Farm        52.7      52.7   25.9          10.8    63.2        46.6
-# 3 Farm        54        54.2   24.5          10.7    64.4        44.3
+# 3 Farm        54.0      54.2   24.5          10.7    64.4        44.3
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -397,15 +397,15 @@ urchin_FR %>.%
 
 ```
 # # A tibble: 6 x 19
-#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
-#   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
-# 1 Pêche…       9.9      10.2    5               NA  0.522       0.478
-# 2 Pêche…      10.5      10.6    5.7             NA  0.642       0.589
-# 3 Pêche…      10.8      10.8    5.2             NA  0.734       0.677
-# 4 Pêche…       9.6       9.3    4.6             NA  0.370       0.344
-# 5 Pêche…      10.4      10.7    4.8             NA  0.610       0.559
-# 6 Pêche…      10.5      11.1    5               NA  0.610       0.551
-# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+#   origin   diameter1 diameter2 height buoyant_weight weight solid_parts
+#   <fct>        <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+# 1 Pêcherie      9.90     10.2    5.00             NA  0.522       0.478
+# 2 Pêcherie     10.5      10.6    5.70             NA  0.642       0.589
+# 3 Pêcherie     10.8      10.8    5.20             NA  0.734       0.677
+# 4 Pêcherie      9.60      9.30   4.60             NA  0.370       0.344
+# 5 Pêcherie     10.4      10.7    4.80             NA  0.610       0.559
+# 6 Pêcherie     10.5      11.1    5.00             NA  0.610       0.551
+# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -427,17 +427,17 @@ Lors de la réalisation de graphiques dans les modules précédents vous avez co
 # # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
-#  1 M      1995-03-11     69    182  15           2013    18
-#  2 M      1998-04-03     74    190  16           2013    15
-#  3 M      1967-04-04     83    185  17.5         2013    46
-#  4 M      1994-02-10     60    175  15           2013    19
-#  5 W      1990-12-02     48    167  14           2013    23
-#  6 W      1994-07-15     52    179  14           2013    19
-#  7 W      1971-03-03     72    167  15.5         2013    42
-#  8 W      1997-06-24     74    180  16           2013    16
-#  9 M      1972-10-26    110    189  19           2013    41
-# 10 M      1945-03-15     82    160  18           2013    68
-# # … with 385 more rows
+#  1 M      1995-03-11    69.   182.  15.0        2013.   18.
+#  2 M      1998-04-03    74.   190.  16.0        2013.   15.
+#  3 M      1967-04-04    83.   185.  17.5        2013.   46.
+#  4 M      1994-02-10    60.   175.  15.0        2013.   19.
+#  5 W      1990-12-02    48.   167.  14.0        2013.   23.
+#  6 W      1994-07-15    52.   179.  14.0        2013.   19.
+#  7 W      1971-03-03    72.   167.  15.5        2013.   42.
+#  8 W      1997-06-24    74.   180.  16.0        2013.   16.
+#  9 M      1972-10-26   110.   189.  19.0        2013.   41.
+# 10 M      1945-03-15    82.   160.  18.0        2013.   68.
+# # ... with 385 more rows
 ```
 
 La Figure \@ref(fig:two-boxplots) montre deux boites de dispersion parallèles différentes. Laquelle de ces deux représentations est incorrecte et pourquoi ? 
@@ -489,15 +489,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: Date 
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -592,11 +592,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -626,7 +626,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -634,7 +634,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -655,7 +655,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -663,7 +663,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -770,7 +770,7 @@ skimr::skim(df)
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -1102,15 +1102,15 @@ head(urchin_by_orig)
 ```
 # # A tibble: 6 x 24
 # # Groups:   origin [1]
-#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
-#   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
-# 1 Fishe…       9.9      10.2    5               NA  0.522       0.478
-# 2 Fishe…      10.5      10.6    5.7             NA  0.642       0.589
-# 3 Fishe…      10.8      10.8    5.2             NA  0.734       0.677
-# 4 Fishe…       9.6       9.3    4.6             NA  0.370       0.344
-# 5 Fishe…      10.4      10.7    4.8             NA  0.610       0.559
-# 6 Fishe…      10.5      11.1    5               NA  0.610       0.551
-# # … with 17 more variables: integuments <dbl>, dry_integuments <dbl>,
+#   origin  diameter1 diameter2 height buoyant_weight weight solid_parts
+#   <fct>       <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+# 1 Fishery      9.90     10.2    5.00             NA  0.522       0.478
+# 2 Fishery     10.5      10.6    5.70             NA  0.642       0.589
+# 3 Fishery     10.8      10.8    5.20             NA  0.734       0.677
+# 4 Fishery      9.60      9.30   4.60             NA  0.370       0.344
+# 5 Fishery     10.4      10.7    4.80             NA  0.610       0.559
+# 6 Fishery     10.5      11.1    5.00             NA  0.610       0.551
+# # ... with 17 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>, sum_skel <dbl>, ratio <dbl>,

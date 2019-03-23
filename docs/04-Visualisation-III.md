@@ -53,21 +53,22 @@ Les instructions dans R pour produire un graphique en barres à l'aide de la fon
 
 ```
 # # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
-#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# # … with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
-# #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
-# #   circularity <dbl>, density <dbl>, class <fct>
+#      ecd  area perimeter feret major minor  mean   mode     min   max
+#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>   <dbl> <dbl>
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360 0.00400 0.908
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492  0.0240  0.676
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320 0.00800 0.696
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360 0.00400 0.728
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160 0.00800 0.452
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200 0.00400 0.844
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120 0.00400 0.784
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120 0.00400 0.756
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120 0.00400 0.728
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440 0.00400 0.880
+# # ... with 1,252 more rows, and 10 more variables: std_dev <dbl>,
+# #   range <dbl>, size <dbl>, aspect <dbl>, elongation <dbl>,
+# #   compactness <dbl>, transparency <dbl>, circularity <dbl>,
+# #   density <dbl>, class <fct>
 ```
 
 ```r
@@ -78,21 +79,22 @@ Les instructions dans R pour produire un graphique en barres à l'aide de la fon
 
 ```
 # # A tibble: 535 x 20
-#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
-#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
-#  2 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
-#  3 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
-#  4 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
-#  5 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
-#  6 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
-#  7 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
-#  8 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
-#  9 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# 10 0.725 0.412      7.14 1.90  0.802 0.655 0.209 0.008 0.004 0.732   0.202
-# # … with 525 more rows, and 9 more variables: range <dbl>, size <dbl>,
-# #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
-# #   circularity <dbl>, density <dbl>, class <fct>
+#      ecd  area perimeter feret major minor  mean    mode     min   max
+#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>   <dbl> <dbl>
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360  0.00400 0.908
+#  2 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320  0.00800 0.696
+#  3 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360  0.00400 0.728
+#  4 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160  0.00800 0.452
+#  5 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200  0.00400 0.844
+#  6 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120  0.00400 0.784
+#  7 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120  0.00400 0.756
+#  8 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120  0.00400 0.728
+#  9 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440  0.00400 0.880
+# 10 0.725 0.412      7.14 1.90  0.802 0.655 0.209 0.00800 0.00400 0.732
+# # ... with 525 more rows, and 10 more variables: std_dev <dbl>,
+# #   range <dbl>, size <dbl>, aspect <dbl>, elongation <dbl>,
+# #   compactness <dbl>, transparency <dbl>, circularity <dbl>,
+# #   density <dbl>, class <fct>
 ```
 
 ```r
@@ -122,17 +124,17 @@ La fonction `geom_bar()` se charge d'ajouter les barres verticales dans le graph
 # # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
-#  1 H      1995-03-11     69    182  15           2013    18
-#  2 H      1998-04-03     74    190  16           2013    15
-#  3 H      1967-04-04     83    185  17.5         2013    46
-#  4 H      1994-02-10     60    175  15           2013    19
-#  5 F      1990-12-02     48    167  14           2013    23
-#  6 F      1994-07-15     52    179  14           2013    19
-#  7 F      1971-03-03     72    167  15.5         2013    42
-#  8 F      1997-06-24     74    180  16           2013    16
-#  9 H      1972-10-26    110    189  19           2013    41
-# 10 H      1945-03-15     82    160  18           2013    68
-# # … with 385 more rows
+#  1 H      1995-03-11    69.   182.  15.0        2013.   18.
+#  2 H      1998-04-03    74.   190.  16.0        2013.   15.
+#  3 H      1967-04-04    83.   185.  17.5        2013.   46.
+#  4 H      1994-02-10    60.   175.  15.0        2013.   19.
+#  5 F      1990-12-02    48.   167.  14.0        2013.   23.
+#  6 F      1994-07-15    52.   179.  14.0        2013.   19.
+#  7 F      1971-03-03    72.   167.  15.5        2013.   42.
+#  8 F      1997-06-24    74.   180.  16.0        2013.   16.
+#  9 H      1972-10-26   110.   189.  19.0        2013.   41.
+# 10 H      1945-03-15    82.   160.  18.0        2013.   68.
+# # ... with 385 more rows
 ```
 
 ```r
@@ -335,10 +337,6 @@ Ce graphique est plus difficile à réaliser à l'aide de `chart()` ou `ggplot()
 Partons d'un exemple fictif pour vous convaincre qu'un graphique en barres est souvent plus lisible qu'un graphique en camembert. Combien d'observations comptez-vous pour la lettre **H** ? 
 
 
-```
-# Warning: `data_frame()` is deprecated, use `tibble()`.
-# This warning is displayed once per session.
-```
 
 
 <div class="figure" style="text-align: center">
@@ -500,17 +498,17 @@ La Fig. \@ref(fig:boxplot-tooth) présente un graphique en boites de dispersion 
 # # A tibble: 60 x 3
 #      len supp   dose
 #    <dbl> <fct> <dbl>
-#  1   4.2 VC      0.5
-#  2  11.5 VC      0.5
-#  3   7.3 VC      0.5
-#  4   5.8 VC      0.5
-#  5   6.4 VC      0.5
-#  6  10   VC      0.5
-#  7  11.2 VC      0.5
-#  8  11.2 VC      0.5
-#  9   5.2 VC      0.5
-# 10   7   VC      0.5
-# # … with 50 more rows
+#  1  4.20 VC    0.500
+#  2 11.5  VC    0.500
+#  3  7.30 VC    0.500
+#  4  5.80 VC    0.500
+#  5  6.40 VC    0.500
+#  6 10.0  VC    0.500
+#  7 11.2  VC    0.500
+#  8 11.2  VC    0.500
+#  9  5.20 VC    0.500
+# 10  7.00 VC    0.500
+# # ... with 50 more rows
 ```
 
 ```r
@@ -577,17 +575,17 @@ L'une des règles les plus importantes que vous devez impérativement garder à 
 # # A tibble: 578 x 4
 #    weight  Time Chick Diet 
 #     <dbl> <dbl> <ord> <fct>
-#  1     42     0 1     1    
-#  2     51     2 1     1    
-#  3     59     4 1     1    
-#  4     64     6 1     1    
-#  5     76     8 1     1    
-#  6     93    10 1     1    
-#  7    106    12 1     1    
-#  8    125    14 1     1    
-#  9    149    16 1     1    
-# 10    171    18 1     1    
-# # … with 568 more rows
+#  1    42.    0. 1     1    
+#  2    51.    2. 1     1    
+#  3    59.    4. 1     1    
+#  4    64.    6. 1     1    
+#  5    76.    8. 1     1    
+#  6    93.   10. 1     1    
+#  7   106.   12. 1     1    
+#  8   125.   14. 1     1    
+#  9   149.   16. 1     1    
+# 10   171.   18. 1     1    
+# # ... with 568 more rows
 ```
 
 ```r
@@ -681,19 +679,19 @@ Depuis le début, l'ensemble des graphiques que nous vous avons proposés utilis
 
 ```
 # # A tibble: 421 x 19
-#    origin diameter1 diameter2 height buoyant_weight weight solid_parts
-#    <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
-#  1 Pêche…       9.9      10.2    5               NA  0.522       0.478
-#  2 Pêche…      10.5      10.6    5.7             NA  0.642       0.589
-#  3 Pêche…      10.8      10.8    5.2             NA  0.734       0.677
-#  4 Pêche…       9.6       9.3    4.6             NA  0.370       0.344
-#  5 Pêche…      10.4      10.7    4.8             NA  0.610       0.559
-#  6 Pêche…      10.5      11.1    5               NA  0.610       0.551
-#  7 Pêche…      11        11      5.2             NA  0.672       0.605
-#  8 Pêche…      11.1      11.2    5.7             NA  0.703       0.628
-#  9 Pêche…       9.4       9.2    4.6             NA  0.413       0.375
-# 10 Pêche…      10.1       9.5    4.7             NA  0.449       0.398
-# # … with 411 more rows, and 12 more variables: integuments <dbl>,
+#    origin   diameter1 diameter2 height buoyant_weight weight solid_parts
+#    <fct>        <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+#  1 Pêcherie      9.90     10.2    5.00             NA  0.522       0.478
+#  2 Pêcherie     10.5      10.6    5.70             NA  0.642       0.589
+#  3 Pêcherie     10.8      10.8    5.20             NA  0.734       0.677
+#  4 Pêcherie      9.60      9.30   4.60             NA  0.370       0.344
+#  5 Pêcherie     10.4      10.7    4.80             NA  0.610       0.559
+#  6 Pêcherie     10.5      11.1    5.00             NA  0.610       0.551
+#  7 Pêcherie     11.0      11.0    5.20             NA  0.672       0.605
+#  8 Pêcherie     11.1      11.2    5.70             NA  0.703       0.628
+#  9 Pêcherie      9.40      9.20   4.60             NA  0.413       0.375
+# 10 Pêcherie     10.1       9.50   4.70             NA  0.449       0.398
+# # ... with 411 more rows, and 12 more variables: integuments <dbl>,
 # #   dry_integuments <dbl>, digestive_tract <dbl>,
 # #   dry_digestive_tract <dbl>, gonads <dbl>, dry_gonads <dbl>,
 # #   skeleton <dbl>, lantern <dbl>, test <dbl>, spines <dbl>,

@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="4.1 Graphique en barres | Science des données biologiques, UMONS" />
+  <meta property="og:title" content="4.1 Graphique en barres | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Graphique en barres | Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="4.1 Graphique en barres | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-03-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,12 +48,12 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -421,40 +421,42 @@ Figure 1.1: Exemple d’un graphique en barres montrant le dénombrement des niv
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
 (zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre></div>
 <pre><code># # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
-#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# # … with 1,252 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
-# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
-# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
+#      ecd  area perimeter feret major minor  mean   mode     min   max
+#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360 0.00400 0.908
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492  0.0240  0.676
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320 0.00800 0.696
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360 0.00400 0.728
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160 0.00800 0.452
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200 0.00400 0.844
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120 0.00400 0.784
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120 0.00400 0.756
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120 0.00400 0.728
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440 0.00400 0.880
+# # ... with 1,252 more rows, and 10 more variables: std_dev &lt;dbl&gt;,
+# #   range &lt;dbl&gt;, size &lt;dbl&gt;, aspect &lt;dbl&gt;, elongation &lt;dbl&gt;,
+# #   compactness &lt;dbl&gt;, transparency &lt;dbl&gt;, circularity &lt;dbl&gt;,
+# #   density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réduction du jeu de données </span>
 (copepoda &lt;-<span class="st"> </span><span class="kw">filter</span>(zooplankton,
   class <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Calanoïde&quot;</span>, <span class="st">&quot;Cyclopoïde&quot;</span>,  <span class="st">&quot;Harpacticoïde&quot;</span>,  <span class="st">&quot;Poecilostomatoïde&quot;</span>)))</code></pre></div>
 <pre><code># # A tibble: 535 x 20
-#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
-#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
-#  2 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
-#  3 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
-#  4 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
-#  5 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
-#  6 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
-#  7 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
-#  8 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
-#  9 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# 10 0.725 0.412      7.14 1.90  0.802 0.655 0.209 0.008 0.004 0.732   0.202
-# # … with 525 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
-# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
-# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
+#      ecd  area perimeter feret major minor  mean    mode     min   max
+#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360  0.00400 0.908
+#  2 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320  0.00800 0.696
+#  3 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360  0.00400 0.728
+#  4 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160  0.00800 0.452
+#  5 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200  0.00400 0.844
+#  6 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120  0.00400 0.784
+#  7 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120  0.00400 0.756
+#  8 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120  0.00400 0.728
+#  9 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440  0.00400 0.880
+# 10 0.725 0.412      7.14 1.90  0.802 0.655 0.209 0.00800 0.00400 0.732
+# # ... with 525 more rows, and 10 more variables: std_dev &lt;dbl&gt;,
+# #   range &lt;dbl&gt;, size &lt;dbl&gt;, aspect &lt;dbl&gt;, elongation &lt;dbl&gt;,
+# #   compactness &lt;dbl&gt;, transparency &lt;dbl&gt;, circularity &lt;dbl&gt;,
+# #   density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> copepoda, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
@@ -474,17 +476,17 @@ Figure 3.1: Abondances de quatres types de copépodes dans un échantillon de zo
 <pre><code># # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    &lt;fct&gt;  &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
-#  1 H      1995-03-11     69    182  15           2013    18
-#  2 H      1998-04-03     74    190  16           2013    15
-#  3 H      1967-04-04     83    185  17.5         2013    46
-#  4 H      1994-02-10     60    175  15           2013    19
-#  5 F      1990-12-02     48    167  14           2013    23
-#  6 F      1994-07-15     52    179  14           2013    19
-#  7 F      1971-03-03     72    167  15.5         2013    42
-#  8 F      1997-06-24     74    180  16           2013    16
-#  9 H      1972-10-26    110    189  19           2013    41
-# 10 H      1945-03-15     82    160  18           2013    68
-# # … with 385 more rows</code></pre>
+#  1 H      1995-03-11    69.   182.  15.0        2013.   18.
+#  2 H      1998-04-03    74.   190.  16.0        2013.   15.
+#  3 H      1967-04-04    83.   185.  17.5        2013.   46.
+#  4 H      1994-02-10    60.   175.  15.0        2013.   19.
+#  5 F      1990-12-02    48.   167.  14.0        2013.   23.
+#  6 F      1994-07-15    52.   179.  14.0        2013.   19.
+#  7 F      1971-03-03    72.   167.  15.5        2013.   42.
+#  8 F      1997-06-24    74.   180.  16.0        2013.   16.
+#  9 H      1972-10-26   110.   189.  19.0        2013.   41.
+# 10 H      1945-03-15    82.   160.  18.0        2013.   68.
+# # ... with 385 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Conversion de la variable year_measure de numérique à facteur</span>
 biometry<span class="op">$</span>year_measure &lt;-<span class="st"> </span><span class="kw">as.factor</span>(biometry<span class="op">$</span>year_measure)
 <span class="kw">label</span>(biometry<span class="op">$</span>year_measure) &lt;-<span class="st"> &quot;Année de la mesure&quot;</span></code></pre></div>

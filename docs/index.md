@@ -1,7 +1,7 @@
 --- 
 title: "Science des données biologiques, UMONS"
 author: "Philippe Grosjean & Guyliann Engels"
-date: "2019-03-12"
+date: "2019-03-23"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
@@ -35,8 +35,8 @@ Le premier cours intitulé **Science des données I: visualisation et inférence
 
 Cette matière est divisée en 12 modules de sessions de 6h chacune en présentiel. **Une première séance de 2h précèdera ces 12 modules afin d'installer les logiciels (SciViews Box, R, RStudio, Github Desktop), et de se familiariser avec eux.**
 
-<!--html_preserve--><div id="htmlwidget-7c35d1448f2a20b0ab77" style="width:600px;height:600px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7c35d1448f2a20b0ab77">{"x":{"diagram":"\ndigraph general_flow {\n  graph [rankdir = \"TB\", overlap = true, compount = true, fontsize = 10]\n  \n  node [shape = box,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = LightSteelBlue,\n        fixedsize = true,\n        width = 2]\n  \"1 Introduction\"; \"12 Design/critique\"\n  \n  subgraph cluster_0 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = red];\n    \"2 Visualisation I\"->\"3 Visualisation II\"\n    \"2 Visualisation I\"->\"4 Visualisation III\"\n    label = \"Visualisation & description des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_1 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = blue];\n    \"5 Quantitatif\"->\"6 Qualitatif\"\n    label = \"Importation & transformation des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_2 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = green];\n    \"7 Probabilités\"->\"8 Test Chi2\"\n    \"7 Probabilités\"->\"9 IC/t-test\"\n    \"8 Test Chi2\"->\"9 IC/t-test\"\n    \"9 IC/t-test\"->\"10 ANOVA\"\n    \"10 ANOVA\"->\"11 Correlation\"\n    label = \"Inférence & hypothèses\";\n    color = lightgray\n  }\n\n  \"1 Introduction\"->\"2 Visualisation I\" [lhead = cluster_0]\n  \"2 Visualisation I\"->\"5 Quantitatif\" [lhead = cluster_1]\n  \"3 Visualisation II\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"4 Visualisation III\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"6 Qualitatif\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"11 Correlation\"->\"12 Design/critique\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-ab7136cbb231fbe7e98f" style="width:600px;height:600px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ab7136cbb231fbe7e98f">{"x":{"diagram":"\ndigraph general_flow {\n  graph [rankdir = \"TB\", overlap = true, compount = true, fontsize = 10]\n  \n  node [shape = box,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = LightSteelBlue,\n        fixedsize = true,\n        width = 2]\n  \"1 Introduction\"; \"12 Design/critique\"\n  \n  subgraph cluster_0 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = red];\n    \"2 Visualisation I\"->\"3 Visualisation II\"\n    \"2 Visualisation I\"->\"4 Visualisation III\"\n    label = \"Visualisation & description des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_1 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = blue];\n    \"5 Quantitatif\"->\"6 Qualitatif\"\n    label = \"Importation & transformation des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_2 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = green];\n    \"7 Probabilités\"->\"8 Test Chi2\"\n    \"7 Probabilités\"->\"9 IC/t-test\"\n    \"8 Test Chi2\"->\"9 IC/t-test\"\n    \"9 IC/t-test\"->\"10 ANOVA\"\n    \"10 ANOVA\"->\"11 Correlation\"\n    label = \"Inférence & hypothèses\";\n    color = lightgray\n  }\n\n  \"1 Introduction\"->\"2 Visualisation I\" [lhead = cluster_0]\n  \"2 Visualisation I\"->\"5 Quantitatif\" [lhead = cluster_1]\n  \"3 Visualisation II\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"4 Visualisation III\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"6 Qualitatif\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"11 Correlation\"->\"12 Design/critique\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 
 ## Matériel pédagogique {-}
@@ -112,3 +112,85 @@ L'évaluation sera basée sur une somme de petites contributions qui matérialis
 ----
 
 _Le matériel dans cet ouvrage est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)._
+
+----
+
+##### System information {-}
+
+
+```r
+sessioninfo::session_info()
+```
+
+```
+# ─ Session info ──────────────────────────────────────────────────────────
+#  setting  value                       
+#  version  R version 3.4.4 (2018-03-15)
+#  os       Ubuntu 16.04.5 LTS          
+#  system   x86_64, linux-gnu           
+#  ui       X11                         
+#  language (EN)                        
+#  collate  en_US.UTF-8                 
+#  tz       Europe/Brussels             
+#  date     2019-03-23                  
+# 
+# ─ Packages ──────────────────────────────────────────────────────────────
+#  package      * version   date       source                             
+#  assertthat     0.2.0     2017-04-11 CRAN (R 3.4.4)                     
+#  backports      1.1.2     2017-12-13 CRAN (R 3.4.4)                     
+#  bindr          0.1.1     2018-03-13 CRAN (R 3.4.4)                     
+#  bindrcpp       0.2.2     2018-03-29 CRAN (R 3.4.4)                     
+#  bookdown       0.8       2019-03-23 Github (rstudio/bookdown@5122320)  
+#  brew           1.0-6     2011-04-13 CRAN (R 3.4.4)                     
+#  clisymbols     1.2.0     2017-05-21 CRAN (R 3.4.4)                     
+#  codetools      0.2-15    2016-10-05 CRAN (R 3.4.4)                     
+#  colorspace     1.3-2     2016-12-14 CRAN (R 3.4.4)                     
+#  DiagrammeR     1.0.0     2018-03-01 CRAN (R 3.4.4)                     
+#  digest         0.6.15    2018-01-28 CRAN (R 3.4.4)                     
+#  downloader     0.4       2015-07-09 CRAN (R 3.4.4)                     
+#  dplyr          0.7.4     2017-09-28 CRAN (R 3.4.4)                     
+#  evaluate       0.10.1    2017-06-24 CRAN (R 3.4.4)                     
+#  fortunes       1.5-4     2016-12-29 CRAN (R 3.4.4)                     
+#  ggplot2        2.2.1     2016-12-30 CRAN (R 3.4.4)                     
+#  glue           1.3.0     2018-08-29 Github (tidyverse/glue@4e74901)    
+#  gridExtra      2.3       2017-09-09 CRAN (R 3.4.4)                     
+#  gtable         0.2.0     2016-02-26 CRAN (R 3.4.4)                     
+#  hms            0.4.2     2018-03-10 CRAN (R 3.4.4)                     
+#  htmltools      0.3.6     2017-04-28 CRAN (R 3.4.4)                     
+#  htmlwidgets    1.2       2018-04-19 CRAN (R 3.4.4)                     
+#  igraph         1.2.1     2018-03-10 CRAN (R 3.4.4)                     
+#  influenceR     0.1.0     2015-09-03 CRAN (R 3.4.4)                     
+#  inline         0.3.14    2015-04-13 CRAN (R 3.4.4)                     
+#  jsonlite       1.5       2017-06-01 CRAN (R 3.4.4)                     
+#  knitr          1.20      2018-02-20 CRAN (R 3.4.4)                     
+#  lazyeval       0.2.1     2017-10-29 CRAN (R 3.4.4)                     
+#  magrittr       1.5       2014-11-22 CRAN (R 3.4.4)                     
+#  munsell        0.4.3     2016-02-13 CRAN (R 3.4.4)                     
+#  pillar         1.2.1     2018-02-27 CRAN (R 3.4.4)                     
+#  pkgconfig      2.0.1     2017-03-21 CRAN (R 3.4.4)                     
+#  plyr           1.8.4     2016-06-08 CRAN (R 3.4.4)                     
+#  purrr          0.2.4     2017-10-18 CRAN (R 3.4.4)                     
+#  R6             2.2.2     2017-06-17 CRAN (R 3.4.4)                     
+#  RColorBrewer   1.1-2     2014-12-07 CRAN (R 3.4.4)                     
+#  Rcpp           0.12.16   2018-03-13 CRAN (R 3.4.4)                     
+#  readr          1.1.1     2017-05-16 CRAN (R 3.4.4)                     
+#  rgexf          0.15.3    2015-03-24 CRAN (R 3.4.4)                     
+#  rlang          0.2.0     2018-02-20 CRAN (R 3.4.4)                     
+#  rmarkdown      1.10      2019-01-17 Github (rstudio/rmarkdown@297ff13) 
+#  Rook           1.1-1     2014-10-20 CRAN (R 3.4.4)                     
+#  rprojroot      1.3-2     2018-01-03 CRAN (R 3.4.4)                     
+#  rstudioapi     0.9.0     2019-03-23 Github (rstudio/rstudioapi@aa6cdb0)
+#  scales         0.5.0     2017-08-24 CRAN (R 3.4.4)                     
+#  sessioninfo    1.0.0     2017-06-21 CRAN (R 3.4.4)                     
+#  stringi        1.1.7     2018-03-12 CRAN (R 3.4.4)                     
+#  stringr        1.3.0     2018-02-19 CRAN (R 3.4.4)                     
+#  tibble         1.4.2     2018-01-22 CRAN (R 3.4.4)                     
+#  tidyr          0.8.0     2018-01-29 CRAN (R 3.4.4)                     
+#  viridis        0.5.1     2018-03-29 CRAN (R 3.4.4)                     
+#  viridisLite    0.3.0     2018-02-01 CRAN (R 3.4.4)                     
+#  visNetwork     2.0.3     2018-01-09 CRAN (R 3.4.4)                     
+#  withr          2.1.2     2018-03-15 CRAN (R 3.4.4)                     
+#  xfun           0.4       2019-03-23 Github (yihui/xfun@0ddded2)        
+#  XML            3.98-1.11 2018-04-16 CRAN (R 3.4.4)                     
+#  yaml           2.1.18    2018-03-08 CRAN (R 3.4.4)
+```

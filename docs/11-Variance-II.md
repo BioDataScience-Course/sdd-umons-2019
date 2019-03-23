@@ -331,7 +331,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -341,7 +341,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -360,7 +360,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -370,7 +370,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -418,8 +418,8 @@ anova(anova. <- lm(data = eggs, Fat ~ Lab + Technician %in% Lab))
 # 
 # Response: Fat
 #                Df  Sum Sq  Mean Sq F value    Pr(>F)    
-# Lab             5 0.44302 0.088605  9.5904 6.989e-06 ***
-# Lab:Technician  6 0.24748 0.041246  4.4644  0.001786 ** 
+# Lab             5 0.44303 0.088605  9.5904 6.989e-06 ***
+# Lab:Technician  6 0.24747 0.041246  4.4644  0.001786 ** 
 # Residuals      36 0.33260 0.009239                      
 # ---
 # Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -500,7 +500,7 @@ skimr::skim(eggs_means)
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -508,7 +508,7 @@ skimr::skim(eggs_means)
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
 ```
@@ -525,8 +525,8 @@ eggs_means %>.%
 # # A tibble: 6 x 4
 #   Lab    mean      sd count
 #   <fct> <dbl>   <dbl> <int>
-# 1 I     0.58  0.202       2
-# 2 II    0.34  0.0354      2
+# 1 I     0.580 0.202       2
+# 2 II    0.340 0.0354      2
 # 3 III   0.408 0.0530      2
 # 4 IV    0.376 0.00177     2
 # 5 V     0.354 0.00884     2
@@ -825,8 +825,8 @@ df
 # # A tibble: 2 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1     1     2     3
-# 2     4     5     6
+# 1    1.    2.    3.
+# 2    4.    5.    6.
 ```
 
 
@@ -839,7 +839,7 @@ df[1, 2:3]
 # # A tibble: 1 x 2
 #       y     z
 #   <dbl> <dbl>
-# 1     2     3
+# 1    2.    3.
 ```
 
 Pour conserver toutes les lignes et/ou toutes les colonnes, il suffit de laisser la position correspondante vide.
@@ -854,7 +854,7 @@ df[2, ]
 # # A tibble: 1 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1     4     5     6
+# 1    4.    5.    6.
 ```
 
 ```r
@@ -866,8 +866,8 @@ df[ , 2]
 # # A tibble: 2 x 1
 #       y
 #   <dbl>
-# 1     2
-# 2     5
+# 1    2.
+# 2    5.
 ```
 
 ```r
@@ -879,8 +879,8 @@ df[ , ]
 # # A tibble: 2 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1     1     2     3
-# 2     4     5     6
+# 1    1.    2.    3.
+# 2    4.    5.    6.
 ```
 
 Les autres formes d'indiçage fonctionnent aussi.
@@ -895,7 +895,7 @@ df[df$x > 3, c('y', 'z')]
 # # A tibble: 1 x 2
 #       y     z
 #   <dbl> <dbl>
-# 1     5     6
+# 1    5.    6.
 ```
 
 Notez bien que nous n'avons pas écrit `df[x > 3, ]` mais `df[df$x > 3, ]`. La première forme n'aurait pas utilisé la variable `x` du data frame `df` (notée `df$x`), mais aurait tenté d'utiliser un vecteur `x` directement. Ce qui nous amène à l'extraction d'un élément d'un tableau ou d'une liste à l'aide des opérateur `[[]]` ou `$`. Pour extraire la colonne `y` sous *forme d'un vecteur* de `df`, nous pourrons faire\ :
@@ -938,8 +938,8 @@ df
 # # A tibble: 2 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1     1     2   -10
-# 2     4     5   -15
+# 1    1.    2.  -10.
+# 2    4.    5.  -15.
 ```
 
 ```r
@@ -952,8 +952,8 @@ df
 # # A tibble: 2 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1     1     2   -10
-# 2     4     5   -15
+# 1    1.    2.  -10.
+# 2    4.    5.  -15.
 ```
 
 Maintenant que nous sommes familiarisés avec les différents modes d'indiçage dans R de base, nous pouvons les comparer à d'autres styles.
@@ -985,13 +985,13 @@ skimr::skim(zoo)
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -1155,7 +1155,7 @@ zoo2
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # … with 89 more rows
+# # ... with 89 more rows
 ```
 
 En tidyverse, les deux opérations (filtrage des lignes et sélection des variables en colonnes) restent deux opération successives distinctes dans le code. Notez au passage que nous repassons à l'opérateur de chaînage `%>.%` de SciViews-R que nous avons l'habitude d'utiliser à la place de l'opérateur correspondant de tidyverse `%>%`.
@@ -1183,7 +1183,7 @@ zoo2
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # … with 89 more rows
+# # ... with 89 more rows
 ```
 
 Le résultat est le même, mais la syntaxe est très différente. Notez que les variables dans la syntaxe de base sont complètement qualifiées (`zoo$class`), ce qui nécessite de répéter plusieurs fois le nom du jeu de données `zoo` (inconvénient) mais lève toute ambiguïté (avantage). La version de tidyverse est plus "propre" (avantage), mais cela implique d'utiliser une évaluation non standard de `class` qui n'est pas une variable existante dans l'environnement où le code est évalué (inconvénient). La sélection des variables est également différente. Dans R de base, des chaînes de caractères doivent être compilées dans un vecteur d'indiçage à l'aide de `c()`, alors que `select()` de tidyverse permet de spécifier simplement les noms des variables sans autres fioritures (mais cela doit être évalué de manière non standard, encore une fois).

@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="5.2 Types de variables | Science des données biologiques, UMONS" />
+  <meta property="og:title" content="5.2 Types de variables | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.2 Types de variables | Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="5.2 Types de variables | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-03-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,12 +48,12 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -404,17 +404,17 @@ code > span. { color: #1f1c1b; } /* Normal */
 <pre><code># # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    &lt;fct&gt;  &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
-#  1 M      1995-03-11     69    182  15           2013    18
-#  2 M      1998-04-03     74    190  16           2013    15
-#  3 M      1967-04-04     83    185  17.5         2013    46
-#  4 M      1994-02-10     60    175  15           2013    19
-#  5 W      1990-12-02     48    167  14           2013    23
-#  6 W      1994-07-15     52    179  14           2013    19
-#  7 W      1971-03-03     72    167  15.5         2013    42
-#  8 W      1997-06-24     74    180  16           2013    16
-#  9 M      1972-10-26    110    189  19           2013    41
-# 10 M      1945-03-15     82    160  18           2013    68
-# # … with 385 more rows</code></pre>
+#  1 M      1995-03-11    69.   182.  15.0        2013.   18.
+#  2 M      1998-04-03    74.   190.  16.0        2013.   15.
+#  3 M      1967-04-04    83.   185.  17.5        2013.   46.
+#  4 M      1994-02-10    60.   175.  15.0        2013.   19.
+#  5 W      1990-12-02    48.   167.  14.0        2013.   23.
+#  6 W      1994-07-15    52.   179.  14.0        2013.   19.
+#  7 W      1971-03-03    72.   167.  15.5        2013.   42.
+#  8 W      1997-06-24    74.   180.  16.0        2013.   16.
+#  9 M      1972-10-26   110.   189.  19.0        2013.   41.
+# 10 M      1945-03-15    82.   160.  18.0        2013.   68.
+# # ... with 385 more rows</code></pre>
 <p>La Figure <a href="types-de-variables.html#fig:two-boxplots">5.1</a> montre deux boites de dispersion parallèles différentes. Laquelle de ces deux représentations est incorrecte et pourquoi ?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(biometry, height <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>gender) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() 
@@ -451,15 +451,15 @@ Figure 5.1: Boites de dispersion parallèles de la taille (<code>height</code>) 
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ─────────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: Date 
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: factor 
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────
+# Variable type: numeric 
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177

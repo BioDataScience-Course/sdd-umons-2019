@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="3.2 Graphique de densité | Science des données biologiques, UMONS" />
+  <meta property="og:title" content="3.2 Graphique de densité | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Graphique de densité | Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="3.2 Graphique de densité | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-03-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,12 +48,12 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -415,21 +415,22 @@ Figure 3.5: A. Histogramme et B. graphique de densité montrant la distribution 
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
 (zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre></div>
 <pre><code># # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
-#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
-# # … with 1,252 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
-# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
-# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
+#      ecd  area perimeter feret major minor  mean   mode     min   max
+#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360 0.00400 0.908
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492  0.0240  0.676
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320 0.00800 0.696
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360 0.00400 0.728
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160 0.00800 0.452
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200 0.00400 0.844
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120 0.00400 0.784
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120 0.00400 0.756
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120 0.00400 0.728
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440 0.00400 0.880
+# # ... with 1,252 more rows, and 10 more variables: std_dev &lt;dbl&gt;,
+# #   range &lt;dbl&gt;, size &lt;dbl&gt;, aspect &lt;dbl&gt;, elongation &lt;dbl&gt;,
+# #   compactness &lt;dbl&gt;, transparency &lt;dbl&gt;, circularity &lt;dbl&gt;,
+# #   density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_density</span>() <span class="op">+</span>

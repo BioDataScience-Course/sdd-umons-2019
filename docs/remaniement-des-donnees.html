@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="5.4 Remaniement des données | Science des données biologiques, UMONS" />
+  <meta property="og:title" content="5.4 Remaniement des données | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.4 Remaniement des données | Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="5.4 Remaniement des données | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-03-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,12 +48,12 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -614,15 +614,15 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(<span cla
 <span class="kw">head</span>(urchin_by_orig)</code></pre></div>
 <pre><code># # A tibble: 6 x 24
 # # Groups:   origin [1]
-#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
-#   &lt;fct&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
-# 1 Fishe…       9.9      10.2    5               NA  0.522       0.478
-# 2 Fishe…      10.5      10.6    5.7             NA  0.642       0.589
-# 3 Fishe…      10.8      10.8    5.2             NA  0.734       0.677
-# 4 Fishe…       9.6       9.3    4.6             NA  0.370       0.344
-# 5 Fishe…      10.4      10.7    4.8             NA  0.610       0.559
-# 6 Fishe…      10.5      11.1    5               NA  0.610       0.551
-# # … with 17 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
+#   origin  diameter1 diameter2 height buoyant_weight weight solid_parts
+#   &lt;fct&gt;       &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
+# 1 Fishery      9.90     10.2    5.00             NA  0.522       0.478
+# 2 Fishery     10.5      10.6    5.70             NA  0.642       0.589
+# 3 Fishery     10.8      10.8    5.20             NA  0.734       0.677
+# 4 Fishery      9.60      9.30   4.60             NA  0.370       0.344
+# 5 Fishery     10.4      10.7    4.80             NA  0.610       0.559
+# 6 Fishery     10.5      11.1    5.00             NA  0.610       0.551
+# # ... with 17 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
 # #   digestive_tract &lt;dbl&gt;, dry_digestive_tract &lt;dbl&gt;, gonads &lt;dbl&gt;,
 # #   dry_gonads &lt;dbl&gt;, skeleton &lt;dbl&gt;, lantern &lt;dbl&gt;, test &lt;dbl&gt;,
 # #   spines &lt;dbl&gt;, maturity &lt;int&gt;, sex &lt;fct&gt;, sum_skel &lt;dbl&gt;, ratio &lt;dbl&gt;,

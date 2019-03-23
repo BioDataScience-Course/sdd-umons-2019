@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Evaluation | Science des données biologiques, UMONS" />
+  <meta property="og:title" content="Evaluation | Science des données biologiques, UMONS />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Evaluation | Science des données biologiques, UMONS" />
+  <meta name="twitter:title" content="Evaluation | Science des données biologiques, UMONS />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-12">
+<meta name="date" content="2019-03-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,12 +48,12 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.5/datatables.js"></script>
+<script src="libs/datatables-binding-0.4/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -412,7 +412,82 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul>
 <hr />
 <p><em>Le matériel dans cet ouvrage est distribué sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>.</em></p>
+<hr />
+<div id="system-information" class="section level5 unnumbered">
+<h5>System information</h5>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sessioninfo<span class="op">::</span><span class="kw">session_info</span>()</code></pre></div>
+<pre><code># ─ Session info ──────────────────────────────────────────────────────────
+#  setting  value                       
+#  version  R version 3.4.4 (2018-03-15)
+#  os       Ubuntu 16.04.5 LTS          
+#  system   x86_64, linux-gnu           
+#  ui       X11                         
+#  language (EN)                        
+#  collate  en_US.UTF-8                 
+#  tz       Europe/Brussels             
+#  date     2019-03-23                  
+# 
+# ─ Packages ──────────────────────────────────────────────────────────────
+#  package      * version   date       source                             
+#  assertthat     0.2.0     2017-04-11 CRAN (R 3.4.4)                     
+#  backports      1.1.2     2017-12-13 CRAN (R 3.4.4)                     
+#  bindr          0.1.1     2018-03-13 CRAN (R 3.4.4)                     
+#  bindrcpp       0.2.2     2018-03-29 CRAN (R 3.4.4)                     
+#  bookdown       0.8       2019-03-23 Github (rstudio/bookdown@5122320)  
+#  brew           1.0-6     2011-04-13 CRAN (R 3.4.4)                     
+#  clisymbols     1.2.0     2017-05-21 CRAN (R 3.4.4)                     
+#  codetools      0.2-15    2016-10-05 CRAN (R 3.4.4)                     
+#  colorspace     1.3-2     2016-12-14 CRAN (R 3.4.4)                     
+#  DiagrammeR     1.0.0     2018-03-01 CRAN (R 3.4.4)                     
+#  digest         0.6.15    2018-01-28 CRAN (R 3.4.4)                     
+#  downloader     0.4       2015-07-09 CRAN (R 3.4.4)                     
+#  dplyr          0.7.4     2017-09-28 CRAN (R 3.4.4)                     
+#  evaluate       0.10.1    2017-06-24 CRAN (R 3.4.4)                     
+#  fortunes       1.5-4     2016-12-29 CRAN (R 3.4.4)                     
+#  ggplot2        2.2.1     2016-12-30 CRAN (R 3.4.4)                     
+#  glue           1.3.0     2018-08-29 Github (tidyverse/glue@4e74901)    
+#  gridExtra      2.3       2017-09-09 CRAN (R 3.4.4)                     
+#  gtable         0.2.0     2016-02-26 CRAN (R 3.4.4)                     
+#  hms            0.4.2     2018-03-10 CRAN (R 3.4.4)                     
+#  htmltools      0.3.6     2017-04-28 CRAN (R 3.4.4)                     
+#  htmlwidgets    1.2       2018-04-19 CRAN (R 3.4.4)                     
+#  igraph         1.2.1     2018-03-10 CRAN (R 3.4.4)                     
+#  influenceR     0.1.0     2015-09-03 CRAN (R 3.4.4)                     
+#  inline         0.3.14    2015-04-13 CRAN (R 3.4.4)                     
+#  jsonlite       1.5       2017-06-01 CRAN (R 3.4.4)                     
+#  knitr          1.20      2018-02-20 CRAN (R 3.4.4)                     
+#  lazyeval       0.2.1     2017-10-29 CRAN (R 3.4.4)                     
+#  magrittr       1.5       2014-11-22 CRAN (R 3.4.4)                     
+#  munsell        0.4.3     2016-02-13 CRAN (R 3.4.4)                     
+#  pillar         1.2.1     2018-02-27 CRAN (R 3.4.4)                     
+#  pkgconfig      2.0.1     2017-03-21 CRAN (R 3.4.4)                     
+#  plyr           1.8.4     2016-06-08 CRAN (R 3.4.4)                     
+#  purrr          0.2.4     2017-10-18 CRAN (R 3.4.4)                     
+#  R6             2.2.2     2017-06-17 CRAN (R 3.4.4)                     
+#  RColorBrewer   1.1-2     2014-12-07 CRAN (R 3.4.4)                     
+#  Rcpp           0.12.16   2018-03-13 CRAN (R 3.4.4)                     
+#  readr          1.1.1     2017-05-16 CRAN (R 3.4.4)                     
+#  rgexf          0.15.3    2015-03-24 CRAN (R 3.4.4)                     
+#  rlang          0.2.0     2018-02-20 CRAN (R 3.4.4)                     
+#  rmarkdown      1.10      2019-01-17 Github (rstudio/rmarkdown@297ff13) 
+#  Rook           1.1-1     2014-10-20 CRAN (R 3.4.4)                     
+#  rprojroot      1.3-2     2018-01-03 CRAN (R 3.4.4)                     
+#  rstudioapi     0.9.0     2019-03-23 Github (rstudio/rstudioapi@aa6cdb0)
+#  scales         0.5.0     2017-08-24 CRAN (R 3.4.4)                     
+#  sessioninfo    1.0.0     2017-06-21 CRAN (R 3.4.4)                     
+#  stringi        1.1.7     2018-03-12 CRAN (R 3.4.4)                     
+#  stringr        1.3.0     2018-02-19 CRAN (R 3.4.4)                     
+#  tibble         1.4.2     2018-01-22 CRAN (R 3.4.4)                     
+#  tidyr          0.8.0     2018-01-29 CRAN (R 3.4.4)                     
+#  viridis        0.5.1     2018-03-29 CRAN (R 3.4.4)                     
+#  viridisLite    0.3.0     2018-02-01 CRAN (R 3.4.4)                     
+#  visNetwork     2.0.3     2018-01-09 CRAN (R 3.4.4)                     
+#  withr          2.1.2     2018-03-15 CRAN (R 3.4.4)                     
+#  xfun           0.4       2019-03-23 Github (yihui/xfun@0ddded2)        
+#  XML            3.98-1.11 2018-04-16 CRAN (R 3.4.4)                     
+#  yaml           2.1.18    2018-03-08 CRAN (R 3.4.4)</code></pre>
 
+</div>
 </div>
 <!-- </div> -->
 
