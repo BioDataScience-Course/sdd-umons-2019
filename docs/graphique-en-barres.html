@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="4.1 Graphique en barres | Science des données biologiques, UMONS />
+  <meta property="og:title" content="4.1 Graphique en barres | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Graphique en barres | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="4.1 Graphique en barres | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -418,49 +440,47 @@ Figure 1.1: Exemple d’un graphique en barres montrant le dénombrement des niv
 <li>le label des axes (en bleu)</li>
 </ul>
 <p>Les instructions dans R pour produire un graphique en barres à l’aide de la fonction <code>chart()</code> sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
-(zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
+(zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre>
 <pre><code># # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean   mode     min   max
-#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360 0.00400 0.908
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492  0.0240  0.676
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320 0.00800 0.696
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360 0.00400 0.728
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160 0.00800 0.452
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200 0.00400 0.844
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120 0.00400 0.784
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120 0.00400 0.756
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120 0.00400 0.728
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440 0.00400 0.880
-# # ... with 1,252 more rows, and 10 more variables: std_dev &lt;dbl&gt;,
-# #   range &lt;dbl&gt;, size &lt;dbl&gt;, aspect &lt;dbl&gt;, elongation &lt;dbl&gt;,
-# #   compactness &lt;dbl&gt;, transparency &lt;dbl&gt;, circularity &lt;dbl&gt;,
-# #   density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réduction du jeu de données </span>
+#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
+#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
+# # … with 1,252 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
+# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
+# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réduction du jeu de données </span>
 (copepoda &lt;-<span class="st"> </span><span class="kw">filter</span>(zooplankton,
-  class <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Calanoïde&quot;</span>, <span class="st">&quot;Cyclopoïde&quot;</span>,  <span class="st">&quot;Harpacticoïde&quot;</span>,  <span class="st">&quot;Poecilostomatoïde&quot;</span>)))</code></pre></div>
+  class <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Calanoïde&quot;</span>, <span class="st">&quot;Cyclopoïde&quot;</span>,  <span class="st">&quot;Harpacticoïde&quot;</span>,  <span class="st">&quot;Poecilostomatoïde&quot;</span>)))</code></pre>
 <pre><code># # A tibble: 535 x 20
-#      ecd  area perimeter feret major minor  mean    mode     min   max
-#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360  0.00400 0.908
-#  2 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320  0.00800 0.696
-#  3 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360  0.00400 0.728
-#  4 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160  0.00800 0.452
-#  5 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200  0.00400 0.844
-#  6 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120  0.00400 0.784
-#  7 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120  0.00400 0.756
-#  8 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120  0.00400 0.728
-#  9 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440  0.00400 0.880
-# 10 0.725 0.412      7.14 1.90  0.802 0.655 0.209 0.00800 0.00400 0.732
-# # ... with 525 more rows, and 10 more variables: std_dev &lt;dbl&gt;,
-# #   range &lt;dbl&gt;, size &lt;dbl&gt;, aspect &lt;dbl&gt;, elongation &lt;dbl&gt;,
-# #   compactness &lt;dbl&gt;, transparency &lt;dbl&gt;, circularity &lt;dbl&gt;,
-# #   density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
+#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
+#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
+#  2 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
+#  3 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
+#  4 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
+#  5 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
+#  6 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
+#  7 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
+#  8 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
+#  9 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
+# 10 0.725 0.412      7.14 1.90  0.802 0.655 0.209 0.008 0.004 0.732   0.202
+# # … with 525 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
+# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
+# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> copepoda, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-2-1.svg" alt="Abondances de quatres types de copépodes dans un échantillon de zooplancton." width="672" />
 <p class="caption">
@@ -471,27 +491,27 @@ Figure 3.1: Abondances de quatres types de copépodes dans un échantillon de zo
 </div>
 <div id="effectifs-par-2-facteurs" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Effectifs par 2 facteurs</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données biometry</span>
-(biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données biometry</span>
+(biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre>
 <pre><code># # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    &lt;fct&gt;  &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
-#  1 H      1995-03-11    69.   182.  15.0        2013.   18.
-#  2 H      1998-04-03    74.   190.  16.0        2013.   15.
-#  3 H      1967-04-04    83.   185.  17.5        2013.   46.
-#  4 H      1994-02-10    60.   175.  15.0        2013.   19.
-#  5 F      1990-12-02    48.   167.  14.0        2013.   23.
-#  6 F      1994-07-15    52.   179.  14.0        2013.   19.
-#  7 F      1971-03-03    72.   167.  15.5        2013.   42.
-#  8 F      1997-06-24    74.   180.  16.0        2013.   16.
-#  9 H      1972-10-26   110.   189.  19.0        2013.   41.
-# 10 H      1945-03-15    82.   160.  18.0        2013.   68.
-# # ... with 385 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Conversion de la variable year_measure de numérique à facteur</span>
+#  1 H      1995-03-11     69    182  15           2013    18
+#  2 H      1998-04-03     74    190  16           2013    15
+#  3 H      1967-04-04     83    185  17.5         2013    46
+#  4 H      1994-02-10     60    175  15           2013    19
+#  5 F      1990-12-02     48    167  14           2013    23
+#  6 F      1994-07-15     52    179  14           2013    19
+#  7 F      1971-03-03     72    167  15.5         2013    42
+#  8 F      1997-06-24     74    180  16           2013    16
+#  9 H      1972-10-26    110    189  19           2013    41
+# 10 H      1945-03-15     82    160  18           2013    68
+# # … with 385 more rows</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Conversion de la variable year_measure de numérique à facteur</span>
 biometry<span class="op">$</span>year_measure &lt;-<span class="st"> </span><span class="kw">as.factor</span>(biometry<span class="op">$</span>year_measure)
-<span class="kw">label</span>(biometry<span class="op">$</span>year_measure) &lt;-<span class="st"> &quot;Année de la mesure&quot;</span></code></pre></div>
+<span class="kw">label</span>(biometry<span class="op">$</span>year_measure) &lt;-<span class="st"> &quot;Année de la mesure&quot;</span></code></pre>
 <p>Différentes représentations sont possibles pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l’argument <code>position =</code> a pour valeur par défaut <code>stack</code> (donc, lorsque cet argument n’est pas précisé dans <code>geom_bar()</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)
 
@@ -500,7 +520,7 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">d
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()
 
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.svg" alt="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B)." width="672" />
 <p class="caption">
@@ -508,7 +528,7 @@ Figure 3.2: Dénombrement des hommes (H) et des femmes (F) dans l’étude sur l
 </p>
 </div>
 <p>Il existe d’autres options en utilisant la valeur <code>dodge</code> ou <code>fill</code> pour l’argument <code>position =</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>gender <span class="op">%fill=%</span><span class="st"> </span>year_measure) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;stack&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()
@@ -523,11 +543,11 @@ c &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">d
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Fractions&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()
 
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b, c), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b, c), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.svg" alt="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations)." width="672" />
 <p class="caption">
-Figure 3.4: Dénombrement des hommes (H) et des femmes (F) dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesure (différentes présentations).
+Figure 2.3: Dénombrement des hommes (H) et des femmes (F) dans l’étude sur l’obésité en Hainaut en tenant compte des années de mesure (différentes présentations).
 </p>
 </div>
 <p>Soyez vigilant à la différence entre l’argument <code>position = stack</code> et <code>position = fill</code> qui malgré un rendu semblable ont l’axe des ordonnées qui diffère (dans le cas de <code>fill</code>, il s’agit de la <strong>fraction</strong> par rapport au total qui est représentée, et non pas des <strong>effectifs</strong> absolus dénombrés).</p>
@@ -536,22 +556,22 @@ Figure 3.4: Dénombrement des hommes (H) et des femmes (F) dans l’étude sur l
 <div id="reordonner-la-variable-facteur-par-frequence" class="section level6 unnumbered">
 <h6>Réordonner la variable facteur par fréquence</h6>
 <p>Vous pouvez avoir le souhait d’ordonner votre variable facteur afin d’améliorer le rendu visuel de votre graphique. Pour cela, vous pouvez employer la fonction <code>fct_infreq()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> copepoda, <span class="op">~</span><span class="st"> </span><span class="kw">fct_infreq</span>(class)) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> copepoda, <span class="op">~</span><span class="st"> </span><span class="kw">fct_infreq</span>(class)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Classe&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Effectifs&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Classe&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Effectifs&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-6-1.svg" alt="Dénombrement des classes de copépodes du jeu de données zooplankton." width="672" />
 <p class="caption">
-Figure 2.3: Dénombrement des classes de copépodes du jeu de données zooplankton.
+Figure 2.4: Dénombrement des classes de copépodes du jeu de données zooplankton.
 </p>
 </div>
 </div>
 <div id="rotation-des-axes-du-graphique-en-barre" class="section level6 unnumbered">
 <h6>Rotation des axes du graphique en barre</h6>
 <p>Lorsque les niveaux dans la variable étudiée sont trop nombreux, les légendes en abscisse risquent de se chevaucher, comme dans la Fig. <a href="graphique-en-barres.html#fig:barchart1">4.1</a></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:barchart1"></span>
 <img src="04-Visualisation-III_files/figure-html/barchart1-1.svg" alt="Dénombrement des classes du jeu de données zooplankton." width="672" />
 <p class="caption">
@@ -559,14 +579,14 @@ Figure 4.1: Dénombrement des classes du jeu de données zooplankton.
 </p>
 </div>
 <p>Avec la fonction <code>coord_flip()</code> ajoutée à votre graphique, vous pouvez effectuer une rotation des axes pour obtenir un <strong>graphique en barres horizontales</strong>. De plus, l’œil humain perçoit plus distinctement les différences de longueurs horizontales que verticales. Donc, de ce point de vue, le graphe en barres horizontal est considéré comme meilleur que le graphe en barres verticales.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">coord_flip</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">coord_flip</span>()</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-7-1.svg" alt="Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales)." width="672" />
 <p class="caption">
-Figure 2.4: Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales).
+Figure 3.4: Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales).
 </p>
 </div>
 </div>
@@ -590,14 +610,14 @@ Figure 2.4: Dénombrement des classes du jeu de données zooplankton (version av
 <pre><code>1, 71, 55, 68, 78, 60, 83, 120, 82 ,53, 26</code></pre>
 <p>Calculez la moyenne sur base de la formule de la moyenne</p>
 <p><span class="math display">\[\overline{y} = \sum_{i = 1}^n \frac{y_i}{n}\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Création du vecteur</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Création du vecteur</span>
 x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">71</span>, <span class="dv">55</span>, <span class="dv">68</span>, <span class="dv">78</span>, <span class="dv">60</span>, <span class="dv">83</span>, <span class="dv">120</span>, <span class="dv">82</span>, <span class="dv">53</span>, <span class="dv">26</span>)
 <span class="co"># Calcul  de la moyenne</span>
-<span class="kw">mean</span>(x)</code></pre></div>
+<span class="kw">mean</span>(x)</code></pre>
 <pre><code># [1] 63.36364</code></pre>
 <p>Les instructions pour produire ce graphe en barres à l’aide de <code>chart()</code> sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> copepoda, size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
-<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">fun.y =</span> <span class="st">&quot;mean&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> copepoda, size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
+<span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">geom =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">fun.y =</span> <span class="st">&quot;mean&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-9-1.svg" alt="Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique." width="672" />
 <p class="caption">
@@ -695,7 +715,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

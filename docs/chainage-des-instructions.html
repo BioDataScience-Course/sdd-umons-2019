@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="5.5 Chaînage des instructions | Science des données biologiques, UMONS />
+  <meta property="og:title" content="5.5 Chaînage des instructions | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.5 Chaînage des instructions | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="5.5 Chaînage des instructions | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -400,8 +422,8 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="chainage-des-instructions" class="section level2">
 <h2><span class="header-section-number">5.5</span> Chaînage des instructions</h2>
 <p>Le chaînage (ou “pipe” en anglais) permet de combiner une suite d’instructions R. Il permet une représentation facilement lisible et compréhensible d’un traitement décomposé en plusieurs étapes simples de remaniement des données.</p>
-<p>Différents opérateurs de chaînage existent dans R. Le <a href="https://www.tidyverse.org">Tidyverse</a> et RStudio sont en faveur de l’adoption d’un opérateur de chaînage <strong><code>%&gt;%</code></strong> issu du package <strong><a href="https://magrittr.tidyverse.org">magrittr</a></strong>. Si nous sommes sensibles au clin d’œil fait ici à un artiste belge bien connu (“ceci n’est pas un pipe”), nous n’adhérons pas à ce choix pour des raisons multiples et plutôt techniques qui n’ont pas leur place dans ce document<a href="references.html#fn22" class="footnoteRef" id="fnref22"><sup>22</sup></a>. Nous vous présentons ici l’un des opérateurs de chaînage du package <strong>flow</strong> : <strong><code>%&gt;.%</code></strong>. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d’un tableau de données avec et sans l’utilisation du chaînage.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre></div>
+<p>Différents opérateurs de chaînage existent dans R. Le <a href="https://www.tidyverse.org">Tidyverse</a> et RStudio sont en faveur de l’adoption d’un opérateur de chaînage <strong><code>%&gt;%</code></strong> issu du package <strong><a href="https://magrittr.tidyverse.org">magrittr</a></strong>. Si nous sommes sensibles au clin d’œil fait ici à un artiste belge bien connu (“ceci n’est pas un pipe”), nous n’adhérons pas à ce choix pour des raisons multiples et plutôt techniques qui n’ont pas leur place dans ce document<a href="references.html#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>. Nous vous présentons ici l’un des opérateurs de chaînage du package <strong>flow</strong> : <strong><code>%&gt;.%</code></strong>. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d’un tableau de données avec et sans l’utilisation du chaînage.</p>
+<pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre>
 <p>Vous vous intéressez à l’indice de masse corporelle ou IMC (BMI en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d’observations de manière séparée pour les hommes et les femmes. Pour obtenir ces résultats vous devez :</p>
 <ul>
 <li>calculer le BMI,</li>
@@ -413,7 +435,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <ul>
 <li>Imbriquer les instructions les unes dans les autres (très difficile à lire et à déboguer) :</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(
+<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(
   <span class="kw">summarise</span>(
     <span class="kw">group_by</span>(
       <span class="kw">filter</span>(
@@ -426,7 +448,7 @@ code > span. { color: #1f1c1b; } /* Normal */
   <span class="dt">rows =</span> <span class="ot">NULL</span>,  <span class="dt">digits =</span> <span class="dv">1</span>,
   <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>),
   <span class="dt">caption =</span> <span class="st">&quot;IMC d&#39;hommes (M) et femmes (W) de 25 ans maximum.&quot;</span>
-)</code></pre></div>
+)</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-56">Tableau 5.4: </span>IMC d’hommes (M) et femmes (W) de 25 ans maximum.</caption>
 <thead>
@@ -455,7 +477,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <ul>
 <li>Passer par des variables intermédiaires (<code>biometry_25</code> et <code>biometry_tab</code>). Les instructions sont plus lisibles, mais les variables intermédiaires “polluent” inutilement l’environnement de travail (en tout cas, si elles ne servent plus par après) :</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">mutate</span>(biometry, <span class="dt">bmi =</span> weight <span class="op">/</span><span class="st"> </span>(height<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span>)
+<pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">mutate</span>(biometry, <span class="dt">bmi =</span> weight <span class="op">/</span><span class="st"> </span>(height<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span>)
 biometry_<span class="dv">25</span> &lt;-<span class="st"> </span><span class="kw">filter</span>(biometry, age <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>)
 biometry_<span class="dv">25</span> &lt;-<span class="st"> </span><span class="kw">group_by</span>(biometry_<span class="dv">25</span>, gender)
 biometry_tab &lt;-<span class="st"> </span><span class="kw">summarise</span>(biometry_<span class="dv">25</span>,
@@ -464,7 +486,7 @@ biometry_tab &lt;-<span class="st"> </span><span class="kw">summarise</span>(bio
   <span class="dt">number =</span> <span class="kw">n</span>())
 knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span class="dt">rows =</span> <span class="ot">NULL</span>, <span class="dt">digits =</span> <span class="dv">1</span>,
   <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>),
-  <span class="dt">caption =</span> <span class="st">&quot;IMC d&#39;hommes (M) et femmes (W) de 25 ans maximum.&quot;</span>)</code></pre></div>
+  <span class="dt">caption =</span> <span class="st">&quot;IMC d&#39;hommes (M) et femmes (W) de 25 ans maximum.&quot;</span>)</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-57">Tableau 5.5: </span>IMC d’hommes (M) et femmes (W) de 25 ans maximum.</caption>
 <thead>
@@ -491,9 +513,9 @@ knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span
 </tbody>
 </table>
 <ul>
-<li>Des trois approches, la version ci-dessous avec chaînage des opérations est la plus lisible et la plus pratique<a href="references.html#fn23" class="footnoteRef" id="fnref23"><sup>23</sup></a>.</li>
+<li>Des trois approches, la version ci-dessous avec chaînage des opérations est la plus lisible et la plus pratique<a href="references.html#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">biometry <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">biometry <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">bmi =</span> weight <span class="op">/</span><span class="st"> </span>(height<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">filter</span>(., age <span class="op">&lt;=</span><span class="st"> </span><span class="dv">25</span>) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">group_by</span>(., gender) <span class="op">%&gt;.%</span>
@@ -503,7 +525,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span
     <span class="dt">number =</span> <span class="kw">n</span>()) <span class="op">%&gt;.%</span>
 <span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(., <span class="dt">rows =</span> <span class="ot">NULL</span>, <span class="dt">digits =</span> <span class="dv">1</span>, 
     <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;Genre&quot;</span>, <span class="st">&quot;Moyenne&quot;</span>, <span class="st">&quot;Médiane&quot;</span>, <span class="st">&quot;Observations&quot;</span>),
-    <span class="dt">caption =</span> <span class="st">&quot;IMC d&#39;hommes (M) et femmes (W) de 25 ans maximum.&quot;</span>)</code></pre></div>
+    <span class="dt">caption =</span> <span class="st">&quot;IMC d&#39;hommes (M) et femmes (W) de 25 ans maximum.&quot;</span>)</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-58">Tableau 5.6: </span>IMC d’hommes (M) et femmes (W) de 25 ans maximum.</caption>
 <thead>
@@ -565,8 +587,8 @@ Créez un rapport et effectuez les différents exercices en suivant les instruct
 <div class="footnotes">
 <hr />
 <ol start="22">
-<li id="fn22"><p>Le lecteur intéressé pourra lire les différents articles suivants : <a href="http://www.win-vector.com/blog/2017/12/more-pipes-in-r/">more pipes in R</a>, y compris les liens qui s’y trouvent, permet de se faire une idée de la diversité des opérateurs de chaînage dans R et de leur historique. <a href="https://winvector.github.io/wrapr/articles/dot_pipe.html">Dot pipe</a> présente l’opérateur <code>%.&gt;%</code> du package <strong>wrapr</strong> très proche du nôtre et <a href="http://www.win-vector.com/blog/2017/07/in-praise-of-syntactic-sugar/">in praise of syntactic sugar</a> explique ses avantages. Nous partageons l’idée que le “pipe de base” ne devrait pas modifier l’instruction de droite contrairement à ce que fait <code>%&gt;%</code> de <strong>magrittr</strong>, et notre opérateur <code>%&gt;.%</code> va en outre plus loin encore que <code>%.&gt;%</code> dans la facilité de débogage du code chaîne.<a href="chainage-des-instructions.html#fnref22">↩</a></p></li>
-<li id="fn23"><p>Le chaînage n’est cependant pas forcément plus facile à déboguer que la version avec variables intermédiaires. Le package <strong>flow</strong> propose la fonction <code>debug_flow()</code> à appeler directement après un plantage pour inspecter la dernière instruction qui a causé l’erreur, voir <code>?debug_flow</code>.<a href="chainage-des-instructions.html#fnref23">↩</a></p></li>
+<li id="fn22"><p>Le lecteur intéressé pourra lire les différents articles suivants : <a href="http://www.win-vector.com/blog/2017/12/more-pipes-in-r/">more pipes in R</a>, y compris les liens qui s’y trouvent, permet de se faire une idée de la diversité des opérateurs de chaînage dans R et de leur historique. <a href="https://winvector.github.io/wrapr/articles/dot_pipe.html">Dot pipe</a> présente l’opérateur <code>%.&gt;%</code> du package <strong>wrapr</strong> très proche du nôtre et <a href="http://www.win-vector.com/blog/2017/07/in-praise-of-syntactic-sugar/">in praise of syntactic sugar</a> explique ses avantages. Nous partageons l’idée que le “pipe de base” ne devrait pas modifier l’instruction de droite contrairement à ce que fait <code>%&gt;%</code> de <strong>magrittr</strong>, et notre opérateur <code>%&gt;.%</code> va en outre plus loin encore que <code>%.&gt;%</code> dans la facilité de débogage du code chaîne. <a href="chainage-des-instructions.html#fnref22" class="footnote-back">↩</a></p></li>
+<li id="fn23"><p>Le chaînage n’est cependant pas forcément plus facile à déboguer que la version avec variables intermédiaires. Le package <strong>flow</strong> propose la fonction <code>debug_flow()</code> à appeler directement après un plantage pour inspecter la dernière instruction qui a causé l’erreur, voir <code>?debug_flow</code>.<a href="chainage-des-instructions.html#fnref23" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -645,7 +667,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

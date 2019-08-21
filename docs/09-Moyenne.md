@@ -40,7 +40,7 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 ##### A vous de jouer ! {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;09a_ttest&quot;)</code></pre>
 </div>
 
@@ -356,7 +356,7 @@ $$\mathrm{IC}(1 - \alpha) \simeq \bar{x} \pm t_{\alpha/2}^{n-1} \cdot SE_x$$
 Ce qui est intéressant avec ces deux dernières formulations, c'est que l'IC est calculable sur base de notre échantillon uniquement.
 
 <div class="info">
-<p>Analogie avec l'homme invisible qui promène son chien. Si vous avez des difficultés à comprendre l'IC, imaginez plutôt que vous recherchez l'homme invisible (c'est <span class="math inline">\(\mu\)</span>). Vous ne savez pas où il est, mais vous savez qu'il promène son chien en laisse. Or, le chien est visible (c'est <span class="math inline">\(\bar{x}\)</span> la moyenne de l'échantillon). La laisse est également invisible, mais vous connaissez sa longueur maximale (c'est votre IC). Donc, vous pouvez dire, voyant le chien que l'homme invisible est à distance maximale d'une longueur de laisse du chien.</p>
+<p>Analogie avec l’homme invisible qui promène son chien. Si vous avez des difficultés à comprendre l’IC, imaginez plutôt que vous recherchez l’homme invisible (c’est <span class="math inline">\(\mu\)</span>). Vous ne savez pas où il est, mais vous savez qu’il promène son chien en laisse. Or, le chien est visible (c’est <span class="math inline">\(\bar{x}\)</span> la moyenne de l’échantillon). La laisse est également invisible, mais vous connaissez sa longueur maximale (c’est votre IC). Donc, vous pouvez dire, voyant le chien que l’homme invisible est à distance maximale d’une longueur de laisse du chien.</p>
 </div>
 
 ##### Valeur α {-}
@@ -470,16 +470,16 @@ skimr::skim(crabs)
 #  n obs: 200 
 #  n variables: 8 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# Variable type: integer 
+# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -651,8 +651,8 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
     + non normale, le test sera approximativement exact si $n$ est grand.
 
 <div class="info">
-<p>Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio <code>rear / length</code> comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de <code>rear</code> seul.</p>
-<p>Vous pouvez également comparer les crabes bleus (<code>species = &quot;B&quot;</code>) avec les crabes oranges (<code>species = &quot;O&quot;</code>) à l'aide du même test.</p>
+<p>Petite astuce… les mesures morphométriques sont dépendantes de la taille globale de l’animal qui varie d’un individu à l’autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio <code>rear / length</code> comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de <code>rear</code> seul.</p>
+<p>Vous pouvez également comparer les crabes bleus (<code>species = &quot;B&quot;</code>) avec les crabes oranges (<code>species = &quot;O&quot;</code>) à l’aide du même test.</p>
 </div>
 
 
@@ -673,7 +673,7 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 ##### A vous de jouer ! {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;09b_ttest_wmw&quot;)</code></pre>
 </div>
 
@@ -774,7 +774,7 @@ Par exemple, si nous voulons déterminer si la largeur de la carapace de *L. var
 A chaque fois, les dimensions `front` et `rear` sont mesurées sur les mêmes individus. Nous soustrayons l'un de l'autre *d'abord* individu par individu.
 
 <div class="warning">
-<p>Attention ! Les hypothèses se formulent différemment. Il s'agit de la difference des moyennes pour le test <em>t</em> indépendant et la moyenne des différences pour le test <em>t</em> apparié. Si le résultat du calcul en ce qui concerne la moyenne ne diffère pas, la distribution des valeurs est différente (variance, écart type, erreur standard, ...).</p>
+<p>Attention ! Les hypothèses se formulent différemment. Il s’agit de la difference des moyennes pour le test <em>t</em> indépendant et la moyenne des différences pour le test <em>t</em> apparié. Si le résultat du calcul en ce qui concerne la moyenne ne diffère pas, la distribution des valeurs est différente (variance, écart type, erreur standard, …).</p>
 </div>
 
 Nous calculons la moyenne de cette différence notée `delta_f_r`. Nous résumons ces résultats en calculant successivement\ :
@@ -861,7 +861,7 @@ Nous rejettons $H_0$ car la valeur *P* est inférieure à $\alpha$. Nous en conc
 
 
 <div class="warning">
-<p>Avant de réaliser une expérience, vous vous demanderez certainement s'il vaut mieux vous orienter vers une design pour un test apparié ou indépendant. Le test apparié n'est pas toujours possible. Par exemple, si vous comparez deux espèces, il est évident qu'un même individu ne peut appartenir simultanément aux deux espèces ! Mais dans tous les cas où c'est possible, <strong>le design apparié est à préférer</strong>. Il permet d'éliminer une bonne part de la variabilité inter-individuelle de l'analyse, puisque cet effet joue de manière équivalente sur les deux mesures pour chaque paire d'observations sur le même individu. Le choix du test apparié permet d'observer des différentes plus subtiles indétectables en mode indépendant pour un même nombre de réplicats, ou alors, il permet d'observer les mêmes effets mais avec un nombre de mesures bien plus faible. Dans tous les cas, on est gagnant.</p>
+<p>Avant de réaliser une expérience, vous vous demanderez certainement s’il vaut mieux vous orienter vers une design pour un test apparié ou indépendant. Le test apparié n’est pas toujours possible. Par exemple, si vous comparez deux espèces, il est évident qu’un même individu ne peut appartenir simultanément aux deux espèces ! Mais dans tous les cas où c’est possible, <strong>le design apparié est à préférer</strong>. Il permet d’éliminer une bonne part de la variabilité inter-individuelle de l’analyse, puisque cet effet joue de manière équivalente sur les deux mesures pour chaque paire d’observations sur le même individu. Le choix du test apparié permet d’observer des différentes plus subtiles indétectables en mode indépendant pour un même nombre de réplicats, ou alors, il permet d’observer les mêmes effets mais avec un nombre de mesures bien plus faible. Dans tous les cas, on est gagnant.</p>
 </div>
 
 

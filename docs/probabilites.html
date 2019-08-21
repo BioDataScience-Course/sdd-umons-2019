@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="7.1 Probabilités | Science des données biologiques, UMONS />
+  <meta property="og:title" content="7.1 Probabilités | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.1 Probabilités | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="7.1 Probabilités | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -416,21 +438,21 @@ Sachant qu’un <strong>événement</strong> en statistique est un fait qui se p
 <p>Pour résoudre ce problème, nous devons d’abord apprendre à <em>combiner</em> des probabilités. Ce n’est pas bien compliqué. Si on a affaire à des <strong>événements successifs indépendants</strong> (c’est-à-dire que l’occurrence de l’un ne dépend pas de l’occurrence de l’autre), la <strong>probabilité que les deux événements successifs indépendants se produisent tous les deux est la multiplication des deux probabiltés</strong>. On pourra écrire :</p>
 <p><span class="math display">\[\mathrm{P}(E_1 \,\mathrm{et}\, E_2) = \mathrm{P}(E_1) * \mathrm{P}(E_2)\]</span></p>
 <p>Vous pouvez dès lors calculer la probabilité que l’on teste un patient malade (probabilité = 0,08) et que le test soit positif (0,95) dans ce cas :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Personne malade et détectée positive</span>
-(p_sick_positive &lt;-<span class="st"> </span><span class="fl">0.08</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Personne malade et détectée positive</span>
+(p_sick_positive &lt;-<span class="st"> </span><span class="fl">0.08</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>)</code></pre>
 <pre><code># [1] 0.076</code></pre>
 <p>Ceci n’indique <em>pas</em> la probabilité que le test soit positif car il est également parfois (erronément) positif pour des patients sains. Mais au fait, quelle est la probabilité d’avoir un patient sain ? <strong>La probabilité que l’un parmi tous les événements possibles se produise vaut toujours un</strong>. Les seuls événements possibles ici sont que le patient soit sain ou malade. Donc,</p>
 <p><span class="math display">\[\mathrm{P}(sain) + \mathrm{P}(malade) = 1 \rightarrow \mathrm{P}(sain) = 1 - \mathrm{P}(malade) = 0.92\]</span></p>
 <p>Nous pouvons maintenant déterminer la probabilité que le test soit positif dans le cas d’une personne saine :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Personne saine et détectée positive</span>
-(p_healthy_positive &lt;-<span class="st"> </span><span class="fl">0.92</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Personne saine et détectée positive</span>
+(p_healthy_positive &lt;-<span class="st"> </span><span class="fl">0.92</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span>)</code></pre>
 <pre><code># [1] 0.092</code></pre>
 <p>Bon, il nous reste à combiner les probabilités que le test soit positif si la personne est malade et si la personne est saine. Mais comment faire ? Ici, on n’a pas affaire à des événements successifs, mais à des évènements mutuellement exclusifs. On les appellent des <strong>événements disjoints</strong>. Pour déterminer si l’un parmi deux événements disjoints se produit, il suffit d’<strong>additionner leurs probabilités respectives</strong>. Nous pouvons maintenant déterminer la probabilité que le test soit positif quelle que soit la personne testée :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># La probabilité que le test soit positif </span>
-(p_positive &lt;-<span class="st"> </span>p_sick_positive <span class="op">+</span><span class="st"> </span>p_healthy_positive)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># La probabilité que le test soit positif </span>
+(p_positive &lt;-<span class="st"> </span>p_sick_positive <span class="op">+</span><span class="st"> </span>p_healthy_positive)</code></pre>
 <pre><code># [1] 0.168</code></pre>
 <p>Nous nous trouvons ici face à un résultat pour le moins surprenant ! En effet, nous constatons que le test est positif dans 16,8% des cas, mais seulement 7,6% du temps, il sera correct (probabilité d’une personne malade détectée). Parmi tous les cas positifs au test, il y en a…</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p_sick_positive <span class="op">/</span><span class="st"> </span>p_positive</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">p_sick_positive <span class="op">/</span><span class="st"> </span>p_positive</code></pre>
 <pre><code># [1] 0.452381</code></pre>
 <p>… seulement 45,2% qui sont effectivement malades (on parle de <strong>vrais positifs</strong>) ! Ceci ne correspond pas du tout aux indications de départ sur les performances du test.</p>
 
@@ -445,30 +467,30 @@ Sachant qu’un <strong>événement</strong> en statistique est un fait qui se p
 </div>
 
 <p>En fait, les performances finales du test de dépistage dépendent <em>aussi</em> de la prévalence de la maladie. Ainsi pour une maladie très commune qui affecterait 80% de la population, nous obtenons :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Faux positifs</span>
-<span class="fl">0.20</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Faux positifs</span>
+<span class="fl">0.20</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span></code></pre>
 <pre><code># [1] 0.02</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Vrais positifs</span>
-<span class="fl">0.80</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Vrais positifs</span>
+<span class="fl">0.80</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span></code></pre>
 <pre><code># [1] 0.76</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Total des positifs</span>
-<span class="fl">0.20</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.80</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Total des positifs</span>
+<span class="fl">0.20</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.80</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span></code></pre>
 <pre><code># [1] 0.78</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fractions de tests positifs qui sont corrects</span>
-(<span class="fl">0.80</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>) <span class="op">/</span><span class="st"> </span>(<span class="fl">0.20</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.80</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fractions de tests positifs qui sont corrects</span>
+(<span class="fl">0.80</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>) <span class="op">/</span><span class="st"> </span>(<span class="fl">0.20</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.80</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>)</code></pre>
 <pre><code># [1] 0.974359</code></pre>
 <p>Ouf ! Dans ce cas-ci le test positif est correct dans 97,4% des cas. Mais qu’en serait-il si la maladie est très rare (probabilité de 0,008) ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Faux positifs</span>
-<span class="fl">0.992</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Faux positifs</span>
+<span class="fl">0.992</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span></code></pre>
 <pre><code># [1] 0.0992</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Vrais positifs</span>
-<span class="fl">0.008</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Vrais positifs</span>
+<span class="fl">0.008</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span></code></pre>
 <pre><code># [1] 0.0076</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Total des positifs</span>
-<span class="fl">0.992</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.008</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Total des positifs</span>
+<span class="fl">0.992</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.008</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span></code></pre>
 <pre><code># [1] 0.1068</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fractions de tests positifs qui sont corrects</span>
-(<span class="fl">0.008</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>) <span class="op">/</span><span class="st"> </span>(<span class="fl">0.992</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.008</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Fractions de tests positifs qui sont corrects</span>
+(<span class="fl">0.008</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>) <span class="op">/</span><span class="st"> </span>(<span class="fl">0.992</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.008</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.95</span>)</code></pre>
 <pre><code># [1] 0.07116105</code></pre>
 <p>Dans ce cas, un test positif n’aura effectivement détecté un malade que dans … 7,1% des cas ! Les 92,9% autres cas positifs seront en fait des personnes saines.</p>
 <blockquote>
@@ -505,7 +527,8 @@ Une <strong>probabilité conditionnelle</strong> est la probabilité qu’un év
 <p>Par un raisonnement symétrique, on peut aussi dire que :</p>
 <p><span class="math display">\[\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif\, et\, malade)\]</span></p>
 <p>Donc, nous avons aussi :</p>
-<p><span class="math display">\[\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif|malade) * \mathrm{P}(malade)\]</span> … et en divisant les deux termes par <span class="math inline">\(\mathrm{P}(positif)\)</span>, on obtient :</p>
+<p><span class="math display">\[\mathrm{P}(malade|positif) * \mathrm{P}(positif) = \mathrm{P}(positif|malade) * \mathrm{P}(malade)\]</span>
+… et en divisant les deux termes par <span class="math inline">\(\mathrm{P}(positif)\)</span>, on obtient :</p>
 <p><span class="math display">\[\mathrm{P}(malade|positif) = \frac{\mathrm{P}(positif|malade) * \mathrm{P}(malade)}{\mathrm{P}(positif)}\]</span></p>
 
 <div class="note">
@@ -559,13 +582,13 @@ Probabilité qu’un parmi deux événements se produise (cas général) :
 <div id="probabilites-et-contingence" class="section level3">
 <h3><span class="header-section-number">7.1.4</span> Probabilités et contingence</h3>
 <p>Comme un tableau de contingence indique le nombre de fois que des événements ont pu être observés, il peut servir de base à des calculs de probabilités. Partons du dénombrement de fumeur en fonction du revenu dans une population.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabac &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+<pre class="sourceCode r"><code class="sourceCode r">tabac &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">revenu_faible =</span> <span class="kw">c</span>(<span class="dv">634</span>,<span class="dv">1846</span>,<span class="dv">2480</span>),
   <span class="dt">revenu_moyen =</span> <span class="kw">c</span>(<span class="dv">332</span>, <span class="dv">1622</span>,<span class="dv">1954</span>),
   <span class="dt">revenu_eleve =</span> <span class="kw">c</span>(<span class="dv">247</span>,<span class="dv">1868</span>,<span class="dv">2115</span>),
   <span class="dt">total =</span> <span class="kw">c</span>(<span class="dv">1213</span>, <span class="dv">5336</span>, <span class="dv">6549</span>))
 <span class="kw">rownames</span>(tabac) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;fume&quot;</span>, <span class="st">&quot;ne fume pas&quot;</span>,  <span class="st">&quot;total&quot;</span>)
-knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre></div>
+knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -603,25 +626,25 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <ul>
 <li>Quelle est la probabilité d’être un fumeur <span class="math inline">\(\mathrm{P}(fumeur)\)</span> ? Rappelons-nous de la définition de probabilité : nombre de cas où l’événement se produit sur le nombre total de cas. Ici, on a 1213 fumeurs dans un effectif total de l’échantillon de 6549 personnes, soit :</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre>
 <pre><code># [1] 0.1852191</code></pre>
 <ul>
 <li>Quelle est la probabilité d’être fumeur si le revenu élevé <span class="math inline">\(\mathrm{P}(fumeur|revenu\_eleve)\)</span> ? Le nombre de fumeurs à revenus élevés se monte à 247. <strong>Attention, ici l’échantillon de référence n’est plus la population totale, mais seulement ceux qui ont des revenus élevés</strong>, donc 2115 personnes :</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">247</span> <span class="op">/</span><span class="st"> </span><span class="dv">2115</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">247</span> <span class="op">/</span><span class="st"> </span><span class="dv">2115</span></code></pre>
 <pre><code># [1] 0.1167849</code></pre>
 <ul>
 <li>Quelle est la probabilités d’avoir un revenu faible ou d’avoir un élevé ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(revenu\-faible\, ou\, revenu\_eleve)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2480</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">2115</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2480</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">2115</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre>
 <pre><code># [1] 0.7016338</code></pre>
 <p>Il s’agit d’une somme de probabilités disjointes.</p>
 <ul>
 <li>Quelle est la probabilités d’être fumeur ou d’avoir un revenu moyen ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(fumeur\, ou\, revenu\_moyen)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">1954</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">-</span><span class="st"> </span><span class="dv">332</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1213</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">+</span><span class="st"> </span><span class="dv">1954</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span> <span class="op">-</span><span class="st"> </span><span class="dv">332</span> <span class="op">/</span><span class="st"> </span><span class="dv">6549</span></code></pre>
 <pre><code># [1] 0.4328905</code></pre>
-<p>Il s’agit d’une somme de probabilités non disjointes<a href="references.html#fn29" class="footnoteRef" id="fnref29"><sup>29</sup></a>.</p>
+<p>Il s’agit d’une somme de probabilités non disjointes<a href="references.html#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>.</p>
 <div id="populations-de-taille-infinie" class="section level4">
 <h4><span class="header-section-number">7.1.4.1</span> Populations de taille infinie</h4>
 <p>Dans une population, voici les proportions de différents groupes sanguins :</p>
@@ -629,12 +652,12 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <ul>
 <li>Quelles est la probabilité d’obtenir 1 individu du groupe B ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span></code></pre>
 <pre><code># [1] 0.1</code></pre>
 <ul>
 <li>Quelle est la probabilité d’obtenir 3 individus du groupe B d’affilée ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B\, et\, B\, et\, B)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fl">0.10</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span> <span class="op">*</span><span class="st"> </span><span class="fl">0.10</span></code></pre>
 <pre><code># [1] 0.001</code></pre>
 <p>Nous avons ici 3 événements successifs indépendants. Donc, on multiplie leurs probabilités respectives.</p>
 </div>
@@ -642,9 +665,9 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <h4><span class="header-section-number">7.1.4.2</span> Populations de taille finie</h4>
 <p>Dans une population de 100 personnes dont les proportions des différentes groupes sanguins sont identiques au cas précédent.</p>
 <ul>
-<li>Quelles est la probabilité d’obtenir un échantillon de trois individus du groupe B issus de cette population<a href="references.html#fn30" class="footnoteRef" id="fnref30"><sup>30</sup></a> ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B\, et\, B\, et\, B)\)</span>.</li>
+<li>Quelles est la probabilité d’obtenir un échantillon de trois individus du groupe B issus de cette population<a href="references.html#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a> ? Cette question peut s’écrire : <span class="math inline">\(\mathrm{P}(B\, et\, B\, et\, B)\)</span>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">9</span> <span class="op">/</span><span class="st"> </span><span class="dv">99</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">98</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">100</span> <span class="op">*</span><span class="st"> </span><span class="dv">9</span> <span class="op">/</span><span class="st"> </span><span class="dv">99</span> <span class="op">*</span><span class="st"> </span><span class="dv">8</span> <span class="op">/</span><span class="st"> </span><span class="dv">98</span></code></pre>
 <pre><code># [1] 0.000742115</code></pre>
 <p>Il s’agit d’événements successifs <strong>non-indépendants</strong>. En effet, le retrait d’un individu de la population de taille finie <em>modifie</em> les proportions relatives des groupes sanguins dans le reste de la population, et donc, les probabilités aux tirages suivants. Ainsi pour le groupe B, nous n’avons plus que 9 individus de ce groupe dans une population de 99 individus après le premier tirage d’un individu du groupe B ! Autrement dit, <span class="math inline">\(\mathrm{P}(B|B) \neq \mathrm{P}(B|not\ B)\)</span>. On a donc, <span class="math inline">\(\mathrm{P}(B|B) = 9/99\)</span> et ensuite <span class="math inline">\(\mathrm{P}(B|B\, \mathrm{et}\, B) = 8/98\)</span>.</p>
 <div id="a-vous-de-jouer-9" class="section level5 unnumbered">
@@ -662,8 +685,8 @@ knitr<span class="op">::</span><span class="kw">kable</span>(tabac)</code></pre>
 <div class="footnotes">
 <hr />
 <ol start="29">
-<li id="fn29"><p>Si <em>E1</em> et <em>E2</em> sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : <span class="math inline">\(\mathrm{P}(E1\, ou\, E2) = \mathrm{P}(E1) + \mathrm{P}(E2) - \mathrm{P}(E1\, et\, E2)\)</span>.<a href="probabilites.html#fnref29">↩</a></p></li>
-<li id="fn30"><p>En statistique, on appelle cela un tirage au sort <strong>sans</strong> remise. Le résultat est très différent si le premier individu tiré au hasard était remis dans la population et pouvait être éventuellement pris à nouveau au second ou troisième tirage (tirage au sort <strong>avec</strong> remise). Notez aussi que, pour une population de taille infinie ou quasi-infinie, les deux types de tirage au sort sont équivalents à celui <strong>avec</strong> remise car enlever un individu d’une population infinie ne change pas fondamentalement son effectif, donc les probabilités ultérieures.<a href="probabilites.html#fnref30">↩</a></p></li>
+<li id="fn29"><p>Si <em>E1</em> et <em>E2</em> sont deux événements non disjoints, la probabilité que l’un de ces deux événements se produise est : <span class="math inline">\(\mathrm{P}(E1\, ou\, E2) = \mathrm{P}(E1) + \mathrm{P}(E2) - \mathrm{P}(E1\, et\, E2)\)</span>.<a href="probabilites.html#fnref29" class="footnote-back">↩</a></p></li>
+<li id="fn30"><p>En statistique, on appelle cela un tirage au sort <strong>sans</strong> remise. Le résultat est très différent si le premier individu tiré au hasard était remis dans la population et pouvait être éventuellement pris à nouveau au second ou troisième tirage (tirage au sort <strong>avec</strong> remise). Notez aussi que, pour une population de taille infinie ou quasi-infinie, les deux types de tirage au sort sont équivalents à celui <strong>avec</strong> remise car enlever un individu d’une population infinie ne change pas fondamentalement son effectif, donc les probabilités ultérieures.<a href="probabilites.html#fnref30" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -742,7 +765,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

@@ -1,6 +1,6 @@
 --- 
-title: "Science des données biologiques, UMONS"
-author: "Philippe Grosjean & Guyliann Engels"
+title: "Science des données biologiques, UMONS \\n Bio-informatique et sciences des données, UMONS-ULB"
+author: "Philippe Grosjean & Guyliann Engels & Rapĥael Conotte"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output:

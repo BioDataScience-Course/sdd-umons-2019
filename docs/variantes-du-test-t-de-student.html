@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="9.4 Variantes du test t de Student | Science des données biologiques, UMONS />
+  <meta property="og:title" content="9.4 Variantes du test t de Student | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.4 Variantes du test t de Student | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="9.4 Variantes du test t de Student | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -411,9 +433,9 @@ Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio da
 </div>
 <div id="variances-inegales" class="section level3">
 <h3><span class="header-section-number">9.4.1</span> Variances inégales</h3>
-<p>Dans le test précédent, nous avons supposé que les variances entre les valeurs <span class="math inline">\(rear_F\)</span> et <span class="math inline">\(rear_M\)</span> étaient égales, mais rien ne dit que cela soit le cas<a href="references.html#fn45" class="footnoteRef" id="fnref45"><sup>45</sup></a>. Si nous ne voulons pas de cette contrainte, une variante du test permet de comparer deux moyennes même en présence de variances inégales : le <strong>test de Welch</strong>. Il consiste à ajuster les degrés de liberté en cas de variances inégales. Il suffit de préciser <code>var.equal = FALSE</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex,
-  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Dans le test précédent, nous avons supposé que les variances entre les valeurs <span class="math inline">\(rear_F\)</span> et <span class="math inline">\(rear_M\)</span> étaient égales, mais rien ne dit que cela soit le cas<a href="references.html#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>. Si nous ne voulons pas de cette contrainte, une variante du test permet de comparer deux moyennes même en présence de variances inégales : le <strong>test de Welch</strong>. Il consiste à ajuster les degrés de liberté en cas de variances inégales. Il suffit de préciser <code>var.equal = FALSE</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># 
 #   Welch Two Sample t-test
 # 
@@ -440,8 +462,8 @@ Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio da
 <li><span class="math inline">\(H_1: \overline{rear_F} - \overline{rear_M} &gt; 0\)</span></li>
 </ul>
 <p>Notez la différence pour <span class="math inline">\(H_1\)</span>. Nous avons alors ici un test unilatéral à droite. Nous indiquons <code>alternative = &quot;greater&quot;</code>. Pour un test unilatéral à gauche, nous utilisons <code>alternative = &quot;less&quot;</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex,
-  <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex,
+  <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># 
 #   Welch Two Sample t-test
 # 
@@ -496,27 +518,27 @@ Attention ! Les hypothèses se formulent différemment. Il s’agit de la diffe
 <li>l’erreur standard dans <code>se_f_r</code> (pour rappel, <span class="math inline">\(SE = \frac{s_x}{\sqrt{n}}\)</span>),</li>
 <li>la valeur de <code>t_obs</code> reportée selon la distribution <em>t</em> réduite, donc, en divisant <code>mean_f_r</code> par <code>se_f_r</code>.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">delta_f_r =</span> front <span class="op">-</span><span class="st"> </span>rear) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">summarise</span>(., <span class="dt">mean_f_r =</span> <span class="kw">mean</span>(delta_f_r),
                <span class="dt">se_f_r   =</span> <span class="kw">sd</span>(delta_f_r) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">n</span>()),
-               <span class="dt">t_obs    =</span> mean_f_r <span class="op">/</span><span class="st"> </span>se_f_r)</code></pre></div>
+               <span class="dt">t_obs    =</span> mean_f_r <span class="op">/</span><span class="st"> </span>se_f_r)</code></pre>
 <pre><code># # A tibble: 1 x 3
 #   mean_f_r se_f_r t_obs
 #      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
 # 1     2.84  0.112  25.3</code></pre>
 <p>La distribution de référence sous <span class="math inline">\(H_0\)</span> à partir de ces calculs est une <span class="math inline">\(t(0, 1, 199)\)</span>, donc avec <span class="math inline">\(n - 1\)</span> comme degrés de liberté. Donc, la valeur <em>P</em> peut se calculer comme suit (n’oubliez pas de multiplier par deux pour reporter l’aire des deux côtés de la distribution pour un test bilatéral) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pt</span>(<span class="fl">25.324</span>, <span class="dt">df =</span> <span class="dv">199</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pt</span>(<span class="fl">25.324</span>, <span class="dt">df =</span> <span class="dv">199</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>) <span class="op">*</span><span class="st"> </span><span class="dv">2</span></code></pre>
 <pre><code># [1] 3.667686e-64</code></pre>
 <p>Avant d’effectuer le test, pensez toujours à visualiser vos données avec la représentation la plus judicieuse. Ici, la boite de dispersion parallèle n’est pas très indiquée car elle ne prend pas en compte l’appariement des données. Un graphique en nuage de points avec la bissectrice (pente de un et ordonnée à l’origine de zéro) ajoutée comme référence convient bien mieux. Sous <span class="math inline">\(H_0\)</span>, le nuage de points est sensé se concentrer sur cette bissectrice.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>front) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>front) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">1</span>, <span class="dt">intercept =</span> <span class="dv">0</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">1</span>, <span class="dt">intercept =</span> <span class="dv">0</span>)</code></pre>
 <p><img src="09-Moyenne_files/figure-html/unnamed-chunk-37-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Nous voyons très clairement que tous les points se situent du même côté de la bissectrice, ce qui suggère très fortement que <span class="math inline">\(H_0\)</span> ne tient pas la route ici.</p>
 <p>Le test correspondant s’obtient dans la SciViews Box à partir du menu <code>.hm</code> pour <code>hypothesis tests: means</code> et dans le menu qui apparait, on sélectionne le “snippet” <code>paired Student's t test</code>. Il s’agit toujours de la fonction <code>t.test()</code> mais cette fois-ci au lieu d’une formule, nous indiquons les deux variables suivant la notation <code>&lt;data.frame&gt;$&lt;variable&gt;</code>, et nous spécifions <code>paired = TRUE</code>. Fixons notre seuil <span class="math inline">\(\alpha\)</span> à 5% avant de faire le test, puis exécutons l’instruction suivante :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(crabs<span class="op">$</span>front, crabs<span class="op">$</span>rear,
-  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(crabs<span class="op">$</span>front, crabs<span class="op">$</span>rear,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code># 
 #   Paired t-test
 # 
@@ -528,7 +550,7 @@ Attention ! Les hypothèses se formulent différemment. Il s’agit de la diffe
 # sample estimates:
 # mean of the differences 
 #                  2.8445</code></pre>
-<p>Nous rejettons <span class="math inline">\(H_0\)</span> car la valeur <em>P</em> est inférieure à <span class="math inline">\(\alpha\)</span>. Nous en concluons que le crabe <em>L. variegatus</em> a une carapace significativement plus large à l’avant qu’à l’arrière (t test apparié = 25,3, ddl = 199, valeur <em>P</em> &lt;&lt; 10<sup>-3</sup>). Naturellement, les variantes unilatérales à gauche et à droite existent aussi pour ce test. Par contre, la question des variances égales ou non ne se pose pas dans ce cas<a href="references.html#fn46" class="footnoteRef" id="fnref46"><sup>46</sup></a>. Notez que le test se limite à indiquer que la valeur <em>P</em> &lt; 2,2 . 10<sup>-16</sup>. Effectivement, notre calcul donne 3.7 . 10<sup>-64</sup>.</p>
+<p>Nous rejettons <span class="math inline">\(H_0\)</span> car la valeur <em>P</em> est inférieure à <span class="math inline">\(\alpha\)</span>. Nous en concluons que le crabe <em>L. variegatus</em> a une carapace significativement plus large à l’avant qu’à l’arrière (t test apparié = 25,3, ddl = 199, valeur <em>P</em> &lt;&lt; 10<sup>-3</sup>). Naturellement, les variantes unilatérales à gauche et à droite existent aussi pour ce test. Par contre, la question des variances égales ou non ne se pose pas dans ce cas<a href="references.html#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>. Notez que le test se limite à indiquer que la valeur <em>P</em> &lt; 2,2 . 10<sup>-16</sup>. Effectivement, notre calcul donne 3.7 . 10<sup>-64</sup>.</p>
 <div id="conditions-dapplication-3" class="section level5 unnumbered">
 <h5>Conditions d’application</h5>
 <ul>
@@ -552,17 +574,17 @@ Avant de réaliser une expérience, vous vous demanderez certainement s’il vau
 <div id="encodage-correct" class="section level5 unnumbered">
 <h5>Encodage correct</h5>
 <p>Faites très attention à l’encodage des données. Il vous faut un tableau cas par variables correct, sinon vous risquez de vous orienter vers un mauvais test. Prenez le jeu de données <code>sleep</code> du package <code>datasets</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sleep &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;sleep&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">sleep &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;sleep&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["extra"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["group"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["ID"],"name":[3],"type":["fctr"],"align":["left"]}],"data":[{"1":"0.7","2":"1","3":"1"},{"1":"-1.6","2":"1","3":"2"},{"1":"-0.2","2":"1","3":"3"},{"1":"-1.2","2":"1","3":"4"},{"1":"-0.1","2":"1","3":"5"},{"1":"3.4","2":"1","3":"6"},{"1":"3.7","2":"1","3":"7"},{"1":"0.8","2":"1","3":"8"},{"1":"0.0","2":"1","3":"9"},{"1":"2.0","2":"1","3":"10"},{"1":"1.9","2":"2","3":"1"},{"1":"0.8","2":"2","3":"2"},{"1":"1.1","2":"2","3":"3"},{"1":"0.1","2":"2","3":"4"},{"1":"-0.1","2":"2","3":"5"},{"1":"4.4","2":"2","3":"6"},{"1":"5.5","2":"2","3":"7"},{"1":"1.6","2":"2","3":"8"},{"1":"4.6","2":"2","3":"9"},{"1":"3.4","2":"2","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Nous avons <code>extra</code>, le nombre d’heures supplémentaires de sommeil suite à l’administration de médicaments, soit le <code>1</code>, soit le <code>2</code>. Le tableau se présente comme pour effectuer un test <em>t</em> indépendant (une variable numérique <code>extra</code> et une variable facteur à deux niveaux <code>group</code>). Cependant, regardez aussi la variable <code>ID</code> qui est l’identifiant de la personne testée. <strong>Vous constatez que les mêmes identifiants</strong> reviennent parmi les deux groupes. C’est en réalité un design apparié, mais mal encodé. Nous allons d’abord restructurer ce tableau correctement avant d’appliquer le test adéquat.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sleep2 &lt;-<span class="st"> </span><span class="kw">spread</span>(sleep, <span class="dt">key =</span> group, <span class="dt">value =</span> extra)
+<pre class="sourceCode r"><code class="sourceCode r">sleep2 &lt;-<span class="st"> </span><span class="kw">spread</span>(sleep, <span class="dt">key =</span> group, <span class="dt">value =</span> extra)
 <span class="kw">names</span>(sleep2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;med1&quot;</span>, <span class="st">&quot;med2&quot;</span>)
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep2)</code></pre></div>
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep2)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["id"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["med1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["med2"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"0.7","3":"1.9"},{"1":"2","2":"-1.6","3":"0.8"},{"1":"3","2":"-0.2","3":"1.1"},{"1":"4","2":"-1.2","3":"0.1"},{"1":"5","2":"-0.1","3":"-0.1"},{"1":"6","2":"3.4","3":"4.4"},{"1":"7","2":"3.7","3":"5.5"},{"1":"8","2":"0.8","3":"1.6"},{"1":"9","2":"0.0","3":"4.6"},{"1":"10","2":"2.0","3":"3.4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -573,12 +595,12 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep2)</
 <li><span class="math inline">\(H_0: \overline{med1 - med2} = 0\)</span></li>
 <li><span class="math inline">\(H_1: \overline{med1 - med2} \neq 0\)</span></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep2, med2 <span class="op">~</span><span class="st"> </span>med1) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep2, med2 <span class="op">~</span><span class="st"> </span>med1) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">1</span>, <span class="dt">intercept =</span> <span class="dv">0</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> <span class="dv">1</span>, <span class="dt">intercept =</span> <span class="dv">0</span>)</code></pre>
 <p><img src="09-Moyenne_files/figure-html/unnamed-chunk-42-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sleep2<span class="op">$</span>med1, sleep2<span class="op">$</span>med2,
-  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sleep2<span class="op">$</span>med1, sleep2<span class="op">$</span>med2,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code># 
 #   Paired t-test
 # 
@@ -601,25 +623,22 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep2)</
 <div id="test-t-univarie" class="section level3">
 <h3><span class="header-section-number">9.4.4</span> Test <em>t</em> univarié</h3>
 <p>Dans le cas du test <em>t</em> de Student univarié, nous comparons la moyenne d’une seule variable à une constante de référence. Le schéma suivant indique qu’une seule variable quantitative (<code>numeric</code>) est nécessaire.</p>
-<div class="figure">
-<img src="images/sdd1_09/t-tests-univariate.png" />
-
-</div>
+<p><img src="images/sdd1_09/t-tests-univariate.png" /></p>
 <p>Le calcul est le même que dans le cas du test <em>t</em> apparié, avec l’étape de soustration <code>x1 - x2</code> en moins. Par exemple dans le jeu de données <code>sleep2</code> nous pouvons nous demander si le médicament <code>med1</code> change la durée du sommeil. Les hypothèses sont les suivantes :</p>
 <ul>
 <li><span class="math inline">\(H_0: \overline{med1} = 0\)</span></li>
 <li><span class="math inline">\(H_1: \overline{med1} \neq 0\)</span></li>
 </ul>
 <p>N’oublions pas une représentation graphique adéquate. Icic, une boite de dispersion avec un trait horizontal superposé pour indiquer la valeur cible convient très bien.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep2, med1 <span class="op">~</span><span class="st"> &quot;&quot;</span>) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep2, med1 <span class="op">~</span><span class="st"> &quot;&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Sommeil supplémentaire avec med1 [h]&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Sommeil supplémentaire avec med1 [h]&quot;</span>)</code></pre>
 <p><img src="09-Moyenne_files/figure-html/unnamed-chunk-44-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Le graphique suggère peut-être que les patient dorment plus, mais la boite de dispersion chevauche quand même le trait horizontal à zéro. Donc, qu’en est-il exactement ? Le test s’obtient à partir du “snippet” <code>univariate Student's t-test</code> depuis <code>.hm</code> pour <code>hypothesis tests: means</code>. Notez l’argument supplémentaire <code>mu =</code> qui permet de spécifier la valeur de référence (ici zéro). Fixons <span class="math inline">\(\alpha\)</span> avant d’effectuer le test. Ici, nous prenons toujours 5%.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sleep2<span class="op">$</span>med1,
-  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(sleep2<span class="op">$</span>med1,
+  <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">mu =</span> <span class="dv">0</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>)</code></pre>
 <pre><code># 
 #   One Sample t-test
 # 
@@ -651,8 +670,8 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep2)</
 <div class="footnotes">
 <hr />
 <ol start="45">
-<li id="fn45"><p>Il existe des tests pour le vérifier, comme le <strong>test de Bartlett</strong>, mais ce n’est pas le propos ici.<a href="variantes-du-test-t-de-student.html#fnref45">↩</a></p></li>
-<li id="fn46"><p>Pouvez-vous expliquer pourquoi ? Réfléchissez, c’est assez évident.<a href="variantes-du-test-t-de-student.html#fnref46">↩</a></p></li>
+<li id="fn45"><p>Il existe des tests pour le vérifier, comme le <strong>test de Bartlett</strong>, mais ce n’est pas le propos ici.<a href="variantes-du-test-t-de-student.html#fnref45" class="footnote-back">↩</a></p></li>
+<li id="fn46"><p>Pouvez-vous expliquer pourquoi ? Réfléchissez, c’est assez évident.<a href="variantes-du-test-t-de-student.html#fnref46" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -731,7 +750,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

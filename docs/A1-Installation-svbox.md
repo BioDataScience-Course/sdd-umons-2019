@@ -28,17 +28,17 @@ L'installation est simple, mais il y a quand même quelques pièges. Suivez le g
 La SciViews Box 2018, et la Science des Données en général, nécessitent un ordinateur ayant une puissance de calcul suffisante. Les tablettes et autres chromebooks sont donc exclus (sauf à être utilisés comme simples browsers web avec les calculs déportés sur un serveur, voir par exemple [Chromebook Data Science](https://simplystatistics.org/2018/10/01/chromebook-data-science-an-online-data-science-program-for-anyone-with-a-web-browser/)). Si l'utilisation d'un serveur est une bonne idée pour l'apprentissage, ce n'est pas une solution sur le long terme pour tout le monde. En effet, vous êtes et restez dépendant du serveur que l'on a bien voulu configurer et partager avec vous (sera-t-il encore disponible après votre cours, par exemple ?). La solution proposée avec la SciViews Box vous rend complètement **autonome** dès le départ. Le choix d'un ordinateur ayant une capacité de calcul suffisante n'est pas aisé et les disparités en matière de performances sont énormes, voir [NovaBench CPU score](https://novabench.com/parts/cpu?all=true).
 
 <div class="info">
-<p>La <strong>configuration de référence</strong> est la suivante, avec un <a href="https://novabench.com/results">score global Novabench</a> d'environ 1000 :</p>
+<p>La <strong>configuration de référence</strong> est la suivante, avec un <a href="https://novabench.com/results">score global Novabench</a> d’environ 1000 :</p>
 <ul>
-<li>Processeur : à 2 ou 4 coeurs / 4 threads d'une vitesse de calcul suffisante (<a href="https://novabench.com/parts/cpu?all=true">score CPU Novabench</a> d'environ 500).</li>
-<li>Mémoire vive : 8Go avec un score RAM Novabench d'environ 200.</li>
-<li>Disque dur : disque rapide SSD de 256Go (<a href="https://novabench.com/parts/storage">score disque Novabench</a> d'environ 75 avec vitesse d'écriture &gt;= 300Mo/s et vitesse de lecture &gt;= 400Mo/s).</li>
-<li>Affichage : 1920x1080 ou mieux. La plupart des cartes graphiques ou des coprocesseurs graphiques intégrés conviennent (pas besoin d'une bête de course si vos calculs ne nécessitent pas des instructions GPU, en tous cas). Comme base, nous considèrerons un <a href="https://novabench.com/parts/gpu?all=true">score GPU NovaBench</a> d'environ 200 qui correspond au processeur graphique intégré Intel HD 620.</li>
+<li>Processeur : à 2 ou 4 coeurs / 4 threads d’une vitesse de calcul suffisante (<a href="https://novabench.com/parts/cpu?all=true">score CPU Novabench</a> d’environ 500).</li>
+<li>Mémoire vive : 8Go avec un score RAM Novabench d’environ 200.</li>
+<li>Disque dur : disque rapide SSD de 256Go (<a href="https://novabench.com/parts/storage">score disque Novabench</a> d’environ 75 avec vitesse d’écriture &gt;= 300Mo/s et vitesse de lecture &gt;= 400Mo/s).</li>
+<li>Affichage : 1920x1080 ou mieux. La plupart des cartes graphiques ou des coprocesseurs graphiques intégrés conviennent (pas besoin d’une bête de course si vos calculs ne nécessitent pas des instructions GPU, en tous cas). Comme base, nous considèrerons un <a href="https://novabench.com/parts/gpu?all=true">score GPU NovaBench</a> d’environ 200 qui correspond au processeur graphique intégré Intel HD 620.</li>
 <li>Réseau : Wifi à la norme 802.11ac.</li>
 <li>Connectique : USB 3.0 ou C pour ajouter des périphériques, HDMI ou DisplayPort pour connecter un écran externe, et une prise casque pour visionner des vidéos sans déranger les voisins.</li>
-<li>Portabilité et autonomie : 13 pouces pour un poids &lt; 1,5kg pour un ordinateur à enmener partout, sinon 15 pouces et un poids &lt;= 2kg. Autonomie d'au moins 5 à 6h.</li>
-<li>Système d'exploitation : récent et si possible 64-bit. Windows 7 ou plus convient (mais pensez à mettre-à-jour vers Windows 10), MacOS 10.10 Yosemite ou plus, ou un Linux tel Debian 8 (Jessie) ou 9 (Stretch), Ubuntu 16.04 Xenial ou supérieur, ...</li>
-<li>Une configuration &quot;standard&quot; avec au moins 20Go de libre pour la SciViews Box (nécessairement sur le disque <strong>C:</strong> sous Windows), et une configuration non bidouillée (répertoire utilisateur et programmes standards, entre autres).</li>
+<li>Portabilité et autonomie : 13 pouces pour un poids &lt; 1,5kg pour un ordinateur à enmener partout, sinon 15 pouces et un poids &lt;= 2kg. Autonomie d’au moins 5 à 6h.</li>
+<li>Système d’exploitation : récent et si possible 64-bit. Windows 7 ou plus convient (mais pensez à mettre-à-jour vers Windows 10), MacOS 10.10 Yosemite ou plus, ou un Linux tel Debian 8 (Jessie) ou 9 (Stretch), Ubuntu 16.04 Xenial ou supérieur, …</li>
+<li>Une configuration “standard” avec au moins 20Go de libre pour la SciViews Box (nécessairement sur le disque <strong>C:</strong> sous Windows), et une configuration non bidouillée (répertoire utilisateur et programmes standards, entre autres).</li>
 </ul>
 </div>
 
@@ -80,7 +80,7 @@ Pour activer ce jeu d'instructions, il faut aller dans le **BIOS**, c'est-à-dir
 Si vous n'arrivez pas à entrer dans le BIOS, ou à trouver l'entrée correspondante dans celui-ci, rechercher "BIOS Virtualization" accompagné de la marque et du modèle de votre ordinateur dans votre moteur de recherche internet favori. Vous y trouverez certainement des instructions plus précises relatives à votre ordinateur. [Ce site](https://www.tactig.com/enable-intel-vt-x-amd-virtualization-pc-vmware-virtualbox/) liste quelques uns de raccourcis claviers à utiliser en fonction de la marque des ordinateurs pour entrer dans le BIOS.
 
 <div class="info">
-<p>Dans le cas où vous n'arrivez pas à activer la virtualisation sur votre PC, vous pouvez toujours installer une version 32-bit de la SciViews Box en mode d'émulation logicielle de VirtualBox. Dans ce cas, votre box tournera plus lentement et vous n'aurez pas la possibilité d'utiliser plus d'un seul coeur processeur, mais au moins, vous pourrez quand même l'utiliser. La version 64-bit &quot;complète&quot; se nomme <code>svbox2018a</code>. La version 32-bit est <code>svbox2018b</code>. Si vous optez pour cette dernière, adaptez l'intitulé de la machine ou des fichiers (<code>a</code>-&gt; <code>b</code>) dans la suite de ce tutoriel.</p>
+<p>Dans le cas où vous n’arrivez pas à activer la virtualisation sur votre PC, vous pouvez toujours installer une version 32-bit de la SciViews Box en mode d’émulation logicielle de VirtualBox. Dans ce cas, votre box tournera plus lentement et vous n’aurez pas la possibilité d’utiliser plus d’un seul coeur processeur, mais au moins, vous pourrez quand même l’utiliser. La version 64-bit “complète” se nomme <code>svbox2018a</code>. La version 32-bit est <code>svbox2018b</code>. Si vous optez pour cette dernière, adaptez l’intitulé de la machine ou des fichiers (<code>a</code>-&gt; <code>b</code>) dans la suite de ce tutoriel.</p>
 </div>
 
 **Si votre ordinateur est conforme aux spécifications ci-dessus, et si la virtualisation est activée, vous êtes maintenant prêt à installer votre SciViews Box!** Dans ce cas, passez directement à la section \@ref(install). Si vous n'avez pas encore d'ordinateur et souhaitez en acheter un, voyez quelques conseils utiles ci-dessous pour faire le bon choix.
@@ -89,7 +89,7 @@ Si vous n'arrivez pas à entrer dans le BIOS, ou à trouver l'entrée correspond
 ### Conseils pour acheter un PC {#achat_pc}
 
 <div class="note">
-<p>Pour les étudiants de l'UMONS, vous ne <em>devez pas</em> posséder votre propre ordinateur pour suivre le cours de science des données biologiques. Des ordinateurs en configuration de référence (voir <a href="#ordi">ordinateur</a>) vous sont accessibles au cours et aux travaux pratiques, et en dehors des heures à la salle &quot;Escher&quot; (demander un accès au secrétariat des sciences). Toutefois, si vous pouvez acquérir un ordinateur personnel, cela vous apportera un confort et une flexibilité indéniable, <strong>à condition de bien le choisir !</strong></p>
+<p>Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre propre ordinateur pour suivre le cours de science des données biologiques. Des ordinateurs en configuration de référence (voir <a href="#ordi">ordinateur</a>) vous sont accessibles au cours et aux travaux pratiques, et en dehors des heures à la salle “Escher” (demander un accès au secrétariat des sciences). Toutefois, si vous pouvez acquérir un ordinateur personnel, cela vous apportera un confort et une flexibilité indéniable, <strong>à condition de bien le choisir !</strong></p>
 </div>
 
 Si vous suivez les directives ci-dessus, vous ne pourrez pas vous tromper. Mais comme vous n'aurez probablement pas la possibilité de tester les ordinateurs avec Novabench avant l'achat, voici quelques exemples de configurations types et leur coûts approximatifs.
@@ -174,7 +174,7 @@ A titre de comparaison, l'équivalent chez Apple est également présenté (le M
 ## Installation {#install}
 
 <div class="note">
-<p>Vous allez devoir d'abord installer <strong><a href="http://www.virtualbox.org">VirtualBox</a></strong>, un logiciel gratuit et libre qui se chargera de gérer votre machine virtuelle. Ensuite, vous installerez la <strong>SciViews Box</strong> en elle-même. Pour finir, vous aurez aussi besoin de <strong><a href="https://desktop.github.com">Github Desktop</a></strong>.</p>
+<p>Vous allez devoir d’abord installer <strong><a href="http://www.virtualbox.org">VirtualBox</a></strong>, un logiciel gratuit et libre qui se chargera de gérer votre machine virtuelle. Ensuite, vous installerez la <strong>SciViews Box</strong> en elle-même. Pour finir, vous aurez aussi besoin de <strong><a href="https://desktop.github.com">Github Desktop</a></strong>.</p>
 </div>
 
 
@@ -243,7 +243,7 @@ En cliquant 'Finish', cette décompression démarre toute seule.
 <br/>
 
 <div class="warning">
-<p>N'interrompez surtout pas la décompression du disque virtuel! Sinon, votre SciViews Box ne pourra pas démarrer et vous devrez tout recommencer à zéro en désinstallant et réinstallant complètement l'application.</p>
+<p>N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre SciViews Box ne pourra pas démarrer et vous devrez tout recommencer à zéro en désinstallant et réinstallant complètement l’application.</p>
 </div>
 
 Losque tout est installé, vous avez une nouvelle icône sur votre bureau. Poursuivez à la section suivante pour démarrer et paramétrer votre SciViews Box.
@@ -414,7 +414,7 @@ La zone en haut à droite permet de configurer votre compte Git.
 Comme vous allez utiliser Git et Github de manière intensive tout au long de ce cours, **veuillez configurer cette partie du système correctement d'amblée!** Les trois boutons du bas proposent de s'enregistrer sur trois systèmes distants d'hébergement de dépôts Git (si vous ne savez pas ce que c'est, imaginez juste que c'est là que vous allez pouvoir entreposer de manière sûre tous vos projets!): **Github**, **Gitlab** ou **Bitbucket**. Tous trois ont des avantages et des inconvénients, et ils proposent tous des utilisations gratuites dans certains cas.
 
 <div class="note">
-<p>Durant nos cours de Science des Données à l'UMONS, nous utiliserons <strong>Github</strong>. Cette utilisation sera gratuite pour vous, et vous allez pouvoir déjà commencer à construire <strong>votre identité professionnelle sur le Net</strong> par son intermédiaire. Donc, enregistrez-vous de manière sérieuse. Choisissez un login représentatif de vos nom et prénom, pas un truc louffoque ou rigolo sur le moment, mais que vous regretterez plus tard, sachant que votre login ne pourra <strong>pas</strong> être changé ensuite!</p>
+<p>Durant nos cours de Science des Données à l’UMONS, nous utiliserons <strong>Github</strong>. Cette utilisation sera gratuite pour vous, et vous allez pouvoir déjà commencer à construire <strong>votre identité professionnelle sur le Net</strong> par son intermédiaire. Donc, enregistrez-vous de manière sérieuse. Choisissez un login représentatif de vos nom et prénom, pas un truc louffoque ou rigolo sur le moment, mais que vous regretterez plus tard, sachant que votre login ne pourra <strong>pas</strong> être changé ensuite!</p>
 </div>
 
 Vous allez donc vous créer un compte sur Github en cliquant sur le bouton correspondant, et en indiquant un login et un mot de passe. **Nous vous demandons également d'utiliser expressément et uniquement votre adresse email UMONS ici : prénom.nom@student.umons.ac.be.** En effet, ce sera, pour nous, notre seul moyen de vous identifier sans erreur sur Github lorsque nous interviendrons pour vous conseiller et/ou pour corriger vos travaux.

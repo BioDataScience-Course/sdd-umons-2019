@@ -135,8 +135,8 @@
     <rect x='0.00' y='0.00' width='504.00' height='360.00' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='156.30' y='25.69' style='font-size: 14.40px; font-weight: bold; font-family: Liberation Sans;' textLength='220.21px' lengthAdjust='spacingAndGlyphs'>95% family-wise confidence level</text></g>
-<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='266.40' y='42.97' style='font-size: 14.40px; font-weight: bold; font-family: Liberation Sans;' textLength='0.00px' lengthAdjust='spacingAndGlyphs'></text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='153.15' y='25.83' style='font-size: 14.40px; font-weight: bold; font-family: Liberation Sans;' textLength='226.50px' lengthAdjust='spacingAndGlyphs'>95% family-wise confidence level</text></g>
+<g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='266.40' y='43.11' style='font-size: 14.40px; font-weight: bold; font-family: Liberation Sans;' textLength='0.00px' lengthAdjust='spacingAndGlyphs'></text></g>
 <g clip-path='url(#cpMHw1MDR8MzYwfDA=)'><text x='177.69' y='341.28' style='font-size: 12.00px; font-family: Liberation Sans;' textLength='177.43px' lengthAdjust='spacingAndGlyphs'>Differences in mean levels of Lab</text></g>
 <polyline points='59.04,286.56 473.76,286.56 473.76,59.04 59.04,59.04 59.04,286.56 ' style='stroke-width: 0.75;' clip-path='url(#cpMHw1MDR8MzYwfDA=)' />
 </svg>

@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="12.3 Critique statistique | Science des données biologiques, UMONS />
+  <meta property="og:title" content="12.3 Critique statistique | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.3 Critique statistique | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="12.3 Critique statistique | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -399,24 +421,15 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="critique-statistique" class="section level2">
 <h2><span class="header-section-number">12.3</span> Critique statistique</h2>
-<div class="figure">
-<img src="images/sdd1_12/cars-travolta.gif" />
-
-</div>
+<p><img src="images/sdd1_12/cars-travolta.gif" /></p>
 <p>Les statistiques ont mauvaise presse auprès de certaines personnes qui pensent qu’on peut leurs faire dire tout et son contraire. Cela a même donné lieu à des ouvrages comme “<a href="https://www.editionsladecouverte.fr/catalogue/index-Attention_statistiques__-9782707172389.html">Attention, statistiques ! Comment en déjouer les pièges</a>” par Joseph Klatzmann ou “<a href="https://en.wikipedia.org/wiki/How_to_Lie_with_Statistics">How to lie with statistics</a>” par Darrell Huff. Derrière des titres provocateurs, ces ouvrages présentent, en fait, de manière sérieuse les pièges principaux et les moyens de les déjouer. Car, en réalité, ce n’est pas l’usage des statistiques qui est en cause ici, mais son <strong>mauvais</strong> usage. Voir aussi “<a href="https://www.pearson.com/us/higher-education/product/Bennett-Statistical-Reasoning-for-Everyday-Life-5th-Edition/9780134494043.html">Statistical reasoning for everyday life</a>”, par Bennett, Briggs &amp; Triola.</p>
-<div class="figure">
-<img src="images/sdd1_12/caution-wet-floor.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/caution-wet-floor.jpg" /></p>
 <div class="info">
 <p>
 Dans la littérature scientifique et tout autour de nous, nous pouvons trouver des exemples de mauvais usages des statistiques (application <em>erronée</em> de méthodes statistiques). Quelque fois, il s’agit de triche manifeste, mais la plupart du temps c’est par ignorance. Développer un <strong>esprit critique</strong> statistique est important pour pouvoir démasquer ces diverses situations et ne pas tomber soi-même dans les pièges les plus grossiers.
 </p>
 </div>
-<div class="figure">
-<img src="images/sdd1_12/graph-upside-down.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/graph-upside-down.jpg" /></p>
 <p>Voici quelques conseils qui vous aideront à développer votre esprit critique statistique.</p>
 <ul>
 <li>La formulation statistique est-elle en adéquation avec la question biologique posée ?</li>
@@ -435,10 +448,7 @@ Dans la littérature scientifique et tout autour de nous, nous pouvons trouver d
 <li>Une corrélation ou un effet fortuit n’est-il retiré d’une grande quantité de tests non significatifs ? Soyez attentifs aux tests multiples réalisés sans ajustement du seuil <span class="math inline">\(\alpha\)</span>.</li>
 <li>Les conclusions sont-elles en adéquation avec ce qui est observé dans les données ? Les conclusions répondent-elles à la ou les questions posées initialement ?</li>
 </ul>
-<div class="figure">
-<img src="images/sdd1_12/wrong-graph.gif" />
-
-</div>
+<p><img src="images/sdd1_12/wrong-graph.gif" /></p>
 <p>Pour terminer ce module, nous vous proposons quelques situations (soit des problèmes, soit des graphiques) qui ont toutes en commun d’être erronées. A vous de trouver ce qui ne va pas. Pour ne pas fausser la donne, les réponses ne <strong>sont pas</strong> fournies dans ce documents, mais seront discutées en classes tous ensembles.</p>
 <div class="bdd">
 <p>
@@ -457,10 +467,7 @@ Vous avez à votre disposition une tâche Guthub Classroom
 <div id="graphe-en-rubans" class="section level5 unnumbered">
 <h5>Graphe en rubans</h5>
 <p><strong><em>Que pensez-vous du graphique suivant ?</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-ribbon-chart.gif" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-ribbon-chart.gif" /></p>
 <hr />
 </div>
 <div id="longevite" class="section level5 unnumbered">
@@ -471,62 +478,32 @@ Vous avez à votre disposition une tâche Guthub Classroom
 </div>
 <div id="correlations" class="section level5 unnumbered">
 <h5>Corrélations</h5>
-<div class="figure">
-<img src="images/sdd1_12/stupid-correlations.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/stupid-correlations.jpg" /></p>
 <p><strong><em>Vous en pensez quoi ?</em></strong></p>
 <hr />
 </div>
 <div id="prison" class="section level5 unnumbered">
 <h5>Prison</h5>
 <p><strong><em>Qu’est-ce qui ne va pas dans la figure suivante ?</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-pie-chart-does-not-add-to-one.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-pie-chart-does-not-add-to-one.jpg" /></p>
 <hr />
 </div>
 <div id="etendue-des-axes" class="section level5 unnumbered">
 <h5>Etendue des axes</h5>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-truncated1.png" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-truncated2.png" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-truncated1.png" /></p>
+<p><img src="images/sdd1_12/bad-graph-truncated2.png" /></p>
 <p><strong><em>Comparez de manière critique les deux graphiques précédents. Aidez-vous des schémas ci-dessous pour étayer votre explication.</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-truncated3.png" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-truncated4.png" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-truncated5.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-truncated3.png" /></p>
+<p><img src="images/sdd1_12/bad-graph-truncated4.png" /></p>
+<p><img src="images/sdd1_12/bad-graph-truncated5.jpg" /></p>
 <hr />
 </div>
 <div id="travaux-dartistes" class="section level5 unnumbered">
 <h5>Travaux d’artistes ?</h5>
 <p><strong><em>Que pensez-vous des trois figures suivantes ?</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-cluttered1.gif" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-cluttered2.jpg" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-cluttered3.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-cluttered1.gif" /></p>
+<p><img src="images/sdd1_12/bad-graph-cluttered2.jpg" /></p>
+<p><img src="images/sdd1_12/bad-graph-cluttered3.jpg" /></p>
 <hr />
 </div>
 <div id="chauve-souris" class="section level5 unnumbered">
@@ -537,29 +514,17 @@ Vous avez à votre disposition une tâche Guthub Classroom
 </div>
 <div id="patinage" class="section level5 unnumbered">
 <h5>Patinage</h5>
-<div class="figure">
-<img src="images/sdd1_12/skaters.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/skaters.jpg" /></p>
 <p><strong><em>Que se passe-t-il si tout le mode respecte cette consigne (considérant qu’il est impossible que tous les patineurs aient exactement la même vitesse) ?</em></strong></p>
 <hr />
 </div>
 <div id="pseudo-perspective" class="section level5 unnumbered">
 <h5>Pseudo-perspective</h5>
 <p><strong><em>Que pensez-vous de ces graphiques ?</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-3Dbars.gif" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-3Dbars-on3D.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-3Dbars.gif" /></p>
+<p><img src="images/sdd1_12/bad-graph-3Dbars-on3D.jpg" /></p>
 <p>Aidez-vous du schéma suivant pour expliquer ce qui ne va pas…</p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-3Dbars-explication.png" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-3Dbars-explication.png" /></p>
 <hr />
 </div>
 <div id="homme-moyen" class="section level5 unnumbered">
@@ -570,36 +535,18 @@ Vous avez à votre disposition une tâche Guthub Classroom
 </div>
 <div id="public-ou-prive" class="section level5 unnumbered">
 <h5>Public ou privé ?</h5>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-backward-time-and-3D-bars.gif" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-backward-time-and-3D-bars.gif" /></p>
 <p><strong><em>Observez bien le grahique ci-dessus… Ensuite, regardez celui ci-dessous qui est réalisé à l’aide des mêmes données. Commentez…</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-backward-time-and-3D-bars-revised.gif" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-backward-time-and-3D-bars-revised.gif" /></p>
 <hr />
 </div>
 <div id="camemberts-tartes-et-cie" class="section level5 unnumbered">
 <h5>Camemberts, tartes et cie</h5>
 <p><strong><em>Que pensez-vous de ces graphiques ?</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-exploding-3DPie.gif" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-too-much-data.jpg" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-pie-chart-vegan.png" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/piechart-joke.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-exploding-3DPie.gif" /></p>
+<p><img src="images/sdd1_12/bad-graph-too-much-data.jpg" /></p>
+<p><img src="images/sdd1_12/bad-graph-pie-chart-vegan.png" /></p>
+<p><img src="images/sdd1_12/piechart-joke.jpg" /></p>
 <hr />
 </div>
 <div id="esperance-de-vie" class="section level5 unnumbered">
@@ -611,14 +558,8 @@ Vous avez à votre disposition une tâche Guthub Classroom
 <div id="femmes-au-travail" class="section level5 unnumbered">
 <h5>Femmes au travail</h5>
 <p><strong><em>Considérez les deux graphiques suivants qui sont sensés représenter la même information (les mêmes données sont utilisées). Comparez-les de manière critique.</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-3D-and-iportant-thing-is-arrow.gif" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-3D-and-iportant-thing-is-arrow-revisited.gif" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-3D-and-iportant-thing-is-arrow.gif" /></p>
+<p><img src="images/sdd1_12/bad-graph-3D-and-iportant-thing-is-arrow-revisited.gif" /></p>
 <hr />
 </div>
 <div id="moules" class="section level5 unnumbered">
@@ -630,10 +571,7 @@ Vous avez à votre disposition une tâche Guthub Classroom
 <div id="republique-bananiere" class="section level5 unnumbered">
 <h5>République bananière ?</h5>
 <p><strong><em>Que pensez-vous du graphique suivant ?</em></strong></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-3D-bars-on-3D-clipart.png" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-3D-bars-on-3D-clipart.png" /></p>
 <hr />
 </div>
 <div id="euro-manquant" class="section level5 unnumbered">
@@ -644,20 +582,12 @@ Vous avez à votre disposition une tâche Guthub Classroom
 </div>
 <div id="stylos-et-vers-verts" class="section level5 unnumbered">
 <h5>Stylos et vers verts ?</h5>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-cliparted-bars1.png" />
-
-</div>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-cliparted-bars2.png" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-cliparted-bars1.png" /></p>
+<p><img src="images/sdd1_12/bad-graph-cliparted-bars2.png" /></p>
 <p><strong><em>Que pensez-vous de ces graphiques ? Vous pouvez vous aidez des schémas suivants pour étayer votre réponse.</em></strong></p>
-<p><img src="images/sdd1_12/bad-graph-improper-scaling1.png" /> <img src="images/sdd1_12/bad-graph-improper-scaling2.png" /></p>
-<div class="figure">
-<img src="images/sdd1_12/bad-graph-improper-scaling3.png" />
-
-</div>
+<p><img src="images/sdd1_12/bad-graph-improper-scaling1.png" />
+<img src="images/sdd1_12/bad-graph-improper-scaling2.png" /></p>
+<p><img src="images/sdd1_12/bad-graph-improper-scaling3.png" /></p>
 <hr />
 </div>
 <div id="insecticides" class="section level5 unnumbered">
@@ -668,10 +598,7 @@ Vous avez à votre disposition une tâche Guthub Classroom
 </div>
 <div id="virus-zika" class="section level5 unnumbered">
 <h5>Virus zika</h5>
-<div class="figure">
-<img src="images/sdd1_12/wrong-graph-nbc.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/wrong-graph-nbc.jpg" /></p>
 <p><strong><em>Ca ne s’invente pas !</em></strong></p>
 <hr />
 </div>
@@ -681,10 +608,7 @@ Vous avez à votre disposition une tâche Guthub Classroom
 <p><strong><em>La prochaine fois que vous remplirez votre grille de lotto, jouerez-vous le numéro 8 ? Pourquoi ?</em></strong></p>
 <p><strong><em>Vous est-il arrivé de jouer la suite 1, 2, 3, 4, 5, 6, 7, 8 au lotto (ou rempliriez-vous une grille avec ces nombres si vous deviez y jouer) ? Pourquoi ?</em></strong></p>
 <hr />
-<div class="figure">
-<img src="images/sdd1_12/rstudio_joke.jpg" />
-
-</div>
+<p><img src="images/sdd1_12/rstudio_joke.jpg" /></p>
 
 </div>
 </div>
@@ -768,7 +692,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

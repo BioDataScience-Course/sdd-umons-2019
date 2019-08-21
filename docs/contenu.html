@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="D.2 Contenu | Science des données biologiques, UMONS />
+  <meta property="og:title" content="D.2 Contenu | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="D.2 Contenu | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="D.2 Contenu | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -402,10 +424,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Le rapport sert à restituer de façon synthétique les résultats d’une étude scientifique, et les interprétations. Le tout est remis dans le contexte de la bibliographie existante en la synthétisant dans l’introduction et en comparant les résultats avec d’autres études connexes dans la discussion. Il faut garder à l’esprit qu’un lecteur doit comprendre l’intégralité du rapport avec un minimum de connaissances <em>a priori</em> sur l’étude réalisée, mais avec des connaissances générales dans la spécialité. Donc, un rapport sur un sujet biologique est adressé à un lecteur biologiste pour lequel il ne faut pas rappeler les concepts de base dans sa discipline. Par contre, il faut expliquer avec suffisamment de détails comment l’étude a été réalisée dans la section “matériel et méthodes”.</p>
 <p>En général, les phrases sont simples, directes, courtes et précises (veuillez à utiliser le vocabulaire adéquat et précis). Les explications sont, autant que possible, linéaires. Evitez les renvois dans différentes autres parties du rapport, si ce n’est pour rappeler un élément évoqué plus haut, ou pour se référer à une figure ou une table. A ce sujet, les figures (dont les images, photos, schémas et graphiques) sont numérotées (Figure 1, Figure 2, …) et accompagnées d’une légende en dessous d’elles. La figure et sa légende doivent être compréhensibles telles quelles. Dans le texte, vous pourrez alors vous référer à la figure, par exemple: “Tel phénomène est observable (voir Fig. 3)”, ou “La Fig. 4 montre …”. idem pour les tableaux qui sont également numérotés (Tableau 1, Tableau 2, …) et légendés, mais <em>au dessus</em> du tableau. Les règles de lisibilité du tableau + légende et de renvoi vers les tableaux sont identiques que pour les figures. Les équations peuvent aussi être numérotées et des renvois de type (eq. 5) peuvent être alors utilisés. Enfin, toute affirmation doit être soit démontrée dans le rapport, soit complétée d’une citation vers un autre document scientifique qui la démontre. La partie bibliographie regroupe la liste de tous les documents qui sont ainsi cités à la fin du rapport.</p>
 <p>Veuillez à respecter les notations propres au système métrique international, les abbrévations usuelles dans la discipline, et le droit d’auteur et les licenses si vous voulez citer un passage ou reprendre une illustration provenant d’un autre auteur (sans omettre d’indiquer qui en est l’auteur). Enfin, en vue de rendre le document parfaitement reproductible, vous pouvez indiquer dans les annexes où trouver la source (le document <code>.Rmd</code>) et les données analysées. Vous pouvez également terminer avec un chunk qui renseigne de l’état du système R utilisé, y compris l’ensemble des packages employés. Ce chunk, présenté en annexe, contiendra l’instruction <code>utils::sessionInfo()</code>, ou mieux : <code>xfun::session_info()</code> (version courte) ou <code>devtools::session_info()</code> (version longue). Par exemple :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xfun<span class="op">::</span><span class="kw">session_info</span>()</code></pre></div>
-<pre><code>R version 3.4.4 (2018-03-15)
+<pre class="sourceCode r"><code class="sourceCode r">xfun<span class="op">::</span><span class="kw">session_info</span>()</code></pre>
+<pre><code>R version 3.5.3 (2019-03-11)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 16.04.5 LTS
+Running under: Ubuntu 18.04.2 LTS
 
 Locale:
   LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -416,67 +438,59 @@ Locale:
   LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 Package version:
-  acepack_1.4.1       assertthat_0.2.0    backports_1.1.2    
-  base64enc_0.1-3     BH_1.66.0.1         bindr_0.1.1        
-  bindrcpp_0.2.2      bookdown_0.8        broom_0.4.4        
-  callr_2.0.3         cellranger_1.1.0    chart_1.2.0        
-  checkmate_1.8.5     cli_1.0.0           cluster_2.0.7-1    
-  codetools_0.2-15    colorspace_1.3-2    compiler_3.4.4     
-  cowplot_0.9.2       crayon_1.3.4        curl_3.2           
-  data.io_1.2.1       datasets_3.4.4      data.table_1.10.4-3
-  DBI_0.8             dbplyr_1.2.1        debugme_1.1.0      
-  dichromat_2.0.0     digest_0.6.15       dplyr_0.7.4        
-  ellipse_0.4.1       evaluate_0.10.1     flow_1.1.0         
-  forcats_0.3.0       foreign_0.8-69      Formula_1.2-2      
-  ggplot2_2.2.1       ggplotify_0.0.3     ggpubr_0.1.6       
-  ggrepel_0.7.0       ggsci_2.8           ggsignif_0.4.0     
-  glue_1.3.0          graphics_3.4.4      grDevices_3.4.4    
-  grid_3.4.4          gridExtra_2.3       gridGraphics_0.3-0 
-  gtable_0.2.0        haven_1.1.1         highr_0.6          
-  Hmisc_4.1-1         hms_0.4.2           htmlTable_1.11.2   
-  htmltools_0.3.6     htmlwidgets_1.2     httr_1.3.1         
-  igraph_1.2.1        inline_0.3.14       jsonlite_1.5       
-  knitr_1.20          labeling_0.3        lattice_0.20-35    
-  latticeExtra_0.6-28 lazyeval_0.2.1      lubridate_1.7.4    
-  magrittr_1.5        markdown_0.8        MASS_7.3-49        
-  Matrix_1.2-14       methods_3.4.4       mime_0.5           
-  mnormt_1.5-5        modelr_0.1.1        munsell_0.4.3      
-  nlme_3.1-137        nnet_7.3-12         nycflights13_0.2.2 
-  openssl_1.0.1       parallel_3.4.4      pillar_1.2.1       
-  pkgconfig_2.0.1     plogr_0.2.0         plyr_1.8.4         
-  praise_1.0.0        proto_1.0.0         pryr_0.1.4         
-  psych_1.8.3.3       purrr_0.2.4         R6_2.2.2           
-  RColorBrewer_1.1-2  Rcpp_0.12.16        readr_1.1.1        
-  readxl_1.0.0        rematch_1.0.1       reprex_0.1.2       
-  reshape2_1.4.3      rlang_0.2.0         rmarkdown_1.10     
-  rpart_4.1-13        rprojroot_1.3-2     rstudioapi_0.9.0   
-  rvcheck_0.0.9       rvest_0.3.2         scales_0.5.0       
-  SciViews_1.1.0      selectr_0.4.1       splines_3.4.4      
-  stats_3.4.4         stringi_1.1.7       stringr_1.3.0      
-  survival_2.42-3     svMisc_1.1.0        testthat_2.0.0     
-  tibble_1.4.2        tidyr_0.8.0         tidyselect_0.2.4   
-  tidyverse_1.2.1     tinytex_0.5         tools_3.4.4        
-  tsibble_0.1.5       utf8_1.1.3          utils_3.4.4        
-  viridis_0.5.1       viridisLite_0.3.0   whisker_0.3.2      
-  withr_2.1.2         xfun_0.4            xml2_1.2.0         
-  yaml_2.1.18        </code></pre>
+  acepack_1.4.1       anytime_0.3.3       askpass_1.1        
+  assertthat_0.2.1    backports_1.1.3     base64enc_0.1-3    
+  BH_1.69.0.1         bookdown_0.9        broom_0.5.2        
+  callr_3.2.0         cellranger_1.1.0    chart_1.3.0        
+  checkmate_1.9.1     cli_1.1.0           clipr_0.5.0        
+  cluster_2.0.8       codetools_0.2-16    colorspace_1.4-1   
+  compiler_3.5.3      cowplot_0.9.4       crayon_1.3.4       
+  curl_3.3            data.io_1.2.2       data.table_1.12.2  
+  datasets_3.5.3      DBI_1.0.0           dbplyr_1.3.0       
+  digest_0.6.18       dplyr_0.8.0.1       ellipse_0.4.1      
+  ellipsis_0.1.0      evaluate_0.13       fansi_0.4.0        
+  flow_1.0.0          forcats_0.4.0       foreign_0.8-71     
+  Formula_1.2-3       fs_1.2.7            generics_0.0.2     
+  ggplot2_3.1.1       ggplotify_0.0.3     ggpubr_0.2         
+  ggrepel_0.8.0       ggsci_2.9           ggsignif_0.5.0     
+  glue_1.3.1          graphics_3.5.3      grDevices_3.5.3    
+  grid_3.5.3          gridExtra_2.3       gridGraphics_0.3-0 
+  gtable_0.3.0        haven_2.1.0         highr_0.8          
+  Hmisc_4.2-0         hms_0.4.2           htmlTable_1.13.1   
+  htmltools_0.3.6     htmlwidgets_1.3     httr_1.4.0         
+  igraph_1.2.4        inline_0.3.15       jsonlite_1.6       
+  knitr_1.22          labeling_0.3        lattice_0.20-38    
+  latticeExtra_0.6-28 lazyeval_0.2.2      lubridate_1.7.4    
+  magrittr_1.5        markdown_0.9        MASS_7.3-51.3      
+  Matrix_1.2-17       methods_3.5.3       mgcv_1.8.28        
+  mime_0.6            modelr_0.1.4        munsell_0.5.0      
+  nlme_3.1-138        nnet_7.3-12         nycflights13_1.0.0 
+  openssl_1.3         pillar_1.3.1        pkgconfig_2.0.2    
+  plogr_0.2.0         plyr_1.8.4          polynom_1.4.0      
+  prettyunits_1.0.2   processx_3.3.0      progress_1.2.0     
+  proto_1.0.0         pryr_0.1.4          ps_1.3.0           
+  purrr_0.3.2         R6_2.4.0            RApiDatetime_0.0.4 
+  RColorBrewer_1.1-2  Rcpp_1.0.1          readr_1.3.1        
+  readxl_1.3.1        rematch_1.0.1       reprex_0.2.1       
+  reshape2_1.4.3      rlang_0.3.4         rmarkdown_1.12     
+  rpart_4.1-13        rstudioapi_0.10     rvcheck_0.1.3      
+  rvest_0.3.2         scales_1.0.0        SciViews_1.1.0     
+  selectr_0.4.1       splines_3.5.3       stats_3.5.3        
+  stringi_1.4.3       stringr_1.4.0       survival_2.44-1.1  
+  svMisc_1.1.0        sys_3.1             tibble_2.1.1       
+  tidyr_0.8.3         tidyselect_0.2.5    tidyverse_1.2.1    
+  tinytex_0.11        tools_3.5.3         tsibble_0.7.0      
+  utf8_1.1.4          utils_3.5.3         viridis_0.5.1      
+  viridisLite_0.3.0   whisker_0.3.2       withr_2.1.2        
+  xfun_0.6            xml2_1.2.0          yaml_2.2.0         </code></pre>
 <div id="table-des-matieres" class="section level3">
 <h3><span class="header-section-number">D.2.1</span> Table des matières</h3>
 <p>La table des matières est d’une importance capitale pour un long document (mais facultative pour un plus court rapport) afin de présenter la structure de votre oeuvre aux lecteurs. Heureusement, il n’est pas nécessaire de l’écrire manuellement. La table des matières est générée automatiquement dans un rapport R Markdown. L’instruction à ajouter dans le préambule du document R Notebook afin d’obtenir une table des matières est <code>toc: yes</code> (ne l’encodez pas directement, mais sélectionnez l’option <code>Include table of contents</code> dans les options de formattage du document accessibles à partir du bouton engrenage à droite de <code>Preview</code> ou <code>Knit</code> -&gt; <code>Output Options...</code>). Lorsque vous fermerez cette boite de dialogue de configuration, l’entrée <em>ad hoc</em> sera ajoutée pour vous dans le préambule.</p>
-<div class="figure">
-<img src="images/annexe_a4/table_contents.png" />
-
-</div>
+<p><img src="images/annexe_a4/table_contents.png" /></p>
 <p>Vous pouvez aussi choisir de numéroter vos titres automatiquement. L’instruction à ajouter en plus de <code>toc: yes</code> dans le préambule du document R Notebook afin d’obtenir une table des matières avec des titres numéroté est <code>number_sections: yes</code>. Encore une fois, passez par la boite de dialogue de configuration, et cochez-y l’entrée <code>Number section headings</code>.</p>
-<div class="figure">
-<img src="images/annexe_a4/table_contents2.png" />
-
-</div>
+<p><img src="images/annexe_a4/table_contents2.png" /></p>
 <p>Voyez l’animation ci-dessous pour accéder à la boite de dialogue de configuration du document R Markdown/R Notebook.</p>
-<div class="figure">
-<img src="images/annexe_a4/table_contents.gif" />
-
-</div>
+<p><img src="images/annexe_a4/table_contents.gif" /></p>
 </div>
 <div id="introduction" class="section level3">
 <h3><span class="header-section-number">D.2.2</span> Introduction</h3>
@@ -484,9 +498,7 @@ Package version:
 <ul>
 <li>Remettre l’expérience dans son contexte,</li>
 <li>Décrire l’organisme étudié
-<ul>
-<li>caractéristiques générales de l’organisme, distribution géographique, biotope,…</li>
-</ul></li>
++ caractéristiques générales de l’organisme, distribution géographique, biotope,…</li>
 </ul>
 <p>Notez que l’ajout d’images ou d’une carte de distribution est un plus dans l’introduction.</p>
 </div>
@@ -598,7 +610,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

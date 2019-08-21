@@ -29,7 +29,7 @@ Ce module présente des descripteurs statistiques de l'association de deux varia
 ##### A vous de jouer {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;12a_correlation&quot;)</code></pre>
 </div>
 
@@ -303,12 +303,12 @@ head(anscombe)
 # # A tibble: 6 x 8
 #      x1    x2    x3    x4    y1    y2    y3    y4
 #   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-# 1   10.   10.   10.    8.  8.04  9.14  7.46  6.58
-# 2    8.    8.    8.    8.  6.95  8.14  6.77  5.76
-# 3   13.   13.   13.    8.  7.58  8.74 12.7   7.71
-# 4    9.    9.    9.    8.  8.81  8.77  7.11  8.84
-# 5   11.   11.   11.    8.  8.33  9.26  7.81  8.47
-# 6   14.   14.   14.    8.  9.96  8.10  8.84  7.04
+# 1    10    10    10     8  8.04  9.14  7.46  6.58
+# 2     8     8     8     8  6.95  8.14  6.77  5.76
+# 3    13    13    13     8  7.58  8.74 12.7   7.71
+# 4     9     9     9     8  8.81  8.77  7.11  8.84
+# 5    11    11    11     8  8.33  9.26  7.81  8.47
+# 6    14    14    14     8  9.96  8.1   8.84  7.04
 ```
 
 Séparons les quatre variables *X* d'un côté et les quatre variables *Y* de l'autre.
@@ -672,7 +672,7 @@ Enfin, quelques packages R additionnels proposent d'autres formats de présentat
 ![](images/sdd1_12/r-markdown-pres6.png)
 
 <div class="info">
-<p>Quel type de présentation R Markdown choisir au final ? Toute cette panoplie d'options ne facilite pas notre choix. En fait, c'est plus une question de goût personnel. Essayez les différentes options par vous-même. Le choix principal est au final entre un format HTML ou PDF. Le format PDF est, par définition, plus portable. Cependant, il ne permet que du contenu statique. Si vous avez des gifs animés, des graphiques interactifs, ou des vidéos, alors orientez-vous plutôt vers un moteur HTML/Javascript.</p>
+<p>Quel type de présentation R Markdown choisir au final ? Toute cette panoplie d’options ne facilite pas notre choix. En fait, c’est plus une question de goût personnel. Essayez les différentes options par vous-même. Le choix principal est au final entre un format HTML ou PDF. Le format PDF est, par définition, plus portable. Cependant, il ne permet que du contenu statique. Si vous avez des gifs animés, des graphiques interactifs, ou des vidéos, alors orientez-vous plutôt vers un moteur HTML/Javascript.</p>
 <p>Dans la prochaine version de la SciViews Box, il sera également possible de générer ses présentations directement au format PowerPoint.</p>
 </div>
 
@@ -686,7 +686,7 @@ Les statistiques ont mauvaise presse auprès de certaines personnes qui pensent 
 ![](images/sdd1_12/caution-wet-floor.jpg)
 
 <div class="info">
-<p>Dans la littérature scientifique et tout autour de nous, nous pouvons trouver des exemples de mauvais usages des statistiques (application <em>erronée</em> de méthodes statistiques). Quelque fois, il s'agit de triche manifeste, mais la plupart du temps c'est par ignorance. Développer un <strong>esprit critique</strong> statistique est important pour pouvoir démasquer ces diverses situations et ne pas tomber soi-même dans les pièges les plus grossiers.</p>
+<p>Dans la littérature scientifique et tout autour de nous, nous pouvons trouver des exemples de mauvais usages des statistiques (application <em>erronée</em> de méthodes statistiques). Quelque fois, il s’agit de triche manifeste, mais la plupart du temps c’est par ignorance. Développer un <strong>esprit critique</strong> statistique est important pour pouvoir démasquer ces diverses situations et ne pas tomber soi-même dans les pièges les plus grossiers.</p>
 </div>
 
 ![](images/sdd1_12/graph-upside-down.jpg)
@@ -714,7 +714,7 @@ Voici quelques conseils qui vous aideront à développer votre esprit critique s
 Pour terminer ce module, nous vous proposons quelques situations (soit des problèmes, soit des graphiques) qui ont toutes en commun d'être erronées. A vous de trouver ce qui ne va pas. Pour ne pas fausser la donne, les réponses ne **sont pas** fournies dans ce documents, mais seront discutées en classes tous ensembles.
 
 <div class="bdd">
-<p>Profitez-en pour réaliser votre première présentation R Markdown. Choisissez une situation et un type de présentation R Markdown (ioslides, Slidy, Beamer, R Presentation, ...). Ensuite réalisez deux ou trois &quot;slides&quot; de présentation. Dans la première, vous exposez la situation. Dans les suivantes, vous expliquer ce qui est incorrect et vous proposez une bonne façon de faire à la place.</p>
+<p>Profitez-en pour réaliser votre première présentation R Markdown. Choisissez une situation et un type de présentation R Markdown (ioslides, Slidy, Beamer, R Presentation, …). Ensuite réalisez deux ou trois “slides” de présentation. Dans la première, vous exposez la situation. Dans les suivantes, vous expliquer ce qui est incorrect et vous proposez une bonne façon de faire à la place.</p>
 <p>Vous avez à votre disposition une tâche Guthub Classroom</p>
 <ul>
 <li><a href="https://classroom.github.com/a/ZLNkeFCo" class="uri">https://classroom.github.com/a/ZLNkeFCo</a></li>

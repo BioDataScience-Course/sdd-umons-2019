@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="3.1 Histogramme | Science des données biologiques, UMONS />
+  <meta property="og:title" content="3.1 Histogramme | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.1 Histogramme | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="3.1 Histogramme | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -399,7 +421,7 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="histogramme" class="section level2">
 <h2><span class="header-section-number">3.1</span> Histogramme</h2>
-<p>Vous souhaitez visualiser l’étalement de vos données sur un axe (on parle de <strong>distribution</strong><a href="references.html#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> en statistique) pour l’une des variables étudiées. L’histogramme est l’un des outils pouvant vous apporter cette information. Ce graphique va représenter sous forme de barres un découpage en plusieurs <strong>classes</strong><a href="references.html#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a> d’une variable numérique.</p>
+<p>Vous souhaitez visualiser l’étalement de vos données sur un axe (on parle de <strong>distribution</strong><a href="references.html#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> en statistique) pour l’une des variables étudiées. L’histogramme est l’un des outils pouvant vous apporter cette information. Ce graphique va représenter sous forme de barres un découpage en plusieurs <strong>classes</strong><a href="references.html#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> d’une variable numérique.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.svg" alt="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton." width="672" />
 <p class="caption">
@@ -412,38 +434,37 @@ Figure 3.1: Exemple d’histogramme montrant la distribution de la taille d’un
 <li>les labels des axes et l’unité (pour l’axe des abscisses uniquement ici) (en bleu)</li>
 </ul>
 <p>Les instructions dans R afin de produire un histogramme à l’aide de la fonction <code>chart()</code> sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
-(zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
+(zooplankton &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre>
 <pre><code># # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean   mode     min   max
-#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360 0.00400 0.908
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492  0.0240  0.676
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320 0.00800 0.696
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360 0.00400 0.728
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160 0.00800 0.452
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200 0.00400 0.844
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120 0.00400 0.784
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120 0.00400 0.756
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120 0.00400 0.728
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440 0.00400 0.880
-# # ... with 1,252 more rows, and 10 more variables: std_dev &lt;dbl&gt;,
-# #   range &lt;dbl&gt;, size &lt;dbl&gt;, aspect &lt;dbl&gt;, elongation &lt;dbl&gt;,
-# #   compactness &lt;dbl&gt;, transparency &lt;dbl&gt;, circularity &lt;dbl&gt;,
-# #   density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
+#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
+#    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
+# # … with 1,252 more rows, and 9 more variables: range &lt;dbl&gt;, size &lt;dbl&gt;,
+# #   aspect &lt;dbl&gt;, elongation &lt;dbl&gt;, compactness &lt;dbl&gt;, transparency &lt;dbl&gt;,
+# #   circularity &lt;dbl&gt;, density &lt;dbl&gt;, class &lt;fct&gt;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">50</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Distribution des tailles au sein d'un échantillon de zooplancton" width="672" />
 <p class="caption">
 Figure 2.2: Distribution des tailles au sein d’un échantillon de zooplancton
 </p>
 </div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bins permet de préciser le nombre de classes souhaitées</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bins permet de préciser le nombre de classes souhaitées</span></code></pre>
 <p>La fonction <code>chart()</code> requiert comme argument le jeu de donnée (<code>zooplankton</code>), ainsi que la formule à employer dans laquelle vous avez indiqué le nom de la variable que vous voulez sur l’axe des abscisses à droite de la formule, après le tilde <code>~</code>. Vous voyez que le jeu de données contient beaucoup de variables (les titres des colonnes du tableau en sortie). Parmi toutes ces variables, nous avons choisi ici de représenter <code>size</code>, Jusqu’ici, nous avons spécifié <em>ce que</em> nous voulons représenter, mais pas encore <em>comment</em> (sous quelle apparence), nous voulons matérialiser cela sur le graphique. Pour un histogramme, nous devons ajouter la fonction <code>geom_histogram()</code>. L’argument <code>bins</code> dans cette fonction permet de préciser le nombre de classes souhaitées. Le découpage en classe se fait automatiquement dans R à partir de la variable <code>size</code> d’origine.</p>
-<p>Vous pouvez décrypter votre histogramme sur base des <strong>modes</strong><a href="references.html#fn8" class="footnoteRef" id="fnref8"><sup>8</sup></a> et de la <strong>symétrie</strong><a href="references.html#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a> de ces derniers. Un histogramme peut être unimodal (un seul mode), bimodal (deux modes) ou multimodal (plus de deux modes). En général, s’il y a plus d’un mode, nous pouvons suspecter que des sous-populations existent au sein de notre échantillon.</p>
+<p>Vous pouvez décrypter votre histogramme sur base des <strong>modes</strong><a href="references.html#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> et de la <strong>symétrie</strong><a href="references.html#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> de ces derniers. Un histogramme peut être unimodal (un seul mode), bimodal (deux modes) ou multimodal (plus de deux modes). En général, s’il y a plus d’un mode, nous pouvons suspecter que des sous-populations existent au sein de notre échantillon.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
 <p class="caption">
@@ -453,7 +474,7 @@ Figure 3.2: Histogrammes montrant les modes et symétries : A. histogramme unimo
 <div id="nombre-de-classes" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Nombre de classes</h3>
 <p>Vous devez être particulièrement vigilant lors de la réalisation d’un histogramme aux classes définies pour ce dernier.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique précédent</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique précédent</span>
 a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> zooplankton, <span class="op">~</span><span class="st"> </span>size) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">50</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)
@@ -472,14 +493,14 @@ d &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">d
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)
 
 <span class="co"># Assemblage des graphiques</span>
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b, c, d))</code></pre></div>
+<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b, c, d))</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:histo-classes"></span>
 <img src="03-Visualisation-II_files/figure-html/histo-classes-1.svg" alt="Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes." width="672" />
 <p class="caption">
 Figure 3.3: Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d’organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes.
 </p>
 </div>
-<p>Comme vous pouvez le voir à la Fig. <a href="histogramme.html#fig:histo-classes">3.3</a>, le changement du nombre de classes peut modifier complètement la perception des données via l’histogramme. Le choix idéal est un compromis entre plus de classes (donc plus de détails), et un d“coupage raisonnable en fonction de la quantité de données disponibles. Si l’intervalle des classes est trop petit, l’histogramme sera illisible. Si l’intervalle des classes est trop grand, il sera impossible de visualiser correctement les différents modes. Dans la figure en exemple, les variantes A et B sont acceptables, mais les C et D manquent de détails.</p>
+<p>Comme vous pouvez le voir à la Fig. <a href="histogramme.html#fig:histo-classes">3.3</a>, le changement du nombre de classes peut modifier complètement la perception des données via l’histogramme. Le choix idéal est un compromis entre plus de classes (donc plus de détails), et un d&quot;coupage raisonnable en fonction de la quantité de données disponibles. Si l’intervalle des classes est trop petit, l’histogramme sera illisible. Si l’intervalle des classes est trop grand, il sera impossible de visualiser correctement les différents modes. Dans la figure en exemple, les variantes A et B sont acceptables, mais les C et D manquent de détails.</p>
 <div id="pieges-et-astuces-1" class="section level5 unnumbered">
 <h5>Pièges et astuces</h5>
 <p>La SciViews Box propose un <strong>snippet RStudio</strong> pour réaliser un histogramme. Il s’appelle <code>.cuhist</code> (pour <strong>c</strong>hart -&gt; <strong>u</strong>nivariate -&gt; <strong>hist</strong>ogram). Entrez ce code dans une zone d’édition R et appuyez ensuite sur la tabulation, et vous verrez le code remplacé par ceci :</p>
@@ -491,57 +512,57 @@ Figure 3.3: Choix des classes. A. histogramme initial montrant la répartition d
 </div>
 <div id="histogramme-par-facteur" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Histogramme par facteur</h3>
-<p>Lors de l’analyse de jeux de données, vous serez amené à réaliser un histogramme par facteur (c’est-à-dire, en fonction de différents niveaux d’une variable qualitative qui divise le jeu de données en sous-groupes). Par exemple, dans un jeu de données sur des fleurs d’iris, la variable <code>species</code><a href="references.html#fn10" class="footnoteRef" id="fnref10"><sup>10</sup></a> représente l’espèce d’iris étudiée (trois espèces différentes : <em>I. setosa</em>, <em>I. versicolor</em> et <em>I. virginica</em>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
-(iris &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;iris&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
+<p>Lors de l’analyse de jeux de données, vous serez amené à réaliser un histogramme par facteur (c’est-à-dire, en fonction de différents niveaux d’une variable qualitative qui divise le jeu de données en sous-groupes). Par exemple, dans un jeu de données sur des fleurs d’iris, la variable <code>species</code><a href="references.html#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a> représente l’espèce d’iris étudiée (trois espèces différentes : <em>I. setosa</em>, <em>I. versicolor</em> et <em>I. virginica</em>).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données</span>
+(iris &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;iris&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre>
 <pre><code># # A tibble: 150 x 5
 #    sepal_length sepal_width petal_length petal_width species
 #           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
-#  1         5.10        3.50         1.40       0.200 setosa 
-#  2         4.90        3.00         1.40       0.200 setosa 
-#  3         4.70        3.20         1.30       0.200 setosa 
-#  4         4.60        3.10         1.50       0.200 setosa 
-#  5         5.00        3.60         1.40       0.200 setosa 
-#  6         5.40        3.90         1.70       0.400 setosa 
-#  7         4.60        3.40         1.40       0.300 setosa 
-#  8         5.00        3.40         1.50       0.200 setosa 
-#  9         4.40        2.90         1.40       0.200 setosa 
-# 10         4.90        3.10         1.50       0.100 setosa 
-# # ... with 140 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation de l&#39;histogramme par facteur</span>
+#  1          5.1         3.5          1.4         0.2 setosa 
+#  2          4.9         3            1.4         0.2 setosa 
+#  3          4.7         3.2          1.3         0.2 setosa 
+#  4          4.6         3.1          1.5         0.2 setosa 
+#  5          5           3.6          1.4         0.2 setosa 
+#  6          5.4         3.9          1.7         0.4 setosa 
+#  7          4.6         3.4          1.4         0.3 setosa 
+#  8          5           3.4          1.5         0.2 setosa 
+#  9          4.4         2.9          1.4         0.2 setosa 
+# 10          4.9         3.1          1.5         0.1 setosa 
+# # … with 140 more rows</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation de l&#39;histogramme par facteur</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> iris, <span class="op">~</span><span class="st"> </span>sepal_length <span class="op">%fill=%</span><span class="st"> </span>species) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">25</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>() <span class="co"># palette de couleur harmonieuse</span></code></pre></div>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>() <span class="co"># palette de couleur harmonieuse</span></code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Distribution des longueurs de sépales de trois espèces d'iris." width="672" />
 <p class="caption">
-Figure 3.4: Distribution des longueurs de sépales de trois espèces d’iris.
+Figure 2.3: Distribution des longueurs de sépales de trois espèces d’iris.
 </p>
 </div>
 <p>Ici, nous avons tracé un histogramme unique, mais en prenant soin de colorier les barres en fonction de l’espèce. la formule fait toujours intervenir la variable numérique à découper en classes à la droite du tilde <code>~</code>, ici <code>sepal_length</code>, mais nous y avons ajouté une directive supplémentaire pour indiquer que le remplissage des barres (<code>%fill=%</code>) doit se faire en fonction du contenu de la variable <code>species</code>.</p>
 <p>Nous avons ici un bon exemple d’histogramme multimodal lié à la présence de trois sous-groupes (les trois espèces différentes) au sein d’un jeu de données unique. Le rendu du graphique n’est pas optimal. Voici deux astuces pour l’améliorer. La premières consiste à représenter trois histogrammes séparés, mais rassemblés dans une même figure. Pour cela, nous utilisons des <strong>facettes</strong> (<code>facets</code>) au lieu de l’argument <code>%fill=%</code>. Dans <code>chart()</code>, les facettes peuvent être spécifiées an utilisant l’opérateur <code>|</code> dans la formule.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> iris, <span class="op">~</span><span class="st"> </span>sepal_length <span class="op">|</span><span class="st"> </span>species) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> iris, <span class="op">~</span><span class="st"> </span>sepal_length <span class="op">|</span><span class="st"> </span>species) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">25</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)." width="672" />
 <p class="caption">
-Figure 2.3: Distribution de la longueur des sépales de trois espèces d’iris (en employant les facettes pour séparer les espèces).
+Figure 2.4: Distribution de la longueur des sépales de trois espèces d’iris (en employant les facettes pour séparer les espèces).
 </p>
 </div>
-<p>L’histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur <code>species</code>. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec <code>|</code> et l’argument <code>%fill=%</code><a href="references.html#fn11" class="footnoteRef" id="fnref11"><sup>11</sup></a>. Il faut ensuite ajouter par derrière un histogramme grisé de l’ensemble des données.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbins &lt;-<span class="st"> </span><span class="dv">25</span>
+<p>L’histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur <code>species</code>. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec <code>|</code> et l’argument <code>%fill=%</code><a href="references.html#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>. Il faut ensuite ajouter par derrière un histogramme grisé de l’ensemble des données.</p>
+<pre class="sourceCode r"><code class="sourceCode r">nbins &lt;-<span class="st"> </span><span class="dv">25</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> iris, <span class="op">~</span><span class="st"> </span>sepal_length <span class="op">%fill=%</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>species) <span class="op">+</span>
 <span class="st">  </span><span class="co"># histogramme d&#39;arrière plan en gris ne tenant pas compte de la variable species</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">data =</span> <span class="kw">select</span>(iris, <span class="op">-</span>species), <span class="dt">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">bins =</span> nbins) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">bins =</span> nbins) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Effectifs&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre></div>
+<span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
 <img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.svg" alt="Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans)." width="672" />
 <p class="caption">
-Figure 2.4: Distribution des longueurs de sépales de trois espèces d’iris (avec facettes et histogrammes complets grisés en arrière plans).
+Figure 3.4: Distribution des longueurs de sépales de trois espèces d’iris (avec facettes et histogrammes complets grisés en arrière plans).
 </p>
 </div>
 <p>Vous découvrez sans doute que les graphiques réalisables avec R sont modulables à souhait en ajoutant une série d’instructions successives qui créent autant de couches superposées dans le graphique. Cette approche permet de réaliser quasiment une infinité de graphiques différents en combinant seulement quelques dizaines d’instructions. Pour s’y retrouver, les fonctions qui ajoutent des couches commencent toutes par <code>geom_</code>, et celles qui manipulent les couleurs par <code>scale_</code>, par exemple. Vous découvrirez encore d’autres fonctions graphiques plus loin.</p>
@@ -550,12 +571,12 @@ Figure 2.4: Distribution des longueurs de sépales de trois espèces d’iris (a
 <div class="footnotes">
 <hr />
 <ol start="6">
-<li id="fn6"><p>La <strong>distribution</strong> des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d’une variable s’observent.<a href="histogramme.html#fnref6">↩</a></p></li>
-<li id="fn7"><p>Une variable numérique est <strong>découpée en classes</strong> en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.<a href="histogramme.html#fnref7">↩</a></p></li>
-<li id="fn8"><p>Les <strong>modes</strong> d’un histogramme correspondent à des classes plus abondantes localement, c’est-à-dire que les classes à gauche et à droite du mode comptent moins d’occurrences que lui.<a href="histogramme.html#fnref8">↩</a></p></li>
-<li id="fn9"><p>Un histogramme est dit <strong>symétrique</strong> lorsque son profil à gauche est identique ou très similaire à son profil à droite autour d’un mode.<a href="histogramme.html#fnref9">↩</a></p></li>
-<li id="fn10"><p>Attention : le jeu de donnée <code>iris</code> est un grand classique dans R, mais lorsqu’il est chargé à l’aide de la fonction <code>read()</code> du package <strong>data.io</strong>, le nom de ses variables est modifié pour suivre la convention “snake-case” qui veut que seules des lettres minuscules soient utilisées et que les mots soient séparés par un trait souligné <code>_</code>. Ainsi, dans le jeu de données d’origine, les variables sont nommées <code>Petal_Length</code> ou <code>Species</code>. Ici, ces même variables se nomment <code>petal_length</code> et <code>species</code>.<a href="histogramme.html#fnref10">↩</a></p></li>
-<li id="fn11"><p>Astuce proposée <a href="https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2">ici</a>.<a href="histogramme.html#fnref11">↩</a></p></li>
+<li id="fn6"><p>La <strong>distribution</strong> des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d’une variable s’observent.<a href="histogramme.html#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>Une variable numérique est <strong>découpée en classes</strong> en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.<a href="histogramme.html#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p>Les <strong>modes</strong> d’un histogramme correspondent à des classes plus abondantes localement, c’est-à-dire que les classes à gauche et à droite du mode comptent moins d’occurrences que lui.<a href="histogramme.html#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn9"><p>Un histogramme est dit <strong>symétrique</strong> lorsque son profil à gauche est identique ou très similaire à son profil à droite autour d’un mode.<a href="histogramme.html#fnref9" class="footnote-back">↩</a></p></li>
+<li id="fn10"><p>Attention : le jeu de donnée <code>iris</code> est un grand classique dans R, mais lorsqu’il est chargé à l’aide de la fonction <code>read()</code> du package <strong>data.io</strong>, le nom de ses variables est modifié pour suivre la convention “snake-case” qui veut que seules des lettres minuscules soient utilisées et que les mots soient séparés par un trait souligné <code>_</code>. Ainsi, dans le jeu de données d’origine, les variables sont nommées <code>Petal_Length</code> ou <code>Species</code>. Ici, ces même variables se nomment <code>petal_length</code> et <code>species</code>.<a href="histogramme.html#fnref10" class="footnote-back">↩</a></p></li>
+<li id="fn11"><p>Astuce proposée <a href="https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2">ici</a>.<a href="histogramme.html#fnref11" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -634,7 +655,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

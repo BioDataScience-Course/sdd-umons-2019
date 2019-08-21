@@ -21,7 +21,7 @@ La vidéo suivante vous introduit la notion de probabilité et le calcul de prob
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/5TtwG_LR0iY" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
 <div class="note">
-<p>Sachant qu'un <strong>événement</strong> en statistique est un fait qui se produit, la <strong>probabilité</strong> que cet événement se produise effectivement peut être quantifiée sur base de l'observation des réalisations passées. Ainsi si l'événement en question s'est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet événement se produise est de 9/12, soit 0,75. Notez qu'une probabilité est un nombre compris entre zéro (lorsqu'il ne se produit jamais) et un (lorsqu'il se produit toujours).</p>
+<p>Sachant qu’un <strong>événement</strong> en statistique est un fait qui se produit, la <strong>probabilité</strong> que cet événement se produise effectivement peut être quantifiée sur base de l’observation des réalisations passées. Ainsi si l’événement en question s’est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet événement se produise est de 9/12, soit 0,75. Notez qu’une probabilité est un nombre compris entre zéro (lorsqu’il ne se produit jamais) et un (lorsqu’il se produit toujours).</p>
 </div>
 
 On écrira, pour la probabilité de l'événement *E* :
@@ -238,7 +238,7 @@ Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positi
 <div class="note">
 <p><strong>A retenir</strong></p>
 <ul>
-<li>Probabilité d'un événement :</li>
+<li>Probabilité d’un événement :</li>
 </ul>
 <p><span class="math display">\[\mathrm{P}(E) = \frac{\mathrm{nbr\ occurences\ } E}{\mathrm{nbr\ total\ essais}}\]</span></p>
 <ul>
@@ -246,7 +246,7 @@ Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positi
 </ul>
 <p><span class="math display">\[\mathrm{P(A\, \mathrm{et}\, B)} = \mathrm{P}(B|A) * \mathrm{P(A)}\]</span></p>
 <ul>
-<li>Probabilité qu'un parmi deux événements se produise (cas général) :</li>
+<li>Probabilité qu’un parmi deux événements se produise (cas général) :</li>
 </ul>
 <p><span class="math display">\[\mathrm{P(A\, \mathrm{ou}\, B)} = \mathrm{P}(A) + \mathrm{P(B)} - \mathrm{P}(A\, \mathrm{et}\, B)\]</span></p>
 </div>
@@ -446,7 +446,7 @@ $$\mathrm{P}(E) = \frac{1}{\infty} = 0$$
 ... et ce calcul est *correct*\ !
 
 <div class="warning">
-<p>Dans le cas de probabilités continues, la probabilité d'un événement en particulier est <strong>toujours nulle</strong>. Nous pouvons seulement calculer que l'un parmi plusieurs événements se produise (compris dans un intervalle).</p>
+<p>Dans le cas de probabilités continues, la probabilité d’un événement en particulier est <strong>toujours nulle</strong>. Nous pouvons seulement calculer que l’un parmi plusieurs événements se produise (compris dans un intervalle).</p>
 </div>
 
 La représentation graphique d'une loi de distribution continue est un outil utile pour la comprendre et vérifier ses calculs. La forme la plus courante consiste à montrer la **courbe de densité de probabilité** pour une distribution continue. Sur l'axe *X*, nous avons les **quantiles** (les valeurs observables), et sur l'axe *Y*, la densité de probabilité^[Plus la densité de probabilité est élevée, plus les événements dans cette région du graphique sont probables.]. Par exemple, si nous constatons qu'un insecte butineur arrive sur une fleur en moyenne toutes les 4 minutes, la probabilité qu'un butineur arrive dans un intervalle de temps compris entre 0 et 4 min depuis le moment initial $t_0$ de nos observations suit une distribution uniforme continue (Fig.\ \@ref(fig:unif2)).
@@ -466,9 +466,9 @@ Une autre représentation courante est la **densité de probabilité cumulée** 
 
 
 <div class="note">
-<p><strong>Notation :</strong> nous noterons qu'une variable suit une loi de distribution comme ceci (le tilde ~ se lit &quot;suit une distribution&quot;, et <em>U</em> représente la distribution uniforme avec entre parenthèse, les <em>paramètres</em> de la distribution, ici, les bornes inférieure et supérieure) :</p>
+<p><strong>Notation :</strong> nous noterons qu’une variable suit une loi de distribution comme ceci (le tilde ~ se lit “suit une distribution”, et <em>U</em> représente la distribution uniforme avec entre parenthèse, les <em>paramètres</em> de la distribution, ici, les bornes inférieure et supérieure) :</p>
 <p><span class="math display">\[X \sim U(0, 4)\]</span></p>
-<p>Cela signifie : &quot;la variable aléatoire <em>X</em> suit une distribution uniforme 0 à 4&quot;.</p>
+<p>Cela signifie : “la variable aléatoire <em>X</em> suit une distribution uniforme 0 à 4”.</p>
 </div>
 
 La distribution $U(0, 1)$ est particulière et est appelée **distribution uniforme standard**. Elle a la propriété particulière que si $X \sim U(0, 1)$ alors $(1-X) \sim U(0, 1)$.
@@ -514,7 +514,7 @@ punif(1.0, min = 0, max = 4, lower.tail = TRUE)
 La réponse est 0,125, soit une fois sur huit.
 
 <div class="note">
-<p>Le calcul de probabilités sur base de lois de distributions continues se fait via les aires à gauche ou à droite d'un quantile sur le graphique de densité de probabilité. Pour une aire centrale, nous soustrayons les aires à gauche des deux quantiles respectifs.</p>
+<p>Le calcul de probabilités sur base de lois de distributions continues se fait via les aires à gauche ou à droite d’un quantile sur le graphique de densité de probabilité. Pour une aire centrale, nous soustrayons les aires à gauche des deux quantiles respectifs.</p>
 </div>
 
 
@@ -912,7 +912,7 @@ qq
 #  8 -0.336 -0.994
 #  9 -0.333 -0.915
 # 10 -0.332 -0.842
-# # ... with 39 more rows
+# # … with 39 more rows
 ```
 
 Si les deux distributions sont compatibles, nous devrions avoir proportionnalité entre les quantiles théoriques et les quantiles observés. Cela devrait donc se marquer par un **alignement** des points sur un graphique des quantiles observés en fonction des quantiles théoriques (Fig. \@ref(fig:qqplot1)).

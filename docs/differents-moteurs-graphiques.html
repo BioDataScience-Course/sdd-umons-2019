@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="4.5 Différents moteurs graphiques | Science des données biologiques, UMONS />
+  <meta property="og:title" content="4.5 Différents moteurs graphiques | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.5 Différents moteurs graphiques | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="4.5 Différents moteurs graphiques | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -412,29 +434,29 @@ code > span. { color: #1f1c1b; } /* Normal */
 <li>La cohérence des objets graphiques obtenus qui peuvent tous êtres combinés en une figure composée, même si ils sont produits avec des moteurs graphiques différents.</li>
 <li>Un libellé automatique des axes et autres éléments du graphique en fonction des attributs <code>label</code> et <code>units</code> des variables (pour l’instant, seulement les graphiques de type <strong>ggplot2</strong>).</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données</span>
-(urchin &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données</span>
+(urchin &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>))</code></pre>
 <pre><code># # A tibble: 421 x 19
-#    origin   diameter1 diameter2 height buoyant_weight weight solid_parts
-#    &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
-#  1 Pêcherie      9.90     10.2    5.00             NA  0.522       0.478
-#  2 Pêcherie     10.5      10.6    5.70             NA  0.642       0.589
-#  3 Pêcherie     10.8      10.8    5.20             NA  0.734       0.677
-#  4 Pêcherie      9.60      9.30   4.60             NA  0.370       0.344
-#  5 Pêcherie     10.4      10.7    4.80             NA  0.610       0.559
-#  6 Pêcherie     10.5      11.1    5.00             NA  0.610       0.551
-#  7 Pêcherie     11.0      11.0    5.20             NA  0.672       0.605
-#  8 Pêcherie     11.1      11.2    5.70             NA  0.703       0.628
-#  9 Pêcherie      9.40      9.20   4.60             NA  0.413       0.375
-# 10 Pêcherie     10.1       9.50   4.70             NA  0.449       0.398
-# # ... with 411 more rows, and 12 more variables: integuments &lt;dbl&gt;,
+#    origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#    &lt;fct&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
+#  1 Pêche…       9.9      10.2    5               NA  0.522       0.478
+#  2 Pêche…      10.5      10.6    5.7             NA  0.642       0.589
+#  3 Pêche…      10.8      10.8    5.2             NA  0.734       0.677
+#  4 Pêche…       9.6       9.3    4.6             NA  0.370       0.344
+#  5 Pêche…      10.4      10.7    4.8             NA  0.610       0.559
+#  6 Pêche…      10.5      11.1    5               NA  0.610       0.551
+#  7 Pêche…      11        11      5.2             NA  0.672       0.605
+#  8 Pêche…      11.1      11.2    5.7             NA  0.703       0.628
+#  9 Pêche…       9.4       9.2    4.6             NA  0.413       0.375
+# 10 Pêche…      10.1       9.5    4.7             NA  0.449       0.398
+# # … with 411 more rows, and 12 more variables: integuments &lt;dbl&gt;,
 # #   dry_integuments &lt;dbl&gt;, digestive_tract &lt;dbl&gt;,
 # #   dry_digestive_tract &lt;dbl&gt;, gonads &lt;dbl&gt;, dry_gonads &lt;dbl&gt;,
 # #   skeleton &lt;dbl&gt;, lantern &lt;dbl&gt;, test &lt;dbl&gt;, spines &lt;dbl&gt;,
 # #   maturity &lt;int&gt;, sex &lt;fct&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>() </code></pre></div>
+<span class="st">  </span><span class="kw">geom_point</span>() </code></pre>
 <div class="figure" style="text-align: center"><span id="fig:chart-example"></span>
 <img src="04-Visualisation-III_files/figure-html/chart-example-1.svg" alt="Graphique typique obtenu avec `chart()` : rendu par défaut publiable tel quel, et libellé automatique des axes avec les unités." width="672" />
 <p class="caption">
@@ -444,8 +466,8 @@ Figure 4.13: Graphique typique obtenu avec <code>chart()</code> : rendu par déf
 <div id="ggplot2" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> ggplot2</h3>
 <p>Le moteur graphique <strong><a href="https://ggplot2.tidyverse.org">ggplot2</a></strong> est écrit pas Hadley Wickham, un personnage emblématique de la “révolution <a href="https://www.tidyverse.org">tidyverse</a>” qui propose une surcouche moderne au dessus de R. <strong>ggplot2</strong> implémente une “grammaire graphique” particulièrement puissante et flexible, proposée et popularisée par le statisticien Leland Wilkinson. Par défaut, <code>chart()</code> crée en réalité un graphique <strong>ggplot2</strong> adapté. Voici la version <strong>ggplot2</strong> standard du même graphique représenté à la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.13</a> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urchin, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> weight, <span class="dt">y =</span> height, <span class="dt">col =</span> origin)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>() </code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urchin, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> weight, <span class="dt">y =</span> height, <span class="dt">col =</span> origin)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>() </code></pre>
 <div class="figure" style="text-align: center"><span id="fig:ggplot2-example"></span>
 <img src="04-Visualisation-III_files/figure-html/ggplot2-example-1.svg" alt="Graphique typique obtenu avec `ggplot()` (moteur graphique **ggplot2**)." width="672" />
 <p class="caption">
@@ -454,7 +476,7 @@ Figure 4.14: Graphique typique obtenu avec <code>ggplot()</code> (moteur graphiq
 </div>
 <p>En comparant les Figs. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.13</a> et <a href="differents-moteurs-graphiques.html#fig:ggplot2-example">4.14</a> (en faisant abstraction des instructions R utilisées pour l’instant), plusieurs points sautent immédiatement aux yeux:</p>
 <ul>
-<li><p>Le thème par défaut de <strong>ggplot2</strong> est très reconnaissable avec un quadrillage blanc sur fond gris clair. On aime ou on n’aime pas, mais il est clair que (1) ce n’est pas une présentation “standard” d’un graphique scientifique, et (2) le thème tord un peu le cou à une règle importante pour réaliser un graphique de qualité : <strong>minimiser la quantité d’“encre” nécessaire pour représenter un graphique</strong>, autrement dit, plus le graphique est simple et sobre, mieux c’est. Le thème par défaut de <code>chart()</code> respecte mieux tout ceci<a href="references.html#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a>.</p></li>
+<li><p>Le thème par défaut de <strong>ggplot2</strong> est très reconnaissable avec un quadrillage blanc sur fond gris clair. On aime ou on n’aime pas, mais il est clair que (1) ce n’est pas une présentation “standard” d’un graphique scientifique, et (2) le thème tord un peu le cou à une règle importante pour réaliser un graphique de qualité : <strong>minimiser la quantité d’“encre” nécessaire pour représenter un graphique</strong>, autrement dit, plus le graphique est simple et sobre, mieux c’est. Le thème par défaut de <code>chart()</code> respecte mieux tout ceci<a href="references.html#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>.</p></li>
 <li><p>La taille des caractères est légèrement plus grande dans la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.13</a> réalisée avec <code>chart()</code>. Le manque de lisibilité des parties textuelles dans un graphique est un défaut fréquent, dépendant de la résolution et de la taille de reproduction du graphique dans le document final. Le choix de <code>chart()</code> recule un peu ce risque.</p></li>
 <li><p><code>chart()</code> est capable d’aller lire les métadonnées (libellés en français et unités des variables) et les utilisent automatiquement pour proposer des libellés corrects et complets des axes par défaut. <code>ggplot()</code> ne peut pas le faire, et il faut utiliser la fonction <code>labs()</code> pour l’indiquer manuellement.</p></li>
 </ul>
@@ -463,7 +485,7 @@ Figure 4.14: Graphique typique obtenu avec <code>ggplot()</code> (moteur graphiq
 De manière générale, par rapport à <code>ggplot()</code>, <code>chart()</code> a été conçu pour produire le graphique le plus proche d’un rendu final impeccable avec tous les paramètres par défaut.
 </div>
 
-<p>Quelques règles simples vous permettent de passer des <strong>instructions</strong> <code>ggplot()</code> à <code>chart()</code> et <em>vice versa</em><a href="references.html#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a> :</p>
+<p>Quelques règles simples vous permettent de passer des <strong>instructions</strong> <code>ggplot()</code> à <code>chart()</code> et <em>vice versa</em><a href="references.html#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> :</p>
 <ol style="list-style-type: decimal">
 <li><p>On peut toujours remplacer <code>ggplot()</code> par <code>chart()</code> dans les instructions R (à condition que le package <strong>chart</strong> soit chargé bien sûr, par exemple via <code>SciViews::R</code>). Dans ce cas, le thème par défaut diffère, et le libellé automatique des axes (non disponible avec <code>ggplot()</code>) est activé.</p></li>
 <li><p>Avec <code>chart()</code> on peut utiliser <code>aes()</code> pour spécifier les “esthétiques” (éléments à visualiser sur le graphique) comme pour <code>ggplot()</code>, mais on peut <em>aussi</em> utiliser une interface formule plus compacte. Cette interface formule rapproche la version <code>chart()</code> des graphiques <strong>ggplot2</strong> d’un autre moteur de graphique dans R : <strong>lattice</strong>.</p></li>
@@ -472,14 +494,14 @@ De manière générale, par rapport à <code>ggplot()</code>, <code>chart()</cod
 <li><p>Avec <code>ggplot()</code> les facettes doivent être spécifiées à l’aide de <code>facet_XXX()</code>. A condition d’utiliser <code>chart()</code>, il est possible d’inclure les spécifications des facettes les plus utilisées directement dans la formule en utilisant l’opérateur <code>|</code>. Cette façon de procéder est, encore une fois, identique à ce qui se fait dans <strong>lattice</strong> (voir plus loin).</p></li>
 </ol>
 <p>Le point (5) mérite une petite démonstration pour comparaison :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin) <span class="op">+</span><span class="st"> </span>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() 
 
 b &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> urchin, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> weight, <span class="dt">y =</span> height)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">facet_grid</span>( <span class="op">~</span><span class="st"> </span>origin)
 
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b))</code></pre></div>
+<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b))</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:chart-ggplot2-facets"></span>
 <img src="04-Visualisation-III_files/figure-html/chart-ggplot2-facets-1.svg" alt="Graphique à facettes. A. version `chart()`, B. version `ggplot()`." width="672" />
 <p class="caption">
@@ -490,7 +512,7 @@ Figure 4.15: Graphique à facettes. A. version <code>chart()</code>, B. version 
 <div id="lattice" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> lattice</h3>
 <p>Autant <strong>ggplot2</strong> est complètement modulable en ajoutant littéralement à l’aide de l’opérateur <code>+</code> des couches successives sur le graphique, autant <strong>lattice</strong> vise à réaliser les graphiques <strong>en une seule instruction</strong>. <strong>lattice</strong> utilise également abondamment l’interface formule pour spécifier les variables à utiliser dans le graphique. La version <strong>lattice</strong> du graphique d’exemple est présentée à la Fig. <a href="differents-moteurs-graphiques.html#fig:lattice-example">4.16</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xyplot</span>(height <span class="op">~</span><span class="st"> </span>weight, <span class="dt">data =</span> urchin, <span class="dt">groups =</span> origin, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xyplot</span>(height <span class="op">~</span><span class="st"> </span>weight, <span class="dt">data =</span> urchin, <span class="dt">groups =</span> origin, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:lattice-example"></span>
 <img src="04-Visualisation-III_files/figure-html/lattice-example-1.svg" alt="Graphique exemple réalisé avec **lattice**." width="672" />
 <p class="caption">
@@ -498,7 +520,7 @@ Figure 4.16: Graphique exemple réalisé avec <strong>lattice</strong>.
 </p>
 </div>
 <p>Et voici la version <code>chart()</code> utilisant le moteur <strong>lattice</strong>. Notez la façon d’appeler la fonction <code>xyplot()</code> de <strong>lattice</strong> via <code>chart$xyplot()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_sciviews_lattice</span>(<span class="dt">n =</span> <span class="dv">2</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">theme_sciviews_lattice</span>(<span class="dt">n =</span> <span class="dv">2</span>)
 a &lt;-<span class="st"> </span>chart<span class="op">$</span><span class="kw">xyplot</span>(height <span class="op">~</span><span class="st"> </span>weight, <span class="dt">data =</span> urchin, <span class="dt">groups =</span> origin,
   <span class="dt">auto.key =</span> <span class="kw">list</span>(<span class="dt">space =</span> <span class="st">&quot;right&quot;</span>, <span class="dt">title =</span> <span class="st">&quot;Origine&quot;</span>, <span class="dt">cex.title =</span> <span class="dv">1</span>, <span class="dt">columns =</span> <span class="dv">1</span>),
   <span class="dt">ylab =</span> <span class="st">&quot;Hauteur du test [mm]&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Masse totale [g]&quot;</span>,
@@ -507,7 +529,7 @@ a &lt;-<span class="st"> </span>chart<span class="op">$</span><span class="kw">x
 b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() 
 
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b))</code></pre></div>
+<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b))</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:chart-lattice-example"></span>
 <img src="04-Visualisation-III_files/figure-html/chart-lattice-example-1.svg" alt="Graphique exemple réalisé avec `chart()` A. avec le moteur **lattice**, B. avec le moteur **ggplot2**." width="672" />
 <p class="caption">
@@ -521,9 +543,9 @@ Par rapport à <strong>ggplot2</strong>, les graphiques <strong>lattice</strong>
 </div>
 
 <p>Voici un graphique à facettes réalisé avec <code>chart()</code> et le moteur <strong>lattice</strong>. Notez que la formule utilisée est <em>identique</em> à cette employée pour la version <strong>ggplot2</strong> avec <code>chart()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chart<span class="op">$</span><span class="kw">xyplot</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin,
+<pre class="sourceCode r"><code class="sourceCode r">chart<span class="op">$</span><span class="kw">xyplot</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin,
   <span class="dt">scales =</span> <span class="kw">list</span>(<span class="dt">alternating =</span> <span class="dv">1</span>),
-  <span class="dt">xlab =</span> <span class="st">&quot;Masse totale [g]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Hauteur du test [mm]&quot;</span>)</code></pre></div>
+  <span class="dt">xlab =</span> <span class="st">&quot;Masse totale [g]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Hauteur du test [mm]&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:lattice-facets"></span>
 <img src="04-Visualisation-III_files/figure-html/lattice-facets-1.svg" alt="Graphique à facettes, avec `chart()` version **lattice**." width="672" />
 <p class="caption">
@@ -531,8 +553,8 @@ Figure 4.18: Graphique à facettes, avec <code>chart()</code> version <strong>la
 </p>
 </div>
 <p>Mise à part les instructions additionnelles encore nécessaires dans cette version de <code>chart()</code>, l’appel et le rendu sont très similaires par rapport à la version <strong>ggplot2</strong> du même graphique avec <code>chart()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:ggplot2-facets2"></span>
 <img src="04-Visualisation-III_files/figure-html/ggplot2-facets2-1.svg" alt="Graphique à facettes, avec `chart()` version **ggplot2**." width="672" />
 <p class="caption">
@@ -543,10 +565,10 @@ Figure 4.19: Graphique à facettes, avec <code>chart()</code> version <strong>gg
 <div id="graphiques-de-base" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Graphiques de base</h3>
 <p>Comme son nom le suggère, le moteur graphique de base est celui qui est implémenté de manière natif dans R. Il est donc utilisé un peu partout. Il est vieillissant et est plus difficile à manipuler que <strong>ggplot2</strong> certainement, et même que <strong>lattice</strong>. Néanmoins, il est très flexible et rapide, … mais son rendu par défaut n’est plus vraiment au goût du jour. Voici notre graphique d’exemple rendu avec le moteur graphique R de base :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(urchin<span class="op">$</span>weight, urchin<span class="op">$</span>height,
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(urchin<span class="op">$</span>weight, urchin<span class="op">$</span>height,
   <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>)[urchin<span class="op">$</span>origin], <span class="dt">pch =</span> <span class="dv">1</span>)
 <span class="kw">legend</span>(<span class="dt">x =</span> <span class="dv">80</span>, <span class="dt">y =</span> <span class="dv">10</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Culture&quot;</span>, <span class="st">&quot;Pêcherie&quot;),</span>
-<span class="st">  col = c(&quot;</span>red<span class="st">&quot;, &quot;</span>darkgreen<span class="st">&quot;), pch = 1)</span></code></pre></div>
+<span class="st">  col = c(&quot;</span>red<span class="st">&quot;, &quot;</span>darkgreen<span class="st">&quot;), pch = 1)</span></code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-29"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-29-1.svg" alt="Graphique exemple réalisé avec le moteur graphique R de base." width="672" />
 <p class="caption">
@@ -555,14 +577,14 @@ Figure 4.20: Graphique exemple réalisé avec le moteur graphique R de base.
 </div>
 <p>Vous rencontrerez très fréquemment la fonction <code>plot()</code>. C’est une fonction dite <strong>générique</strong> dont le comportement change en fonction de l’objet fourni en premier argument. Ainsi, elle réalise le graphique le plus pertinent à chaque fois en fonction du contexte. Notez tout de suite les instructions un peu confuses nécessaires pour spécifier la couleur souhaitée en fonction de l’origine des oursins. Le moteur graphique de base ne gère <strong>pas</strong> automatiquement des aspects plus complexes du graphique, telle que le positionnement d’une légende. Donc, à moins d’avoir prévu la place suffisante <em>avant</em> de tracer le graphique, nous ne pouvons que l’inclure à l’intérieur du cadre du graphique dans un second temps à l’aide de la fonction <code>legend()</code>. Comme cette dernière ne comprend rien à ce qui a été réalisé jusqu’ici, il faut lui respécifier les couleurs, formes et tailles de points utilisés ! C’est un des aspects pénibles du moteur graphique R de base.</p>
 <p>Voici maintenant une version <code>chart()</code> de ce graphique de base :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chart<span class="op">$</span><span class="kw">base</span>({
+<pre class="sourceCode r"><code class="sourceCode r">chart<span class="op">$</span><span class="kw">base</span>({
   <span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="fl">4.1</span>, <span class="fl">6.1</span>))
   <span class="kw">plot</span>(urchin<span class="op">$</span>weight, urchin<span class="op">$</span>height,
     <span class="dt">col =</span> scales<span class="op">::</span><span class="kw">hue_pal</span>()(<span class="dv">2</span>)[urchin<span class="op">$</span>origin], <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>,
     <span class="dt">xlab =</span> <span class="st">&quot;Masse totale [g]&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Hauteur du test [mm]&quot;</span>)
   <span class="kw">legend</span>(<span class="dt">x =</span> <span class="dv">105</span>, <span class="dt">y =</span> <span class="dv">20</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Culture&quot;</span>, <span class="st">&quot;Pêcherie&quot;), title = &quot;</span>Origine<span class="st">&quot;,</span>
 <span class="st">    col = scales::hue_pal()(2), pch = 19, bty = &quot;</span>n<span class="st">&quot;, cex = 0.8, y.intersp = 2)</span>
-<span class="st">})</span></code></pre></div>
+<span class="st">})</span></code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-31-1.svg" alt="Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`." width="672" />
 <p class="caption">
@@ -575,7 +597,7 @@ Notez que le graphique est généré deux fois : une première fois dans un form
 </div>
 
 <p>Pour l’instant, le seul avantage de <code>chart()</code> avec les graphiques de base est qu’il les convertit en une forme combinable avec les autres graphiques dans une figure composite (sinon, ce n’est pas possible). A part cela, il faut fournir à <code>chart$base()</code> tout le code nécessaire pour tracer et personnaliser le graphique. Comme on peut le voir sur cet exemple, cela demande une quantité considérable de code. C’est aussi un autre aspect pénible de ce moteur graphique : il est très flexible, mais l’interface n’est pas optimale. Pour finir, les graphiques de base ont plus de mal avec les facettes, mais il peuvent quand même générer les versions les plus simples, par exemple à l’aide de la fonction <code>coplot()</code> qui accepte une formule très similaire à ce qui s’utilise avec <strong>lattice</strong> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coplot</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coplot</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-33"></span>
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-33-1.svg" alt="Graphique à facettes avec le moteur graphique de base." width="672" />
 <p class="caption">
@@ -618,8 +640,8 @@ Figure 4.22: Graphique à facettes avec le moteur graphique de base.
 <div class="footnotes">
 <hr />
 <ol start="15">
-<li id="fn15"><p>Notez que plusieurs thèmes existent dans <strong>ggplot2</strong>. Il est facile d’en changer et des les personnaliser… mais c’est toujours appréciable d’avoir un rendu impeccable dès le premier essai.<a href="differents-moteurs-graphiques.html#fnref15">↩</a></p></li>
-<li id="fn16"><p>Etant donné l’abondante littérature écrite sur <strong>ggplot2</strong>, il est utile de pouvoir convertir des exemples <strong>ggplot2</strong> en graphiques <code>chart()</code>, si vous êtes convaincu par cette nouvelle interface.<a href="differents-moteurs-graphiques.html#fnref16">↩</a></p></li>
+<li id="fn15"><p>Notez que plusieurs thèmes existent dans <strong>ggplot2</strong>. Il est facile d’en changer et des les personnaliser… mais c’est toujours appréciable d’avoir un rendu impeccable dès le premier essai.<a href="differents-moteurs-graphiques.html#fnref15" class="footnote-back">↩</a></p></li>
+<li id="fn16"><p>Etant donné l’abondante littérature écrite sur <strong>ggplot2</strong>, il est utile de pouvoir convertir des exemples <strong>ggplot2</strong> en graphiques <code>chart()</code>, si vous êtes convaincu par cette nouvelle interface.<a href="differents-moteurs-graphiques.html#fnref16" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -698,7 +720,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

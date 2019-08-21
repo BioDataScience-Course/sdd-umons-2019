@@ -9,7 +9,7 @@
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="12.1 Association de deux variables | Science des données biologiques, UMONS />
+  <meta property="og:title" content="12.1 Association de deux variables | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12.1 Association de deux variables | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="12.1 Association de deux variables | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,64 +48,86 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
-<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
-<script src="libs/selectize-0.12.0/selectize.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -408,7 +430,8 @@ Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez R
 <pre><code>BioDataScience::run(&quot;12a_correlation&quot;)</code></pre>
 </div>
 <p>Nous pouvons décrire l’étendue d’une variable numérique à l’aide de la <strong>variance</strong> qui, pour rappel est la somme des écarts à la moyenne divisée par le nombre de degrés de liberté (<em>n</em> dans le cas d’une population et <em>n</em> - 1 dans le cas d’un échantillon).</p>
-<p><span class="math display">\[var_X = S^2_X = \frac{\sum_{i = 1}^n (x_i - \bar{X})^2}{n-1}\]</span> L’écart type, noté <span class="math inline">\(\sigma\)</span> dans le cas d’une population et <span class="math inline">\(S\)</span> dans le cas d’un échantillon est la racine carrée de la variance. C’est une autre mesure de la dispersion d’une variable numérique. Donc :</p>
+<p><span class="math display">\[var_X = S^2_X = \frac{\sum_{i = 1}^n (x_i - \bar{X})^2}{n-1}\]</span>
+L’écart type, noté <span class="math inline">\(\sigma\)</span> dans le cas d’une population et <span class="math inline">\(S\)</span> dans le cas d’un échantillon est la racine carrée de la variance. C’est une autre mesure de la dispersion d’une variable numérique. Donc :</p>
 <p><span class="math display">\[S_X = \sqrt{S^2_X}\]</span></p>
 <p>Plus la variance est élevée, plus les observations sont dispersées autour de la moyenne. Lorsque nous avons affaire à deux variables numériques, une représentation de <em>l’une par rapport à l’autre</em> se fait naturellement à l’aide d’un graphique en nuage de points. Voici trois situations fictives différentes (<em>Y1</em>, <em>Y2</em> et <em>Y3</em> en fonction de <em>X</em>) :</p>
 <p><img src="12-Correlation_files/figure-html/unnamed-chunk-2-1.svg" width="864" style="display: block; margin: auto;" /></p>
@@ -416,34 +439,34 @@ Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez R
 <p>Nous pouvons définir la <strong>covariance</strong> comme étant une mesure de la variance dans le même sens pour toutes les paires de valeurs observées entre nos deux vairables numériques. Elle se définit de manière très similaire à la variance mais fait naturellement intervenir simultanément les observations de <em>X</em> et <em>Y</em>, ainsi que leurs moyennes respectives :</p>
 <p><span class="math display">\[cov_{X,Y} = \frac{\sum_{i = 1}^n (x_i - \bar{X}) \cdot (y_i - \bar{Y})}{n-1}\]</span></p>
 <p>Voyons ce que cela donne dans notre exemple fictif contenu dans un data frame nommé `df :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y1)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y1)</code></pre>
 <pre><code># [1] 0.9336631</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y2)</code></pre>
 <pre><code># [1] 0.004064163</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y3)</code></pre>
 <pre><code># [1] -0.9230542</code></pre>
 <p>La covariance (fonction <code>cov()</code> dans R) fait effectivement le boulot de quantifier l’association entre les deux variables <em>X</em> et <em>Y</em>. Nous avons une valeur positive entre <em>X</em> et <em>Y1</em>, faible et se rapprochant de zéro entre <em>X</em> et <em>Y2</em>, et négative pour le cas <em>X</em> et <em>Y3</em> d’une proportionnalité inverse. Cette mesure n’est cependant pas <em>normée</em>, c’est-à-dire qu’elle peut varier vers des valeurs très grandes ou très petites en fonction des données. Donc pour une même forme de nuage de points, la valeur dépendra, par exemple, des unités de mesure choisies. Si je transforme les données de mon jeu fictif <code>df</code> en les multipliant par dix pour simuler un changement d’unité dans <code>df2</code>, j’obtiens :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df2 &lt;-<span class="st"> </span>df <span class="op">*</span><span class="st"> </span><span class="dv">10</span>
-<span class="kw">cov</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y1)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">df2 &lt;-<span class="st"> </span>df <span class="op">*</span><span class="st"> </span><span class="dv">10</span>
+<span class="kw">cov</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y1)</code></pre>
 <pre><code># [1] 93.36631</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y2)</code></pre>
 <pre><code># [1] 0.4064163</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y3)</code></pre>
 <pre><code># [1] -92.30542</code></pre>
 <p>C’est embêtant, puisque la forme du nuage de points n’a, lui, pas changé du tout. Le <strong>coefficient de corrélation de Pearson</strong>, noté <em>r</em>, est une autre mesure qui est <em>normée</em> de telle façon qu’il valle +1 pour une proportionnalité directe parfaite (les points sont strictement alignés le long d’une droite) et -1 lorsque la proportionnalité est inverse parfaite (et toujours 0 en cas de non-association).</p>
 <p><span class="math display">\[cor_{X,Y} = r_{X,Y} = \frac{cov_{X,Y}}{\sqrt{S^2_X \cdot S^2_Y}} = \frac{cov_{X,Y}}{\sqrt{S^2_X} \cdot \sqrt{S^2_Y}} = \frac{cov_{X,Y}}{S_X \cdot S_Y}\]</span></p>
 <p>C’est grâce à la division par le produit des écarts types de <em>X</em> et <em>Y</em> que nous arrivons à normer correctement le coefficient. Celui-ci peut se calculer à l’aide de la fonction <code>cor()</code> dans R. Cela donne :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y1)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y1)</code></pre>
 <pre><code># [1] 0.9781819</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y1)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y1)</code></pre>
 <pre><code># [1] 0.9781819</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y2)</code></pre>
 <pre><code># [1] 0.003939552</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y2)</code></pre>
 <pre><code># [1] 0.003939552</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df<span class="op">$</span>X, df<span class="op">$</span>Y3)</code></pre>
 <pre><code># [1] -0.979511</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(df2<span class="op">$</span>X, df2<span class="op">$</span>Y3)</code></pre>
 <pre><code># [1] -0.979511</code></pre>
 <p>Cette fois-ci, nous obtenons la même valeur pour <em>r</em> que le calcul se fasse à partir de <code>df</code> ou de <code>df2</code>. De plus les valeurs absolues très proches de 1 (0,978 dans le cas <strong>A</strong> et 0,923 dans le cas <strong>C</strong>) suggèrent que la proportionnalité est très forte. C’est effectivement ce que nous observons également sur les graphiques.</p>
 <p>Faites attention à deux points importants.</p>
@@ -469,8 +492,8 @@ Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez R
 <h3><span class="header-section-number">12.1.1</span> Matrice de corrélation</h3>
 <p>Dans un cas multivarié (plus de deux variables), nous pouvons toujours étudier les associations entre variables numériques à l’aide de <em>r</em> (ou à l’aide de la covariance) à conditions de calculer ces descripteurs statistiques pour tous les couples de variables considérées deux à deux. Pour <em>N</em> variables, nous rassemblerons tous ces calculs dans une matrice carrée <em>N</em> par <em>N</em> qui croise tous les cas deux à deux possibles dans un même tableau.</p>
 <p>Prenons un exemple à trois variables. Le jeu de données <code>trees</code> rassemble la mesure du diamètre, de la hauteur et du volume de bois de cerisiers noirs. La matrice de corrélation peut se calculer à l’aide de <code>cor()</code> dans R, ou mieux, à l’aide de <code>correlation()</code> dans <code>SciViews::R</code>. Dans ce dernier cas, la fonction <code>summary()</code> peut être appliquée dessus pour obtenir une vision synthétique de la matrice de corrélation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trees &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;trees&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)
-<span class="kw">head</span>(trees)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">trees &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;trees&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)
+<span class="kw">head</span>(trees)</code></pre>
 <pre><code># # A tibble: 6 x 3
 #   diameter height volume
 #      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -480,8 +503,8 @@ Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez R
 # 4    0.267   21.9  0.464
 # 5    0.272   24.7  0.532
 # 6    0.274   25.3  0.558</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trees_cor &lt;-<span class="st"> </span><span class="kw">correlation</span>(trees)
-trees_cor</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">trees_cor &lt;-<span class="st"> </span><span class="kw">correlation</span>(trees)
+trees_cor</code></pre>
 <pre><code># Matrix of Pearson&#39;s product-moment correlation:
 # (calculation uses everything)
 #          diameter height volume
@@ -492,10 +515,11 @@ trees_cor</code></pre></div>
 <ul>
 <li>Les éléments sur la diagonale de la matrice de corrélation valent toujours 1. En effet, il s’agit de la corrélation d’une variable en fonction d’elle-même, or</li>
 </ul>
-<p><span class="math display">\[r_{X,X} = 1\]</span> - Le triangle inférieur et le triangle supérieur (de part et d’autre de la diagonale) sont identiques, ou si vous préférez, sont comme le reflet dans un miroir l’un de l’autre. C’est parce que le coefficient de corrélation de <em>X</em> et <em>Y</em> est toujours le même que celui de <em>Y</em> et <em>X</em>.</p>
+<p><span class="math display">\[r_{X,X} = 1\]</span>
+- Le triangle inférieur et le triangle supérieur (de part et d’autre de la diagonale) sont identiques, ou si vous préférez, sont comme le reflet dans un miroir l’un de l’autre. C’est parce que le coefficient de corrélation de <em>X</em> et <em>Y</em> est toujours le même que celui de <em>Y</em> et <em>X</em>.</p>
 <p><span class="math display">\[r_{X,Y} = r_{Y,X}\]</span></p>
 <p>Pour ces raisons seul le triangle inférieur (ou supérieur) est informatif. Le reste (diagonale et autre triangle) sont triviaux et répétitifs. Vous trouverez parfois une représentation de la matrice de confusion sous la forme uniquement du triangle inférieur. La fonction <code>summary()</code> effectue une telle représentation, et simplifie encore la représentation pour aider à trouver les corrélations importantes dans un gros tableau.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(trees_cor)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(trees_cor)</code></pre>
 <pre><code># Matrix of Pearson&#39;s product-moment correlation:
 # (calculation uses everything)
 #          d h v
@@ -509,18 +533,18 @@ trees_cor</code></pre></div>
 <div id="correlogramme" class="section level3">
 <h3><span class="header-section-number">12.1.2</span> Corrélogramme</h3>
 <p>Il existe aussi des représentation graphiques spécialisées, appelées <strong>corrélogrammes</strong> pour visualiser les coefficents de corrélations dans un cas multivarié. La fonction <code>plot()</code> appliquée à notre objet <code>Correlation</code> en offre une version simple.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(trees_cor)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(trees_cor)</code></pre>
 <p><img src="12-Correlation_files/figure-html/unnamed-chunk-9-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>La matrice est représentée par des ellipses de plus en plus allongées au fur et à mesure que <em>r</em> se rapproche de 1. Une couleur bleue est utilisée pour les corrélations positives et une couleur rouge pour les corrélations négatives (mais vous pouvez aussi choisir d’autres couleurs). Ici, toutes les corrélations sot positives. Sur le jeu de données zooplancton, nous pouvons réaliser un corrélogramme plus intéressant qui illustre mieux la diversité de cette représentation graphique. Considérons, à titre d’exemple, les variables contigües <code>size</code> jusqu’à <code>density</code> (que l’on peu indiquer par <code>size:density</code> dans la fonction <code>select()</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">zoo &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
 zoo <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">select</span>(., size<span class="op">:</span>density) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">correlation</span>(.) -&gt;
 <span class="st">  </span>zoo_cor
-<span class="kw">plot</span>(zoo_cor)</code></pre></div>
+<span class="kw">plot</span>(zoo_cor)</code></pre>
 <p><img src="12-Correlation_files/figure-html/unnamed-chunk-10-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Vous noterez que les variables <code>elongation</code> et <code>compactness</code> sont redondantes (<em>r</em> = 1). De plus, les données le long de la diagonale et sur le triangle supérieur n’apportent rien. Nous pouvons aussi bien décider de ne représenter que le triangle inférieur sur notre corrélogramme.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(zoo_cor, <span class="dt">type =</span> <span class="st">&quot;lower&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(zoo_cor, <span class="dt">type =</span> <span class="st">&quot;lower&quot;</span>)</code></pre>
 <p><img src="12-Correlation_files/figure-html/unnamed-chunk-11-1.svg" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="importance-des-graphiques" class="section level3">
@@ -531,23 +555,23 @@ Faites bien attention avec le coefficient de corrélation, la matrice de corrél
 </p>
 </div>
 <p>Un jeu de données artificiel appelé “quartet d’Anscombe” montre très bien comment des données très différentes peuvent avoir même moyenne, même variance et même coefficient de corrélation. Ce n’est qu’avec un graphique en nuage de points (ou matrice de nuages de points, voir plus loin) qu’il est possible de détecter le problème.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">anscombe &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;anscombe&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)
-<span class="kw">head</span>(anscombe)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">anscombe &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;anscombe&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>)
+<span class="kw">head</span>(anscombe)</code></pre>
 <pre><code># # A tibble: 6 x 8
 #      x1    x2    x3    x4    y1    y2    y3    y4
 #   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-# 1   10.   10.   10.    8.  8.04  9.14  7.46  6.58
-# 2    8.    8.    8.    8.  6.95  8.14  6.77  5.76
-# 3   13.   13.   13.    8.  7.58  8.74 12.7   7.71
-# 4    9.    9.    9.    8.  8.81  8.77  7.11  8.84
-# 5   11.   11.   11.    8.  8.33  9.26  7.81  8.47
-# 6   14.   14.   14.    8.  9.96  8.10  8.84  7.04</code></pre>
+# 1    10    10    10     8  8.04  9.14  7.46  6.58
+# 2     8     8     8     8  6.95  8.14  6.77  5.76
+# 3    13    13    13     8  7.58  8.74 12.7   7.71
+# 4     9     9     9     8  8.81  8.77  7.11  8.84
+# 5    11    11    11     8  8.33  9.26  7.81  8.47
+# 6    14    14    14     8  9.96  8.1   8.84  7.04</code></pre>
 <p>Séparons les quatre variables <em>X</em> d’un côté et les quatre variables <em>Y</em> de l’autre.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ans_x &lt;-<span class="st"> </span>anscombe[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
-ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]</code></pre></div>
-<p>Que valent les moyennes<a href="references.html#fn58" class="footnoteRef" id="fnref58"><sup>58</sup></a>, les variances et les coefficients de corrélation ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Moyennes des X</span>
-<span class="kw">lapply</span>(ans_x, mean)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">ans_x &lt;-<span class="st"> </span>anscombe[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
+ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]</code></pre>
+<p>Que valent les moyennes<a href="references.html#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a>, les variances et les coefficients de corrélation ?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Moyennes des X</span>
+<span class="kw">lapply</span>(ans_x, mean)</code></pre>
 <pre><code># $x1
 # [1] 9
 # 
@@ -559,8 +583,8 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 # 
 # $x4
 # [1] 9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Variance des X</span>
-<span class="kw">lapply</span>(ans_x, var)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Variance des X</span>
+<span class="kw">lapply</span>(ans_x, var)</code></pre>
 <pre><code># $x1
 # [1] 11
 # 
@@ -572,8 +596,8 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 # 
 # $x4
 # [1] 11</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Moyenne des Y</span>
-<span class="kw">lapply</span>(ans_y, mean)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Moyenne des Y</span>
+<span class="kw">lapply</span>(ans_y, mean)</code></pre>
 <pre><code># $y1
 # [1] 7.500909
 # 
@@ -585,8 +609,8 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 # 
 # $y4
 # [1] 7.500909</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Variance des Y</span>
-<span class="kw">lapply</span>(ans_y, var)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Variance des Y</span>
+<span class="kw">lapply</span>(ans_y, var)</code></pre>
 <pre><code># $y1
 # [1] 4.127269
 # 
@@ -598,31 +622,31 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 # 
 # $y4
 # [1] 4.123249</code></pre>
-<p>C’est les mêmes valeurs pour les 4 séries. Que donnent les coefficients de corrélation<a href="references.html#fn59" class="footnoteRef" id="fnref59"><sup>59</sup></a> ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(<span class="kw">cor</span>(ans_x, ans_y))</code></pre></div>
+<p>C’est les mêmes valeurs pour les 4 séries. Que donnent les coefficients de corrélation<a href="references.html#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a> ?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(<span class="kw">cor</span>(ans_x, ans_y))</code></pre>
 <pre><code># [1] 0.8164205 0.8162365 0.8162867 0.8165214</code></pre>
 <p>Nous avons quatre fois la même valeur… et pourtant :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pl &lt;-<span class="st"> </span><span class="kw">list</span>(
+<pre class="sourceCode r"><code class="sourceCode r">pl &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="kw">chart</span>(<span class="dt">data =</span> anscombe, y1 <span class="op">~</span><span class="st"> </span>x1) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(),
   <span class="kw">chart</span>(<span class="dt">data =</span> anscombe, y2 <span class="op">~</span><span class="st"> </span>x2) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(),
   <span class="kw">chart</span>(<span class="dt">data =</span> anscombe, y3 <span class="op">~</span><span class="st"> </span>x3) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(),
   <span class="kw">chart</span>(<span class="dt">data =</span> anscombe, y4 <span class="op">~</span><span class="st"> </span>x4) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()
 )
-<span class="kw">combine_charts</span>(pl)</code></pre></div>
+<span class="kw">combine_charts</span>(pl)</code></pre>
 <p><img src="12-Correlation_files/figure-html/unnamed-chunk-17-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Nous voyons que ces trois paires de variables n’ont <strong>rien à voir l’une avec l’autre !</strong> Il est même possible d’aller encore plus loin, voir le <a href="https://blog.revolutionanalytics.com/2017/05/the-datasaurus-dozen.html">datasaurus dozen</a>, ou encore <a href="https://www.autodeskresearch.com/publications/samestats">ici</a>, ou en français <a href="https://owdin.live/2017/05/15/ces-12-graphiques-montrent-pourquoi-la-data-viz-est-si-importante/">ici</a>.</p>
 </div>
 <div id="matrice-de-nuages-de-points" class="section level3">
 <h3><span class="header-section-number">12.1.4</span> Matrice de nuages de points</h3>
 <p>La matrice de nuages de points part du même principe que la matrice de corrélation ou que le corrélogramme : représenter plusieurs variables deux à deux selon une grille <em>N</em> par <em>N</em> pour <em>N</em> variables numériques. Ici, il s’agit de représenter des <strong>nuages de points</strong> deux à deux. Nous venons de voir pourquoi c’est important de le faire en complément des autres outils dans le cadre de notre exploration de l’association entre ces variables. Dans la SciViews Box, un snippet est disponible dans le menu <code>charts: multivariate</code> à partir de <code>.cm</code>, entrée de menu <code>multivariate X-Y scatterplot</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">GGally<span class="op">::</span><span class="kw">ggscatmat</span>(<span class="kw">as.data.frame</span>(trees), <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">GGally<span class="op">::</span><span class="kw">ggscatmat</span>(<span class="kw">as.data.frame</span>(trees), <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</code></pre>
 <p><img src="12-Correlation_files/figure-html/unnamed-chunk-18-1.svg" width="672" style="display: block; margin: auto;" /></p>
 <p>Comme dans le cas de la matrice de corrélation, les graphiques en nuage de points sur la diagonale ne seraient pas très utiles puisqu’ils représenteraient une variable par rapport à elle-même. Ils sont donc remplacés par des graphes de densité montrant la répartition des données pour chanque variable considérée individuellement. Sur le triangle supérieur, ce sont les coefficients de corrélation de Pearson qui sont indiqués, et sur le triangle inférieur, les différentes possibilités de nuages de points deux à deux. La variable sur laxe des abscisses se lit dans la colonne au dessus et la variable représentée sur l’axe des ordonnées se lit dans la ligne à droite. Par exemple, le graphique en bas à gauche correspond au diamètre en X et au volume en Y. Cette représentation graphique est donc complémentaire au corrélogramme.</p>
 </div>
 <div id="matrice-de-variances-covariances" class="section level3">
 <h3><span class="header-section-number">12.1.5</span> Matrice de variances-covariances</h3>
 <p>De même que nous pouvons calculer une matrice de corrélations, nous pouvons calculer une matrice de covariances, mais sachant que <span class="math inline">\(cov_{X,X} = var_X\)</span>, nous avons également les variances le long de la diagonale. Pour cette raison, nous appelons ce tableau, une <strong>matrice de variances-covariances</strong>. Par exemple, pour le jeu de données <code>trees</code>, cela donne :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(trees)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cov</span>(trees)</code></pre>
 <pre><code>#             diameter     height     volume
 # diameter 0.006341258 0.08050548 0.03583784
 # height   0.080505484 3.80012903 0.54143731
@@ -638,14 +662,14 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 </ul>
 <p><span class="math display">\[\tau_{X,Y} = \frac{n_c - n_d}{\frac{1}{2} \cdot n \cdot (n - 1)}\]</span></p>
 <p>En pratique dans R, les fonctions <code>cor()</code> et <code>correlation()</code> peuvent être utilisées, mais en spécifiant <code>method = &quot;spearman&quot;</code> ou <code>method = &quot;kendall&quot;</code>. Pour <code>trees</code>, cela donne :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">correlation</span>(trees, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">correlation</span>(trees, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre>
 <pre><code># Matrix of Spearman&#39;s rank correlation rho:
 # (calculation uses everything)
 #          diameter height volume
 # diameter 1.000    0.441  0.955 
 # height   0.441    1.000  0.579 
 # volume   0.955    0.579  1.000</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">correlation</span>(trees, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">correlation</span>(trees, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</code></pre>
 <pre><code># Matrix of Kendall&#39;s rank correlation tau:
 # (calculation uses everything)
 #          diameter height volume
@@ -653,7 +677,7 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 # height   0.317    1.000  0.450 
 # volume   0.830    0.450  1.000</code></pre>
 <p>… à comparer avec la matrice de corrélation de Pearson :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">correlation</span>(trees) <span class="co"># Equivalent à method = &quot;pearson&quot;</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">correlation</span>(trees) <span class="co"># Equivalent à method = &quot;pearson&quot;</span></code></pre>
 <pre><code># Matrix of Pearson&#39;s product-moment correlation:
 # (calculation uses everything)
 #          diameter height volume
@@ -671,7 +695,7 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 </ul>
 <p>Il existe aussi des variantes unilatérales à gauche (<span class="math inline">\(H_1\ :\ r &lt; 0\)</span>) ou à droite (<span class="math inline">\(H_1\ :\ r &gt; 0\)</span>) dans le cas où nous aurions des indications que l’association ne peut qu’être de type proportionnalité inverse ou directe, respectivement.</p>
 <p>Prenons l’exemple de <em>r</em> pour les deux variables les plus corrélées dans <code>trees</code> : <code>diameter</code> et <code>volume</code>. Notez la forme particulière de la formule à utiliser. Comme les deux variables sont sur le même pied d’égalité, il n’y a pas de raison d’en placer une à gauche du signe <code>~</code> dans la formule. On l’écrit alors <code>~ var1 + var2</code>. Choisissons <span class="math inline">\(\alpha\)</span> à 5% avant d’effectuer le test, ensuite, considérons un test unilatéral à droite avec <code>alternative = &quot;greater&quot;</code> puisque le volume de bois ne peut qu’augmenter avec le diamètre de l’arbre (relation inverse pas crédible).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">data =</span> trees, <span class="op">~</span><span class="st"> </span>diameter <span class="op">+</span><span class="st"> </span>volume, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">data =</span> trees, <span class="op">~</span><span class="st"> </span>diameter <span class="op">+</span><span class="st"> </span>volume, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre>
 <pre><code># 
 #   Pearson&#39;s product-moment correlation
 # 
@@ -684,7 +708,7 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 #       cor 
 # 0.9670023</code></pre>
 <p>Comme la valeur <em>P</em> est inférieure à <span class="math inline">\(\alpha\)</span>, nous pouvons rejeter <span class="math inline">\(H_0\)</span> et conclure que le coefficient de corrélation entre le diamètre et le volume est significativement positive au seuil <span class="math inline">\(\alpha\)</span> de 5% (<em>r</em> = 0.967, ddl = 29, valeur <em>P</em> &lt; 0.001). On s’en doutait avec un coefficient aussi proche de 1. Mais qu’en est-il pour l’association entre le diamètre et la hauteur ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">data =</span> trees, <span class="op">~</span><span class="st"> </span>diameter <span class="op">+</span><span class="st"> </span>height, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">data =</span> trees, <span class="op">~</span><span class="st"> </span>diameter <span class="op">+</span><span class="st"> </span>height, <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</code></pre>
 <pre><code># 
 #   Pearson&#39;s product-moment correlation
 # 
@@ -697,8 +721,8 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 #       cor 
 # 0.5186072</code></pre>
 <p>Elle est, elle aussi significative au seuil <span class="math inline">\(\alpha\)</span> de 5%, mais de manière moins nette, puisque la valeur <em>P</em> vaut un peu plus de 0,1%. Que donnerait un test de Spearman sur ces mêmes variables ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">data =</span> trees, <span class="op">~</span><span class="st"> </span>diameter <span class="op">+</span><span class="st"> </span>height,
-  <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">data =</span> trees, <span class="op">~</span><span class="st"> </span>diameter <span class="op">+</span><span class="st"> </span>height,
+  <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</code></pre>
 <pre><code># Warning in cor.test.default(x = structure(c(0.211, 0.218, 0.224, 0.267, :
 # Cannot compute exact p-value with ties</code></pre>
 <pre><code># 
@@ -711,8 +735,8 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 #       rho 
 # 0.4408387</code></pre>
 <p>Le test nous averti qu’en présence d’ex aequos, le calcul n’est qu’approchant. Ici aussi nous rejetons <span class="math inline">\(H_0\)</span>. Enfin, pour comparaison (en pratique, on ne fait pas systématiquement tous les tests, mais on choisi celui qui est le plus adéquat), que donnerait un test de Kendall ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">data =</span> trees, <span class="op">~</span><span class="st"> </span>diameter <span class="op">+</span><span class="st"> </span>height,
-  <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">data =</span> trees, <span class="op">~</span><span class="st"> </span>diameter <span class="op">+</span><span class="st"> </span>height,
+  <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</code></pre>
 <pre><code># Warning in cor.test.default(x = structure(c(0.211, 0.218, 0.224, 0.267, :
 # Cannot compute exact p-value with ties</code></pre>
 <pre><code># 
@@ -730,8 +754,8 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 <div class="footnotes">
 <hr />
 <ol start="58">
-<li id="fn58"><p>La fonction <code>lapply()</code> distribue la fonction donnée en argument sur tous les éléments du tableau, et calcule ici la moyenne successivement pour les 4 variables.<a href="association-de-deux-variables.html#fnref58">↩</a></p></li>
-<li id="fn59"><p>Ici, nous croisons les X et les Y, et extrayons la diagonale de ce tableau qui correspond aux coefficients entre <em>X1</em> et <em>Y1</em>, entre <em>X2</em> et <em>Y2</em>, entre <em>X3</em> et <em>Y3</em> et entre <em>X4</em> et <em>Y4</em>, respectivement.<a href="association-de-deux-variables.html#fnref59">↩</a></p></li>
+<li id="fn58"><p>La fonction <code>lapply()</code> distribue la fonction donnée en argument sur tous les éléments du tableau, et calcule ici la moyenne successivement pour les 4 variables.<a href="association-de-deux-variables.html#fnref58" class="footnote-back">↩</a></p></li>
+<li id="fn59"><p>Ici, nous croisons les X et les Y, et extrayons la diagonale de ce tableau qui correspond aux coefficients entre <em>X1</em> et <em>Y1</em>, entre <em>X2</em> et <em>Y2</em>, entre <em>X3</em> et <em>Y3</em> et entre <em>X4</em> et <em>Y4</em>, respectivement.<a href="association-de-deux-variables.html#fnref59" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -810,7 +834,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
