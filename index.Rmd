@@ -1,6 +1,6 @@
 --- 
-title: "Science des données biologiques, UMONS \\n Bio-informatique et sciences des données, UMONS-ULB"
-author: "Philippe Grosjean & Guyliann Engels & Rapĥael Conotte"
+title: "Science des données biologiques"
+author: "Philippe Grosjean, Guyliann Engels & Raphael Conotte"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output:
@@ -25,19 +25,33 @@ knitr::opts_chunk$set(comment = "#", fig.align = "center")
 knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
 ```
 
+ 
+Cet ouvrage interactif sera, à terme, le premier ouvrage d'une série de trois ouvrage touchant à la science des données biologiques. L'écriture de cette suite de livres a débuté au cours de l'année académique 2018-2019. 
 
-Cet ouvrage couvrira, à terme, la matière des cinq cours de science des données enseignés aux biologistes de la Faculté des Sciences de l'Université de Mons (Belgique). La matière sera complétée progressivement à partir du premier cours prévu pour l'année académique 2018-2019.
+Pour l'année académique 2019-2020, cet ouvrage interactif sera le support des cours suivants :
 
-Cet ouvrage est conçu pour être utilisé de manière interactive en ligne. En effet, nous prévoyons d'y adjoindre des capsules (unités d'enseignement ciblant un et un seul concept) sous forme de vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
+- [Science des données I : Visualisation et inférence, UMONS](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOL-006-M.htm) dont le responsable est Grosjean Philippe
+
+- [Bio-informatique et sciences des données, UMONS-ULB](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOC-926-C.htm) dont le responsable est Conotte Raphael
+
+Cet ouvrage est conçu pour être utilisé de manière interactive en ligne. En effet, nous prévoyons d'y adjoindre des vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
 
 ![](images/front-cover.png)
 
+----
 
-## Vue générale du cours {-}
+_Le matériel dans cet ouvrage est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)._
 
-Le premier cours intitulé **Science des données I: visualisation et inférence** qui est dispensé aux biologistes de second Bachelier en Faculté des Sciences de l'Université de Mons à partir de l'année académique 2018-2019 contient 25h de cours et 50h d'exercices en presentiel. Il nécessitera environ un tiers de ce temps (voir plus, en fonction de votre rythme et de votre technique d'apprentissage) en travail à domicile.
+----
 
-Cette matière est divisée en 12 modules de sessions de 6h chacune en présentiel. **Une première séance de 2h précèdera ces 12 modules afin d'installer les logiciels (SciViews Box, R, RStudio, Github Desktop), et de se familiariser avec eux.**
+
+## Vue générale des cours {-}
+
+Le cours de  **Science des données I: visualisation et inférence**  est dispensé aux biologistes de second Bachelier en Faculté des Sciences de l'Université de Mons à partir de l'année académique 2018-2019.
+
+Le cours de **Bio-informatique et sciences des données, UMONS-ULB** est dispensé au biologistes de secon Bachelier en Faculté des Sciences en co-diplomation entre l'Université de Mons (UMONS) et l'Université Libre de Bruxelles (ULB) à partir de l'année académique 2019-2020.
+
+La matière est divisée en 12 modules de sessions de 6h chacune en présentiel. Il nécessitera environ un tiers de ce temps (voir plus, en fonction de votre rythme et de votre technique d'apprentissage) en travail à domicile. **Une première séance de 2h précèdera ces 12 modules afin d'installer les logiciels (SciViews Box, R, RStudio, Github Desktop), et de se familiariser avec eux.**
 
 ```{r diagram-sddI, out.width = '80%', fig.asp = .75, fig.align = 'center', echo = FALSE, warning = FALSE, cache = TRUE}
 DiagrammeR::grViz("
@@ -101,8 +115,6 @@ Le matériel pédagogique, rassemblé dans ce syllabus interactif est aussi vari
 
 - le présent ouvrage en ligne,
 
-- des capsules, essentiellement sous forme de vidéos < 10 min qui ciblent chacune un concept particulier (en cours de développement),
-
 - des tutoriaux interactifs (réalisés avec un logiciel appelé `learnr`). Vous pourrez exécuter ces tutoriaux directement sur votre ordinateur, et vous aurez alors accès à des pages Web réactives contenant des explications, des exercices et des quizzs en ligne,
 
 - des slides de présentations,
@@ -143,11 +155,7 @@ L'évaluation sera basée sur une somme de petites contributions qui matérialis
 
 - Enfin, vous pourrez éventuellement encore gagner un point bonus pour une participation remarquable, ou tout autre élément à valoriser (site web personnel et/ou blog exceptionnel, aide des autres étudiants, etc.). Ceci étant à l'appréciation des enseignants.
 
-----
 
-_Le matériel dans cet ouvrage est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr)._
-
-----
 
 ##### System information {-}
 
