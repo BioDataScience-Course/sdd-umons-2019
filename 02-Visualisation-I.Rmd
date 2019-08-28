@@ -63,7 +63,7 @@ chart(data = urchin, height ~  weight) +
   )
 ```
 
-Les éléments indispensables à la compréhension d'un graphique en nuage de points sont mis en évidence à la Fig. \@ref(fig:first-scatterplot) : 
+Les éléments indispensables à la compréhension d'un graphique en nuage de points sont mis en évidence à la Fig. \@ref(fig:first-scatterplot) :  
 
 - Les axes avec les graduations (en rouge),
 - les labels et les unités des axes (en bleu).
