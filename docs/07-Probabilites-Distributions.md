@@ -21,7 +21,7 @@ La vidéo suivante vous introduit la notion de probabilité et le calcul de prob
 <!--html_preserve--><iframe src="https://www.youtube.com/embed/5TtwG_LR0iY" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
 <div class="note">
-<p>Sachant qu'un <strong>événement</strong> en statistique est un fait qui se produit, la <strong>probabilité</strong> que cet événement se produise effectivement peut être quantifiée sur base de l'observation des réalisations passées. Ainsi si l'événement en question s'est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet événement se produise est de 9/12, soit 0,75. Notez qu'une probabilité est un nombre compris entre zéro (lorsqu'il ne se produit jamais) et un (lorsqu'il se produit toujours).</p>
+<p>Sachant qu’un <strong>événement</strong> en statistique est un fait qui se produit, la <strong>probabilité</strong> que cet événement se produise effectivement peut être quantifiée sur base de l’observation des réalisations passées. Ainsi si l’événement en question s’est produit, disons, 9 fois sur un total de 12 réalisations, on dira que la probabilité que cet événement se produise est de 9/12, soit 0,75. Notez qu’une probabilité est un nombre compris entre zéro (lorsqu’il ne se produit jamais) et un (lorsqu’il se produit toujours).</p>
 </div>
 
 On écrira, pour la probabilité de l'événement *E* :
@@ -238,7 +238,7 @@ Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positi
 <div class="note">
 <p><strong>A retenir</strong></p>
 <ul>
-<li>Probabilité d'un événement :</li>
+<li>Probabilité d’un événement :</li>
 </ul>
 <p><span class="math display">\[\mathrm{P}(E) = \frac{\mathrm{nbr\ occurences\ } E}{\mathrm{nbr\ total\ essais}}\]</span></p>
 <ul>
@@ -246,7 +246,7 @@ Nous avons maintenant une façon simple de déterminer $\mathrm{P}(malade|positi
 </ul>
 <p><span class="math display">\[\mathrm{P(A\, \mathrm{et}\, B)} = \mathrm{P}(B|A) * \mathrm{P(A)}\]</span></p>
 <ul>
-<li>Probabilité qu'un parmi deux événements se produise (cas général) :</li>
+<li>Probabilité qu’un parmi deux événements se produise (cas général) :</li>
 </ul>
 <p><span class="math display">\[\mathrm{P(A\, \mathrm{ou}\, B)} = \mathrm{P}(A) + \mathrm{P(B)} - \mathrm{P}(A\, \mathrm{et}\, B)\]</span></p>
 </div>
@@ -432,7 +432,7 @@ $$\mathrm{P}(E) = \frac{1}{n_E}$$
 La distribution uniforme est d'application pour les jeux de hasard (dés, boules de loto, ...). En biologie, elle est plus rare. Dans le cas d'un sexe ratio de 1:1 (autant de mâles que de femelles), la probabilité qu'un nouveau né soit un mâle ou une femelle suit une distribution uniforme et vaut 1/2. La distribution spatiale des individus dans une population biologique peut être uniforme lorsque les individus interagissent de telle manière que la distance entre eux soit identique (par exemple, dans un groupe de manchots *Aptenodytes patagonicus* sur la banquise). Imaginons un animal hypothétique pour lequel la portée peut être de 1 à 4 petits de manière équiprobable. Nous avons alors 1/4 des portées qui présentent respectivement, 1, 2, 3 ou 4 petits (Fig.\ \@ref(fig:unif1)).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/unif1-1.svg" alt="Probabilité du nombre de petits dans une portée qui suivrait un distribution strictement uniforme entre 1 et 4." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif1-1.png" alt="Probabilité du nombre de petits dans une portée qui suivrait un distribution strictement uniforme entre 1 et 4." width="672" />
 <p class="caption">(\#fig:unif1)Probabilité du nombre de petits dans une portée qui suivrait un distribution strictement uniforme entre 1 et 4.</p>
 </div>
 
@@ -446,29 +446,29 @@ $$\mathrm{P}(E) = \frac{1}{\infty} = 0$$
 ... et ce calcul est *correct*\ !
 
 <div class="warning">
-<p>Dans le cas de probabilités continues, la probabilité d'un événement en particulier est <strong>toujours nulle</strong>. Nous pouvons seulement calculer que l'un parmi plusieurs événements se produise (compris dans un intervalle).</p>
+<p>Dans le cas de probabilités continues, la probabilité d’un événement en particulier est <strong>toujours nulle</strong>. Nous pouvons seulement calculer que l’un parmi plusieurs événements se produise (compris dans un intervalle).</p>
 </div>
 
 La représentation graphique d'une loi de distribution continue est un outil utile pour la comprendre et vérifier ses calculs. La forme la plus courante consiste à montrer la **courbe de densité de probabilité** pour une distribution continue. Sur l'axe *X*, nous avons les **quantiles** (les valeurs observables), et sur l'axe *Y*, la densité de probabilité^[Plus la densité de probabilité est élevée, plus les événements dans cette région du graphique sont probables.]. Par exemple, si nous constatons qu'un insecte butineur arrive sur une fleur en moyenne toutes les 4 minutes, la probabilité qu'un butineur arrive dans un intervalle de temps compris entre 0 et 4 min depuis le moment initial $t_0$ de nos observations suit une distribution uniforme continue (Fig.\ \@ref(fig:unif2)).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/unif2-1.svg" alt="Probabilité qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif2-1.png" alt="Probabilité qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
 <p class="caption">(\#fig:unif2)Probabilité qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min.</p>
 </div>
 
 Une autre représentation courante est la **densité de probabilité cumulée** qui représente la probabilité d'observer un quantile *ou moins*. Dans le cas présent, cela représente la probabilité qu'au moins un insecte butineur soit observé pour des durées d'observation croissantes (Fig.\ \@ref(fig:unif-cumul)).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/unif-cumul-1.svg" alt="Probabilité cumulée qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif-cumul-1.png" alt="Probabilité cumulée qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
 <p class="caption">(\#fig:unif-cumul)Probabilité cumulée qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min.</p>
 </div>
 
 
 
 <div class="note">
-<p><strong>Notation :</strong> nous noterons qu'une variable suit une loi de distribution comme ceci (le tilde ~ se lit &quot;suit une distribution&quot;, et <em>U</em> représente la distribution uniforme avec entre parenthèse, les <em>paramètres</em> de la distribution, ici, les bornes inférieure et supérieure) :</p>
+<p><strong>Notation :</strong> nous noterons qu’une variable suit une loi de distribution comme ceci (le tilde ~ se lit “suit une distribution”, et <em>U</em> représente la distribution uniforme avec entre parenthèse, les <em>paramètres</em> de la distribution, ici, les bornes inférieure et supérieure) :</p>
 <p><span class="math display">\[X \sim U(0, 4)\]</span></p>
-<p>Cela signifie : &quot;la variable aléatoire <em>X</em> suit une distribution uniforme 0 à 4&quot;.</p>
+<p>Cela signifie : “la variable aléatoire <em>X</em> suit une distribution uniforme 0 à 4”.</p>
 </div>
 
 La distribution $U(0, 1)$ est particulière et est appelée **distribution uniforme standard**. Elle a la propriété particulière que si $X \sim U(0, 1)$ alors $(1-X) \sim U(0, 1)$.
@@ -484,7 +484,7 @@ L'**aire sous la courbe** représente une probabilité associée à l'intervalle
 La réponse à la question (1) est immédiate. Cette probabilité est **nulle** (voir plus haut)^[La question n'est pas après *environ* une minute, mais à *exactement* 1 min 0 sec, 0 millisec, ..., ce qui est alors hautement improbable.]\ ! Pour la question (2), nous pouvons répondre en calculant l'aire sous la courbe entre les quantiles 1 et 1,5 (représentée par l'aire en rouge à la Fig. \@ref(fig:unif3)).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/unif3-1.svg" alt="Probabilité qu'un insecte butineur arrive entre 1 et 1,5 min après le début d'une observation (aire P en rouge)." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif3-1.png" alt="Probabilité qu'un insecte butineur arrive entre 1 et 1,5 min après le début d'une observation (aire P en rouge)." width="672" />
 <p class="caption">(\#fig:unif3)Probabilité qu'un insecte butineur arrive entre 1 et 1,5 min après le début d'une observation (aire P en rouge).</p>
 </div>
 
@@ -514,7 +514,7 @@ punif(1.0, min = 0, max = 4, lower.tail = TRUE)
 La réponse est 0,125, soit une fois sur huit.
 
 <div class="note">
-<p>Le calcul de probabilités sur base de lois de distributions continues se fait via les aires à gauche ou à droite d'un quantile sur le graphique de densité de probabilité. Pour une aire centrale, nous soustrayons les aires à gauche des deux quantiles respectifs.</p>
+<p>Le calcul de probabilités sur base de lois de distributions continues se fait via les aires à gauche ou à droite d’un quantile sur le graphique de densité de probabilité. Pour une aire centrale, nous soustrayons les aires à gauche des deux quantiles respectifs.</p>
 </div>
 
 
@@ -527,7 +527,7 @@ Le calcul inverse est parfois nécessaire. Par exemple pour répondre à la ques
 Ici, nous partons d'une probabilité (1/3) et voulons déterminer le quantile qui définit une aire à gauche de 1/3 sur le graphique (Fig.\ \@ref(fig:unif4)).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/unif4-1.svg" alt="Temps d'observation nécessaire (quantile Q) pour voir arriver un butineur une fois sur trois (aire P en rouge de 1/3 à gauche de Q)." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif4-1.png" alt="Temps d'observation nécessaire (quantile Q) pour voir arriver un butineur une fois sur trois (aire P en rouge de 1/3 à gauche de Q)." width="672" />
 <p class="caption">(\#fig:unif4)Temps d'observation nécessaire (quantile Q) pour voir arriver un butineur une fois sur trois (aire P en rouge de 1/3 à gauche de Q).</p>
 </div>
 
@@ -628,14 +628,14 @@ Puisqu'il s'agit d'une distribution discrète, un petit nombre d'événements po
 La représentation graphique donne la Fig. \@ref(fig:binom).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/binom-1.svg" alt="Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/binom-1.png" alt="Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose." width="672" />
 <p class="caption">(\#fig:binom)Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose.</p>
 </div>
 
 La situation la plus probable est donc d'avoir 5 enfants sains sur 6. Nous pouvons aussi observer que, lorsque $p$ s'éloigne de 0,5, les probabilités à l'extrême opposée tendent assez rapidement vers zéro (ici, la probabilité de n'avoir qu'un seul, ou aucun enfant sain). La distribution binomiale trouve de très nombreuses applications en biologie, en écologie, en génétique et dans d'autres disciplines. Elle permet même de représenter vos chances de réussite à l'examen de science des données biologiques\ ! Voici, pour finir, l'allure d'une distribution binomiale pour laquelle la probabilité du succès est égale à la probabilité d'échec (0,5). Cette distribution est symétrique.
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/binom2-1.svg" alt="Probabilité d'avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1)." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/binom2-1.png" alt="Probabilité d'avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1)." width="672" />
 <p class="caption">(\#fig:binom2)Probabilité d'avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1).</p>
 </div>
 
@@ -726,7 +726,7 @@ $$P(Y=k) = P(Y=k-1) \times \frac{\lambda}{k}$$
 Le calcul se réalise de proche en proche en partant de la probabilité de ne jamais observer l'événement. Comme l'événement est rare, la probabilité tend très rapidement vers une valeur extrêmement faible. Seul le calcul des quelques premiers termes est donc nécessaire. A titre d'exercice, faites le calcul pour notre exemple d'un échantillon de la population belge, avec $\lambda = 1$ comme paramètre. La densité de probabilité pour cette distribution est représentée à la Fig. \@ref(fig:poisson).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/poisson-1.svg" alt="Probabilité d'occurence de mucoviscidose dans un échantillon aléatoire de 1600 belges." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/poisson-1.png" alt="Probabilité d'occurence de mucoviscidose dans un échantillon aléatoire de 1600 belges." width="672" />
 <p class="caption">(\#fig:poisson)Probabilité d'occurence de mucoviscidose dans un échantillon aléatoire de 1600 belges.</p>
 </div>
 
@@ -750,7 +750,7 @@ La vidéo suivante vous permettra de récapituler certaines notions étudiées j
 La distribution normale est la distribution la plus utilisée en statistique. Elle se rencontre très souvent en biologie comme dans bien d'autres domaines, à chaque fois qu'une variable continue définie sur tout le domaine des réels est issue d'un nombre important de composantes indépendantes dont les effets sont additifs. La forme de sa densité de probabilité est caractéristique et dite "en cloche" (Fig. \@ref(fig:normal)).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/normal-1.svg" alt="Un exemple de distribution normale." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/normal-1.png" alt="Un exemple de distribution normale." width="672" />
 <p class="caption">(\#fig:normal)Un exemple de distribution normale.</p>
 </div>
 
@@ -780,7 +780,7 @@ $$\Phi(Z) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{Z^2}{2}}$$
 La probabilité qu'une observation soit dans un intervalle de $\pm 1 \sigma$ autour de la moyenne est de 2/3 environ. De même, un intervalle de $\pm 2 \sigma$ définit une aire de 95%, et celle-ci devient supérieure à 99% pour des observations se situent dans l'intervalle $\pm 3 \sigma$ (Fig. \@ref(fig:normal2)).
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/normal2-1.svg" alt="La distribution normale réduite avec les aires centrales autour de 1 et 2 écarts types mises en évidence." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/normal2-1.png" alt="La distribution normale réduite avec les aires centrales autour de 1 et 2 écarts types mises en évidence." width="672" />
 <p class="caption">(\#fig:normal2)La distribution normale réduite avec les aires centrales autour de 1 et 2 écarts types mises en évidence.</p>
 </div>
 
@@ -817,7 +817,7 @@ $$log(X) \sim N(0, 0.5)$$
 Par facilité, on défini ses deux paramètres de manière relative à la moyenne $\mu$ et à l'écart type $\sigma$ qu'a la distribution normale obtenue après transformation logarithmique. Voici à quoi ressemble la densité de probabilité de cette distribution (Fig \@ref(fig:lognormal)). C'est une distribution asymétrique qui démarre du quantile zéro et est asymptotique à droite en +infini.
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/lognormal-1.svg" alt="Un exemple de distribution log-normale." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/lognormal-1.png" alt="Un exemple de distribution log-normale." width="672" />
 <p class="caption">(\#fig:lognormal)Un exemple de distribution log-normale.</p>
 </div>
 
@@ -844,6 +844,14 @@ eggs <- read("zooplankton", package = "data.io") %>.%
   filter(., class == "Egg_elongated") %>.%
   mutate(., log_area = log10(area)) %>.%
   select(., area, log_area)
+```
+
+```
+# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
+# This warning is displayed once per session.
+```
+
+```r
 summary(eggs)
 ```
 
@@ -863,7 +871,13 @@ chart(data = eggs, ~ area) +
   geom_histogram(bins = 12)
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-39-1.svg" width="672" style="display: block; margin: auto;" />
+```
+# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+# Please use `as_label()` or `as_name()` instead.
+# This warning is displayed once per session.
+```
+
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" />
 
 Sur base de l'histogramme, nous voyons bien que la distribution est soit unimodale et asymétrique, soit bimodale. L'histogramme des données transformées log devrait être plus symétrique si les données originelles suivent bien une distribution log-normale unimodale.
 
@@ -873,7 +887,7 @@ chart(data = eggs, ~ log_area) +
   geom_histogram(bins = 12)
 ```
 
-<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-40-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" />
 
 C'est légèrement mieux, mais la distribution ne parait pas parfaitement symétrique, voire peut-être encore bimodale (pas flagrant toutefois). L'histogramme est un bon outil pour visualiser globalement une distribution, mais le **graphique quantile-quantile** offre une représentation plus précise pour *comparer* précisément deux distributions. Comme nous avons 50 observations à disposition, nous pouvons calculer les quantiles tous les 2% à l'aide de la fonction `quantile()`. De même, nous pouvons utiliser `qnorm()` pour calculer les quantiles théoriques selon une distribution normale réduite. Cela donne\ :
 
@@ -912,7 +926,7 @@ qq
 #  8 -0.336 -0.994
 #  9 -0.333 -0.915
 # 10 -0.332 -0.842
-# # ... with 39 more rows
+# # … with 39 more rows
 ```
 
 Si les deux distributions sont compatibles, nous devrions avoir proportionnalité entre les quantiles théoriques et les quantiles observés. Cela devrait donc se marquer par un **alignement** des points sur un graphique des quantiles observés en fonction des quantiles théoriques (Fig. \@ref(fig:qqplot1)).
@@ -924,7 +938,7 @@ chart(data = qq, q_obs ~ q_theo) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/qqplot1-1.svg" alt="Graphique quantile-quantile construit à la main." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/qqplot1-1.png" alt="Graphique quantile-quantile construit à la main." width="672" />
 <p class="caption">(\#fig:qqplot1)Graphique quantile-quantile construit à la main.</p>
 </div>
 
@@ -941,7 +955,7 @@ car::qqPlot(eggs[["log_area"]], distribution = "norm",
 ```
 
 <div class="figure" style="text-align: center">
-<img src="07-Probabilites-Distributions_files/figure-html/qqplot2-1.svg" alt="Graphique quantile-quantile comparant le log(area) en fonction d'une distribution normale obtenu à l'aide de `car::qqPlot()`." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/qqplot2-1.png" alt="Graphique quantile-quantile comparant le log(area) en fonction d'une distribution normale obtenu à l'aide de `car::qqPlot()`." width="672" />
 <p class="caption">(\#fig:qqplot2)Graphique quantile-quantile comparant le log(area) en fonction d'une distribution normale obtenu à l'aide de `car::qqPlot()`.</p>
 </div>
 

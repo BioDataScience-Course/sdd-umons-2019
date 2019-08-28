@@ -32,6 +32,11 @@ crabs %>.%
   crabs2
 ```
 
+```
+# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
+# This warning is displayed once per session.
+```
+
 La Fig. \@ref(fig:crabs-rear) montre la largeur à l'arrière de la carapace chez les quatre groupes ainsi individualisés. Une représentation graphique adéquate avant de réaliser notre analyse ici lorsque le nombre de répliquats est important est le graphique en violon sur lequel nous superposons au moins les moyennes, et de préférence, les points également. Si le nombre de répliquats est plus faible, mais toujours supérieur à 7-8, nous pourrions utiliser le même type de graphique mais avec des boites de dispersion plutôt (voir plus loin, Fig. \@ref(fig:anova2)). Avec encore moins de répliquats nous présenterons les points et les moyennes uniquement.
 
 
@@ -44,8 +49,14 @@ chart(data = crabs2, rear ~ group) +
     f_aes(means ~ group), size = 3, col = "red")
 ```
 
+```
+# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+# Please use `as_label()` or `as_name()` instead.
+# This warning is displayed once per session.
+```
+
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/crabs-rear-1.svg" alt="Largeur arrière en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquats (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
+<img src="10-Variance_files/figure-html/crabs-rear-1.png" alt="Largeur arrière en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquats (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
 <p class="caption">(\#fig:crabs-rear)Largeur arrière en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquats (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon).</p>
 </div>
 
@@ -67,7 +78,7 @@ skimr::skim(crabs2)
 #  n obs: 200 
 #  n variables: 4 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -77,7 +88,7 @@ skimr::skim(crabs2)
 #    FALSE
 #    FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
 ```
@@ -97,7 +108,7 @@ chart(data = crabs2, aspect ~ group) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/anova0-1.svg" alt="Ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquat (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
+<img src="10-Variance_files/figure-html/anova0-1.png" alt="Ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquat (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
 <p class="caption">(\#fig:anova0)Ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquat (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon).</p>
 </div>
 
@@ -108,9 +119,9 @@ Comment comparer valablement ces quatre groupes\ ? Comme nous savons maintenant 
 N'oublions pas que, à chaque test, nous prenons un risque de nous tromper. **Le risque de se tromper au moins une fois dans l'ensemble des tests est alors décuplé en cas de tests multiples.** Prenons un point de vue naïf, mais qui suffira ici pour démontrer le problème qui apparaît. Admettons que le risque de nous tromper est constant, que nous rejettons ou non $H_0$, et qu'il est de l'ordre de 10% dans chaque test individuellement^[Attention\ ! vous savez bien que c'est plus compliqué que cela. D'une part, le risque de se tromper est probablement différent si on rejette $H_0$ ($\alpha$) ou non ($\beta$), et ces risques sont encore à moduler en fonction de la probabilité *a priori*, un cas similaire au dépistage d'une maladie plus ou moins rare, rappelez-vous, au module \@ref(proba).]. La seule solution acceptable est que *tous* les tests soeijnt corrects. Considérant chaque interprétation indépendante, nous pouvons multiplier les probabilités d'avoir un test correct (90%) le nombre de fois que nous faisons le test, soit $0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 = 0,9^6 = 0,53$. Tous les autres cas ayant au moins un test faux, nous constatons que notre analyse globale sera incorrecte $1 - 0,53 = 47\%$ du temps^[Dans R, vous pouvez utiliser `choose(n, j)` pour calculer le coefficient binomial. Donc votre calcul du risque de se tromper au moins une fois dans un ensemble de `n` tests dont le risque individuel est `r` sera `1 - (1 - r)^choose(n, 2)`.]. **Notre analyse sera incorrecte une fois sur deux environ.**
 
 <div class="info">
-<p>De manière générale, le nombre de combinaisons deux à deux possibles dans un set de <code>n</code> groupes distincts sera calculé à l'aide du coefficient binomial que nous avions déjà rencontré avec la distribution du même nom, ici avec <span class="math inline">\(j\)</span> valant deux.</p>
+<p>De manière générale, le nombre de combinaisons deux à deux possibles dans un set de <code>n</code> groupes distincts sera calculé à l’aide du coefficient binomial que nous avions déjà rencontré avec la distribution du même nom, ici avec <span class="math inline">\(j\)</span> valant deux.</p>
 <p><span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
-<p>Toujours avec notre approche naïve du risque d'erreur individuel pour un test <span class="math inline">\(r\)</span> de 10%, le risque de se tromper au moins une fois est alors :</p>
+<p>Toujours avec notre approche naïve du risque d’erreur individuel pour un test <span class="math inline">\(r\)</span> de 10%, le risque de se tromper au moins une fois est alors :</p>
 <p><span class="math display">\[1 - (1 - r)^{C^2_n}\]</span></p>
 <p>Voici ce que cela donne comme risque de se tromper dans au moins un des tests en fonction du nombre de groupes à comparer  :</p>
 <table>
@@ -137,7 +148,7 @@ N'oublions pas que, à chaque test, nous prenons un risque de nous tromper. **Le
 </tr>
 </tbody>
 </table>
-<p>Clairement, on oublie cette façon de faire ! Prendre le risque de se tromper 99 fois sur 100 en comparant 10 groupes différents n'est pas du tout intéressante comme perspective.</p>
+<p>Clairement, on oublie cette façon de faire ! Prendre le risque de se tromper 99 fois sur 100 en comparant 10 groupes différents n’est pas du tout intéressante comme perspective.</p>
 </div>
 
 Nous allons donc travailler différemment... Ci-après nous verrons qu'une simplification des hypothèses et l'approche par décomposition de la variance est une option bien plus intéressante (ANalysis Of VAriance ou ANOVA). Ensuite, nous reviendrons vers ces comparaisons multiples deux à deux, mais en prenant des précautions pour éviter l'inflation du risque global de nous tromper.
@@ -154,12 +165,12 @@ Au lieu de s'attaquer aux comparaisons deux à deux, nous pouvons aussi considé
 Notre hypothèse nulle est très restrictive, mais par contre, l'hypothèse alternative est très vague car nous ne savons pas **où** sont les différences à ce stade si nous rejettons $H_0$, mais nous nous en occuperons plus tard.
 
 <div class="info">
-<p><strong>Propriété d'additivité des parts de variance</strong>. La variance se calcule comme :</p>
+<p><strong>Propriété d’additivité des parts de variance</strong>. La variance se calcule comme :</p>
 <p><span class="math display">\[var_x = \frac{SCT}{ddl}\]</span></p>
-<p>Avec <span class="math inline">\(SCT\)</span>, la somme des carrés totaux, soit <span class="math inline">\(\sum_{i = 1}^n (x_i - \bar{x})^2\)</span>, la somme des carrés des écarts à la moyenne générale. Les ddl sont les degrés de liberté déjà rencontrés à plusieurs reprises qui valent <span class="math inline">\(n - 1\)</span> dans le cas de la variance d'un échantillon.</p>
-<p>Cette variance peut être <em>partitionnée</em>. C'est-à-dire que, si la variance totale se mesure d'un point A à un point C, l'on peut mesurer la part de variance d'un point A à un point B, puis l'autre part d'un point B à un point C, et dans ce cas,</p>
+<p>Avec <span class="math inline">\(SCT\)</span>, la somme des carrés totaux, soit <span class="math inline">\(\sum_{i = 1}^n (x_i - \bar{x})^2\)</span>, la somme des carrés des écarts à la moyenne générale. Les ddl sont les degrés de liberté déjà rencontrés à plusieurs reprises qui valent <span class="math inline">\(n - 1\)</span> dans le cas de la variance d’un échantillon.</p>
+<p>Cette variance peut être <em>partitionnée</em>. C’est-à-dire que, si la variance totale se mesure d’un point A à un point C, l’on peut mesurer la part de variance d’un point A à un point B, puis l’autre part d’un point B à un point C, et dans ce cas,</p>
 <p><span class="math display">\[SCT = SC_{A-C} = SC_{A-B} + SC_{B-C}\]</span></p>
-<p>Cette propriété, dite d'additivité des variances, permet de décomposer la variance totale à souhait tout en sachant que la somme des différentes composantes donne toujours la même valeur que la variance totale.</p>
+<p>Cette propriété, dite d’additivité des variances, permet de décomposer la variance totale à souhait tout en sachant que la somme des différentes composantes donne toujours la même valeur que la variance totale.</p>
 </div>
 
 
@@ -174,7 +185,7 @@ Avec l'indice $j = 1 .. k$ populations et l'indice $i = 1 .. n$ observations du 
 Le graphique à la Fig. \@ref(fig:anova1) représente une situation typique à trois sous-populations.
 
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/anova1-1.svg" alt="Décomposition de la variance dans un cas à trois populations A, B et C fictives." width="672" />
+<img src="10-Variance_files/figure-html/anova1-1.png" alt="Décomposition de la variance dans un cas à trois populations A, B et C fictives." width="672" />
 <p class="caption">(\#fig:anova1)Décomposition de la variance dans un cas à trois populations A, B et C fictives.</p>
 </div>
 
@@ -182,8 +193,14 @@ Notons que ce modèle à trois termes représente bien la situation qui nous int
 
 D'une part, nous nous trouvons dans une situation d'additivité de la variance si nous décidons de calculer ces "variance inter" et "variance intra". D'autre part, sous $H_0$ nous sommes sensés avoir toutes les moyennes égales à $\mu$, et donc, tous les $\tau_j = 0$. Donc, les valeurs non nulles de $\tau_j$ ne doivent qu'être dus au hasard de l'échantillonnage et être par conséquent largement inférieurs à la variabilité entre les individus, ou variance intra $\epsilon_i$. La Fig. \@ref(fig:anova2) représente deux cas avec à gauche une situation où $H_0$ est plausible, et à droite une situation où elle est très peu plausible. Notez qu'à gauche la variation entre les observations (intra) est bien plus grande que l'écart entre les moyennes (inter), alors qu'à droite c'est l'inverse.
 
+
+```
+# Warning: `data_frame()` is deprecated, use `tibble()`.
+# This warning is displayed once per session.
+```
+
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/anova2-1.svg" alt="A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes &quot;inter&quot; bien plus grand que l'étalement des points en &quot;intra&quot;-population)." width="672" />
+<img src="10-Variance_files/figure-html/anova2-1.png" alt="A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes &quot;inter&quot; bien plus grand que l'étalement des points en &quot;intra&quot;-population)." width="672" />
 <p class="caption">(\#fig:anova2)A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes "inter" bien plus grand que l'étalement des points en "intra"-population).</p>
 </div>
 
@@ -227,14 +244,14 @@ La **statistique _F_~obs~ est le rapport des carrés moyens inter/intra.** Elle 
 ##### A vous de jouer ! {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;10a_anova&quot;)</code></pre>
 </div>
 
 La distribution *F* est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d'une allure assez similaire à la distribution du $\chi^2$ que nous avons étudiée au module \@ref(chi2). Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à $+\infty$. La distribution *F* admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. \@ref(fig:fplot) représente la densité de probabilité d'une loi *F* typique^[Les fonctions qui permettent les calculs relatifs à la distribution *F* dans R sont `<x>f()`, et les snippets correspondants dans la SciViews Box sont disponibles à partir de `.if`. Leur utilisation est similaire à celle des distributions vues au module \@ref(proba).].
 
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/fplot-1.svg" alt="Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)." width="672" />
+<img src="10-Variance_files/figure-html/fplot-1.png" alt="Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)." width="672" />
 <p class="caption">(\#fig:fplot)Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge).</p>
 </div>
 
@@ -252,7 +269,7 @@ Nous commençons à avoir l'habitude maintenant. La valeur *P* est calculée com
 Les deux dernières conditions d'applications doivent être vérifiées. La nomralité des résidus doit être rencontrée aussi bien que possible. Un graphique quantile-quantile des résidus permet de se faire une idée, comme sur la Fig. \@ref(fig:resid1). Néanmoins, le test étant relativement robuste à des petites variations par rapport à la distribution normale, surtout si ces variations sont symétriques, nous ne seront pas excessivement stricts ici.
 
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/resid1-1.svg" alt="Graphique quantile-quantile appliqué aux résidus d'une ANOVA pour déterminer si leur distribution se rapproche d'un loi normale." width="672" />
+<img src="10-Variance_files/figure-html/resid1-1.png" alt="Graphique quantile-quantile appliqué aux résidus d'une ANOVA pour déterminer si leur distribution se rapproche d'un loi normale." width="672" />
 <p class="caption">(\#fig:resid1)Graphique quantile-quantile appliqué aux résidus d'une ANOVA pour déterminer si leur distribution se rapproche d'un loi normale.</p>
 </div>
 
@@ -333,7 +350,7 @@ chart(data = crabs2, aspect5 ~ group) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/crabs1-1.svg" alt="Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*." width="672" />
+<img src="10-Variance_files/figure-html/crabs1-1.png" alt="Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*." width="672" />
 <p class="caption">(\#fig:crabs1)Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*.</p>
 </div>
 
@@ -382,7 +399,7 @@ Nous retrouvons ici le tableau de l'ANOVA. La valeur *P* est très faible et inf
 Ce n'est qu'une fois l'ANOVA réalisée que nous pouvons calculer et visionner la distribution des résidus (Fig. \@ref(fig:anova-resid)). Cette distribution s'éloigne aux extrêmes de la distribution normale. Nous sommes dans un cas un peu limite. Soit nous considérons que l'écart est suffisamment léger pour ne pas trop influer sur l'ANOVA, soit nous devons passer à un test non paramétrique. Nous ferons les deux ici à des fins de comparaison.
 
 <div class="figure" style="text-align: center">
-<img src="10-Variance_files/figure-html/anova-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'analyse de `aspect^5`." width="672" />
+<img src="10-Variance_files/figure-html/anova-resid-1.png" alt="Graphique quantile-quantile des résidus pour l'analyse de `aspect^5`." width="672" />
 <p class="caption">(\#fig:anova-resid)Graphique quantile-quantile des résidus pour l'analyse de `aspect^5`.</p>
 </div>
 
@@ -430,10 +447,10 @@ summary(anovaComp. <- confint(multcomp::glht(anova.,
 # Linear Hypotheses:
 #                  Estimate Std. Error t value Pr(>|t|)    
 # B-M - B-F == 0 -0.0036378  0.0002538 -14.331  < 0.001 ***
-# O-F - B-F == 0  0.0008441  0.0002538   3.326  0.00569 ** 
+# O-F - B-F == 0  0.0008441  0.0002538   3.326  0.00589 ** 
 # O-M - B-F == 0 -0.0029979  0.0002538 -11.810  < 0.001 ***
 # O-F - B-M == 0  0.0044820  0.0002538  17.657  < 0.001 ***
-# O-M - B-M == 0  0.0006399  0.0002538   2.521  0.05960 .  
+# O-M - B-M == 0  0.0006399  0.0002538   2.521  0.05938 .  
 # O-M - O-F == 0 -0.0038420  0.0002538 -15.136  < 0.001 ***
 # ---
 # Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -444,7 +461,7 @@ summary(anovaComp. <- confint(multcomp::glht(anova.,
 .oma <- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)
 ```
 
-<img src="10-Variance_files/figure-html/unnamed-chunk-11-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="10-Variance_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" />
 
 Si nous gardons notre seuil $\alpha$ de 5%, seuls les mâles ne diffèrent (tout juste) pas entre eux (``O-M - B-M`) avec une valeur *P* de 6%. Toutes les autres comparaisons deux à deux sont significativement différentes. Sur le graphique, si les intervalles autour des différences de moyennes comprennent zéro, matérialisé par un trait pointillé vertical, les différences ne sont pas significatives.
 
@@ -461,7 +478,7 @@ Les conditions d'application pour le test post hoc de Tukey sont les mêmes que 
 Les conditions d'application de l'ANOVA sont assez restrictives, en particuliers l'homoscédasticité et le normalité des résidus. Dans notre example, nous avons pu stabiliser la variance par une transformation puissance cinq, mais la distribution des résidus n'est pas optimale. Nous pouvons tout aussi bien décider de nous orienter vers la version non paramétrique équivalente\ : le **test de Kruskal-Wallis**.
 
 <div class="warning">
-<p>Le raisonnement entre ANOVA (test paramétrique) et Kruska-Wallis (test non paramétrique) est le même qu'entre le test de Student ou celui de Wilcoxon. Lorsque les conditions sont remplies, l'ANOVA est un test plus puissant à utiliser en priorité. Nous le préfèrerons donc, sauf dans les cas impossibles où aucune transformation des données ne permet d'obtenir une distribution acceptable des résidus et des variances.</p>
+<p>Le raisonnement entre ANOVA (test paramétrique) et Kruska-Wallis (test non paramétrique) est le même qu’entre le test de Student ou celui de Wilcoxon. Lorsque les conditions sont remplies, l’ANOVA est un test plus puissant à utiliser en priorité. Nous le préfèrerons donc, sauf dans les cas impossibles où aucune transformation des données ne permet d’obtenir une distribution acceptable des résidus et des variances.</p>
 </div>
 
 Le test de Kruskal-Wallis va comparer la localisation des points sur l'axe plutôt que les moyennes. Nous travaillons ici sur les **rangs**. La transformation en rangs consiste à ranger les observations de la plus petite à la plus grande et à remplacer les valeurs par leur position (leur rang) dans ce classement. Les ex-aequos reçoivent des rangs équivalents. Un petit exemple\ :
@@ -584,16 +601,16 @@ summary(kw_comp. <- nparcomp::nparcomp(data = crabs2, aspect ~ group))
 # 
 #  #----Analysis--------------------------------------------------------------------------# 
 #       Comparison Estimator Lower Upper Statistic      p.Value
-# 1 p( B-F , B-M )     0.017 0.004 0.070 -7.229567 1.552980e-12
-# 2 p( B-F , O-F )     0.695 0.542 0.815  3.257267 6.084974e-03
-# 3 p( B-F , O-M )     0.051 0.018 0.137 -7.014700 9.799161e-12
-# 4 p( B-M , O-F )     0.990 0.949 0.998  7.210499 1.743827e-12
-# 5 p( B-M , O-M )     0.654 0.501 0.781  2.606445 4.826269e-02
-# 6 p( O-F , O-M )     0.027 0.008 0.088 -7.385440 4.359846e-13
+# 1 p( B-F , B-M )     0.017 0.004 0.070 -7.229567 1.618261e-12
+# 2 p( B-F , O-F )     0.695 0.542 0.815  3.257267 5.905270e-03
+# 3 p( B-F , O-M )     0.051 0.018 0.137 -7.014700 7.867484e-12
+# 4 p( B-M , O-F )     0.990 0.949 0.998  7.210499 2.279288e-12
+# 5 p( B-M , O-M )     0.654 0.501 0.781  2.606445 4.792701e-02
+# 6 p( O-F , O-M )     0.027 0.008 0.088 -7.385440 4.057865e-13
 # 
 #  #----Overall---------------------------------------------------------------------------# 
 #   Quantile      p.Value
-# 1 2.594705 4.359846e-13
+# 1 2.593391 4.057865e-13
 # 
 #  #--------------------------------------------------------------------------------------#
 ```
@@ -602,7 +619,7 @@ summary(kw_comp. <- nparcomp::nparcomp(data = crabs2, aspect ~ group))
 plot(kw_comp.)
 ```
 
-<img src="10-Variance_files/figure-html/unnamed-chunk-15-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="10-Variance_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" />
 
 La présentation des résultats est plus détaillée que pour le HSD de Tukey. Le graphique est très imilaire. Ici, toutes les différences sont considérées comme significatives, même si la comparaison des mâles `B-M - O-M` avec une valeur *P* tout juste significative de 0,049 est à prendre avec des pincettes étant donné sa proximité du seuil.
 
@@ -612,12 +629,12 @@ Au final que conclure\ ? Lorsque l'ANOVA peut être utilisée, elle est à préf
 ##### A vous de jouer {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;10b_anova_kruskal&quot;)</code></pre>
 </div>
 
 <div class="bdd">
-<p>Appliquez l'analyse de variances ou le test de Kruskal-Wallis dans vos projets portant sur la biométrie humaine et sur le zooplankton.</p>
+<p>Appliquez l’analyse de variances ou le test de Kruskal-Wallis dans vos projets portant sur la biométrie humaine et sur le zooplankton.</p>
 </div>
 
 ## Sciences des données et littérature

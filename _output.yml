@@ -1,5 +1,5 @@
 bookdown::gitbook:
-  dev: svglite
+  #dev: svglite
   highlight: kate
   css: style.css
   split_by: section

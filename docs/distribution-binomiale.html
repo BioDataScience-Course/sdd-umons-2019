@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.4 Distribution binomiale | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.4 Distribution binomiale | Science des données biologiques, UMONS />
+  <meta property="og:title" content="7.4 Distribution binomiale | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.4 Distribution binomiale | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="7.4 Distribution binomiale | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="distribution-uniforme.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -411,7 +436,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 </ul>
 <p>Les conditions particulières de cette situation sont appelées <strong>épreuve de Bernoulli</strong>. Mathématiquement, nous l’écrirons comme suit. Soit une variable aléatoire <span class="math inline">\(Y\)</span> qui comptabilise le nombre de succès, la probabilité d’obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais est :</p>
 <p><span class="math display">\[P(Y=j)= C^j_n \times p^j \times (1-p)^{n-j}\]</span></p>
-<p>Le <strong>coefficient binomial</strong> <span class="math inline">\(C^j_n\)</span> vaut<a href="references.html#fn34" class="footnoteRef" id="fnref34"><sup>34</sup></a> : <span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
+<p>Le <strong>coefficient binomial</strong> <span class="math inline">\(C^j_n\)</span> vaut<a href="references.html#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a> : <span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
 <p><span class="math inline">\(C^j_n\)</span> représente le nombre de combinaisons possibles pour obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais réalisés dans un ordre quelconque. On pourra écrire aussi :</p>
 <p><span class="math display">\[Y \sim B(n,p)\]</span></p>
 <p>Notre exemple rentre parfaitement dans le cadre de l’épreuve de Bernoulli avec <em>n</em> = 6 et <em>p</em>, la probabilité du succès, c’est-à-dire, d’avoir un enfant qui ne développe pas la maladie de 3/4 : <span class="math inline">\(Y \sim B(6, 0.75)\)</span>.</p>
@@ -419,13 +444,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="calculs-et-graphiques" class="section level3">
 <h3><span class="header-section-number">7.4.2</span> Calculs et graphiques</h3>
 <p>Les calculs sur base d’une distribution binomiale sont assez similaires à ceux de la distribution uniforme dans R, en remplaçant <code>unif</code> par <code>binom</code> dans le nom des fonction. Voici la liste des snippets à votre disposition dans la SciViews Box pour vous aider (menu <code>(d)istributions: binomial</code> à partir de <code>.ib</code>) :</p>
-<div class="figure">
-<img src="images/sdd1_07/snippets-binomial.png" />
-
-</div>
+<p><img src="images/sdd1_07/snippets-binomial.png" /></p>
 <p>Puisqu’il s’agit d’une distribution discrète, un petit nombre d’événements possibles existent. Le snippet <code>.ibtable</code> retourne l’ensemble des valeurs possibles pour <span class="math inline">\(j\)</span> allant de 1 à <span class="math inline">\(n\)</span> en une seule étape. Les autres snippets devraient vous être familiers.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(.table &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">success =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">6</span>,
-  <span class="dt">probability =</span> <span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">prob =</span> <span class="fl">0.75</span>)))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">(.table &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">success =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">6</span>,
+  <span class="dt">probability =</span> <span class="kw">dbinom</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">6</span>, <span class="dt">prob =</span> <span class="fl">0.75</span>)))</code></pre>
 <pre><code>#   success  probability
 # 1       0 0.0002441406
 # 2       1 0.0043945312
@@ -436,14 +458,14 @@ code > span. { color: #1f1c1b; } /* Normal */
 # 7       6 0.1779785156</code></pre>
 <p>La représentation graphique donne la Fig. <a href="distribution-binomiale.html#fig:binom">7.6</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:binom"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/binom-1.svg" alt="Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/binom-1.png" alt="Probabilité d'avoir *j* enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose." width="672" />
 <p class="caption">
 Figure 7.6: Probabilité d’avoir <em>j</em> enfants sains parmi 6 dans des familles dont les deux parents sont porteurs hétérozygotes du gène de la mucoviscidose.
 </p>
 </div>
 <p>La situation la plus probable est donc d’avoir 5 enfants sains sur 6. Nous pouvons aussi observer que, lorsque <span class="math inline">\(p\)</span> s’éloigne de 0,5, les probabilités à l’extrême opposée tendent assez rapidement vers zéro (ici, la probabilité de n’avoir qu’un seul, ou aucun enfant sain). La distribution binomiale trouve de très nombreuses applications en biologie, en écologie, en génétique et dans d’autres disciplines. Elle permet même de représenter vos chances de réussite à l’examen de science des données biologiques ! Voici, pour finir, l’allure d’une distribution binomiale pour laquelle la probabilité du succès est égale à la probabilité d’échec (0,5). Cette distribution est symétrique.</p>
 <div class="figure" style="text-align: center"><span id="fig:binom2"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/binom2-1.svg" alt="Probabilité d'avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1)." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/binom2-1.png" alt="Probabilité d'avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1)." width="672" />
 <p class="caption">
 Figure 7.7: Probabilité d’avoir des garçons parmi une fratrie de 6 enfants (si le sexe ratio de 1:1).
 </p>
@@ -453,7 +475,7 @@ Figure 7.7: Probabilité d’avoir des garçons parmi une fratrie de 6 enfants (
 <div class="footnotes">
 <hr />
 <ol start="34">
-<li id="fn34"><p>Le factoriel d’un nombre <span class="math inline">\(n\)</span>, noté <span class="math inline">\(n!\)</span> est <span class="math inline">\(1 \times 2 \times 3 \times ... \times n\)</span>, avec <span class="math inline">\(0! = 1\)</span>.<a href="distribution-binomiale.html#fnref34">↩</a></p></li>
+<li id="fn34"><p>Le factoriel d’un nombre <span class="math inline">\(n\)</span>, noté <span class="math inline">\(n!\)</span> est <span class="math inline">\(1 \times 2 \times 3 \times ... \times n\)</span>, avec <span class="math inline">\(0! = 1\)</span>.<a href="distribution-binomiale.html#fnref34" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -532,7 +554,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A.1 Prérequis | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A.1 Prérequis | Science des données biologiques, UMONS />
+  <meta property="og:title" content="A.1 Prérequis | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A.1 Prérequis | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="A.1 Prérequis | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="svbox.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -440,30 +465,18 @@ Une configuration “standard” avec au moins 20Go de libre pour la SciViews Bo
 </ul>
 </div>
 <p>Pour une <strong>configuration de base</strong>, vous pouvez aller jusqu’à diviser les scores Novabench et les valeurs (nombre de coeurs CPU, taille de la mémoire vive et du disque) par deux, et pour une <strong>configuration performante</strong>, multipliez-les par deux, et ajoutez-y éventuellement une carte graphique Nvidia performante pour des calculs GPU et un second disque de 1To pour stocker des gros jeux de données. Un “laptop” (ordinateur portable) est mieux, mais si vous n’avez pas besoin d’une solution nomade, un “desktop” convient aussi et est plus modulable. Pour tester votre système, nous vous proposons donc d’utiliser le logiciel gratuit pour un usage personnel <a href="https://novabench.com/download#personal">Novabench</a>. Vous obtiendrez un rapport, voir ci-dessous un résultat pour un PC en configuration de référence (<a href="https://www.lesnumeriques.com/ordinateur-portable/asus-zenbook-ux303ua-r4098t-p30911/test.html">Asus Zenbook UX330U</a>) et un Mac en configuration optimale <a href="https://www.lesnumeriques.com/ordinateur-portable/macbook-pro-retina-15-2-5-ghz-2015-p26477/test.html">MacBook Pro 15 pouces mid-2015</a>. Vous pourrez comparer à la configuration de référence :</p>
-<div class="figure">
-<img src="images/annexe_a1/Asus_Zenbook_UX330U_novabench.png" />
-
-</div>
-<div class="figure">
-<img src="images/annexe_a1/novabench.png" />
-
-</div>
+<p><img src="images/annexe_a1/Asus_Zenbook_UX330U_novabench.png" /></p>
+<p><img src="images/annexe_a1/novabench.png" /></p>
 </div>
 <div id="activation-de-la-virtualisation" class="section level3">
 <h3><span class="header-section-number">A.1.2</span> Activation de la virtualisation</h3>
 <p>La virtualisation fait appel à un jeu d’instructions disponible sur pratiquement tous les processeurs modernes (Intel VT-x ou AMD-v). Malheureusement, elle est désactivée par défaut sur quasi tous les PC (mais les Macs sont, eux, configurés correctement en sortie d’usine). Tant que ces instructions de virtualisation ne seront pas activées, le programme d’installation de la SciViews Box va bloquer avec le message suivant:</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/msg_no-virtualization.png" />
-
-</div>
+<p><img src="images/annexe1/msg_no-virtualization.png" /></p>
 </center>
 <p>Même si vous arriviez à l’installer quand même, vous ne pourriez pas la démarrer, et verriez juste le message suivant (issu de la version précédente de la SciViews Box):</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/msg_no-virtualization2.png" />
-
-</div>
+<p><img src="images/annexe1/msg_no-virtualization2.png" /></p>
 </center>
 <p>Pour activer ce jeu d’instructions, il faut aller dans le <strong>BIOS</strong>, c’est-à-dire, le petit programme qui démarre votre ordinateur. Il n’y a malheureusement pas de recette unique car chaque constructeur a sa propre façon de faire. De plus, l’endroit où il faut aller dans les menus de configuration du BIOS diffère aussi d’un ordinateur à l’autre. Cependant, la procédure générale est la suivante:</p>
 <ul>
@@ -473,10 +486,7 @@ Une configuration “standard” avec au moins 20Go de libre pour la SciViews Bo
 <li>Sortez du BIOS en sauvegardant les modifications (suivez les instructions à l’écran),</li>
 <li>Redémarrez l’ordinateur.</li>
 </ul>
-<div class="figure">
-<img src="images/annexe1/bios-virtualisation.jpg" />
-
-</div>
+<p><img src="images/annexe1/bios-virtualisation.jpg" /></p>
 <p>Si vous n’arrivez pas à entrer dans le BIOS, ou à trouver l’entrée correspondante dans celui-ci, rechercher “BIOS Virtualization” accompagné de la marque et du modèle de votre ordinateur dans votre moteur de recherche internet favori. Vous y trouverez certainement des instructions plus précises relatives à votre ordinateur. <a href="https://www.tactig.com/enable-intel-vt-x-amd-virtualization-pc-vmware-virtualbox/">Ce site</a> liste quelques uns de raccourcis claviers à utiliser en fonction de la marque des ordinateurs pour entrer dans le BIOS.</p>
 <div class="info">
 <p>
@@ -498,7 +508,7 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 </blockquote>
 <p>L’élément le plus important étant la vitesse de calcul du processeur, obtenez la référence du processeur de l’ordinateur que vous convoitez et recherchez-le <a href="https://novabench.com/parts/cpu?all=true">ici</a>. Comparer alors son score à notre configuration de référence, et faites-en de même pour les autres caractéristiques (mémoire vive, type et taille du disque dur, etc.)</p>
 <p>Prenez aussi comme référence les ordinateurs de votre salle de travaux pratiques. A l’UMONS, dans la salle “Pentagone”, les ordinateurs sont équipés d’Intel Core i5-6400T @ 2.20Ghz. Ce sont des processeurs 4 coeurs/4 threads avec un score CPU Novabench de 511. Ils possèdent également 8Go de mémoire vive, un disque dur SDD avec 190Go dédiés à Windows 10 64-bit, et un processeur graphique intégré qui affiche 1920x1080 pixels à l’écran. Aux salles “Escher” et “Turing”, ce sont des processeurs Intel Core i5-4590 @ 3.30Ghz, également 4 coeurs/4 threads affichant un score CPU Novabench de 515. Le reste de leurs configurations est similaire à celle des ordinateurs “Pentagone”. <strong>Vous pouvez également vous baser sur d’autres tests, les CPUMarks et comparer le processeur de l’ordinateur que vous voulez acheter avec les scores de vos machines des salles de travaux pratiques à partir de <a href="https://www.cpubenchmark.net/compare/Intel-i5-4590-vs-Intel-i5-6400T/2234vs2668">cette page</a>.</strong></p>
-<p>Dans le choix de votre ordinateur, il faut tout d’abord vous demander si vous voulez un ordinateur pour <strong>apprendre</strong> à traiter des données sur des petits tableaux, et que vous prévoyez changer dans 1 ou 2 ans (dans ce cas, une configuration de base convient), ou si vous voulez investir sur plus long terme. Visez alors plus haut. Naturellement, le prix sera un critère fondamental, également<a href="references.html#fn62" class="footnoteRef" id="fnref62"><sup>62</sup></a>.</p>
+<p>Dans le choix de votre ordinateur, il faut tout d’abord vous demander si vous voulez un ordinateur pour <strong>apprendre</strong> à traiter des données sur des petits tableaux, et que vous prévoyez changer dans 1 ou 2 ans (dans ce cas, une configuration de base convient), ou si vous voulez investir sur plus long terme. Visez alors plus haut. Naturellement, le prix sera un critère fondamental, également<a href="references.html#fn62" class="footnote-ref" id="fnref62"><sup>62</sup></a>.</p>
 <p>Justification des besoins :</p>
 <ul>
 <li><p><strong>Processeur :</strong> l’élément le plus important. Un processeur puissant et multitâche est indispensable. Il vous faut au moins 2 coeurs et 4 threads (selon les modèles, chaque coeur peut gérer une seule tâche -ou “thread” en anglais- ou deux). Un processeur 4 coeurs/4 threads est encore mieux, et à partir de 4 coeurs/8 threads, c’est parfait. Pour la vitesse de calcul, comme indiqué plus haut, un score CPU Novabench de 500 ou mieux, ou un CPUMark de 5000 ou mieux doit être visé pour une configuration de référence ou performante. Avec un score moitié moindre, c’est encore un processeur utilisable, mais ne descendez pas en dessous pour une configuration de base.</p></li>
@@ -512,16 +522,16 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 <div id="configurations-de-base" class="section level4">
 <h4><span class="header-section-number">A.1.3.1</span> Configurations de base</h4>
 <p>Evitez autant que possible de descendre en dessous de celles-ci. Dites-vous bien que ces machines sont estampillées “bureautique”, et sont trop juste pour analyser des gros jeux de données, mais elles peuvent convenir parfaitement dans le cadre du cours de science des données biologiques. Si vous possédez déjà un PC, faites un bilan avec <a href="https://novabench.com/download#personal">Novabench</a> et décidez par vous-même si vous pouvez ou non l’utiliser de manière confortable, éventuellement en installant la SciViews Box 2018 et en testant ainsi directement. Les options existent aussi pour “booster” un ordinateur un peu juste : ajout de mémoire vive et/ou remplacement du disque dur par un disque SSD rapide.</p>
-<table>
+<table style="width:100%;">
 <colgroup>
 <col width="23%" />
-<col width="20%" />
+<col width="21%" />
 <col width="7%" />
-<col width="10%" />
+<col width="9%" />
 <col width="11%" />
 <col width="14%" />
 <col width="6%" />
-<col width="5%" />
+<col width="4%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -568,7 +578,7 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 </tr>
 </tbody>
 </table>
-<p>Avec un budget de 500€-600€, des concessions sont nécessaires. A titre d’exemple, nous reprenons deux configurations sous Windows ici. Le Lenovo choisi a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu moins puissant. L’Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n’a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c’est quand même fort juste sous Windows 10 qui est déjà très gourmand en espace disque à la base. Donc votre préférence ira si possible plutôt vers une configuration du type Acer Swift 3 ci-dessus<a href="references.html#fn63" class="footnoteRef" id="fnref63"><sup>63</sup></a>. Des versions avec processeur Core i5 et 8Go de mémoire existent. Elles sont parfaites, … mais le prix les alignent presque avec nos configurations de référence ci-dessous. Vous verrez aussi dans les tests que ces machines ne sont pas irréprochables, mais il faut mettre les “défauts” relevés en regard du prix très contenu, et relativiser. Pour la science des données, nous privilégierons des ordinateurs plus rapides, quitte a être un peu moins bien cotés dans les tests sur la qualité de l’écran (comme l’Acer, par exemple).</p>
+<p>Avec un budget de 500€-600€, des concessions sont nécessaires. A titre d’exemple, nous reprenons deux configurations sous Windows ici. Le Lenovo choisi a 8Go de mémoire vive, mais un disque SDD de faible capacité (128Go) et un processeur un peu moins puissant. L’Acer a un plus gros disque et un meilleur processeur (toujours i3, cependant), mais n’a que 4Go de mémoire vive. Toutefois, un seul disque dur de seulement 128Go, c’est quand même fort juste sous Windows 10 qui est déjà très gourmand en espace disque à la base. Donc votre préférence ira si possible plutôt vers une configuration du type Acer Swift 3 ci-dessus<a href="references.html#fn63" class="footnote-ref" id="fnref63"><sup>63</sup></a>. Des versions avec processeur Core i5 et 8Go de mémoire existent. Elles sont parfaites, … mais le prix les alignent presque avec nos configurations de référence ci-dessous. Vous verrez aussi dans les tests que ces machines ne sont pas irréprochables, mais il faut mettre les “défauts” relevés en regard du prix très contenu, et relativiser. Pour la science des données, nous privilégierons des ordinateurs plus rapides, quitte a être un peu moins bien cotés dans les tests sur la qualité de l’écran (comme l’Acer, par exemple).</p>
 <p>Du côté Mac portables, nous avons le MacBook 12’’ et le MacBook Air, présenté ici. Ils sont beaucoup plus chers, mais ce sont des ordinateurs durables et bien finis qui se revendent très bien. Dans les deux cas, le processeur (même si Core i5, ou i7) est fort juste et est plus à l’aise en bureautique. Pour analyser des petits jeux de données, ça fonctionne quand même bien. Ici aussi, des concessions sont nécessaires sur la capacité du disque dur pour tirer le prix à … 1000€ tout de même ! Mais comme le MacBook Air existe depuis 2015 quasiment inchangé, vous pouvez trouver en occasion des modèles à prix équivalent aux deux autres machines, <strong>mais faites attention à éviter les modèles anciens à processeurs lents qui se vendent encore, et qui ne sont pas assez puissants !</strong> Un modèle avec un disque de 256Go existe aussi. Attention aussi : même si ce modèle vieilli bien, il est quand même en fin de vie. Ca a un impact sur la revente.</p>
 </div>
 <div id="configurations-de-reference" class="section level4">
@@ -576,13 +586,13 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 <p>Avec un budget un peu plus élevé, vous êtes nettement plus confortable : processeur assez rapide <strong>et</strong> 8Go de mémoire vive <strong>et</strong> disque SSD de 256Go. Ces laptops sont parfaits pour le cours de science des données biologiques et pour bien d’autres tâches dans le cadre de vos études.</p>
 <table>
 <colgroup>
+<col width="21%" />
 <col width="20%" />
-<col width="19%" />
 <col width="6%" />
 <col width="15%" />
 <col width="11%" />
 <col width="14%" />
-<col width="6%" />
+<col width="5%" />
 <col width="5%" />
 </colgroup>
 <thead>
@@ -644,8 +654,8 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 <col width="14%" />
 <col width="13%" />
 <col width="14%" />
-<col width="6%" />
 <col width="5%" />
+<col width="4%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -704,7 +714,7 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 </table>
 <p>Le MSI est un PC dit “gamer”. Tous les laptops dans cette catégorie sont très rapides… et conviennent parfaitement bien pour la science des données, <strong>y compris pour les calculs GPU</strong>. Chez MSI, un modèle comme le GS65 Stealth obtient le label de meilleur “gamer laptop 2018” (chez <a href="https://www.techradar.com/news/mobile-computing/laptops/best-laptops-1304361">techradar</a>) et des modèles similaires sont très bien placés ailleurs. Mais nous préférons le GF63 moins cher car équipé d’une carte graphique un cran en dessous, et du coup, mieux positionné en rapport qualité/prix pour les sciences des données. Il est aussi nettement moins lourd. Chez Asus (ROG) et Lenovo entre autres, des machines quasi-équivalentes existent aussi. Attention : d’autres configurations de “laptops gamers” sont lourdes et elles chauffent beaucoup.</p>
 <p>Dans la catégorie <strong>ultraportable</strong>, on trouve aussi diverses machines plus puissantes. Le <strong>Dell XPS 13</strong> de 13’’ est l’un des mieux classés systématiquement dans les tests un peu partout et représentatif de ce type d’ordinateurs ultra-compacts, légers, mais très performants. Poids plume oblige, on a un processeur moins puissant que sur un PC gamer (vérifiez qu’il soit suffisamment performant sur le modèle choisi, en effet, il existe plusieurs processeurs i5 et même i7 trop lents) et une carte graphique plus basique (pas grave). Choisissez un modèle avec 16Go de RAM et au moins 256Go de disque dur. Le nouveau <strong><a href="https://consumer.huawei.com/en/laptops/matebook-x-pro/">Huawei Matebook X Pro</a></strong> est une splendide machine ultraportable avec un magnifique écran de 3000x2000 pixels (excusez du peu !), mais il n’est pas repris ici, car <a href="http://geeko.lesoir.be/2017/12/29/huawei-ne-commercialisera-pas-ses-ordinateurs-en-belgique/">pas commercialisé en Belgique</a>. Il est toutefois <a href="https://www.lesnumeriques.com/ordinateur-portable/huawei-matebook-x-pro-p43303/l-ultraportable-matebook-x-pro-huawei-arrive-en-france-n78557.htmlhuawei%20matebook%20x%20pro">commercialisé en France</a>… si vous acceptez d’utiliser un clavier français légèrement différent du clavier belge. Un <a href="https://www.lesnumeriques.com/ordinateur-portable/huawei-matebook-x-pro-p43303/test.html">test complet</a> est aussi disponible. Ici, vous choisirez la version i5 avec processeur Core i5-8550U, 8Go de RAM et un disque SSD de 256Go pour une configuration de référence à 1500€, mais pourrez opter pour le i7 avec un Core i7-8250U, 16Go de RAM et un disque SDD de 512Go pour une configuration optimale pour environ 2000€. <strong>C’est l’un des meilleurs ordinateurs du moment !</strong></p>
-<p>Toujours dans les ultraportables, vous trouverez aussi les <strong>convertibles</strong>. Ceux équipés d’un écran tactile et qui peuvent se “retourner” pour s’utiliser comme une tablette haut de gamme. Les ordinateurs de type <strong>Microsoft Surface</strong> en sont les représentants emblématiques, mais les tests nous conduisent aussi vers l’<strong>Asus Zenbook Flip</strong> comme l’un des meilleurs (et assurément, un excellent rapport qualité/prix). Ici, on trouve des versions en 13’‘et en 15’’ mais toujours très portables et puissantes. De très bonnes machines pour analyser ses données !</p>
+<p>Toujours dans les ultraportables, vous trouverez aussi les <strong>convertibles</strong>. Ceux équipés d’un écran tactile et qui peuvent se “retourner” pour s’utiliser comme une tablette haut de gamme. Les ordinateurs de type <strong>Microsoft Surface</strong> en sont les représentants emblématiques, mais les tests nous conduisent aussi vers l’<strong>Asus Zenbook Flip</strong> comme l’un des meilleurs (et assurément, un excellent rapport qualité/prix). Ici, on trouve des versions en 13’’ et en 15’’ mais toujours très portables et puissantes. De très bonnes machines pour analyser ses données !</p>
 <p>A titre de comparaison, l’équivalent chez Apple est également présenté (le MacBook Pro 15’’, avec option disque de 512Go et remise “éducation”). Ce dernier est à nouveau beaucoup plus cher. Mais son écran est incomparable, sa finition est impeccable, et il tourne sous MacOS naturellement pour les afficionados ! Le modèle 2018 à 6 coeurs n’a pas encore été testé chez “les numériques”, mais <a href="https://www.lesnumeriques.com/ordinateur-portable/macbook-pro-15-2017-p39735/test.html">voici le test du modèle 2017</a>. <strong>C’est une excellente machine. Malheureusement, la tendance est au minimalisme pour la connectique : du USB-C et c’est tout. Cela oblige à acheter et à transporter des connecteurs supplémentaires.</strong> Les anciennes générations de MacBook Pro, “pré touch bar” se trouvent encore dans le marché de l’occasion à des prix proches de PC équivalents sous Windows. Ils sont un peu moins performants que les nouveaux, mais restent excellents, … et possèdent beaucoup plus de connecteurs intégrés (de bonnes affaires, donc).</p>
 <p><strong>Voilà ! En espérant que ceci pourra vous aider au mieux dans le choix de votre outil informatique.</strong></p>
 </div>
@@ -713,8 +723,8 @@ Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre pro
 <div class="footnotes">
 <hr />
 <ol start="62">
-<li id="fn62"><p>Renseignez-vous au niveau des services étudiants à l’UMONS et à l’AGE : des aides existent pour les étudiants boursiers qui souhaitent acquérir un ordinateur dans le cadre de leurs études.<a href="prerequis-11.html#fnref62">↩</a></p></li>
-<li id="fn63"><p>Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d’autres constructeurs aussi !<a href="prerequis-11.html#fnref63">↩</a></p></li>
+<li id="fn62"><p>Renseignez-vous au niveau des services étudiants à l’UMONS et à l’AGE : des aides existent pour les étudiants boursiers qui souhaitent acquérir un ordinateur dans le cadre de leurs études.<a href="prerequis-11.html#fnref62" class="footnote-back">↩</a></p></li>
+<li id="fn63"><p>Ce ne sont que des exemples. Recherchez des configurations équivalentes chez d’autres constructeurs aussi !<a href="prerequis-11.html#fnref63" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -793,7 +803,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

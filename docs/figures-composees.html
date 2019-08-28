@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.4 Figures composées | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.4 Figures composées | Science des données biologiques, UMONS />
+  <meta property="og:title" content="4.4 Figures composées | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.4 Figures composées | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="4.4 Figures composées | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="boxplot.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -399,7 +424,8 @@ code > span. { color: #1f1c1b; } /* Normal */
             <section class="normal" id="section-">
 <div id="figures-composees" class="section level2">
 <h2><span class="header-section-number">4.4</span> Figures composées</h2>
-<p>Il arrive fréquemment de vouloir combiner plusieurs graphiques dans une même figure. Plusieurs fonctions sont à votre disposition pour cela. Il faut tout d’abord distinguer deux types de figures multi-graphiques :</p>
+<p>Il arrive fréquemment de vouloir combiner plusieurs graphiques dans une même figure.
+Plusieurs fonctions sont à votre disposition pour cela. Il faut tout d’abord distinguer deux types de figures multi-graphiques :</p>
 <ol style="list-style-type: decimal">
 <li>Soit il s’agit d’un seul graphique que vous souhaitez subdiviser par rapport à une ou des variables facteurs.</li>
 <li>Soit il s’agit de graphiques indépendants que vous souhaitez assembler dans une même figure parce que les données ont un lien entre elles, ou parce que ces graphiques sont complémentaires pour comprendre les données.</li>
@@ -408,38 +434,38 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="facettes" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Facettes</h3>
 <p>L’une des règles les plus importantes que vous devez impérativement garder à l’esprit lors de la réalisation de vos graphiques est <em>la simplicité</em>. Plus votre graphique va contenir d’information au plus il sera compliqué à décoder par vos lecteurs.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation de données relative à la croissance de poulets</span>
-(chick_weight &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ChickWeight&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation de données relative à la croissance de poulets</span>
+(chick_weight &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ChickWeight&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>))</code></pre>
 <pre><code># # A tibble: 578 x 4
 #    weight  Time Chick Diet 
 #     &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;fct&gt;
-#  1    42.    0. 1     1    
-#  2    51.    2. 1     1    
-#  3    59.    4. 1     1    
-#  4    64.    6. 1     1    
-#  5    76.    8. 1     1    
-#  6    93.   10. 1     1    
-#  7   106.   12. 1     1    
-#  8   125.   14. 1     1    
-#  9   149.   16. 1     1    
-# 10   171.   18. 1     1    
-# # ... with 568 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique (points semi-transparents)</span>
+#  1     42     0 1     1    
+#  2     51     2 1     1    
+#  3     59     4 1     1    
+#  4     64     6 1     1    
+#  5     76     8 1     1    
+#  6     93    10 1     1    
+#  7    106    12 1     1    
+#  8    125    14 1     1    
+#  9    149    16 1     1    
+# 10    171    18 1     1    
+# # … with 568 more rows</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Réalisation du graphique (points semi-transparents)</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> chick_weight, weight <span class="op">~</span><span class="st"> </span>Time <span class="op">%col=%</span><span class="st"> </span>Diet) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age [j]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Masse [g]&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age [j]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Masse [g]&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:chick1"></span>
-<img src="04-Visualisation-III_files/figure-html/chick1-1.svg" alt="Croissance de poulets en utilisant quatre aliments différents." width="672" />
+<img src="04-Visualisation-III_files/figure-html/chick1-1.png" alt="Croissance de poulets en utilisant quatre aliments différents." width="672" />
 <p class="caption">
 Figure 4.10: Croissance de poulets en utilisant quatre aliments différents.
 </p>
 </div>
 <p>Le graphique à la Fig. <a href="figures-composees.html#fig:chick1">4.10</a> est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremêlés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L’information est la même mais la lecture est beaucoup plus aisée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> chick_weight, weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> chick_weight, weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age [j]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Masse [g]&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age [j]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Masse [g]&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.svg" alt="Croissance de poulets en utilisant quatre aliments différents (1-4)." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.png" alt="Croissance de poulets en utilisant quatre aliments différents (1-4)." width="672" />
 <p class="caption">
 Figure 4.11: Croissance de poulets en utilisant quatre aliments différents (1-4).
 </p>
@@ -449,7 +475,7 @@ Figure 4.11: Croissance de poulets en utilisant quatre aliments différents (1-4
 <div id="graphiques-assembles" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> Graphiques assemblés</h3>
 <p>La fonction <code>combine_charts()</code> permet de combiner plusieurs graphiques dans une figure unique. Nous l’avons déjà utilisée à plusieurs reprises. Cette fonction attend une liste de graphiques de type <code>chart()</code> à assembler.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation des données</span>
 urchin &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>)
 <span class="co"># Réalisation des graphiques</span>
 a &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">data =</span> urchin, weight <span class="op">~</span><span class="st"> </span>height <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
@@ -459,9 +485,9 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">d
 <span class="st">  </span><span class="kw">geom_point</span>()
 
 <span class="co"># Combinaison des graphiques dans une même figure</span>
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.svg" alt="A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins." width="672" />
+<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.png" alt="A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins." width="672" />
 <p class="caption">
 Figure 4.12: A) Masse d’oursins en fonction de leur taille et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins.
 </p>
@@ -554,7 +580,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

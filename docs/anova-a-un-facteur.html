@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.2 ANOVA à un facteur | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS />
+  <meta property="og:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="10.2 ANOVA à un facteur | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="le-danger-des-tests-multiples.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -432,15 +457,17 @@ Cette propriété, dite d’additivité des variances, permet de décomposer la 
 <p>Avec l’indice <span class="math inline">\(j = 1 .. k\)</span> populations et l’indice <span class="math inline">\(i = 1 .. n\)</span> observations du jeu de données. Chaque observation <span class="math inline">\(y_{ij}\)</span> correspond à deux écarts successifs de la moyenne globale <span class="math inline">\(\mu\)</span> : une constante “tau” par population <span class="math inline">\(\tau_j\)</span> d’une part et un terme <span class="math inline">\(\epsilon_i\)</span> que l’on appelle les <strong>résidus</strong> et qui est propre à chaque observation individuelle. C’est ce dernier terme qui représente la partie statistique du modèle avec une distribution normale centrée sur zéro et avec un écart type <span class="math inline">\(\sigma\)</span> que nous admettrons constant et identique pour toutes les populations par construction.</p>
 <p>Le graphique à la Fig. <a href="anova-a-un-facteur.html#fig:anova1">10.3</a> représente une situation typique à trois sous-populations.</p>
 <div class="figure" style="text-align: center"><span id="fig:anova1"></span>
-<img src="10-Variance_files/figure-html/anova1-1.svg" alt="Décomposition de la variance dans un cas à trois populations A, B et C fictives." width="672" />
+<img src="10-Variance_files/figure-html/anova1-1.png" alt="Décomposition de la variance dans un cas à trois populations A, B et C fictives." width="672" />
 <p class="caption">
 Figure 10.3: Décomposition de la variance dans un cas à trois populations A, B et C fictives.
 </p>
 </div>
 <p>Notons que ce modèle à trois termes représente bien la situation qui nous intéresse, mais aussi, qu’il décompose la variance totale (entre <span class="math inline">\(\mu\)</span> et chaque point observé) en deux : ce que nous appelerons le terme <strong>inter</strong> représentant l’écart entre la moyenne globale <span class="math inline">\(\mu\)</span> et la moyenne de la sous-population concernées (<span class="math inline">\(\tau_j\)</span>) et le terme <strong>intra</strong> depuis cette moyenne de la sous-population jusqu’au point observé (<span class="math inline">\(\epsilon_i\)</span>).</p>
 <p>D’une part, nous nous trouvons dans une situation d’additivité de la variance si nous décidons de calculer ces “variance inter” et “variance intra”. D’autre part, sous <span class="math inline">\(H_0\)</span> nous sommes sensés avoir toutes les moyennes égales à <span class="math inline">\(\mu\)</span>, et donc, tous les <span class="math inline">\(\tau_j = 0\)</span>. Donc, les valeurs non nulles de <span class="math inline">\(\tau_j\)</span> ne doivent qu’être dus au hasard de l’échantillonnage et être par conséquent largement inférieurs à la variabilité entre les individus, ou variance intra <span class="math inline">\(\epsilon_i\)</span>. La Fig. <a href="anova-a-un-facteur.html#fig:anova2">10.4</a> représente deux cas avec à gauche une situation où <span class="math inline">\(H_0\)</span> est plausible, et à droite une situation où elle est très peu plausible. Notez qu’à gauche la variation entre les observations (intra) est bien plus grande que l’écart entre les moyennes (inter), alors qu’à droite c’est l’inverse.</p>
+<pre><code># Warning: `data_frame()` is deprecated, use `tibble()`.
+# This warning is displayed once per session.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:anova2"></span>
-<img src="10-Variance_files/figure-html/anova2-1.svg" alt="A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes &quot;inter&quot; bien plus grand que l'étalement des points en &quot;intra&quot;-population)." width="672" />
+<img src="10-Variance_files/figure-html/anova2-1.png" alt="A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l'écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes &quot;inter&quot; bien plus grand que l'étalement des points en &quot;intra&quot;-population)." width="672" />
 <p class="caption">
 Figure 10.4: A. Cas fictif avec moyennes probablement égales entre populations (étalement des points bien plus large que l’écart entre les moyennes), B. cas où les moyennes sont probablement différentes (écart des moyennes “inter” bien plus grand que l’étalement des points en “intra”-population).
 </p>
@@ -510,9 +537,9 @@ Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio da
 </p>
 <pre><code>BioDataScience::run(&quot;10a_anova&quot;)</code></pre>
 </div>
-<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="references.html#fn50" class="footnoteRef" id="fnref50"><sup>50</sup></a>.</p>
+<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="references.html#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:fplot"></span>
-<img src="10-Variance_files/figure-html/fplot-1.svg" alt="Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)." width="672" />
+<img src="10-Variance_files/figure-html/fplot-1.png" alt="Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)." width="672" />
 <p class="caption">
 Figure 10.5: Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus <em>F~obs</em> est grand, plus l’hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge).
 </p>
@@ -531,7 +558,7 @@ Figure 10.5: Allure typique de la densité de probabilité de la distribution F 
 </ul>
 <p>Les deux dernières conditions d’applications doivent être vérifiées. La nomralité des résidus doit être rencontrée aussi bien que possible. Un graphique quantile-quantile des résidus permet de se faire une idée, comme sur la Fig. <a href="anova-a-un-facteur.html#fig:resid1">10.6</a>. Néanmoins, le test étant relativement robuste à des petites variations par rapport à la distribution normale, surtout si ces variations sont symétriques, nous ne seront pas excessivement stricts ici.</p>
 <div class="figure" style="text-align: center"><span id="fig:resid1"></span>
-<img src="10-Variance_files/figure-html/resid1-1.svg" alt="Graphique quantile-quantile appliqué aux résidus d'une ANOVA pour déterminer si leur distribution se rapproche d'un loi normale." width="672" />
+<img src="10-Variance_files/figure-html/resid1-1.png" alt="Graphique quantile-quantile appliqué aux résidus d'une ANOVA pour déterminer si leur distribution se rapproche d'un loi normale." width="672" />
 <p class="caption">
 Figure 10.6: Graphique quantile-quantile appliqué aux résidus d’une ANOVA pour déterminer si leur distribution se rapproche d’un loi normale.
 </p>
@@ -547,53 +574,53 @@ Figure 10.6: Graphique quantile-quantile appliqué aux résidus d’une ANOVA po
 <div id="resolution-de-notre-exemple" class="section level5 unnumbered">
 <h5>Résolution de notre exemple</h5>
 <p>Nous commençons par déterminer si nous avons homoscédasticité. Cosidérons un seuil <span class="math inline">\(\alpha\)</span> de 5% pour tous nos tests. Ensuite :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect <span class="op">~</span><span class="st"> </span>group)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect <span class="op">~</span><span class="st"> </span>group)</code></pre>
 <pre><code># 
 #   Bartlett test of homogeneity of variances
 # 
 # data:  aspect by group
 # Bartlett&#39;s K-squared = 24.532, df = 3, p-value = 1.935e-05</code></pre>
 <p>Nous rejettons <span class="math inline">\(H_0\)</span>. Il n’y a pas homoscédasticité. Calculons par exemple le logarithme népérien de <code>aspect</code> et réessayons :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">log_aspect =</span> <span class="kw">ln</span>(aspect)) -&gt;
 <span class="st">  </span>crabs2
-<span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, log_aspect <span class="op">~</span><span class="st"> </span>group)</code></pre></div>
+<span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, log_aspect <span class="op">~</span><span class="st"> </span>group)</code></pre>
 <pre><code># 
 #   Bartlett test of homogeneity of variances
 # 
 # data:  log_aspect by group
 # Bartlett&#39;s K-squared = 37.891, df = 3, p-value = 2.981e-08</code></pre>
 <p>Ici cela ne fonctionne pas. Cela fait pire qu’avant. La transformation inverse (<code>exp()</code>) peut être essayée mais ne stabilise pas suffisamment la variance. Après divers essais, il s’avère qu’une transformation puissance cinq stabilise bien la variance.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">aspect5 =</span> aspect<span class="op">^</span><span class="dv">5</span>) -&gt;
 <span class="st">  </span>crabs2
-<span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group)</code></pre></div>
+<span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group)</code></pre>
 <pre><code># 
 #   Bartlett test of homogeneity of variances
 # 
 # data:  aspect5 by group
 # Bartlett&#39;s K-squared = 1.7948, df = 3, p-value = 0.6161</code></pre>
 <p>La Fig. <a href="anova-a-un-facteur.html#fig:crabs1">10.7</a> montre la distribution dans les différents groupes de la variable transformée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(crabs2, group) <span class="op">%&gt;.%</span>
 <span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(aspect5, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
     <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>group), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;(ratio largeur arrière/max)^5&quot;</span>)</code></pre></div>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;(ratio largeur arrière/max)^5&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:crabs1"></span>
-<img src="10-Variance_files/figure-html/crabs1-1.svg" alt="Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*." width="672" />
+<img src="10-Variance_files/figure-html/crabs1-1.png" alt="Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*." width="672" />
 <p class="caption">
 Figure 10.7: Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes <em>L. variegatus</em>.
 </p>
 </div>
-<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="references.html#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
+<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="references.html#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a> :</p>
+<pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">group_by</span>(., group) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">summarise</span>(.,
     <span class="dt">mean  =</span> <span class="kw">mean</span>(aspect5),
     <span class="dt">sd    =</span> <span class="kw">sd</span>(aspect5),
-    <span class="dt">count =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(aspect5)))</code></pre></div>
+    <span class="dt">count =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(aspect5)))</code></pre>
 <pre><code># # A tibble: 4 x 4
 #   group    mean      sd count
 #   &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;
@@ -602,7 +629,7 @@ Figure 10.7: Transformation puissance cinq du ratio largeur arrière/largeur max
 # 3 O-F   0.00811 0.00138    50
 # 4 O-M   0.00427 0.00130    50</code></pre>
 <p>Ensuite l’ANOVA proprement dite :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>group))</code></pre>
 <pre><code># Analysis of Variance Table
 # 
 # Response: aspect5
@@ -614,7 +641,7 @@ Figure 10.7: Transformation puissance cinq du ratio largeur arrière/largeur max
 <p>Nous retrouvons ici le tableau de l’ANOVA. La valeur <em>P</em> est très faible et inférieure à <span class="math inline">\(\alpha\)</span>. Nous rejettons <span class="math inline">\(H_0\)</span>. Nous pouvons dire que le ratio largeur arrière / max à la puissance cinq diffère significativement entre les groupes (ANOVA, F = 150, ddl = 3 &amp; 196, valeur <em>P</em> &lt;&lt; 10<sup>-3</sup>).</p>
 <p>Ce n’est qu’une fois l’ANOVA réalisée que nous pouvons calculer et visionner la distribution des résidus (Fig. <a href="anova-a-un-facteur.html#fig:anova-resid">10.8</a>). Cette distribution s’éloigne aux extrêmes de la distribution normale. Nous sommes dans un cas un peu limite. Soit nous considérons que l’écart est suffisamment léger pour ne pas trop influer sur l’ANOVA, soit nous devons passer à un test non paramétrique. Nous ferons les deux ici à des fins de comparaison.</p>
 <div class="figure" style="text-align: center"><span id="fig:anova-resid"></span>
-<img src="10-Variance_files/figure-html/anova-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'analyse de `aspect^5`." width="672" />
+<img src="10-Variance_files/figure-html/anova-resid-1.png" alt="Graphique quantile-quantile des résidus pour l'analyse de `aspect^5`." width="672" />
 <p class="caption">
 Figure 10.8: Graphique quantile-quantile des résidus pour l’analyse de <code>aspect^5</code>.
 </p>
@@ -634,8 +661,8 @@ Figure 10.8: Graphique quantile-quantile des résidus pour l’analyse de <code>
 <div class="footnotes">
 <hr />
 <ol start="50">
-<li id="fn50"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref50">↩</a></p></li>
-<li id="fn51"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref51">↩</a></p></li>
+<li id="fn50"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref50" class="footnote-back">↩</a></p></li>
+<li id="fn51"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref51" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -714,7 +741,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

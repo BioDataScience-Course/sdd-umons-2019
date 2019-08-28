@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.2 Modèle sans interactions | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.2 Modèle sans interactions | Science des données biologiques, UMONS />
+  <meta property="og:title" content="11.2 Modèle sans interactions | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.2 Modèle sans interactions | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="11.2 Modèle sans interactions | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="anova-a-deux-facteurs.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -404,7 +429,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>avec <span class="math inline">\(\tau1_j\)</span> correspondant à l’écart de la moyenne générale <span class="math inline">\(µ\)</span> à la moyenne selon la j<sup>ème</sup> population pour la variable <code>fact1</code>, et <span class="math inline">\(\tau2_k\)</span> correspondant à l’écart vers le k<sup>ème</sup> niveau d’une seconde variable <code>fact2</code>. La formule qui spécifie ce modèle dans R avec les trois variables <code>y</code>, <code>fact1</code> et <code>fact2</code> s’écrit :</p>
 <p><span class="math display">\[y \sim fact1 + fact2\]</span></p>
 <p>Notez que, quel que soit le niveau considéré pour <span class="math inline">\(\tau1\)</span>, un niveau donné de <span class="math inline">\(\tau2\)</span> est constant dans l’équation qui décrit ce modèle. Cela signifie que l’on considère que les écarts pour les moyennes de la variable <code>fact2</code> sont toujours les mêmes depuis les moyennes de <code>fact1</code>. Donc, si une sous-population de <code>fact2</code> tend à avoir une moyenne, disons, supérieure pour la première sous-population de <code>fact1</code>, elle sera considérée comme ayant les mêmes écarts pour toutes les autres sous-populations de <code>fact1</code>. Evidemment, cette condition n’est pas toujours rencontrée dans la pratique. Le <strong>graphique des interactions</strong> (Fig. <a href="modele-sans-interactions.html#fig:interactions">11.1</a>) permet de visualiser les écarts des moyennes respectives des différentes sous-populations.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read</span>(<span class="st">&quot;crabs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;MASS&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>) <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read</span>(<span class="st">&quot;crabs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;MASS&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">aspect =</span> <span class="kw">labelise</span>(
     <span class="kw">as.numeric</span>(rear <span class="op">/</span><span class="st"> </span>width),
     <span class="st">&quot;Ratio largeur arrière / max&quot;</span>, <span class="dt">units =</span> <span class="ot">NA</span>)) <span class="op">%&gt;.%</span>
@@ -412,8 +437,10 @@ code > span. { color: #1f1c1b; } /* Normal */
     aspect<span class="op">^</span><span class="dv">5</span>,
     <span class="st">&quot;(Ratio largeur arrière /max)^5&quot;</span>, <span class="dt">units =</span> <span class="ot">NA</span>)) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">select</span>(., species, sex, aspect, aspect5) -&gt;
-<span class="st">  </span>crabs2
-<span class="co"># Graphique de base pour visualiser les interactions</span>
+<span class="st">  </span>crabs2</code></pre>
+<pre><code># Warning: The `printer` argument is deprecated as of rlang 0.3.0.
+# This warning is displayed once per session.</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Graphique de base pour visualiser les interactions</span>
 <span class="co">#chart$base(interaction.plot(crabs2$species, crabs2$sex, crabs2$aspect5))</span>
 <span class="co"># Version avec ggplot2</span>
 crabs2 <span class="op">%&gt;.%</span>
@@ -422,7 +449,7 @@ crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">print</span>(.) <span class="op">%&gt;.%</span><span class="st"> </span><span class="co"># Tableau des moyennes par groupes</span>
 <span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., aspect5_groups <span class="op">~</span><span class="st"> </span>species <span class="op">%col=%</span><span class="st"> </span>sex <span class="op">%group=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_line</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>()</code></pre></div>
+<span class="st">    </span><span class="kw">geom_point</span>()</code></pre>
 <pre><code># # A tibble: 4 x 3
 # # Groups:   species [?]
 #   species sex   aspect5_groups
@@ -431,16 +458,19 @@ crabs2 <span class="op">%&gt;.%</span>
 # 2 B       M            0.00363
 # 3 O       F            0.00811
 # 4 O       M            0.00427</code></pre>
+<pre><code># Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+# Please use `as_label()` or `as_name()` instead.
+# This warning is displayed once per session.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:interactions"></span>
-<img src="11-Variance-II_files/figure-html/interactions-1.svg" alt="Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu'il n'y a pas d'interactions, comme c'est le cas ici." width="672" />
+<img src="11-Variance-II_files/figure-html/interactions-1.png" alt="Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu'il n'y a pas d'interactions, comme c'est le cas ici." width="672" />
 <p class="caption">
 Figure 11.1: Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu’il n’y a pas d’interactions, comme c’est le cas ici.
 </p>
 </div>
 <p>Au niveau de la description préliminaire des données, nous pourrons utiliser un tableau qui résume la moyenne, l’écart type et le nombre d’observations pout chaque combinaison des deux variables facteurs. Le template de ce code est disponible dans un “snippet” à partir du menu <code>hypothesis tests: means</code> ou <code>.hm</code>, et ensuite <code>two-way ANOVA (description)</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">group_by</span>(., species, sex) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">summarise</span>(., <span class="dt">mean =</span> <span class="kw">mean</span>(aspect5), <span class="dt">sd =</span> <span class="kw">sd</span>(aspect5), <span class="dt">count =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(aspect5)))</code></pre></div>
+<span class="st">  </span><span class="kw">summarise</span>(., <span class="dt">mean =</span> <span class="kw">mean</span>(aspect5), <span class="dt">sd =</span> <span class="kw">sd</span>(aspect5), <span class="dt">count =</span> <span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(aspect5)))</code></pre>
 <pre><code># # A tibble: 4 x 5
 # # Groups:   species [?]
 #   species sex      mean      sd count
@@ -450,36 +480,36 @@ Figure 11.1: Graphique des interactions entre les variables facteurs (espèce et
 # 3 O       F     0.00811 0.00138    50
 # 4 O       M     0.00427 0.00130    50</code></pre>
 <p>Pour la visualisation graphique, nous sommes tributaires du nombre d’observations. Avec moins d’une petite dizaine d’observations, nous représenterons des points pour chaque observation et superposerons les moyennes. Lorsque le nombre est plus grand nous pourrons utiliser soit les boites de dispersion, soit le graphique en violon si ce nombre est encore plus grand. Voyons cela sur notre exemple (les “snippets” dans le menu <code>chart: bivariate</code> peuvent être utilisés comme point de départ auquel nous ajoutons la seconde variable facteur pour les facettes multi-graphiques séparée par un <code>|</code>). La Fig. <a href="modele-sans-interactions.html#fig:crabs2boxplot">11.2</a> montre ce que cela donne si l’on opte pour les boites de dispersion.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>sex) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:crabs2boxplot"></span>
-<img src="11-Variance-II_files/figure-html/crabs2boxplot-1.svg" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version simple." width="672" />
+<img src="11-Variance-II_files/figure-html/crabs2boxplot-1.png" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version simple." width="672" />
 <p class="caption">
 Figure 11.2: Taille relative de la carapace à l’arrière de crabes <em>L. variegatus</em> (deux variétés et deux sexes), version simple.
 </p>
 </div>
 <p>La Fig. <a href="modele-sans-interactions.html#fig:crabs2boxplot2">11.3</a> est une version améliorée avec les observations et les moyennes pour chaque sous-groupe ajoutées au graphique selon la même technique que nous avions utilisé pour représenter les données pour l’ANOVA à un facteur.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>sex) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">|</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(crabs2, species, sex) <span class="op">%&gt;.%</span>
 <span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(aspect5, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
-    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>species), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>species), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:crabs2boxplot2"></span>
-<img src="11-Variance-II_files/figure-html/crabs2boxplot2-1.svg" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version annotée." width="672" />
+<img src="11-Variance-II_files/figure-html/crabs2boxplot2-1.png" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version annotée." width="672" />
 <p class="caption">
 Figure 11.3: Taille relative de la carapace à l’arrière de crabes <em>L. variegatus</em> (deux variétés et deux sexes), version annotée.
 </p>
 </div>
 <p>Maintenant que nous avons décrit correctement nos données par rapport à l’analyse que nous souhaitons faire, nous pouvons réaliser notre ANOVA à deux facteurs. Nous devons vérifier l’homoscédasticité, mais le test de Batlett que nous réalisons revient au même que celui que nous avons fait en décomposant toutes les sous-populations. Comme nous n’avons pas nécessairement ce calcul réalisé (la variable <code>group</code> que nous avions calculée au module <a href="variance.html#variance">10</a>), nous utilisons la fonction <code>interaction()</code> qui effectue ce calcul pour nous directement dans la formule :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(species, sex))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span><span class="kw">interaction</span>(species, sex))</code></pre>
 <pre><code># 
 #   Bartlett test of homogeneity of variances
 # 
 # data:  aspect5 by interaction(species, sex)
 # Bartlett&#39;s K-squared = 1.7948, df = 3, p-value = 0.6161</code></pre>
 <p>Si vous comparez avec le test que nous avions fait dans le cas de l’ANOVA à un facteur sur la variable <code>group</code>, vous constaterez qu’il donne exectement le même résultat. Nous continuons avec notre ANOVA. Nous avons un “snippet” pour cela dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code> qui se nomme <code>two-way ANOVA (without interactions)</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">+</span><span class="st"> </span>sex))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> crabs2, aspect5 <span class="op">~</span><span class="st"> </span>species <span class="op">+</span><span class="st"> </span>sex))</code></pre>
 <pre><code># Analysis of Variance Table
 # 
 # Response: aspect5
@@ -490,10 +520,10 @@ Figure 11.3: Taille relative de la carapace à l’arrière de crabes <em>L. var
 # ---
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Comme la variance est décomposée en trois étapes (selon l’espèce, puis selon le sexe, puis les résidus), nous avons trois lignes dans le tableau de l’ANOVA. Nous effectuons deux tests. Le premier consiste à comparer les carrés moyens (<code>Mean Sq</code>) pour l’espèce par rapport aux résidus. Donc, la valeur <code>F</code> est le ratio de la somme des carrés <code>species</code> divisé par la somme des carrés des résidus, et cette valeur est reportée sur la loi de distribution théorique <em>F</em> pour obtenir une première valeur <em>P</em> (ici 5,12 . 10<sup>-5</sup>). De même, le second test qui s’intéresse au sexe calcule la valeur <em>F</em> via la ratio de la somme des carrés pour <code>sex</code> divisé par la somme des carrés des résidus, et la loi <em>F</em> nous permet de calculer une seconde valeur <em>P</em> (ici 2,2 . 10<sup>-16</sup>).</p>
-<p>Nous interprétons chacun des deux tests séparément. Dans notre cas, nous pouvons dire avec un seuil <span class="math inline">\(\alpha\)</span> de 5% que nous rejettons <span class="math inline">\(H_0\)</span> dans les deux cas. Donc le rapport largeur arrière sur largeur max de la carapace est significativement différent au seuil <span class="math inline">\(\alpha\)</span> de 5% à la fois en fonction de l’espèce (F = 17,15, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001) et du sexe (F = 436, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001)<a href="references.html#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a>.</p>
+<p>Nous interprétons chacun des deux tests séparément. Dans notre cas, nous pouvons dire avec un seuil <span class="math inline">\(\alpha\)</span> de 5% que nous rejettons <span class="math inline">\(H_0\)</span> dans les deux cas. Donc le rapport largeur arrière sur largeur max de la carapace est significativement différent au seuil <span class="math inline">\(\alpha\)</span> de 5% à la fois en fonction de l’espèce (F = 17,15, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001) et du sexe (F = 436, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001)<a href="references.html#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a>.</p>
 <p>La suite logique consiste à réaliser des tests “post hoc”. Ils ne sont pas vraiment nécessaires ici puisque nous n’avons que deux niveaux pour chacune des deux variables, mais nous les réalisons quand même pour montrer le code correspondant. Un template est accessible via le “snippet” <code>anova - multiple comparisons [multcomp]</code> du menu <code>.hm</code>. Pensez juste à rajouter le second facteur <code>sex</code> dans les arguments de la fonction <code>mcp()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(anovaComp. &lt;-<span class="st"> </span><span class="kw">confint</span>(multcomp<span class="op">::</span><span class="kw">glht</span>(anova.,
-  <span class="dt">linfct =</span> multcomp<span class="op">::</span><span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Tukey&quot;</span>, <span class="dt">sex =</span> <span class="st">&quot;Tukey&quot;</span>)))) <span class="co"># Add a second factor if you want</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(anovaComp. &lt;-<span class="st"> </span><span class="kw">confint</span>(multcomp<span class="op">::</span><span class="kw">glht</span>(anova.,
+  <span class="dt">linfct =</span> multcomp<span class="op">::</span><span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Tukey&quot;</span>, <span class="dt">sex =</span> <span class="st">&quot;Tukey&quot;</span>)))) <span class="co"># Add a second factor if you want</span></code></pre>
 <pre><code># 
 #    Simultaneous Tests for General Linear Hypotheses
 # 
@@ -509,11 +539,11 @@ Figure 11.3: Taille relative de la carapace à l’arrière de crabes <em>L. var
 # ---
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 # (Adjusted p values reported -- single-step method)</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">.oma &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">oma =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>)); <span class="kw">plot</span>(anovaComp.); <span class="kw">par</span>(.oma); <span class="kw">rm</span>(.oma)</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-5-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">.oma &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">oma =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>)); <span class="kw">plot</span>(anovaComp.); <span class="kw">par</span>(.oma); <span class="kw">rm</span>(.oma)</code></pre>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Ceci confirme que les différences sont significatives au seuil <span class="math inline">\(\alpha\)</span> de 5%. Il ne nous reste plus qu’à vérifier la distribution des résidus de l’ANOVA pour que notre analyse soit complète (Fig. <a href="modele-sans-interactions.html#fig:anova2-resid">11.4</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:anova2-resid"></span>
-<img src="11-Variance-II_files/figure-html/anova2-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs sans interactions de `aspect^5`." width="672" />
+<img src="11-Variance-II_files/figure-html/anova2-resid-1.png" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs sans interactions de `aspect^5`." width="672" />
 <p class="caption">
 Figure 11.4: Graphique quantile-quantile des résidus pour l’ANOVA à deux facteurs sans interactions de <code>aspect^5</code>.
 </p>
@@ -536,7 +566,7 @@ Figure 11.4: Graphique quantile-quantile des résidus pour l’ANOVA à deux fac
 <div class="footnotes">
 <hr />
 <ol start="53">
-<li id="fn53"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="modele-sans-interactions.html#fnref53">↩</a></p></li>
+<li id="fn53"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="modele-sans-interactions.html#fnref53" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -615,7 +645,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.6 Syntaxe de R | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS />
+  <meta property="og:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="11.6 Syntaxe de R | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="effet-aleatoire.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -404,7 +429,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Dans cette dernière section du module <a href="variance2.html#variance2">11</a>, nous revenons sur nos outils logiciels. C’est bien de connaître les techniques de visualisation et d’analyse des données, mais c’est encore mieux de pouvoir les appliquer en pratique, … et pour cela il faut maîtriser un ou plusieurs logiciels. Nous avons utilisé principalement <strong>R</strong>, via l’interface proposée par RStudio. Nous allons maintenant approfondir quelque peu nos connaissances en R.</p>
 </div>
 
-<p>Vous avez pu vous rendre compte que R n’est pas qu’un logiciel de science des données. Il comprend également un <strong>langage informatique</strong> du même nom<a href="references.html#fn56" class="footnoteRef" id="fnref56"><sup>56</sup></a> dédié à la manipulation, la visualisation et l’analyse des données.</p>
+<p>Vous avez pu vous rendre compte que R n’est pas qu’un logiciel de science des données. Il comprend également un <strong>langage informatique</strong> du même nom<a href="references.html#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a> dédié à la manipulation, la visualisation et l’analyse des données.</p>
 <p>Les langages informatiques sont, pour la plupart, conçus autour de standards bien définis. Mais R est toujours resté volontairement très libertaire à ce niveau. Comme R permet également de presque tout redéfinir dans son langage, il est apparu au cours du temps différents styles. Ces styles co-existent et co-existeront encore longtemps car ils ont tous des avantages et des inconvénients, ce qui mène à des choix personnels de chaque utilisateur dictés par l’usage qu’il fait de R, ses goûts, son caractère, et comment il a été formé (à quelle “école” il appartient). Nous n’entrerons pas dans les débats stériles autant que passionnés autour de ces questions de styles. Il est cependant utile de comprendre ces différentes approches au moins dans leurs grandes lignes.</p>
 <p>Aujourd’hui, on peut distinguer principalement trois styles dans R, <a href="http://www.amelia.mn/Syntax-cheatsheet.pdf">résumés dans un aide-mémoire</a> :</p>
 <ul>
@@ -417,136 +442,136 @@ code > span. { color: #1f1c1b; } /* Normal */
 <h3><span class="header-section-number">11.6.1</span> Indiçage dans R</h3>
 <p>Après l’opérateur particulier <code>&lt;-</code> d’<em>assignation</em> (associer une valeur à un nom dans un langage informatique), les diverses variantes de l’indiçage de vecteurs, matrices et data frames sont caractéristiques de R. Elles sont puissantes, mais nécessitent de s’y attarder un peu pour bien les comprendre.</p>
 <p>Les données et les calculs dans R sont <strong>vectorisés</strong>. Cela signifie que l’élément de base est un vecteur. Un vecteur est un ensemble d’éléments rangés dans un ordre bien défini, et éventuellement nommés. La longueur du vecteur s’obtient avec <code>length()</code>, et il est possible de spécifier un ou plusieurs éléments du vecteur à l’aide de l’opérateur <code>[]</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Un vecteur contenant 4 valeurs numériques nommées a, b, c et d</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Un vecteur contenant 4 valeurs numériques nommées a, b, c et d</span>
 v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">a =</span> <span class="fl">2.6</span>, <span class="dt">b =</span> <span class="fl">7.1</span>, <span class="dt">c =</span> <span class="fl">4.9</span>, <span class="dt">d =</span> <span class="fl">5.0</span>)
 <span class="co"># Le second élément du vecteur</span>
-v[<span class="dv">2</span>]</code></pre></div>
+v[<span class="dv">2</span>]</code></pre>
 <pre><code>#   b 
 # 7.1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Le premier et le troisième élément</span>
-v[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Le premier et le troisième élément</span>
+v[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]</code></pre>
 <pre><code>#   a   c 
 # 2.6 4.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Les 3 premiers éléments avec la séquence 1, 2, 3 issue de 1:3</span>
-v[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Les 3 premiers éléments avec la séquence 1, 2, 3 issue de 1:3</span>
+v[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</code></pre>
 <pre><code>#   a   b   c 
 # 2.6 7.1 4.9</code></pre>
 <p>Nous venons d’indicer notre vecteur <code>v</code> à l’aide de la première forme possible qui consiste à utiliser des entiers positifs pour indiquer la position des éléments que nous souhaitons retenir.</p>
 <p>La seconde forme utilise des entiers négatifs pour <strong>éliminer</strong> les vecteurs aux positions correspondantes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tout le vecteur v, sauf le 2ème élément</span>
-v[<span class="op">-</span><span class="dv">2</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tout le vecteur v, sauf le 2ème élément</span>
+v[<span class="op">-</span><span class="dv">2</span>]</code></pre>
 <pre><code>#   a   c   d 
 # 2.6 4.9 5.0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Elimination du 2ème et du 3ème élément</span>
-v[<span class="op">-</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Elimination du 2ème et du 3ème élément</span>
+v[<span class="op">-</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>)]</code></pre>
 <pre><code>#   a   d 
 # 2.6 5.0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Elimination du dernier élément</span>
-v[<span class="op">-</span><span class="kw">length</span>(v)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Elimination du dernier élément</span>
+v[<span class="op">-</span><span class="kw">length</span>(v)]</code></pre>
 <pre><code>#   a   b   c 
 # 2.6 7.1 4.9</code></pre>
 <p>La troisième forme d’indiçage nécessite que le vecteur soit nommé, comme c’est le cas pour <code>v</code>. Nous pouvons alors indicer en utilisant des chaînes de caractères correspondant aux noms des différent éléments.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Elément de v s&#39;appelant &#39;a&#39;</span>
-v[<span class="st">&#39;a&#39;</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Elément de v s&#39;appelant &#39;a&#39;</span>
+v[<span class="st">&#39;a&#39;</span>]</code></pre>
 <pre><code>#   a 
 # 2.6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Les éléments &#39;b&#39; et &#39;d&#39;</span>
-v[<span class="kw">c</span>(<span class="st">&#39;b&#39;</span>, <span class="st">&#39;d&#39;</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Les éléments &#39;b&#39; et &#39;d&#39;</span>
+v[<span class="kw">c</span>(<span class="st">&#39;b&#39;</span>, <span class="st">&#39;d&#39;</span>)]</code></pre>
 <pre><code>#   b   d 
 # 7.1 5.0</code></pre>
 <p>Enfin, la quatrième forme d’indiçage utilise un vecteur booléen (<code>TRUE</code> ou <code>FALSE</code> ; on dit <code>logical</code> en R) de même longueur que le vecteur, sinon les valeurs sont recyclée à concurrence de la longueur du vecteur. On ne garde que les éléments correspondant à <code>TRUE</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Garder le premier et le quatrième élément</span>
-v[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Garder le premier et le quatrième élément</span>
+v[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)]</code></pre>
 <pre><code>#   a   d 
 # 2.6 5.0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Garder le premier et le troisième (recyclage des indices une seconde fois)</span>
-v[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Garder le premier et le troisième (recyclage des indices une seconde fois)</span>
+v[<span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>)]</code></pre>
 <pre><code>#   a   c 
 # 2.6 4.9</code></pre>
 <p>La dernière instruction mérite une petite explication supplémentaire. Le vecteur <code>logical</code> d’indiçage utilisé ne contient que deux éléments alors que le vecteur <code>v</code> qui est indicé en contient quatre. Les valeurs logiques sont alors recyclées comme suit. Lorsqu’on arrive la fin, on reprend au début. Donc, <code>TRUE</code>, on garde le premier, <code>FALSE</code> on élimine le second, et puis… retour au début : <code>TRUE</code> on garde le troisième, <code>FALSE</code> on jette le quatrième, et ainsi de suite si <code>v</code> était plus long. Donc, un indiçage avec <code>c(TRUE, FALSE)</code> permet de ne garder que les éléments d’ordre impair quel que soit la longueur de <code>v</code>, et <code>c(FALSE, TRUE)</code> ne gardera que les éléments d’ordre pair.</p>
 <p>La puissance de l’indiçage par valeur booléenne est immense car nous pouvons aussi utiliser une expression qui renvoie de telles valeurs. C’est le cas notamment de toutes les instruction de comparaison (opérateurs égal à <code>==</code>, différent de <code>!=</code>, plus grand que <code>&gt;</code>, plus petit que <code>&lt;</code>, plus grand ou égal <code>&gt;=</code> ou plus petit ou égal <code>&lt;=</code>). Par exemple pour ne garder que les valeurs plus grandes que 3, on fera :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Déterminer quel élément est plus grand que 3 dans v</span>
-v <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Déterminer quel élément est plus grand que 3 dans v</span>
+v <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></code></pre>
 <pre><code>#     a     b     c     d 
 # FALSE  TRUE  TRUE  TRUE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Utilisation de cette instruction comme indiçage pour filtrer les éléments de v</span>
-v[v <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Utilisation de cette instruction comme indiçage pour filtrer les éléments de v</span>
+v[v <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>]</code></pre>
 <pre><code>#   b   c   d 
 # 7.1 4.9 5.0</code></pre>
 <p>Les instructions de comparaison peuvent être combinées entre elles à l’aide des opérateurs “et” (<code>&amp;</code>) ou “ou” (<code>|</code>). Donc, pour récupérer les éléments qui sont plus grands que 3 <strong>et</strong> plus petits ou égaux à 5, on fera :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v[v <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&amp;</span><span class="st"> </span>v <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span>]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">v[v <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">&amp;</span><span class="st"> </span>v <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span>]</code></pre>
 <pre><code>#   c   d 
 # 4.9 5.0</code></pre>
 <p>Les indiçages fonctionnent aussi pour des objets bi- or multidimensionnels. Dans ce cas, nous utiliserons deux ou plusieurs instructions d’indiçage à l’intérieur des <code>[]</code>, séparées par un virgule. Pour un tableau à deux dimensions comme une matrice ou un data frame, le premier élément sélectionne les lignes et le second les colonnes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">tribble</span>(
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">tribble</span>(
   <span class="op">~</span>x, <span class="op">~</span>y, <span class="op">~</span>z,
   <span class="dv">1</span>,  <span class="dv">2</span>,  <span class="dv">3</span>,
   <span class="dv">4</span>,  <span class="dv">5</span>,  <span class="dv">6</span>
 )
-df</code></pre></div>
+df</code></pre>
 <pre><code># # A tibble: 2 x 3
 #       x     y     z
 #   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-# 1    1.    2.    3.
-# 2    4.    5.    6.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Elément à la première ligne, colonnes 2 et 3</span>
-df[<span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]</code></pre></div>
+# 1     1     2     3
+# 2     4     5     6</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Elément à la première ligne, colonnes 2 et 3</span>
+df[<span class="dv">1</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>]</code></pre>
 <pre><code># # A tibble: 1 x 2
 #       y     z
 #   &lt;dbl&gt; &lt;dbl&gt;
-# 1    2.    3.</code></pre>
+# 1     2     3</code></pre>
 <p>Pour conserver toutes les lignes et/ou toutes les colonnes, il suffit de laisser la position correspondante vide.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Toute la seconde ligne</span>
-df[<span class="dv">2</span>, ]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Toute la seconde ligne</span>
+df[<span class="dv">2</span>, ]</code></pre>
 <pre><code># # A tibble: 1 x 3
 #       x     y     z
 #   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-# 1    4.    5.    6.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Toute la seconde colonne</span>
-df[ , <span class="dv">2</span>]</code></pre></div>
+# 1     4     5     6</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Toute la seconde colonne</span>
+df[ , <span class="dv">2</span>]</code></pre>
 <pre><code># # A tibble: 2 x 1
 #       y
 #   &lt;dbl&gt;
-# 1    2.
-# 2    5.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tout le tableau (pas très utile !)</span>
-df[ , ]</code></pre></div>
+# 1     2
+# 2     5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tout le tableau (pas très utile !)</span>
+df[ , ]</code></pre>
 <pre><code># # A tibble: 2 x 3
 #       x     y     z
 #   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-# 1    1.    2.    3.
-# 2    4.    5.    6.</code></pre>
+# 1     1     2     3
+# 2     4     5     6</code></pre>
 <p>Les autres formes d’indiçage fonctionnent aussi.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lignes pour lesquelles x est plus grand que 3 et colonnes nommée &#39;y&#39; et &#39;z&#39;</span>
-df[df<span class="op">$</span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&#39;y&#39;</span>, <span class="st">&#39;z&#39;</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lignes pour lesquelles x est plus grand que 3 et colonnes nommée &#39;y&#39; et &#39;z&#39;</span>
+df[df<span class="op">$</span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="kw">c</span>(<span class="st">&#39;y&#39;</span>, <span class="st">&#39;z&#39;</span>)]</code></pre>
 <pre><code># # A tibble: 1 x 2
 #       y     z
 #   &lt;dbl&gt; &lt;dbl&gt;
-# 1    5.    6.</code></pre>
+# 1     5     6</code></pre>
 <p>Notez bien que nous n’avons pas écrit <code>df[x &gt; 3, ]</code> mais <code>df[df$x &gt; 3, ]</code>. La première forme n’aurait pas utilisé la variable <code>x</code> du data frame <code>df</code> (notée <code>df$x</code>), mais aurait tenté d’utiliser un vecteur <code>x</code> directement. Ce qui nous amène à l’extraction d’un élément d’un tableau ou d’une liste à l’aide des opérateur <code>[[]]</code> ou <code>$</code>. Pour extraire la colonne <code>y</code> sous <em>forme d’un vecteur</em> de <code>df</code>, nous pourrons faire :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[[<span class="dv">2</span>]]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">df[[<span class="dv">2</span>]]</code></pre>
 <pre><code># [1] 2 5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df[[<span class="st">&#39;y&#39;</span>]]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">df[[<span class="st">&#39;y&#39;</span>]]</code></pre>
 <pre><code># [1] 2 5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>y</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>y</code></pre>
 <pre><code># [1] 2 5</code></pre>
 <p>Pour finir, l’indiçage peut aussi être réalisé à la gauche de l’opérateur d’assignation <code>&lt;-</code>. Dans ce cas, la partie concernée du vecteur, de la matrice ou du data frame est remplacée par la ou les valeurs de droite.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remplacer la troisième colonne par des nouvelles valeurs</span>
-df[ , <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="op">-</span><span class="dv">15</span>)
-df</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remplacer la troisième colonne par des nouvelles valeurs</span>
+df[ , <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">-15</span>)
+df</code></pre>
 <pre><code># # A tibble: 2 x 3
 #       x     y     z
 #   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-# 1    1.    2.  -10.
-# 2    4.    5.  -15.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ceci donne le même résultat</span>
-df<span class="op">$</span>z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="op">-</span><span class="dv">15</span>)
-df</code></pre></div>
+# 1     1     2   -10
+# 2     4     5   -15</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ceci donne le même résultat</span>
+df<span class="op">$</span>z &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">-15</span>)
+df</code></pre>
 <pre><code># # A tibble: 2 x 3
 #       x     y     z
 #   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-# 1    1.    2.  -10.
-# 2    4.    5.  -15.</code></pre>
+# 1     1     2   -10
+# 2     4     5   -15</code></pre>
 <p>Maintenant que nous sommes familiarisés avec les différents modes d’indiçage dans R de base, nous pouvons les comparer à d’autres styles.</p>
 <div id="a-vous-de-jouer-22" class="section level5 unnumbered">
 <h5>A vous de jouer</h5>
@@ -562,20 +587,20 @@ Afin d’appliquer directement les concepts vus au cours dans ce module, ouvrez 
 <h3><span class="header-section-number">11.6.2</span> Comparaison de styles</h3>
 <p>Nous allons réaliser quelques opérations simples sur un jeu de données cas par variables. Nous allons créer un tableau de contingence à une entrée, sélectionner des cas et restreindre les variables du tableau, calculer une nouvelle variable, pour finir avec une représentation graphique simple. Nous ferons le même travail en utilisant les différents styles de R à des fins de comparaison.</p>
 <p>Prenons le jeu de données <code>zooplankton</code> qui contient 19 mesures (variables numériques) effectuées sur des images de zooplancton, ainsi que le groupe taxonomique auquel les organismes appartiennent (variable facteur <code>class</code>). Nous avons toujours utilisé la fonction <code>read()</code> pour charger ce type de données. Cette fonction fait partie de <code>SciViews::R</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">SciViews<span class="op">::</span>R
+<pre class="sourceCode r"><code class="sourceCode r">SciViews<span class="op">::</span>R
 zoo &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;zooplankton&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>)
-skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></div>
+skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre>
 <pre><code># Skim summary statistics
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -617,7 +642,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></d
 #   0.22    0.42  ▂▅▇▇▅▂▁▁
 #   0.12    0.54  ▇▃▂▁▁▁▁▁</code></pre>
 <p>Voici comment se distribuent les organismes en fonction de <code>class</code>, en utilisant la syntaxe de base :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(zoo<span class="op">$</span>class)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(zoo<span class="op">$</span>class)</code></pre>
 <pre><code># 
 #          Annélide    Appendiculaire         Calanoïde      Chaetognathe 
 #                50                36               288                51 
@@ -631,11 +656,11 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></d
 #                50</code></pre>
 <p>La fonction <code>table()</code> crée un objet du même nom qui se comporte de manière différente d’un data frame. Ainsi, l’impression de l’objet se présente comme un ensemble de valeurs nommées par le niveau dénombré pour un tableau de contingence à une seule entrée.</p>
 <p>Si vous voulez réaliser la même opération à l’aide d’une formule, vous pouvez utiliser la fonction <code>tally()</code> depuis le package <code>mosaic</code>. Vous pouvez charger ce package à l’aide de l’instruction <code>library(mosaic)</code>, et ensuite utiliser <code>tally()</code> comme si de rien était, ou alors vous spécifiez complètement la fonction à l’aide de <code>mosaic::tally()</code> (littéralement, “la fonction tally du package mosaic”). Cette dernière approche est favorisée par SciViews-R car elle permet de comprendre immédiatement d’où vient la fonction et d’éviter aussi d’appeler malencontreusement une fonction du même nom qui serait définie dans un autre package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#mosaic::tally(data = zoo, ~ class)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#mosaic::tally(data = zoo, ~ class)</span></code></pre>
 <p>Tidyverse favorise l’assemblage d’un petit nombre de fonction (des “verbes”) pour obtenir les mêmes résultats que des fonctions plus spécialisées dans les autres styles. Ainsi, ses instructions seront souvent plus verbeuses (inconvénient), mais aussi beaucoup plus lisibles et compréhensibles par un humain (immense avantage). La réalisation d’un tableau de contingence consiste en fait à regrouper les données en fonction de <code>class</code>, et ensuite à compter (contingenter) les observations dans chaque classe. Nous pouvons écrire une instruction qui réalise exactement ce traitement de manière explicite (sachant que la fonction <code>n()</code> sert à dénombrer) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo <span class="op">%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r">zoo <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">group_by</span>(class) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="kw">n</span>())</code></pre></div>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="kw">n</span>())</code></pre>
 <pre><code># # A tibble: 17 x 2
 #    class             `n()`
 #    &lt;fct&gt;             &lt;int&gt;
@@ -658,7 +683,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></d
 # 17 Protiste             50</code></pre>
 <p>Nous obtenons un objet <code>tibble</code>, et non pas un objet spécifique au traitement réalisé. C’est dans la philosophie de tidyverse que d’utiliser et réutiliser autant que possible un <code>tibble</code> qui permet de contenir des données “bien rangées” (ou “tidy data” en anglais, d’où le nom de ce style, <strong>tidy</strong>verse pour “univers bien rangé”).</p>
 <p>Comme contingenter des observations est une opération fréquente, il existe <em>exceptionnellement</em> une fonction dédiée qui fait le travail en une seule opération : <code>count()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count</span>(zoo, class)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">count</span>(zoo, class)</code></pre>
 <pre><code># # A tibble: 17 x 2
 #    class                 n
 #    &lt;fct&gt;             &lt;int&gt;
@@ -679,16 +704,16 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre></d
 # 15 Malacostracé        121
 # 16 Poecilostomatoïde   158
 # 17 Protiste             50</code></pre>
-<p>Le résultat est le même. Comparons maintenant la fonction <code>table()</code> de base et <code>count()</code> de tidyverse du point de vue des arguments. <code>table()</code> prend un vecteur comme argument. A nous de l’extraire du data frame à l’aide de <code>zoo$class</code>, ce qui donne <code>table(zoo$class)</code>. Par contre, <code>count()</code> comme toute fonction tidyverse qui se respecte, prend comme premier argument un <code>tibble</code> ou un <code>data.frame</code>, bref un tableau cas par variables. C’est ensuite au niveau du second argument que l’on spécifie la variable que nous souhaitons utiliser à partir de ce tableau. Ici, plus besoin d’indiquer que c’est une variable qui vient du tableau <code>zoo</code>, car <code>count()</code> le sait déjà. Bien que ce ne soit pas évident au premier cou d’œil, <code>count()</code> ne respecte <strong>pas</strong> la syntaxe de base de R et évalue <code>class</code> de manière particulière<a href="references.html#fn57" class="footnoteRef" id="fnref57"><sup>57</sup></a>. Au final, l’appel à <code>table()</code> nécessite de comprendre ce que fait l’opérateur <code>$</code>. Au contraire, l’instruction tidyverse <code>count(zoo, class)</code> se lit et se comprend très bien presque comme si c’était écrit en anglais. Vous lisez en effet “compte dans zoo la classe” (avantage), mais le coût en est une évaluation non standard de ses arguments (inconvénient qui ne peut pas apparaître à ce stade mais que vous constaterez plus tard quand vous ferez des choses plus évoluées avec ces instructions).</p>
+<p>Le résultat est le même. Comparons maintenant la fonction <code>table()</code> de base et <code>count()</code> de tidyverse du point de vue des arguments. <code>table()</code> prend un vecteur comme argument. A nous de l’extraire du data frame à l’aide de <code>zoo$class</code>, ce qui donne <code>table(zoo$class)</code>. Par contre, <code>count()</code> comme toute fonction tidyverse qui se respecte, prend comme premier argument un <code>tibble</code> ou un <code>data.frame</code>, bref un tableau cas par variables. C’est ensuite au niveau du second argument que l’on spécifie la variable que nous souhaitons utiliser à partir de ce tableau. Ici, plus besoin d’indiquer que c’est une variable qui vient du tableau <code>zoo</code>, car <code>count()</code> le sait déjà. Bien que ce ne soit pas évident au premier cou d’œil, <code>count()</code> ne respecte <strong>pas</strong> la syntaxe de base de R et évalue <code>class</code> de manière particulière<a href="references.html#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>. Au final, l’appel à <code>table()</code> nécessite de comprendre ce que fait l’opérateur <code>$</code>. Au contraire, l’instruction tidyverse <code>count(zoo, class)</code> se lit et se comprend très bien presque comme si c’était écrit en anglais. Vous lisez en effet “compte dans zoo la classe” (avantage), mais le coût en est une évaluation non standard de ses arguments (inconvénient qui ne peut pas apparaître à ce stade mais que vous constaterez plus tard quand vous ferez des choses plus évoluées avec ces instructions).</p>
 
 <div class="note">
 Le style de SciViews-R accepte à la fois la syntaxe de base et celle de tidyverse, avec une préférence pour cette dernière lorsque la lisibilité des instructions est primordiale. De plus, le style formule est également abondamment utilisé dès qu’il s’agit de réaliser un graphique ou un modèle statistique (les deux étant d’ailleurs souvent associés).
 </div>
 
 <p>Bien. Admettons maintenant que nous voulons représenter la forme (ratio d’aspect, rapport largeur / longueur) des œufs en fonction de leur taille sur un graphique (en utilisant les variables <code>aspect</code> et <code>area</code>) présents dans notre échantillon de zooplancton. Deux niveaux de la variable <code>class</code> les contiennent : <code>Oeuf_allongé</code> et <code>Oeuf_rond</code>. Nous voulons donc filtrer les données du tableau <code>zoo</code> pour ne garder que ces deux catégories, et éventuellement, nous voulons aussi restreindre le tableau aux trois variables <code>aspect</code>, <code>area</code> et <code>class</code> puisque nous n’avons pas besoin des autres variables. En R de base cela peut se faire en une seule étape à l’aide de l’opérateur d’indiçage <code>[]</code> comme nous avons vu plus haut.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo2 &lt;-<span class="st"> </span>zoo[zoo<span class="op">$</span>class <span class="op">==</span><span class="st"> &quot;Oeuf_allongé&quot;</span> <span class="op">|</span><span class="st"> </span>zoo<span class="op">$</span>class <span class="op">==</span><span class="st"> &quot;Oeuf_rond&quot;</span>,
+<pre class="sourceCode r"><code class="sourceCode r">zoo2 &lt;-<span class="st"> </span>zoo[zoo<span class="op">$</span>class <span class="op">==</span><span class="st"> &quot;Oeuf_allongé&quot;</span> <span class="op">|</span><span class="st"> </span>zoo<span class="op">$</span>class <span class="op">==</span><span class="st"> &quot;Oeuf_rond&quot;</span>,
   <span class="kw">c</span>(<span class="st">&quot;aspect&quot;</span>, <span class="st">&quot;area&quot;</span>, <span class="st">&quot;class&quot;</span>)]
-zoo2</code></pre></div>
+zoo2</code></pre>
 <pre><code># # A tibble: 99 x 3
 #    aspect  area class       
 #     &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       
@@ -702,13 +727,13 @@ zoo2</code></pre></div>
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # ... with 89 more rows</code></pre>
+# # … with 89 more rows</code></pre>
 <p>En tidyverse, les deux opérations (filtrage des lignes et sélection des variables en colonnes) restent deux opération successives distinctes dans le code. Notez au passage que nous repassons à l’opérateur de chaînage <code>%&gt;.%</code> de SciViews-R que nous avons l’habitude d’utiliser à la place de l’opérateur correspondant de tidyverse <code>%&gt;%</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">zoo <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">filter</span>(., class <span class="op">==</span><span class="st"> &quot;Oeuf_allongé&quot;</span> <span class="op">|</span><span class="st"> </span>class <span class="op">==</span><span class="st"> &quot;Oeuf_rond&quot;</span>) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">select</span>(., aspect, area, class) -&gt;
 <span class="st">  </span>zoo2
-zoo2</code></pre></div>
+zoo2</code></pre>
 <pre><code># # A tibble: 99 x 3
 #    aspect  area class       
 #     &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       
@@ -722,11 +747,11 @@ zoo2</code></pre></div>
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # ... with 89 more rows</code></pre>
+# # … with 89 more rows</code></pre>
 <p>Le résultat est le même, mais la syntaxe est très différente. Notez que les variables dans la syntaxe de base sont complètement qualifiées (<code>zoo$class</code>), ce qui nécessite de répéter plusieurs fois le nom du jeu de données <code>zoo</code> (inconvénient) mais lève toute ambiguïté (avantage). La version de tidyverse est plus “propre” (avantage), mais cela implique d’utiliser une évaluation non standard de <code>class</code> qui n’est pas une variable existante dans l’environnement où le code est évalué (inconvénient). La sélection des variables est également différente. Dans R de base, des chaînes de caractères doivent être compilées dans un vecteur d’indiçage à l’aide de <code>c()</code>, alors que <code>select()</code> de tidyverse permet de spécifier simplement les noms des variables sans autres fioritures (mais cela doit être évalué de manière non standard, encore une fois).</p>
 <p>Pour calculer une nouvelle variable, par exemple le logarithme en base 10 de l’aire dans <code>log_area</code>, nous ferons comme ceci en R de base :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo2<span class="op">$</span>log_area &lt;-<span class="st"> </span><span class="kw">log10</span>(zoo2<span class="op">$</span>area)
-<span class="kw">head</span>(zoo2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">zoo2<span class="op">$</span>log_area &lt;-<span class="st"> </span><span class="kw">log10</span>(zoo2<span class="op">$</span>area)
+<span class="kw">head</span>(zoo2)</code></pre>
 <pre><code># # A tibble: 6 x 4
 #   aspect  area class     log_area
 #    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt;
@@ -737,8 +762,8 @@ zoo2</code></pre></div>
 # 5  0.950 0.322 Oeuf_rond   -0.492
 # 6  0.959 0.335 Oeuf_rond   -0.475</code></pre>
 <p>Avec tidyverse, nous savons déjà que <code>mutate()</code> est le verbe à employer pour cette opération.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zoo2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(zoo2, <span class="dt">log_area =</span> <span class="kw">log10</span>(area))
-<span class="kw">head</span>(zoo2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">zoo2 &lt;-<span class="st"> </span><span class="kw">mutate</span>(zoo2, <span class="dt">log_area =</span> <span class="kw">log10</span>(area))
+<span class="kw">head</span>(zoo2)</code></pre>
 <pre><code># # A tibble: 6 x 4
 #   aspect  area class     log_area
 #    &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt;
@@ -750,43 +775,43 @@ zoo2</code></pre></div>
 # 6  0.959 0.335 Oeuf_rond   -0.475</code></pre>
 <p>La syntaxe de tidyverse se lit mieux et est plus propre (avantage), mais elle nécessite pour y arriver une évaluation non standard de <code>area</code>, ce qui est un inconvénient par rapport à la snytaxe R de base.</p>
 <p>Pour finir, revenons sur les différents moteurs graphiques pour faire un nuage de points en utilisant différents styles. Une petite précaution supplémentaire est nécessaire. Pour <code>class</code>, nous devons préalablement laisser tomber les niveaux non utilisés à l’aide de <code>droplevels()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tous les niveaux sont toujours là</span>
-<span class="kw">levels</span>(zoo2<span class="op">$</span>class)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Tous les niveaux sont toujours là</span>
+<span class="kw">levels</span>(zoo2<span class="op">$</span>class)</code></pre>
 <pre><code>#  [1] &quot;Annélide&quot;          &quot;Appendiculaire&quot;    &quot;Calanoïde&quot;        
 #  [4] &quot;Chaetognathe&quot;      &quot;Cirripède&quot;         &quot;Cladocère&quot;        
 #  [7] &quot;Cnidaire&quot;          &quot;Cyclopoïde&quot;        &quot;Décapode&quot;         
 # [10] &quot;Oeuf_allongé&quot;      &quot;Oeuf_rond&quot;         &quot;Poisson&quot;          
 # [13] &quot;Gastéropode&quot;       &quot;Harpacticoïde&quot;     &quot;Malacostracé&quot;     
 # [16] &quot;Poecilostomatoïde&quot; &quot;Protiste&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ne retenir que les niveaux relatifs aux oeufs</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ne retenir que les niveaux relatifs aux oeufs</span>
 zoo2<span class="op">$</span>class &lt;-<span class="st"> </span><span class="kw">droplevels</span>(zoo2<span class="op">$</span>class)
 <span class="co"># C&#39;est mieux</span>
-<span class="kw">levels</span>(zoo2<span class="op">$</span>class)</code></pre></div>
+<span class="kw">levels</span>(zoo2<span class="op">$</span>class)</code></pre>
 <pre><code># [1] &quot;Oeuf_allongé&quot; &quot;Oeuf_rond&quot;</code></pre>
 <p>Voici un graphe de base… avec également la syntaxe de base :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(zoo2<span class="op">$</span>log_area, zoo2<span class="op">$</span>aspect, <span class="dt">col =</span> zoo2<span class="op">$</span>class)
-<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Oeuf allongé&quot;</span>, <span class="st">&quot;Oeuf rond&quot;</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-47-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(zoo2<span class="op">$</span>log_area, zoo2<span class="op">$</span>aspect, <span class="dt">col =</span> zoo2<span class="op">$</span>class)
+<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Oeuf allongé&quot;</span>, <span class="st">&quot;Oeuf rond&quot;</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Le même graphique, mais en utilisant l’interface formule alternative avec <code>plot()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area, <span class="dt">col =</span> class)
-<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Oeuf allongé&quot;</span>, <span class="st">&quot;Oeuf rond&quot;</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-48-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area, <span class="dt">col =</span> class)
+<span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Oeuf allongé&quot;</span>, <span class="st">&quot;Oeuf rond&quot;</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>L’interface formule est également employée avec le moteur lattice via la fonction <code>xyplot()</code>. Ici, nous utilisons la version <code>chart()</code> en appelant <code>chart$xyplot()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">chart<span class="op">$</span><span class="kw">xyplot</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area, <span class="dt">groups =</span> zoo2<span class="op">$</span>class, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-49-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r">chart<span class="op">$</span><span class="kw">xyplot</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area, <span class="dt">groups =</span> zoo2<span class="op">$</span>class, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-49-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Dans tidyverse, c’est le moteur graphique ggplot2 qui est utilisé, avec sa syntaxe propre :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> zoo2, <span class="kw">aes</span>(<span class="dt">x =</span> log_area, <span class="dt">y =</span> aspect, <span class="dt">col =</span> class)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-50-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> zoo2, <span class="kw">aes</span>(<span class="dt">x =</span> log_area, <span class="dt">y =</span> aspect, <span class="dt">col =</span> class)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Dans SciViews-R, <code>chart()</code> utilise aussi par défaut le moteur graphique ggplot2, mais il est plus flexible et permet soit d’utiliser <code>aes()</code> comme <code>ggplot()</code>, soit une interface formule élargie (c’est-à-dire qu’il est possible d’y inclure d’autres “aesthetics” à l’aide des opérateurs <code>%aes=%</code>) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chart() et aes() </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chart() et aes() </span>
 <span class="kw">chart</span>(<span class="dt">data =</span> zoo2, <span class="kw">aes</span>(<span class="dt">x =</span> log_area, <span class="dt">y =</span> aspect, <span class="dt">col =</span> class)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-51-1.svg" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chart() avec une formule élargie</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chart() avec une formule élargie</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area <span class="op">%col=%</span><span class="st"> </span>class) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-52-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Il y aurait encore beaucoup à dire sur les différents styles de syntaxe dans R, mais nous venons de discuter les éléments essentiels. SciViews-R propose d’utiliser un ensemble cohérent d’instructions qui est soigneusement choisi pour rendre l’utilisation de R plus facile (sur base de nos observations des difficultés et erreurs d’apprentissage principales). Il se base sur tidyverse avec une pincée de R de base et une bonne dose de formules là où elles se montrent utiles. Des fonctions et des opérateurs originaux sont ajoutés dans le but d’homogénéiser et/ou clarifier la syntaxe.</p>
 <blockquote>
 <p>De votre côté, vous êtes libre d’utiliser le style que vous préférez. si la curiosité vous pousse à essayer autre chose et à adopter un autre style que SciViews-R, nous en serons ravis. R est ouvert, il offre beaucoup et c’est à vous maintenant de créer votre propre boite à outils taillée réellement à <em>votre</em> mesure !</p>
@@ -813,8 +838,8 @@ zoo2<span class="op">$</span>class &lt;-<span class="st"> </span><span class="kw
 <div class="footnotes">
 <hr />
 <ol start="56">
-<li id="fn56"><p>Historiquement, ce langage s’appelait <strong>S</strong> à l’origine dans les années 1970 alors qu’il a été inventé par John Chambers et ses collègues aux laboratoires Bell. R est une implémentation open source de S écrite dans les années 1990 par Ross Ihaka et Robert Gentleman. Ensuite R a pris de l’importance à tel point qu’on parle maintenant du langage R (sachant bien qu’il s’agit d’un <em>dialecte</em> du langage S).<a href="syntaxe-de-r.html#fnref56">↩</a></p></li>
-<li id="fn57"><p>Cette évaluation particulière s’appelle le “tidyeval”. Son explication est hors de propos dans cette introduction à la science des données mais si vous êtes curieux, vous pouvez toujours <a href="https://thinkr.fr/tidyeval/">lire ceci</a>.<a href="syntaxe-de-r.html#fnref57">↩</a></p></li>
+<li id="fn56"><p>Historiquement, ce langage s’appelait <strong>S</strong> à l’origine dans les années 1970 alors qu’il a été inventé par John Chambers et ses collègues aux laboratoires Bell. R est une implémentation open source de S écrite dans les années 1990 par Ross Ihaka et Robert Gentleman. Ensuite R a pris de l’importance à tel point qu’on parle maintenant du langage R (sachant bien qu’il s’agit d’un <em>dialecte</em> du langage S).<a href="syntaxe-de-r.html#fnref56" class="footnote-back">↩</a></p></li>
+<li id="fn57"><p>Cette évaluation particulière s’appelle le “tidyeval”. Son explication est hors de propos dans cette introduction à la science des données mais si vous êtes curieux, vous pouvez toujours <a href="https://thinkr.fr/tidyeval/">lire ceci</a>.<a href="syntaxe-de-r.html#fnref57" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -893,7 +918,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

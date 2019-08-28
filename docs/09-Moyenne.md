@@ -40,7 +40,7 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 ##### A vous de jouer ! {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;09a_ttest&quot;)</code></pre>
 </div>
 
@@ -108,7 +108,7 @@ chart(data = NULL, ~ means_n9) +
   geom_histogram(bins = 30)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-5-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
 
 Nous obtenons une distribution symétrique centrée autour de 8. Elle ressemble à une distribution normale, mais ce n'en est pas une. C'est précisément ici que William Gosset intervient. Il est, en effet, arrivé à décrire cette loi de distribution de la moyenne d'échantillonnage. C'est la distribution *t* de Student qui admet trois paramètres\ : une moyenne $\mu_x$, un écart type $\sigma_x$, et des degrés de liberté ddl ou $\nu$. Les degrés de liberté sont en lien avec la taille de l'échantillon. Ils valent\ :
 
@@ -146,7 +146,7 @@ chart(data = NULL, ~ means_n4) +
   geom_histogram(bins = 30)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-7-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
 
 La distribution est plus étalée. Ses paramètres sont\ :
 
@@ -178,7 +178,7 @@ chart(data = NULL, ~ means_n100) +
   geom_histogram(bins = 30)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-9-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -245,7 +245,7 @@ Elle est de 24% environ. Notez que nous avons renseigné la moyenne et l'écart 
 Il s'agit du quantile 6,76. Le graphique correspondant est le suivant\ :
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/tdistri1-1.svg" alt="Une distribution de Student avec aire à gauche de 5% mise en évidence en rouge. La distribution normale équivalente est superposée en bleu clair." width="672" />
+<img src="09-Moyenne_files/figure-html/tdistri1-1.png" alt="Une distribution de Student avec aire à gauche de 5% mise en évidence en rouge. La distribution normale équivalente est superposée en bleu clair." width="672" />
 <p class="caption">(\#fig:tdistri1)Une distribution de Student avec aire à gauche de 5% mise en évidence en rouge. La distribution normale équivalente est superposée en bleu clair.</p>
 </div>
 
@@ -320,7 +320,7 @@ Dans l'autre sens, il suffit donc de diviser la probabilité (= l'aire) par deux
 \BeginKnitrBlock{note}<div class="note">On pourra aussi dire que la moyenne d'un échantillon de neuf observations issu de notre population théorique de référence sera comprise entre 6,5 et 9,5 (ou 8 ± 1,5) dans 95% des cas. La Fig. \@ref(fig:tdistri2) le montre graphiquement.</div>\EndKnitrBlock{note}
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/tdistri2-1.svg" alt="Une distribution de Student avec aire extrême de 5% mise en évidence en rouge." width="672" />
+<img src="09-Moyenne_files/figure-html/tdistri2-1.png" alt="Une distribution de Student avec aire extrême de 5% mise en évidence en rouge." width="672" />
 <p class="caption">(\#fig:tdistri2)Une distribution de Student avec aire extrême de 5% mise en évidence en rouge.</p>
 </div>
 
@@ -356,7 +356,7 @@ $$\mathrm{IC}(1 - \alpha) \simeq \bar{x} \pm t_{\alpha/2}^{n-1} \cdot SE_x$$
 Ce qui est intéressant avec ces deux dernières formulations, c'est que l'IC est calculable sur base de notre échantillon uniquement.
 
 <div class="info">
-<p>Analogie avec l'homme invisible qui promène son chien. Si vous avez des difficultés à comprendre l'IC, imaginez plutôt que vous recherchez l'homme invisible (c'est <span class="math inline">\(\mu\)</span>). Vous ne savez pas où il est, mais vous savez qu'il promène son chien en laisse. Or, le chien est visible (c'est <span class="math inline">\(\bar{x}\)</span> la moyenne de l'échantillon). La laisse est également invisible, mais vous connaissez sa longueur maximale (c'est votre IC). Donc, vous pouvez dire, voyant le chien que l'homme invisible est à distance maximale d'une longueur de laisse du chien.</p>
+<p>Analogie avec l’homme invisible qui promène son chien. Si vous avez des difficultés à comprendre l’IC, imaginez plutôt que vous recherchez l’homme invisible (c’est <span class="math inline">\(\mu\)</span>). Vous ne savez pas où il est, mais vous savez qu’il promène son chien en laisse. Or, le chien est visible (c’est <span class="math inline">\(\bar{x}\)</span> la moyenne de l’échantillon). La laisse est également invisible, mais vous connaissez sa longueur maximale (c’est votre IC). Donc, vous pouvez dire, voyant le chien que l’homme invisible est à distance maximale d’une longueur de laisse du chien.</p>
 </div>
 
 ##### Valeur α {-}
@@ -366,7 +366,7 @@ Quel est l'impact du choix de $\alpha$ sur le calcul de l'IC\ ? Plus $\alpha$ se
 Comme pour tout en statistique, nous devons accepter un certain risque de nous tromper si nous voulons obtenir des résultats utilisables. Plus ce risque est grand, plus la réponse est précise (ici, plus l'IC sera petit, voir Fig. \@ref(fig:tdistri3)), mais plus le risque de se tromper augmente. On cherchera alors un compromis qui se matérialise souvent par le choix de $\alpha$ = 5%. Nous nous tromperons une fois sur vingt, et nous aurons un IC généralement raisonnable pour ce prix. Naturellement, rien ne vous oblige à utiliser 5%. Vous pouvez aussi choisir 1% ou 0,1% si vous voulez limiter les risques.
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/tdistri3-1.svg" alt="Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange)." width="672" />
+<img src="09-Moyenne_files/figure-html/tdistri3-1.png" alt="Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange)." width="672" />
 <p class="caption">(\#fig:tdistri3)Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange).</p>
 </div>
 
@@ -420,17 +420,17 @@ chart(data = NULL, ~ m_unif_n4) +
   geom_line(aes(x = .x, y = .d(.x) * 3000))
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-22-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" />
 
 Cette distribution *n'est pas* une Student. Par contre, elle y ressemble plus qu'à la distribution uniforme de départ. Avec $n$ = 9 elle s'en rapproche très, très fort, et pour $n$ = 100, nous avons une *t* de Student parfaite.
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/tdistri4-1.svg" alt="Distribution d'échantillonnage à partir d'une distribution uniforme, n = 9. Ajustement d'une distribution de Student équivalente par dessus l'histogramme." width="672" />
+<img src="09-Moyenne_files/figure-html/tdistri4-1.png" alt="Distribution d'échantillonnage à partir d'une distribution uniforme, n = 9. Ajustement d'une distribution de Student équivalente par dessus l'histogramme." width="672" />
 <p class="caption">(\#fig:tdistri4)Distribution d'échantillonnage à partir d'une distribution uniforme, n = 9. Ajustement d'une distribution de Student équivalente par dessus l'histogramme.</p>
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/tdistri5-1.svg" alt="Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange)." width="672" />
+<img src="09-Moyenne_files/figure-html/tdistri5-1.png" alt="Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange)." width="672" />
 <p class="caption">(\#fig:tdistri5)Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange).</p>
 </div>
 
@@ -468,18 +468,26 @@ skimr::skim(crabs)
 ```
 # Skim summary statistics
 #  n obs: 200 
-#  n variables: 8 
+#  n variables: 8
+```
+
+```
+# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
+# This warning is displayed once per session.
+```
+
+```
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# Variable type: integer 
+# ── Variable type:integer ──────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -506,7 +514,13 @@ chart(data = crabs, rear ~ sex) +
   geom_boxplot()
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-24-1.svg" width="672" style="display: block; margin: auto;" />
+```
+# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+# Please use `as_label()` or `as_name()` instead.
+# This warning is displayed once per session.
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />
 
 Sur le graphique, il semble que les femelles (`sex == "F"`) tendent à avoir une carapace plus large à l'arrière -variable `rear`- que les mâles (`sex == "M"`), mais cette différence est-elle *significative* ou peut-elle être juste liée au hasard de l'échantillonnage\ ? Pour y répondre, nous devons élaborer un test d'hypothèse qui va confronter les hypothèses suivantes (en se basant sur les moyennes)\ :
 
@@ -587,7 +601,7 @@ Nous pouvons effectivement interpréter le test de cette façon, mais le test *t
 Le raisonnement est le suivant. Sous $H_0$, la distribution de $\Delta rear$ est connue. Elle suit une distribution *t* de Student de moyenne égale à la vraie valeur de la différence des moyennes, d'écart type égal à l'erreur standard sur cette différence, et avec $n - 2$ degrés de liberté. En pratique, nous remplaçons les valeurs de la population pour la différence des moyennes et pour les erreurs standard par celles estimées par l'intermédiaire de l'échantillon. Comme dans le cas du test $\chi^2$, nous définissons les zones de rejet et de non rejet par rapport à cette distribution théorique. Dans le cas du test de Student bilatéral, l'aire $\alpha$ est répartie à moitié à gauche et à moitié à droite (Fig. \@ref(fig:ttest1)).
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/ttest1-1.svg" alt="Visualisation de la distribution de Student réduite sous l'hypothèse nulle du test bilatéral au seuil de 5%." width="672" />
+<img src="09-Moyenne_files/figure-html/ttest1-1.png" alt="Visualisation de la distribution de Student réduite sous l'hypothèse nulle du test bilatéral au seuil de 5%." width="672" />
 <p class="caption">(\#fig:ttest1)Visualisation de la distribution de Student réduite sous l'hypothèse nulle du test bilatéral au seuil de 5%.</p>
 </div>
 
@@ -651,8 +665,8 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
     + non normale, le test sera approximativement exact si $n$ est grand.
 
 <div class="info">
-<p>Petite astuce... les mesures morphométriques sont dépendantes de la taille globale de l'animal qui varie d'un individu à l'autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio <code>rear / length</code> comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de <code>rear</code> seul.</p>
-<p>Vous pouvez également comparer les crabes bleus (<code>species = &quot;B&quot;</code>) avec les crabes oranges (<code>species = &quot;O&quot;</code>) à l'aide du même test.</p>
+<p>Petite astuce… les mesures morphométriques sont dépendantes de la taille globale de l’animal qui varie d’un individu à l’autre, il vaut donc mieux étudier des rapports de tailles plutôt que des mesures absolues. Refaites le calcul sur base du ratio <code>rear / length</code> comme exercice et déterminez si la différence est plus ou moins nette entre les mâles et les femelles que dans le cas de <code>rear</code> seul.</p>
+<p>Vous pouvez également comparer les crabes bleus (<code>species = &quot;B&quot;</code>) avec les crabes oranges (<code>species = &quot;O&quot;</code>) à l’aide du même test.</p>
 </div>
 
 
@@ -673,7 +687,7 @@ Nous retrouvons exactement toutes les valeurs que nous avons calculées à la ma
 ##### A vous de jouer ! {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;09b_ttest_wmw&quot;)</code></pre>
 </div>
 
@@ -744,7 +758,7 @@ t.test(data = crabs, rear ~ sex,
 Notez que la valeur *P* a été divisée par deux par rapport au test bilatéral. Ceci est le résultat d'une répartition différente de l'aire de rejet qui est placée ici entièrement sur la droite (Fig. \@ref(fig:ttest2)). Nous n'avons donc plus dû multiplier la valeur calculée par deux pour la répartir également de l'autre côté de la distribution.
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/ttest2-1.svg" alt="Visualisation de la distribution de Student réduite sous l'hypothèse nulle d'un test unilatéral à droite au seuil de 5%. Toute la zone de rejet est à droite." width="672" />
+<img src="09-Moyenne_files/figure-html/ttest2-1.png" alt="Visualisation de la distribution de Student réduite sous l'hypothèse nulle d'un test unilatéral à droite au seuil de 5%. Toute la zone de rejet est à droite." width="672" />
 <p class="caption">(\#fig:ttest2)Visualisation de la distribution de Student réduite sous l'hypothèse nulle d'un test unilatéral à droite au seuil de 5%. Toute la zone de rejet est à droite.</p>
 </div>
 
@@ -774,7 +788,7 @@ Par exemple, si nous voulons déterminer si la largeur de la carapace de *L. var
 A chaque fois, les dimensions `front` et `rear` sont mesurées sur les mêmes individus. Nous soustrayons l'un de l'autre *d'abord* individu par individu.
 
 <div class="warning">
-<p>Attention ! Les hypothèses se formulent différemment. Il s'agit de la difference des moyennes pour le test <em>t</em> indépendant et la moyenne des différences pour le test <em>t</em> apparié. Si le résultat du calcul en ce qui concerne la moyenne ne diffère pas, la distribution des valeurs est différente (variance, écart type, erreur standard, ...).</p>
+<p>Attention ! Les hypothèses se formulent différemment. Il s’agit de la difference des moyennes pour le test <em>t</em> indépendant et la moyenne des différences pour le test <em>t</em> apparié. Si le résultat du calcul en ce qui concerne la moyenne ne diffère pas, la distribution des valeurs est différente (variance, écart type, erreur standard, …).</p>
 </div>
 
 Nous calculons la moyenne de cette différence notée `delta_f_r`. Nous résumons ces résultats en calculant successivement\ :
@@ -819,7 +833,7 @@ chart(data = crabs, rear ~ front) +
   geom_abline(slope = 1, intercept = 0)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-37-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" />
 
 Nous voyons très clairement que tous les points se situent du même côté de la bissectrice, ce qui suggère très fortement que $H_0$ ne tient pas la route ici.
 
@@ -861,7 +875,7 @@ Nous rejettons $H_0$ car la valeur *P* est inférieure à $\alpha$. Nous en conc
 
 
 <div class="warning">
-<p>Avant de réaliser une expérience, vous vous demanderez certainement s'il vaut mieux vous orienter vers une design pour un test apparié ou indépendant. Le test apparié n'est pas toujours possible. Par exemple, si vous comparez deux espèces, il est évident qu'un même individu ne peut appartenir simultanément aux deux espèces ! Mais dans tous les cas où c'est possible, <strong>le design apparié est à préférer</strong>. Il permet d'éliminer une bonne part de la variabilité inter-individuelle de l'analyse, puisque cet effet joue de manière équivalente sur les deux mesures pour chaque paire d'observations sur le même individu. Le choix du test apparié permet d'observer des différentes plus subtiles indétectables en mode indépendant pour un même nombre de réplicats, ou alors, il permet d'observer les mêmes effets mais avec un nombre de mesures bien plus faible. Dans tous les cas, on est gagnant.</p>
+<p>Avant de réaliser une expérience, vous vous demanderez certainement s’il vaut mieux vous orienter vers une design pour un test apparié ou indépendant. Le test apparié n’est pas toujours possible. Par exemple, si vous comparez deux espèces, il est évident qu’un même individu ne peut appartenir simultanément aux deux espèces ! Mais dans tous les cas où c’est possible, <strong>le design apparié est à préférer</strong>. Il permet d’éliminer une bonne part de la variabilité inter-individuelle de l’analyse, puisque cet effet joue de manière équivalente sur les deux mesures pour chaque paire d’observations sur le même individu. Le choix du test apparié permet d’observer des différentes plus subtiles indétectables en mode indépendant pour un même nombre de réplicats, ou alors, il permet d’observer les mêmes effets mais avec un nombre de mesures bien plus faible. Dans tous les cas, on est gagnant.</p>
 </div>
 
 
@@ -908,7 +922,7 @@ chart(data = sleep2, med2 ~ med1) +
   geom_abline(slope = 1, intercept = 0)
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-42-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -959,7 +973,7 @@ chart(data = sleep2, med1 ~ "") +
   ylab("Sommeil supplémentaire avec med1 [h]")
 ```
 
-<img src="09-Moyenne_files/figure-html/unnamed-chunk-44-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" />
 
 Le graphique suggère peut-être que les patient dorment plus, mais la boite de dispersion chevauche quand même le trait horizontal à zéro. Donc, qu'en est-il exactement\ ? Le test s'obtient à partir du "snippet" `univariate Student's t-test` depuis `.hm` pour `hypothesis tests: means`. Notez l'argument supplémentaire `mu =` qui permet de spécifier la valeur de référence (ici zéro). Fixons $\alpha$ avant d'effectuer le test. Ici, nous prenons toujours 5%.
 

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>A.2 Installation | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="A.2 Installation | Science des données biologiques, UMONS />
+  <meta property="og:title" content="A.2 Installation | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A.2 Installation | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="A.2 Installation | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="prerequis-11.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -409,59 +434,38 @@ Vous allez devoir d’abord installer <strong><a href="http://www.virtualbox.org
 <h3><span class="header-section-number">A.2.1</span> VirtualBox</h3>
 <p>Récupérez l’installateur correspondant à votre système <a href="https://www.virtualbox.org/wiki/Downloads">ici</a>. L’installation avec tous les paramètres par défaut convient. Il se peut que vous voyiez un message vous indiquant que VirtualBox doit réinitialiser le réseau ou une autre ressource. Vérifiez que tous les documents en cours éventuels sont sauvegardés, et ensuite, vous pourrez continuer l’installation sans risques.</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/virtualbox_install_warning.png" />
-
-</div>
+<p><img src="images/annexe1/virtualbox_install_warning.png" /></p>
 </center>
 <p><br/></p>
 
 <div class="win">
 <p>De même, sous Windows, l’installateur de VirtualBox vous préviendra peut-être qu’il doit installer l’un ou l’autre périphérique. Vous pouvez également continuer sans craintes (précaution prise par Microsoft, mais ces périphériques fonctionnent bien).</p>
-<div class="figure">
-<img src="images/annexe1/virtualbox_install_device.png" />
-
-</div>
+<p><img src="images/annexe1/virtualbox_install_device.png" /></p>
 </div>
 
 </div>
 <div id="sciviews-box" class="section level3">
 <h3><span class="header-section-number">A.2.2</span> SciViews Box</h3>
-<div class="figure">
-<img src="images/annexe1/svbox_screenshot.png" />
-
-</div>
+<p><img src="images/annexe1/svbox_screenshot.png" /></p>
 <p>La procédure d’installation de la SciViews Box diffère selon le système d’exploitation. Reportez-vous à la sous-section correspondante pour <strong>Windows</strong>, <strong>MacOS</strong> ou <strong>Linux</strong>.</p>
 <p><img src="images/block-win.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
 <div id="installation-sous-windows" class="section level4">
 <h4><span class="header-section-number">A.2.2.1</span> Installation sous Windows</h4>
 <p>Chargez l’installateur <a href="http://go.sciviews.org/svbox2018a-win">ici</a> ou, pour les étudiants de l’UMONS, récupérez-le depuis le disque <code>StudentTemp</code> de la salle informatique (sous-répertoire <code>SDD\Software\SciViews Box 2018</code>). Pensez aussi à placer le fichier <code>svbox2018a.vdi.xz</code> dans le même répertoire que l’installateur <code>svbox2018a_win_setup.exe</code>. Sinon vous devrez le télécharger lors de l’installation (il pèse tout de même 2,9Gb)! Lancez l’installation. Vous verrez l’écran suivant (probablement en version française sur votre ordinateur). Vous pouvez cliquer ‘Yes’/‘Oui’. Il s’agit seulement d’une précaution de Microsoft lorsqu’il ne connait pas l’éditeur du programme à installer, comme c’est le cas ici.</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_warning.png" />
-
-</div>
+<p><img src="images/annexe1/svbox_install_warning.png" /></p>
 </center>
 <p>Si le fichier <code>svbox2018a.vdi.xz</code> n’est pas présent dans le même répertoire que le programme d’installation, il est à présent téléchargé (cliquez sur “Details” pour suivre l’opération):</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_download.png" />
-
-</div>
+<p><img src="images/annexe1/svbox_install_download.png" /></p>
 </center>
 <p>Une fois le téléchargement terminé, l’installation se poursuit. Vous verrez ensuite qu’il y a encore une opération obligatoire à lancer: la décompression du disque virtuel de la SciViews Box (<code>svbox2018a.vdi</code>) via ‘7z’.</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_done.png" />
-
-</div>
+<p><img src="images/annexe1/svbox_install_done.png" /></p>
 </center>
 <p>En cliquant ‘Finish’, cette décompression démarre toute seule.</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_uncompress.png" />
-
-</div>
+<p><img src="images/annexe1/svbox_install_uncompress.png" /></p>
 </center>
 <p><br/></p>
 <div class="warning">
@@ -471,17 +475,11 @@ N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre Sc
 </div>
 <p>Losque tout est installé, vous avez une nouvelle icône sur votre bureau. Poursuivez à la section suivante pour démarrer et paramétrer votre SciViews Box.</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/svbox_install_desktop_icon.png" />
-
-</div>
+<p><img src="images/annexe1/svbox_install_desktop_icon.png" /></p>
 </center>
 <p>En option, vous pouvez épingler le nouveau programme dans la barre des tâches. Il sera plus facilement accessible (voir ci-dessous).</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/pin-in-taskbar.gif" />
-
-</div>
+<p><img src="images/annexe1/pin-in-taskbar.gif" /></p>
 </center>
 <p><img src="images/block-mac.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
 </div>
@@ -489,10 +487,7 @@ N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre Sc
 <h4><span class="header-section-number">A.2.2.2</span> Installation sous MacOS</h4>
 <p>Chargez l’installateur <a href="http://go.sciviews.org/svbox2018a-mac">ici</a> ou, pour les étudiants de l’UMONS, récupérez-le depuis le disque <code>StudentTemp</code> de la salle informatique (sous-répertoire <code>SDD/Software/SciViews Box 2018</code>). Si vous le pouvez, placez le fichier <code>svbox2018a.vdi.xz</code> dans le dossier de téléchargements (<code>Téléchargements</code> ou <code>Downloads</code> selon la version de votre MacOS), sinon, ce fichier sera téléchargé au même emplacement (il pèse 2,9Gb)! Double-cliquez sur <code>svbox2018a_macos_setup.dmg</code>. Suivez simplement les instructions.</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/svbox_mac-install.gif" />
-
-</div>
+<p><img src="images/annexe1/svbox_mac-install.gif" /></p>
 </center>
 <ul>
 <li>Déplacez à la souris ‘SciViews Box 2018a’ vers le dossier ‘Applications’ dans la fenêtre de l’installeur (cette partie de l’installation est très rapide, donc, vous n’aurez peut-être pas l’impression que quelque chose se passe),</li>
@@ -501,10 +496,7 @@ N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre Sc
 </ul>
 <p>Laissez l’installation se terminer. Cela peut prendre plusieurs minutes. En option, vous pouvez aussi accrocher le programme de manière permanente dans le “Dock” pour le lancer facilement depuis cet endroit. Cliquez bouton droit et dans le menu “Options”, sélectionnez l’entrée “Garder dans le Dock”.</p>
 <center>
-<div class="figure">
-<img src="images/annexe1/svbox_mac-keep-in-dock.gif" />
-
-</div>
+<p><img src="images/annexe1/svbox_mac-keep-in-dock.gif" /></p>
 </center>
 <p><img src="images/block-linux.png" width="128px" style="display: block; margin: auto 0 auto auto;" /></p>
 </div>
@@ -526,10 +518,7 @@ N’interrompez surtout pas la décompression du disque virtuel! Sinon, votre Sc
 <div id="github-desktop" class="section level3">
 <h3><span class="header-section-number">A.2.3</span> Github Desktop</h3>
 <center>
-<div class="figure">
-<img src="images/annexe1/github-desktop-website.png" />
-
-</div>
+<p><img src="images/annexe1/github-desktop-website.png" /></p>
 </center>
 <p>Dans ce cours, nous utilisons <strong>Git</strong> et <strong>Github</strong> pour gérer les différentes versions de vos projets et les partager avec vos binômes et vos enseignants. <a href="https://desktop.github.com">Github Desktop</a> facilite grandement la gestion de vos projets sous Git. Ce programme gratuit est très facile à installer : son téléchargement et le lancement de son installeur ne pose pas de problèmes particuliers. <em>Notez toutefois que ce programme n’est pas encore disponible pour Linux.</em></p>
 <p><strong>A présent, tous les ligiciels requis sont installés… Il ne reste plus que quelques petites opérations de configuration à réaliser. Voyez ceci à la section suivante.</strong></p>
@@ -611,7 +600,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

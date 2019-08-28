@@ -35,7 +35,7 @@ Vous utiliserez à la fois votre projet sur la biométrie des oursins (du module
 Vous souhaitez visualiser l'étalement de vos données sur un axe (on parle de **distribution**^[La **distribution** des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d'une variable s'observent.] en statistique) pour l'une des variables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va représenter sous forme de barres un découpage en plusieurs **classes**^[Une variable numérique est **découpée en classes** en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.] d'une variable numérique.
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.svg" alt="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.png" alt="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-2)Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton.</p>
 </div>
 
@@ -54,22 +54,21 @@ Les instructions dans R afin de produire un histogramme à l'aide de la fonction
 
 ```
 # # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean   mode     min   max
-#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>   <dbl> <dbl>
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360 0.00400 0.908
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492  0.0240  0.676
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320 0.00800 0.696
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360 0.00400 0.728
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160 0.00800 0.452
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200 0.00400 0.844
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120 0.00400 0.784
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120 0.00400 0.756
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120 0.00400 0.728
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440 0.00400 0.880
-# # ... with 1,252 more rows, and 10 more variables: std_dev <dbl>,
-# #   range <dbl>, size <dbl>, aspect <dbl>, elongation <dbl>,
-# #   compactness <dbl>, transparency <dbl>, circularity <dbl>,
-# #   density <dbl>, class <fct>
+#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
+#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
+# # … with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
+# #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
+# #   circularity <dbl>, density <dbl>, class <fct>
 ```
 
 ```r
@@ -80,7 +79,7 @@ chart(data = zooplankton, ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.svg" alt="Distribution des tailles au sein d'un échantillon de zooplancton" width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.png" alt="Distribution des tailles au sein d'un échantillon de zooplancton" width="672" />
 <p class="caption">(\#fig:unnamed-chunk-3)Distribution des tailles au sein d'un échantillon de zooplancton</p>
 </div>
 
@@ -93,7 +92,7 @@ La fonction `chart()` requiert comme argument le jeu de donnée (`zooplankton`),
 Vous pouvez décrypter votre histogramme sur base des **modes**^[Les **modes** d'un histogramme correspondent à des classes plus abondantes localement, c'est-à-dire que les classes à gauche et à droite du mode comptent moins d’occurrences que lui.] et de la **symétrie**^[Un histogramme est dit **symétrique** lorsque son profil à gauche est identique ou très similaire à son profil à droite autour d'un mode.] de ces derniers. Un histogramme peut être unimodal (un seul mode), bimodal (deux modes) ou multimodal (plus de deux modes). En général, s'il y a plus d'un mode, nous pouvons suspecter que des sous-populations existent au sein de notre échantillon.
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.svg" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.png" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-4)Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique.</p>
 </div>
 
@@ -127,7 +126,7 @@ combine_charts(list(a, b, c, d))
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/histo-classes-1.svg" alt="Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes." width="672" />
+<img src="03-Visualisation-II_files/figure-html/histo-classes-1.png" alt="Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes." width="672" />
 <p class="caption">(\#fig:histo-classes)Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes.</p>
 </div>
 
@@ -162,17 +161,17 @@ Lors de l'analyse de jeux de données, vous serez amené à réaliser un histogr
 # # A tibble: 150 x 5
 #    sepal_length sepal_width petal_length petal_width species
 #           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
-#  1         5.10        3.50         1.40       0.200 setosa 
-#  2         4.90        3.00         1.40       0.200 setosa 
-#  3         4.70        3.20         1.30       0.200 setosa 
-#  4         4.60        3.10         1.50       0.200 setosa 
-#  5         5.00        3.60         1.40       0.200 setosa 
-#  6         5.40        3.90         1.70       0.400 setosa 
-#  7         4.60        3.40         1.40       0.300 setosa 
-#  8         5.00        3.40         1.50       0.200 setosa 
-#  9         4.40        2.90         1.40       0.200 setosa 
-# 10         4.90        3.10         1.50       0.100 setosa 
-# # ... with 140 more rows
+#  1          5.1         3.5          1.4         0.2 setosa 
+#  2          4.9         3            1.4         0.2 setosa 
+#  3          4.7         3.2          1.3         0.2 setosa 
+#  4          4.6         3.1          1.5         0.2 setosa 
+#  5          5           3.6          1.4         0.2 setosa 
+#  6          5.4         3.9          1.7         0.4 setosa 
+#  7          4.6         3.4          1.4         0.3 setosa 
+#  8          5           3.4          1.5         0.2 setosa 
+#  9          4.4         2.9          1.4         0.2 setosa 
+# 10          4.9         3.1          1.5         0.1 setosa 
+# # … with 140 more rows
 ```
 
 ```r
@@ -184,7 +183,7 @@ chart(data = iris, ~ sepal_length %fill=% species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.svg" alt="Distribution des longueurs de sépales de trois espèces d'iris." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.png" alt="Distribution des longueurs de sépales de trois espèces d'iris." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-5)Distribution des longueurs de sépales de trois espèces d'iris.</p>
 </div>
 
@@ -200,7 +199,7 @@ chart(data = iris, ~ sepal_length | species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.svg" alt="Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.png" alt="Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-6)Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces).</p>
 </div>
 
@@ -218,7 +217,7 @@ chart(data = iris, ~ sepal_length %fill=% species | species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.svg" alt="Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans)." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.png" alt="Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans)." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-7)Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans).</p>
 </div>
 
@@ -230,7 +229,7 @@ Vous découvrez sans doute que les graphiques réalisables avec R sont modulable
 L'histogramme n'est pas le seul outil à votre disposition. Vous pouvez également employer le **graphique de densité** qui se présente un peu comme un histogramme lissé. Le passage d'un histogramme vers un graphe de densité se base sur une **estimation par noyaux gaussien**^[L'opération effectuée pour passer d'un histogramme à une courbe de densité consiste effectivement à lisser les pics plus ou moins fort dans l'histogramme de départ.]
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.svg" alt="A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.png" alt="A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-8)A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image.</p>
 </div>
 
@@ -249,22 +248,21 @@ Les instructions en R pour produire un graphique de densité avec la fonction `c
 
 ```
 # # A tibble: 1,262 x 20
-#      ecd  area perimeter feret major minor  mean   mode     min   max
-#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl>  <dbl>   <dbl> <dbl>
-#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.0360 0.00400 0.908
-#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492  0.0240  0.676
-#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.0320 0.00800 0.696
-#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.0360 0.00400 0.728
-#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.0160 0.00800 0.452
-#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.0200 0.00400 0.844
-#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.0120 0.00400 0.784
-#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.0120 0.00400 0.756
-#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.0120 0.00400 0.728
-# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.0440 0.00400 0.880
-# # ... with 1,252 more rows, and 10 more variables: std_dev <dbl>,
-# #   range <dbl>, size <dbl>, aspect <dbl>, elongation <dbl>,
-# #   compactness <dbl>, transparency <dbl>, circularity <dbl>,
-# #   density <dbl>, class <fct>
+#      ecd  area perimeter feret major minor  mean  mode   min   max std_dev
+#    <dbl> <dbl>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>   <dbl>
+#  1 0.770 0.465      4.45 1.32  1.16  0.509 0.363 0.036 0.004 0.908   0.231
+#  2 0.700 0.385      2.32 0.728 0.713 0.688 0.361 0.492 0.024 0.676   0.183
+#  3 0.815 0.521      4.15 1.33  1.11  0.598 0.308 0.032 0.008 0.696   0.204
+#  4 0.785 0.484      4.44 1.78  1.56  0.394 0.332 0.036 0.004 0.728   0.218
+#  5 0.361 0.103      1.71 0.739 0.694 0.188 0.153 0.016 0.008 0.452   0.110
+#  6 0.832 0.544      5.27 1.66  1.36  0.511 0.371 0.02  0.004 0.844   0.268
+#  7 1.23  1.20      15.7  3.92  1.37  1.11  0.217 0.012 0.004 0.784   0.214
+#  8 0.620 0.302      3.98 1.19  1.04  0.370 0.316 0.012 0.004 0.756   0.246
+#  9 1.19  1.12      15.3  3.85  1.34  1.06  0.176 0.012 0.004 0.728   0.172
+# 10 1.04  0.856      7.60 1.89  1.66  0.656 0.404 0.044 0.004 0.88    0.264
+# # … with 1,252 more rows, and 9 more variables: range <dbl>, size <dbl>,
+# #   aspect <dbl>, elongation <dbl>, compactness <dbl>, transparency <dbl>,
+# #   circularity <dbl>, density <dbl>, class <fct>
 ```
 
 ```r
@@ -275,7 +273,7 @@ chart(data = zooplankton, ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.svg" alt="Distribution des tailles au sein de l'échantillon de zooplancton." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.png" alt="Distribution des tailles au sein de l'échantillon de zooplancton." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-9)Distribution des tailles au sein de l'échantillon de zooplancton.</p>
 </div>
 
@@ -287,7 +285,7 @@ Ici, nous utilisons donc la fonction `geom_density()`.
 Le graphique en violon est constitué de deux graphiques de densité en miroir. Le résultat fait penser un peu à un violon pour une distribution bimodale. Cette représentation est visuellement très convainquante lorsque la variable étudiée contient suffisamment d'observations pour permettre de déterminer précisément sa distribution (plusieurs dizaines ou centaines d'individus mesurés).
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/violin-plot-1.svg" alt="Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton." width="672" />
+<img src="03-Visualisation-II_files/figure-html/violin-plot-1.png" alt="Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton." width="672" />
 <p class="caption">(\#fig:violin-plot)Graphe en violon de la distribution de la taille en fonction des groupes taxonomiques dans un échantillon de zooplancton.</p>
 </div>
 
@@ -306,7 +304,7 @@ chart(data = zooplankton_sub, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-10-1.svg" alt="Distribution des tailles pour 4 groupes taxonomiques de zooplancton." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-10-1.png" alt="Distribution des tailles pour 4 groupes taxonomiques de zooplancton." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-10)Distribution des tailles pour 4 groupes taxonomiques de zooplancton.</p>
 </div>
 
@@ -324,7 +322,7 @@ chart(data = zooplankton, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-11-1.svg" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon)." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-11-1.png" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon)." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-11)Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon).</p>
 </div>
 
@@ -338,7 +336,7 @@ chart(data = zooplankton, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-12-1.svg" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`)." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-12-1.png" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`)." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-12)Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`).</p>
 </div>
 
@@ -351,7 +349,7 @@ chart(data = zooplankton, class ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.svg" alt="Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes)." width="672" />
+<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.png" alt="Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes)." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-13)Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes).</p>
 </div>
 

@@ -37,7 +37,7 @@ Si nous prenons notre exemple des crabes *L. variegatus*, nous avions travaillé
 ##### A vous de jouer {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;11a_anova2&quot;)</code></pre>
 </div>
 
@@ -64,6 +64,14 @@ read("crabs", package = "MASS", lang = "fr") %>.%
     "(Ratio largeur arrière /max)^5", units = NA)) %>.%
   select(., species, sex, aspect, aspect5) ->
   crabs2
+```
+
+```
+# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
+# This warning is displayed once per session.
+```
+
+```r
 # Graphique de base pour visualiser les interactions
 #chart$base(interaction.plot(crabs2$species, crabs2$sex, crabs2$aspect5))
 # Version avec ggplot2
@@ -87,8 +95,14 @@ crabs2 %>.%
 # 4 O       M            0.00427
 ```
 
+```
+# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+# Please use `as_label()` or `as_name()` instead.
+# This warning is displayed once per session.
+```
+
 <div class="figure" style="text-align: center">
-<img src="11-Variance-II_files/figure-html/interactions-1.svg" alt="Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu'il n'y a pas d'interactions, comme c'est le cas ici." width="672" />
+<img src="11-Variance-II_files/figure-html/interactions-1.png" alt="Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu'il n'y a pas d'interactions, comme c'est le cas ici." width="672" />
 <p class="caption">(\#fig:interactions)Graphique des interactions entre les variables facteurs (espèce et sexe). Les traits (pratiquement) parallèles indiquent qu'il n'y a pas d'interactions, comme c'est le cas ici.</p>
 </div>
 
@@ -121,7 +135,7 @@ chart(data = crabs2, aspect5 ~ species | sex) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="11-Variance-II_files/figure-html/crabs2boxplot-1.svg" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version simple." width="672" />
+<img src="11-Variance-II_files/figure-html/crabs2boxplot-1.png" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version simple." width="672" />
 <p class="caption">(\#fig:crabs2boxplot)Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version simple.</p>
 </div>
 
@@ -138,7 +152,7 @@ chart(data = crabs2, aspect5 ~ species | sex) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="11-Variance-II_files/figure-html/crabs2boxplot2-1.svg" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version annotée." width="672" />
+<img src="11-Variance-II_files/figure-html/crabs2boxplot2-1.png" alt="Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version annotée." width="672" />
 <p class="caption">(\#fig:crabs2boxplot2)Taille relative de la carapace à l'arrière de crabes *L. variegatus* (deux variétés et deux sexes), version annotée.</p>
 </div>
 
@@ -210,12 +224,12 @@ summary(anovaComp. <- confint(multcomp::glht(anova.,
 .oma <- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-5-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
 
 Ceci confirme que les différences sont significatives au seuil $\alpha$ de 5%. Il ne nous reste plus qu'à vérifier la distribution des résidus de l'ANOVA pour que notre analyse soit complète (Fig.\ \@ref(fig:anova2-resid)).
 
 <div class="figure" style="text-align: center">
-<img src="11-Variance-II_files/figure-html/anova2-resid-1.svg" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs sans interactions de `aspect^5`." width="672" />
+<img src="11-Variance-II_files/figure-html/anova2-resid-1.png" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs sans interactions de `aspect^5`." width="672" />
 <p class="caption">(\#fig:anova2-resid)Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs sans interactions de `aspect^5`.</p>
 </div>
 
@@ -292,7 +306,7 @@ anova(anova. <- lm(data = crabs2, aspect5 ~ species * sex))
 Notre analyse confirme qu'il n'y a pas d'interactions. La valeur *P* (0,57) en regard du terme `species:sex` correspondant est très largement supérieure à $\alpha$ de 5%. Notez aussi que les tests relatifs à `species` et `sex` donnent des valeurs différentes de notre modèle sans interactions. Les différences entre les deux seront d'autant plus importantes que les interactions sont fortes. Les conclusions restent les mêmes que précédemment, et ici, nous démontrons par un test d'hypothèse que les interactions ne sont pas significatives. Naturellement, la description des données, les vérifications (homoscédasticité, distribution normale ou quasi-normale des résidus) et les analyses "post-hoc" en cas de rejet de $H_0$ sont à réaliser ici aussi. Nous les avons déjà faites plus haut à peu de choses prêt (les résutats seront ici très proches de ceux du modèle sans interactions, puisque ces dernières sont négligeables).
 
 <div class="warning">
-<p>Faites attention à un piège fréquent lorsque vous avez des mesures multiples sur les <em>mêmes</em> individus. Par exemple, si vous étudiez trois populations avec disons, cinq réplicats par population et que vous dénombrez des cellules marquées sur dix coupes histologiques réalisées chaque fois dans un organe du <em>même</em> individu, vous aurez 3x5x10 = 150 mesures, mais vous ne pouvez pas utiliser une ANOVA à deux facteurs croisés car les 150 observations ne sont pas indépendantes les unes des autres. Vous n'avez jamais mesuré que 15 individus au total. Si vous analysez ces données comme si vous en aviez mesuré 150, <strong>votre analyse sera incorrecte</strong>. Il s'agit ici d'une erreur qui s'appelle la <strong>pseudo-réplication</strong>. Vous devrez utiliser d'autres modèles comme le modèle à facteurs hiérarchisés (voir section suivante).</p>
+<p>Faites attention à un piège fréquent lorsque vous avez des mesures multiples sur les <em>mêmes</em> individus. Par exemple, si vous étudiez trois populations avec disons, cinq réplicats par population et que vous dénombrez des cellules marquées sur dix coupes histologiques réalisées chaque fois dans un organe du <em>même</em> individu, vous aurez 3x5x10 = 150 mesures, mais vous ne pouvez pas utiliser une ANOVA à deux facteurs croisés car les 150 observations ne sont pas indépendantes les unes des autres. Vous n’avez jamais mesuré que 15 individus au total. Si vous analysez ces données comme si vous en aviez mesuré 150, <strong>votre analyse sera incorrecte</strong>. Il s’agit ici d’une erreur qui s’appelle la <strong>pseudo-réplication</strong>. Vous devrez utiliser d’autres modèles comme le modèle à facteurs hiérarchisés (voir section suivante).</p>
 </div>
 
 
@@ -331,7 +345,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -341,7 +355,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -360,7 +374,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -370,7 +384,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -387,7 +401,7 @@ chart(data = eggs, Fat ~ Lab %col=% Technician) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="11-Variance-II_files/figure-html/nested-1.svg" alt="Mesures de fractions en matières grasses dans des oeufs dans six laboratoires, par douze techniciens différents. Les points rouges sont les moyennes par technicien." width="672" />
+<img src="11-Variance-II_files/figure-html/nested-1.png" alt="Mesures de fractions en matières grasses dans des oeufs dans six laboratoires, par douze techniciens différents. Les points rouges sont les moyennes par technicien." width="672" />
 <p class="caption">(\#fig:nested)Mesures de fractions en matières grasses dans des oeufs dans six laboratoires, par douze techniciens différents. Les points rouges sont les moyennes par technicien.</p>
 </div>
 
@@ -418,8 +432,8 @@ anova(anova. <- lm(data = eggs, Fat ~ Lab + Technician %in% Lab))
 # 
 # Response: Fat
 #                Df  Sum Sq  Mean Sq F value    Pr(>F)    
-# Lab             5 0.44303 0.088605  9.5904 6.989e-06 ***
-# Lab:Technician  6 0.24747 0.041246  4.4644  0.001786 ** 
+# Lab             5 0.44302 0.088605  9.5904 6.989e-06 ***
+# Lab:Technician  6 0.24748 0.041246  4.4644  0.001786 ** 
 # Residuals      36 0.33260 0.009239                      
 # ---
 # Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -430,7 +444,7 @@ Nous voyons que, dans le cas présent, l'effet technicien ne peut pas être test
 Nous devons maintenant vérifier la distribution normale des résidus dans ce modèle (Fig.\ \@ref(fig:nestedqqplot)). Ici rien à redire, la distribution est conforme à nos attentes.
 
 <div class="figure" style="text-align: center">
-<img src="11-Variance-II_files/figure-html/nestedqqplot-1.svg" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs hiérarchisés pour la variable `Fat` du jeu de données `eggs`." width="672" />
+<img src="11-Variance-II_files/figure-html/nestedqqplot-1.png" alt="Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs hiérarchisés pour la variable `Fat` du jeu de données `eggs`." width="672" />
 <p class="caption">(\#fig:nestedqqplot)Graphique quantile-quantile des résidus pour l'ANOVA à deux facteurs hiérarchisés pour la variable `Fat` du jeu de données `eggs`.</p>
 </div>
 
@@ -475,7 +489,7 @@ aov. <- aov(data = eggs, Fat ~ Lab + Technician %in% Lab)
 plot(anovaComp.)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-13-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" />
 
 Nous pouvons observer des différences significatives au seuil $\alpha$ de 5% entre le labo I et tous les autres labos. Les autres comparaisons n'apparaissent pas significatives.
 
@@ -500,7 +514,7 @@ skimr::skim(eggs_means)
 #  n obs: 12 
 #  n variables: 3 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -508,7 +522,7 @@ skimr::skim(eggs_means)
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
 ```
@@ -525,8 +539,8 @@ eggs_means %>.%
 # # A tibble: 6 x 4
 #   Lab    mean      sd count
 #   <fct> <dbl>   <dbl> <int>
-# 1 I     0.580 0.202       2
-# 2 II    0.340 0.0354      2
+# 1 I     0.58  0.202       2
+# 2 II    0.34  0.0354      2
 # 3 III   0.408 0.0530      2
 # 4 IV    0.376 0.00177     2
 # 5 V     0.354 0.00884     2
@@ -544,7 +558,7 @@ chart(eggs_means, Fat_mean ~ Lab) +
     f_aes(means ~ Lab), size = 3, col = "red")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-16-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -584,7 +598,7 @@ anova. %>.%
     ylab = "Résidus standardisés")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-19-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" />
 
 ```
 # [1] 1 7
@@ -825,8 +839,8 @@ df
 # # A tibble: 2 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1    1.    2.    3.
-# 2    4.    5.    6.
+# 1     1     2     3
+# 2     4     5     6
 ```
 
 
@@ -839,7 +853,7 @@ df[1, 2:3]
 # # A tibble: 1 x 2
 #       y     z
 #   <dbl> <dbl>
-# 1    2.    3.
+# 1     2     3
 ```
 
 Pour conserver toutes les lignes et/ou toutes les colonnes, il suffit de laisser la position correspondante vide.
@@ -854,7 +868,7 @@ df[2, ]
 # # A tibble: 1 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1    4.    5.    6.
+# 1     4     5     6
 ```
 
 ```r
@@ -866,8 +880,8 @@ df[ , 2]
 # # A tibble: 2 x 1
 #       y
 #   <dbl>
-# 1    2.
-# 2    5.
+# 1     2
+# 2     5
 ```
 
 ```r
@@ -879,8 +893,8 @@ df[ , ]
 # # A tibble: 2 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1    1.    2.    3.
-# 2    4.    5.    6.
+# 1     1     2     3
+# 2     4     5     6
 ```
 
 Les autres formes d'indiçage fonctionnent aussi.
@@ -895,7 +909,7 @@ df[df$x > 3, c('y', 'z')]
 # # A tibble: 1 x 2
 #       y     z
 #   <dbl> <dbl>
-# 1    5.    6.
+# 1     5     6
 ```
 
 Notez bien que nous n'avons pas écrit `df[x > 3, ]` mais `df[df$x > 3, ]`. La première forme n'aurait pas utilisé la variable `x` du data frame `df` (notée `df$x`), mais aurait tenté d'utiliser un vecteur `x` directement. Ce qui nous amène à l'extraction d'un élément d'un tableau ou d'une liste à l'aide des opérateur `[[]]` ou `$`. Pour extraire la colonne `y` sous *forme d'un vecteur* de `df`, nous pourrons faire\ :
@@ -938,8 +952,8 @@ df
 # # A tibble: 2 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1    1.    2.  -10.
-# 2    4.    5.  -15.
+# 1     1     2   -10
+# 2     4     5   -15
 ```
 
 ```r
@@ -952,8 +966,8 @@ df
 # # A tibble: 2 x 3
 #       x     y     z
 #   <dbl> <dbl> <dbl>
-# 1    1.    2.  -10.
-# 2    4.    5.  -15.
+# 1     1     2   -10
+# 2     4     5   -15
 ```
 
 Maintenant que nous sommes familiarisés avec les différents modes d'indiçage dans R de base, nous pouvons les comparer à d'autres styles.
@@ -962,7 +976,7 @@ Maintenant que nous sommes familiarisés avec les différents modes d'indiçage 
 ##### A vous de jouer {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vus au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vus au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;11b_syntaxr&quot;)</code></pre>
 </div>
 
@@ -985,13 +999,13 @@ skimr::skim(zoo)
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -1155,7 +1169,7 @@ zoo2
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # ... with 89 more rows
+# # … with 89 more rows
 ```
 
 En tidyverse, les deux opérations (filtrage des lignes et sélection des variables en colonnes) restent deux opération successives distinctes dans le code. Notez au passage que nous repassons à l'opérateur de chaînage `%>.%` de SciViews-R que nous avons l'habitude d'utiliser à la place de l'opérateur correspondant de tidyverse `%>%`.
@@ -1183,7 +1197,7 @@ zoo2
 #  8  0.975 1.11  Oeuf_rond   
 #  9  0.449 0.495 Oeuf_allongé
 # 10  0.987 2.02  Oeuf_rond   
-# # ... with 89 more rows
+# # … with 89 more rows
 ```
 
 Le résultat est le même, mais la syntaxe est très différente. Notez que les variables dans la syntaxe de base sont complètement qualifiées (`zoo$class`), ce qui nécessite de répéter plusieurs fois le nom du jeu de données `zoo` (inconvénient) mais lève toute ambiguïté (avantage). La version de tidyverse est plus "propre" (avantage), mais cela implique d'utiliser une évaluation non standard de `class` qui n'est pas une variable existante dans l'environnement où le code est évalué (inconvénient). La sélection des variables est également différente. Dans R de base, des chaînes de caractères doivent être compilées dans un vecteur d'indiçage à l'aide de `c()`, alors que `select()` de tidyverse permet de spécifier simplement les noms des variables sans autres fioritures (mais cela doit être évalué de manière non standard, encore une fois).
@@ -1266,7 +1280,7 @@ plot(zoo2$log_area, zoo2$aspect, col = zoo2$class)
 legend("bottomright", legend = c("Oeuf allongé", "Oeuf rond"), col = 1:2, pch = 1)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-47-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" />
 
 Le même graphique, mais en utilisant l'interface formule alternative avec `plot()`\ :
 
@@ -1276,7 +1290,7 @@ plot(data = zoo2, aspect ~ log_area, col = class)
 legend("bottomright", legend = c("Oeuf allongé", "Oeuf rond"), col = 1:2, pch = 1)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-48-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" />
 
 L'interface formule est également employée avec le moteur lattice via la fonction `xyplot()`. Ici, nous utilisons la version `chart()` en appelant `chart$xyplot()`.
 
@@ -1285,7 +1299,7 @@ L'interface formule est également employée avec le moteur lattice via la fonct
 chart$xyplot(data = zoo2, aspect ~ log_area, groups = zoo2$class, auto.key = TRUE)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-49-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-49-1.png" width="672" style="display: block; margin: auto;" />
 
 Dans tidyverse, c'est le moteur graphique ggplot2 qui est utilisé, avec sa syntaxe propre\ :
 
@@ -1295,7 +1309,7 @@ ggplot(data = zoo2, aes(x = log_area, y = aspect, col = class)) +
   geom_point()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-50-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" />
 
 Dans SciViews-R, `chart()` utilise aussi par défaut le moteur graphique ggplot2, mais il est plus flexible et permet soit d'utiliser `aes()` comme `ggplot()`, soit une interface formule élargie (c'est-à-dire qu'il est possible d'y inclure d'autres "aesthetics" à l'aide des opérateurs `%aes=%`)\ :
 
@@ -1306,7 +1320,7 @@ chart(data = zoo2, aes(x = log_area, y = aspect, col = class)) +
   geom_point()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-51-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1315,7 +1329,7 @@ chart(data = zoo2, aspect ~ log_area %col=% class) +
   geom_point()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-52-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" />
 
 Il y aurait encore beaucoup à dire sur les différents styles de syntaxe dans R, mais nous venons de discuter les éléments essentiels. SciViews-R propose d'utiliser un ensemble cohérent d'instructions qui est soigneusement choisi pour rendre l'utilisation de R plus facile (sur base de nos observations des difficultés et erreurs d'apprentissage principales). Il se base sur tidyverse avec une pincée de R de base et une bonne dose de formules là où elles se montrent utiles. Des fonctions et des opérateurs originaux sont ajoutés dans le but d'homogénéiser et/ou clarifier la syntaxe.
 

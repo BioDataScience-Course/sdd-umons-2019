@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.1 Le danger des tests multiples | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.1 Le danger des tests multiples | Science des données biologiques, UMONS />
+  <meta property="og:title" content="10.1 Le danger des tests multiples | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.1 Le danger des tests multiples | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="10.1 Le danger des tests multiples | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="variance.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -400,38 +425,43 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="le-danger-des-tests-multiples" class="section level2">
 <h2><span class="header-section-number">10.1</span> Le danger des tests multiples</h2>
 <p>Les tests <em>t</em> de Student et de Wilcoxon sont limités à la comparaison de deux populations. Poursuivons notre analyse des crabes <em>L. variegatus</em>. Rappelez-vous, nous avons deux variétés (variable <code>species</code>, <code>B</code> pour bleue et <code>O</code>pour orange). Si nous voulons comparer simultanément les mâles et les femelles des deux variétés, cela nous fait quatre sous-populations à comparer (nous utilisons ici la fonction <code>paste()</code> qui rassemble des chaînes de caractère avec trait comme caractère séparateur <code>sep =&quot;-&quot;</code> pour former une variable facteur à quatre niveaux, <code>B-F</code>, <code>B-M</code>, <code>O-F</code>, <code>O-M</code>). Nous transformaons cette variable en facteur à l’aide de <code>factor()</code> et nous ajoutons un label avec <code>labelise()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;crabs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;MASS&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;crabs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;MASS&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
 crabs <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">group  =</span> <span class="kw">labelise</span>(
     <span class="kw">factor</span>(<span class="kw">paste</span>(species, sex, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)),
     <span class="st">&quot;Groupe espèce - sexe&quot;</span>, <span class="dt">units =</span> <span class="ot">NA</span>)) -&gt;
-<span class="st">  </span>crabs2</code></pre></div>
+<span class="st">  </span>crabs2</code></pre>
+<pre><code># Warning: The `printer` argument is deprecated as of rlang 0.3.0.
+# This warning is displayed once per session.</code></pre>
 <p>La Fig. <a href="le-danger-des-tests-multiples.html#fig:crabs-rear">10.1</a> montre la largeur à l’arrière de la carapace chez les quatre groupes ainsi individualisés. Une représentation graphique adéquate avant de réaliser notre analyse ici lorsque le nombre de répliquats est important est le graphique en violon sur lequel nous superposons au moins les moyennes, et de préférence, les points également. Si le nombre de répliquats est plus faible, mais toujours supérieur à 7-8, nous pourrions utiliser le même type de graphique mais avec des boites de dispersion plutôt (voir plus loin, Fig. <a href="anova-a-un-facteur.html#fig:anova2">10.4</a>). Avec encore moins de répliquats nous présenterons les points et les moyennes uniquement.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, rear <span class="op">~</span><span class="st"> </span>group) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, rear <span class="op">~</span><span class="st"> </span>group) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(crabs2, group) <span class="op">%&gt;.%</span>
 <span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(rear, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
-    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>group), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>group), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
+<pre><code># Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+# Please use `as_label()` or `as_name()` instead.
+# This warning is displayed once per session.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:crabs-rear"></span>
-<img src="10-Variance_files/figure-html/crabs-rear-1.svg" alt="Largeur arrière en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquats (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
+<img src="10-Variance_files/figure-html/crabs-rear-1.png" alt="Largeur arrière en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquats (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
 <p class="caption">
 Figure 10.1: Largeur arrière en fonction du groupe de crabes <em>L. variegatus</em>. Graphique adéquat pour comparer les moyennes et distributions dans le cas d’un nombre important de répliquats (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon).
 </p>
 </div>
 <p>Nous en profitons également pour essayer l’astuce proposée au module précédent. Au lieu de travailler sur la variable <code>rear</code> seule, nous allons étudier l’aspect ratio entre largeur à l’arrière (<code>rear</code>) et largeur maximale (<code>width</code>) de la carapace afin de nous débarrasser d’une source de variabilité triviale qui est qu’un grand crabe est grand partout, et de même un petit crabe est petit pour toutes ses mesures. Nous prenons soin également de libeller cette nouvelle variable correctement avec <code>labelise()</code>. Enfin, nous ne conservons que les variables <code>species</code>, <code>sex</code>, <code>group</code> et <code>aspect</code> avec `select() :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">aspect =</span> <span class="kw">labelise</span>(
     <span class="kw">as.numeric</span>(rear <span class="op">/</span><span class="st"> </span>width),
     <span class="st">&quot;Ratio largeur arrière / max&quot;</span>, <span class="dt">units =</span> <span class="ot">NA</span>)) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">select</span>(., species, sex, group, aspect) -&gt;
 <span class="st">  </span>crabs2
-skimr<span class="op">::</span><span class="kw">skim</span>(crabs2)</code></pre></div>
+skimr<span class="op">::</span><span class="kw">skim</span>(crabs2)</code></pre>
 <pre><code># Skim summary statistics
 #  n obs: 200 
 #  n variables: 4 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -441,26 +471,26 @@ skimr<span class="op">::</span><span class="kw">skim</span>(crabs2)</code></pre>
 #    FALSE
 #    FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁</code></pre>
 <p>Nous avons 50 individus dans chacun des quatre groupes. <strong>Lorsqu’il y a le même nombre de réplicats dans tous les groupes, on appelle cela un plan balancé</strong>. C’est une situation optimale. Nous devons toujours essayer de nous en rapprocher le plus possible car, si le nombre d’individus mesurés diffère fortement d’un groupe à l’autre, nous aurons forcément moins d’information disponible dans le ou les groupes moins nombreux, ce qui déforcera notre analyse.</p>
 <p>Nous voyons également que la variable <code>aspect</code> semble avoir une distribution bimodale d’après le petit histogramme représenté dans le résumé. La Fig. <a href="le-danger-des-tests-multiples.html#fig:anova0">10.2</a> avec <code>aspect montre une différence plus qu'avec</code>rear` seul, à la Fig. @ref(fig:crabs_rear).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect <span class="op">~</span><span class="st"> </span>group) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs2, aspect <span class="op">~</span><span class="st"> </span>group) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.05</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(crabs2, group) <span class="op">%&gt;.%</span>
 <span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(aspect, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
-    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>group), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
+    <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>group), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:anova0"></span>
-<img src="10-Variance_files/figure-html/anova0-1.svg" alt="Ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquat (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
+<img src="10-Variance_files/figure-html/anova0-1.png" alt="Ratio largeur arrière/largeur max en fonction du groupe de crabes *L. variegatus*. Graphique adéquat pour comparer les moyennes et distributions dans le cas d'un nombre important de répliquat (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon)." width="672" />
 <p class="caption">
 Figure 10.2: Ratio largeur arrière/largeur max en fonction du groupe de crabes <em>L. variegatus</em>. Graphique adéquat pour comparer les moyennes et distributions dans le cas d’un nombre important de répliquat (moyennes en rouge + observations individuelles en noir semi-transparent superposées à des graphiques en violon).
 </p>
 </div>
 <p>Nous voyons ici beaucoup mieux que la distribution bimodale est essentiellement dûe au dymorphiqme sexuel plutôt qu’à des différences entre les variétés, mais qu’en est-il plus précisément car si nous regardons attentivement, il semble que les moyennes pour les crabes bleus sont légèrement inférieures à ces des crabes oranges.</p>
 <p>Comment comparer valablement ces quatre groupes ? Comme nous savons maintenant comparer deux groupes à l’aide d’un test <em>t</em> de Student, il est tentant d’effectuer toutes les comparaisons deux à deux et de résumer l’ensemble, par exemple, dans un tableau synthétique. Ca fait quant même beaucoup de comparaisons (<code>B-F</code> &lt;-&gt; <code>B-M</code>, <code>B-F</code> &lt;-&gt; <code>O-F</code>, <code>B-F</code> &lt;-&gt; <code>O-M</code>, <code>B-M</code> &lt;-&gt; <code>O-F</code>, <code>B-M</code>&lt;-&gt; <code>O-M</code>, et finalement <code>O-F</code> &lt;-&gt; <code>O-M</code>). Cela fait six comparaisons à réaliser.</p>
-<p>N’oublions pas que, à chaque test, nous prenons un risque de nous tromper. <strong>Le risque de se tromper au moins une fois dans l’ensemble des tests est alors décuplé en cas de tests multiples.</strong> Prenons un point de vue naïf, mais qui suffira ici pour démontrer le problème qui apparaît. Admettons que le risque de nous tromper est constant, que nous rejettons ou non <span class="math inline">\(H_0\)</span>, et qu’il est de l’ordre de 10% dans chaque test individuellement<a href="references.html#fn48" class="footnoteRef" id="fnref48"><sup>48</sup></a>. La seule solution acceptable est que <em>tous</em> les tests soeijnt corrects. Considérant chaque interprétation indépendante, nous pouvons multiplier les probabilités d’avoir un test correct (90%) le nombre de fois que nous faisons le test, soit <span class="math inline">\(0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 = 0,9^6 = 0,53\)</span>. Tous les autres cas ayant au moins un test faux, nous constatons que notre analyse globale sera incorrecte <span class="math inline">\(1 - 0,53 = 47\%\)</span> du temps<a href="references.html#fn49" class="footnoteRef" id="fnref49"><sup>49</sup></a>. <strong>Notre analyse sera incorrecte une fois sur deux environ.</strong></p>
+<p>N’oublions pas que, à chaque test, nous prenons un risque de nous tromper. <strong>Le risque de se tromper au moins une fois dans l’ensemble des tests est alors décuplé en cas de tests multiples.</strong> Prenons un point de vue naïf, mais qui suffira ici pour démontrer le problème qui apparaît. Admettons que le risque de nous tromper est constant, que nous rejettons ou non <span class="math inline">\(H_0\)</span>, et qu’il est de l’ordre de 10% dans chaque test individuellement<a href="references.html#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a>. La seule solution acceptable est que <em>tous</em> les tests soeijnt corrects. Considérant chaque interprétation indépendante, nous pouvons multiplier les probabilités d’avoir un test correct (90%) le nombre de fois que nous faisons le test, soit <span class="math inline">\(0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 \times 0,9 = 0,9^6 = 0,53\)</span>. Tous les autres cas ayant au moins un test faux, nous constatons que notre analyse globale sera incorrecte <span class="math inline">\(1 - 0,53 = 47\%\)</span> du temps<a href="references.html#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>. <strong>Notre analyse sera incorrecte une fois sur deux environ.</strong></p>
 <div class="info">
 <p>
 De manière générale, le nombre de combinaisons deux à deux possibles dans un set de <code>n</code> groupes distincts sera calculé à l’aide du coefficient binomial que nous avions déjà rencontré avec la distribution du même nom, ici avec <span class="math inline"><span class="math inline">\(j\)</span></span> valant deux.
@@ -538,8 +568,8 @@ Clairement, on oublie cette façon de faire ! Prendre le risque de se tromper 9
 <div class="footnotes">
 <hr />
 <ol start="48">
-<li id="fn48"><p>Attention ! vous savez bien que c’est plus compliqué que cela. D’une part, le risque de se tromper est probablement différent si on rejette <span class="math inline">\(H_0\)</span> (<span class="math inline">\(\alpha\)</span>) ou non (<span class="math inline">\(\beta\)</span>), et ces risques sont encore à moduler en fonction de la probabilité <em>a priori</em>, un cas similaire au dépistage d’une maladie plus ou moins rare, rappelez-vous, au module <a href="proba.html#proba">7</a>.<a href="le-danger-des-tests-multiples.html#fnref48">↩</a></p></li>
-<li id="fn49"><p>Dans R, vous pouvez utiliser <code>choose(n, j)</code> pour calculer le coefficient binomial. Donc votre calcul du risque de se tromper au moins une fois dans un ensemble de <code>n</code> tests dont le risque individuel est <code>r</code> sera <code>1 - (1 - r)^choose(n, 2)</code>.<a href="le-danger-des-tests-multiples.html#fnref49">↩</a></p></li>
+<li id="fn48"><p>Attention ! vous savez bien que c’est plus compliqué que cela. D’une part, le risque de se tromper est probablement différent si on rejette <span class="math inline">\(H_0\)</span> (<span class="math inline">\(\alpha\)</span>) ou non (<span class="math inline">\(\beta\)</span>), et ces risques sont encore à moduler en fonction de la probabilité <em>a priori</em>, un cas similaire au dépistage d’une maladie plus ou moins rare, rappelez-vous, au module <a href="proba.html#proba">7</a>.<a href="le-danger-des-tests-multiples.html#fnref48" class="footnote-back">↩</a></p></li>
+<li id="fn49"><p>Dans R, vous pouvez utiliser <code>choose(n, j)</code> pour calculer le coefficient binomial. Donc votre calcul du risque de se tromper au moins une fois dans un ensemble de <code>n</code> tests dont le risque individuel est <code>r</code> sera <code>1 - (1 - r)^choose(n, 2)</code>.<a href="le-danger-des-tests-multiples.html#fnref49" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -618,7 +648,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

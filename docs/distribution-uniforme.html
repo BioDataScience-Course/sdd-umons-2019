@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.3 Distribution uniforme | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.3 Distribution uniforme | Science des données biologiques, UMONS />
+  <meta property="og:title" content="7.3 Distribution uniforme | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.3 Distribution uniforme | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="7.3 Distribution uniforme | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="lois-de-distributions.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -406,7 +431,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p><span class="math display">\[\mathrm{P}(E) = \frac{1}{n_E}\]</span></p>
 <p>La distribution uniforme est d’application pour les jeux de hasard (dés, boules de loto, …). En biologie, elle est plus rare. Dans le cas d’un sexe ratio de 1:1 (autant de mâles que de femelles), la probabilité qu’un nouveau né soit un mâle ou une femelle suit une distribution uniforme et vaut 1/2. La distribution spatiale des individus dans une population biologique peut être uniforme lorsque les individus interagissent de telle manière que la distance entre eux soit identique (par exemple, dans un groupe de manchots <em>Aptenodytes patagonicus</em> sur la banquise). Imaginons un animal hypothétique pour lequel la portée peut être de 1 à 4 petits de manière équiprobable. Nous avons alors 1/4 des portées qui présentent respectivement, 1, 2, 3 ou 4 petits (Fig. <a href="distribution-uniforme.html#fig:unif1">7.1</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:unif1"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/unif1-1.svg" alt="Probabilité du nombre de petits dans une portée qui suivrait un distribution strictement uniforme entre 1 et 4." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif1-1.png" alt="Probabilité du nombre de petits dans une portée qui suivrait un distribution strictement uniforme entre 1 et 4." width="672" />
 <p class="caption">
 Figure 7.1: Probabilité du nombre de petits dans une portée qui suivrait un distribution strictement uniforme entre 1 et 4.
 </p>
@@ -422,16 +447,16 @@ Figure 7.1: Probabilité du nombre de petits dans une portée qui suivrait un di
 Dans le cas de probabilités continues, la probabilité d’un événement en particulier est <strong>toujours nulle</strong>. Nous pouvons seulement calculer que l’un parmi plusieurs événements se produise (compris dans un intervalle).
 </p>
 </div>
-<p>La représentation graphique d’une loi de distribution continue est un outil utile pour la comprendre et vérifier ses calculs. La forme la plus courante consiste à montrer la <strong>courbe de densité de probabilité</strong> pour une distribution continue. Sur l’axe <em>X</em>, nous avons les <strong>quantiles</strong> (les valeurs observables), et sur l’axe <em>Y</em>, la densité de probabilité<a href="references.html#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a>. Par exemple, si nous constatons qu’un insecte butineur arrive sur une fleur en moyenne toutes les 4 minutes, la probabilité qu’un butineur arrive dans un intervalle de temps compris entre 0 et 4 min depuis le moment initial <span class="math inline">\(t_0\)</span> de nos observations suit une distribution uniforme continue (Fig. <a href="distribution-uniforme.html#fig:unif2">7.2</a>).</p>
+<p>La représentation graphique d’une loi de distribution continue est un outil utile pour la comprendre et vérifier ses calculs. La forme la plus courante consiste à montrer la <strong>courbe de densité de probabilité</strong> pour une distribution continue. Sur l’axe <em>X</em>, nous avons les <strong>quantiles</strong> (les valeurs observables), et sur l’axe <em>Y</em>, la densité de probabilité<a href="references.html#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>. Par exemple, si nous constatons qu’un insecte butineur arrive sur une fleur en moyenne toutes les 4 minutes, la probabilité qu’un butineur arrive dans un intervalle de temps compris entre 0 et 4 min depuis le moment initial <span class="math inline">\(t_0\)</span> de nos observations suit une distribution uniforme continue (Fig. <a href="distribution-uniforme.html#fig:unif2">7.2</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:unif2"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/unif2-1.svg" alt="Probabilité qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif2-1.png" alt="Probabilité qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
 <p class="caption">
 Figure 7.2: Probabilité qu’un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min.
 </p>
 </div>
 <p>Une autre représentation courante est la <strong>densité de probabilité cumulée</strong> qui représente la probabilité d’observer un quantile <em>ou moins</em>. Dans le cas présent, cela représente la probabilité qu’au moins un insecte butineur soit observé pour des durées d’observation croissantes (Fig. <a href="distribution-uniforme.html#fig:unif-cumul">7.3</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:unif-cumul"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/unif-cumul-1.svg" alt="Probabilité cumulée qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif-cumul-1.png" alt="Probabilité cumulée qu'un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min." width="672" />
 <p class="caption">
 Figure 7.3: Probabilité cumulée qu’un nouvel insecte butineur arrive dans un intervalle de 0 à 4 min si, en moyenne, un insecte arrive toutes les 4 min.
 </p>
@@ -456,19 +481,19 @@ Cela signifie : “la variable aléatoire <em>X</em> suit une distribution unifo
 <li>Quelle est la probabilité que <em>X</em> = 1 (un insecte butineur arrive après <em>exactement</em> 1,00000… min d’observation) ?</li>
 <li>Quelle est la probabilité que <em>X</em> soit compris entre 1 et 1,5 ?</li>
 </ol>
-<p>La réponse à la question (1) est immédiate. Cette probabilité est <strong>nulle</strong> (voir plus haut)<a href="references.html#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a> ! Pour la question (2), nous pouvons répondre en calculant l’aire sous la courbe entre les quantiles 1 et 1,5 (représentée par l’aire en rouge à la Fig. <a href="distribution-uniforme.html#fig:unif3">7.4</a>).</p>
+<p>La réponse à la question (1) est immédiate. Cette probabilité est <strong>nulle</strong> (voir plus haut)<a href="references.html#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a> ! Pour la question (2), nous pouvons répondre en calculant l’aire sous la courbe entre les quantiles 1 et 1,5 (représentée par l’aire en rouge à la Fig. <a href="distribution-uniforme.html#fig:unif3">7.4</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:unif3"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/unif3-1.svg" alt="Probabilité qu'un insecte butineur arrive entre 1 et 1,5 min après le début d'une observation (aire P en rouge)." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif3-1.png" alt="Probabilité qu'un insecte butineur arrive entre 1 et 1,5 min après le début d'une observation (aire P en rouge)." width="672" />
 <p class="caption">
 Figure 7.4: Probabilité qu’un insecte butineur arrive entre 1 et 1,5 min après le début d’une observation (aire P en rouge).
 </p>
 </div>
 <p>Ici, le calcul est assez simple à faire à la main. Mais nous verrons d’autres lois de distribution plus complexes. Dans tous les cas, R offre des fonctions qui calculent les <strong>aires à gauche ou à droite</strong> d’un quantile donné. Le nom de la fonction est toujours <code>p&lt;distri&gt;()</code>, avec pour la distribution uniforme <code>punif()</code>. L’aire à gauche du quantile nécessite de spécifier l’argument <code>lower.tail = TRUE</code> (“queue en bas de la distribution” en anglais). Pour l’aire à droite, on indiquera évidemment <code>lower.tail = FALSE</code>. Donc, pour calculer la probabilité qu’un insecte arrive en moins de 1,5 sec, nous écrirons :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">punif</span>(<span class="fl">1.5</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">4</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">punif</span>(<span class="fl">1.5</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">4</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code># [1] 0.375</code></pre>
 <p>Mais comme nous voulons déterminer la probabilité qu’un insecte arrive entre 1 et 1,5 sec, nous devons soustraire à cette valeur la probabilité qu’un insecte arrive en moins de 1 sec (la zone hachurée en rouge dans la Fig <a href="distribution-uniforme.html#fig:unif3">7.4</a> est en effet l’aire à gauche depuis le quantile 1,5 <em>moins</em> l’aire à gauche depuis le quantile 1) :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">punif</span>(<span class="fl">1.5</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">4</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>) <span class="op">-</span>
-<span class="kw">punif</span>(<span class="fl">1.0</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">4</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">punif</span>(<span class="fl">1.5</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">4</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>) <span class="op">-</span>
+<span class="kw">punif</span>(<span class="fl">1.0</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">4</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code># [1] 0.125</code></pre>
 <p>La réponse est 0,125, soit une fois sur huit.</p>
 <div class="note">
@@ -485,23 +510,20 @@ Le calcul de probabilités sur base de lois de distributions continues se fait v
 </ul>
 <p>Ici, nous partons d’une probabilité (1/3) et voulons déterminer le quantile qui définit une aire à gauche de 1/3 sur le graphique (Fig. <a href="distribution-uniforme.html#fig:unif4">7.5</a>).</p>
 <div class="figure" style="text-align: center"><span id="fig:unif4"></span>
-<img src="07-Probabilites-Distributions_files/figure-html/unif4-1.svg" alt="Temps d'observation nécessaire (quantile Q) pour voir arriver un butineur une fois sur trois (aire P en rouge de 1/3 à gauche de Q)." width="672" />
+<img src="07-Probabilites-Distributions_files/figure-html/unif4-1.png" alt="Temps d'observation nécessaire (quantile Q) pour voir arriver un butineur une fois sur trois (aire P en rouge de 1/3 à gauche de Q)." width="672" />
 <p class="caption">
 Figure 7.5: Temps d’observation nécessaire (quantile Q) pour voir arriver un butineur une fois sur trois (aire P en rouge de 1/3 à gauche de Q).
 </p>
 </div>
 <p>Dans R, la fonction qui effectue ce calcul est <code>q&lt;distri&gt;()</code>. Donc ici, il s’agit de <code>qunif()</code>. Les arguments sont les mêmes que pour <code>punif()</code> sauf le premier qui est une ou plusieurs probabilités. Nous répondons à la question de la façon suivante :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qunif</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">4</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qunif</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">4</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code># [1] 1.333333</code></pre>
 <p>Donc il faut observer pendant 1,33 min (1 min et 20 sec) pour avoir 1 chance sur 3 d’observer l’arrivée d’un insecte butineur.</p>
 </div>
 <div id="calcul-avec-les-snippets" class="section level3">
 <h3><span class="header-section-number">7.3.5</span> Calcul avec les snippets</h3>
 <p>La SciViews Box propose différents snippets pour nous aider à effectuer nos différents calculs et graphiques relatifs à la distribution uniforme continue. Ils se retrouvent dans le menu <code>(d)istributions</code> accédé depuis <code>...</code>. Donc <code>..i</code> donne <em>directement</em> accès à ce menu, et puis <code>(d)istributions: uniform</code> accédé depuis <code>.iu</code> directement. Ensuite, il suffit de choisir le snippet dans le menu déroulant (voir ci-dessous).</p>
-<div class="figure">
-<img src="images/sdd1_07/snippets-uniform.png" />
-
-</div>
+<p><img src="images/sdd1_07/snippets-uniform.png" /></p>
 <ul>
 <li><code>.iuproba</code> : calcul de probabilités depuis des quantiles</li>
 <li><code>.iuquant</code> : calcul de quantile depuis des probabilités</li>
@@ -511,9 +533,9 @@ Figure 7.5: Temps d’observation nécessaire (quantile Q) pour voir arriver un 
 <li><code>.iullabel</code> : ajout d’un label sur le graphique à gauche</li>
 <li><code>.iurlabel</code>: ajout d’un label sur le graphique à droite</li>
 </ul>
-<p>Le snippet <code>.iurandom</code> nécessite quelques explications supplémentaires. R est capable de <em>simuler</em> la génération de nombres aléatoires selon différentes lois de distribution (<code>r&lt;distri&gt;()</code>). <code>runif()</code> est la fonction qui le fait pour une distribution uniforme continue. Comme il ne s’agit pas réellement de nombres aléatoires, on parle de générateur de nombres <strong>pseudo-aléatoires</strong>. En fait, il s’agit d’une série de nombres qui a les mêmes propriétés que des nombres réellement aléatoires. R se positionne au hasard dans cette série. Donc, à chaque fois que vous appelez la fonction <code>runif()</code>, vous obtenez logiquement des valeurs différentes. A des fins de reproductibilité, il est possible de <em>forcer</em> R à partir en un point précis de la série avec la fonction <code>set.seed()</code> avec un nombre comme argument qui donne la position. Par exemple <code>set.seed(281)</code><a href="references.html#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a>. La génération de nombres aléatoires dans les instructions qui suivent seront alors toujours les mêmes. Voici un exemple de 10 nombres aléatoires générés depuis une distribution uniforme standard (compris entre 0 et 1). Chaque fois que vous exécuterez ces deux instructions exactement l’une après l’autre, vous obtiendrez toujours la même suite. Si vous ré-exécutez la seconde instruction sans la première, vous obtiendrez une suite différente.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">946</span>)
-<span class="kw">runif</span>(<span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>)</code></pre></div>
+<p>Le snippet <code>.iurandom</code> nécessite quelques explications supplémentaires. R est capable de <em>simuler</em> la génération de nombres aléatoires selon différentes lois de distribution (<code>r&lt;distri&gt;()</code>). <code>runif()</code> est la fonction qui le fait pour une distribution uniforme continue. Comme il ne s’agit pas réellement de nombres aléatoires, on parle de générateur de nombres <strong>pseudo-aléatoires</strong>. En fait, il s’agit d’une série de nombres qui a les mêmes propriétés que des nombres réellement aléatoires. R se positionne au hasard dans cette série. Donc, à chaque fois que vous appelez la fonction <code>runif()</code>, vous obtenez logiquement des valeurs différentes. A des fins de reproductibilité, il est possible de <em>forcer</em> R à partir en un point précis de la série avec la fonction <code>set.seed()</code> avec un nombre comme argument qui donne la position. Par exemple <code>set.seed(281)</code><a href="references.html#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>. La génération de nombres aléatoires dans les instructions qui suivent seront alors toujours les mêmes. Voici un exemple de 10 nombres aléatoires générés depuis une distribution uniforme standard (compris entre 0 et 1). Chaque fois que vous exécuterez ces deux instructions exactement l’une après l’autre, vous obtiendrez toujours la même suite. Si vous ré-exécutez la seconde instruction sans la première, vous obtiendrez une suite différente.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">946</span>)
+<span class="kw">runif</span>(<span class="dv">10</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>)</code></pre>
 <pre><code>#  [1] 0.6378020 0.7524999 0.5593599 0.6688387 0.8989262 0.5300384 0.1520689
 #  [8] 0.9031163 0.2693327 0.6738862</code></pre>
 </div>
@@ -521,9 +543,9 @@ Figure 7.5: Temps d’observation nécessaire (quantile Q) pour voir arriver un 
 <div class="footnotes">
 <hr />
 <ol start="31">
-<li id="fn31"><p>Plus la densité de probabilité est élevée, plus les événements dans cette région du graphique sont probables.<a href="distribution-uniforme.html#fnref31">↩</a></p></li>
-<li id="fn32"><p>La question n’est pas après <em>environ</em> une minute, mais à <em>exactement</em> 1 min 0 sec, 0 millisec, …, ce qui est alors hautement improbable.<a href="distribution-uniforme.html#fnref32">↩</a></p></li>
-<li id="fn33"><p>Si vous utilisez <code>set.seed()</code> prenez soin de spécifier toujours une valeur différente prise au hasard comme argument !<a href="distribution-uniforme.html#fnref33">↩</a></p></li>
+<li id="fn31"><p>Plus la densité de probabilité est élevée, plus les événements dans cette région du graphique sont probables.<a href="distribution-uniforme.html#fnref31" class="footnote-back">↩</a></p></li>
+<li id="fn32"><p>La question n’est pas après <em>environ</em> une minute, mais à <em>exactement</em> 1 min 0 sec, 0 millisec, …, ce qui est alors hautement improbable.<a href="distribution-uniforme.html#fnref32" class="footnote-back">↩</a></p></li>
+<li id="fn33"><p>Si vous utilisez <code>set.seed()</code> prenez soin de spécifier toujours une valeur différente prise au hasard comme argument !<a href="distribution-uniforme.html#fnref33" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -602,7 +624,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.1 Importation des données | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 Importation des données | Science des données biologiques, UMONS />
+  <meta property="og:title" content="5.1 Importation des données | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 Importation des données | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="5.1 Importation des données | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="import.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -400,7 +425,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <div id="importation-des-donnees" class="section level2">
 <h2><span class="header-section-number">5.1</span> Importation des données</h2>
 <p>Il est possible d’encoder des très petits jeux de données dans R. La fonction <code>tribble()</code> permet de le faire facilement. Notez que les noms des colonnes du tableau sont à rentrer sous forme de <strong>formules</strong> (<code>~var</code>), que chaque entrée est séparée par une virgule, et que les chaines de caractères sont entourées de guillemets. Les espaces sont optionnels et peuvent être utilisés pour aligner les données afin que le tout soit plus lisible. Des commentaires peuvent être utilisés éventuellement en fin de ligne (un dièse <code>#</code> suivi du commentaire).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">small_dataset &lt;-<span class="st"> </span><span class="kw">tribble</span>(
+<pre class="sourceCode r"><code class="sourceCode r">small_dataset &lt;-<span class="st"> </span><span class="kw">tribble</span>(
   <span class="op">~</span>treatment, <span class="op">~</span>dose, <span class="op">~</span>response,
    <span class="st">&quot;control&quot;</span>,   <span class="fl">0.5</span>,     <span class="fl">18.35</span>,
    <span class="st">&quot;control&quot;</span>,   <span class="fl">1.0</span>,     <span class="fl">26.43</span>, <span class="co"># This value needs to be double-checked</span>
@@ -409,32 +434,32 @@ code > span. { color: #1f1c1b; } /* Normal */
     <span class="st">&quot;test&quot;</span>  ,   <span class="fl">1.0</span>,     <span class="fl">19.92</span>,
     <span class="st">&quot;test&quot;</span>  ,   <span class="fl">2.0</span>,     <span class="fl">41.06</span>)
 <span class="co"># Print the table</span>
-small_dataset</code></pre></div>
+small_dataset</code></pre>
 <pre><code># # A tibble: 6 x 3
 #   treatment  dose response
 #   &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-# 1 control   0.500     18.4
-# 2 control   1.00      26.4
-# 3 control   2.00      51.1
-# 4 test      0.500     10.3
-# 5 test      1.00      19.9
-# 6 test      2.00      41.1</code></pre>
-<p>Dans la plupart des cas, vous utiliserez ou collecterez des données stockées dans des formats divers : feuilles Excel, fichiers CSV (“comma-separated-values”, un format standard d’encodage d’un tableau de données sous forme textuelle), formats spécifiques à divers logiciels statistiques comme SAS, Stata ou Systat, … Ces données peuvent être sur un disque local ou disponibles depuis un lien URL sur le net<a href="references.html#fn17" class="footnoteRef" id="fnref17"><sup>17</sup></a>. De nombreuses fonctions existent dans R pour importer toutes ces données. La fonction <code>read()</code> du package <code>data.io</code> est l’une des plus simples et conviviales d’entre-elles. Vous l’avez déjà utilisée, mais reprenons un exemple pour en discuter les détails.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre></div>
+# 1 control     0.5     18.4
+# 2 control     1       26.4
+# 3 control     2       51.1
+# 4 test        0.5     10.3
+# 5 test        1       19.9
+# 6 test        2       41.1</code></pre>
+<p>Dans la plupart des cas, vous utiliserez ou collecterez des données stockées dans des formats divers : feuilles Excel, fichiers CSV (“comma-separated-values”, un format standard d’encodage d’un tableau de données sous forme textuelle), formats spécifiques à divers logiciels statistiques comme SAS, Stata ou Systat, … Ces données peuvent être sur un disque local ou disponibles depuis un lien URL sur le net<a href="references.html#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>. De nombreuses fonctions existent dans R pour importer toutes ces données. La fonction <code>read()</code> du package <code>data.io</code> est l’une des plus simples et conviviales d’entre-elles. Vous l’avez déjà utilisée, mais reprenons un exemple pour en discuter les détails.</p>
+<pre class="sourceCode r"><code class="sourceCode r">(biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>))</code></pre>
 <pre><code># # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    &lt;fct&gt;  &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
-#  1 M      1995-03-11    69.   182.  15.0        2013.   18.
-#  2 M      1998-04-03    74.   190.  16.0        2013.   15.
-#  3 M      1967-04-04    83.   185.  17.5        2013.   46.
-#  4 M      1994-02-10    60.   175.  15.0        2013.   19.
-#  5 W      1990-12-02    48.   167.  14.0        2013.   23.
-#  6 W      1994-07-15    52.   179.  14.0        2013.   19.
-#  7 W      1971-03-03    72.   167.  15.5        2013.   42.
-#  8 W      1997-06-24    74.   180.  16.0        2013.   16.
-#  9 M      1972-10-26   110.   189.  19.0        2013.   41.
-# 10 M      1945-03-15    82.   160.  18.0        2013.   68.
-# # ... with 385 more rows</code></pre>
+#  1 M      1995-03-11     69    182  15           2013    18
+#  2 M      1998-04-03     74    190  16           2013    15
+#  3 M      1967-04-04     83    185  17.5         2013    46
+#  4 M      1994-02-10     60    175  15           2013    19
+#  5 W      1990-12-02     48    167  14           2013    23
+#  6 W      1994-07-15     52    179  14           2013    19
+#  7 W      1971-03-03     72    167  15.5         2013    42
+#  8 W      1997-06-24     74    180  16           2013    16
+#  9 M      1972-10-26    110    189  19           2013    41
+# 10 M      1945-03-15     82    160  18           2013    68
+# # … with 385 more rows</code></pre>
 <p>Le jeu de données <code>biometry</code> est disponible dans le package R <strong>BioDataScience</strong>. Dans ce cas, il ne faut pas spécifier de chemin d’accès au fichier : R sait où le trouver tout seul. Il est également spécifié ici que la langue souhaitée est le français avec l’argument <code>lang = &quot;fr&quot;</code>. Le résultat de l’importation est assigné à la variable <code>biometry</code>(mais elle pourrait tout aussi bien porter un autre nom). Pour finir, le tout est entouré, de manière optionnelle, de parenthèses afin de forcer l’impression du résultat.</p>
 <div class="note">
 <p>
@@ -465,21 +490,21 @@ L’impression du tableau de données est une façon de voir cela, mais il y en 
 <li>Quels est le format de vos données ?</li>
 </ul>
 <p>Souvent ce format est renseigné par l’<strong>extension</strong> du fichier. Par exemple <strong>.xlsx</strong> pour un Microsoft Excel ou <strong>.csv</strong> pour du “comma-separated-value”. Attention ! L’extension du fichier est cachée sous Windows, et parfois sous MacOS. Visualisez vos fichiers dans l’onglet <strong>Files</strong> dans RStudio pour voir leurs noms complets, avec les extensions. Pour l’instant, <code>read()</code> supporte 32 formats de fichiers différents, mais cette liste est amenée à s’agrandir à l’avenir. Pour découvrir les formats supportés, et les fonctions d’importation spécifiques appelées à chaque fois, utilisez :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getOption</span>(<span class="st">&quot;read_write&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getOption</span>(<span class="st">&quot;read_write&quot;</span>)</code></pre>
 <pre><code># # A tibble: 32 x 5
-#    type  read_fun             read_header         write_fun   comment     
-#    &lt;chr&gt; &lt;chr&gt;                &lt;chr&gt;               &lt;chr&gt;       &lt;chr&gt;       
-#  1 csv   readr::read_csv      data.io::hread_text readr::wri… comma separ…
-#  2 csv2  readr::read_csv2     data.io::hread_text &lt;NA&gt;        semicolon s…
-#  3 xlcsv readr::read_csv      data.io::hread_text readr::wri… write a CSV…
-#  4 tsv   readr::read_tsv      data.io::hread_text readr::wri… tab separat…
-#  5 fwf   readr::read_fwf      data.io::hread_text &lt;NA&gt;        fixed width…
-#  6 log   readr::read_log      &lt;NA&gt;                &lt;NA&gt;        standard lo…
-#  7 rds   readr::read_rds      &lt;NA&gt;                readr::wri… R data file…
-#  8 txt   readr::read_file     &lt;NA&gt;                readr::wri… text file (…
-#  9 raw   readr::read_file_raw &lt;NA&gt;                &lt;NA&gt;        binary file…
-# 10 ssv   readr::read_table    data.io::hread_text &lt;NA&gt;        space separ…
-# # ... with 22 more rows</code></pre>
+#    type  read_fun      read_header    write_fun      comment               
+#    &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;                 
+#  1 csv   readr::read_… data.io::hrea… readr::write_… comma separated values
+#  2 csv2  readr::read_… data.io::hrea… &lt;NA&gt;           semicolon separated v…
+#  3 xlcsv readr::read_… data.io::hrea… readr::write_… write a CSV file more…
+#  4 tsv   readr::read_… data.io::hrea… readr::write_… tab separated values  
+#  5 fwf   readr::read_… data.io::hrea… &lt;NA&gt;           fixed width file      
+#  6 log   readr::read_… &lt;NA&gt;           &lt;NA&gt;           standard log file     
+#  7 rds   readr::read_… &lt;NA&gt;           readr::write_… R data file (no compr…
+#  8 txt   readr::read_… &lt;NA&gt;           readr::write_… text file (as length …
+#  9 raw   readr::read_… &lt;NA&gt;           &lt;NA&gt;           binary file (read as …
+# 10 ssv   readr::read_… data.io::hrea… &lt;NA&gt;           space separated value…
+# # … with 22 more rows</code></pre>
 <p>Par la suite, vous allez apprendre à importer vos données depuis différentes sources.</p>
 <div id="donnees-sur-le-disque" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> Données sur le disque</h3>
@@ -523,43 +548,43 @@ Concentrez-vous sur les outils spécifiques à la gestion de ce type de données
 </div>
 <p>Voici un exemple de feuille de données Google Sheets : <a href="https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw" class="uri">https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw</a>. Il est possible d’importer ce genre de données <strong>directement</strong> depuis R, mais il faut d’abord déterminer l’<a href="https://www.labnol.org/internet/direct-links-for-google-drive/28356/">URL à utiliser pour obtenir les données</a> dans un format reconnu. Dans le cas de Google Sheets, il suffit d’indiquer à la fin de cette URL que l’on souhaite exporter les données au format CSV en rajoutant <code>/export?format=csv</code> à la fin de l’URL.</p>
 <p>Cette URL est très longue. Elle est peu pratique et par ailleurs, elle a toujours la même structure : <code>&quot;https://docs.google.com/spreadsheets/d/{id}/export?format=csv&quot;</code> avec <code>{id}</code> qui est l’identifiant unique de la feuille Google Sheets (ici <code>1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw</code>). Vous pouvez indiquer explicitement ceci dans votre code et profiter des capacités de remplacement de texte dans des chaînes de caractères de la fonction <code>glue::glue()</code> pour effectuer un travail impeccable.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">googlesheets_as_csv &lt;-<span class="st"> &quot;https://docs.google.com/spreadsheets/d/{id}/export?format=csv&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">googlesheets_as_csv &lt;-<span class="st"> &quot;https://docs.google.com/spreadsheets/d/{id}/export?format=csv&quot;</span>
 coral_id &lt;-<span class="st"> &quot;1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw&quot;</span>
-(coral_url &lt;-<span class="st"> </span>glue<span class="op">::</span><span class="kw">glue</span>(googlesheets_as_csv, <span class="dt">id =</span> coral_id))</code></pre></div>
+(coral_url &lt;-<span class="st"> </span>glue<span class="op">::</span><span class="kw">glue</span>(googlesheets_as_csv, <span class="dt">id =</span> coral_id))</code></pre>
 <pre><code># https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw/export?format=csv</code></pre>
 <p>Vous n’aurez alors plus qu’à lire les données depuis cette URL. N’oubliez pas non plus de spécifier à <code>read()</code> que les données sont à lire au format CSV en utilisant <code>read$csv()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(coral &lt;-<span class="st"> </span>read<span class="op">$</span><span class="kw">csv</span>(coral_url))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">(coral &lt;-<span class="st"> </span>read<span class="op">$</span><span class="kw">csv</span>(coral_url))</code></pre>
 <pre><code># Parsed with column specification:
 # cols(
 #   localisation = col_character(),
 #   species = col_character(),
-#   id = col_integer(),
+#   id = col_double(),
 #   salinity = col_double(),
 #   temperature = col_double(),
 #   date = col_datetime(format = &quot;&quot;),
-#   time = col_integer(),
+#   time = col_double(),
 #   gain = col_double(),
 #   gain_std = col_double()
 # )</code></pre>
 <pre><code># # A tibble: 98 x 9
-#    localisation species      id salinity temperature date               
-#    &lt;chr&gt;        &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;dttm&gt;             
-#  1 A0           s.hystrix     1     34.7        24.5 2018-04-24 09:10:00
-#  2 A0           s.hystrix     2     34.7        24.5 2018-04-24 09:10:00
-#  3 A0           s.hystrix     3     34.7        24.5 2018-04-24 09:10:00
-#  4 A0           s.hystrix     4     34.7        24.5 2018-04-24 09:10:00
-#  5 A0           s.hystrix     5     34.7        24.5 2018-04-24 09:10:00
-#  6 A0           s.hystrix     6     34.7        24.5 2018-04-24 09:10:00
-#  7 A0           s.hystrix     7     34.7        24.5 2018-04-24 09:10:00
-#  8 A0           s.hystrix     8     34.7        24.5 2018-04-24 09:10:00
-#  9 A0           s.hystrix     9     34.7        24.5 2018-04-24 09:10:00
-# 10 A0           s.hystrix    10     34.7        24.5 2018-04-24 09:10:00
-# # ... with 88 more rows, and 3 more variables: time &lt;int&gt;, gain &lt;dbl&gt;,
+#    localisation species    id salinity temperature date               
+#    &lt;chr&gt;        &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt; &lt;dttm&gt;             
+#  1 A0           s.hyst…     1     34.7        24.5 2018-04-24 09:10:00
+#  2 A0           s.hyst…     2     34.7        24.5 2018-04-24 09:10:00
+#  3 A0           s.hyst…     3     34.7        24.5 2018-04-24 09:10:00
+#  4 A0           s.hyst…     4     34.7        24.5 2018-04-24 09:10:00
+#  5 A0           s.hyst…     5     34.7        24.5 2018-04-24 09:10:00
+#  6 A0           s.hyst…     6     34.7        24.5 2018-04-24 09:10:00
+#  7 A0           s.hyst…     7     34.7        24.5 2018-04-24 09:10:00
+#  8 A0           s.hyst…     8     34.7        24.5 2018-04-24 09:10:00
+#  9 A0           s.hyst…     9     34.7        24.5 2018-04-24 09:10:00
+# 10 A0           s.hyst…    10     34.7        24.5 2018-04-24 09:10:00
+# # … with 88 more rows, and 3 more variables: time &lt;dbl&gt;, gain &lt;dbl&gt;,
 # #   gain_std &lt;dbl&gt;</code></pre>
-<p>Lorsque vous travaillez sur des données issues d’une source externe, et donc susceptibles d’être modifiées ou même pire, de disparaître. Il est préférable d’enregistrer une <strong>copie locale</strong> de ces données dans votre projet (dans le sous-dossier <code>data</code> de préférence). Si vous travaillez exclusivement avec R, l’un des meilleurs formats est RDS, un format natif qui conservera toutes les caractéristiques de votre objet, y compris sa classe, et d’éventuels attributs<a href="references.html#fn18" class="footnoteRef" id="fnref18"><sup>18</sup></a>. Par défaut, les données seront stockées non compressées, mais vous pourrez aussi décider de compresser avec les algorithmes <code>&quot;gz&quot;</code> (plus rapide et répandu), <code>&quot;bz2&quot;</code> (intermédiaire), ou <code>&quot;xz&quot;</code> (le plus efficace en taux de compression mais aussi le plus lent et gourmand en ressources CPU). Par exemple, pour enregistrer les données avec compression <code>&quot;gz&quot;</code>, vous écrirez :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">write<span class="op">$</span><span class="kw">rds</span>(coral, <span class="dt">file =</span> <span class="st">&quot;../data/coral.rds&quot;</span>, <span class="dt">compress =</span> <span class="st">&quot;gz&quot;</span>)</code></pre></div>
+<p>Lorsque vous travaillez sur des données issues d’une source externe, et donc susceptibles d’être modifiées ou même pire, de disparaître. Il est préférable d’enregistrer une <strong>copie locale</strong> de ces données dans votre projet (dans le sous-dossier <code>data</code> de préférence). Si vous travaillez exclusivement avec R, l’un des meilleurs formats est RDS, un format natif qui conservera toutes les caractéristiques de votre objet, y compris sa classe, et d’éventuels attributs<a href="references.html#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>. Par défaut, les données seront stockées non compressées, mais vous pourrez aussi décider de compresser avec les algorithmes <code>&quot;gz&quot;</code> (plus rapide et répandu), <code>&quot;bz2&quot;</code> (intermédiaire), ou <code>&quot;xz&quot;</code> (le plus efficace en taux de compression mais aussi le plus lent et gourmand en ressources CPU). Par exemple, pour enregistrer les données avec compression <code>&quot;gz&quot;</code>, vous écrirez :</p>
+<pre class="sourceCode r"><code class="sourceCode r">write<span class="op">$</span><span class="kw">rds</span>(coral, <span class="dt">file =</span> <span class="st">&quot;../data/coral.rds&quot;</span>, <span class="dt">compress =</span> <span class="st">&quot;gz&quot;</span>)</code></pre>
 <p>Ensuite, vous pourrez simplement charger ces données plus loin depuis la version locale dans votre R Markdown comme ceci :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coral &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;../data/coral.rds&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">coral &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;../data/coral.rds&quot;</span>)</code></pre>
 <p><strong>Attention, ne supprimez jamais l’instruction permettant de retrouver vos données sur Internet</strong> sous prétexte que vous avez maintenant une copie locale à disposition. C’est le lien, le fil conducteur vers les données originales. Vous pouvez soit mettre l’instruction en commentaire en ajoutant un dièse devant, soit soustraire le chunk de l’évaluation en indiquant <code>eval=FALSE</code> dans son entête. Faites-en de même avec l’instruction <code>write()</code>. Ainsi, le traitement de vos données commencera à l’instruction <code>read()</code> et vous partirez de la copie locale. Si jamais vous voulez effectuer une mise à jour depuis la source initiale, il sera toujours possible de dé-commenter les instructions, ou de passer le chunk à <code>eval=TRUE</code> temporairement (ou encore plus simplement, forcez l’exécution du chunk dans l’éditeur en cliquant sur la petite flèche verte en haut à gauche du chunk).</p>
 <div id="pieges-et-astuces-6" class="section level5 unnumbered">
 <h5>Pièges et astuces</h5>
@@ -568,10 +593,10 @@ coral_id &lt;-<span class="st"> &quot;1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQ
 <li>Les données originales ne sont peut-être pas présentées de la façon qui vous convient. Cela peut nécessiter un travail important de <strong>préparation du tableau de données.</strong> Au fur et à mesure que le ou les chunks d’importation/préparation des données augmentent en taille, ils deviennent de plus en plus gênants dans un document consacré à l’<strong>analyse</strong> de ces données. Si c’est le cas, vous avez deux options possibles :
 <ol style="list-style-type: decimal">
 <li>Séparer votre R Markdown en deux. Un premier document dédié à l’importation/préparation des données et un second qui se concentre sur l’analyse. Une bonne pratique consiste à numéroter les fichiers en tête pour qu’ils apparaissent par ordre logique lorsqu’ils sont listés par ordre alphabétique (<code>01_import.Rmd</code>, <code>02_analysis.Rmd</code>).</li>
-<li><p>Effectuer le travail d’importation/préparation du tableau de données dans un script R. Dans le R Markdown, vous pouvez ajouter l’instruction (commentée ou placée dans un chunk <code>eval=FALSE</code>) pour “sourcer” ce script R afin de réimporter/retraiter vos données :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source(&quot;../R/data-import.R&quot;)</span></code></pre></div>
+<li>Effectuer le travail d’importation/préparation du tableau de données dans un script R. Dans le R Markdown, vous pouvez ajouter l’instruction (commentée ou placée dans un chunk <code>eval=FALSE</code>) pour “sourcer” ce script R afin de réimporter/retraiter vos données :</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#source(&quot;../R/data-import.R&quot;)</span></code></pre>
 <p>Si le travail de préparation des données est lourd (et donc, prend beaucoup de temps) il peut être avantageux d’enregistrer localement la version <strong>nettoyée</strong> de vos données plutôt que la version originale. Mais alors indiquez-le explicitement.</p></li>
-</ol></li>
 </ul>
 <div class="warning">
 <p>
@@ -583,9 +608,9 @@ Faites toujours la distinction entre <strong>données brutes</strong> et <strong
 <div id="donnees-depuis-un-package" class="section level3">
 <h3><span class="header-section-number">5.1.3</span> Données depuis un package</h3>
 <p>Les packages R comme <strong>data.io</strong>, <strong>chart</strong> ou encore <strong>flow</strong>, fournissent une série de fonctions supplémentaires. Certains d’entre eux proposent également des jeux de données. Ici aussi, <code>read()</code> permet de les récupérer, même si c’est la fonction <code>data()</code> qui est souvent utilisée à cet effet dans R. Comparons <code>read()</code> et <code>data()</code> dans le cas des données issues de packages R. Avec <code>data()</code>, vous n’assignez pas le jeu de données à un nom. Ce nom vous est <strong>imposé</strong> comme le nom initial du jeu de données :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>) <span class="co"># package = optionnel si déjà chargé</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>) <span class="co"># package = optionnel si déjà chargé</span></code></pre>
 <p>Le jeu de données <code>urchin_bio</code> n’est pas véritablement chargé dans l’environnement utilisateur avec <code>data()</code>. Seulement une “promesse” de chargement (<code>Promise</code>) est enregistrée. Voyez dans l’onglet <strong>Environnement</strong> ce qui apparaît. Ce n’est qu’à la première utilisation du jeu de données que le tableau est véritablement chargé. Par exemple :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(urchin_bio)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(urchin_bio)</code></pre>
 <pre><code>#    origin diameter1 diameter2 height buoyant_weight weight solid_parts
 # 1 Fishery       9.9      10.2    5.0             NA 0.5215      0.4777
 # 2 Fishery      10.5      10.6    5.7             NA 0.6418      0.5891
@@ -609,85 +634,88 @@ Faites toujours la distinction entre <strong>données brutes</strong> et <strong
 # 6          0       NA      NA     NA     NA        0 &lt;NA&gt;</code></pre>
 <p>Regardez à nouveau dans l’onglet <strong>Environnement</strong>. Ce coup-ci <code>urchin_bio</code> apparaît bien dans la section <strong>Data</strong> et l’icône en forme de petit tableau à la droite qui permet de le visualiser est enfin accessible.</p>
 <p>La fonction <code>read()</code> permet de choisir librement le nom que nous souhaitons donner à notre jeu de données. Si nous voulons l’appeler <code>urchin</code> au lieu de <code>urchin_bio</code>, pas de problèmes. De plus, il est directement chargé et accessible dans l’onglet <strong>Environnement</strong> (en effet, si on utilise une instruction qui charge un jeu de données, c’est <em>très vraissemblablement</em> parce que l’on souhaite ensuite le manipuler depuis R, non ?).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urchin &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">urchin &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)</code></pre>
 <p>Nous avons déjà vu que <code>read()</code> donne accès également dans certains cas à des métadonnées (par exemple le label et les unités des jeux de données) dans différentes langues, ce que ne permet pas <code>data()</code>. Enfin, la syntaxe et la fonction utilisée sont pratiquement identiques pour charger des données depuis un fichier, depuis Internet ou depuis un package avec <code>read()</code>. C’est logique et facile à retenir. <code>data()</code> ne permet <em>que</em> de récupérer des données liées à un package R, et c’est tout ! <strong>Pour toutes ces raisons, nous préférons utiliser ici <code>read()</code> à <code>data()</code>.</strong></p>
 <div id="langue-du-jeu-de-donnees" class="section level4">
 <h4><span class="header-section-number">5.1.3.1</span> Langue du jeu de données</h4>
 <p>La fonction <code>read()</code> est également capable de lire un fichier annexe permettant de rajouter des <strong>métadonnées</strong> (données complémentaires) à notre tableau, comme les <strong>labels</strong> et les <strong>unités</strong> des variables en différentes langues. Lorsque l’on importe le jeu de données avec la fonction <code>data()</code>, ces métadonnées ne sont pas employées.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
 <span class="co"># Visualisation des données</span>
 <span class="kw">chart</span>(urchin_bio, height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Comparez ceci avec le même graphique, mais obtenu à partir de différentes versions du jeu de données <code>urchin_bio</code> importé à l’aide de <code>read()</code> avec des valeurs différentes pour l’argument <code>lang =</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urchin    &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">urchin    &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>)
 urchin_en &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;en&quot;</span>)
 urchin_fr &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
-urchin_FR &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>)</code></pre></div>
+urchin_FR &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;urchin_bio&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;data.io&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>)</code></pre>
 <p>Les différences dans les labels sont observables sur le graphique ci-dessous.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin,    height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()
-b &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin_en, height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
+<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin,    height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<pre><code># Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+# Please use `as_label()` or `as_name()` instead.
+# This warning is displayed once per session.</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">b &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin_en, height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 c &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin_fr, height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 d &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin_FR, height <span class="op">~</span><span class="st"> </span>weight <span class="op">%col=%</span><span class="st"> </span>origin) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()
 
-<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b, c, d))</code></pre></div>
-<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-17-1.svg" width="672" style="display: block; margin: auto;" /></p>
+<span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b, c, d))</code></pre>
+<p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ul>
 <li>A &amp; B : l’argument <code>lang =</code> par défaut est <code>lang = &quot;en&quot;</code>. Il utilise les labels et unités en anglais avec les unités dans le système international.</li>
 <li>C : l’argument <code>lang = &quot;fr&quot;</code> utilise les labels et unités en français. Il laisse cependant les niveaux des variables facteurs en anglais (<code>Farm</code> et <code>Fishery</code>) afin d’éviter de devoir changer les instructions de manipulation des données qui feraient référence à ces niveaux.</li>
 <li>D : l’argument <code>lang = &quot;FR&quot;</code> ajoute les labels et unités en français. De plus, il traduit également les niveaux des variables facteurs (<code>Culture</code> et <code>Pêcherie</code>).</li>
 </ul>
 <p>Il vous est conseillé d’employé l’argument <code>lang = &quot;fr&quot;</code> lors de vos différents travaux. La langue internationale en science est l’anglais et vous serez très certainement amené dans votre carrière scientifique à produire des documents en français et en anglais. L’utilisation de <code>lang = &quot;fr&quot;</code>rend le <strong>même</strong> code réutilisable sur la version française ou anglaise, contrairement à <code>lang = &quot;FR&quot;</code>. Observez les exemples ci-dessous.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urchin_en <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">urchin_en <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">filter</span>(., origin <span class="op">==</span><span class="st"> &quot;Farm&quot;</span>) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">head</span>(.)</code></pre></div>
+<span class="st">  </span><span class="kw">head</span>(.)</code></pre>
 <pre><code># # A tibble: 6 x 19
 #   origin diameter1 diameter2 height buoyant_weight weight solid_parts
 #   &lt;fct&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
 # 1 Farm        53.1      54.5   26.3           9.57   60.2        41.7
 # 2 Farm        52.7      52.7   25.9          10.8    63.2        46.6
-# 3 Farm        54.0      54.2   24.5          10.7    64.4        44.3
+# 3 Farm        54        54.2   24.5          10.7    64.4        44.3
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # ... with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
+# # … with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
 # #   digestive_tract &lt;dbl&gt;, dry_digestive_tract &lt;dbl&gt;, gonads &lt;dbl&gt;,
 # #   dry_gonads &lt;dbl&gt;, skeleton &lt;dbl&gt;, lantern &lt;dbl&gt;, test &lt;dbl&gt;,
 # #   spines &lt;dbl&gt;, maturity &lt;int&gt;, sex &lt;fct&gt;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urchin_fr <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">urchin_fr <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">filter</span>(., origin <span class="op">==</span><span class="st"> &quot;Farm&quot;</span>) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">head</span>(.)</code></pre></div>
+<span class="st">  </span><span class="kw">head</span>(.)</code></pre>
 <pre><code># # A tibble: 6 x 19
 #   origin diameter1 diameter2 height buoyant_weight weight solid_parts
 #   &lt;fct&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
 # 1 Farm        53.1      54.5   26.3           9.57   60.2        41.7
 # 2 Farm        52.7      52.7   25.9          10.8    63.2        46.6
-# 3 Farm        54.0      54.2   24.5          10.7    64.4        44.3
+# 3 Farm        54        54.2   24.5          10.7    64.4        44.3
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # ... with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
+# # … with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
 # #   digestive_tract &lt;dbl&gt;, dry_digestive_tract &lt;dbl&gt;, gonads &lt;dbl&gt;,
 # #   dry_gonads &lt;dbl&gt;, skeleton &lt;dbl&gt;, lantern &lt;dbl&gt;, test &lt;dbl&gt;,
 # #   spines &lt;dbl&gt;, maturity &lt;int&gt;, sex &lt;fct&gt;</code></pre>
 <p>Pas d’adaptation nécessaire du code pour passer de <code>urchin_en</code> à <code>urchin_fr</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">urchin_FR <span class="op">%&gt;.%</span>
+<pre class="sourceCode r"><code class="sourceCode r">urchin_FR <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">filter</span>(., origin <span class="op">==</span><span class="st"> &quot;Pêcherie&quot;) %&gt;.%</span>
-<span class="st">  head(.)</span></code></pre></div>
+<span class="st">  head(.)</span></code></pre>
 <pre><code># # A tibble: 6 x 19
-#   origin   diameter1 diameter2 height buoyant_weight weight solid_parts
-#   &lt;fct&gt;        &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
-# 1 Pêcherie      9.90     10.2    5.00             NA  0.522       0.478
-# 2 Pêcherie     10.5      10.6    5.70             NA  0.642       0.589
-# 3 Pêcherie     10.8      10.8    5.20             NA  0.734       0.677
-# 4 Pêcherie      9.60      9.30   4.60             NA  0.370       0.344
-# 5 Pêcherie     10.4      10.7    4.80             NA  0.610       0.559
-# 6 Pêcherie     10.5      11.1    5.00             NA  0.610       0.551
-# # ... with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
+#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#   &lt;fct&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
+# 1 Pêche…       9.9      10.2    5               NA  0.522       0.478
+# 2 Pêche…      10.5      10.6    5.7             NA  0.642       0.589
+# 3 Pêche…      10.8      10.8    5.2             NA  0.734       0.677
+# 4 Pêche…       9.6       9.3    4.6             NA  0.370       0.344
+# 5 Pêche…      10.4      10.7    4.8             NA  0.610       0.559
+# 6 Pêche…      10.5      11.1    5               NA  0.610       0.551
+# # … with 12 more variables: integuments &lt;dbl&gt;, dry_integuments &lt;dbl&gt;,
 # #   digestive_tract &lt;dbl&gt;, dry_digestive_tract &lt;dbl&gt;, gonads &lt;dbl&gt;,
 # #   dry_gonads &lt;dbl&gt;, skeleton &lt;dbl&gt;, lantern &lt;dbl&gt;, test &lt;dbl&gt;,
 # #   spines &lt;dbl&gt;, maturity &lt;int&gt;, sex &lt;fct&gt;</code></pre>
@@ -698,8 +726,8 @@ d &lt;-<span class="st"> </span><span class="kw">chart</span>(urchin_FR, height 
 <div class="footnotes">
 <hr />
 <ol start="17">
-<li id="fn17"><p>R permet également d’interroger des bases de données spécialisées, mais nous n’aborderons ce sujet spécifique qu’au cours de Science des Données Biologique 5 en Master 2.<a href="importation-des-donnees.html#fnref17">↩</a></p></li>
-<li id="fn18"><p>Si vous devez aussi accéder à vos données à partir d’autres langages comme Python, Java ou C++, utilisez un format commun reconnu par les différents logiciels. Le CSV fonctionne généralement bien, mais des formats binaires plus performants sont également disponibles. Parmi ces formats “inter-langages”, gardez un œil sur <a href="https://arrow.apache.org">Apache Arrow</a> très prometteur et avec une version pour R qui sera disponible prochainement.<a href="importation-des-donnees.html#fnref18">↩</a></p></li>
+<li id="fn17"><p>R permet également d’interroger des bases de données spécialisées, mais nous n’aborderons ce sujet spécifique qu’au cours de Science des Données Biologique 5 en Master 2.<a href="importation-des-donnees.html#fnref17" class="footnote-back">↩</a></p></li>
+<li id="fn18"><p>Si vous devez aussi accéder à vos données à partir d’autres langages comme Python, Java ou C++, utilisez un format commun reconnu par les différents logiciels. Le CSV fonctionne généralement bien, mais des formats binaires plus performants sont également disponibles. Parmi ces formats “inter-langages”, gardez un œil sur <a href="https://arrow.apache.org">Apache Arrow</a> très prometteur et avec une version pour R qui sera disponible prochainement.<a href="importation-des-donnees.html#fnref18" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -778,7 +806,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

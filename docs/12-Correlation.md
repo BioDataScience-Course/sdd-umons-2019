@@ -29,7 +29,7 @@ Ce module présente des descripteurs statistiques de l'association de deux varia
 ##### A vous de jouer {-}
 
 <div class="bdd">
-<p>Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console :</p>
+<p>Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;12a_correlation&quot;)</code></pre>
 </div>
 
@@ -42,7 +42,7 @@ $$S_X = \sqrt{S^2_X}$$
 
 Plus la variance est élevée, plus les observations sont dispersées autour de la moyenne. Lorsque nous avons affaire à deux variables numériques, une représentation de *l'une par rapport à l'autre* se fait naturellement à l'aide d'un graphique en nuage de points. Voici trois situations fictives différentes (*Y1*, *Y2* et *Y3* en fonction de *X*)\ :
 
-<img src="12-Correlation_files/figure-html/unnamed-chunk-2-1.svg" width="864" style="display: block; margin: auto;" />
+<img src="12-Correlation_files/figure-html/unnamed-chunk-2-1.png" width="864" style="display: block; margin: auto;" />
 
 Nous pouvons observer que la **forme du nuage de points** diffère entre ces trois situations. Le graphique **A** est allongé le long d'une oblique proche de la première bissectrice. Cela signifie que, lorsque des valeurs de *X* sont faibles, les valeurs de *Y1* sont faibles aussi. Lorsque les valeurs de *X* sont élevées, celles de *Y1* tendent à l'être également. Nous avons plutôt une **proportionnalité** entre les valeurs observées pour *X* et pour *Y1*. Dans le graphique **C** de droite, c'est l'inverse. Nous avons une **proportionnalité inverse** entre *X*  et *Y3*. Dans le graphique **B** du centre, le nuage de point ne s'étire pas dans une direction oblique particulière. Nous dirons ici qu'il n'y a pas d'association entre *X* et *Y2*. Ce type d'association entre deux variables numérique est un élément important dans notre analyse car un nuage de points qui s'allonge le long d'une direction oblique sur le graphique est signe d'un mécanisme sous-jacent responsable de cette association (mais attention à ne pas conclure directement à un mécanisme de cause à effet direct, voir plus loin). Il serait donc souhaitable de pouvoir quantifier le degré d'une telle association.
 
@@ -259,7 +259,7 @@ Il existe aussi des représentation graphiques spécialisées, appelées **corr�
 plot(trees_cor)
 ```
 
-<img src="12-Correlation_files/figure-html/unnamed-chunk-9-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="12-Correlation_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
 
 La matrice est représentée par des ellipses de plus en plus allongées au fur et à mesure que *r* se rapproche de 1. Une couleur bleue est utilisée pour les corrélations positives et une couleur rouge pour les corrélations négatives (mais vous pouvez aussi choisir d'autres couleurs). Ici, toutes les corrélations sot positives. Sur le jeu de données zooplancton, nous pouvons réaliser un corrélogramme plus intéressant qui illustre mieux la diversité de cette représentation graphique. Considérons, à titre d'exemple, les variables contigües `size` jusqu'à `density` (que l'on peu indiquer par `size:density` dans la fonction `select()`)\ :
 
@@ -273,7 +273,7 @@ zoo %>.%
 plot(zoo_cor)
 ```
 
-<img src="12-Correlation_files/figure-html/unnamed-chunk-10-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="12-Correlation_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" />
 
 Vous noterez que les variables `elongation` et `compactness` sont redondantes (*r* = 1). De plus, les données le long de la diagonale et sur le triangle supérieur n'apportent rien. Nous pouvons aussi bien décider de ne représenter que le triangle inférieur sur notre corrélogramme.
 
@@ -282,7 +282,7 @@ Vous noterez que les variables `elongation` et `compactness` sont redondantes (*
 plot(zoo_cor, type = "lower")
 ```
 
-<img src="12-Correlation_files/figure-html/unnamed-chunk-11-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="12-Correlation_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ### Importance des graphiques
@@ -303,12 +303,12 @@ head(anscombe)
 # # A tibble: 6 x 8
 #      x1    x2    x3    x4    y1    y2    y3    y4
 #   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-# 1   10.   10.   10.    8.  8.04  9.14  7.46  6.58
-# 2    8.    8.    8.    8.  6.95  8.14  6.77  5.76
-# 3   13.   13.   13.    8.  7.58  8.74 12.7   7.71
-# 4    9.    9.    9.    8.  8.81  8.77  7.11  8.84
-# 5   11.   11.   11.    8.  8.33  9.26  7.81  8.47
-# 6   14.   14.   14.    8.  9.96  8.10  8.84  7.04
+# 1    10    10    10     8  8.04  9.14  7.46  6.58
+# 2     8     8     8     8  6.95  8.14  6.77  5.76
+# 3    13    13    13     8  7.58  8.74 12.7   7.71
+# 4     9     9     9     8  8.81  8.77  7.11  8.84
+# 5    11    11    11     8  8.33  9.26  7.81  8.47
+# 6    14    14    14     8  9.96  8.1   8.84  7.04
 ```
 
 Séparons les quatre variables *X* d'un côté et les quatre variables *Y* de l'autre.
@@ -422,7 +422,7 @@ pl <- list(
 combine_charts(pl)
 ```
 
-<img src="12-Correlation_files/figure-html/unnamed-chunk-17-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="12-Correlation_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" />
 
 Nous voyons que ces trois paires de variables n'ont **rien à voir l'une avec l'autre\ !** Il est même possible d'aller encore plus loin, voir le [datasaurus dozen](https://blog.revolutionanalytics.com/2017/05/the-datasaurus-dozen.html), ou encore [ici](https://www.autodeskresearch.com/publications/samestats), ou en français [ici](https://owdin.live/2017/05/15/ces-12-graphiques-montrent-pourquoi-la-data-viz-est-si-importante/).
 
@@ -436,7 +436,7 @@ La matrice de nuages de points part du même principe que la matrice de corréla
 GGally::ggscatmat(as.data.frame(trees), 1:3)
 ```
 
-<img src="12-Correlation_files/figure-html/unnamed-chunk-18-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="12-Correlation_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" />
 
 Comme dans le cas de la matrice de corrélation, les graphiques en nuage de points sur la diagonale ne seraient pas très utiles puisqu'ils représenteraient une variable par rapport à elle-même. Ils sont donc remplacés par des graphes de densité montrant la répartition des données pour chanque variable considérée individuellement. Sur le triangle supérieur, ce sont les coefficients de corrélation de Pearson qui sont indiqués, et sur le triangle inférieur, les différentes possibilités de nuages de points deux à deux. La variable sur laxe des abscisses se lit dans la colonne au dessus et la variable représentée sur l'axe des ordonnées se lit dans la ligne à droite. Par exemple, le graphique en bas à gauche correspond au diamètre en X et au volume en Y. Cette représentation graphique est donc complémentaire au corrélogramme.
 
@@ -672,7 +672,7 @@ Enfin, quelques packages R additionnels proposent d'autres formats de présentat
 ![](images/sdd1_12/r-markdown-pres6.png)
 
 <div class="info">
-<p>Quel type de présentation R Markdown choisir au final ? Toute cette panoplie d'options ne facilite pas notre choix. En fait, c'est plus une question de goût personnel. Essayez les différentes options par vous-même. Le choix principal est au final entre un format HTML ou PDF. Le format PDF est, par définition, plus portable. Cependant, il ne permet que du contenu statique. Si vous avez des gifs animés, des graphiques interactifs, ou des vidéos, alors orientez-vous plutôt vers un moteur HTML/Javascript.</p>
+<p>Quel type de présentation R Markdown choisir au final ? Toute cette panoplie d’options ne facilite pas notre choix. En fait, c’est plus une question de goût personnel. Essayez les différentes options par vous-même. Le choix principal est au final entre un format HTML ou PDF. Le format PDF est, par définition, plus portable. Cependant, il ne permet que du contenu statique. Si vous avez des gifs animés, des graphiques interactifs, ou des vidéos, alors orientez-vous plutôt vers un moteur HTML/Javascript.</p>
 <p>Dans la prochaine version de la SciViews Box, il sera également possible de générer ses présentations directement au format PowerPoint.</p>
 </div>
 
@@ -686,7 +686,7 @@ Les statistiques ont mauvaise presse auprès de certaines personnes qui pensent 
 ![](images/sdd1_12/caution-wet-floor.jpg)
 
 <div class="info">
-<p>Dans la littérature scientifique et tout autour de nous, nous pouvons trouver des exemples de mauvais usages des statistiques (application <em>erronée</em> de méthodes statistiques). Quelque fois, il s'agit de triche manifeste, mais la plupart du temps c'est par ignorance. Développer un <strong>esprit critique</strong> statistique est important pour pouvoir démasquer ces diverses situations et ne pas tomber soi-même dans les pièges les plus grossiers.</p>
+<p>Dans la littérature scientifique et tout autour de nous, nous pouvons trouver des exemples de mauvais usages des statistiques (application <em>erronée</em> de méthodes statistiques). Quelque fois, il s’agit de triche manifeste, mais la plupart du temps c’est par ignorance. Développer un <strong>esprit critique</strong> statistique est important pour pouvoir démasquer ces diverses situations et ne pas tomber soi-même dans les pièges les plus grossiers.</p>
 </div>
 
 ![](images/sdd1_12/graph-upside-down.jpg)
@@ -714,7 +714,7 @@ Voici quelques conseils qui vous aideront à développer votre esprit critique s
 Pour terminer ce module, nous vous proposons quelques situations (soit des problèmes, soit des graphiques) qui ont toutes en commun d'être erronées. A vous de trouver ce qui ne va pas. Pour ne pas fausser la donne, les réponses ne **sont pas** fournies dans ce documents, mais seront discutées en classes tous ensembles.
 
 <div class="bdd">
-<p>Profitez-en pour réaliser votre première présentation R Markdown. Choisissez une situation et un type de présentation R Markdown (ioslides, Slidy, Beamer, R Presentation, ...). Ensuite réalisez deux ou trois &quot;slides&quot; de présentation. Dans la première, vous exposez la situation. Dans les suivantes, vous expliquer ce qui est incorrect et vous proposez une bonne façon de faire à la place.</p>
+<p>Profitez-en pour réaliser votre première présentation R Markdown. Choisissez une situation et un type de présentation R Markdown (ioslides, Slidy, Beamer, R Presentation, …). Ensuite réalisez deux ou trois “slides” de présentation. Dans la première, vous exposez la situation. Dans les suivantes, vous expliquer ce qui est incorrect et vous proposez une bonne façon de faire à la place.</p>
 <p>Vous avez à votre disposition une tâche Guthub Classroom</p>
 <ul>
 <li><a href="https://classroom.github.com/a/ZLNkeFCo" class="uri">https://classroom.github.com/a/ZLNkeFCo</a></li>

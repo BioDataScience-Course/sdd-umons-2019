@@ -41,12 +41,12 @@ small_dataset
 # # A tibble: 6 x 3
 #   treatment  dose response
 #   <chr>     <dbl>    <dbl>
-# 1 control   0.500     18.4
-# 2 control   1.00      26.4
-# 3 control   2.00      51.1
-# 4 test      0.500     10.3
-# 5 test      1.00      19.9
-# 6 test      2.00      41.1
+# 1 control     0.5     18.4
+# 2 control     1       26.4
+# 3 control     2       51.1
+# 4 test        0.5     10.3
+# 5 test        1       19.9
+# 6 test        2       41.1
 ```
 
 Dans la plupart des cas, vous utiliserez ou collecterez des données stockées dans des formats divers : feuilles Excel, fichiers CSV ("comma-separated-values", un format standard d'encodage d'un tableau de données sous forme textuelle), formats spécifiques à divers logiciels statistiques comme SAS, Stata ou Systat, ... Ces données peuvent être sur un disque local ou disponibles depuis un lien URL sur le net^[R permet également d'interroger des bases de données spécialisées, mais nous n'aborderons ce sujet spécifique qu'au cours de Science des Données Biologique 5 en Master 2.]. De nombreuses fonctions existent dans R pour importer toutes ces données. La fonction `read()` du package `data.io` est l'une des plus simples et conviviales d'entre-elles. Vous l'avez déjà utilisée, mais reprenons un exemple pour en discuter les détails.
@@ -60,28 +60,28 @@ Dans la plupart des cas, vous utiliserez ou collecterez des données stockées d
 # # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
-#  1 M      1995-03-11    69.   182.  15.0        2013.   18.
-#  2 M      1998-04-03    74.   190.  16.0        2013.   15.
-#  3 M      1967-04-04    83.   185.  17.5        2013.   46.
-#  4 M      1994-02-10    60.   175.  15.0        2013.   19.
-#  5 W      1990-12-02    48.   167.  14.0        2013.   23.
-#  6 W      1994-07-15    52.   179.  14.0        2013.   19.
-#  7 W      1971-03-03    72.   167.  15.5        2013.   42.
-#  8 W      1997-06-24    74.   180.  16.0        2013.   16.
-#  9 M      1972-10-26   110.   189.  19.0        2013.   41.
-# 10 M      1945-03-15    82.   160.  18.0        2013.   68.
-# # ... with 385 more rows
+#  1 M      1995-03-11     69    182  15           2013    18
+#  2 M      1998-04-03     74    190  16           2013    15
+#  3 M      1967-04-04     83    185  17.5         2013    46
+#  4 M      1994-02-10     60    175  15           2013    19
+#  5 W      1990-12-02     48    167  14           2013    23
+#  6 W      1994-07-15     52    179  14           2013    19
+#  7 W      1971-03-03     72    167  15.5         2013    42
+#  8 W      1997-06-24     74    180  16           2013    16
+#  9 M      1972-10-26    110    189  19           2013    41
+# 10 M      1945-03-15     82    160  18           2013    68
+# # … with 385 more rows
 ```
 
 Le jeu de données `biometry` est disponible dans le package R **BioDataScience**. Dans ce cas, il ne faut pas spécifier de chemin d'accès au fichier : R sait où le trouver tout seul. Il est également spécifié ici que la langue souhaitée est le français avec l'argument `lang = "fr"`. Le résultat de l'importation est assigné à la variable `biometry`(mais elle pourrait tout aussi bien porter un autre nom). Pour finir, le tout est entouré, de manière optionnelle, de parenthèses afin de forcer l'impression du résultat.
 
 <div class="note">
-<p><strong>Visualisez toujours votre tableau de données juste après l'importation.</strong> Vérifiez que les différentes colonnes ont été importées au bon format. <em>En particulier</em>,</p>
+<p><strong>Visualisez toujours votre tableau de données juste après l’importation.</strong> Vérifiez que les différentes colonnes ont été importées au bon format. <em>En particulier</em>,</p>
 <ul>
 <li><p>Les données numériques sont-elle bien comprises par R comme des nombres (<code>&lt;dbl&gt;</code> ou <code>&lt;int&gt;</code>) ?</p></li>
-<li><p>Les variables qualitatives ou semi-quantitatives sont importées comme chaines de caractères (<code>&lt;chr&gt;</code>) et doivent éventuellement être converties en variables de type <strong>facteur</strong> à l'aide de <code>as.factor()</code> ou <strong>facteur ordonné</strong> avec <code>as.ordered()</code>, voir plus loin.</p></li>
+<li><p>Les variables qualitatives ou semi-quantitatives sont importées comme chaines de caractères (<code>&lt;chr&gt;</code>) et doivent éventuellement être converties en variables de type <strong>facteur</strong> à l’aide de <code>as.factor()</code> ou <strong>facteur ordonné</strong> avec <code>as.ordered()</code>, voir plus loin.</p></li>
 </ul>
-<p>L'impression du tableau de données est une façon de voir cela, mais il y en a bien d'autres : essayez <code>View(biometry)</code>, <code>str(biometry)</code>, ou cliquez sur la petite icône bleue avec une flèche devant <code>biometry</code> dans l'onglet <strong>Environnement</strong>.</p>
+<p>L’impression du tableau de données est une façon de voir cela, mais il y en a bien d’autres : essayez <code>View(biometry)</code>, <code>str(biometry)</code>, ou cliquez sur la petite icône bleue avec une flèche devant <code>biometry</code> dans l’onglet <strong>Environnement</strong>.</p>
 </div>
 
 Avant d'importer vos données dans R, vous devez vous poser les deux questions suivantes :
@@ -101,19 +101,19 @@ getOption("read_write")
 
 ```
 # # A tibble: 32 x 5
-#    type  read_fun             read_header         write_fun   comment     
-#    <chr> <chr>                <chr>               <chr>       <chr>       
-#  1 csv   readr::read_csv      data.io::hread_text readr::wri… comma separ…
-#  2 csv2  readr::read_csv2     data.io::hread_text <NA>        semicolon s…
-#  3 xlcsv readr::read_csv      data.io::hread_text readr::wri… write a CSV…
-#  4 tsv   readr::read_tsv      data.io::hread_text readr::wri… tab separat…
-#  5 fwf   readr::read_fwf      data.io::hread_text <NA>        fixed width…
-#  6 log   readr::read_log      <NA>                <NA>        standard lo…
-#  7 rds   readr::read_rds      <NA>                readr::wri… R data file…
-#  8 txt   readr::read_file     <NA>                readr::wri… text file (…
-#  9 raw   readr::read_file_raw <NA>                <NA>        binary file…
-# 10 ssv   readr::read_table    data.io::hread_text <NA>        space separ…
-# # ... with 22 more rows
+#    type  read_fun      read_header    write_fun      comment               
+#    <chr> <chr>         <chr>          <chr>          <chr>                 
+#  1 csv   readr::read_… data.io::hrea… readr::write_… comma separated values
+#  2 csv2  readr::read_… data.io::hrea… <NA>           semicolon separated v…
+#  3 xlcsv readr::read_… data.io::hrea… readr::write_… write a CSV file more…
+#  4 tsv   readr::read_… data.io::hrea… readr::write_… tab separated values  
+#  5 fwf   readr::read_… data.io::hrea… <NA>           fixed width file      
+#  6 log   readr::read_… <NA>           <NA>           standard log file     
+#  7 rds   readr::read_… <NA>           readr::write_… R data file (no compr…
+#  8 txt   readr::read_… <NA>           readr::write_… text file (as length …
+#  9 raw   readr::read_… <NA>           <NA>           binary file (read as …
+# 10 ssv   readr::read_… data.io::hrea… <NA>           space separated value…
+# # … with 22 more rows
 ```
 
 Par la suite, vous allez apprendre à importer vos données depuis différentes sources.
@@ -124,10 +124,10 @@ Par la suite, vous allez apprendre à importer vos données depuis différentes 
 Lorsque l'extension du fichier reflète le format des données, il vous suffit juste d'indiquer le chemin d'accès au fichier à `read()`. La plupart du temps, cela suffira pour importer correctement les données.
 
 <div class="warning">
-<p>N'oubliez pas que le chemin d'accès à votre fichier peut s'écrire de manière absolue ou bien de manière relative. <strong>Vous devez autant que possible employer des chemins relatifs</strong> pour que votre projet soit <strong>portable</strong>. Si vous avez du mal à déterminer le chemin relatif par rapport à vos données, le snippet <code>filerelchoose</code> vous sera très utile :</p>
+<p>N’oubliez pas que le chemin d’accès à votre fichier peut s’écrire de manière absolue ou bien de manière relative. <strong>Vous devez autant que possible employer des chemins relatifs</strong> pour que votre projet soit <strong>portable</strong>. Si vous avez du mal à déterminer le chemin relatif par rapport à vos données, le snippet <code>filerelchoose</code> vous sera très utile :</p>
 <ol style="list-style-type: decimal">
-<li><p>Assurez-vous que le chemin actif dans la fenêtre <strong>Console</strong> est le même que le répertoire contenant le fichier édité. Pour cela, utilisez l'entrée de menu RStudio <code>Session -&gt; Set Working Directory -&gt; To Source File Location</code>.</p></li>
-<li><p>Utilisez le snippet <code>filerelchoose</code> que vous activez dans une zone de code R (dans un script R, ou à l'intérieur d'un chunk dans un document R Markdown/R Notebook). Entrez <code>file</code>, attendez que le menu contextuel de complétion apparaisse, sélectionnez <code>filerelchoose</code> dans la liste et tapez <code>Entrée</code>. Une boite de dialogue de sélection de fichier apparaît. Sélectionnez le fichier qui vous intéresse et ... <code>file</code> est <strong>remplacé par le chemin relatif vers votre fichier</strong> dans l'éditeur.</p></li>
+<li><p>Assurez-vous que le chemin actif dans la fenêtre <strong>Console</strong> est le même que le répertoire contenant le fichier édité. Pour cela, utilisez l’entrée de menu RStudio <code>Session -&gt; Set Working Directory -&gt; To Source File Location</code>.</p></li>
+<li><p>Utilisez le snippet <code>filerelchoose</code> que vous activez dans une zone de code R (dans un script R, ou à l’intérieur d’un chunk dans un document R Markdown/R Notebook). Entrez <code>file</code>, attendez que le menu contextuel de complétion apparaisse, sélectionnez <code>filerelchoose</code> dans la liste et tapez <code>Entrée</code>. Une boite de dialogue de sélection de fichier apparaît. Sélectionnez le fichier qui vous intéresse et … <code>file</code> est <strong>remplacé par le chemin relatif vers votre fichier</strong> dans l’éditeur.</p></li>
 </ol>
 </div>
 
@@ -146,8 +146,8 @@ Les explications détaillées concernant l'organisation de vos projets dans RStu
 Il existe différents logiciels qui permettent d'éditer des tableaux de données en ligne et de les partager sur le Net. [Google Sheets](https://www.google.com/intl/fr_BE/sheets/about/) est l'un d'entre eux, tout comme [Excel Online](https://office.live.com/start/Excel.aspx). Des stockages spécifiques pour les données scientifiques existent aussi comme [Figshare](https://figshare.com) ou [Zenodo](https://zenodo.org). Ces sites permettent de partager facilement des jeux de données sur le Net.
 
 <div class="info">
-<p>La science est de plus en plus ouverte, et les pratiques d'<strong>Open Data</strong> de plus en plus fréquentes et même imposées par des programmes de recherche comme les <a href="https://europa.eu/european-union/documents-publications/open-data_fr">programmes européens</a> ou le <a href="http://www.recherchescientifique.be/index.php?id=1628">FNRS</a> en Belgique. Vous serez donc certainement amenés à accéder à des données depuis des dépôts spécialisés sur Internet.</p>
-<p>Concentrez-vous sur les outils spécifiques à la gestion de ce type de données. il s'agit, en effet, d'une compétence clé qu'un bon scientifique des données se doit de maîtriser parfaitement. En recherchant à chaque fois la meilleure façon d'accéder à des données sur le Net, vous développerez cette compétence progressivement par la pratique... et <strong>vous pourrez faire valoir un atout encore rare mais apprécié lors d'un entretien d'embaûche plus tard.</strong></p>
+<p>La science est de plus en plus ouverte, et les pratiques d’<strong>Open Data</strong> de plus en plus fréquentes et même imposées par des programmes de recherche comme les <a href="https://europa.eu/european-union/documents-publications/open-data_fr">programmes européens</a> ou le <a href="http://www.recherchescientifique.be/index.php?id=1628">FNRS</a> en Belgique. Vous serez donc certainement amenés à accéder à des données depuis des dépôts spécialisés sur Internet.</p>
+<p>Concentrez-vous sur les outils spécifiques à la gestion de ce type de données. il s’agit, en effet, d’une compétence clé qu’un bon scientifique des données se doit de maîtriser parfaitement. En recherchant à chaque fois la meilleure façon d’accéder à des données sur le Net, vous développerez cette compétence progressivement par la pratique… et <strong>vous pourrez faire valoir un atout encore rare mais apprécié lors d’un entretien d’embaûche plus tard.</strong></p>
 </div>
 
 Voici un exemple de feuille de données Google Sheets : https://docs.google.com/spreadsheets/d/1iEuGrMk4IcCkq7gMNzy04DkSaPeWH35Psb0E56KEQMw. Il est possible d'importer ce genre de données **directement** depuis R, mais il faut d'abord déterminer l'[URL à utiliser pour obtenir les données](https://www.labnol.org/internet/direct-links-for-google-drive/28356/) dans un format reconnu. Dans le cas de Google Sheets, il suffit d'indiquer à la fin de cette URL que l'on souhaite exporter les données au format CSV en rajoutant `/export?format=csv` à la fin de l'URL.
@@ -177,11 +177,11 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 # cols(
 #   localisation = col_character(),
 #   species = col_character(),
-#   id = col_integer(),
+#   id = col_double(),
 #   salinity = col_double(),
 #   temperature = col_double(),
 #   date = col_datetime(format = ""),
-#   time = col_integer(),
+#   time = col_double(),
 #   gain = col_double(),
 #   gain_std = col_double()
 # )
@@ -189,19 +189,19 @@ Vous n'aurez alors plus qu'à lire les données depuis cette URL. N'oubliez pas 
 
 ```
 # # A tibble: 98 x 9
-#    localisation species      id salinity temperature date               
-#    <chr>        <chr>     <int>    <dbl>       <dbl> <dttm>             
-#  1 A0           s.hystrix     1     34.7        24.5 2018-04-24 09:10:00
-#  2 A0           s.hystrix     2     34.7        24.5 2018-04-24 09:10:00
-#  3 A0           s.hystrix     3     34.7        24.5 2018-04-24 09:10:00
-#  4 A0           s.hystrix     4     34.7        24.5 2018-04-24 09:10:00
-#  5 A0           s.hystrix     5     34.7        24.5 2018-04-24 09:10:00
-#  6 A0           s.hystrix     6     34.7        24.5 2018-04-24 09:10:00
-#  7 A0           s.hystrix     7     34.7        24.5 2018-04-24 09:10:00
-#  8 A0           s.hystrix     8     34.7        24.5 2018-04-24 09:10:00
-#  9 A0           s.hystrix     9     34.7        24.5 2018-04-24 09:10:00
-# 10 A0           s.hystrix    10     34.7        24.5 2018-04-24 09:10:00
-# # ... with 88 more rows, and 3 more variables: time <int>, gain <dbl>,
+#    localisation species    id salinity temperature date               
+#    <chr>        <chr>   <dbl>    <dbl>       <dbl> <dttm>             
+#  1 A0           s.hyst…     1     34.7        24.5 2018-04-24 09:10:00
+#  2 A0           s.hyst…     2     34.7        24.5 2018-04-24 09:10:00
+#  3 A0           s.hyst…     3     34.7        24.5 2018-04-24 09:10:00
+#  4 A0           s.hyst…     4     34.7        24.5 2018-04-24 09:10:00
+#  5 A0           s.hyst…     5     34.7        24.5 2018-04-24 09:10:00
+#  6 A0           s.hyst…     6     34.7        24.5 2018-04-24 09:10:00
+#  7 A0           s.hyst…     7     34.7        24.5 2018-04-24 09:10:00
+#  8 A0           s.hyst…     8     34.7        24.5 2018-04-24 09:10:00
+#  9 A0           s.hyst…     9     34.7        24.5 2018-04-24 09:10:00
+# 10 A0           s.hyst…    10     34.7        24.5 2018-04-24 09:10:00
+# # … with 88 more rows, and 3 more variables: time <dbl>, gain <dbl>,
 # #   gain_std <dbl>
 ```
 
@@ -235,7 +235,7 @@ coral <- read("../data/coral.rds")
     Si le travail de préparation des données est lourd (et donc, prend beaucoup de temps) il peut être avantageux d'enregistrer localement la version **nettoyée** de vos données plutôt que la version originale. Mais alors indiquez-le explicitement.
 
 <div class="warning">
-<p>Faites toujours la distinction entre <strong>données brutes</strong> et <strong>données nettoyées</strong>. Ne les mélangez jamais et documentez toujours de manière reproductible le processus qui mène des unes aux autres ! C'est tout aussi important que de garder un lien vers la source originale des données dans votre code et d'utiliser toujours des chemins relatifs vers vos fichiers pour une analyse portable et reproductible.</p>
+<p>Faites toujours la distinction entre <strong>données brutes</strong> et <strong>données nettoyées</strong>. Ne les mélangez jamais et documentez toujours de manière reproductible le processus qui mène des unes aux autres ! C’est tout aussi important que de garder un lien vers la source originale des données dans votre code et d’utiliser toujours des chemins relatifs vers vos fichiers pour une analyse portable et reproductible.</p>
 </div>
 
 
@@ -303,7 +303,7 @@ chart(urchin_bio, height ~ weight %col=% origin) +
   geom_point()
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" />
 
 Comparez ceci avec le même graphique, mais obtenu à partir de différentes versions du jeu de données `urchin_bio` importé à l'aide de `read()` avec des valeurs différentes pour l'argument `lang =`. 
 
@@ -321,6 +321,15 @@ urchin_FR <- read("urchin_bio", package = "data.io", lang = "FR")
 ```r
 a <- chart(urchin,    height ~ weight %col=% origin) +
   geom_point()
+```
+
+```
+# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
+# Please use `as_label()` or `as_name()` instead.
+# This warning is displayed once per session.
+```
+
+```r
 b <- chart(urchin_en, height ~ weight %col=% origin) +
   geom_point()
 c <- chart(urchin_fr, height ~ weight %col=% origin) +
@@ -331,7 +340,7 @@ d <- chart(urchin_FR, height ~ weight %col=% origin) +
 combine_charts(list(a, b, c, d))
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-17-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" />
 
  
 - A & B\ : l'argument `lang =` par défaut est `lang = "en"`. Il utilise les labels et unités en anglais avec les unités dans le système international.
@@ -353,11 +362,11 @@ urchin_en %>.%
 #   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
 # 1 Farm        53.1      54.5   26.3           9.57   60.2        41.7
 # 2 Farm        52.7      52.7   25.9          10.8    63.2        46.6
-# 3 Farm        54.0      54.2   24.5          10.7    64.4        44.3
+# 3 Farm        54        54.2   24.5          10.7    64.4        44.3
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -376,11 +385,11 @@ urchin_fr %>.%
 #   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
 # 1 Farm        53.1      54.5   26.3           9.57   60.2        41.7
 # 2 Farm        52.7      52.7   25.9          10.8    63.2        46.6
-# 3 Farm        54.0      54.2   24.5          10.7    64.4        44.3
+# 3 Farm        54        54.2   24.5          10.7    64.4        44.3
 # 4 Farm        51.1      51.3   28.8          11.2    62.4        45.0
 # 5 Farm        52.1      53.6   31.2          11.1    63.7        44.0
 # 6 Farm        52.3      51.4   28.6          12.4    68.6        53.9
-# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -397,15 +406,15 @@ urchin_FR %>.%
 
 ```
 # # A tibble: 6 x 19
-#   origin   diameter1 diameter2 height buoyant_weight weight solid_parts
-#   <fct>        <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
-# 1 Pêcherie      9.90     10.2    5.00             NA  0.522       0.478
-# 2 Pêcherie     10.5      10.6    5.70             NA  0.642       0.589
-# 3 Pêcherie     10.8      10.8    5.20             NA  0.734       0.677
-# 4 Pêcherie      9.60      9.30   4.60             NA  0.370       0.344
-# 5 Pêcherie     10.4      10.7    4.80             NA  0.610       0.559
-# 6 Pêcherie     10.5      11.1    5.00             NA  0.610       0.551
-# # ... with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
+#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+# 1 Pêche…       9.9      10.2    5               NA  0.522       0.478
+# 2 Pêche…      10.5      10.6    5.7             NA  0.642       0.589
+# 3 Pêche…      10.8      10.8    5.2             NA  0.734       0.677
+# 4 Pêche…       9.6       9.3    4.6             NA  0.370       0.344
+# 5 Pêche…      10.4      10.7    4.8             NA  0.610       0.559
+# 6 Pêche…      10.5      11.1    5               NA  0.610       0.551
+# # … with 12 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>
@@ -427,17 +436,17 @@ Lors de la réalisation de graphiques dans les modules précédents vous avez co
 # # A tibble: 395 x 7
 #    gender day_birth  weight height wrist year_measure   age
 #    <fct>  <date>      <dbl>  <dbl> <dbl>        <dbl> <dbl>
-#  1 M      1995-03-11    69.   182.  15.0        2013.   18.
-#  2 M      1998-04-03    74.   190.  16.0        2013.   15.
-#  3 M      1967-04-04    83.   185.  17.5        2013.   46.
-#  4 M      1994-02-10    60.   175.  15.0        2013.   19.
-#  5 W      1990-12-02    48.   167.  14.0        2013.   23.
-#  6 W      1994-07-15    52.   179.  14.0        2013.   19.
-#  7 W      1971-03-03    72.   167.  15.5        2013.   42.
-#  8 W      1997-06-24    74.   180.  16.0        2013.   16.
-#  9 M      1972-10-26   110.   189.  19.0        2013.   41.
-# 10 M      1945-03-15    82.   160.  18.0        2013.   68.
-# # ... with 385 more rows
+#  1 M      1995-03-11     69    182  15           2013    18
+#  2 M      1998-04-03     74    190  16           2013    15
+#  3 M      1967-04-04     83    185  17.5         2013    46
+#  4 M      1994-02-10     60    175  15           2013    19
+#  5 W      1990-12-02     48    167  14           2013    23
+#  6 W      1994-07-15     52    179  14           2013    19
+#  7 W      1971-03-03     72    167  15.5         2013    42
+#  8 W      1997-06-24     74    180  16           2013    16
+#  9 M      1972-10-26    110    189  19           2013    41
+# 10 M      1945-03-15     82    160  18           2013    68
+# # … with 385 more rows
 ```
 
 La Figure \@ref(fig:two-boxplots) montre deux boites de dispersion parallèles différentes. Laquelle de ces deux représentations est incorrecte et pourquoi ? 
@@ -453,12 +462,8 @@ b <- chart(biometry, height ~ weight %fill=% gender) +
 combine_charts(list(a, b), common.legend = TRUE)
 ```
 
-```
-# Warning: position_dodge requires non-overlapping x intervals
-```
-
 <div class="figure" style="text-align: center">
-<img src="05-Importation-Transformation_files/figure-html/two-boxplots-1.svg" alt="Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de gender`" width="672" />
+<img src="05-Importation-Transformation_files/figure-html/two-boxplots-1.png" alt="Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de gender`" width="672" />
 <p class="caption">(\#fig:two-boxplots)Boites de dispersion parallèles de la taille (`height`) en fonction de A. une variable qualitative (`gender`) et B. une variable quantitative (`weight`) et couleur en fonction de gender`</p>
 </div>
 
@@ -487,17 +492,25 @@ skimr::skim(biometry)
 ```
 # Skim summary statistics
 #  n obs: 395 
-#  n variables: 7 
+#  n variables: 7
+```
+
+```
+# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
+# This warning is displayed once per session.
+```
+
+```
 # 
-# Variable type: Date 
+# ── Variable type:Date ─────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -592,11 +605,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -608,8 +621,8 @@ skimr::skim(tooth)
 La variable dose est encodée sous forme numérique alors que cette dernière ne contient que trois niveaux différents et devra être le plus souvent traitée comme une **variable qualitative ordonnée à trois niveaux** . **Vous devrez donc probablement recoder cette variable en variable facteur.**
 
 <div class="note">
-<p>Ce n'est pas le caractère quantitatif ou qualitatif du <em>mécanisme sous-jacent qui est mesuré</em> qui détermine si la variable est quantitative ou qualitative, mais d'autres critères comme la précision avec laquelle la mesure a été effectuée. Par exemple, un anémomètre mesure la vitesse du vent sous forme de variable <strong>quantitative</strong> alors qu'une échelle approximative de type <code>vent nul</code>, <code>vent faible</code>, <code>vent moyen</code>, <code>vent fort</code> ou <code>tempête</code> basée sur l'observation des rides ou des vagues à la surface de la mer pourrait éventuellement convenir pour mesurer le même phénomène si une grande précision n'est pas nécessaire. Mais dans ce cas, la variable devra être traitée comme une variable <strong>qualitative</strong>.</p>
-<p>De même, un plan expérimental qui réduit volontairement les valeurs fixées dans une expérience, comme ici les doses journalières d'acide ascorbique, fera aussi basculer la variable en <strong>qualitative</strong>, et ce, quelle que soit la précision avec laquelle les valeurs sont mesurées par ailleurs. Un découpage en classes aura aussi le même effet de transformer une variable quantitative en variable qualitative ordonnée.</p>
+<p>Ce n’est pas le caractère quantitatif ou qualitatif du <em>mécanisme sous-jacent qui est mesuré</em> qui détermine si la variable est quantitative ou qualitative, mais d’autres critères comme la précision avec laquelle la mesure a été effectuée. Par exemple, un anémomètre mesure la vitesse du vent sous forme de variable <strong>quantitative</strong> alors qu’une échelle approximative de type <code>vent nul</code>, <code>vent faible</code>, <code>vent moyen</code>, <code>vent fort</code> ou <code>tempête</code> basée sur l’observation des rides ou des vagues à la surface de la mer pourrait éventuellement convenir pour mesurer le même phénomène si une grande précision n’est pas nécessaire. Mais dans ce cas, la variable devra être traitée comme une variable <strong>qualitative</strong>.</p>
+<p>De même, un plan expérimental qui réduit volontairement les valeurs fixées dans une expérience, comme ici les doses journalières d’acide ascorbique, fera aussi basculer la variable en <strong>qualitative</strong>, et ce, quelle que soit la précision avec laquelle les valeurs sont mesurées par ailleurs. Un découpage en classes aura aussi le même effet de transformer une variable quantitative en variable qualitative ordonnée.</p>
 </div>
 
 Indiquons à présent explicitement à R que la variable `dose` doit être considérée comme qualitative :
@@ -626,7 +639,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -634,7 +647,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -655,7 +668,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -663,7 +676,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# Variable type: numeric 
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -685,7 +698,7 @@ chart(data = biometry, ~ age) +
   ylab("Effectifs")
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-29-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
 
 Les **addins** de RStudio vont vous permettre de réaliser facilement un découpage du jeu de données en fonction de classes d'âges (bouton `Addins -> QUESTIONR -> Numeric range dividing`).
 
@@ -704,7 +717,7 @@ chart(biometry, formula = ~ age %fill=% age_rec) +
   ylab("Effectifs")
 ```
 
-<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-30-1.svg" width="672" style="display: block; margin: auto;" />
+<img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ### Qualitatif ordonné ou non
@@ -770,7 +783,7 @@ skimr::skim(df)
 #  n obs: 5 
 #  n variables: 2 
 # 
-# Variable type: factor 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -1102,15 +1115,15 @@ head(urchin_by_orig)
 ```
 # # A tibble: 6 x 24
 # # Groups:   origin [1]
-#   origin  diameter1 diameter2 height buoyant_weight weight solid_parts
-#   <fct>       <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
-# 1 Fishery      9.90     10.2    5.00             NA  0.522       0.478
-# 2 Fishery     10.5      10.6    5.70             NA  0.642       0.589
-# 3 Fishery     10.8      10.8    5.20             NA  0.734       0.677
-# 4 Fishery      9.60      9.30   4.60             NA  0.370       0.344
-# 5 Fishery     10.4      10.7    4.80             NA  0.610       0.559
-# 6 Fishery     10.5      11.1    5.00             NA  0.610       0.551
-# # ... with 17 more variables: integuments <dbl>, dry_integuments <dbl>,
+#   origin diameter1 diameter2 height buoyant_weight weight solid_parts
+#   <fct>      <dbl>     <dbl>  <dbl>          <dbl>  <dbl>       <dbl>
+# 1 Fishe…       9.9      10.2    5               NA  0.522       0.478
+# 2 Fishe…      10.5      10.6    5.7             NA  0.642       0.589
+# 3 Fishe…      10.8      10.8    5.2             NA  0.734       0.677
+# 4 Fishe…       9.6       9.3    4.6             NA  0.370       0.344
+# 5 Fishe…      10.4      10.7    4.8             NA  0.610       0.559
+# 6 Fishe…      10.5      11.1    5               NA  0.610       0.551
+# # … with 17 more variables: integuments <dbl>, dry_integuments <dbl>,
 # #   digestive_tract <dbl>, dry_digestive_tract <dbl>, gonads <dbl>,
 # #   dry_gonads <dbl>, skeleton <dbl>, lantern <dbl>, test <dbl>,
 # #   spines <dbl>, maturity <int>, sex <fct>, sum_skel <dbl>, ratio <dbl>,

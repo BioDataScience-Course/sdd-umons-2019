@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.2 Test d’hypothèse | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.2 Test d’hypothèse | Science des données biologiques, UMONS />
+  <meta property="og:title" content="8.2 Test d’hypothèse | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.2 Test d’hypothèse | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="8.2 Test d’hypothèse | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="echantillonnage.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -422,7 +447,7 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p class="caption">Bec-croisés des sapins mâles montrant les deux variétés (bec croisé à gauche ou à droite). Photo : Elaine R. Wilson (license CC BY-SA 3.0).</p>
 </div>
 <p>Comme des individus à bec croisé à gauche et d’autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu les résultats suivants :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(crossbill &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(<span class="dt">left =</span> <span class="dv">1895</span>, <span class="dt">right =</span> <span class="dv">1752</span>)))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">(crossbill &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(<span class="dt">left =</span> <span class="dv">1895</span>, <span class="dt">right =</span> <span class="dv">1752</span>)))</code></pre>
 <pre><code>#  left right 
 #  1895  1752</code></pre>
 <p>Les scientifiques pensent que les variétés gauches et droites se rencontrent avec un ratio 1:1 dans la population étudiée suite à une sélection présumée basée sur le rapport des deux variétés. La question se traduit sous forme d’un test d’hypothèse comme ceci :</p>
@@ -436,10 +461,10 @@ code > span. { color: #1f1c1b; } /* Normal */
 <h3><span class="header-section-number">8.2.2</span> Test Chi<sup>2</sup> univarié</h3>
 <p>Le test Chi<sup>2</sup> (ou <span class="math inline">\(\chi^2\)</span>) de Pearson est un test d’hypothèse qui permet de comparer des effectifs observés notés <span class="math inline">\(a_i\)</span> à des effectifs théoriques <span class="math inline">\(\alpha_i\)</span> sous l’hypothèse nulle pour les différents niveaux <span class="math inline">\(i\)</span> allant de 1 à <span class="math inline">\(n\)</span> d’une variable qualitative (version dite univariée du test). A noter que par rapport à la définition des hypothèses ci-dessus, ce ne sont <strong>pas</strong> les probabilités qui sont testées, mais les effectifs.</p>
 <p>Notre tableau de contingence à simple entrée <code>crossbill</code> contient nos <span class="math inline">\(a_i\)</span>. Nous devons donc calculer quels sont les effectifs théoriques <span class="math inline">\(\alpha_i\)</span>. Le nombre total d’oiseaux observés est :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(crossbill)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(crossbill)</code></pre>
 <pre><code># [1] 3647</code></pre>
 <p>… et les effectifs attendus sous <span class="math inline">\(H_0\)</span> sont :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(alpha_i &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">left =</span> <span class="kw">sum</span>(crossbill)<span class="op">/</span><span class="dv">2</span>, <span class="dt">right =</span> <span class="kw">sum</span>(crossbill)<span class="op">/</span><span class="dv">2</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">(alpha_i &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">left =</span> <span class="kw">sum</span>(crossbill)<span class="op">/</span><span class="dv">2</span>, <span class="dt">right =</span> <span class="kw">sum</span>(crossbill)<span class="op">/</span><span class="dv">2</span>))</code></pre>
 <pre><code>#   left  right 
 # 1823.5 1823.5</code></pre>
 <p>Les hypothèses du test <span class="math inline">\(\chi^2\)</span> univarié se définissent comme ceci :</p>
@@ -450,12 +475,12 @@ code > span. { color: #1f1c1b; } /* Normal */
 <p>Le principe de la <strong>statistique <span class="math inline">\(\chi^2\)</span></strong> consiste à sommer les écarts au carré par rapport aux <span class="math inline">\(\alpha_i\)</span> de référence divisés par ces mêmes <span class="math inline">\(\alpha_i\)</span> pour quantifier l’écart entre les valeurs observées et les valeurs théoriques. Donc :</p>
 <p><span class="math display">\[\chi^2_\mathrm{obs} = \sum_{i=1}^n\frac{(a_i - \alpha_i)^2}{\alpha_i}\]</span></p>
 <p>Notez que cette statistique prend la valeur nulle lorsque tous les <span class="math inline">\(a_i\)</span> sont strictement égaux aux <span class="math inline">\(\alpha_i\)</span>. Dans tous les autres cas, des termes positifs (le carré de différences est toujours une valeur positive) apparaissent. Donc la statistique <span class="math inline">\(\chi^2\)</span> est d’autant plus grande que les observations s’éloignent de la théorie.</p>
-<p>Calculons <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> dans notre cas<a href="references.html#fn37" class="footnoteRef" id="fnref37"><sup>37</sup></a> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(chi2_obs &lt;-<span class="st"> </span><span class="kw">sum</span>((crossbill <span class="op">-</span><span class="st"> </span>alpha_i)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>alpha_i))</code></pre></div>
+<p>Calculons <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> dans notre cas<a href="references.html#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a> :</p>
+<pre class="sourceCode r"><code class="sourceCode r">(chi2_obs &lt;-<span class="st"> </span><span class="kw">sum</span>((crossbill <span class="op">-</span><span class="st"> </span>alpha_i)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>alpha_i))</code></pre>
 <pre><code># [1] 5.607074</code></pre>
-<p>Pour répondre à la question, il nous faut une loi de distribution statistique qui permette d’associer une probabilité au quantile <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> sous <span class="math inline">\(H_0\)</span>. C’est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du <span class="math inline">\(\chi^2\)</span>. La loi du même nom admet un seul paramètre, les <strong>degrés de libertés</strong> (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée <span class="math inline">\(n\)</span> moins un. Ici, ddl = 2 - 1 = 1. La Fig. <a href="test-dhypothese.html#fig:chi2plot">8.1</a> représente la densité de probabilité d’une loi <span class="math inline">\(\chi^2\)</span> typique<a href="references.html#fn38" class="footnoteRef" id="fnref38"><sup>38</sup></a>. C’est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à <span class="math inline">\(+\infty\)</span>.</p>
+<p>Pour répondre à la question, il nous faut une loi de distribution statistique qui permette d’associer une probabilité au quantile <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> sous <span class="math inline">\(H_0\)</span>. C’est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du <span class="math inline">\(\chi^2\)</span>. La loi du même nom admet un seul paramètre, les <strong>degrés de libertés</strong> (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée <span class="math inline">\(n\)</span> moins un. Ici, ddl = 2 - 1 = 1. La Fig. <a href="test-dhypothese.html#fig:chi2plot">8.1</a> représente la densité de probabilité d’une loi <span class="math inline">\(\chi^2\)</span> typique<a href="references.html#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>. C’est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à <span class="math inline">\(+\infty\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:chi2plot"></span>
-<img src="08-Test-Chi2_files/figure-html/chi2plot-1.svg" alt="Allure typique de la densité de probabilité de la distribution Chi^2^ (ici ddl = 3)." width="672" />
+<img src="08-Test-Chi2_files/figure-html/chi2plot-1.png" alt="Allure typique de la densité de probabilité de la distribution Chi^2^ (ici ddl = 3)." width="672" />
 <p class="caption">
 Figure 8.1: Allure typique de la densité de probabilité de la distribution Chi<sup>2</sup> (ici ddl = 3).
 </p>
@@ -471,25 +496,25 @@ Figure 8.1: Allure typique de la densité de probabilité de la distribution Chi
 </div>
 <p>Poursuivons. Nous choisissons notre seuil <span class="math inline">\(\alpha\)</span> = 5%. Cela définit l’aire la plus extrême de 5% à droite de la distribution <span class="math inline">\(\chi^2\)</span> à 1 ddl comme zone de rejet (remplie en rouge sur la Fig. <a href="test-dhypothese.html#fig:chi2plot2">8.2</a>). Il nous suffit maintenant de voir où se place notre <span class="math inline">\(\chi^2_\mathrm{obs}\)</span>. S’il se situe dans la zone en rouge, nous rejetterons <span class="math inline">\(H_0\)</span>, sinon, nous ne la rejetterons pas.</p>
 <div class="figure" style="text-align: center"><span id="fig:chi2plot2"></span>
-<img src="08-Test-Chi2_files/figure-html/chi2plot2-1.svg" alt="Densité de probabilité sous *H*~0~ (distribution Chi^2^ à 1 ddl), zone de rejet de 5% en rouge et position de la valeur observée (trait vertical rouge)." width="672" />
+<img src="08-Test-Chi2_files/figure-html/chi2plot2-1.png" alt="Densité de probabilité sous *H*~0~ (distribution Chi^2^ à 1 ddl), zone de rejet de 5% en rouge et position de la valeur observée (trait vertical rouge)." width="672" />
 <p class="caption">
 Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution Chi<sup>2</sup> à 1 ddl), zone de rejet de 5% en rouge et position de la valeur observée (trait vertical rouge).
 </p>
 </div>
 <p>Où se situe la limite ? Nous pouvons facilement la calculer :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qchisq</span>(<span class="fl">0.05</span>, <span class="dt">df =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qchisq</span>(<span class="fl">0.05</span>, <span class="dt">df =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># [1] 3.841459</code></pre>
 <p>Notre <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> = 5,61 est plus grand que cette limite à 3,84 et se situe donc dans la zone de rejet de <span class="math inline">\(H_0\)</span> du test. <strong>Nous rejetons donc <span class="math inline">\(H_0\)</span> ici</strong>. Nous dirons que les becs croisés à gauche sont significativement plus nombreux que ceux à droite au seuil <span class="math inline">\(\alpha\)</span> de 5% (test <span class="math inline">\(\chi^2\)</span> = 5,61, ddl = 1, valeur <em>P</em> = 0,018). <strong>Notez bien la façon particulière de reporter les résultats d’un test d’hypothèse !</strong></p>
 <p>Il nous manque encore juste un élément… qu’est-ce que cette “valeur <em>P</em>” de 0,018 reportée dans le résultat ? En fait, c’est la valeur de probabilité associée au test et correspond ici à l’aire à droite définie depuis le <span class="math inline">\(\chi^2_\mathrm{obs}\)</span>. Calculons-la :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pchisq</span>(<span class="fl">5.61</span>, <span class="dt">df =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pchisq</span>(<span class="fl">5.61</span>, <span class="dt">df =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># [1] 0.01785826</code></pre>
 <p>Le test d’hypothèse reporte la valeur <em>P</em> afin qu’un lecteur qui aurait choisi un autre seuil <span class="math inline">\(\alpha\)</span> pourrait effectuer immédiatement sa propre comparaison sans devoir refaire les calculs. La règle est simple :</p>
 <ul>
 <li>valeur <em>P</em> &lt; seuil <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(=&gt; \mathrm{R}H_0\)</span> (on rejette <span class="math inline">\(H_0\)</span>),</li>
 <li>valeur <em>P</em> ≥ seuil <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(=&gt; \rlap{\mathrm{R}} \diagup H_0\)</span> (on ne rejette pas <span class="math inline">\(H_0\)</span>).</li>
 </ul>
-<p>Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du <span class="math inline">\(\chi^2\)</span> dans R. La fonction <code>chisq.test()</code> fait tout cela pour nous<a href="references.html#fn39" class="footnoteRef" id="fnref39"><sup>39</sup></a>. Elle est également disponible dans les snippets à partir du menu <code>hypothesis test : contingency</code> ou <code>.hc</code> (test Chi<sup>2</sup> univarié).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du <span class="math inline">\(\chi^2\)</span> dans R. La fonction <code>chisq.test()</code> fait tout cela pour nous<a href="references.html#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>. Elle est également disponible dans les snippets à partir du menu <code>hypothesis test : contingency</code> ou <code>.hc</code> (test Chi<sup>2</sup> univarié).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># 
 #   Chi-squared test for given probabilities
 # 
@@ -508,12 +533,12 @@ Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution C
 </div>
 <div id="effet-de-leffectif-etudie" class="section level3">
 <h3><span class="header-section-number">8.2.4</span> Effet de l’effectif étudié</h3>
-<p>En inférence, la qualité des données (échantillons <em>représentatifs</em>) est importante, mais la quantité aussi. <strong>Plus vous pourrez mesurer d’individus, mieux c’est.</strong> Par contre, dès que la taille de l’échantillon (ici, l’effectif total mesuré) est suffisant pour rejeter <span class="math inline">\(H_0\)</span>, vous n’avez plus besoin d’augmenter la taille de votre échantillon<a href="references.html#fn40" class="footnoteRef" id="fnref40"><sup>40</sup></a>. Voyons l’effet de la taille de l’échantillon sur l’étude des becs croisés des sapins. Nous n’avons pas besoin d’un effectif plus grand que celui mesuré, car nous rejetons <span class="math inline">\(H_0\)</span> ici. Qu’aurait donné notre test <span class="math inline">\(\chi^2\)</span>, par contre, si l’auteur avait mesuré disons 10 fois moins d’oiseaux, les proportions restant par ailleurs identiques entre becs croisés à gauche et à droite ?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Proportions équivalentes, mais échantillon 10x plus petit</span>
-(crossbill2 &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(<span class="dt">left =</span> <span class="dv">190</span>, <span class="dt">right =</span> <span class="dv">175</span>)))</code></pre></div>
+<p>En inférence, la qualité des données (échantillons <em>représentatifs</em>) est importante, mais la quantité aussi. <strong>Plus vous pourrez mesurer d’individus, mieux c’est.</strong> Par contre, dès que la taille de l’échantillon (ici, l’effectif total mesuré) est suffisant pour rejeter <span class="math inline">\(H_0\)</span>, vous n’avez plus besoin d’augmenter la taille de votre échantillon<a href="references.html#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>. Voyons l’effet de la taille de l’échantillon sur l’étude des becs croisés des sapins. Nous n’avons pas besoin d’un effectif plus grand que celui mesuré, car nous rejetons <span class="math inline">\(H_0\)</span> ici. Qu’aurait donné notre test <span class="math inline">\(\chi^2\)</span>, par contre, si l’auteur avait mesuré disons 10 fois moins d’oiseaux, les proportions restant par ailleurs identiques entre becs croisés à gauche et à droite ?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Proportions équivalentes, mais échantillon 10x plus petit</span>
+(crossbill2 &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(<span class="dt">left =</span> <span class="dv">190</span>, <span class="dt">right =</span> <span class="dv">175</span>)))</code></pre>
 <pre><code>#  left right 
 #   190   175</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill2, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill2, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># 
 #   Chi-squared test for given probabilities
 # 
@@ -533,14 +558,14 @@ Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution C
 </div>
 
 <p>Reprenons le jeu de données concernant le test d’une molécule potentiellement anti-cancéreuse, le timolol :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">timolol &lt;-<span class="st"> </span><span class="kw">tibble</span>(
+<pre class="sourceCode r"><code class="sourceCode r">timolol &lt;-<span class="st"> </span><span class="kw">tibble</span>(
   <span class="dt">traitement =</span> <span class="kw">c</span>(<span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;placebo&quot;</span>),
   <span class="dt">patient    =</span> <span class="kw">c</span>(<span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>,  <span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>),
   <span class="dt">freq       =</span> <span class="kw">c</span>(<span class="dv">44</span>,        <span class="dv">116</span>,       <span class="dv">19</span>,        <span class="dv">128</span>)
 )
 <span class="co"># Création du tableau de contingence </span>
 timolol_table &lt;-<span class="st"> </span><span class="kw">xtabs</span>(<span class="dt">data =</span> timolol, freq <span class="op">~</span><span class="st"> </span>patient <span class="op">+</span><span class="st"> </span>traitement)
-timolol_table</code></pre></div>
+timolol_table</code></pre>
 <pre><code>#         traitement
 # patient  placebo timolol
 #   malade     128     116
@@ -556,7 +581,7 @@ timolol_table</code></pre></div>
 <p>Nous pouvons dès lors calculer le <span class="math inline">\(\chi^2_{obs}\)</span> pratiquement comme d’habitude via :</p>
 <p><span class="math display">\[\chi^2_{obs} = \sum_{i=1}^m{\sum_{j=1}^n{\frac{(a_{i,j} - \alpha_{i,j})^2}{\alpha_{i,j}}}}\]</span></p>
 <p>Enfin, nous comparons cette valeur à la distribution théorique de <span class="math inline">\(\chi^2\)</span> à <span class="math inline">\((m - 1) \times (n - 1)\)</span> degrés de liberté. Dans le cas d’un tableau 2 par 2, nous avons 1 degré de liberté. Voici le test effectué à l’aide de la fonction <code>chisq.test()</code> suivi de l’affichage des effectifs théoriques. Vous accédez facilement à ce code depuis le snippet <code>Chi2 test (independence)</code> dans le menu <code>hypothesis tests: contingency</code> à partir de <code>.hc</code>. Mais avant toute chose, nous devons choisir le seuil <span class="math inline">\(\alpha\)</span> <strong>avant de réaliser le test</strong>. Nous prendrons ici, par exemple, 1% puisque l’analyse est effectuée dans un contexte critique (maladie mortelle).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(chi2. &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(timolol_table)); <span class="kw">cat</span>(<span class="st">&quot;Expected frequencies:</span><span class="ch">\n</span><span class="st">&quot;</span>); chi2.[[<span class="st">&quot;expected&quot;</span>]]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">(chi2. &lt;-<span class="st"> </span><span class="kw">chisq.test</span>(timolol_table)); <span class="kw">cat</span>(<span class="st">&quot;Expected frequencies:</span><span class="ch">\n</span><span class="st">&quot;</span>); chi2.[[<span class="st">&quot;expected&quot;</span>]]</code></pre>
 <pre><code># 
 #   Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 # 
@@ -575,13 +600,13 @@ timolol_table</code></pre></div>
 <div id="correction-de-yates" class="section level5 unnumbered">
 <h5>Correction de Yates</h5>
 <p>Si nous calculons le <span class="math inline">\(\chi^2_{obs}\)</span> à la main, nous obtenons :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">alpha_ij &lt;-<span class="st"> </span>chi2.[[<span class="st">&quot;expected&quot;</span>]]
+<pre class="sourceCode r"><code class="sourceCode r">alpha_ij &lt;-<span class="st"> </span>chi2.[[<span class="st">&quot;expected&quot;</span>]]
 <span class="co"># Les a_i,j sont dans timolol_table</span>
-<span class="kw">sum</span>((timolol_table <span class="op">-</span><span class="st"> </span>alpha_ij)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>alpha_ij)</code></pre></div>
+<span class="kw">sum</span>((timolol_table <span class="op">-</span><span class="st"> </span>alpha_ij)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>alpha_ij)</code></pre>
 <pre><code># [1] 9.978202</code></pre>
 <p>Cela donne 9,98. Or notre test renvoie la valeur de 9,10. A quoi est due cette différence ? Lisez bien l’intitulé du test réalisé. Il s’agit de “Pearson’s Chi-squared test <strong>with Yates’ continuity correction</strong>”. Il s’agit d’une correction introduite par R dans le cas d’un tableau 2 par 2 uniquement et qui tient compte de ce que la distribution sous <span class="math inline">\(H_0\)</span> est estimée à partir des mêmes données que celle utilisées pour le test, ce qui introduit un biais ainsi corrigé. Il est donc déconseillé de désactiver cette correction, même si nous pouvons le faire en indiquant <code>correct = FALSE</code> (ci-dessous, juste pour vérifier notre calcul du <span class="math inline">\(\chi^2_{obs}\)</span> qui est maintenant identique, 9,98).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Test d&#39;indépendance sans correction de Yates</span>
-<span class="kw">chisq.test</span>(timolol_table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Test d&#39;indépendance sans correction de Yates</span>
+<span class="kw">chisq.test</span>(timolol_table, <span class="dt">correct =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># 
 #   Pearson&#39;s Chi-squared test
 # 
@@ -629,10 +654,10 @@ Gardez toujours à l’esprit que, quelle que soit la qualité d’un test d’a
 <div class="footnotes">
 <hr />
 <ol start="37">
-<li id="fn37"><p>Faites également le calcul manuellement à la calculatrice pour vérifier que vous avez bien compris.<a href="test-dhypothese.html#fnref37">↩</a></p></li>
-<li id="fn38"><p>Les fonctions qui permettent les calculs relatifs à la distribution <span class="math inline">\(\chi^2\)</span> dans R sont <code>&lt;x&gt;chisq()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.ic</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="test-dhypothese.html#fnref38">↩</a></p></li>
-<li id="fn39"><p>Avec <code>chisq.test()</code>, l’argument <code>p =</code> est la liste des probabilités attendues sous <span class="math inline">\(H_0\)</span> et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser <code>rescale.p = TRUE</code>.<a href="test-dhypothese.html#fnref39">↩</a></p></li>
-<li id="fn40"><p>Attention ! Vous devez fixer la taille de l’échantillon dès le départ <em>a priori</em>. Vous ne pouvez pas accumuler des données jusqu’à obtenir un rejet de <span class="math inline">\(H_0\)</span>, sans quoi votre analyse sera biaisée.<a href="test-dhypothese.html#fnref40">↩</a></p></li>
+<li id="fn37"><p>Faites également le calcul manuellement à la calculatrice pour vérifier que vous avez bien compris.<a href="test-dhypothese.html#fnref37" class="footnote-back">↩</a></p></li>
+<li id="fn38"><p>Les fonctions qui permettent les calculs relatifs à la distribution <span class="math inline">\(\chi^2\)</span> dans R sont <code>&lt;x&gt;chisq()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.ic</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="test-dhypothese.html#fnref38" class="footnote-back">↩</a></p></li>
+<li id="fn39"><p>Avec <code>chisq.test()</code>, l’argument <code>p =</code> est la liste des probabilités attendues sous <span class="math inline">\(H_0\)</span> et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser <code>rescale.p = TRUE</code>.<a href="test-dhypothese.html#fnref39" class="footnote-back">↩</a></p></li>
+<li id="fn40"><p>Attention ! Vous devez fixer la taille de l’échantillon dès le départ <em>a priori</em>. Vous ne pouvez pas accumuler des données jusqu’à obtenir un rejet de <span class="math inline">\(H_0\)</span>, sans quoi votre analyse sera biaisée.<a href="test-dhypothese.html#fnref40" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -711,7 +736,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

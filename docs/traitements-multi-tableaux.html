@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.5 Traitements multi-tableaux | Science des données biologiques, UMONS</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.5 Traitements multi-tableaux | Science des données biologiques, UMONS />
+  <meta property="og:title" content="6.5 Traitements multi-tableaux | Science des données biologiques, UMONS" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,19 +16,19 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.5 Traitements multi-tableaux | Science des données biologiques, UMONS />
+  <meta name="twitter:title" content="6.5 Traitements multi-tableaux | Science des données biologiques, UMONS" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels" />
 
 
-<meta name="date" content="2019-03-23">
+<meta name="date" content="2019-08-28" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="recombinaison-de-tableaux.html">
@@ -48,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
@@ -68,44 +67,70 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #ffffff; color: #1f1c1b; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; background-color: #ffffff; color: #a0a0a0; border-right: 1px solid #a0a0a0; }
-td.sourceCode { padding-left: 5px; }
-pre, code { color: #1f1c1b; background-color: #ffffff; }
-code > span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code > span.dt { color: #0057ae; } /* DataType */
-code > span.dv { color: #b08000; } /* DecVal */
-code > span.bn { color: #b08000; } /* BaseN */
-code > span.fl { color: #b08000; } /* Float */
-code > span.cn { color: #aa5500; } /* Constant */
-code > span.ch { color: #924c9d; } /* Char */
-code > span.sc { color: #3daee9; } /* SpecialChar */
-code > span.st { color: #bf0303; } /* String */
-code > span.vs { color: #bf0303; } /* VerbatimString */
-code > span.ss { color: #ff5500; } /* SpecialString */
-code > span.im { color: #ff5500; } /* Import */
-code > span.co { color: #898887; } /* Comment */
-code > span.do { color: #607880; } /* Documentation */
-code > span.an { color: #ca60ca; } /* Annotation */
-code > span.cv { color: #0095ff; } /* CommentVar */
-code > span.ot { color: #006e28; } /* Other */
-code > span.fu { color: #644a9b; } /* Function */
-code > span.va { color: #0057ae; } /* Variable */
-code > span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #1f1c1b; } /* Operator */
-code > span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code > span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code > span.pp { color: #006e28; } /* Preprocessor */
-code > span.at { color: #0057ae; } /* Attribute */
-code > span.re { color: #0057ae; } /* RegionMarker */
-code > span.in { color: #b08000; } /* Information */
-code > span.wa { color: #bf0303; } /* Warning */
-code > span.al { color: #bf0303; font-weight: bold; } /* Alert */
-code > span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code > span. { color: #1f1c1b; } /* Normal */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #ffffff;
+    color: #a0a0a0;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+div.sourceCode
+  { color: #1f1c1b; background-color: #ffffff; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span. { color: #1f1c1b; } /* Normal */
+code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+code span.an { color: #ca60ca; } /* Annotation */
+code span.at { color: #0057ae; } /* Attribute */
+code span.bn { color: #b08000; } /* BaseN */
+code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #924c9d; } /* Char */
+code span.cn { color: #aa5500; } /* Constant */
+code span.co { color: #898887; } /* Comment */
+code span.cv { color: #0095ff; } /* CommentVar */
+code span.do { color: #607880; } /* Documentation */
+code span.dt { color: #0057ae; } /* DataType */
+code span.dv { color: #b08000; } /* DecVal */
+code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #644a9b; } /* Function */
+code span.im { color: #ff5500; } /* Import */
+code span.in { color: #b08000; } /* Information */
+code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+code span.op { color: #1f1c1b; } /* Operator */
+code span.ot { color: #006e28; } /* Other */
+code span.pp { color: #006e28; } /* Preprocessor */
+code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #ff5500; } /* SpecialString */
+code span.st { color: #bf0303; } /* String */
+code span.va { color: #0057ae; } /* Variable */
+code span.vs { color: #bf0303; } /* VerbatimString */
+code span.wa { color: #bf0303; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -413,7 +438,7 @@ L’aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/da
 <li>la concentration en <strong>nutriments</strong> : orthophosphates (PO<sub>4</sub><sup>3-</sup>) et nitrates (NO<sub>3</sub><sup>-</sup>) dissous dans l’eau par analyse colorimétrique</li>
 </ul>
 <p>Pour la première série de mesures, ils ont encodé deux fichiers qu’ils ont du par la suite rassembler. Le groupe 1 a encodé le tableau suivant :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">physico1 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(
+<pre class="sourceCode r"><code class="sourceCode r">physico1 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(
   <span class="dt">sample      =</span> <span class="kw">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>, <span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>, <span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>, <span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>),
   <span class="dt">student     =</span> <span class="kw">c</span>(<span class="st">&quot;st1&quot;</span>, <span class="st">&quot;st1&quot;</span>, <span class="st">&quot;st2&quot;</span>, <span class="st">&quot;st2&quot;</span>, <span class="st">&quot;st3&quot;</span>, <span class="st">&quot;st3&quot;</span>, <span class="st">&quot;st4&quot;</span>, <span class="st">&quot;st4&quot;</span>),
   <span class="dt">ph          =</span> <span class="kw">c</span>(<span class="fl">7.94</span>, <span class="fl">7.94</span>, <span class="fl">7.94</span>, <span class="fl">7.99</span>, <span class="fl">7.94</span>, <span class="fl">7.99</span>, <span class="fl">7.94</span>, <span class="fl">7.99</span>),
@@ -421,14 +446,14 @@ L’aide-mémoire <a href="https://github.com/rstudio/cheatsheets/blob/master/da
   <span class="dt">oxygen      =</span> <span class="kw">c</span>(<span class="fl">7.98</span>, <span class="fl">8.00</span>, <span class="fl">7.98</span>, <span class="fl">7.98</span>, <span class="fl">7.99</span>, <span class="fl">7.86</span>, <span class="fl">7.89</span>, <span class="fl">7.98</span>),
   <span class="dt">temperature =</span> <span class="kw">c</span>(<span class="fl">24.6</span>, <span class="fl">24.4</span>, <span class="fl">25.1</span>, <span class="fl">24.7</span>, <span class="fl">24.9</span>, <span class="fl">24.7</span>, <span class="fl">25.0</span>, <span class="fl">24.6</span>)
   ))
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico1)</code></pre></div>
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico1)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"7.94","4":"34.0","5":"7.98","6":"24.6"},{"1":"B0","2":"st1","3":"7.94","4":"35.3","5":"8.00","6":"24.4"},{"1":"A0","2":"st2","3":"7.94","4":"33.9","5":"7.98","6":"25.1"},{"1":"B0","2":"st2","3":"7.99","4":"35.1","5":"7.98","6":"24.7"},{"1":"A0","2":"st3","3":"7.94","4":"34.0","5":"7.99","6":"24.9"},{"1":"B0","2":"st3","3":"7.99","4":"35.2","5":"7.86","6":"24.7"},{"1":"A0","2":"st4","3":"7.94","4":"33.9","5":"7.89","6":"25.0"},{"1":"B0","2":"st4","3":"7.99","4":"35.1","5":"7.98","6":"24.6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Le groupe 2 a encodé ce tableau :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">physico2 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(
+<pre class="sourceCode r"><code class="sourceCode r">physico2 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(
   <span class="dt">sample      =</span> <span class="kw">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>, <span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>),
   <span class="dt">student     =</span> <span class="kw">c</span>( <span class="st">&quot;st5&quot;</span>, <span class="st">&quot;st5&quot;</span>, <span class="st">&quot;st6&quot;</span>, <span class="st">&quot;st6&quot;</span>),
   <span class="dt">ph          =</span> <span class="kw">c</span>(<span class="fl">7.94</span>, <span class="fl">7.99</span>, <span class="fl">7.93</span>, <span class="fl">7.99</span>),
@@ -436,15 +461,15 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico1)
   <span class="dt">oxygen      =</span> <span class="kw">c</span>(<span class="fl">7.96</span>, <span class="fl">8.01</span>, <span class="fl">7.90</span>, <span class="fl">8.00</span>),
   <span class="dt">temperature =</span> <span class="kw">c</span>(<span class="fl">25.0</span>, <span class="fl">24.6</span>, <span class="fl">24.0</span>, <span class="fl">24.0</span>)
   ))
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico2)</code></pre></div>
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico2)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st5","3":"7.94","4":"33.8","5":"7.96","6":"25.0"},{"1":"B0","2":"st5","3":"7.99","4":"35.0","5":"8.01","6":"24.6"},{"1":"A0","2":"st6","3":"7.93","4":"33.9","5":"7.90","6":"24.0"},{"1":"B0","2":"st6","3":"7.99","4":"35.1","5":"8.00","6":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>L’empilement des deux tableaux de données en un seul se fait via la fonction <code>bind_rows()</code> lorsque les tableaux contiennent les mêmes variables présentées exactement dans le même ordre comme ici :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">physico &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(physico1, physico2)
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">physico &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(physico1, physico2)
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"7.94","4":"34.0","5":"7.98","6":"24.6"},{"1":"B0","2":"st1","3":"7.94","4":"35.3","5":"8.00","6":"24.4"},{"1":"A0","2":"st2","3":"7.94","4":"33.9","5":"7.98","6":"25.1"},{"1":"B0","2":"st2","3":"7.99","4":"35.1","5":"7.98","6":"24.7"},{"1":"A0","2":"st3","3":"7.94","4":"34.0","5":"7.99","6":"24.9"},{"1":"B0","2":"st3","3":"7.99","4":"35.2","5":"7.86","6":"24.7"},{"1":"A0","2":"st4","3":"7.94","4":"33.9","5":"7.89","6":"25.0"},{"1":"B0","2":"st4","3":"7.99","4":"35.1","5":"7.98","6":"24.6"},{"1":"A0","2":"st5","3":"7.94","4":"33.8","5":"7.96","6":"25.0"},{"1":"B0","2":"st5","3":"7.99","4":"35.0","5":"8.01","6":"24.6"},{"1":"A0","2":"st6","3":"7.93","4":"33.9","5":"7.90","6":"24.0"},{"1":"B0","2":"st6","3":"7.99","4":"35.1","5":"8.00","6":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -454,7 +479,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico)<
 <div id="empilement-a-droite" class="section level3">
 <h3><span class="header-section-number">6.5.2</span> Empilement à droite</h3>
 <p>Pour combiner des tableaux de données par les colonnes, de gauche à droite, la fonction la plus simple à utiliser est <code>bind_cols()</code>. Les étudiants ont également réalisé des prélèvements d’eaux qui ont été dosés par colorimétrie avec un autoanalyseur. Les échantillons des deux groupes ont été analysés dans la même série par l’appareil, ce qui donne le tableau suivant pour les nutriments :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nutrients &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(
+<pre class="sourceCode r"><code class="sourceCode r">nutrients &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tibble</span>(
   <span class="dt">sample  =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;B0&quot;</span>), <span class="dt">times =</span> <span class="dv">6</span>),
   <span class="dt">student =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;st4&quot;</span>, <span class="st">&quot;st6&quot;</span>, <span class="st">&quot;st5&quot;</span>, <span class="st">&quot;st2&quot;</span>, <span class="st">&quot;st1&quot;</span>, <span class="st">&quot;st3&quot;</span>), <span class="dt">each =</span> <span class="dv">2</span>),
   <span class="dt">po4     =</span> <span class="kw">c</span>(<span class="fl">2.445</span>, <span class="fl">0.374</span>, <span class="fl">2.446</span>, <span class="fl">0.394</span>, <span class="fl">2.433</span>, <span class="fl">0.361</span>,
@@ -462,15 +487,15 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico)<
   <span class="dt">no3     =</span> <span class="kw">c</span>(<span class="fl">1.145</span>, <span class="fl">0.104</span>, <span class="fl">0.447</span>, <span class="fl">0.066</span>, <span class="fl">0.439</span>, <span class="fl">0.093</span>,
               <span class="fl">0.477</span>, <span class="fl">0.167</span>, <span class="fl">0.443</span>, <span class="fl">0.593</span>, <span class="fl">0.450</span>, <span class="fl">0.125</span>)
   ))
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(nutrients)</code></pre></div>
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(nutrients)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st4","3":"2.445","4":"1.145"},{"1":"B0","2":"st4","3":"0.374","4":"0.104"},{"1":"A0","2":"st6","3":"2.446","4":"0.447"},{"1":"B0","2":"st6","3":"0.394","4":"0.066"},{"1":"A0","2":"st5","3":"2.433","4":"0.439"},{"1":"B0","2":"st5","3":"0.361","4":"0.093"},{"1":"A0","2":"st2","3":"2.441","4":"0.477"},{"1":"B0","2":"st2","3":"0.372","4":"0.167"},{"1":"A0","2":"st1","3":"2.438","4":"0.443"},{"1":"B0","2":"st1","3":"0.388","4":"0.593"},{"1":"A0","2":"st3","3":"2.445","4":"0.450"},{"1":"B0","2":"st3","3":"0.390","4":"0.125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Vous devez être très vigilant lors de l’utilisation de <code>bind_cols()</code> car cette dernière combine vos tableaux sans s’assurer que vos lignes soient alignées convenablement !</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oceano &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(nutrients, physico)
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">oceano &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(nutrients, physico)
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sample1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["student1"],"name":[6],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st4","3":"2.445","4":"1.145","5":"A0","6":"st1","7":"7.94","8":"34.0","9":"7.98","10":"24.6"},{"1":"B0","2":"st4","3":"0.374","4":"0.104","5":"B0","6":"st1","7":"7.94","8":"35.3","9":"8.00","10":"24.4"},{"1":"A0","2":"st6","3":"2.446","4":"0.447","5":"A0","6":"st2","7":"7.94","8":"33.9","9":"7.98","10":"25.1"},{"1":"B0","2":"st6","3":"0.394","4":"0.066","5":"B0","6":"st2","7":"7.99","8":"35.1","9":"7.98","10":"24.7"},{"1":"A0","2":"st5","3":"2.433","4":"0.439","5":"A0","6":"st3","7":"7.94","8":"34.0","9":"7.99","10":"24.9"},{"1":"B0","2":"st5","3":"0.361","4":"0.093","5":"B0","6":"st3","7":"7.99","8":"35.2","9":"7.86","10":"24.7"},{"1":"A0","2":"st2","3":"2.441","4":"0.477","5":"A0","6":"st4","7":"7.94","8":"33.9","9":"7.89","10":"25.0"},{"1":"B0","2":"st2","3":"0.372","4":"0.167","5":"B0","6":"st4","7":"7.99","8":"35.1","9":"7.98","10":"24.6"},{"1":"A0","2":"st1","3":"2.438","4":"0.443","5":"A0","6":"st5","7":"7.94","8":"33.8","9":"7.96","10":"25.0"},{"1":"B0","2":"st1","3":"0.388","4":"0.593","5":"B0","6":"st5","7":"7.99","8":"35.0","9":"8.01","10":"24.6"},{"1":"A0","2":"st3","3":"2.445","4":"0.450","5":"A0","6":"st6","7":"7.93","8":"33.9","9":"7.90","10":"24.0"},{"1":"B0","2":"st3","3":"0.390","4":"0.125","5":"B0","6":"st6","7":"7.99","8":"35.1","9":"8.00","10":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -478,16 +503,16 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</
 </div>
 <p>Qu’observez vous ?</p>
 <p>Effectivement nos deux tableaux de données n’ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d’employer des fonctions de fusion de tableaux plus complexes comme <code>full_joint()</code> (ci-dessous). Pour utiliser correctement <code>bind_cols()</code>, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant <code>arrange()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nutrients2 &lt;-<span class="st"> </span><span class="kw">arrange</span>(nutrients, student, sample)
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(nutrients2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">nutrients2 &lt;-<span class="st"> </span><span class="kw">arrange</span>(nutrients, student, sample)
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(nutrients2)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"2.438","4":"0.443"},{"1":"B0","2":"st1","3":"0.388","4":"0.593"},{"1":"A0","2":"st2","3":"2.441","4":"0.477"},{"1":"B0","2":"st2","3":"0.372","4":"0.167"},{"1":"A0","2":"st3","3":"2.445","4":"0.450"},{"1":"B0","2":"st3","3":"0.390","4":"0.125"},{"1":"A0","2":"st4","3":"2.445","4":"1.145"},{"1":"B0","2":"st4","3":"0.374","4":"0.104"},{"1":"A0","2":"st5","3":"2.433","4":"0.439"},{"1":"B0","2":"st5","3":"0.361","4":"0.093"},{"1":"A0","2":"st6","3":"2.446","4":"0.447"},{"1":"B0","2":"st6","3":"0.394","4":"0.066"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Le tableau <code>nutrients2</code> a maintenant les données présentées dans le ma^me ordre (en lignes) que le tableau <code>physico</code>. Nous pouvons donc rassembler ces deux tableaux à l’aide de <code>bind_cols()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oceano &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(nutrients2, physico)
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">oceano &lt;-<span class="st"> </span><span class="kw">bind_cols</span>(nutrients2, physico)
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sample1"],"name":[5],"type":["chr"],"align":["left"]},{"label":["student1"],"name":[6],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"2.438","4":"0.443","5":"A0","6":"st1","7":"7.94","8":"34.0","9":"7.98","10":"24.6"},{"1":"B0","2":"st1","3":"0.388","4":"0.593","5":"B0","6":"st1","7":"7.94","8":"35.3","9":"8.00","10":"24.4"},{"1":"A0","2":"st2","3":"2.441","4":"0.477","5":"A0","6":"st2","7":"7.94","8":"33.9","9":"7.98","10":"25.1"},{"1":"B0","2":"st2","3":"0.372","4":"0.167","5":"B0","6":"st2","7":"7.99","8":"35.1","9":"7.98","10":"24.7"},{"1":"A0","2":"st3","3":"2.445","4":"0.450","5":"A0","6":"st3","7":"7.94","8":"34.0","9":"7.99","10":"24.9"},{"1":"B0","2":"st3","3":"0.390","4":"0.125","5":"B0","6":"st3","7":"7.99","8":"35.2","9":"7.86","10":"24.7"},{"1":"A0","2":"st4","3":"2.445","4":"1.145","5":"A0","6":"st4","7":"7.94","8":"33.9","9":"7.89","10":"25.0"},{"1":"B0","2":"st4","3":"0.374","4":"0.104","5":"B0","6":"st4","7":"7.99","8":"35.1","9":"7.98","10":"24.6"},{"1":"A0","2":"st5","3":"2.433","4":"0.439","5":"A0","6":"st5","7":"7.94","8":"33.8","9":"7.96","10":"25.0"},{"1":"B0","2":"st5","3":"0.361","4":"0.093","5":"B0","6":"st5","7":"7.99","8":"35.0","9":"8.01","10":"24.6"},{"1":"A0","2":"st6","3":"2.446","4":"0.447","5":"A0","6":"st6","7":"7.93","8":"33.9","9":"7.90","10":"24.0"},{"1":"B0","2":"st6","3":"0.394","4":"0.066","5":"B0","6":"st6","7":"7.99","8":"35.1","9":"8.00","10":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -498,15 +523,15 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</
 <div id="fusion-de-tableaux" class="section level3">
 <h3><span class="header-section-number">6.5.3</span> Fusion de tableaux</h3>
 <p>La fusion fera intervenir une ou plusieurs colonnes communes des deux tableaux pour déterminer quelles lignes du premier correspondent aux lignes du second. Ainsi, la fusion des tableaux est assurée d’être réalisée correctement quel que soit l’ordre des lignes dans les deux tableaux d’origine. Utilisons <code>full_join()</code> en joignant les lignes en fonction des valeurs de <code>student</code> et <code>sample</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oceano &lt;-<span class="st"> </span><span class="kw">full_join</span>(nutrients, physico, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;student&quot;</span>, <span class="st">&quot;sample&quot;</span>))
-rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">oceano &lt;-<span class="st"> </span><span class="kw">full_join</span>(nutrients, physico, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;student&quot;</span>, <span class="st">&quot;sample&quot;</span>))
+rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(oceano)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["po4"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["no3"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ph"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st4","3":"2.445","4":"1.145","5":"7.94","6":"33.9","7":"7.89","8":"25.0"},{"1":"B0","2":"st4","3":"0.374","4":"0.104","5":"7.99","6":"35.1","7":"7.98","8":"24.6"},{"1":"A0","2":"st6","3":"2.446","4":"0.447","5":"7.93","6":"33.9","7":"7.90","8":"24.0"},{"1":"B0","2":"st6","3":"0.394","4":"0.066","5":"7.99","6":"35.1","7":"8.00","8":"24.0"},{"1":"A0","2":"st5","3":"2.433","4":"0.439","5":"7.94","6":"33.8","7":"7.96","8":"25.0"},{"1":"B0","2":"st5","3":"0.361","4":"0.093","5":"7.99","6":"35.0","7":"8.01","8":"24.6"},{"1":"A0","2":"st2","3":"2.441","4":"0.477","5":"7.94","6":"33.9","7":"7.98","8":"25.1"},{"1":"B0","2":"st2","3":"0.372","4":"0.167","5":"7.99","6":"35.1","7":"7.98","8":"24.7"},{"1":"A0","2":"st1","3":"2.438","4":"0.443","5":"7.94","6":"34.0","7":"7.98","8":"24.6"},{"1":"B0","2":"st1","3":"0.388","4":"0.593","5":"7.94","6":"35.3","7":"8.00","8":"24.4"},{"1":"A0","2":"st3","3":"2.445","4":"0.450","5":"7.94","6":"34.0","7":"7.99","8":"24.9"},{"1":"B0","2":"st3","3":"0.390","4":"0.125","5":"7.99","6":"35.2","7":"7.86","8":"24.7"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Observez bien ce dernier tableau. L’ordre retenu est celui de <code>nutrients</code> (le premier), mais les données issues de <code>physico</code> ont été <em>retriées</em> avant d’être fusionnées pour que les données correspondent. Comparez au tableau <code>physico</code> d’origine réimprimé ci-dessous :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(physico)</code></pre>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["sample"],"name":[1],"type":["chr"],"align":["left"]},{"label":["student"],"name":[2],"type":["chr"],"align":["left"]},{"label":["ph"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["salinity"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["oxygen"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["temperature"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"A0","2":"st1","3":"7.94","4":"34.0","5":"7.98","6":"24.6"},{"1":"B0","2":"st1","3":"7.94","4":"35.3","5":"8.00","6":"24.4"},{"1":"A0","2":"st2","3":"7.94","4":"33.9","5":"7.98","6":"25.1"},{"1":"B0","2":"st2","3":"7.99","4":"35.1","5":"7.98","6":"24.7"},{"1":"A0","2":"st3","3":"7.94","4":"34.0","5":"7.99","6":"24.9"},{"1":"B0","2":"st3","3":"7.99","4":"35.2","5":"7.86","6":"24.7"},{"1":"A0","2":"st4","3":"7.94","4":"33.9","5":"7.89","6":"25.0"},{"1":"B0","2":"st4","3":"7.99","4":"35.1","5":"7.98","6":"24.6"},{"1":"A0","2":"st5","3":"7.94","4":"33.8","5":"7.96","6":"25.0"},{"1":"B0","2":"st5","3":"7.99","4":"35.0","5":"8.01","6":"24.6"},{"1":"A0","2":"st6","3":"7.93","4":"33.9","5":"7.90","6":"24.0"},{"1":"B0","2":"st6","3":"7.99","4":"35.1","5":"8.00","6":"24.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -631,7 +656,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
