@@ -12,7 +12,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: biodatascience-course/sdd-umons
-url: 'http\://biodatascience-course.sciviews.org/sdd-umons/'
+url: 'https\://biodatascience-course.sciviews.org/sdd-umons/'
 description: "Tutoriel interactif pour la science des données avec R & SciViews-R."
 cover-image: "images/front-cover.png"
 ---
@@ -26,7 +26,7 @@ knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib
 ```
 
  
-Cet ouvrage interactif sera, à terme, le premier ouvrage d'une série de trois ouvrage touchant à la science des données biologiques. L'écriture de cette suite de livres a débuté au cours de l'année académique 2018-2019. 
+Cet ouvrage interactif est le premier volume d'une série de trois ouvrages traitant de la science des données biologiques. L'écriture de cette suite de livres a débuté au cours de l'année académique 2018-2019. 
 
 Pour l'année académique 2019-2020, cet ouvrage interactif sera le support des cours suivants :
 
@@ -34,7 +34,7 @@ Pour l'année académique 2019-2020, cet ouvrage interactif sera le support des 
 
 - [Bio-informatique et sciences des données, UMONS-ULB](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOC-926-C.htm) dont le responsable est Conotte Raphael
 
-Cet ouvrage est conçu pour être utilisé de manière interactive en ligne. En effet, nous prévoyons d'y adjoindre des vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
+Cet ouvrage est conçu pour être utilisé de manière interactive en ligne. En effet, nous y ajoutons des vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
 
 ![](images/front-cover.png)
 
@@ -49,9 +49,9 @@ _Le matériel dans cet ouvrage est distribué sous licence [CC BY-NC-SA 4.0](htt
 
 Le cours de  **Science des données I: visualisation et inférence**  est dispensé aux biologistes de second Bachelier en Faculté des Sciences de l'Université de Mons à partir de l'année académique 2018-2019.
 
-Le cours de **Bio-informatique et sciences des données, UMONS-ULB** est dispensé au biologistes de secon Bachelier en Faculté des Sciences en co-diplomation entre l'Université de Mons (UMONS) et l'Université Libre de Bruxelles (ULB) à partir de l'année académique 2019-2020.
+Le cours de **Bio-informatique et sciences des données, UMONS-ULB** est dispensé au biologistes de second Bachelier en Faculté des Sciences à Charleroi en co-diplomation entre l'Université de Mons (UMONS) et l'Université Libre de Bruxelles (ULB) à partir de l'année académique 2019-2020.
 
-La matière est divisée en 12 modules de sessions de 6h chacune en présentiel. Il nécessitera environ un tiers de ce temps (voir plus, en fonction de votre rythme et de votre technique d'apprentissage) en travail à domicile. **Une première séance de 2h précèdera ces 12 modules afin d'installer les logiciels (SciViews Box, R, RStudio, Github Desktop), et de se familiariser avec eux.**
+La matière est divisée en 12 modules de sessions de 6h chacuns en présentiel. Il nécessitera environ un tiers de ce temps (voir plus, en fonction de votre rythme et de votre technique d'apprentissage) en travail à domicile. **Une première séance de 2h précèdera ces 12 modules afin d'installer les logiciels (SciViews Box, R, RStudio, Github Desktop), et de se familiariser avec eux.**
 
 ```{r diagram-sddI, out.width = '80%', fig.asp = .75, fig.align = 'center', echo = FALSE, warning = FALSE, cache = TRUE}
 DiagrammeR::grViz("

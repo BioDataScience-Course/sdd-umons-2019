@@ -12,7 +12,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: biodatascience-course/sdd-umons
-url: 'http\://biodatascience-course.sciviews.org/sdd-umons/'
+url: 'https\://biodatascience-course.sciviews.org/sdd-umons/'
 description: "Tutoriel interactif pour la science des données avec R & SciViews-R."
 cover-image: "images/front-cover.png"
 ---
@@ -22,7 +22,7 @@ cover-image: "images/front-cover.png"
 
 
  
-Cet ouvrage interactif sera, à terme, le premier ouvrage d'une série de trois ouvrage touchant à la science des données biologiques. L'écriture de cette suite de livres a débuté au cours de l'année académique 2018-2019. 
+Cet ouvrage interactif est le premier volume d'une série de trois ouvrages traitant de la science des données biologiques. L'écriture de cette suite de livres a débuté au cours de l'année académique 2018-2019. 
 
 Pour l'année académique 2019-2020, cet ouvrage interactif sera le support des cours suivants :
 
@@ -30,7 +30,7 @@ Pour l'année académique 2019-2020, cet ouvrage interactif sera le support des 
 
 - [Bio-informatique et sciences des données, UMONS-ULB](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOC-926-C.htm) dont le responsable est Conotte Raphael
 
-Cet ouvrage est conçu pour être utilisé de manière interactive en ligne. En effet, nous prévoyons d'y adjoindre des vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
+Cet ouvrage est conçu pour être utilisé de manière interactive en ligne. En effet, nous y ajoutons des vidéos, des démonstrations interactives, et des exercices sous forme de questionnaires interactifs également. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
 
 ![](images/front-cover.png)
 
@@ -45,9 +45,9 @@ _Le matériel dans cet ouvrage est distribué sous licence [CC BY-NC-SA 4.0](htt
 
 Le cours de  **Science des données I: visualisation et inférence**  est dispensé aux biologistes de second Bachelier en Faculté des Sciences de l'Université de Mons à partir de l'année académique 2018-2019.
 
-Le cours de **Bio-informatique et sciences des données, UMONS-ULB** est dispensé au biologistes de secon Bachelier en Faculté des Sciences en co-diplomation entre l'Université de Mons (UMONS) et l'Université Libre de Bruxelles (ULB) à partir de l'année académique 2019-2020.
+Le cours de **Bio-informatique et sciences des données, UMONS-ULB** est dispensé au biologistes de second Bachelier en Faculté des Sciences à Charleroi en co-diplomation entre l'Université de Mons (UMONS) et l'Université Libre de Bruxelles (ULB) à partir de l'année académique 2019-2020.
 
-La matière est divisée en 12 modules de sessions de 6h chacune en présentiel. Il nécessitera environ un tiers de ce temps (voir plus, en fonction de votre rythme et de votre technique d'apprentissage) en travail à domicile. **Une première séance de 2h précèdera ces 12 modules afin d'installer les logiciels (SciViews Box, R, RStudio, Github Desktop), et de se familiariser avec eux.**
+La matière est divisée en 12 modules de sessions de 6h chacuns en présentiel. Il nécessitera environ un tiers de ce temps (voir plus, en fonction de votre rythme et de votre technique d'apprentissage) en travail à domicile. **Une première séance de 2h précèdera ces 12 modules afin d'installer les logiciels (SciViews Box, R, RStudio, Github Desktop), et de se familiariser avec eux.**
 
 <!--html_preserve--><div id="htmlwidget-4d67d266bb03ef04a5c3" style="width:600px;height:600px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4d67d266bb03ef04a5c3">{"x":{"diagram":"\ndigraph general_flow {\n  graph [rankdir = \"TB\", overlap = true, compount = true, fontsize = 10]\n  \n  node [shape = box,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = LightSteelBlue,\n        fixedsize = true,\n        width = 2]\n  \"1 Introduction\"; \"12 Design/critique\"\n  \n  subgraph cluster_0 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = red];\n    \"2 Visualisation I\"->\"3 Visualisation II\"\n    \"2 Visualisation I\"->\"4 Visualisation III\"\n    label = \"Visualisation & description des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_1 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = blue];\n    \"5 Quantitatif\"->\"6 Qualitatif\"\n    label = \"Importation & transformation des données\";\n    color = lightgray\n  }\n  \n  subgraph cluster_2 {\n    style = filled;\n    color = lightgrey;\n    node [style = filled, color = green];\n    \"7 Probabilités\"->\"8 Test Chi2\"\n    \"7 Probabilités\"->\"9 IC/t-test\"\n    \"8 Test Chi2\"->\"9 IC/t-test\"\n    \"9 IC/t-test\"->\"10 ANOVA\"\n    \"10 ANOVA\"->\"11 Correlation\"\n    label = \"Inférence & hypothèses\";\n    color = lightgray\n  }\n\n  \"1 Introduction\"->\"2 Visualisation I\" [lhead = cluster_0]\n  \"2 Visualisation I\"->\"5 Quantitatif\" [lhead = cluster_1]\n  \"3 Visualisation II\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"4 Visualisation III\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"6 Qualitatif\"->\"7 Probabilités\" [lhead = cluster_2]\n  \"11 Correlation\"->\"12 Design/critique\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
@@ -144,120 +144,25 @@ sessioninfo::session_info()
 #  date     2019-08-28                  
 # 
 # ─ Packages ──────────────────────────────────────────────────────────────
-#  package      * version     date       lib
-#  assertthat     0.2.1       2019-03-21 [1]
-#  bindr          0.1.1       2018-03-13 [1]
-#  bindrcpp       0.2.2       2018-03-29 [1]
-#  bookdown       0.10        2019-05-10 [1]
-#  brew           1.0-6       2011-04-13 [1]
-#  cli            1.1.0       2019-03-19 [1]
-#  codetools      0.2-15      2016-10-05 [1]
-#  colorspace     1.4-0       2019-01-13 [1]
-#  crayon         1.3.4       2017-09-16 [1]
-#  DiagrammeR     1.0.0       2018-03-01 [1]
-#  digest         0.6.20      2019-07-04 [1]
-#  downloader     0.4         2015-07-09 [1]
-#  dplyr          0.7.8       2018-11-10 [1]
-#  evaluate       0.13        2019-02-12 [1]
-#  fortunes       1.5-4       2016-12-29 [1]
-#  ggplot2        3.1.1       2019-04-07 [1]
-#  glue           1.3.1.9000  2019-07-09 [1]
-#  gridExtra      2.3         2017-09-09 [1]
-#  gtable         0.2.0       2016-02-26 [1]
-#  hms            0.4.2       2018-03-10 [1]
-#  htmltools      0.3.6       2017-04-28 [1]
-#  htmlwidgets    1.3         2018-09-30 [1]
-#  igraph         1.2.2       2018-07-27 [1]
-#  influenceR     0.1.0       2015-09-03 [1]
-#  jsonlite       1.6         2018-12-07 [1]
-#  knitr          1.22        2019-03-08 [1]
-#  lazyeval       0.2.1       2017-10-29 [1]
-#  magrittr       1.5         2014-11-22 [1]
-#  munsell        0.5.0       2018-06-12 [1]
-#  pillar         1.3.1       2018-12-15 [1]
-#  pkgconfig      2.0.2       2018-08-16 [1]
-#  plyr           1.8.4       2016-06-08 [1]
-#  purrr          0.3.2       2019-03-15 [1]
-#  R6             2.4.0       2019-02-14 [1]
-#  RColorBrewer   1.1-2       2014-12-07 [1]
-#  Rcpp           1.0.1       2019-03-17 [1]
-#  readr          1.2.1       2018-11-22 [1]
-#  rgexf          0.15.3      2015-03-24 [1]
-#  rlang          0.4.0.9000  2019-07-09 [1]
-#  rmarkdown      1.12        2019-03-14 [1]
-#  Rook           1.1-1       2014-10-20 [1]
-#  rstudioapi     0.10.0-9000 2019-07-09 [1]
-#  scales         1.0.0       2018-08-09 [1]
-#  sessioninfo    1.1.1       2018-11-05 [1]
-#  stringi        1.4.3       2019-03-12 [1]
-#  stringr        1.4.0       2019-02-10 [1]
-#  tibble         2.0.1       2019-01-12 [1]
-#  tidyr          0.8.2       2018-10-28 [1]
-#  tidyselect     0.2.5       2018-10-11 [1]
-#  viridis        0.5.1       2018-03-29 [1]
-#  viridisLite    0.3.0       2018-02-01 [1]
-#  visNetwork     2.0.4       2018-06-14 [1]
-#  withr          2.1.2       2018-03-15 [1]
-#  xfun           0.7         2019-05-14 [1]
-#  XML            3.98-1.16   2018-08-19 [1]
-#  yaml           2.2.0       2018-07-25 [1]
-#  source                             
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.1)                     
-#  CRAN (R 3.4.3)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  Github (tidyverse/glue@423b7e5)    
-#  CRAN (R 3.4.1)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.2)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  Github (tidyverse/rlang@a3d7e47)   
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.0)                     
-#  Github (rstudio/rstudioapi@31d1afa)
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.3)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
-#  CRAN (R 3.4.4)                     
+#  package     * version date       lib source        
+#  assertthat    0.2.1   2019-03-21 [1] CRAN (R 3.4.4)
+#  bookdown      0.10    2019-05-10 [1] CRAN (R 3.4.4)
+#  cli           1.1.0   2019-03-19 [1] CRAN (R 3.4.4)
+#  crayon        1.3.4   2017-09-16 [1] CRAN (R 3.4.1)
+#  digest        0.6.20  2019-07-04 [1] CRAN (R 3.4.4)
+#  evaluate      0.13    2019-02-12 [1] CRAN (R 3.4.4)
+#  fortunes      1.5-4   2016-12-29 [1] CRAN (R 3.4.0)
+#  htmltools     0.3.6   2017-04-28 [1] CRAN (R 3.4.0)
+#  knitr         1.22    2019-03-08 [1] CRAN (R 3.4.4)
+#  magrittr      1.5     2014-11-22 [1] CRAN (R 3.4.0)
+#  Rcpp          1.0.1   2019-03-17 [1] CRAN (R 3.4.4)
+#  rmarkdown     1.12    2019-03-14 [1] CRAN (R 3.4.4)
+#  sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 3.4.4)
+#  stringi       1.4.3   2019-03-12 [1] CRAN (R 3.4.4)
+#  stringr       1.4.0   2019-02-10 [1] CRAN (R 3.4.4)
+#  withr         2.1.2   2018-03-15 [1] CRAN (R 3.4.4)
+#  xfun          0.7     2019-05-14 [1] CRAN (R 3.4.4)
+#  yaml          2.2.0   2018-07-25 [1] CRAN (R 3.4.4)
 # 
 # [1] /Library/Frameworks/R.framework/Versions/3.4/Resources/library
 ```
