@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html >
+
 <head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>9.3 Test t de Student | Science des données biologiques</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="9.3 Test t de Student | Science des données biologiques" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
-  <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta property="og:url" content="https://biodatascience-course.sciviews.org/sdd-umons/" />
+  <meta property="og:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
   <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
@@ -19,16 +20,16 @@
   <meta name="twitter:title" content="9.3 Test t de Student | Science des données biologiques" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
-  <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta name="twitter:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte" />
+<meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-03">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
 <link rel="prev" href="distribution-dechantillonnage.html">
@@ -52,7 +53,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -435,20 +436,18 @@ code span.wa { color: #bf0303; } /* Warning */
 skimr<span class="op">::</span><span class="kw">skim</span>(crabs)</code></pre>
 <pre><code># Skim summary statistics
 #  n obs: 200 
-#  n variables: 8</code></pre>
-<pre><code># Warning: The `printer` argument is deprecated as of rlang 0.3.0.
-# This warning is displayed once per session.</code></pre>
-<pre><code># 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────
+#  n variables: 8 
+# 
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -468,9 +467,6 @@ skimr<span class="op">::</span><span class="kw">skim</span>(crabs)</code></pre>
 <p>Voici une comparaison graphique :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre>
-<pre><code># Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
-# Please use `as_label()` or `as_name()` instead.
-# This warning is displayed once per session.</code></pre>
 <p><img src="09-Moyenne_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Sur le graphique, il semble que les femelles (<code>sex == &quot;F&quot;</code>) tendent à avoir une carapace plus large à l’arrière -variable <code>rear</code>- que les mâles (<code>sex == &quot;M&quot;</code>), mais cette différence est-elle <em>significative</em> ou peut-elle être juste liée au hasard de l’échantillonnage ? Pour y répondre, nous devons élaborer un test d’hypothèse qui va confronter les hypothèses suivantes (en se basant sur les moyennes) :</p>
 <ul>

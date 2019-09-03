@@ -64,14 +64,6 @@ read("crabs", package = "MASS", lang = "fr") %>.%
     "(Ratio largeur arrière /max)^5", units = NA)) %>.%
   select(., species, sex, aspect, aspect5) ->
   crabs2
-```
-
-```
-# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
-# This warning is displayed once per session.
-```
-
-```r
 # Graphique de base pour visualiser les interactions
 #chart$base(interaction.plot(crabs2$species, crabs2$sex, crabs2$aspect5))
 # Version avec ggplot2
@@ -86,19 +78,13 @@ crabs2 %>.%
 
 ```
 # # A tibble: 4 x 3
-# # Groups:   species [?]
+# # Groups:   species [2]
 #   species sex   aspect5_groups
 #   <fct>   <fct>          <dbl>
 # 1 B       F            0.00727
 # 2 B       M            0.00363
 # 3 O       F            0.00811
 # 4 O       M            0.00427
-```
-
-```
-# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
-# Please use `as_label()` or `as_name()` instead.
-# This warning is displayed once per session.
 ```
 
 <div class="figure" style="text-align: center">
@@ -117,7 +103,7 @@ crabs2 %>.%
 
 ```
 # # A tibble: 4 x 5
-# # Groups:   species [?]
+# # Groups:   species [2]
 #   species sex      mean      sd count
 #   <fct>   <fct>   <dbl>   <dbl> <int>
 # 1 B       F     0.00727 0.00115    50
@@ -345,7 +331,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -355,7 +341,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -374,7 +360,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -384,7 +370,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -432,8 +418,8 @@ anova(anova. <- lm(data = eggs, Fat ~ Lab + Technician %in% Lab))
 # 
 # Response: Fat
 #                Df  Sum Sq  Mean Sq F value    Pr(>F)    
-# Lab             5 0.44302 0.088605  9.5904 6.989e-06 ***
-# Lab:Technician  6 0.24748 0.041246  4.4644  0.001786 ** 
+# Lab             5 0.44303 0.088605  9.5904 6.989e-06 ***
+# Lab:Technician  6 0.24747 0.041246  4.4644  0.001786 ** 
 # Residuals      36 0.33260 0.009239                      
 # ---
 # Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -514,7 +500,7 @@ skimr::skim(eggs_means)
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -522,7 +508,7 @@ skimr::skim(eggs_means)
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
 ```
@@ -999,13 +985,13 @@ skimr::skim(zoo)
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 

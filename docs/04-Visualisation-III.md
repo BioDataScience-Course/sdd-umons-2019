@@ -32,13 +32,6 @@ La formule que vous utiliserez, ici encore, ne fait appel qu'à une seule variab
 
 $$\sim variable \ facteur$$
 
-
-```
-# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
-# Please use `as_label()` or `as_name()` instead.
-# This warning is displayed once per session.
-```
-
 <div class="figure" style="text-align: center">
 <img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.png" alt="Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs." width="672" />
 <p class="caption">(\#fig:unnamed-chunk-1)Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs.</p>

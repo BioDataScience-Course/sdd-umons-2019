@@ -41,57 +41,64 @@ xfun::session_info()
 ```
 
 ```
-R version 3.4.4 (2018-03-15)
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS  10.14.6
+R version 3.5.3 (2019-03-11)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 18.04.2 LTS
 
-Locale: en_US.UTF-8 / en_US.UTF-8 / en_US.UTF-8 / C / en_US.UTF-8 / en_US.UTF-8
+Locale:
+  LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+  LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+  LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+  LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+  LC_ADDRESS=C               LC_TELEPHONE=C            
+  LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
 Package version:
-  acepack_1.4.1          anytime_0.3.1          askpass_1.1           
-  assertthat_0.2.1       backports_1.1.4        base64enc_0.1-3       
-  BH_1.69.0.1            bindr_0.1.1            bindrcpp_0.2.2        
-  bookdown_0.10          broom_0.5.0            callr_3.3.0           
-  cellranger_1.1.0       chart_1.2.0            checkmate_1.8.5       
-  cli_1.1.0              clipr_0.6.0            cluster_2.0.7-1       
-  codetools_0.2-15       colorspace_1.4-0       compiler_3.4.4        
-  cowplot_0.9.3          crayon_1.3.4           curl_3.3              
-  data.io_1.2.1          data.table_1.11.4      datasets_3.4.4        
-  DBI_1.0.0              dbplyr_1.2.2           digest_0.6.20         
-  dplyr_0.7.8            ellipse_0.4.1          evaluate_0.13         
-  fansi_0.4.0            flow_1.1.0             forcats_0.3.0         
-  foreign_0.8-71         Formula_1.2-3          fs_1.3.1              
-  ggplot2_3.1.1          ggplotify_0.0.3        ggpubr_0.2            
-  ggrepel_0.8.0          ggsci_2.9              ggsignif_0.4.0        
-  glue_1.3.1.9000        graphics_3.4.4         grDevices_3.4.4       
-  grid_3.4.4             gridExtra_2.3          gridGraphics_0.3-0    
-  gtable_0.2.0           haven_1.1.2            highr_0.8             
-  Hmisc_4.1-1            hms_0.4.2              htmlTable_1.12        
-  htmltools_0.3.6        htmlwidgets_1.3        httr_1.4.0            
-  igraph_1.2.2           jsonlite_1.6           knitr_1.22            
-  labeling_0.3           lattice_0.20-35        latticeExtra_0.6-28   
-  lazyeval_0.2.1         lubridate_1.7.4        magrittr_1.5          
-  markdown_0.9           MASS_7.3-50            Matrix_1.2-14         
-  methods_3.4.4          mgcv_1.8.24            mime_0.7              
-  modelr_0.1.2           munsell_0.5.0          nlme_3.1-137          
-  nnet_7.3-12            nycflights13_1.0.0     openssl_1.4           
-  pillar_1.3.1           pkgconfig_2.0.2        plogr_0.2.0           
-  plyr_1.8.4             polynom_1.3.9          processx_3.4.0        
-  proto_1.0.0            pryr_0.1.4             ps_1.3.0              
-  purrr_0.3.2            R6_2.4.0               RApiDatetime_0.0.3    
-  RColorBrewer_1.1-2     Rcpp_1.0.1             readr_1.2.1           
-  readxl_1.1.0           rematch_1.0.1          reprex_0.2.1          
-  reshape2_1.4.3         rlang_0.4.0.9000       rmarkdown_1.12        
-  rpart_4.1-13           rstudioapi_0.10.0-9000 rvcheck_0.1.0         
-  rvest_0.3.2            scales_1.0.0           SciViews_1.1.0        
-  selectr_0.4.1          splines_3.4.4          stats_3.4.4           
-  stringi_1.4.3          stringr_1.4.0          survival_2.42-6       
-  svMisc_1.1.0           sys_3.2                tibble_2.0.1          
-  tidyr_0.8.2            tidyselect_0.2.5       tidyverse_1.2.1       
-  tinytex_0.13           tools_3.4.4            tsibble_0.5.3         
-  utf8_1.1.4             utils_3.4.4            viridis_0.5.1         
-  viridisLite_0.3.0      whisker_0.3.2          withr_2.1.2           
-  xfun_0.7               xml2_1.2.0             yaml_2.2.0            
+  acepack_1.4.1       anytime_0.3.3       askpass_1.1        
+  assertthat_0.2.1    backports_1.1.3     base64enc_0.1-3    
+  BH_1.69.0.1         bookdown_0.9        broom_0.5.2        
+  callr_3.2.0         cellranger_1.1.0    chart_1.3.0        
+  checkmate_1.9.1     cli_1.1.0           clipr_0.5.0        
+  cluster_2.0.8       codetools_0.2-16    colorspace_1.4-1   
+  compiler_3.5.3      cowplot_0.9.4       crayon_1.3.4       
+  curl_3.3            data.io_1.2.2       data.table_1.12.2  
+  datasets_3.5.3      DBI_1.0.0           dbplyr_1.3.0       
+  digest_0.6.18       dplyr_0.8.0.1       ellipse_0.4.1      
+  ellipsis_0.1.0      evaluate_0.13       fansi_0.4.0        
+  flow_1.0.0          forcats_0.4.0       foreign_0.8-71     
+  Formula_1.2-3       fs_1.2.7            generics_0.0.2     
+  ggplot2_3.1.1       ggplotify_0.0.3     ggpubr_0.2         
+  ggrepel_0.8.0       ggsci_2.9           ggsignif_0.5.0     
+  glue_1.3.1          graphics_3.5.3      grDevices_3.5.3    
+  grid_3.5.3          gridExtra_2.3       gridGraphics_0.3-0 
+  gtable_0.3.0        haven_2.1.0         highr_0.8          
+  Hmisc_4.2-0         hms_0.4.2           htmlTable_1.13.1   
+  htmltools_0.3.6     htmlwidgets_1.3     httr_1.4.0         
+  igraph_1.2.4        inline_0.3.15       jsonlite_1.6       
+  knitr_1.22          labeling_0.3        lattice_0.20-38    
+  latticeExtra_0.6-28 lazyeval_0.2.2      lubridate_1.7.4    
+  magrittr_1.5        markdown_0.9        MASS_7.3-51.3      
+  Matrix_1.2-17       methods_3.5.3       mgcv_1.8.28        
+  mime_0.6            modelr_0.1.4        munsell_0.5.0      
+  nlme_3.1-138        nnet_7.3-12         nycflights13_1.0.0 
+  openssl_1.3         pillar_1.3.1        pkgconfig_2.0.2    
+  plogr_0.2.0         plyr_1.8.4          polynom_1.4.0      
+  prettyunits_1.0.2   processx_3.3.0      progress_1.2.0     
+  proto_1.0.0         pryr_0.1.4          ps_1.3.0           
+  purrr_0.3.2         R6_2.4.0            RApiDatetime_0.0.4 
+  RColorBrewer_1.1-2  Rcpp_1.0.1          readr_1.3.1        
+  readxl_1.3.1        rematch_1.0.1       reprex_0.2.1       
+  reshape2_1.4.3      rlang_0.3.4         rmarkdown_1.12     
+  rpart_4.1-13        rstudioapi_0.10     rvcheck_0.1.3      
+  rvest_0.3.2         scales_1.0.0        SciViews_1.1.0     
+  selectr_0.4.1       splines_3.5.3       stats_3.5.3        
+  stringi_1.4.3       stringr_1.4.0       survival_2.44-1.1  
+  svMisc_1.1.0        sys_3.1             tibble_2.1.1       
+  tidyr_0.8.3         tidyselect_0.2.5    tidyverse_1.2.1    
+  tinytex_0.11        tools_3.5.3         tsibble_0.7.0      
+  utf8_1.1.4          utils_3.5.3         viridis_0.5.1      
+  viridisLite_0.3.0   whisker_0.3.2       withr_2.1.2        
+  xfun_0.6            xml2_1.2.0          yaml_2.2.0         
 ```
 
 

@@ -32,11 +32,6 @@ crabs %>.%
   crabs2
 ```
 
-```
-# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
-# This warning is displayed once per session.
-```
-
 La Fig. \@ref(fig:crabs-rear) montre la largeur à l'arrière de la carapace chez les quatre groupes ainsi individualisés. Une représentation graphique adéquate avant de réaliser notre analyse ici lorsque le nombre de répliquats est important est le graphique en violon sur lequel nous superposons au moins les moyennes, et de préférence, les points également. Si le nombre de répliquats est plus faible, mais toujours supérieur à 7-8, nous pourrions utiliser le même type de graphique mais avec des boites de dispersion plutôt (voir plus loin, Fig. \@ref(fig:anova2)). Avec encore moins de répliquats nous présenterons les points et les moyennes uniquement.
 
 
@@ -47,12 +42,6 @@ chart(data = crabs2, rear ~ group) +
   geom_point(data = group_by(crabs2, group) %>.%
     summarise(., means = mean(rear, na.rm = TRUE)),
     f_aes(means ~ group), size = 3, col = "red")
-```
-
-```
-# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
-# Please use `as_label()` or `as_name()` instead.
-# This warning is displayed once per session.
 ```
 
 <div class="figure" style="text-align: center">
@@ -78,7 +67,7 @@ skimr::skim(crabs2)
 #  n obs: 200 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -88,7 +77,7 @@ skimr::skim(crabs2)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
 ```

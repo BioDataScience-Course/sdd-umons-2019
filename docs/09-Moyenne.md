@@ -468,26 +468,18 @@ skimr::skim(crabs)
 ```
 # Skim summary statistics
 #  n obs: 200 
-#  n variables: 8
-```
-
-```
-# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
-# This warning is displayed once per session.
-```
-
-```
+#  n variables: 8 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -512,12 +504,6 @@ Voici une comparaison graphique\ :
 ```r
 chart(data = crabs, rear ~ sex) +
   geom_boxplot()
-```
-
-```
-# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
-# Please use `as_label()` or `as_name()` instead.
-# This warning is displayed once per session.
 ```
 
 <img src="09-Moyenne_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />

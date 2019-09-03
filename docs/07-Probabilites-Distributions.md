@@ -844,14 +844,6 @@ eggs <- read("zooplankton", package = "data.io") %>.%
   filter(., class == "Egg_elongated") %>.%
   mutate(., log_area = log10(area)) %>.%
   select(., area, log_area)
-```
-
-```
-# Warning: The `printer` argument is deprecated as of rlang 0.3.0.
-# This warning is displayed once per session.
-```
-
-```r
 summary(eggs)
 ```
 
@@ -869,12 +861,6 @@ summary(eggs)
 ```r
 chart(data = eggs, ~ area) +
   geom_histogram(bins = 12)
-```
-
-```
-# Warning: Using `as.character()` on a quosure is deprecated as of rlang 0.3.0.
-# Please use `as_label()` or `as_name()` instead.
-# This warning is displayed once per session.
 ```
 
 <img src="07-Probabilites-Distributions_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" />

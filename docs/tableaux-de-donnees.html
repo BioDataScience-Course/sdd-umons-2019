@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html >
+
 <head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>6.1 Tableaux de données | Science des données biologiques</title>
-  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
   <meta property="og:title" content="6.1 Tableaux de données | Science des données biologiques" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="http://biodatascience-course.sciviews.org/sdd-umons/" />
-  <meta property="og:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta property="og:url" content="https://biodatascience-course.sciviews.org/sdd-umons/" />
+  <meta property="og:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
   <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
@@ -19,16 +20,16 @@
   <meta name="twitter:title" content="6.1 Tableaux de données | Science des données biologiques" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
-  <meta name="twitter:image" content="http://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta name="twitter:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte" />
+<meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-08-28" />
+<meta name="date" content="2019-09-03">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
 <link rel="prev" href="qualit.html">
@@ -52,7 +53,7 @@
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.4/datatables.js"></script>
+<script src="libs/datatables-binding-0.5/datatables.js"></script>
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
@@ -585,8 +586,6 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 # 4 sain    timolol       44</code></pre>
 <p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="references.html#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a> :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">uncount</span>(timolol2, freq)</code></pre>
-<pre><code># Warning: The `printer` argument is deprecated as of rlang 0.3.0.
-# This warning is displayed once per session.</code></pre>
 <pre><code># # A tibble: 307 x 2
 #    patient traitement
 #    &lt;chr&gt;   &lt;chr&gt;     
@@ -640,12 +639,12 @@ frog &lt;-<span class="st"> </span><span class="kw">labelise</span>(frog, <span 
 <span class="co"># Affichage synthétique des données et métadonnées associées</span>
 <span class="kw">str</span>(frog)</code></pre>
 <pre><code># Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 5 obs. of  3 variables:
-#  $ ind   : atomic  1 2 3 4 5
+#  $ ind   : num  1 2 3 4 5
 #   ..- attr(*, &quot;label&quot;)= chr &quot;Individu&quot;
-#  $ jump  : atomic  71 70 100 120 103
+#  $ jump  : num  71 70 100 120 103
 #   ..- attr(*, &quot;label&quot;)= chr &quot;Distance du saut&quot;
 #   ..- attr(*, &quot;units&quot;)= chr &quot;cm&quot;
-#  $ weight: atomic  204 240 296 303 422
+#  $ weight: num  204 240 296 303 422
 #   ..- attr(*, &quot;label&quot;)= chr &quot;Masse&quot;
 #   ..- attr(*, &quot;units&quot;)= chr &quot;g&quot;</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Affichage des labels</span>
@@ -660,13 +659,13 @@ frog &lt;-<span class="st"> </span><span class="kw">labelise</span>(frog, <span 
 <span class="co"># Affichage synthétique</span>
 <span class="kw">str</span>(frog)</code></pre>
 <pre><code># Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 5 obs. of  3 variables:
-#  $ ind   : atomic  1 2 3 4 5
+#  $ ind   : num  1 2 3 4 5
 #   ..- attr(*, &quot;label&quot;)= chr &quot;Individu&quot;
-#  $ jump  : atomic  71 70 100 120 103
+#  $ jump  : num  71 70 100 120 103
 #   ..- attr(*, &quot;label&quot;)= chr &quot;Distance du saut&quot;
 #   ..- attr(*, &quot;units&quot;)= chr &quot;cm&quot;
 #   ..- attr(*, &quot;comment&quot;)= chr &quot;Premier saut mesuré après stimulation de l&#39;animal&quot;
-#  $ weight: atomic  204 240 296 303 422
+#  $ weight: num  204 240 296 303 422
 #   ..- attr(*, &quot;label&quot;)= chr &quot;Masse&quot;
 #   ..- attr(*, &quot;units&quot;)= chr &quot;g&quot;
 #  - attr(*, &quot;comment&quot;)= chr &quot;Saut de grenouilles taureaux&quot;</code></pre>
