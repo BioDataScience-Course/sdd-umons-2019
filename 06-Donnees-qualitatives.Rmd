@@ -296,7 +296,7 @@ Voici un petit tableau qui correspond à ce que vous ne pourrez **pas** faire (n
 )))
 ```
 
-Vous devez fournir une code permettant de garder l'anonymat des sondés à l'ensemble des personnes étudiées vis à vis des analystes qui vont utiliser ces données. Cependant, le code doit permettre au chercheur ayant pris ces mesures de les retrouver dans son cahier de laboratoire, si besoin. Une façon de procéder consiste à attribuer un numéro au hasard par tirage dans une urne à chacune des personnes chargées des mesures. Ensuite, chaque expérimentateur attribue lui-même un second numéro aux différentes personnes qu'il mesure. Prenons par exemple le scientifique n°24 (seul lui sait qu'il porte ce numéro). Il attribue un code de 1 à n à chaque personne étudiée. En combinant le code secret de l'expérimentateur et le code individu, cela donne un identifiant unique de la forme `24_1`, `24_2`, etc. Il pourra alors encoder sa partie comme suit : 
+Vous devez fournir un code permettant de garder l'anonymat des sondés à l'ensemble des personnes étudiées vis à vis des analystes qui vont utiliser ces données. Cependant, le code doit permettre au chercheur ayant pris ces mesures de les retrouver dans son cahier de laboratoire, si besoin. Une façon de procéder consiste à attribuer un numéro au hasard par tirage dans une urne à chacune des personnes chargées des mesures. Ensuite, chaque expérimentateur attribue lui-même un second numéro aux différentes personnes qu'il mesure. Prenons par exemple le scientifique n°24 (seul lui sait qu'il porte ce numéro). Il attribue un code de 1 à n à chaque personne étudiée. En combinant le code secret de l'expérimentateur et le code individu, cela donne un identifiant unique de la forme `24_1`, `24_2`, etc. Il pourra alors encoder sa partie comme suit : 
 
 ```{r}
 (biometry_marvel1 <- as_dataframe(tribble(
@@ -372,7 +372,7 @@ tribble(
 )
 ```
 
-Dans le format large, les différents niveaux de la variable facteur `treatment` deviennent autant de colonnes (donc de variables) séparées, et la variable d'origine n'existe plus de manière explicite. Ces deux tableaux contiennent la même information. Bien évidemment, un seul de ces formats est un _tableau cas par variables correct_. Le format long sera le bon si tous les mesures sont réalisées sur des individus différents. Le format large sera correct, par contre, si les différentes mesures ont été faites à chaque fois sur les _mêmes_ individus (dans le cas présent, _un seul_ mâle et _une seule_ femelle auraient alors été mesurés dans les trois situations).
+Dans le format large, les différents niveaux de la variable facteur `treatment` deviennent autant de colonnes (donc de variables) séparées, et la variable d'origine n'existe plus de manière explicite. Ces deux tableaux contiennent la même information. Bien évidemment, un seul de ces formats est un _tableau cas par variables correct_. Le format long sera le bon si toutes les mesures sont réalisées sur des individus différents. Par contre, le format large sera correct, si les différentes mesures ont été faites à chaque fois sur les _mêmes_ individus (dans le cas présent, _un seul_ mâle et _une seule_ femelle auraient alors été mesurés dans les trois situations).
 
 ```{block, type='note'}
 C'est la règle qui veut qu'**une ligne corresponde à un et un seul individu** dans un tableau cas par variables qui permet de décider si le format long ou le format large est celui qui est correctement encodé. 
@@ -553,14 +553,14 @@ rmarkdown::paged_table(oceano)
 
 Qu'observez vous ?
 
-Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. IL est préférable d'employer des fonctions de fusion de tableaux plus complexes comme `full_joint()` (ci-dessous). Pour utiliser correctement `bind_cols()`, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant `arrange()` :
+Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. Il est préférable d'employer des fonctions de fusion de tableaux plus complexes comme `full_joint()` (ci-dessous). Pour utiliser correctement `bind_cols()`, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant `arrange()` :
 
 ```{r}
 nutrients2 <- arrange(nutrients, student, sample)
 rmarkdown::paged_table(nutrients2)
 ```
 
-Le tableau `nutrients2` a maintenant les données présentées dans le ma^me ordre (en lignes) que le tableau `physico`. Nous pouvons donc rassembler ces deux tableaux à l'aide de `bind_cols()` :
+Le tableau `nutrients2` a maintenant les données présentées dans le même ordre (en lignes) que le tableau `physico`. Nous pouvons donc rassembler ces deux tableaux à l'aide de `bind_cols()` :
 
 ```{r}
 oceano <- bind_cols(nutrients2, physico)

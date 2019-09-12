@@ -21,7 +21,7 @@ RStudio s'ouvre. C'est votre interface de travail à partir de laquelle vous all
 
 - Une barre de menu et une barre d'outils générale en haut 
 - Un panneau à gauche intitulé **Console** où vous pouvez entrer des instructions dans **R** pour manipuler vos données
-- Un panneau à droite en haut qui comprend plusieurs onglets, dont **Environnement** qui vous indique les différents items (on parle d'**objets**) chargés en mémoire dans **R** (mais pour l’instant, il n'y a encore rien).
+- Un panneau à droite en haut qui comprend plusieurs onglets, dont **Environment** qui vous indique les différents items (on parle d'**objets**) chargés en mémoire dans **R** (mais pour l’instant, il n'y a encore rien).
 - Un panneau en bas à droite comportant lui aussi plusieurs onglets. Vous devriez voir le contenu de **Files** au démarrage, un explorateur de fichiers simplifié relatif au contexte de travail actuel dans RStudio.
 
 Pour l'instant, aucun document de travail n'est encore ouvert. Pour en créer un, ou ouvrir un document existant, vous utilisez le menu **Files**, ou encore, le premier bouton de la barre d'outils générale :
@@ -238,7 +238,7 @@ Notez que les instructions exécutées dans le script sont envoyées dans la fen
 
 ### R Markdown/R Notebook {#Rmd}
 
-Un document R Markdown est un fichier dont l'extension est `.Rmd`. Il combine à la fois des instructions R (pour les analyses) et le langage Markdown (pour le texte). le R Markdown ne vous permet pas de visualiser directement le résultat final d'un rapport d'analyse^[Les systèmes d'édition professionnels dissocient en effet le fond de la forme : vous rédiger d'abord le contenu, et ensuite, vous indiquer le style à lui appliquer.]
+Un document R Markdown est un fichier dont l'extension est `.Rmd`. Il combine à la fois des instructions R (pour les analyses) et le langage Markdown (pour le texte). Le R Markdown ne vous permet pas de visualiser directement le résultat final d'un rapport d'analyse^[Les systèmes d'édition professionnels dissocient en effet le fond de la forme : vous rédiger d'abord le contenu, et ensuite, vous indiquer le style à lui appliquer.]
 
 ![](images/annexe_a2/rmd.gif)
 
@@ -250,16 +250,16 @@ Un document R Markdown / R Notebook se structure de la manière suivante :
 - Des zones d'édition
     + Le language employé est le Markdown
 - Des zones de code R
-    + Ces zones de codes sont appelée des **chunk**s
+    + Ces zones de codes sont appelées des **chunk**s
 
 ![](images/annexe_a2/rmd1.png)
 
 Le **préambule** est nécessairement situé au tout début du document et est balisé à l'aide de trois tirets `---` sans rien d'autre sur une ligne au début et à la fin. Le préambule comporte un ensemble d'entrées de type `nom: valeur` qui configurent le document ou la façon dont il sera compilé en rapport final. Nous pouvons y indiquer le titre principal, le ou les auteurs, la date, ...
 
-Le reste du document R Markdown est subdivisé en zones successives de texte et de code R (les fameux "chunks") contrastés sur des fond de couleurs différentes dans RStudio.
+Le reste du document R Markdown est subdivisé en zones successives et contrastés sur des fonds de couleurs différentes dans RStudio. On y retrouve :
 
 - Les zones de texte des parties Markdown où vous pouvez écrire votre prose.
-- Les **chunks** contiennent des instructions qui vont être interprétées pour réaliser un calcul, un graphique, un tableau, etc. Le résultat de ce traitement sera placé à cet endroit dans le rapport final. Ces chunks sont balisés en entrée par trois apostrophes inverses suivies d'accolades contenant des instructions relatives au programme à utiliser, par exemple, ```` ```{r} ```` pour des chunks faisant appel au logiciel **R**, et sont terminés par trois apostrophes inverses (```` ``` ````).
+- Les **chunks** contennant du code, des instructions qui seront interprétées pour réaliser un calcul, un graphique, un tableau, etc. Le résultat de ce traitement sera placé à cet endroit dans le rapport final. Ces chunks sont balisés en entrée par trois apostrophes inverses suivies d'accolades contenant des instructions relatives au programme à utiliser, par exemple, ```` ```{r} ```` pour des chunks faisant appel au logiciel **R**, et sont terminés par trois apostrophes inverses (```` ``` ````).
 
 Dans les zones Markdown, vous pouvez ajouter des balises qui permettront de formater votre texte dans la version finale de votre rapport. Par exemple, un ou plusieurs dièses (plus communément connu par sont appellation en anglais : "hastag") en début de ligne suivi d'un espace indique que la suite correspond à un titre. Titre de niveau 1 avec un seul dièse, de niveau 2 avec deux dièses, et ainsi de suite jusqu'à 6 niveaux possibles. Dans la capture d'écran ci-dessous, nous avons remplacé tout le contenu par défaut d'un R Notebook (à part le préambule) par une série de titres de niveau 1 correspondant à la structure générale d'un rapport scientifique : 
 
@@ -280,7 +280,7 @@ Vous avez à votre disposition deux méthodes pour ouvrir un nouveau R Notebook 
 
 #### Utilisation d'un R Markdown/Notebook
 
-**Afin de visualiser les résultats des chunks dans votre rapport final, Vous devez veiller à exécuter chaque chunks dans l'ordre dans un R Notebook**. Ceci n'est pas nécessaire dans un R Markdown, mais dans ce cas, tous les chunks sont systématiquement recompilés à chaque génération de rapport, ce qui peut être pénible si les calculs sont longs.
+**Afin de visualiser les résultats des chunks dans votre rapport final, vous devez veiller à exécuter chaque chunks dans l'ordre dans un R Notebook**. Ceci n'est pas nécessaire dans un R Markdown, mais dans ce cas, tous les chunks sont systématiquement recompilés à chaque génération de rapport, ce qui peut être pénible si les calculs sont longs.
 
 Pour exécuter un chunk, vous pouvez :
 
@@ -304,7 +304,7 @@ Aprés la phase d'édition du texte (et des intructions dans les chunks pour un 
 
 ![](images/annexe_a2/rmd5.png)
 
-Le rapport est rapidement généré avec un rendu simple et professionnel. Par défaut, ce rapport présente le texte que vous avez écrit, avec les résultats que vous avez choisi de générer via R, mais également les instructions que vous avez employée pour obtenir ces résultats. Ceci permet de mieux comprendre, directement dans le rapport, comment tout cela a été calculé. Il est possible de cacher le code (dans un document généré depuis un Notebook R), ou d'indiquer une directive de compilation dans les chunks pour éviter que le code ne s'imprime dans le rapport final. Voyez les options en cliquant sur le petit engrenage à côté de la flèche verte en haut à droite du chunk. Consultez l'aide-mémoire de R Markdown accessible à partir du menu RStudio `Help` -> `Cheatsheets` -> `R Markdown Reference Guide`, voir **chunk options** p.2-3 pour plus d'informations sur les nombreuses options disponibles.
+Le rapport est rapidement généré avec un rendu simple et professionnel. Par défaut, ce rapport présente le texte que vous avez écrit, avec les résultats que vous avez choisi de générer via R, mais également les instructions que vous avez employées pour obtenir ces résultats. Ceci permet de mieux comprendre, directement dans le rapport, comment tout cela a été calculé. Il est possible de cacher le code (dans un document généré depuis un Notebook R), ou d'indiquer une directive de compilation dans les chunks pour éviter que le code ne s'imprime dans le rapport final. Voyez les options en cliquant sur le petit engrenage à côté de la flèche verte en haut à droite du chunk. Consultez l'aide-mémoire de R Markdown accessible à partir du menu RStudio `Help` -> `Cheatsheets` -> `R Markdown Reference Guide`, voir **chunk options** p.2-3 pour plus d'informations sur les nombreuses options disponibles.
 
 Par exemple, en ajoutant la directive `echo=FALSE` dans la balise d'entrée d'un chunk (```` ```{r, echo=FALSE} ````), on empèche d'imprimer le code de ce chunk dans le rapport.
 
@@ -312,7 +312,7 @@ Par exemple, en ajoutant la directive `echo=FALSE` dans la balise d'entrée d'un
 
 Notez que sur la droite du bouton `Preview` ou `Knit`, vous avez un autre bouton représenté par un petit engrenage. Il donne accès à un menu déroulant qui vous donne la possibilité de modifier la façon de générer vos rapports. L'entrée tout en bas `Output Options...` permet de paramétrer la présentation du rapport.
 
-Si vous cliquez sur la petite flèche noire pointant vrs le bas juste après `Preview` ou `Knit`, vous avez un autre menu déroulant qui donne accès aux différents formats possibles : HTML, PDF, Word, etc. Essayez les différentes options pour visualiser comment votre rapport se présente dans les différents formats.
+Si vous cliquez sur la petite flèche noire pointant vers le bas juste après `Preview` ou `Knit`, vous avez un autre menu déroulant qui donne accès aux différents formats possibles : HTML, PDF, Word, etc. Essayez les différentes options pour visualiser comment votre rapport se présente dans les différents formats.
 
 ![](images/annexe_a2/rmd6.png)
 

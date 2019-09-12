@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-03">
+<meta name="date" content="2019-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -434,7 +434,7 @@ Plusieurs fonctions sont à votre disposition pour cela. Il faut tout d’abord 
 <p>Dans le premier cas, les fonctions <code>facet_XXX()</code> comme <code>facet_grid()</code> peuvent être employées. Dans le second cas, la fonction <code>combine_charts()</code> est l’une des alternatives possibles.</p>
 <div id="facettes" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Facettes</h3>
-<p>L’une des règles les plus importantes que vous devez impérativement garder à l’esprit lors de la réalisation de vos graphiques est <em>la simplicité</em>. Plus votre graphique va contenir d’information au plus il sera compliqué à décoder par vos lecteurs.</p>
+<p>L’une des règles les plus importantes que vous devez impérativement garder à l’esprit lors de la réalisation de vos graphiques est <em>la simplicité</em>. Au plus votre graphique contiendra d’information au plus il sera compliqué à décoder par vos lecteurs.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation de données relative à la croissance de poulets</span>
 (chick_weight &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ChickWeight&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>))</code></pre>
 <pre><code># # A tibble: 578 x 4
@@ -458,17 +458,17 @@ Plusieurs fonctions sont à votre disposition pour cela. Il faut tout d’abord 
 <div class="figure" style="text-align: center"><span id="fig:chick1"></span>
 <img src="04-Visualisation-III_files/figure-html/chick1-1.png" alt="Croissance de poulets en utilisant quatre aliments différents." width="672" />
 <p class="caption">
-Figure 4.10: Croissance de poulets en utilisant quatre aliments différents.
+Figure 4.19: Croissance de poulets en utilisant quatre aliments différents.
 </p>
 </div>
-<p>Le graphique à la Fig. <a href="figures-composees.html#fig:chick1">4.10</a> est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremêlés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L’information est la même mais la lecture est beaucoup plus aisée.</p>
+<p>Le graphique à la Fig. <a href="figures-composees.html#fig:chick1">4.19</a> est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremêlés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L’information est la même mais la lecture est beaucoup plus aisée.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> chick_weight, weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Age [j]&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Masse [g]&quot;</span>)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-25"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.png" alt="Croissance de poulets en utilisant quatre aliments différents (1-4)." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:chick-facette"></span>
+<img src="04-Visualisation-III_files/figure-html/chick-facette-1.png" alt="Croissance de poulets en utilisant quatre aliments différents (1-4)." width="672" />
 <p class="caption">
-Figure 4.11: Croissance de poulets en utilisant quatre aliments différents (1-4).
+Figure 4.20: Croissance de poulets en utilisant quatre aliments différents (1-4).
 </p>
 </div>
 <p>Vous observez que les échelles en abscisse et en ordonnée sont similaires sur tous les graphiques. Cela permet une meilleure comparaison. Notez toutefois que, plus le nombre de facettes augmente, plus chaque graphique individuel devient petit. Faites attention à ne pas finir avec des graphiques individuels tellement petits qu’ils en deviennent illisibles !</p>
@@ -487,10 +487,10 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">d
 
 <span class="co"># Combinaison des graphiques dans une même figure</span>
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(a, b), <span class="dt">common.legend =</span> <span class="ot">TRUE</span>)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-26"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.png" alt="A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:combine-charts"></span>
+<img src="04-Visualisation-III_files/figure-html/combine-charts-1.png" alt="A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins." width="672" />
 <p class="caption">
-Figure 4.12: A) Masse d’oursins en fonction de leur taille et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins.
+Figure 4.21: A) Masse d’oursins en fonction de leur taille et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins.
 </p>
 </div>
 <p>Il existe d’autres fonctions permettant de combiner plusieurs graphiques comme <a href="https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html"><code>plot_grid()</code></a> du package <strong>cowplot</strong>, mais avec <code>combine_charts()</code> vous pourrez déjà faire beaucoup. De plus, un libellé sous forme d’une lettre majuscule est automatiquement associé à chaque sous-région de la figure composée. Cela permet d’y faire plus facilement référence dans le texte et/ou dans la légende.</p>
@@ -499,7 +499,7 @@ Figure 4.12: A) Masse d’oursins en fonction de leur taille et de leur origine.
 <ul>
 <li><p><a href="http://www.sthda.com/french/wiki/ggplot2-facet-diviser-un-graphique-en-plusieurs-panneaux-logiciel-r-et-visualisation-de-donnees">Partitionnement des graphiques en facettes</a>. Différentes options sont présentées ici.</p></li>
 <li><p><a href="http://lightonphiri.org/blog/ggplot2-multiple-plots-in-one-graph-using-gridextra">Figures composées à l’aide de <code>grid.arrange()</code></a>. Une autre option, mais moins flexible et moins riche que <code>combine_charts()</code>.</p></li>
-<li><p><a href="https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html">Figures composées à l’aide de <code>plot_grid()</code></a> avec les différentes options, aussi disponibles avec <code>combine_charts()</code>.</p></li>
+<li><p><a href="https://wilkelab.org/cowplot/reference/plot_grid.html">Figures composées à l’aide de <code>plot_grid()</code></a> avec les différentes options, aussi disponibles avec <code>combine_charts()</code>.</p></li>
 <li><p><a href="http://www.sthda.com/english/rpkgs/ggpubr/reference/ggarrange.html">Troisième possibilité pour des figures composées à l’aide de <code>ggarrange()</code></a>. <code>combine_charts()</code> fait la même chose, mais avec des valeurs par défaut légèrement différentes (<code>labels = &quot;auto&quot;</code> par défaut pour ce dernier, mais <code>labels = NULL</code> pour <code>ggarrange()</code>).</p></li>
 </ul>
 </div>

@@ -7,7 +7,8 @@
 
 La SciViews Box est une machine virtuelle (c'est-à-dire, l'équivalent d'un ordinateur complet, mais "dématérialisé" et utilisable à l'intérieur de n'importe quel autre ordinateur physique). Elle est spécialement configurée pour analyser des données et rédiger des documents scientifiques de manière professionnelle.
 
-<iframe width="770" height="433" src="http://www.youtube.com/embed/yIVXjl4SwVo?rel=0" frameborder="0" allowfullscreen></iframe>
+
+<!--html_preserve--><iframe src="https://www.youtube.com/embed/yIVXjl4SwVo" width="770" height="433" frameborder="0" allowfullscreen=""></iframe><!--/html_preserve-->
 
 Dans notre cas, le logiciel de gestion de la machine virtuelle, l'hyperviseur, est **VirtualBox**. C'est un logiciel gratuit qui existe pour Windows, MacOS et la plupart des systèmes Linux. L'avantage d'utiliser une machine virtuelle dans le contexte qui nous concerne ici est double :
 
@@ -89,7 +90,7 @@ Si vous n'arrivez pas à entrer dans le BIOS, ou à trouver l'entrée correspond
 ### Conseils pour acheter un PC {#achat_pc}
 
 <div class="note">
-<p>Pour les étudiants de l’UMONS, vous ne <em>devez pas</em> posséder votre propre ordinateur pour suivre le cours de science des données biologiques. Des ordinateurs en configuration de référence (voir <a href="#ordi">ordinateur</a>) vous sont accessibles au cours et aux travaux pratiques, et en dehors des heures à la salle “Escher” (demander un accès au secrétariat des sciences). Toutefois, si vous pouvez acquérir un ordinateur personnel, cela vous apportera un confort et une flexibilité indéniable, <strong>à condition de bien le choisir !</strong></p>
+<p>Pour les étudiants de l’UMONS et ceux de Charleroi, vous ne <em>devez pas</em> posséder votre propre ordinateur pour suivre le cours de science des données biologiques. Des ordinateurs en configuration de référence (voir <a href="#ordi">ordinateur</a>) vous sont accessibles au cours et aux travaux pratiques, et en dehors des heures à la salle “Escher” (demander un accès au secrétariat des sciences). Toutefois, si vous pouvez acquérir un ordinateur personnel, cela vous apportera un confort et une flexibilité indéniable, <strong>à condition de bien le choisir !</strong></p>
 </div>
 
 Si vous suivez les directives ci-dessus, vous ne pourrez pas vous tromper. Mais comme vous n'aurez probablement pas la possibilité de tester les ordinateurs avec Novabench avant l'achat, voici quelques exemples de configurations types et leur coûts approximatifs.
@@ -100,7 +101,7 @@ L'élément le plus important étant la vitesse de calcul du processeur, obtenez
 
 Prenez aussi comme référence les ordinateurs de votre salle de travaux pratiques. A l'UMONS, dans la salle "Pentagone", les ordinateurs sont équipés d'Intel Core i5-6400T @ 2.20Ghz. Ce sont des processeurs 4 coeurs/4 threads avec un score CPU Novabench de 511. Ils possèdent également 8Go de mémoire vive, un disque dur SDD avec 190Go dédiés à Windows 10 64-bit, et un processeur graphique intégré qui affiche 1920x1080 pixels à l'écran. Aux salles "Escher" et "Turing", ce sont des processeurs Intel Core i5-4590 @ 3.30Ghz, également 4 coeurs/4 threads affichant un score CPU Novabench de 515. Le reste de leurs configurations est similaire à celle des ordinateurs "Pentagone". **Vous pouvez également vous baser sur d'autres tests, les CPUMarks et comparer le processeur de l'ordinateur que vous voulez acheter avec les scores de vos machines des salles de travaux pratiques à partir de [cette page](https://www.cpubenchmark.net/compare/Intel-i5-4590-vs-Intel-i5-6400T/2234vs2668).**
 
-Dans le choix de votre ordinateur, il faut tout d'abord vous demander si vous voulez un ordinateur pour **apprendre** à traiter des données sur des petits tableaux, et que vous prévoyez changer dans 1 ou 2 ans (dans ce cas, une configuration de base convient), ou si vous voulez investir sur plus long terme. Visez alors plus haut. Naturellement, le prix sera un critère fondamental, également^[Renseignez-vous au niveau des services étudiants à l'UMONS et à l'AGE : des aides existent pour les étudiants boursiers qui souhaitent acquérir un ordinateur dans le cadre de leurs études.].
+Dans le choix de votre ordinateur, il faut tout d'abord vous demander si vous voulez un ordinateur pour **apprendre** à traiter des données sur des petits tableaux, et que vous prévoyez de le changer dans 1 ou 2 ans (dans ce cas, une configuration de base convient), ou si vous voulez investir sur du plus long terme. Visez alors plus haut. Naturellement, le prix sera un critère fondamental, également^[Renseignez-vous au niveau des services étudiants à l'UMONS et à l'AGE : des aides existent pour les étudiants boursiers qui souhaitent acquérir un ordinateur dans le cadre de leurs études.].
 
 Justification des besoins :
 
@@ -414,7 +415,7 @@ La zone en haut à droite permet de configurer votre compte Git.
 Comme vous allez utiliser Git et Github de manière intensive tout au long de ce cours, **veuillez configurer cette partie du système correctement d'amblée!** Les trois boutons du bas proposent de s'enregistrer sur trois systèmes distants d'hébergement de dépôts Git (si vous ne savez pas ce que c'est, imaginez juste que c'est là que vous allez pouvoir entreposer de manière sûre tous vos projets!): **Github**, **Gitlab** ou **Bitbucket**. Tous trois ont des avantages et des inconvénients, et ils proposent tous des utilisations gratuites dans certains cas.
 
 <div class="note">
-<p>Durant nos cours de Science des Données à l’UMONS, nous utiliserons <strong>Github</strong>. Cette utilisation sera gratuite pour vous, et vous allez pouvoir déjà commencer à construire <strong>votre identité professionnelle sur le Net</strong> par son intermédiaire. Donc, enregistrez-vous de manière sérieuse. Choisissez un login représentatif de vos nom et prénom, pas un truc louffoque ou rigolo sur le moment, mais que vous regretterez plus tard, sachant que votre login ne pourra <strong>pas</strong> être changé ensuite!</p>
+<p>Durant nos cours de Science des Données à l’UMONS et ceux de Bioinformatique et Science des Données sur le site de Charleroi, nous utiliserons <strong>Github</strong>. Cette utilisation sera gratuite pour vous, et vous allez déjà pouvoir commencer à construire <strong>votre identité professionnelle sur le Net</strong> par son intermédiaire. Donc, enregistrez-vous de manière sérieuse. Choisissez un login représentatif de vos nom et prénom, pas un truc louffoque ou rigolo sur le moment, mais que vous regretterez plus tard, sachant que votre login ne pourra <strong>pas</strong> être changé ensuite!</p>
 </div>
 
 Vous allez donc vous créer un compte sur Github en cliquant sur le bouton correspondant, et en indiquant un login et un mot de passe. **Nous vous demandons également d'utiliser expressément et uniquement votre adresse email UMONS ici : prénom.nom@student.umons.ac.be.** En effet, ce sera, pour nous, notre seul moyen de vous identifier sans erreur sur Github lorsque nous interviendrons pour vous conseiller et/ou pour corriger vos travaux.
@@ -429,7 +430,7 @@ Une fois enregistré sur le site de Github, reportez votre login et votre adress
 
 ![](images/annexe1/svbox-config7.png)
 
-Une fois tout ceci effectué vous pourrez cliquer sur le bouton `OK` de la fenêtre du configurateur SciViews Box. La machine virtuelle devra redémarrer pour appliquer toutes les modifications de manière durable. Cliquez également `OK` donc dans la boite de dialogue qui apparait ensuite (sinon, elle redémarrera toute seule après 30 sec) :
+Après avoir effectué tout ceci,vous pourrez cliquer sur le bouton `OK` de la fenêtre du configurateur SciViews Box. La machine virtuelle devra redémarrer pour appliquer toutes les modifications de manière durable. Cliquez donc également `OK` dans la boite de dialogue qui apparait ensuite (sinon, elle redémarrera toute seule après 30 sec) :
 
 <center>
 
@@ -460,7 +461,7 @@ Si le message n'apparait pas, voici comment se délogger (**log out**).
 
 </center>
 
-Ensuite, entrez votre mot de passe comme d'habitude pour vous relogger... A ce moment, le message doit apparaitre, et l'installation doit se faire après avoir cliqué le bouton `Yes`.
+Ensuite, entrez votre mot de passe comme d'habitude pour vous relogger... A ce moment, le message doit apparaitre, et l'installation doit se faire après avoir cliqué sur le bouton `Yes`.
 
 **Bravo! Vous avez terminé l'installation et la configuration de votre SciViews Box. Cependant, nous allons encore effectuer une petite opération qui vous facilitera la vie, et nous vous expliquerons par la même occasion comment accéder aux fichiers respectifs de la machine virtuelle et du système hôte dans la section suivante.**
 
@@ -507,7 +508,7 @@ Dans la **SciViews Box**, ce dossier est accessible depuis deux endroits: `/medi
 
 </center>
 
-Un tout dernier point concernant les ordinateurs de la salle de T.P. de l'UMONS. Pour des questions de performance, la machine virtuelle SciViews Box, et le dossier **shared** ne sont **pas** sur votre compte, mais directement sur le disque de l'ordinateur. Cela signifie qu'ils ne sont pas transportables vers un autre ordinateur. Vous pouvez créer une copie de **shared** dans **mes documents** ou sur une clé USB pour les transporter vers un autre ordinateur... mais nous verrons que cela n'est pas nécessaire pour tout ce que vous stockerez sur Github. En effet, vous avez accès à ces contenus depuis n'importe où via n'importe quelle connexion internet.
+Un tout dernier point concernant les ordinateurs de la salle de T.P. de l'UMONS ainsi que pour ceux du laboratoire informatique du site de Charleroi. Pour des questions de performance, la machine virtuelle SciViews Box, et le dossier **shared** ne sont **pas** sur votre compte, mais directement sur le disque de l'ordinateur. Cela signifie qu'ils ne sont pas transportables vers un autre ordinateur. Vous pouvez créer une copie de **shared** dans **mes documents** ou sur une clé USB pour les transporter vers un autre ordinateur... mais nous verrons que cela n'est pas nécessaire pour tout ce que vous stockerez sur Github. En effet, vous avez accès à ces contenus depuis n'importe où via n'importe quelle connexion internet.
 
 ## Utilisation {#svbox_use}
 
@@ -515,7 +516,7 @@ Une fois votre machine virtuelle configurée, vous vous trouvez confronté à ce
 
 ![](images/annexe_a1/desktop.png)
 
-Cette machine virtuelle utilise le système d'exploitation Linux. Vous pouvez accèder au application présentes sur cette machine à partir du menu `Applications` en haut à gauche du bureau. Ce dernier offre un menu déroulant avec l'ensemble des applications disponibles. Ces applications sont rangé en dossier  tel que `Favorites`, `Recently Used` , `All`, ...
+Cette machine virtuelle utilise le système d'exploitation Linux. Vous pouvez accèder au application présentes sur cette machine à partir du menu `Applications` en haut à gauche du bureau. Ce dernier offre un menu déroulant avec l'ensemble des applications disponibles. Ces applications sont rangées en dossier tel que `Favorites`, `Recently Used` , `All`, ...
 
 ![](images/annexe_a1/sv_app.gif)
 

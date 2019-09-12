@@ -43,7 +43,7 @@ Vous pouvez maintenant avoir un aperçu de l'importance d'avoir des outils perfo
 
 
 ## Découverte des outils
-La science des données est complexe et requiert d'employer des outils performants. Nous avons sélectionné ces outils pour vous.
+La science des données est complexe et requiert d'employer des outils performants que nous avons sélectionnés pour vous.
 
 
 ### Machine virtuelle
@@ -101,7 +101,7 @@ Des explications détaillées se trouvent dans l'annexe \@ref(rs) qui présente 
 
 ### Markdown
 
-Dans RStudio, les rapports sont rédigés en utilisant le langage **Markdown** dans la zone d'édition. Il permet de baliser le texte pour indiquer le sens des différentes parties (par exemple, pour indiquer les différents niveaux de titres). Il permet de se concentrer sur l'écriture dans un premier temps en dissociant le fond de la mise en forme. En effet, vous vous préoccupez de l'aspect final du document dans un second temps, et même, vous pouvez changer radicalement d'avis pratiquement sans rien changer dans le texte (par exemple, il est possible de passer d'une page Web à un document PDF ou Word, ou même encore à une présentation).
+Dans RStudio, les rapports sont rédigés en utilisant le langage **Markdown** dans la zone d'édition. Il permet de baliser le texte pour indiquer le sens des différentes parties (par exemple, pour indiquer les différents niveaux de titres) et de se concentrer sur l'écriture dans un premier temps en dissociant le fond de la mise en forme. En effet, vous vous préoccupez de l'aspect final du document dans un second temps, et même, vous pouvez changer radicalement d'avis pratiquement sans rien changer dans le texte (par exemple, il est possible de passer d'une page Web à un document PDF ou Word, ou même encore à une présentation).
 
 ![](images/sdd1_01/markdown.gif)
 
@@ -109,7 +109,7 @@ Dans RStudio, les rapports sont rédigés en utilisant le langage **Markdown** d
 
 Vous avez à votre disposition deux aide-mémoires pour apprendre **Markdown** : [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) et [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) plus détaillé.
 
-Après avoir rédiger votre document, vous devez cliquer sur le bouton `Preview` ou `Knit` (selon le type de document édité) dans la barre d'outils de la zone d'édition pour obtenir la version finale formatée.
+Après avoir rédigé votre document, vous devez cliquer sur le bouton `Preview` ou `Knit` (selon le type de document édité) dans la barre d'outils de la zone d'édition pour obtenir la version finale formatée.
 
 ```{block, type = 'bdd'}
 Une fois connecté au compte `sv` dans la machine virtuelle, réalisez l'activité : **Découverte de RStudio et R Markdown**
@@ -147,7 +147,7 @@ Lors de la rédaction de travaux un petit peu conséquents, comme un travail de 
 - TFE_final...
 - TFE_final99
 
-Lors de différents essais, on va avoir tendance à tout garder dans différents fichiers afin de ne rien supprimer d'important. Cette pratique bien que très courante comporte le gros désavantage de prendre énormément de place sur le disque de votre ordinateur et de n'être pas pratique. Les questions suivantes peuvent se poser\ :
+Lors de différents essais, on aura tendance à tout garder dans différents fichiers afin de ne rien supprimer d'important. Cette pratique bien que très courante comporte le gros désavantage de prendre énormément de place sur le disque de votre ordinateur et de n'être pas pratique. Les questions suivantes peuvent se poser\ :
 
 - Que se cache-t-il dans la version TFE_finalX ? Après un mois sans travailler sur le projet, seriez-vous encore capable de faire facilement la différence entre TFE_final2 et le TFE_final3\ ? 
 
@@ -162,7 +162,7 @@ Lors de différents essais, on va avoir tendance à tout garder dans différents
 - TFE_final...
 - TFE_final99
 
-Dans quel fichier se trouve la dernière version de chaque personne ayant collaboré sur le projet ? Une petit peu dans différents fichiers, sans doute. 
+Dans quel fichier se trouve la dernière version de chaque personne ayant collaboré sur le projet ? Un petit peu dans différents fichiers, sans doute. 
 
 Différents outils informatiques existent pour faciliter le travail collaboratif comme :
 
@@ -175,7 +175,7 @@ Différents outils informatiques existent pour faciliter le travail collaboratif
 
 #### Git
 
-La gestion de versions est gérée par *Git*. Cet outil va remplacer les nombreuses copies d'un même fichier par une sorte d'arbre que l'on peut représenter schématiquement comme ci-dessous :
+La gestion de versions est gérée par *Git*. Cet outil remplacera les nombreuses copies d'un même fichier par une sorte d'arbre que l'on peut représenter schématiquement comme ci-dessous :
 
 ![Représentation de la gestion de fichiers via Git](images/sdd1_01/git1.png)
 
@@ -186,13 +186,13 @@ Comme vous pouvez le voir ci-dessus, on peut suivre la progression de notre proj
 
 Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le "cloud", les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org), mais dans ce cours, nous utiliserons GitHub ensemble, sachant que les notions apprises ici seront réutilisables ailleurs.
 
-Lorsque l'on travaille seul tout en utilisant GitHub, l'évolution de notre projet va ressembler à l'arbre ci-dessous : 
+Lorsque l'on travaille seul tout en utilisant GitHub, l'évolution de notre projet ressemblera à l'arbre ci-dessous : 
 
 ![Représentation des versions successives d'un projet avec GitHub.](images/sdd1_01/github.png)
 
-On réalise un envoi (**push**) lorsque l'on souhaite synchroniser nos changements locaux avec la version sur le "cloud". Plusieurs **commit**s peuvent être envoyés avec un seul **push** sur le réseau, et c'est d'ailleurs généralement comme cela que l'on procède. L'inverse (rapatrier localement les changements que d'autres collaborateurs ont envoyé sur la version réseau de notre projet) s'appelle faire un "**pull**".
+On réalise un envoi (**push**) lorsque l'on souhaite synchroniser nos changements locaux avec la version sur le "cloud". Plusieurs **commit**s peuvent être envoyés avec un seul **push** sur le réseau, et c'est d'ailleurs généralement comme cela que l'on procède. L'inverse (rapatrier localement les changements que d'autres collaborateurs ont envoyés sur la version réseau de notre projet) s'appelle faire un "**pull**".
 
-L'avantage principal de **GitHub** ne réside pas vraiment dans la possibilité de réaliser une sauvegarde en ligne mais plutôt dans la possibilité de collaborer avec d'autres personnes présentes sur ce réseau comme l'illustre la figure ci-dessous. Deux scientifiques (les versions représentées par des boules bleues et des boules vertes) collaborent sur un même projet que l'on appelle un **dépôt** (**repository** en anglais) lorsqu'il est en ligne. Le premier chercheur (boules bleues) va initier le dépôt et réaliser un "push"" pour rendre son travail accessible sur le réseau (boules oranges). Son collaborateur (boules vertes) va **clôner** (**clone** en anglais) le dépôt sur son ordinateur afin d'y travailler également en local sur son PC. Après avoir fait des changements, il réalise également un **push** sur le réseau. Le premier scientifique, avant de travailler à nouveau sur le projet, va donc réaliser un **pull** afin d'obtenir en local l'ensemble des modifications fournies par son ou ses collaborateurs, et ensuite après modifications en local il effectuera à nouveau un "pus". 
+L'avantage principal de **GitHub** ne réside pas vraiment dans la possibilité de réaliser une sauvegarde en ligne mais plutôt dans la possibilité de collaborer avec d'autres personnes présentes sur ce réseau comme l'illustre la figure ci-dessous. Deux scientifiques (les versions représentées par des boules bleues et des boules vertes) collaborent sur un même projet que l'on appelle un **dépôt** (**repository** en anglais) lorsqu'il est en ligne. Le premier chercheur (boules bleues) va initier le dépôt et réaliser un "push"" pour rendre son travail accessible sur le réseau (boules oranges). Son collaborateur (boules vertes) va **clôner** (**clone** en anglais) le dépôt sur son ordinateur afin d'y travailler également en local sur son PC. Après avoir fait des changements, il réalise également un **push** sur le réseau. Le premier scientifique, avant de travailler à nouveau sur le projet, va donc réaliser un **pull** afin d'obtenir en local l'ensemble des modifications fournies par son ou ses collaborateurs, et ensuite après modifications en local il effectuera à nouveau un "push". 
 
 ![Différentes versions d'un projet sur GitHub lorsque deux personnes différentes collaborent sur le même dépôt.](images/sdd1_01/github1.png)
 
@@ -206,7 +206,7 @@ Vous venez d'apprendre le B-A-BA de la terminologie nécessaire à la bonne comp
 
 - **push**\ : envoyer ses modifications locales vers le dépôt GitHub.
 
-- **pull**\ : rapatrier les modifications que les autres utilisateurs ont appliqué dans le dépôt GitHub vers sa propre version locale.
+- **pull**\ : rapatrier les modifications que les autres utilisateurs ont appliquées dans le dépôt GitHub vers sa propre version locale.
 
 Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails dans les liens ci-dessous et dans les Appendices. Il est, par exemple, possible de travailler sur une version en parallèle d'un dépôt original pour lequel on n'a pas de droits en écriture. Dans ce cas, il faudra faire une copie dans notre propre compte GitHub du dépôt. Cela s'appelle faire un **fork**. Il n'est pas possible de faire un **push** vers le dépôt d'origine puisqu'on n'a pas les droits en écriture. Dans ce cas, on fera un **pull request**, suggérant ainsi à l'auteur d'origine que nous avons fait des modifications qui pourraient l'intéresser. Si c'est effectivement le cas, il pourra accepter notre "pull request" et intégrer nos suggestions dans le dépôt d'origine. Vous serez amenés à "forker" des dépôts GitHub pour vos exercices, et vous effectuerez également un "pull request" lorsque vous serez suffisamment aguerris avec les autres techniques de gestion de vos projets sous Git et GitHub.
 

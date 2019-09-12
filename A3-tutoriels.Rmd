@@ -16,7 +16,7 @@ La liste des tutoriels vous est proposée (notez que ces tutoriels comme les aut
 
 ![](images/annexe_a3/learnr.gif)
 
-Entrez le numéro correspondant au tutoriel que vous voulez exécuter et un document interactif apparait. Par exemple, en entrant `1` suivi de la touche `Entrée`, vous êtes redirigé vers le tutoriel concernant les base de R et intitulé `02a_base`.
+Entrez le numéro correspondant au tutoriel que vous voulez exécuter et un document interactif apparait. Par exemple, en entrant `1` suivi de la touche `Entrée`, vous êtes redirigé vers le tutoriel concernant les bases de R et intitulé `02a_base`.
 
 La première chose à vérifier à l'ouverture du tutoriel interactif est le nom d'utilisateur (équivalent à votre **username** dans Github) et votre adresse email (adresse email associée à votre compte Github ou de votre compte d'étudiant). En effet, votre progression sera enregistrée, mais cela ne peut se faire que si vous renseignez ces données correctement avant de travailler dans le tutoriel "learnr".
 
@@ -33,17 +33,17 @@ Vous retrouvez d'ailleurs cette structure en haut à gauche de ce dernier. Chaqu
 
 - Objectifs
 
-Cette section va détailler l'ensemble des notions que vous allez apprendre à maitriser durant ce tutoriel. Dans le cadre de ce premier tutoriel, l'objectif est de découvrir les bases du language R. 
+Cette section détaillera l'ensemble des notions que vous allez apprendre à maitriser durant ce tutoriel. Dans le cadre de ce premier tutoriel, l'objectif est de découvrir les bases du language R. 
 
 - Introduction
 
-Cette section va vous replacer dans le contexte du tutoriel interactif avec un rappel succinct des notions théoriques indispensables afin de répondre à la série d'exercices. **Cette section ne remplace pas les autres matériels pédagogiques qui vous sont proposés.** Vous devez travailler dans l'ordre proposé dans le présent manuel au sein de chaque module pour vous préparer correction au learnr de test en fin de section. 
+Cette section vous replacera dans le contexte du tutoriel interactif avec un rappel succinct des notions théoriques indispensables afin de répondre à la série d'exercices. **Cette section ne remplace pas les autres matériels pédagogiques qui vous sont proposés.** Vous devez donc travailler dans l'ordre proposé dans le présent manuel au sein de chaque module pour vous préparer correctement au learnr de test en fin de section. 
 
 - Une serie d'exercices
 
 Cette section peut être de longueur très variable en fonction de la difficulté et des notions à appréhender.
 
-Des zones de codes R vous sont proposées dans les exercices. Elles vous permettent d'expérimenter directement des instructions dans R depuis le document learnr. Pour exécuter ces instructions, il faut cliquer sur `Run Code`. Vous pouvez le faire autant de fois que vous voulez. Modifiez le code, cliquez `Run Code`, analysez le résultat, modifiez votre code, recliquez `Run Code`, etc... juqu'à ce que vous soyez satisfait du résultat. Finissez l'exercice et soumettez votre réponse en cliquant sur `Submit Answer`.
+Des zones de codes R vous sont proposées dans les exercices. Elles vous permettent d'expérimenter directement des instructions dans R depuis le document learnr. Pour exécuter ces instructions, il faut cliquer sur `Run Code`. Vous pouvez le faire autant de fois que vous le voulez. Modifiez le code, cliquez `Run Code`, analysez le résultat, modifiez votre code, recliquez `Run Code`, etc... juqu'à ce que vous soyez satisfait du résultat. Finissez l'exercice et soumettez votre réponse en cliquant sur `Submit Answer`.
 
 ![](images/annexe_a3/learnr2.gif)
 

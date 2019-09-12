@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-03">
+<meta name="date" content="2019-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -454,11 +454,11 @@ code span.wa { color: #bf0303; } /* Warning */
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -468,7 +468,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>La variable dose est encodée sous forme numérique alors que cette dernière ne contient que trois niveaux différents et devra être le plus souvent traitée comme une <strong>variable qualitative ordonnée à trois niveaux</strong> . <strong>Vous devrez donc probablement recoder cette variable en variable facteur.</strong></p>
 <div class="note">
 <p>
-Ce n’est pas le caractère quantitatif ou qualitatif du <em>mécanisme sous-jacent qui est mesuré</em> qui détermine si la variable est quantitative ou qualitative, mais d’autres critères comme la précision avec laquelle la mesure a été effectuée. Par exemple, un anémomètre mesure la vitesse du vent sous forme de variable <strong>quantitative</strong> alors qu’une échelle approximative de type <code>vent nul</code>, <code>vent faible</code>, <code>vent moyen</code>, <code>vent fort</code> ou <code>tempête</code> basée sur l’observation des rides ou des vagues à la surface de la mer pourrait éventuellement convenir pour mesurer le même phénomène si une grande précision n’est pas nécessaire. Mais dans ce cas, la variable devra être traitée comme une variable <strong>qualitative</strong>.
+Ce n’est pas le caractère quantitatif ou qualitatif du mécanisme sous-jacent mesuré qui détermine si la variable est quantitative ou qualitative, mais d’autres critères comme la précision avec laquelle la mesure a été effectuée. Par exemple, un anémomètre mesure la vitesse du vent sous forme de variable <strong>quantitative</strong> alors qu’une échelle approximative de type <code>vent nul</code>, <code>vent faible</code>, <code>vent moyen</code>, <code>vent fort</code> ou <code>tempête</code> basée sur l’observation des rides ou des vagues à la surface de la mer pourrait éventuellement convenir pour mesurer le même phénomène si une grande précision n’est pas nécessaire. Mais dans ce cas, la variable devra être traitée comme une variable <strong>qualitative</strong>.
 </p>
 <p>
 De même, un plan expérimental qui réduit volontairement les valeurs fixées dans une expérience, comme ici les doses journalières d’acide ascorbique, fera aussi basculer la variable en <strong>qualitative</strong>, et ce, quelle que soit la précision avec laquelle les valeurs sont mesurées par ailleurs. Un découpage en classes aura aussi le même effet de transformer une variable quantitative en variable qualitative ordonnée.
@@ -482,7 +482,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -490,7 +490,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -503,7 +503,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -511,7 +511,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -528,7 +528,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 <p><img src="05-Importation-Transformation_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Les <strong>addins</strong> de RStudio vont vous permettre de réaliser facilement un découpage du jeu de données en fonction de classes d’âges (bouton <code>Addins -&gt; QUESTIONR -&gt; Numeric range dividing</code>).</p>
 <p><img src="images/sdd1_06/addins_cut.gif" /></p>
-<p>Vous spécifiez le découpage voulu dans une boite de dialogue sur base de l’histogramme et lorsque vous cliquez sur le bouton <code>Done</code>, le code R qui effectue ce découpage est inséré dans l’éditeur RStudio à l’endroit du curseur. la nouvelle variable facteur <code>age_rec</code> basée sur le découpage en classes va être utile pour faire ressortir ensuite de l’information supplémentaire en contrastant les individus plus jeunes et ceux plus âgés.</p>
+<p>Vous spécifiez le découpage voulu dans une boite de dialogue sur base de l’histogramme et lorsque vous cliquez sur le bouton <code>Done</code>, le code R qui effectue ce découpage est inséré dans l’éditeur RStudio à l’endroit du curseur. La nouvelle variable facteur <code>age_rec</code> basée sur le découpage en classes sera ensuite utile pour faire ressortir de l’information supplémentaire en contrastant les individus plus jeunes et ceux plus âgés.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Instructions obtenues à partir de l&#39;addins</span>
 biometry<span class="op">$</span>age_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(biometry<span class="op">$</span>age, <span class="dt">include.lowest =</span> <span class="ot">FALSE</span>, <span class="dt">right =</span> <span class="ot">TRUE</span>,
   <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">27</span>, <span class="dv">90</span>))
@@ -577,7 +577,7 @@ df</code></pre>
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -604,7 +604,7 @@ Les différents niveaux des variables <code>factor</code> ou <code>ordered</code
 <p>Nous voyons que le tableau réduit <code>iris20</code> ne contient des données que d’une seule espèce. Pourtant <code>table()</code> continue de lister les autres niveaux de la variable. Les niveaux connus sont aussi imprimés avec <code>levels()</code> :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(iris20<span class="op">$</span>species)</code></pre>
 <pre><code># [1] &quot;setosa&quot;     &quot;versicolor&quot; &quot;virginica&quot;</code></pre>
-<p>Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l’espèce <em>I. setosa</em>. Dans ce cas, <code>droplevels()</code> permettra de faire disparaître les autres niveaux de la variable <code>species</code>.</p>
+<p>Dans le cas ici, nous souhaitons uniquement nous focaliser sur l’espèce <em>I. setosa</em>. Dès lors, l’utilisation de la fonction <code>droplevels()</code> permet de faire disparaître les autres niveaux de la variable <code>species</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">iris20<span class="op">$</span>species &lt;-<span class="st"> </span><span class="kw">droplevels</span>(iris20<span class="op">$</span>species)
 <span class="kw">levels</span>(iris20<span class="op">$</span>species)</code></pre>
 <pre><code># [1] &quot;setosa&quot;</code></pre>

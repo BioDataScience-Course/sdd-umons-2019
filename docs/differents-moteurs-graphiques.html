@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-03">
+<meta name="date" content="2019-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -464,24 +464,24 @@ code span.wa { color: #bf0303; } /* Warning */
 <div class="figure" style="text-align: center"><span id="fig:chart-example"></span>
 <img src="04-Visualisation-III_files/figure-html/chart-example-1.png" alt="Graphique typique obtenu avec `chart()` : rendu par défaut publiable tel quel, et libellé automatique des axes avec les unités." width="672" />
 <p class="caption">
-Figure 4.13: Graphique typique obtenu avec <code>chart()</code> : rendu par défaut publiable tel quel, et libellé automatique des axes avec les unités.
+Figure 4.22: Graphique typique obtenu avec <code>chart()</code> : rendu par défaut publiable tel quel, et libellé automatique des axes avec les unités.
 </p>
 </div>
 <div id="ggplot2" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> ggplot2</h3>
-<p>Le moteur graphique <strong><a href="https://ggplot2.tidyverse.org">ggplot2</a></strong> est écrit pas Hadley Wickham, un personnage emblématique de la “révolution <a href="https://www.tidyverse.org">tidyverse</a>” qui propose une surcouche moderne au dessus de R. <strong>ggplot2</strong> implémente une “grammaire graphique” particulièrement puissante et flexible, proposée et popularisée par le statisticien Leland Wilkinson. Par défaut, <code>chart()</code> crée en réalité un graphique <strong>ggplot2</strong> adapté. Voici la version <strong>ggplot2</strong> standard du même graphique représenté à la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.13</a> :</p>
+<p>Le moteur graphique <strong><a href="https://ggplot2.tidyverse.org">ggplot2</a></strong> est écrit pas Hadley Wickham, un personnage emblématique de la “révolution <a href="https://www.tidyverse.org">tidyverse</a>” qui propose une surcouche moderne au dessus de R. <strong>ggplot2</strong> implémente une “grammaire graphique” particulièrement puissante et flexible, proposée et popularisée par le statisticien Leland Wilkinson. Par défaut, <code>chart()</code> crée en réalité un graphique <strong>ggplot2</strong> adapté. Voici la version <strong>ggplot2</strong> standard du même graphique représenté à la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.22</a> :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> urchin, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> weight, <span class="dt">y =</span> height, <span class="dt">col =</span> origin)) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">geom_point</span>() </code></pre>
 <div class="figure" style="text-align: center"><span id="fig:ggplot2-example"></span>
 <img src="04-Visualisation-III_files/figure-html/ggplot2-example-1.png" alt="Graphique typique obtenu avec `ggplot()` (moteur graphique **ggplot2**)." width="672" />
 <p class="caption">
-Figure 4.14: Graphique typique obtenu avec <code>ggplot()</code> (moteur graphique <strong>ggplot2</strong>).
+Figure 4.23: Graphique typique obtenu avec <code>ggplot()</code> (moteur graphique <strong>ggplot2</strong>).
 </p>
 </div>
-<p>En comparant les Figs. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.13</a> et <a href="differents-moteurs-graphiques.html#fig:ggplot2-example">4.14</a> (en faisant abstraction des instructions R utilisées pour l’instant), plusieurs points sautent immédiatement aux yeux:</p>
+<p>En comparant les Figs. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.22</a> et <a href="differents-moteurs-graphiques.html#fig:ggplot2-example">4.23</a> (en faisant abstraction des instructions R utilisées pour l’instant), plusieurs points sautent immédiatement aux yeux:</p>
 <ul>
 <li><p>Le thème par défaut de <strong>ggplot2</strong> est très reconnaissable avec un quadrillage blanc sur fond gris clair. On aime ou on n’aime pas, mais il est clair que (1) ce n’est pas une présentation “standard” d’un graphique scientifique, et (2) le thème tord un peu le cou à une règle importante pour réaliser un graphique de qualité : <strong>minimiser la quantité d’“encre” nécessaire pour représenter un graphique</strong>, autrement dit, plus le graphique est simple et sobre, mieux c’est. Le thème par défaut de <code>chart()</code> respecte mieux tout ceci<a href="references.html#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>.</p></li>
-<li><p>La taille des caractères est légèrement plus grande dans la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.13</a> réalisée avec <code>chart()</code>. Le manque de lisibilité des parties textuelles dans un graphique est un défaut fréquent, dépendant de la résolution et de la taille de reproduction du graphique dans le document final. Le choix de <code>chart()</code> recule un peu ce risque.</p></li>
+<li><p>La taille des caractères est légèrement plus grande dans la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-example">4.22</a> réalisée avec <code>chart()</code>. Le manque de lisibilité des parties textuelles dans un graphique est un défaut fréquent, dépendant de la résolution et de la taille de reproduction du graphique dans le document final. Le choix de <code>chart()</code> recule un peu ce risque.</p></li>
 <li><p><code>chart()</code> est capable d’aller lire les métadonnées (libellés en français et unités des variables) et les utilisent automatiquement pour proposer des libellés corrects et complets des axes par défaut. <code>ggplot()</code> ne peut pas le faire, et il faut utiliser la fonction <code>labs()</code> pour l’indiquer manuellement.</p></li>
 </ul>
 
@@ -493,7 +493,7 @@ De manière générale, par rapport à <code>ggplot()</code>, <code>chart()</cod
 <ol style="list-style-type: decimal">
 <li><p>On peut toujours remplacer <code>ggplot()</code> par <code>chart()</code> dans les instructions R (à condition que le package <strong>chart</strong> soit chargé bien sûr, par exemple via <code>SciViews::R</code>). Dans ce cas, le thème par défaut diffère, et le libellé automatique des axes (non disponible avec <code>ggplot()</code>) est activé.</p></li>
 <li><p>Avec <code>chart()</code> on peut utiliser <code>aes()</code> pour spécifier les “esthétiques” (éléments à visualiser sur le graphique) comme pour <code>ggplot()</code>, mais on peut <em>aussi</em> utiliser une interface formule plus compacte. Cette interface formule rapproche la version <code>chart()</code> des graphiques <strong>ggplot2</strong> d’un autre moteur de graphique dans R : <strong>lattice</strong>.</p></li>
-<li><p>Outre les esthétiques classiques <code>x</code> et <code>y</code>, l’interface formule de <code>chart()</code> permet d’en inclure d’autres directement dans la formule à l’aide d’opérateurs spécifiques <code>%&lt;esth&gt;%=</code>. Par exemple, <code>aes(x = weight, y = height, col = origin)</code> dans la Fig. <a href="differents-moteurs-graphiques.html#fig:ggplot2-example">4.14</a> se traduit en la formule plus concise <code>height ~ weight %col=% origin</code> avec <code>chart()</code> (notez la position <em>inversée</em> de <code>x</code> et <code>y</code> dans la formule puisqu’on a <code>y ~ x</code>). <strong>Tous</strong> les esthétiques de <strong>ggplot2</strong> sont supportés de cette manière.</p></li>
+<li><p>Outre les esthétiques classiques <code>x</code> et <code>y</code>, l’interface formule de <code>chart()</code> permet d’en inclure d’autres directement dans la formule à l’aide d’opérateurs spécifiques <code>%&lt;esth&gt;%=</code>. Par exemple, <code>aes(x = weight, y = height, col = origin)</code> dans la Fig. <a href="differents-moteurs-graphiques.html#fig:ggplot2-example">4.23</a> se traduit en la formule plus concise <code>height ~ weight %col=% origin</code> avec <code>chart()</code> (notez la position <em>inversée</em> de <code>x</code> et <code>y</code> dans la formule puisqu’on a <code>y ~ x</code>). <strong>Tous</strong> les esthétiques de <strong>ggplot2</strong> sont supportés de cette manière.</p></li>
 <li><p>Partout où <code>aes()</code> est utilisé pour les instructions <strong>ggplot2</strong>, on peut utiliser à la place <code>f_aes()</code> et y spécifier plutôt une formule de type <code>chart()</code>.</p></li>
 <li><p>Avec <code>ggplot()</code> les facettes doivent être spécifiées à l’aide de <code>facet_XXX()</code>. A condition d’utiliser <code>chart()</code>, il est possible d’inclure les spécifications des facettes les plus utilisées directement dans la formule en utilisant l’opérateur <code>|</code>. Cette façon de procéder est, encore une fois, identique à ce qui se fait dans <strong>lattice</strong> (voir plus loin).</p></li>
 </ol>
@@ -509,18 +509,18 @@ b &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">
 <div class="figure" style="text-align: center"><span id="fig:chart-ggplot2-facets"></span>
 <img src="04-Visualisation-III_files/figure-html/chart-ggplot2-facets-1.png" alt="Graphique à facettes. A. version `chart()`, B. version `ggplot()`." width="672" />
 <p class="caption">
-Figure 4.15: Graphique à facettes. A. version <code>chart()</code>, B. version <code>ggplot()</code>.
+Figure 4.24: Graphique à facettes. A. version <code>chart()</code>, B. version <code>ggplot()</code>.
 </p>
 </div>
 </div>
 <div id="lattice" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> lattice</h3>
-<p>Autant <strong>ggplot2</strong> est complètement modulable en ajoutant littéralement à l’aide de l’opérateur <code>+</code> des couches successives sur le graphique, autant <strong>lattice</strong> vise à réaliser les graphiques <strong>en une seule instruction</strong>. <strong>lattice</strong> utilise également abondamment l’interface formule pour spécifier les variables à utiliser dans le graphique. La version <strong>lattice</strong> du graphique d’exemple est présentée à la Fig. <a href="differents-moteurs-graphiques.html#fig:lattice-example">4.16</a>.</p>
+<p>Autant <strong>ggplot2</strong> est complètement modulable en ajoutant littéralement à l’aide de l’opérateur <code>+</code> des couches successives sur le graphique, autant <strong>lattice</strong> vise à réaliser les graphiques <strong>en une seule instruction</strong>. <strong>lattice</strong> utilise également abondamment l’interface formule pour spécifier les variables à utiliser dans le graphique. La version <strong>lattice</strong> du graphique d’exemple est présentée à la Fig. <a href="differents-moteurs-graphiques.html#fig:lattice-example">4.25</a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">xyplot</span>(height <span class="op">~</span><span class="st"> </span>weight, <span class="dt">data =</span> urchin, <span class="dt">groups =</span> origin, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:lattice-example"></span>
 <img src="04-Visualisation-III_files/figure-html/lattice-example-1.png" alt="Graphique exemple réalisé avec **lattice**." width="672" />
 <p class="caption">
-Figure 4.16: Graphique exemple réalisé avec <strong>lattice</strong>.
+Figure 4.25: Graphique exemple réalisé avec <strong>lattice</strong>.
 </p>
 </div>
 <p>Et voici la version <code>chart()</code> utilisant le moteur <strong>lattice</strong>. Notez la façon d’appeler la fonction <code>xyplot()</code> de <strong>lattice</strong> via <code>chart$xyplot()</code> :</p>
@@ -537,10 +537,10 @@ b &lt;-<span class="st"> </span><span class="kw">chart</span>(<span class="dt">d
 <div class="figure" style="text-align: center"><span id="fig:chart-lattice-example"></span>
 <img src="04-Visualisation-III_files/figure-html/chart-lattice-example-1.png" alt="Graphique exemple réalisé avec `chart()` A. avec le moteur **lattice**, B. avec le moteur **ggplot2**." width="672" />
 <p class="caption">
-Figure 4.17: Graphique exemple réalisé avec <code>chart()</code> A. avec le moteur <strong>lattice</strong>, B. avec le moteur <strong>ggplot2</strong>.
+Figure 4.26: Graphique exemple réalisé avec <code>chart()</code> A. avec le moteur <strong>lattice</strong>, B. avec le moteur <strong>ggplot2</strong>.
 </p>
 </div>
-<p>La quantité d’instructions nécessaires pour rendre la version <strong>lattice</strong> proche de la version <strong>ggplot2</strong> devrait disparaître dans les prochaines versions de <code>chart()</code>. Un autre objectif est aussi de gommer le plus possible les différences entre les rendus des différents moteurs de graphiques R, et en particuliers entre <strong>ggplot2</strong> et <strong>lattice</strong>. Comparez la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-lattice-example">4.17</a>A avec la Fig. <a href="differents-moteurs-graphiques.html#fig:lattice-example">4.16</a> pour apprécier le gain déjà obtenu en matière d’homogénéisation.</p>
+<p>La quantité d’instructions nécessaires pour rendre la version <strong>lattice</strong> proche de la version <strong>ggplot2</strong> devrait disparaître dans les prochaines versions de <code>chart()</code>. Un autre objectif est aussi de gommer le plus possible les différences entre les rendus des différents moteurs de graphiques R, et en particuliers entre <strong>ggplot2</strong> et <strong>lattice</strong>. Comparez la Fig. <a href="differents-moteurs-graphiques.html#fig:chart-lattice-example">4.26</a>A avec la Fig. <a href="differents-moteurs-graphiques.html#fig:lattice-example">4.25</a> pour apprécier le gain déjà obtenu en matière d’homogénéisation.</p>
 
 <div class="info">
 Par rapport à <strong>ggplot2</strong>, les graphiques <strong>lattice</strong> sont moins flexibles du fait qu’ils doivent être spécifiés en une seule instruction. Cependant, ils sont beaucoup plus rapides à générer (appréciable quand il y a beaucoup de points à tracer) ! <strong>lattice</strong> offre également quelques types de graphiques non supportés par <strong>ggplot2</strong> comme les graphiques en 3D à facettes, par exemple.
@@ -553,7 +553,7 @@ Par rapport à <strong>ggplot2</strong>, les graphiques <strong>lattice</strong>
 <div class="figure" style="text-align: center"><span id="fig:lattice-facets"></span>
 <img src="04-Visualisation-III_files/figure-html/lattice-facets-1.png" alt="Graphique à facettes, avec `chart()` version **lattice**." width="672" />
 <p class="caption">
-Figure 4.18: Graphique à facettes, avec <code>chart()</code> version <strong>lattice</strong>.
+Figure 4.27: Graphique à facettes, avec <code>chart()</code> version <strong>lattice</strong>.
 </p>
 </div>
 <p>Mise à part les instructions additionnelles encore nécessaires dans cette version de <code>chart()</code>, l’appel et le rendu sont très similaires par rapport à la version <strong>ggplot2</strong> du même graphique avec <code>chart()</code> :</p>
@@ -562,7 +562,7 @@ Figure 4.18: Graphique à facettes, avec <code>chart()</code> version <strong>la
 <div class="figure" style="text-align: center"><span id="fig:ggplot2-facets2"></span>
 <img src="04-Visualisation-III_files/figure-html/ggplot2-facets2-1.png" alt="Graphique à facettes, avec `chart()` version **ggplot2**." width="672" />
 <p class="caption">
-Figure 4.19: Graphique à facettes, avec <code>chart()</code> version <strong>ggplot2</strong>.
+Figure 4.28: Graphique à facettes, avec <code>chart()</code> version <strong>ggplot2</strong>.
 </p>
 </div>
 </div>
@@ -573,10 +573,10 @@ Figure 4.19: Graphique à facettes, avec <code>chart()</code> version <strong>gg
   <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>)[urchin<span class="op">$</span>origin], <span class="dt">pch =</span> <span class="dv">1</span>)
 <span class="kw">legend</span>(<span class="dt">x =</span> <span class="dv">80</span>, <span class="dt">y =</span> <span class="dv">10</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Culture&quot;</span>, <span class="st">&quot;Pêcherie&quot;),</span>
 <span class="st">  col = c(&quot;</span>red<span class="st">&quot;, &quot;</span>darkgreen<span class="st">&quot;), pch = 1)</span></code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-29"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-29-1.png" alt="Graphique exemple réalisé avec le moteur graphique R de base." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:base-example"></span>
+<img src="04-Visualisation-III_files/figure-html/base-example-1.png" alt="Graphique exemple réalisé avec le moteur graphique R de base." width="672" />
 <p class="caption">
-Figure 4.20: Graphique exemple réalisé avec le moteur graphique R de base.
+Figure 4.29: Graphique exemple réalisé avec le moteur graphique R de base.
 </p>
 </div>
 <p>Vous rencontrerez très fréquemment la fonction <code>plot()</code>. C’est une fonction dite <strong>générique</strong> dont le comportement change en fonction de l’objet fourni en premier argument. Ainsi, elle réalise le graphique le plus pertinent à chaque fois en fonction du contexte. Notez tout de suite les instructions un peu confuses nécessaires pour spécifier la couleur souhaitée en fonction de l’origine des oursins. Le moteur graphique de base ne gère <strong>pas</strong> automatiquement des aspects plus complexes du graphique, telle que le positionnement d’une légende. Donc, à moins d’avoir prévu la place suffisante <em>avant</em> de tracer le graphique, nous ne pouvons que l’inclure à l’intérieur du cadre du graphique dans un second temps à l’aide de la fonction <code>legend()</code>. Comme cette dernière ne comprend rien à ce qui a été réalisé jusqu’ici, il faut lui respécifier les couleurs, formes et tailles de points utilisés ! C’est un des aspects pénibles du moteur graphique R de base.</p>
@@ -589,10 +589,10 @@ Figure 4.20: Graphique exemple réalisé avec le moteur graphique R de base.
   <span class="kw">legend</span>(<span class="dt">x =</span> <span class="dv">105</span>, <span class="dt">y =</span> <span class="dv">20</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Culture&quot;</span>, <span class="st">&quot;Pêcherie&quot;), title = &quot;</span>Origine<span class="st">&quot;,</span>
 <span class="st">    col = scales::hue_pal()(2), pch = 19, bty = &quot;</span>n<span class="st">&quot;, cex = 0.8, y.intersp = 2)</span>
 <span class="st">})</span></code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-31"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-31-1.png" alt="Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:chart-base"></span>
+<img src="04-Visualisation-III_files/figure-html/chart-base-1.png" alt="Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`." width="672" />
 <p class="caption">
-Figure 4.21: Graphique exemple réalisé avec le moteur graphique de base et la fonction <code>chart()</code>.
+Figure 4.30: Graphique exemple réalisé avec le moteur graphique de base et la fonction <code>chart()</code>.
 </p>
 </div>
 
@@ -602,10 +602,10 @@ Notez que le graphique est généré deux fois : une première fois dans un form
 
 <p>Pour l’instant, le seul avantage de <code>chart()</code> avec les graphiques de base est qu’il les convertit en une forme combinable avec les autres graphiques dans une figure composite (sinon, ce n’est pas possible). A part cela, il faut fournir à <code>chart$base()</code> tout le code nécessaire pour tracer et personnaliser le graphique. Comme on peut le voir sur cet exemple, cela demande une quantité considérable de code. C’est aussi un autre aspect pénible de ce moteur graphique : il est très flexible, mais l’interface n’est pas optimale. Pour finir, les graphiques de base ont plus de mal avec les facettes, mais il peuvent quand même générer les versions les plus simples, par exemple à l’aide de la fonction <code>coplot()</code> qui accepte une formule très similaire à ce qui s’utilise avec <strong>lattice</strong> :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coplot</span>(<span class="dt">data =</span> urchin, height <span class="op">~</span><span class="st"> </span>weight <span class="op">|</span><span class="st"> </span>origin)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-33"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-33-1.png" alt="Graphique à facettes avec le moteur graphique de base." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:coplot-example"></span>
+<img src="04-Visualisation-III_files/figure-html/coplot-example-1.png" alt="Graphique à facettes avec le moteur graphique de base." width="672" />
 <p class="caption">
-Figure 4.22: Graphique à facettes avec le moteur graphique de base.
+Figure 4.31: Graphique à facettes avec le moteur graphique de base.
 </p>
 </div>
 <p>A l’issue de cette comparaison, vous pourrez décider du moteur graphique que vous préférerez utiliser. Dans le cadre de ce cours, nous n’utiliserons en tous cas que quasi-exclusivement des graphiques <strong>ggplot2</strong> créés à l’aide la fonction <code>chart()</code>.</p>

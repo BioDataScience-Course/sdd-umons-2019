@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-03">
+<meta name="date" content="2019-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -482,7 +482,7 @@ code span.wa { color: #bf0303; } /* Warning */
 # 2 Stark Tonny      M         80   1.79
 # 3 Fury Nicholas    M         82   1.93
 # 4 Romanoff Natasha F         53   1.7</code></pre>
-<p>Vous devez fournir une code permettant de garder l’anonymat des sondés à l’ensemble des personnes étudiées vis à vis des analystes qui vont utiliser ces données. Cependant, le code doit permettre au chercheur ayant pris ces mesures de les retrouver dans son cahier de laboratoire, si besoin. Une façon de procéder consiste à attribuer un numéro au hasard par tirage dans une urne à chacune des personnes chargées des mesures. Ensuite, chaque expérimentateur attribue lui-même un second numéro aux différentes personnes qu’il mesure. Prenons par exemple le scientifique n°24 (seul lui sait qu’il porte ce numéro). Il attribue un code de 1 à n à chaque personne étudiée. En combinant le code secret de l’expérimentateur et le code individu, cela donne un identifiant unique de la forme <code>24_1</code>, <code>24_2</code>, etc. Il pourra alors encoder sa partie comme suit :</p>
+<p>Vous devez fournir un code permettant de garder l’anonymat des sondés à l’ensemble des personnes étudiées vis à vis des analystes qui vont utiliser ces données. Cependant, le code doit permettre au chercheur ayant pris ces mesures de les retrouver dans son cahier de laboratoire, si besoin. Une façon de procéder consiste à attribuer un numéro au hasard par tirage dans une urne à chacune des personnes chargées des mesures. Ensuite, chaque expérimentateur attribue lui-même un second numéro aux différentes personnes qu’il mesure. Prenons par exemple le scientifique n°24 (seul lui sait qu’il porte ce numéro). Il attribue un code de 1 à n à chaque personne étudiée. En combinant le code secret de l’expérimentateur et le code individu, cela donne un identifiant unique de la forme <code>24_1</code>, <code>24_2</code>, etc. Il pourra alors encoder sa partie comme suit :</p>
 <pre class="sourceCode r"><code class="sourceCode r">(biometry_marvel1 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(<span class="kw">tribble</span>(
   <span class="op">~</span>id,     <span class="op">~</span>sex , <span class="op">~</span>weight, <span class="op">~</span>height,
    <span class="st">&quot;24_1&quot;</span>,  <span class="st">&quot;M&quot;</span>,  <span class="dv">95</span>,      <span class="fl">1.91</span>,

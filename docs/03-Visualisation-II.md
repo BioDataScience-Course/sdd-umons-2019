@@ -19,9 +19,9 @@ Pour réaliser les exercices dans ce module, vous devez être capables de travai
 
 #####  Préparatifs {-}
 
-Une nouvelle tâche va vous être demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Une fois votre assignation réalisée, faites un clone de votre dépôt et placez-le dans le dossier `shared/projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs-projet) que vous obtiendrez via une tâche GitHub Classroom.
+Une nouvelle tâche vous est demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Une fois votre assignation réalisée, faites un clone de votre dépôt et placez-le dans le dossier `shared/projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs-projet) que vous obtiendrez via une tâche GitHub Classroom.
 
-\BeginKnitrBlock{bdd}<div class="bdd">Un projet sur le zooplancton provenant de Madagascar est mis à votre disposition. Utilisez l'URL suivante qui va vous donner accès à votre tâche. **Cette tâche est un travail en binôme**
+\BeginKnitrBlock{bdd}<div class="bdd">Un projet sur le zooplancton provenant de Madagascar est mis à votre disposition. Utilisez l'URL suivante qui vous donne accès à votre tâche. **Cette tâche est un travail en binôme**
 
 - <https://classroom.github.com/g/7Ji4Aj9G>
 </div>\EndKnitrBlock{bdd}
@@ -32,11 +32,11 @@ Vous utiliserez à la fois votre projet sur la biométrie des oursins (du module
 
 ## Histogramme
 
-Vous souhaitez visualiser l'étalement de vos données sur un axe (on parle de **distribution**^[La **distribution** des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d'une variable s'observent.] en statistique) pour l'une des variables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique va représenter sous forme de barres un découpage en plusieurs **classes**^[Une variable numérique est **découpée en classes** en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.] d'une variable numérique.
+Vous souhaitez visualiser l'étalement de vos données sur un axe (on parle de **distribution**^[La **distribution** des données en statistique se réfère à la fréquence avec laquelle les différentes valeurs d'une variable s'observent.] en statistique) pour l'une des variables étudiées. L'histogramme est l'un des outils pouvant vous apporter cette information. Ce graphique représente sous forme de barres un découpage en plusieurs **classes**^[Une variable numérique est **découpée en classes** en spécifiant différents intervalles, et ensuite en dénombrant le nombre de fois que les observations rentrent dans ces classes.] d'une variable numérique.
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-2-1.png" alt="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-2)Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton.</p>
+<img src="03-Visualisation-II_files/figure-html/histo-dist-1.png" alt="Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton." width="672" />
+<p class="caption">(\#fig:histo-dist)Exemple d'histogramme montrant la distribution de la taille d'un échantillon de zooplancton.</p>
 </div>
 
 Outre l'histogramme lui-même, représenté par des barres de hauteur équivalentes au nombre de fois que les observations ont été réalisées dans les différentes classes, les éléments suivants sont également indispensables à la compréhension du graphique (ici mis en évidence en couleur)
@@ -79,8 +79,8 @@ chart(data = zooplankton, ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-3-1.png" alt="Distribution des tailles au sein d'un échantillon de zooplancton" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-3)Distribution des tailles au sein d'un échantillon de zooplancton</p>
+<img src="03-Visualisation-II_files/figure-html/histo-dist2-1.png" alt="Distribution des tailles au sein d'un échantillon de zooplancton" width="672" />
+<p class="caption">(\#fig:histo-dist2)Distribution des tailles au sein d'un échantillon de zooplancton</p>
 </div>
 
 ```r
@@ -92,8 +92,8 @@ La fonction `chart()` requiert comme argument le jeu de donnée (`zooplankton`),
 Vous pouvez décrypter votre histogramme sur base des **modes**^[Les **modes** d'un histogramme correspondent à des classes plus abondantes localement, c'est-à-dire que les classes à gauche et à droite du mode comptent moins d’occurrences que lui.] et de la **symétrie**^[Un histogramme est dit **symétrique** lorsque son profil à gauche est identique ou très similaire à son profil à droite autour d'un mode.] de ces derniers. Un histogramme peut être unimodal (un seul mode), bimodal (deux modes) ou multimodal (plus de deux modes). En général, s'il y a plus d'un mode, nous pouvons suspecter que des sous-populations existent au sein de notre échantillon.
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-4-1.png" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique.</p>
+<img src="03-Visualisation-II_files/figure-html/histo-mode-1.png" alt="Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique." width="672" />
+<p class="caption">(\#fig:histo-mode)Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique.</p>
 </div>
 
 
@@ -130,7 +130,7 @@ combine_charts(list(a, b, c, d))
 <p class="caption">(\#fig:histo-classes)Choix des classes. A. histogramme initial montrant la répartition des tailles au sein d'organismes planctoniques. B., C., D. Même histogramme que A, mais en modifiant le nombres de classes.</p>
 </div>
 
-Comme vous pouvez le voir à la Fig. \@ref(fig:histo-classes), le changement du nombre de classes peut modifier complètement la perception des données via l'histogramme. Le choix idéal est un compromis entre plus de classes (donc plus de détails), et un d"coupage raisonnable en fonction de la quantité de données disponibles. Si l'intervalle des classes est trop petit, l'histogramme sera illisible. Si l'intervalle des classes est trop grand, il sera impossible de visualiser correctement les différents modes. Dans la figure en exemple, les variantes A et B sont acceptables, mais les C et D manquent de détails.
+Comme vous pouvez le voir à la Fig. \@ref(fig:histo-classes), le changement du nombre de classes peut modifier complètement la perception des données via l'histogramme. Le choix idéal est un compromis entre plus de classes (donc plus de détails), et un d'coupage raisonnable en fonction de la quantité de données disponibles. Si l'intervalle des classes est trop petit, l'histogramme sera illisible. Si l'intervalle des classes est trop grand, il sera impossible de visualiser correctement les différents modes. Dans la figure en exemple, les variantes A et B sont acceptables, mais les C et D manquent de détails.
 
 
 ##### Pièges et astuces {-}
@@ -183,11 +183,11 @@ chart(data = iris, ~ sepal_length %fill=% species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-5-1.png" alt="Distribution des longueurs de sépales de trois espèces d'iris." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Distribution des longueurs de sépales de trois espèces d'iris.</p>
+<img src="03-Visualisation-II_files/figure-html/histo-facteurs-1.png" alt="Distribution des longueurs de sépales de trois espèces d'iris." width="672" />
+<p class="caption">(\#fig:histo-facteurs)Distribution des longueurs de sépales de trois espèces d'iris.</p>
 </div>
 
-Ici, nous avons tracé un histogramme unique, mais en prenant soin de colorier les barres en fonction de l'espèce. la formule fait toujours intervenir la variable numérique à découper en classes à la droite du tilde `~`, ici `sepal_length`, mais nous y avons ajouté une directive supplémentaire pour indiquer que le remplissage des barres (`%fill=%`) doit se faire en fonction du contenu de la variable `species`.
+Ici, nous avons tracé un histogramme unique, mais en prenant soin de colorier les barres en fonction de l'espèce. La formule fait toujours intervenir la variable numérique à découper en classes à la droite du tilde `~`, ici `sepal_length`, mais nous y avons ajouté une directive supplémentaire pour indiquer que le remplissage des barres (`%fill=%`) doit se faire en fonction du contenu de la variable `species`.
 
 Nous avons ici un bon exemple d'histogramme multimodal lié à la présence de trois sous-groupes (les trois espèces différentes) au sein d'un jeu de données unique. Le rendu du graphique n'est pas optimal. Voici deux astuces pour l'améliorer. La premières consiste à représenter trois histogrammes séparés, mais rassemblés dans une même figure. Pour cela, nous utilisons des **facettes** (`facets`) au lieu de l'argument `%fill=%`. Dans `chart()`, les facettes peuvent être spécifiées an utilisant l'opérateur `|` dans la formule.
 
@@ -199,8 +199,8 @@ chart(data = iris, ~ sepal_length | species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-6-1.png" alt="Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces).</p>
+<img src="03-Visualisation-II_files/figure-html/histo-facettes-1.png" alt="Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces)." width="672" />
+<p class="caption">(\#fig:histo-facettes)Distribution de la longueur des sépales de trois espèces d'iris (en employant les facettes pour séparer les espèces).</p>
 </div>
 
 L'histogramme est maintenant séparé en trois en fonction des niveaux de la variable facteur `species`. Cela rend la lecture plus aisée. Une seconde solution combine les facettes avec `|` et l'argument `%fill=%`^[Astuce proposée [ici](https://drsimonj.svbtle.com/plotting-background-data-for-groups-with-ggplot2).]. Il faut ensuite ajouter par derrière un histogramme grisé de l'ensemble des données.
@@ -217,8 +217,8 @@ chart(data = iris, ~ sepal_length %fill=% species | species) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-7-1.png" alt="Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-7)Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans).</p>
+<img src="03-Visualisation-II_files/figure-html/histo-facteurs-facettes-1.png" alt="Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans)." width="672" />
+<p class="caption">(\#fig:histo-facteurs-facettes)Distribution des longueurs de sépales de trois espèces d'iris (avec facettes et histogrammes complets grisés en arrière plans).</p>
 </div>
 
 Vous découvrez sans doute que les graphiques réalisables avec R sont modulables à souhait en ajoutant une série d'instructions successives qui créent autant de couches superposées dans le graphique. Cette approche permet de réaliser quasiment une infinité de graphiques différents en combinant seulement quelques dizaines d'instructions. Pour s'y retrouver, les fonctions qui ajoutent des couches commencent toutes par `geom_`, et celles qui manipulent les couleurs par `scale_`, par exemple. Vous découvrirez encore d'autres fonctions graphiques plus loin.
@@ -229,11 +229,11 @@ Vous découvrez sans doute que les graphiques réalisables avec R sont modulable
 L'histogramme n'est pas le seul outil à votre disposition. Vous pouvez également employer le **graphique de densité** qui se présente un peu comme un histogramme lissé. Le passage d'un histogramme vers un graphe de densité se base sur une **estimation par noyaux gaussien**^[L'opération effectuée pour passer d'un histogramme à une courbe de densité consiste effectivement à lisser les pics plus ou moins fort dans l'histogramme de départ.]
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-8-1.png" alt="A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-8)A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image.</p>
+<img src="03-Visualisation-II_files/figure-html/histo-densité-1.png" alt="A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image." width="672" />
+<p class="caption">(\#fig:histo-densité)A. Histogramme et B. graphique de densité montrant la distribution de la taille de zooplancton étudié par analyse d'image.</p>
 </div>
 
-Comme pour les autres graphiques, veuillez à soigner les indications qui permettent d'interpréter le graphique. Outre la courbe de densité, il faut :
+Comme pour les autres graphiques, veillez à soigner les indications qui permettent d'interpréter le graphique. Outre la courbe de densité, il faut :
 
 - Les axes avec les graduations (en rouge)
 - les labels des axes, et l'unité pour l'axe des abscisses (en bleu)
@@ -273,8 +273,8 @@ chart(data = zooplankton, ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-9-1.png" alt="Distribution des tailles au sein de l'échantillon de zooplancton." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-9)Distribution des tailles au sein de l'échantillon de zooplancton.</p>
+<img src="03-Visualisation-II_files/figure-html/densite-1.png" alt="Distribution des tailles au sein de l'échantillon de zooplancton." width="672" />
+<p class="caption">(\#fig:densite)Distribution des tailles au sein de l'échantillon de zooplancton.</p>
 </div>
 
 Ici, nous utilisons donc la fonction `geom_density()`.
@@ -304,11 +304,11 @@ chart(data = zooplankton_sub, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-10-1.png" alt="Distribution des tailles pour 4 groupes taxonomiques de zooplancton." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-10)Distribution des tailles pour 4 groupes taxonomiques de zooplancton.</p>
+<img src="03-Visualisation-II_files/figure-html/violin-plot2-1.png" alt="Distribution des tailles pour 4 groupes taxonomiques de zooplancton." width="672" />
+<p class="caption">(\#fig:violin-plot2)Distribution des tailles pour 4 groupes taxonomiques de zooplancton.</p>
 </div>
 
-Ici, la formule fournie à `chart()` indique la variable numérique à représenter par une graphe de densité _dans le terme de gauche_, et la variable facteur qui découpe l'échantillon en classes _à droite_ : `YNUM (size) ~ XFACT (class)`. Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction `geom_violin()`. Vous pouvez aussi utiliser `%fill=%` pour colorer vos différents graphes en fonction de la variable facteur également, comme dans la Fig. \@ref(fig:violin-plot).
+Ici, la formule fournie à `chart()` indique la variable numérique à représenter par un graphe de densité _dans le terme de gauche_, et la variable facteur qui découpe l'échantillon en classes _à droite_ : `YNUM (size) ~ XFACT (class)`. Pour réaliser un graphique de densité vous devez ensuite ajouter la fonction `geom_violin()`. Vous pouvez aussi utiliser `%fill=%` pour colorer vos différents graphes en fonction de la variable facteur également, comme dans la Fig. \@ref(fig:violin-plot).
 
 
 ##### Pièges et astuces {-}
@@ -322,8 +322,8 @@ chart(data = zooplankton, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-11-1.png" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-11)Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon).</p>
+<img src="03-Visualisation-II_files/figure-html/violin-plot-abscisses-1.png" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon)." width="672" />
+<p class="caption">(\#fig:violin-plot-abscisses)Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon).</p>
 </div>
 
 La fonction `coord_flip()` permute les axes. Ainsi les labels ne se chevauchent plus sur l'axe des ordonnées.
@@ -336,8 +336,8 @@ chart(data = zooplankton, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-12-1.png" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-12)Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`).</p>
+<img src="03-Visualisation-II_files/figure-html/violin-plot-ordonnees-1.png" alt="Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`)." width="672" />
+<p class="caption">(\#fig:violin-plot-ordonnees)Distribution de tailles des 17 classes d'organismes planctoniques (diagramme en violon avec l'ajout de la fonction `coord_flip()`).</p>
 </div>
 
 Le package [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) propose une seconde solution basée sur le principe de graphique de densité avec la fonction `geom_density_ridges()` qui crée un graphique en lignes de crêtes. **Attention : remarquez que la notation est ici inverse du diagramme en violon, soit `XFACT (class) ~ YNUM (size)` !** 
@@ -349,8 +349,8 @@ chart(data = zooplankton, class ~ size) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="03-Visualisation-II_files/figure-html/unnamed-chunk-13-1.png" alt="Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-13)Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes).</p>
+<img src="03-Visualisation-II_files/figure-html/density-ridges-1.png" alt="Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes)." width="672" />
+<p class="caption">(\#fig:density-ridges)Distribution des tailles des 17 classes d'organismes planctoniques (sous forme de graphique en lignes de crêtes).</p>
 </div>
 
 

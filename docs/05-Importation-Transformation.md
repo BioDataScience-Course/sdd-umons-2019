@@ -224,7 +224,7 @@ coral <- read("../data/coral.rds")
 
 ##### Pièges et astuces {-}
 
-- Comme il s'agit seulement d'une *copie* des données originelles, vous pouvez choisir de ne pas inclure le fichier `.rds` dans le système de gestion de version de Git. C'est très simple : il suffit d'ajouter une entrée `.rds` dans le fichier `.gitignore` à la racine de votre dépôt, et tous les fichiers avec cette extension seront ignorés. Notez toutefois que, si vous partagez votre projet sur GitHub, **les données locales n'y apparaitront pas non plus.** D'une part, cela décharge le système de gestion de version, et d'autre part, les gros fichiers de données n'ont pas vraiment leur place sur GitHub. Cependant, soyez conscient de ce que quelqu'un qui réalise un clone ou un fork de votre dépôt devra *d'abord* réimporter lui aussi localement les données avant de pouvoir travailler, ce qui implique de bien comprendre le mécanisme que vous avez mis en place. Documentez-le correctement, avec une note explicite dans le fichier `README.md`, par exemple.
+- Comme il s'agit seulement d'une *copie* des données originelles, vous pouvez choisir de ne pas inclure le fichier `.rds` dans le système de gestion de version de Git. C'est très simple : il suffit d'ajouter une entrée `.rds` dans le fichier `.gitignore` à la racine de votre dépôt, et tous les fichiers avec cette extension seront ignorés. Notez toutefois que, si vous partagez votre projet sur GitHub, **les données locales n'y apparaitront pas non plus.** D'une part, cela décharge le système de gestion de version, et d'autre part, les gros fichiers de données n'ont pas vraiment leur place sur GitHub. Cependant, soyez conscient que quelqu'un qui réalise un clone ou un fork de votre dépôt devra *d'abord* réimporter lui aussi localement les données avant de pouvoir travailler, ce qui implique de bien comprendre le mécanisme que vous avez mis en place. Documentez-le correctement, avec une note explicite dans le fichier `README.md`, par exemple.
 
 - Les données originales ne sont peut-être pas présentées de la façon qui vous convient. Cela peut nécessiter un travail important de **préparation du tableau de données.** Au fur et à mesure que le ou les chunks d'importation/préparation des données augmentent en taille, ils deviennent de plus en plus gênants dans un document consacré à l'**analyse** de ces données. Si c'est le cas, vous avez deux options possibles :
     1. Séparer votre R Markdown en deux. Un premier document dédié à l'importation/préparation des données et un second qui se concentre sur l'analyse. Une bonne pratique consiste à numéroter les fichiers en tête pour qu'ils apparaissent par ordre logique lorsqu'ils sont listés par ordre alphabétique (`01_import.Rmd`, `02_analysis.Rmd`).
@@ -338,7 +338,7 @@ combine_charts(list(a, b, c, d))
 - C\ : l'argument `lang = "fr"` utilise les labels et unités en français. Il laisse cependant les niveaux des variables facteurs en anglais (`Farm` et `Fishery`) afin d'éviter de devoir changer les instructions de manipulation des données qui feraient référence à ces niveaux.
 - D\ : l'argument `lang = "FR"` ajoute les labels et unités en français. De plus, il traduit également les niveaux des variables facteurs (`Culture` et `Pêcherie`).
 
-Il vous est conseillé d'employé l'argument `lang = "fr"` lors de vos différents travaux. La langue internationale en science est l'anglais et vous serez très certainement amené dans votre carrière scientifique à produire des documents en français et en anglais. L'utilisation de `lang = "fr"`rend le **même** code réutilisable sur la version française ou anglaise, contrairement à `lang = "FR"`. Observez les exemples ci-dessous.
+Il vous est conseillé d'employer l'argument `lang = "fr"` lors de vos différents travaux. La langue internationale en science est l'anglais et vous serez très certainement amené dans votre carrière scientifique à produire des documents en français et en anglais. L'utilisation de `lang = "fr"`rend le **même** code réutilisable sur la version française ou anglaise, contrairement à `lang = "FR"`. Observez les exemples ci-dessous.
 
 
 ```r
@@ -461,7 +461,7 @@ combine_charts(list(a, b), common.legend = TRUE)
 C'est la figure \@ref(fig:two-boxplots)B qui tente de représenter une variable quantitative numérique `height`sous forme de boites de dispersion parallèles (correct), mais en fonction d'une variable de découpage en sous-ensemble (`weight`) qui est elle-même une variable quantitative, ... alors qu'une variable qualitative telle que `gender` aurait dû être utilisée (comme dans la Fig. \@ref(fig:two-boxplots)A). Dans le cas présent, R a bien voulu réaliser le graphique (avec juste un petit message d'avertissement), mais comment l'interpréter\ ? Dans d'autres situations, il vous renverra purement et simplement un message d'erreur.
 
 
-Les jeux de données, lorsqu'ils sont bien encodés (**tableaux "cas par variables"**, en anglais on parlera de [tidy data](http://vita.had.co.nz/papers/tidy-data.html)) sont en fait un ensemble de variables en colonnes mesurées sur un ensemble d'individus en lignes. Vous avez à votre disposition plusieurs *types* de variables pour personnaliser le jeu de données. Deux catégories principales de variables existent, chacune avec deux sous-catégories :
+Les jeux de données, lorsqu'ils sont bien encodés (**tableaux "cas par variables"**, en anglais on parlera de [tidy data](http://vita.had.co.nz/papers/tidy-data.html)), sont en fait un ensemble de variables en colonnes mesurées sur un ensemble d'individus en lignes. Vous avez à votre disposition plusieurs *types* de variables pour personnaliser le jeu de données. Deux catégories principales de variables existent, chacune avec deux sous-catégories :
 
 - Les variables **quantitatives** sont issues de mesures quantitatives ou de dénombrements
     + Les variables quantitatives **continues** sont représentées par des valeurs réelles (`double` dans R)
@@ -485,15 +485,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ─────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:Date ───────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -588,11 +588,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -604,7 +604,7 @@ skimr::skim(tooth)
 La variable dose est encodée sous forme numérique alors que cette dernière ne contient que trois niveaux différents et devra être le plus souvent traitée comme une **variable qualitative ordonnée à trois niveaux** . **Vous devrez donc probablement recoder cette variable en variable facteur.**
 
 <div class="note">
-<p>Ce n’est pas le caractère quantitatif ou qualitatif du <em>mécanisme sous-jacent qui est mesuré</em> qui détermine si la variable est quantitative ou qualitative, mais d’autres critères comme la précision avec laquelle la mesure a été effectuée. Par exemple, un anémomètre mesure la vitesse du vent sous forme de variable <strong>quantitative</strong> alors qu’une échelle approximative de type <code>vent nul</code>, <code>vent faible</code>, <code>vent moyen</code>, <code>vent fort</code> ou <code>tempête</code> basée sur l’observation des rides ou des vagues à la surface de la mer pourrait éventuellement convenir pour mesurer le même phénomène si une grande précision n’est pas nécessaire. Mais dans ce cas, la variable devra être traitée comme une variable <strong>qualitative</strong>.</p>
+<p>Ce n’est pas le caractère quantitatif ou qualitatif du mécanisme sous-jacent mesuré qui détermine si la variable est quantitative ou qualitative, mais d’autres critères comme la précision avec laquelle la mesure a été effectuée. Par exemple, un anémomètre mesure la vitesse du vent sous forme de variable <strong>quantitative</strong> alors qu’une échelle approximative de type <code>vent nul</code>, <code>vent faible</code>, <code>vent moyen</code>, <code>vent fort</code> ou <code>tempête</code> basée sur l’observation des rides ou des vagues à la surface de la mer pourrait éventuellement convenir pour mesurer le même phénomène si une grande précision n’est pas nécessaire. Mais dans ce cas, la variable devra être traitée comme une variable <strong>qualitative</strong>.</p>
 <p>De même, un plan expérimental qui réduit volontairement les valeurs fixées dans une expérience, comme ici les doses journalières d’acide ascorbique, fera aussi basculer la variable en <strong>qualitative</strong>, et ce, quelle que soit la précision avec laquelle les valeurs sont mesurées par ailleurs. Un découpage en classes aura aussi le même effet de transformer une variable quantitative en variable qualitative ordonnée.</p>
 </div>
 
@@ -622,7 +622,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -630,7 +630,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -651,7 +651,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -659,7 +659,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -687,7 +687,7 @@ Les **addins** de RStudio vont vous permettre de réaliser facilement un découp
 
 ![](images/sdd1_06/addins_cut.gif)
 
-Vous spécifiez le découpage voulu dans une boite de dialogue sur base de l'histogramme et lorsque vous cliquez sur le bouton `Done`, le code R qui effectue ce découpage est inséré dans l'éditeur RStudio à l'endroit du curseur. la nouvelle variable facteur `age_rec` basée sur le découpage en classes va être utile pour faire ressortir ensuite de l'information supplémentaire en contrastant les individus plus jeunes et ceux plus âgés.
+Vous spécifiez le découpage voulu dans une boite de dialogue sur base de l'histogramme et lorsque vous cliquez sur le bouton `Done`, le code R qui effectue ce découpage est inséré dans l'éditeur RStudio à l'endroit du curseur. La nouvelle variable facteur `age_rec` basée sur le découpage en classes sera ensuite utile pour faire ressortir de l'information supplémentaire en contrastant les individus plus jeunes et ceux plus âgés.
 
 
 ```r
@@ -766,7 +766,7 @@ skimr::skim(df)
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -818,7 +818,7 @@ levels(iris20$species)
 # [1] "setosa"     "versicolor" "virginica"
 ```
 
-Dans le cas ici, nous souhaitons peut-être nous focaliser uniquement sur l'espèce *I. setosa*. Dans ce cas, `droplevels()` permettra de faire disparaître les autres niveaux de la variable `species`.
+Dans le cas ici, nous souhaitons uniquement nous focaliser sur l'espèce *I. setosa*. Dès lors, l'utilisation de la fonction `droplevels()` permet de faire disparaître les autres niveaux de la variable `species`.
 
 
 ```r
@@ -843,7 +843,7 @@ table(iris20$species)
 
 ## Remaniement des données
 
-Dans le module \@ref(visu3), vous avez réalisé vos premiers remaniements de données dans le cadre des graphiques en barres. Nous ne nous sommes pas étendu sur les fonctions utilisées à cette occasion. Le **remaniement des données est une étape cruciale en analyse des données** et il faut en maîtriser au moins les principaux outils. Heureusement, il est déjà possible d'aller loin en combinant une petite dizaine d'outils simples. Les cinq principaux (les plus utilisés) en tout cas dans l'approche [Tidyverse](https://www.tidyverse.org) utilisée ici sont : 
+Dans le module \@ref(visu3), vous avez réalisé vos premiers remaniements de données dans le cadre des graphiques en barres. Nous ne nous sommes pas étendu sur les fonctions utilisées à cette occasion. Le **remaniement des données est une étape cruciale en analyse des données** et il faut en maîtriser au moins les principaux outils. Heureusement, il est déjà possible d'aller loin en combinant une petite dizaine d'outils simples. Les cinq principaux (les plus utilisés) dans l'approche [Tidyverse](https://www.tidyverse.org) utilisée ici sont : 
 
 - sélectionner des colonnes au sein d'un jeu de données avec `select()`
 
@@ -996,7 +996,7 @@ rmarkdown::paged_table(urchin_sub3)
   </script>
 </div>
 
-Avec des variables facteurs composées des nombreux niveaux comme on peut en retrouver dans le jeu de données `zooplankton` du package **BioDataScience**, vous pouvez être amené à sélectionner plusieurs niveaux au sein de cette variable. L'opérateur `%in%` permet d'indiquer que nous souhaitons garder tous les niveaux qui sont dans une liste. Il n'existe pas d'opérateur `%not_in%`, mais il suffit d'inverser le résultat en précédent l'instruction de `!` pour obtenir cet effet. Par exemple, `!letters %in% c("a", "d", "f")` conserve toutes les lettres *sauf* a, d et f. L'opérateur `!` est d'ailleurs utilisable avec toutes les comparaisons pour en inverser les effets. Ainsi, `!x == 1` est équivalent à `x != 1`.
+Avec des variables facteurs composées de nombreux niveaux comme on peut en retrouver dans le jeu de données `zooplankton` du package **BioDataScience**, vous pouvez être amené à sélectionner plusieurs niveaux au sein de cette variable. L'opérateur `%in%` permet d'indiquer que nous souhaitons garder tous les niveaux qui sont dans une liste. Il n'existe pas d'opérateur `%not_in%`, mais il suffit d'inverser le résultat en précédent l'instruction de `!` pour obtenir cet effet. Par exemple, `!letters %in% c("a", "d", "f")` conserve toutes les lettres *sauf* a, d et f. L'opérateur `!` est d'ailleurs utilisable avec toutes les comparaisons pour en inverser les effets. Ainsi, `!x == 1` est équivalent à `x != 1`.
 
 
 ```r

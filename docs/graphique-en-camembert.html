@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-03">
+<meta name="date" content="2019-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -425,16 +425,16 @@ code span.wa { color: #bf0303; } /* Warning */
             <section class="normal" id="section-">
 <div id="graphique-en-camembert" class="section level2">
 <h2><span class="header-section-number">4.2</span> Graphique en camembert</h2>
-<p>Le graphique en camembert (ou en parts de tarte, ou encore appelé diagramme circulaire, <em>pie chart</em> en anglais) va vous permettre de visualiser un dénombrement d’observations par facteur, tout comme le graphique en barres.</p>
+<p>Le graphique en camembert (ou en parts de tarte, ou encore appelé diagramme circulaire, <em>pie chart</em> en anglais) vous permettra de visualiser un dénombrement d’observations par facteur, tout comme le graphique en barres.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> copepoda, <span class="op">~</span><span class="st"> </span><span class="kw">factor</span>(<span class="dv">0</span>) <span class="op">%fill=%</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">coord_polar</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">start =</span> <span class="dv">0</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_void</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-11"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.png" alt="Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:piechart"></span>
+<img src="04-Visualisation-III_files/figure-html/piechart-1.png" alt="Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur." width="672" />
 <p class="caption">
-Figure 3.9: Exemple de graphique en camembert montrant les effectifs des niveaux d’une variable facteur.
+Figure 4.9: Exemple de graphique en camembert montrant les effectifs des niveaux d’une variable facteur.
 </p>
 </div>
 <p>Ce graphique est plus difficile à réaliser à l’aide de <code>chart()</code> ou <code>ggplot()</code>. En fait, il faut ruser ici, et l’auteur du package <strong>ggplot2</strong> n’avait tout simplement pas l’intention d’ajouter ce type de graphique dans la panoplie proposée. En effet, il faut savoir que l’œil humain est nettement moins bon pour repérer des angles que pour comparer des longueurs. <strong>Donc, le diagramme en barres est souvent meilleur pour comparer des effectifs par classes.</strong> Mais d’une part, le graphique en camembert est (malheureusement) un graphique très répandu et il faut savoir l’interpréter, et d’autre part, il peut s’avérer quand même utile dans certaines situations. Notez l’utilisation de la fonction <code>theme_void()</code> qui crée un graphique sans axes.</p>
@@ -443,17 +443,17 @@ Figure 3.9: Exemple de graphique en camembert montrant les effectifs des niveaux
 <p>Partons d’un exemple fictif pour vous convaincre qu’un graphique en barres est souvent plus lisible qu’un graphique en camembert. Combien d’observations comptez-vous pour la lettre <strong>H</strong> ?</p>
 <pre><code># Warning: `data_frame()` is deprecated, use `tibble()`.
 # This warning is displayed once per session.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-13"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.png" alt="Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider)." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:piechart2"></span>
+<img src="04-Visualisation-III_files/figure-html/piechart2-1.png" alt="Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider)." width="672" />
 <p class="caption">
-Figure 3.11: Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider).
+Figure 4.10: Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider).
 </p>
 </div>
 <p>Maintenant, effectuez le même exercice sur base d’un graphique en barres, combien d’observations pour la lettre <strong>H</strong> ?</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-14"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.png" alt="Dénombrement des niveaux d'une variable facteur sur un graphique en barres." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:barchart2"></span>
+<img src="04-Visualisation-III_files/figure-html/barchart2-1.png" alt="Dénombrement des niveaux d'une variable facteur sur un graphique en barres." width="672" />
 <p class="caption">
-Figure 4.2: Dénombrement des niveaux d’une variable facteur sur un graphique en barres.
+Figure 4.11: Dénombrement des niveaux d’une variable facteur sur un graphique en barres.
 </p>
 </div>
 <p>Dans ce dernier cas, c’est bien plus facile : il y a effectivement 24 observations relatives à la lettre <strong>H</strong>.</p>

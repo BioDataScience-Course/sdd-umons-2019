@@ -33,8 +33,8 @@ La formule que vous utiliserez, ici encore, ne fait appel qu'à une seule variab
 $$\sim variable \ facteur$$
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-1-1.png" alt="Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-1)Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs.</p>
+<img src="04-Visualisation-III_files/figure-html/barres-facteur-1.png" alt="Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs." width="672" />
+<p class="caption">(\#fig:barres-facteur)Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs.</p>
 </div>
 
 Outre les barres elles-mêmes, prêtez toujours attention aux éléments suivants du graphique (ici mis en évidence en couleurs) :
@@ -103,8 +103,8 @@ chart(data = copepoda, ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-2-1.png" alt="Abondances de quatres types de copépodes dans un échantillon de zooplancton." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-2)Abondances de quatres types de copépodes dans un échantillon de zooplancton.</p>
+<img src="04-Visualisation-III_files/figure-html/barres-facteur2-1.png" alt="Abondances de quatres types de copépodes dans un échantillon de zooplancton." width="672" />
+<p class="caption">(\#fig:barres-facteur2)Abondances de quatres types de copépodes dans un échantillon de zooplancton.</p>
 </div>
 
 La fonction `geom_bar()` se charge d'ajouter les barres verticales dans le graphique. La hauteur de ces barres correspond au nombre d'observations rencontrées dans le jeu de données pour chaque niveau (ou classe, ou groupe) de la variable facteur représentée.
@@ -158,8 +158,8 @@ combine_charts(list(a, b), common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-4-1.png" alt="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-4)Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B).</p>
+<img src="04-Visualisation-III_files/figure-html/barres-2facteurs-1.png" alt="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B)." width="672" />
+<p class="caption">(\#fig:barres-2facteurs)Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B).</p>
 </div>
 
 Il existe d'autres options en utilisant la valeur `dodge` ou `fill` pour l'argument `position =`.
@@ -185,8 +185,8 @@ combine_charts(list(a, b, c), common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-5-1.png" alt="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-5)Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations).</p>
+<img src="04-Visualisation-III_files/figure-html/barres-2facteurs2-1.png" alt="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations)." width="672" />
+<p class="caption">(\#fig:barres-2facteurs2)Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations).</p>
 </div>
 
 Soyez vigilant à la différence entre l'argument `position = stack` et `position = fill` qui malgré un rendu semblable ont l'axe des ordonnées qui diffère (dans le cas de `fill`, il s'agit de la **fraction** par rapport au total qui est représentée, et non pas des **effectifs** absolus dénombrés).
@@ -206,8 +206,8 @@ chart(data = copepoda, ~ fct_infreq(class)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-6-1.png" alt="Dénombrement des classes de copépodes du jeu de données zooplankton." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-6)Dénombrement des classes de copépodes du jeu de données zooplankton.</p>
+<img src="04-Visualisation-III_files/figure-html/barres-facteur-ordonné-1.png" alt="Dénombrement des classes de copépodes du jeu de données zooplankton." width="672" />
+<p class="caption">(\#fig:barres-facteur-ordonné)Dénombrement des classes de copépodes du jeu de données zooplankton.</p>
 </div>
 
 ###### Rotation des axes du graphique en barre {-}
@@ -237,8 +237,8 @@ chart(data = zooplankton, ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-7-1.png" alt="Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-7)Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales).</p>
+<img src="04-Visualisation-III_files/figure-html/barres-rotation-1.png" alt="Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales)." width="672" />
+<p class="caption">(\#fig:barres-rotation)Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales).</p>
 </div>
 
 
@@ -293,8 +293,8 @@ chart(data = copepoda, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-9-1.png" alt="Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-9)Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique.</p>
+<img src="04-Visualisation-III_files/figure-html/barres-mean-1.png" alt="Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique." width="672" />
+<p class="caption">(\#fig:barres-mean)Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique.</p>
 </div>
 
 Ici, nous faisons appel à une autre famille de fonctions : celles qui effectuent des calculs sur les données avant de les représenter graphiquement.
@@ -311,7 +311,7 @@ Ici, nous faisons appel à une autre famille de fonctions : celles qui effectuen
 
 ## Graphique en camembert
 
-Le graphique en camembert (ou en parts de tarte, ou encore appelé diagramme circulaire, *pie chart* en anglais) va vous permettre de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barres. 
+Le graphique en camembert (ou en parts de tarte, ou encore appelé diagramme circulaire, *pie chart* en anglais) vous permettra de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barres. 
 
 
 ```r
@@ -323,8 +323,8 @@ chart(data = copepoda, ~ factor(0) %fill=% class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-11-1.png" alt="Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-11)Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur.</p>
+<img src="04-Visualisation-III_files/figure-html/piechart-1.png" alt="Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur." width="672" />
+<p class="caption">(\#fig:piechart)Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur.</p>
 </div>
 
 Ce graphique est plus difficile à réaliser à l'aide de `chart()` ou `ggplot()`. En fait, il faut ruser ici, et l'auteur du package **ggplot2** n'avait tout simplement pas l'intention d'ajouter ce type de graphique dans la panoplie proposée. En effet, il faut savoir que l’œil humain est nettement moins bon pour repérer des angles que pour comparer des longueurs. **Donc, le diagramme en barres est souvent meilleur pour comparer des effectifs par classes.** Mais d'une part, le graphique en camembert est (malheureusement) un graphique très répandu et il faut savoir l'interpréter, et d'autre part, il peut s'avérer quand même utile dans certaines situations. Notez l'utilisation de la fonction `theme_void()` qui crée un graphique sans axes.
@@ -342,15 +342,15 @@ Partons d'un exemple fictif pour vous convaincre qu'un graphique en barres est s
 
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-13-1.png" alt="Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-13)Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider).</p>
+<img src="04-Visualisation-III_files/figure-html/piechart2-1.png" alt="Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider)." width="672" />
+<p class="caption">(\#fig:piechart2)Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider).</p>
 </div>
 
 Maintenant, effectuez le même exercice sur base d'un graphique en barres, combien d'observations pour la lettre **H** ?
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-14-1.png" alt="Dénombrement des niveaux d'une variable facteur sur un graphique en barres." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-14)Dénombrement des niveaux d'une variable facteur sur un graphique en barres.</p>
+<img src="04-Visualisation-III_files/figure-html/barchart2-1.png" alt="Dénombrement des niveaux d'une variable facteur sur un graphique en barres." width="672" />
+<p class="caption">(\#fig:barchart2)Dénombrement des niveaux d'une variable facteur sur un graphique en barres.</p>
 </div>
 
 Dans ce dernier cas, c'est bien plus facile : il y a effectivement 24 observations relatives à la lettre **H**.
@@ -369,7 +369,7 @@ Dans ce dernier cas, c'est bien plus facile : il y a effectivement 24 observatio
 
 ## Boite de dispersion {#boxplot}
 
-Vous souhaitez représenter graphiquement cette fois *un résumé* d'une variable numérique mesurée sur un nombre (relativement) important d'individus, soit depuis une dizaine jusqu'à plusieurs millions. Vous souhaitez également conserver de l'information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d'une variable facteur. Nous avons déjà vu au module \@ref(visu2) les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les **boites de dispersion** (encore appelée boite à moustaches) comme option alternative intéressante. La boite de dispersion va représenter graphiquement cinq descripteurs appelés les **cinq nombres**.
+Vous souhaitez représenter graphiquement cette fois *un résumé* d'une variable numérique mesurée sur un nombre (relativement) important d'individus, soit depuis une dizaine jusqu'à plusieurs millions. Vous souhaitez également conserver de l'information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d'une variable facteur. Nous avons déjà vu au module \@ref(visu2) les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les **boites de dispersion** (encore appelée boite à moustaches) comme option alternative intéressante. La boite de dispersion représentera graphiquement cinq descripteurs appelés les **cinq nombres**.
 
 Considérez l'échantillon suivant :
 
@@ -419,8 +419,8 @@ fivenum(x)
 La boite de dispersion est une représentation graphique codifiée de ces cinq nombres. La représentation de `x` sous forme de nuage de points n'est ni très esthétique, ni très lisible, surtout si nous avons affaire à des milliers ou des millions d'observations qui se chevauchent sur le graphique^[Il est possible de modifier la transparence des points et/ou de les déplacer légèrement vers la gauche ou vers la droite de manière aléatoire pour résoudre le problème de chevauchement des points sur un graphique en nuage de points univarié.].
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-19-1.png" alt="Nuage de points univarié." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-19)Nuage de points univarié.</p>
+<img src="04-Visualisation-III_files/figure-html/nuage-de-points-1.png" alt="Nuage de points univarié." width="672" />
+<p class="caption">(\#fig:nuage-de-points)Nuage de points univarié.</p>
 </div>
 
 La boite de dispersion va remplacer cette représentation peu lisible par un objet géométrique qui représente les cinq nombres.
@@ -452,8 +452,8 @@ chart(data = copepoda, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.png" alt="Distribution des tailles par groupes taxonomiques pour le zooplancton." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-22)Distribution des tailles par groupes taxonomiques pour le zooplancton.</p>
+<img src="04-Visualisation-III_files/figure-html/boxplot-1.png" alt="Distribution des tailles par groupes taxonomiques pour le zooplancton." width="672" />
+<p class="caption">(\#fig:boxplot)Distribution des tailles par groupes taxonomiques pour le zooplancton.</p>
 </div>
 
 La formule à employer est `YNUM (size) ~ XFACTOR (class)`. Ensuite, pour réaliser une boite de dispersion vous devez ajouter la fonction `geom_boxplot()`.
@@ -464,8 +464,8 @@ La formule à employer est `YNUM (size) ~ XFACTOR (class)`. Ensuite, pour réali
 Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d'observations qui se cachent sous chacune d'elles. En effet, réaliser une boite de dispersion à partir d'échantillons ne comportant que cinq valeurs ou moins n'a *aucun* sens ! 
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-23-1.png" alt="Piège des boites de dispersion : trop peu d'observations disponibles pour `a`." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-23)Piège des boites de dispersion : trop peu d'observations disponibles pour `a`.</p>
+<img src="04-Visualisation-III_files/figure-html/boxplot-points-1.png" alt="Piège des boites de dispersion : trop peu d'observations disponibles pour `a`." width="672" />
+<p class="caption">(\#fig:boxplot-points)Piège des boites de dispersion : trop peu d'observations disponibles pour `a`.</p>
 </div>
 
 La boite de dispersion **`A`** est calculée à partir de seulement quatre observations. C'est trop peu. Comme les points représentant les observations ne sont habituellement pas superposés à la boite, cela peut passer inaperçu et tromper le lecteur ! Une bonne pratique consiste à ajouter *n*, le nombre d'observations au-dessus de chaque boite. Cela peut se faire facilement avec les fonctions `give_n()` et `stat_summary()` ci-dessous.
@@ -481,8 +481,8 @@ chart(data = copepoda, size ~ class) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.png" alt="Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-24)Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite).</p>
+<img src="04-Visualisation-III_files/figure-html/boxplot2-1.png" alt="Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite)." width="672" />
+<p class="caption">(\#fig:boxplot2)Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite).</p>
 </div>
 
 
@@ -565,7 +565,7 @@ Dans le premier cas, les fonctions `facet_XXX()` comme `facet_grid()` peuvent ê
 
 ### Facettes
 
-L'une des règles les plus importantes que vous devez impérativement garder à l'esprit lors de la réalisation de vos graphiques est *la simplicité*. Plus votre graphique va contenir d'information au plus il sera compliqué à décoder par vos lecteurs. 
+L'une des règles les plus importantes que vous devez impérativement garder à l'esprit lors de la réalisation de vos graphiques est *la simplicité*. Au plus votre graphique contiendra d'information au plus il sera compliqué à décoder par vos lecteurs. 
 
 
 ```r
@@ -612,8 +612,8 @@ chart(data = chick_weight, weight ~ Time | Diet) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-25-1.png" alt="Croissance de poulets en utilisant quatre aliments différents (1-4)." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-25)Croissance de poulets en utilisant quatre aliments différents (1-4).</p>
+<img src="04-Visualisation-III_files/figure-html/chick-facette-1.png" alt="Croissance de poulets en utilisant quatre aliments différents (1-4)." width="672" />
+<p class="caption">(\#fig:chick-facette)Croissance de poulets en utilisant quatre aliments différents (1-4).</p>
 </div>
 
 Vous observez que les échelles en abscisse et en ordonnée sont similaires sur tous les graphiques. Cela permet une meilleure comparaison. Notez toutefois que, plus le nombre de facettes augmente, plus chaque graphique individuel devient petit. Faites attention à ne pas finir avec des graphiques individuels tellement petits qu'ils en deviennent illisibles !
@@ -639,8 +639,8 @@ combine_charts(list(a, b), common.legend = TRUE)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-26-1.png" alt="A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-26)A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins.</p>
+<img src="04-Visualisation-III_files/figure-html/combine-charts-1.png" alt="A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins." width="672" />
+<p class="caption">(\#fig:combine-charts)A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins.</p>
 </div>
 
 Il existe d'autres fonctions permettant de combiner plusieurs graphiques comme [`plot_grid()`](https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html) du package **cowplot**, mais avec `combine_charts()` vous pourrez déjà faire beaucoup. De plus, un libellé sous forme d'une lettre majuscule est automatiquement associé à chaque sous-région de la figure composée. Cela permet d'y faire plus facilement référence dans le texte et/ou dans la légende.
@@ -652,7 +652,7 @@ Il existe d'autres fonctions permettant de combiner plusieurs graphiques comme [
 
 - [Figures composées à l'aide de `grid.arrange()`](http://lightonphiri.org/blog/ggplot2-multiple-plots-in-one-graph-using-gridextra). Une autre option, mais moins flexible et moins riche que `combine_charts()`. 
 
-- [Figures composées à l'aide de `plot_grid()`](https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html) avec les différentes options, aussi disponibles avec `combine_charts()`.
+- [Figures composées à l'aide de `plot_grid()`](https://wilkelab.org/cowplot/reference/plot_grid.html) avec les différentes options, aussi disponibles avec `combine_charts()`.
 
 - [Troisième possibilité pour des figures composées à l'aide de `ggarrange()`](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggarrange.html). `combine_charts()` fait la même chose, mais avec des valeurs par défaut légèrement différentes (`labels = "auto"` par défaut pour ce dernier, mais `labels = NULL` pour `ggarrange()`). 
 
@@ -849,8 +849,8 @@ legend(x = 80, y = 10, legend = c("Culture", "Pêcherie"),
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-29-1.png" alt="Graphique exemple réalisé avec le moteur graphique R de base." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-29)Graphique exemple réalisé avec le moteur graphique R de base.</p>
+<img src="04-Visualisation-III_files/figure-html/base-example-1.png" alt="Graphique exemple réalisé avec le moteur graphique R de base." width="672" />
+<p class="caption">(\#fig:base-example)Graphique exemple réalisé avec le moteur graphique R de base.</p>
 </div>
 
 Vous rencontrerez très fréquemment la fonction `plot()`. C'est une fonction dite **générique** dont le comportement change en fonction de l'objet fourni en premier argument. Ainsi, elle réalise le graphique le plus pertinent à chaque fois en fonction du contexte. Notez tout de suite les instructions un peu confuses nécessaires pour spécifier la couleur souhaitée en fonction de l'origine des oursins. Le moteur graphique de base ne gère **pas** automatiquement des aspects plus complexes du graphique, telle que le positionnement d'une légende. Donc, à moins d'avoir prévu la place suffisante _avant_ de tracer le graphique, nous ne pouvons que l'inclure à l'intérieur du cadre du graphique dans un second temps à l'aide de la fonction `legend()`. Comme cette dernière ne comprend rien à ce qui a été réalisé jusqu'ici, il faut lui respécifier les couleurs, formes et tailles de points utilisés ! C'est un des aspects pénibles du moteur graphique R de base.
@@ -870,8 +870,8 @@ chart$base({
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-31-1.png" alt="Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-31)Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`.</p>
+<img src="04-Visualisation-III_files/figure-html/chart-base-1.png" alt="Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`." width="672" />
+<p class="caption">(\#fig:chart-base)Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`.</p>
 </div>
 
 \BeginKnitrBlock{note}<div class="note">Notez que le graphique est généré deux fois : une première fois dans un format propre aux graphiques R de base, et ensuite, il est traduit en une forme compatible avec les autres graphiques **ggplot2** et **lattice** (et au passage, il gagne la grille en traits grisés). Dans le chunck, nous devons spécifier `fig.keep = 2` pour éviter d'imprimer la première version dans le rapport lorsqu'on utilise `chart$base()`.</div>\EndKnitrBlock{note}
@@ -884,8 +884,8 @@ coplot(data = urchin, height ~ weight | origin)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-33-1.png" alt="Graphique à facettes avec le moteur graphique de base." width="672" />
-<p class="caption">(\#fig:unnamed-chunk-33)Graphique à facettes avec le moteur graphique de base.</p>
+<img src="04-Visualisation-III_files/figure-html/coplot-example-1.png" alt="Graphique à facettes avec le moteur graphique de base." width="672" />
+<p class="caption">(\#fig:coplot-example)Graphique à facettes avec le moteur graphique de base.</p>
 </div>
 
 A l'issue de cette comparaison, vous pourrez décider du moteur graphique que vous préférerez utiliser. Dans le cadre de ce cours, nous n'utiliserons en tous cas que quasi-exclusivement des graphiques **ggplot2** créés à l'aide la fonction `chart()`.

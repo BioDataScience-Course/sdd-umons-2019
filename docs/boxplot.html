@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-03">
+<meta name="date" content="2019-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -425,7 +425,7 @@ code span.wa { color: #bf0303; } /* Warning */
             <section class="normal" id="section-">
 <div id="boxplot" class="section level2">
 <h2><span class="header-section-number">4.3</span> Boite de dispersion</h2>
-<p>Vous souhaitez représenter graphiquement cette fois <em>un résumé</em> d’une variable numérique mesurée sur un nombre (relativement) important d’individus, soit depuis une dizaine jusqu’à plusieurs millions. Vous souhaitez également conserver de l’information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d’une variable facteur. Nous avons déjà vu au module <a href="visu2.html#visu2">3</a> les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les <strong>boites de dispersion</strong> (encore appelée boite à moustaches) comme option alternative intéressante. La boite de dispersion va représenter graphiquement cinq descripteurs appelés les <strong>cinq nombres</strong>.</p>
+<p>Vous souhaitez représenter graphiquement cette fois <em>un résumé</em> d’une variable numérique mesurée sur un nombre (relativement) important d’individus, soit depuis une dizaine jusqu’à plusieurs millions. Vous souhaitez également conserver de l’information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d’une variable facteur. Nous avons déjà vu au module <a href="visu2.html#visu2">3</a> les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les <strong>boites de dispersion</strong> (encore appelée boite à moustaches) comme option alternative intéressante. La boite de dispersion représentera graphiquement cinq descripteurs appelés les <strong>cinq nombres</strong>.</p>
 <p>Considérez l’échantillon suivant :</p>
 <pre><code>1, 71, 55, 68, 78, 60, 83, 120, 82 ,53, 26</code></pre>
 <p>Ordonnez-le de la plus petite à la plus grande valeur :</p>
@@ -447,49 +447,49 @@ Les <strong>cinq nombres</strong> sont : la <strong>valeur minimale</strong>, le
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fivenum</span>(x)</code></pre>
 <pre><code># [1]   1  54  68  80 120</code></pre>
 <p>La boite de dispersion est une représentation graphique codifiée de ces cinq nombres. La représentation de <code>x</code> sous forme de nuage de points n’est ni très esthétique, ni très lisible, surtout si nous avons affaire à des milliers ou des millions d’observations qui se chevauchent sur le graphique<a href="references.html#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>.</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-19"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-19-1.png" alt="Nuage de points univarié." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:nuage-de-points"></span>
+<img src="04-Visualisation-III_files/figure-html/nuage-de-points-1.png" alt="Nuage de points univarié." width="672" />
 <p class="caption">
-Figure 4.3: Nuage de points univarié.
+Figure 4.12: Nuage de points univarié.
 </p>
 </div>
 <p>La boite de dispersion va remplacer cette représentation peu lisible par un objet géométrique qui représente les cinq nombres.</p>
 <div class="figure" style="text-align: center"><span id="fig:boxplot-construct"></span>
 <img src="04-Visualisation-III_files/figure-html/boxplot-construct-1.png" alt="A) Nuage de points annoté avec les cinq nombres représentés par des traits horizontaux. B) Boite de dispersion obtenue pour les même données que A." width="672" />
 <p class="caption">
-Figure 4.4: A) Nuage de points annoté avec les cinq nombres représentés par des traits horizontaux. B) Boite de dispersion obtenue pour les même données que A.
+Figure 4.13: A) Nuage de points annoté avec les cinq nombres représentés par des traits horizontaux. B) Boite de dispersion obtenue pour les même données que A.
 </p>
 </div>
-<p>Vous observez à la Fig. <a href="boxplot.html#fig:boxplot-construct">4.4</a> que certaines valeurs minimales et maximales ne sont pas reliées à la boite de dispersion, il s’agit de <strong>valeurs extrêmes</strong>.</p>
+<p>Vous observez à la Fig. <a href="boxplot.html#fig:boxplot-construct">4.13</a> que certaines valeurs minimales et maximales ne sont pas reliées à la boite de dispersion, il s’agit de <strong>valeurs extrêmes</strong>.</p>
 
 <div class="note">
 <strong>Règle pour déterminer s’il y a des valeurs extrêmes avec une boite de dispersion :</strong> une valeur est considérée comme extrême si son écart par rapport à la boite est supérieur à une fois et demi la hauteur de la boite (encore appelée <strong>espace inter-quartile</strong> IQR correspondant à Q3 - Q1). Les tiges (ou “moustaches”) qui prolongent la boite de dispersion s’arrêtent donc aux dernières valeurs les plus petites et plus grandes, mais qui rentrent encore dans une fois et demi l’IQR. Les valeurs extrêmes sont ensuite représentées individuellement par un point au dessus et en dessous.
 </div>
 
-<p>La boite de dispersion finale ainsi que sa description sont représentées à la Fig. <a href="boxplot.html#fig:boxplot-desc">4.5</a> ci-dessous.</p>
+<p>La boite de dispersion finale ainsi que sa description sont représentées à la Fig. <a href="boxplot.html#fig:boxplot-desc">4.14</a> ci-dessous.</p>
 <div class="figure" style="text-align: center"><span id="fig:boxplot-desc"></span>
 <img src="04-Visualisation-III_files/figure-html/boxplot-desc-1.png" alt="A) Boite de dispersion pour `x` et B) description des différents éléments constitutifs." width="672" />
 <p class="caption">
-Figure 4.5: A) Boite de dispersion pour <code>x</code> et B) description des différents éléments constitutifs.
+Figure 4.14: A) Boite de dispersion pour <code>x</code> et B) description des différents éléments constitutifs.
 </p>
 </div>
 <p>Les instructions dans R pour produire un graphique en boites de dispersion parallèles (comparaison de la distribution d’une variable numérique pour différents niveaux d’une autre variable facteur) sont :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> copepoda, size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-22"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-22-1.png" alt="Distribution des tailles par groupes taxonomiques pour le zooplancton." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:boxplot"></span>
+<img src="04-Visualisation-III_files/figure-html/boxplot-1.png" alt="Distribution des tailles par groupes taxonomiques pour le zooplancton." width="672" />
 <p class="caption">
-Figure 4.6: Distribution des tailles par groupes taxonomiques pour le zooplancton.
+Figure 4.15: Distribution des tailles par groupes taxonomiques pour le zooplancton.
 </p>
 </div>
 <p>La formule à employer est <code>YNUM (size) ~ XFACTOR (class)</code>. Ensuite, pour réaliser une boite de dispersion vous devez ajouter la fonction <code>geom_boxplot()</code>.</p>
 <div id="taille-de-lechantillon" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Taille de l’échantillon</h3>
 <p>Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d’observations qui se cachent sous chacune d’elles. En effet, réaliser une boite de dispersion à partir d’échantillons ne comportant que cinq valeurs ou moins n’a <em>aucun</em> sens !</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-23"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-23-1.png" alt="Piège des boites de dispersion : trop peu d'observations disponibles pour `a`." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:boxplot-points"></span>
+<img src="04-Visualisation-III_files/figure-html/boxplot-points-1.png" alt="Piège des boites de dispersion : trop peu d'observations disponibles pour `a`." width="672" />
 <p class="caption">
-Figure 4.7: Piège des boites de dispersion : trop peu d’observations disponibles pour <code>a</code>.
+Figure 4.16: Piège des boites de dispersion : trop peu d’observations disponibles pour <code>a</code>.
 </p>
 </div>
 <p>La boite de dispersion <strong><code>A</code></strong> est calculée à partir de seulement quatre observations. C’est trop peu. Comme les points représentant les observations ne sont habituellement pas superposés à la boite, cela peut passer inaperçu et tromper le lecteur ! Une bonne pratique consiste à ajouter <em>n</em>, le nombre d’observations au-dessus de chaque boite. Cela peut se faire facilement avec les fonctions <code>give_n()</code> et <code>stat_summary()</code> ci-dessous.</p>
@@ -499,16 +499,16 @@ Figure 4.7: Piège des boites de dispersion : trop peu d’observations disponib
 <span class="kw">chart</span>(<span class="dt">data =</span> copepoda, size <span class="op">~</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> give_n, <span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">hjust =</span> <span class="fl">0.5</span>)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-24"></span>
-<img src="04-Visualisation-III_files/figure-html/unnamed-chunk-24-1.png" alt="Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite)." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:boxplot2"></span>
+<img src="04-Visualisation-III_files/figure-html/boxplot2-1.png" alt="Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite)." width="672" />
 <p class="caption">
-Figure 4.8: Taille de copépodes pour différents groupes taxonomiques (le nombre d’observations est indiqué au dessus de chaque boite).
+Figure 4.17: Taille de copépodes pour différents groupes taxonomiques (le nombre d’observations est indiqué au dessus de chaque boite).
 </p>
 </div>
 </div>
 <div id="en-fonction-de-2-facteurs" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> En fonction de 2 facteurs</h3>
-<p>La Fig. <a href="boxplot.html#fig:boxplot-tooth">4.9</a> présente un graphique en boites de dispersion parallèles qui combine l’usage de <em>deux</em> variables facteurs différentes.</p>
+<p>La Fig. <a href="boxplot.html#fig:boxplot-tooth">4.18</a> présente un graphique en boites de dispersion parallèles qui combine l’usage de <em>deux</em> variables facteurs différentes.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Importation du jeu de données ToothGrowth</span>
 (tooth_growth &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;ToothGrowth&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;datasets&quot;</span>))</code></pre>
 <pre><code># # A tibble: 60 x 3
@@ -547,7 +547,7 @@ tooth_growth &lt;-<span class="st"> </span><span class="kw">labelise</span>(toot
 <div class="figure" style="text-align: center"><span id="fig:boxplot-tooth"></span>
 <img src="04-Visualisation-III_files/figure-html/boxplot-tooth-1.png" alt=" Croissance de dents de cochons d'Inde en fonction de la supplémentation (OJ = jus d'orange, VC = vitamine C) et de la dose administrée (n indiqué au dessus de chaque boite)." width="672" />
 <p class="caption">
-Figure 4.9:  Croissance de dents de cochons d’Inde en fonction de la supplémentation (OJ = jus d’orange, VC = vitamine C) et de la dose administrée (n indiqué au dessus de chaque boite).
+Figure 4.18:  Croissance de dents de cochons d’Inde en fonction de la supplémentation (OJ = jus d’orange, VC = vitamine C) et de la dose administrée (n indiqué au dessus de chaque boite).
 </p>
 </div>
 <div id="pour-en-savoir-plus-10" class="section level5 unnumbered">

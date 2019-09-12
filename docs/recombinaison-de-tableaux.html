@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-03">
+<meta name="date" content="2019-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -447,7 +447,7 @@ code span.wa { color: #bf0303; } /* Warning */
 #   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 # 1 m         1.2   4.8   0.9
 # 2 f         3.4   3.1   1.2</code></pre>
-<p>Dans le format large, les différents niveaux de la variable facteur <code>treatment</code> deviennent autant de colonnes (donc de variables) séparées, et la variable d’origine n’existe plus de manière explicite. Ces deux tableaux contiennent la même information. Bien évidemment, un seul de ces formats est un <em>tableau cas par variables correct</em>. Le format long sera le bon si tous les mesures sont réalisées sur des individus différents. Le format large sera correct, par contre, si les différentes mesures ont été faites à chaque fois sur les <em>mêmes</em> individus (dans le cas présent, <em>un seul</em> mâle et <em>une seule</em> femelle auraient alors été mesurés dans les trois situations).</p>
+<p>Dans le format large, les différents niveaux de la variable facteur <code>treatment</code> deviennent autant de colonnes (donc de variables) séparées, et la variable d’origine n’existe plus de manière explicite. Ces deux tableaux contiennent la même information. Bien évidemment, un seul de ces formats est un <em>tableau cas par variables correct</em>. Le format long sera le bon si toutes les mesures sont réalisées sur des individus différents. Par contre, le format large sera correct, si les différentes mesures ont été faites à chaque fois sur les <em>mêmes</em> individus (dans le cas présent, <em>un seul</em> mâle et <em>une seule</em> femelle auraient alors été mesurés dans les trois situations).</p>
 <div class="note">
 <p>
 C’est la règle qui veut qu’<strong>une ligne corresponde à un et un seul individu</strong> dans un tableau cas par variables qui permet de décider si le format long ou le format large est celui qui est correctement encodé.
