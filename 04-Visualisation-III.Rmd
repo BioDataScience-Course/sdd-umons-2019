@@ -38,7 +38,7 @@ La formule que vous utiliserez, ici encore, ne fait appel qu'à une seule variab
 
 $$\sim variable \ facteur$$
 
-```{r , fig.cap= "Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs.", echo=FALSE, message=FALSE}
+```{r barres-facteur, fig.cap= "Exemple d'un graphique en barres montrant le dénombrement des niveaux d'une variable facteur, avec les éléments importants du graphique mis en évidence en couleurs.", echo=FALSE, message=FALSE}
 zooplankton <- read("zooplankton", package = "data.io", lang = "FR")
 copepoda <- filter(zooplankton,
   class %in% c("Calanoïde", "Cyclopoïde",  "Harpacticoïde", "Poecilostomatoïde"))
@@ -63,7 +63,7 @@ Outre les barres elles-mêmes, prêtez toujours attention aux éléments suivant
 
 Les instructions dans R pour produire un graphique en barres à l'aide de la fonction `chart()` sont :
 
-```{r, fig.cap="Abondances de quatres types de copépodes dans un échantillon de zooplancton."}
+```{r barres-facteur2, fig.cap="Abondances de quatres types de copépodes dans un échantillon de zooplancton."}
 # Importation du jeu de données
 (zooplankton <- read("zooplankton", package = "data.io", lang = "FR"))
 # Réduction du jeu de données 
@@ -90,7 +90,7 @@ label(biometry$year_measure) <- "Année de la mesure"
 
 Différentes représentations sont possibles pour observer des dénombrements tenant compte de plusieurs variables facteurs. Par défaut, l'argument `position =` a pour valeur par défaut `stack` (donc, lorsque cet argument n'est pas précisé dans `geom_bar()`).
 
-```{r, fig.cap="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B).", echo=TRUE}
+```{r barres-2facteurs, fig.cap="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure pour (B).", echo=TRUE}
 a <- chart(data = biometry, ~ gender) +
   geom_bar() +
   ylab("Effectifs")
@@ -105,7 +105,7 @@ combine_charts(list(a, b), common.legend = TRUE)
 
 Il existe d'autres options en utilisant la valeur `dodge` ou `fill` pour l'argument `position =`.
 
-```{r, fig.cap="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations).", echo=TRUE}
+```{r barres-2facteurs2, fig.cap="Dénombrement des hommes (H) et des femmes (F) dans l'étude sur l'obésité en Hainaut en tenant compte des années de mesure (différentes présentations).", echo=TRUE}
 a <- chart(data = biometry, ~ gender %fill=% year_measure) +
   geom_bar(position = "stack") +
   ylab("Effectifs") +
@@ -133,7 +133,7 @@ Soyez vigilant à la différence entre l'argument `position = stack` et `positio
 
 Vous pouvez avoir le souhait d'ordonner votre variable facteur afin d'améliorer le rendu visuel de votre graphique. Pour cela, vous pouvez employer la fonction `fct_infreq()`. 
 
-```{r, fig.cap="Dénombrement des classes de copépodes du jeu de données zooplankton."}
+```{r barres-facteur-ordonné, fig.cap="Dénombrement des classes de copépodes du jeu de données zooplankton."}
 chart(data = copepoda, ~ fct_infreq(class)) +
   geom_bar() +
   labs(x = "Classe", y = "Effectifs")
@@ -151,7 +151,7 @@ chart(data = zooplankton, ~ class) +
 
 Avec la fonction `coord_flip()` ajoutée à votre graphique, vous pouvez effectuer une rotation des axes pour obtenir un **graphique en barres horizontales**. De plus, l’œil humain perçoit plus distinctement les différences de longueurs horizontales que verticales. Donc, de ce point de vue, le graphe en barres horizontal est considéré comme meilleur que le graphe en barres verticales.
 
-```{r, fig.cap="Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales)."}
+```{r barres-rotation, fig.cap="Dénombrement des classes du jeu de données zooplankton (version avec barres horizontales)."}
 chart(data = zooplankton, ~ class) +
   geom_bar() +
   ylab("Effectifs") +
@@ -198,7 +198,7 @@ mean(x)
 
 Les instructions pour produire ce graphe en barres à l'aide de `chart()` sont :
 
-```{r, fig.cap="Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique."}
+```{r barres-mean, fig.cap="Exemple de graphique en barres représentant les moyennes de tailles par groupe zooplanctonique."}
 chart(data = copepoda, size ~ class) +
   stat_summary(geom = "col", fun.y = "mean")
 ```
@@ -219,9 +219,9 @@ Le graphe en barres pour représenter les moyennes est très répandu dans le do
 
 ## Graphique en camembert
 
-Le graphique en camembert (ou en parts de tarte, ou encore appelé diagramme circulaire, *pie chart* en anglais) va vous permettre de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barres. 
+Le graphique en camembert (ou en parts de tarte, ou encore appelé diagramme circulaire, *pie chart* en anglais) vous permettra de visualiser un dénombrement d'observations par facteur, tout comme le graphique en barres. 
 
-```{r, fig.cap="Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur."}
+```{r piechart, fig.cap="Exemple de graphique en camembert montrant les effectifs des niveaux d'une variable facteur."}
 chart(data = copepoda, ~ factor(0) %fill=% class) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
@@ -246,7 +246,7 @@ df <- data_frame(
 ```
 
 
-```{r, echo=FALSE, fig.cap="Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider)."}
+```{r piechart2, echo=FALSE, fig.cap="Arrivez-vous à lire facilement des valeurs sur un graphique en camenbert (une échelle y est ajoutée de manière exceptionnelle pour vous y aider)."}
 chart(data = df, ~ factor(0) %fill=% Facteur) +
   geom_bar(width = 1) + 
   coord_polar("y", start = 0) +
@@ -256,7 +256,7 @@ chart(data = df, ~ factor(0) %fill=% Facteur) +
 
 Maintenant, effectuez le même exercice sur base d'un graphique en barres, combien d'observations pour la lettre **H** ?
 
-```{r, echo=FALSE, fig.cap="Dénombrement des niveaux d'une variable facteur sur un graphique en barres."}
+```{r barchart2, echo=FALSE, fig.cap="Dénombrement des niveaux d'une variable facteur sur un graphique en barres."}
 chart(data = df, ~ Facteur %fill=% Facteur) +
   geom_bar(width = 1) +
   ylab("Effectifs") +
@@ -279,7 +279,7 @@ Dans ce dernier cas, c'est bien plus facile : il y a effectivement 24 observatio
 
 ## Boite de dispersion {#boxplot}
 
-Vous souhaitez représenter graphiquement cette fois *un résumé* d'une variable numérique mesurée sur un nombre (relativement) important d'individus, soit depuis une dizaine jusqu'à plusieurs millions. Vous souhaitez également conserver de l'information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d'une variable facteur. Nous avons déjà vu au module \@ref(visu2) les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les **boites de dispersion** (encore appelée boite à moustaches) comme option alternative intéressante. La boite de dispersion va représenter graphiquement cinq descripteurs appelés les **cinq nombres**.
+Vous souhaitez représenter graphiquement cette fois *un résumé* d'une variable numérique mesurée sur un nombre (relativement) important d'individus, soit depuis une dizaine jusqu'à plusieurs millions. Vous souhaitez également conserver de l'information sur la distribution des données, et voulez éventuellement comparer plusieurs distributions entre elles : soit différentes variables, soit différents niveaux d'une variable facteur. Nous avons déjà vu au module \@ref(visu2) les diagrammes en violon et en lignes de crêtes pour cet usage. Nous allons étudier ici les **boites de dispersion** (encore appelée boite à moustaches) comme option alternative intéressante. La boite de dispersion représentera graphiquement cinq descripteurs appelés les **cinq nombres**.
 
 Considérez l'échantillon suivant :
 
@@ -315,7 +315,7 @@ fivenum(x)
 
 La boite de dispersion est une représentation graphique codifiée de ces cinq nombres. La représentation de `x` sous forme de nuage de points n'est ni très esthétique, ni très lisible, surtout si nous avons affaire à des milliers ou des millions d'observations qui se chevauchent sur le graphique^[Il est possible de modifier la transparence des points et/ou de les déplacer légèrement vers la gauche ou vers la droite de manière aléatoire pour résoudre le problème de chevauchement des points sur un graphique en nuage de points univarié.].
 
-```{r, fig.cap="Nuage de points univarié.", echo=FALSE}
+```{r nuage-de-points, fig.cap="Nuage de points univarié.", echo=FALSE}
 df <- data_frame(x = x)
 chart(data = df, x ~ 0) +
   geom_point() +
@@ -473,7 +473,7 @@ combine_charts(list(a, b))
 
 Les instructions dans R pour produire un graphique en boites de dispersion parallèles (comparaison de la distribution d'une variable numérique pour différents niveaux d'une autre variable facteur) sont :
 
-```{r, fig.cap="Distribution des tailles par groupes taxonomiques pour le zooplancton."}
+```{r boxplot, fig.cap="Distribution des tailles par groupes taxonomiques pour le zooplancton."}
 chart(data = copepoda, size ~ class) +
   geom_boxplot()
 ```
@@ -485,7 +485,7 @@ La formule à employer est `YNUM (size) ~ XFACTOR (class)`. Ensuite, pour réali
 
 Lors de la réalisation de boites de dispersion, vous devez être vigilant au nombre d'observations qui se cachent sous chacune d'elles. En effet, réaliser une boite de dispersion à partir d'échantillons ne comportant que cinq valeurs ou moins n'a *aucun* sens ! 
 
-```{r , fig.cap= "Piège des boites de dispersion : trop peu d'observations disponibles pour `a`.", echo= FALSE}
+```{r boxplot-points, fig.cap= "Piège des boites de dispersion : trop peu d'observations disponibles pour `a`.", echo= FALSE}
 df <- data_frame(Facteur = rep(c("A", "B", "C"), times = c(4, 11, 8)), 
                  Valeur  = c(55, 83, 120, 26,
                              1, 71, 55, 68, 78, 60, 83, 120, 82, 53, 26,
@@ -497,7 +497,7 @@ chart(data = df, Valeur ~ Facteur) +
 
 La boite de dispersion **`A`** est calculée à partir de seulement quatre observations. C'est trop peu. Comme les points représentant les observations ne sont habituellement pas superposés à la boite, cela peut passer inaperçu et tromper le lecteur ! Une bonne pratique consiste à ajouter *n*, le nombre d'observations au-dessus de chaque boite. Cela peut se faire facilement avec les fonctions `give_n()` et `stat_summary()` ci-dessous.
 
-```{r, fig.cap="Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite)."}
+```{r boxplot2, fig.cap="Taille de copépodes pour différents groupes taxonomiques (le nombre d'observations est indiqué au dessus de chaque boite)."}
 give_n <- function(x)
   c(y = max(x) * 1.1, label = length(x)) 
 
@@ -560,7 +560,7 @@ Dans le premier cas, les fonctions `facet_XXX()` comme `facet_grid()` peuvent ê
 
 ### Facettes
 
-L'une des règles les plus importantes que vous devez impérativement garder à l'esprit lors de la réalisation de vos graphiques est *la simplicité*. Plus votre graphique va contenir d'information au plus il sera compliqué à décoder par vos lecteurs. 
+L'une des règles les plus importantes que vous devez impérativement garder à l'esprit lors de la réalisation de vos graphiques est *la simplicité*. Au plus votre graphique contiendra d'information au plus il sera compliqué à décoder par vos lecteurs. 
 
 ```{r chick1, fig.cap= "Croissance de poulets en utilisant quatre aliments différents."}
 # Importation de données relative à la croissance de poulets
@@ -573,7 +573,7 @@ chart(data = chick_weight, weight ~ Time %col=% Diet) +
 
 Le graphique à la Fig. \@ref(fig:chick1) est mal adapté pour montrer les différences entre les quatre aliments : tous les points sont entremêlés. Il peut typiquement être simplifié en utilisant des facettes pour représenter les résultats relatifs aux différents régimes alimentaires sur des graphiques séparés. L'information est la même mais la lecture est beaucoup plus aisée.
 
-```{r, fig.cap= "Croissance de poulets en utilisant quatre aliments différents (1-4)."}
+```{r chick-facette, fig.cap= "Croissance de poulets en utilisant quatre aliments différents (1-4)."}
 chart(data = chick_weight, weight ~ Time | Diet) +
   geom_point(alpha = 0.5) +
   labs(x = "Age [j]", y = "Masse [g]")
@@ -586,7 +586,7 @@ Vous observez que les échelles en abscisse et en ordonnée sont similaires sur 
 
 La fonction `combine_charts()` permet de combiner plusieurs graphiques dans une figure unique. Nous l'avons déjà utilisée à plusieurs reprises. Cette fonction attend une liste de graphiques de type `chart()` à assembler.
 
-```{r , fig.cap= "A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins."}
+```{r combine-charts, fig.cap= "A) Masse d'oursins en fonction de leur taille  et de leur origine. B) Masse totale en fonction de la masse des parties solides de ces mêmes oursins."}
 # Importation des données
 urchin <- read("urchin_bio", package = "data.io", lang = "FR")
 # Réalisation des graphiques
@@ -609,7 +609,7 @@ Il existe d'autres fonctions permettant de combiner plusieurs graphiques comme [
 
 - [Figures composées à l'aide de `grid.arrange()`](http://lightonphiri.org/blog/ggplot2-multiple-plots-in-one-graph-using-gridextra). Une autre option, mais moins flexible et moins riche que `combine_charts()`. 
 
-- [Figures composées à l'aide de `plot_grid()`](https://cran.r-project.org/web/packages/cowplot/vignettes/plot_grid.html) avec les différentes options, aussi disponibles avec `combine_charts()`.
+- [Figures composées à l'aide de `plot_grid()`](https://wilkelab.org/cowplot/reference/plot_grid.html) avec les différentes options, aussi disponibles avec `combine_charts()`.
 
 - [Troisième possibilité pour des figures composées à l'aide de `ggarrange()`](http://www.sthda.com/english/rpkgs/ggpubr/reference/ggarrange.html). `combine_charts()` fait la même chose, mais avec des valeurs par défaut légèrement différentes (`labels = "auto"` par défaut pour ce dernier, mais `labels = NULL` pour `ggarrange()`). 
 
@@ -735,7 +735,7 @@ chart(data = urchin, height ~ weight | origin) +
 
 Comme son nom le suggère, le moteur graphique de base est celui qui est implémenté de manière natif dans R. Il est donc utilisé un peu partout. Il est vieillissant et est plus difficile à manipuler que **ggplot2** certainement, et même que **lattice**. Néanmoins, il est très flexible et rapide, ... mais son rendu par défaut n'est plus vraiment au goût du jour. Voici notre graphique d'exemple rendu avec le moteur graphique R de base :
 
-```{r, fig.cap="Graphique exemple réalisé avec le moteur graphique R de base."}
+```{r base-example, fig.cap="Graphique exemple réalisé avec le moteur graphique R de base."}
 plot(urchin$weight, urchin$height,
   col = c("red", "darkgreen")[urchin$origin], pch = 1)
 legend(x = 80, y = 10, legend = c("Culture", "Pêcherie"),
@@ -757,7 +757,7 @@ chart$base({
 })
 ```
 
-```{r, fig.keep=2, fig.cap="Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`."}
+```{r chart-base, fig.keep=2, fig.cap="Graphique exemple réalisé avec le moteur graphique de base et la fonction `chart()`."}
 chart$base({
   par(mar = c(5.1, 4.1, 4.1, 6.1))
   plot(urchin$weight, urchin$height,
@@ -774,7 +774,7 @@ Notez que le graphique est généré deux fois : une première fois dans un form
 
 Pour l'instant, le seul avantage de `chart()` avec les graphiques de base est qu'il les convertit en une forme combinable avec les autres graphiques dans une figure composite (sinon, ce n'est pas possible). A part cela, il faut fournir à `chart$base()` tout le code nécessaire pour tracer et personnaliser le graphique. Comme on peut le voir sur cet exemple, cela demande une quantité considérable de code. C'est aussi un autre aspect pénible de ce moteur graphique : il est très flexible, mais l'interface n'est pas optimale. Pour finir, les graphiques de base ont plus de mal avec les facettes, mais il peuvent quand même générer les versions les plus simples, par exemple à l'aide de la fonction `coplot()` qui accepte une formule très similaire à ce qui s'utilise avec **lattice** :
 
-```{r, fig.cap="Graphique à facettes avec le moteur graphique de base."}
+```{r coplot-example, fig.cap="Graphique à facettes avec le moteur graphique de base."}
 coplot(data = urchin, height ~ weight | origin)
 ```
 
