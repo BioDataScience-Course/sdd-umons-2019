@@ -75,22 +75,22 @@ Vous pouvez décrypter votre histogramme sur base des **modes**^[Les **modes** d
 
 ```{r histo-mode, fig.cap = "Histogrammes montrant les modes et symétries : A. histogramme unimodal et symétrique, B. histogramme bimodal et asymétrique, C. histogramme unimodal et asymétrique, D. histogramme multimodal et symétrique.", echo=FALSE, message=FALSE, warning=FALSE}
 set.seed(1000)
-df1 <- data_frame(x = rnorm(5000, 35, 5))
+df1 <- tibble(x = rnorm(5000, 35, 5))
 g1 <- chart(data = df1, ~ x) +
   geom_histogram() +
   labs(x = "Unimodal & symétrique", y = "Effectifs")
 
-df2 <- rbind(df1, data_frame(x = rnorm(7000, 60, 5)))
+df2 <- rbind(df1, tibble(x = rnorm(7000, 60, 5)))
 g2 <- chart(data = df2, ~ x) +
   geom_histogram() +
   labs(x = "Bimodal & symétrique", y = "Effectifs")
 
-df3 <- data_frame(x = rlnorm(3000, 0, 0.6))
+df3 <- tibble(x = rlnorm(3000, 0, 0.6))
 g3 <- chart(data = df3, ~ x) +
   geom_histogram() +
   labs(x = "Unimodal & asymétrique", y = "Effectifs")
 
-df4 <- rbind(df2, data_frame(x = rnorm(3000, 80, 5)))
+df4 <- rbind(df2, tibble(x = rnorm(3000, 80, 5)))
 g4 <- chart(data = df4, ~ x) +
   geom_histogram() +
   labs(x = "Multimodal & symétrique", y = "Effectifs")
