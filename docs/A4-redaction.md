@@ -65,18 +65,19 @@ Package version:
   datasets_3.5.3      DBI_1.0.0           dbplyr_1.3.0       
   digest_0.6.18       dplyr_0.8.0.1       ellipse_0.4.1      
   ellipsis_0.1.0      evaluate_0.13       fansi_0.4.0        
-  flow_1.0.0          forcats_0.4.0       foreign_0.8-71     
-  Formula_1.2-3       fs_1.2.7            generics_0.0.2     
-  ggplot2_3.1.1       ggplotify_0.0.3     ggpubr_0.2         
-  ggrepel_0.8.0       ggsci_2.9           ggsignif_0.5.0     
-  glue_1.3.1          graphics_3.5.3      grDevices_3.5.3    
-  grid_3.5.3          gridExtra_2.3       gridGraphics_0.3-0 
-  gtable_0.3.0        haven_2.1.0         highr_0.8          
-  Hmisc_4.2-0         hms_0.4.2           htmlTable_1.13.1   
-  htmltools_0.3.6     htmlwidgets_1.3     httr_1.4.0         
-  igraph_1.2.4        inline_0.3.15       jsonlite_1.6       
-  knitr_1.22          labeling_0.3        lattice_0.20-38    
-  latticeExtra_0.6-28 lazyeval_0.2.2      lubridate_1.7.4    
+  farver_1.1.0        flow_1.0.0          forcats_0.4.0      
+  foreign_0.8-71      Formula_1.2-3       fs_1.2.7           
+  generics_0.0.2      gganimate_1.0.3     ggplot2_3.1.1      
+  ggplotify_0.0.3     ggpubr_0.2          ggrepel_0.8.0      
+  ggsci_2.9           ggsignif_0.5.0      glue_1.3.1         
+  graphics_3.5.3      grDevices_3.5.3     grid_3.5.3         
+  gridExtra_2.3       gridGraphics_0.3-0  gtable_0.3.0       
+  haven_2.1.0         highr_0.8           Hmisc_4.2-0        
+  hms_0.4.2           htmlTable_1.13.1    htmltools_0.3.6    
+  htmlwidgets_1.3     httr_1.4.0          igraph_1.2.4       
+  inline_0.3.15       jsonlite_1.6        knitr_1.22         
+  labeling_0.3        lattice_0.20-38     latticeExtra_0.6-28
+  lazyeval_0.2.2      lubridate_1.7.4     magick_2.0         
   magrittr_1.5        markdown_0.9        MASS_7.3-51.3      
   Matrix_1.2-17       methods_3.5.3       mgcv_1.8.28        
   mime_0.6            modelr_0.1.4        munsell_0.5.0      
@@ -96,9 +97,10 @@ Package version:
   svMisc_1.1.0        sys_3.1             tibble_2.1.1       
   tidyr_0.8.3         tidyselect_0.2.5    tidyverse_1.2.1    
   tinytex_0.11        tools_3.5.3         tsibble_0.7.0      
-  utf8_1.1.4          utils_3.5.3         viridis_0.5.1      
-  viridisLite_0.3.0   whisker_0.3.2       withr_2.1.2        
-  xfun_0.6            xml2_1.2.0          yaml_2.2.0         
+  tweenr_1.0.1        utf8_1.1.4          utils_3.5.3        
+  viridis_0.5.1       viridisLite_0.3.0   whisker_0.3.2      
+  withr_2.1.2         xfun_0.6            xml2_1.2.0         
+  yaml_2.2.0         
 ```
 
 
