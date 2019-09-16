@@ -362,23 +362,19 @@
 <p>Même si la SciViews Box est pré-configurée, vous allez avoir quelques manipulations simples à réaliser pour être complètement opérationnel. Ces étapes sont détaillées ci-dessous. Nous en profiterons par la même occasion par nous familiariser avec quelques uns des outils logiciels que vous utiliserez plus tard, à commencer par le lanceur rapide SciViews Box.</p>
 <div id="lanceur-sciviews-box" class="section level3">
 <h3><span class="header-section-number">A.3.1</span> Lanceur SciViews Box</h3>
-<p>L’application que vous venez d’installer est un <strong>lanceur rapide</strong> qui facilite le démarrage, la fermeture et la gestion de votre machine virtuelle SciViews Box 2018a. Démarrez-là et vous verrez la fenêtre suivante:</p>
+<p>L’application que vous venez d’installer est un <strong>lanceur rapide</strong> qui facilite le démarrage, la fermeture et la gestion de votre machine virtuelle SciViews Box. Démarrez cette application et vous verrez la fenêtre suivante :</p>
 <p><img src="images/annexe1/svbox-launcher-comment.png" /></p>
-<p>Le message en rouge n’apparait pas systématiquement. Il signale des éléments importants. Ici, il indique que la configuration de la SciViews Box doit encore être faite, et pour cela, vous devez (1) <strong>la démarrer</strong> à l’aide du gros bouton en haut à gauche, (2) <strong>vous logger</strong> (mot de passe = <strong>sv</strong>), et (3) <strong>répondre <code>Yes</code></strong> lorsqu’une boite de dialogue vous propose d’installer ‘svbox2018a v1.0.0’.</p>
+<p>Dans ce premier cours, vous n’utiliserez pas toutes ses fonctionnalités. Ainsi, vous n’aurez pas besoin de Jupyter(lab), Adminer ou SSH, mais repérez les autres outils. Le message en rouge n’apparait pas systématiquement. Il signale des éléments importants. Ici, il indique que la configuration de la SciViews Box doit encore être faite, et pour cela, vous devez (1) <strong>la démarrer</strong> à l’aide du gros bouton en haut à gauche, (2) <strong>vous logger</strong> (mot de passe = <strong>sv</strong>), et (3) <strong>répondre <code>Yes</code></strong> lorsqu’une boite de dialogue vous propose de configurer la SciViews Box comme ci-dessous :</p>
 <center>
 <p><img src="images/annexe1/autoinstall-question.png" /></p>
 </center>
 <p><br/></p>
 <div class="warning">
 <p>
-Cette dernière étape est importante! Ne cliquez pas <code>No</code> ici, sous peine de ne pas avoir une machine virtuelle configurée comme celle de vos collègues!
+Cette dernière étape est importante ! Ne cliquez pas <code>No</code> ici, sous peine de ne pas avoir une machine virtuelle configurée comme celle de vos collègues !
 </p>
 </div>
-<p>Le mot de passe vous sera redemandé, et ensuite, l’installation se poursuivra. Elle pourra prendre plusieurs minutes. Soyez patient. Vous pourrez ouvrir la fenêtre du terminal où s’opère le travail pour en suivre la progression, si vous le souhaitez.</p>
-<center>
-<p><img src="images/annexe1/svbox-install_terminal.png" /></p>
-</center>
-<p>A la fin vous verrez la fenêtre du configurateur de la SciViews Box apparaître.</p>
+<p>Le mot de passe vous sera redemandé, et ensuite, la configuration se poursuivra. Elle pourra prendre plusieurs minutes. Soyez patient. Vous pourrez ouvrir la fenêtre où s’opère le travail pour en suivre la progression, si vous le souhaitez. Pour ce faire, lancer une fenêtre de terminal (<code>Win + T</code>, <code>Command + T</code>, ou <code>Control + T</code> selon votre clavier et configuration). Ensuite entrez <code>xfce4-terminal --drop-down</code> suivi de la touche <code>entrée</code>. Sinon attendez simplement la fenêtre du configurateur de la SciViews Box qui va apparaître à la fin.</p>
 </div>
 <div id="configurateur-de-la-box" class="section level3">
 <h3><span class="header-section-number">A.3.2</span> Configurateur de la Box</h3>
@@ -386,42 +382,52 @@ Cette dernière étape est importante! Ne cliquez pas <code>No</code> ici, sous 
 <p><img src="images/annexe1/svbox-config1.png" /></p>
 </center>
 <p>Prenez le temps de parcourir les différents éléments dans cette fenêtre<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
-<p>La partie à gauche en haut concerne la <strong>configuration du clavier</strong>. En effet, la machine virtuelle utilisera votre clavier physique, mais elle n’a aucun moyen de déterminer de quel modèle il est. Vous allez donc l’indiquer maintenant. Utilisez la zone de texte intitulée <code>Test area (type here)</code> pour vérifier que la machine virtuelle interprète correctement les touches de votre clavier. Pour le changer, cliquez sur le bouton <code>Change keyboard layout</code>.</p>
+<p>La partie à gauche en haut concerne la <strong>configuration du clavier</strong>. En effet, la machine virtuelle utilisera votre clavier physique, mais elle n’a aucun moyen de déterminer de quel modèle il s’agit. Vous allez donc l’indiquer maintenant. Utilisez la zone de texte intitulée <code>Test area (type here)</code> pour vérifier que la machine virtuelle interprète correctement les touches de votre clavier. Pour le changer, cliquez sur le bouton <code>Change keyboard layout</code>.</p>
 <center>
 <p><img src="images/annexe1/config-keyboard.png" /></p>
 </center>
-<p>La boite de dialogue de sélection du clavier apparait. Elle propose des configurations différentes sous forme de représentations graphiques, avec les touches caractéristiques surlignées en jaune. Vous pouvez entrer les premières lettres du type de clavier pour aller directement à la configuration correspondante dans la liste (ex.: entrez <code>be</code> pour un clavier belge). Si votre clavier ne se trouve pas dans les templates les plus courants, configurez-le à l’aide du bouton <code>Other keyboard...</code>. Fermez cette fenêtre pour retourner au configurateur lorsque vous aurez fini.</p>
-<p>Enfin, toujours concernant le clavier, la case à cocher <code>Exchange left CTRL / CMD (Mac shortcuts)</code> permet d’utiliser les raccourcis Mac (comme <code>Cmd-c</code> pour copier et <code>Cmd-v</code> pour coller à la place de <code>Ctrl-c</code> ou <code>Ctrl-v</code> sur un PC.</p>
+<p>La boite de dialogue de sélection du clavier apparait. Elle propose des configurations différentes sous forme de représentations graphiques, avec les touches caractéristiques surlignées en jaune. Vous pouvez entrer les premières lettres du type de clavier pour aller directement à la configuration correspondante dans la liste (ex.: entrez <code>be</code> pour un clavier belge). Si votre clavier ne se trouve pas dans les templates les plus courants, configurez-le à l’aide du bouton <code>Other keyboard...</code>. Fermez cette fenêtre pour retourner au configurateur lorsque vous aurez fini. Attention que pour un clavier de Mac, vous devez utiliser la configuration intitulée <code>fr(mac)</code>, comme dans la copie d’écran ci-dessus. Sur un PC, la configuration sera simplement <code>be</code>.</p>
+<p>Enfin, toujours concernant le clavier, la case à cocher <code>Exchange left CTRL / CMD (Mac shortcuts)</code> permet d’utiliser les raccourcis Mac (comme <code>Command-c</code> pour copier et <code>Command-v</code> pour coller à la place de <code>Ctrl-c</code> ou <code>Ctrl-v</code> sur un PC).</p>
 <p><img src="images/annexe1/svbox-config2.png" /></p>
 <p>Cette option n’est utile qu’aux possesseurs d’un Mac qui veulent avoir des raccourcis plus homogènes entre leur système MacOS hôte et la machine virtuelle<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
-<p>Juste en dessous, vous voyez la configuration du fuseau horaire.</p>
+<center>
+<p><img src="images/annexe1/virtualbox-keyboard-settings1.png" /></p>
+</center>
+<p>Notez que VirtualBox réserve une touche clavier à son propre usage. Par défaut, c’est la touche <code>Command</code> ou <code>Win</code> de droite sur les anciennes version, mais il se peut que ce soit la touche équivalente de gauche. <strong>Dans ce cas, vous aurez un conflit avec l’option <code>Exchange left CTRL / CMD keys</code></strong> Vous devez redéfinir la touche hôte de VirtualBox. Allez dans son menu <code>Input -&gt; Keyboard -&gt; Keyboard Settings...</code></p>
+<p>Redéfinissez la touche utilisée par l’hôte comme étant la touche commande <strong>de droite</strong>.</p>
+<center>
+<p><img src="images/annexe1/virtualbox-keyboard-settings2.png" /></p>
+</center>
+<p>Revenons à notre configurateur à l’intérieur de la SciViews Box. Juste en dessous des paramètres de clavier, vous voyez la configuration du fuseau horaire.</p>
 <p><img src="images/annexe1/svbox-config3.png" /></p>
 <p>Ici aussi, votre machine virtuelle n’a pas l’information de votre système hôte, et peut donc ne pas afficher l’heure correctement. Vous avez la possibilité de corriger cela en cliquant sur le bouton <code>Change time zone</code>. Vous devez débloquer la boite de dialogue (bouton <code>Unlock</code> en bas, puis entrer le mot de passe pour pouvoir effectuer des changements).</p>
-<p>Les trois boutons à gauche en bas servent à choisir le stylage des fenêtres, le set d’icônes et l’image d’arrière plan de votre SciViews Box.</p>
+<p>Les trois boutons suivants à gauche en bas servent à choisir le style des fenêtres, le set d’icônes et l’image d’arrière plan de votre SciViews Box.</p>
 <p><img src="images/annexe1/svbox-config4.png" /></p>
-<p>C’est ici que vous pourrez la paramétrer au mieux pour qu’elle vous plaise visuellement. A noter que, si vous double-cliquez sur les entrées dans les boites de dialogue de configuration, vous allez pouvoir <strong>prévisualiser</strong> l’effet en live. Utile pour apprécier le rendu avant de faire son choix!</p>
-<p>La zone en bas à droite permet de modifier le mot de passe.</p>
+<p>C’est ici que vous pourrez la paramétrer au mieux pour qu’elle vous plaise visuellement. A noter que, si vous double-cliquez sur les entrées dans les boites de dialogue de configuration, vous allez pouvoir <strong>prévisualiser</strong> l’effet en live. Utile pour apprécier le rendu avant de faire son choix !</p>
+<p>Enfin dans la partie gauche, le dernier item permet de modifier l’apparence et le comportement du dock de la SciViews Box (qui s’appelle “plank”). Vous ne devriez pas le changer pour l’instant, mais vous pouvez quand même explorer les différentes options offertes ici.</p>
 <p><img src="images/annexe1/svbox-config5.png" /></p>
-<p>Pour rappel, il s’agit d’un mot de passe simple et peu sécure par défaut: <code>sv</code>. En fait, vous n’avez pas réellement besoin d’un mot de passe à l’intérieur de votre SciViews Box telle qu’elle est configurée car vous ne pouvez y accéder qu’en local à partir de l’ordinateur hôte. Par contre, il est possible d’ouvrir l’accès. A ce moment-là, il serait utile, <em>et même indispensable</em>, de modifier le mot de passe.</p>
+<p>La zone en bas à droite permet de modifier le mot de passe.</p>
+<p><img src="images/annexe1/svbox-config6.png" /></p>
+<p>Pour rappel, il s’agit d’un mot de passe simple et peu sécurisé par défaut : <code>sv</code>. En fait, vous n’avez pas réellement besoin d’un mot de passe à l’intérieur de votre SciViews Box telle qu’elle est configurée car vous ne pouvez y accéder qu’en local à partir de l’ordinateur hôte. Par contre, il est possible d’ouvrir l’accès. A ce moment-là, il serait utile, <em>et même indispensable</em>, de modifier le mot de passe.</p>
 <div class="error">
 <p>
-Dans le cadre de votre utilisation de la SciViews Box pour ce cours, que ce soit sur les machines de la salle de T.P., ou sur votre ordinateur personnel, ne <strong>changez pas</strong> le mot de passe! Votre machine virtuelle est <em>déjà</em> protégée par votre système hôte puisque seul un accès local est autorisé.
+Dans le cadre de votre utilisation de la SciViews Box pour ce cours, que ce soit sur les machines de la salle de T.P., ou sur votre ordinateur personnel, ne <strong>changez pas</strong> le mot de passe ! Votre machine virtuelle est <em>déjà</em> protégée par votre système hôte puisque seul un accès local est autorisé.
 </p>
 </div>
 <p>La zone en haut à droite permet de configurer votre compte Git.</p>
-<p><img src="images/annexe1/svbox-config6.png" /></p>
-<p>Comme vous allez utiliser Git et Github de manière intensive tout au long de ce cours, <strong>veuillez configurer cette partie du système correctement d’amblée!</strong> Les trois boutons du bas proposent de s’enregistrer sur trois systèmes distants d’hébergement de dépôts Git (si vous ne savez pas ce que c’est, imaginez juste que c’est là que vous allez pouvoir entreposer de manière sûre tous vos projets!): <strong>Github</strong>, <strong>Gitlab</strong> ou <strong>Bitbucket</strong>. Tous trois ont des avantages et des inconvénients, et ils proposent tous des utilisations gratuites dans certains cas.</p>
+<p><img src="images/annexe1/svbox-config7.png" /></p>
+<p>Comme vous allez utiliser Git et Github de manière intensive tout au long de ce cours, <strong>veuillez configurer cette partie du système correctement d’amblée!</strong> Les trois boutons du bas proposent de s’enregistrer sur trois systèmes distants d’hébergement de dépôts Git (si vous ne savez pas ce que c’est, imaginez juste que c’est là que vous allez pouvoir entreposer de manière sûre tous vos projets !): <strong>Github</strong>, <strong>Gitlab</strong> ou <strong>Bitbucket</strong>. Tous trois ont des avantages et des inconvénients, et ils proposent tous des utilisations gratuites dans certains cas.</p>
 <div class="note">
 <p>
-Durant nos cours de Science des Données à l’UMONS et ceux de Bioinformatique et Science des Données sur le site de Charleroi, nous utiliserons <strong>Github</strong>. Cette utilisation sera gratuite pour vous, et vous allez déjà pouvoir commencer à construire <strong>votre identité professionnelle sur le Net</strong> par son intermédiaire. Donc, enregistrez-vous de manière sérieuse. Choisissez un login représentatif de vos nom et prénom, pas un truc louffoque ou rigolo sur le moment, mais que vous regretterez plus tard, sachant que votre login ne pourra <strong>pas</strong> être changé ensuite!
+Durant nos cours de Science des Données à l’UMONS et ceux de Bioinformatique et Science des Données sur le site de Charleroi, nous utiliserons <strong>Github</strong>. Cette utilisation sera gratuite pour vous, et vous allez déjà pouvoir commencer à construire <strong>votre identité professionnelle sur le Net</strong> par son intermédiaire. Donc, enregistrez-vous de manière sérieuse. Choisissez un login représentatif de vos nom et prénom, pas un truc louffoque ou rigolo sur le moment, mais que vous regretterez plus tard sachant que votre login ne pourra <strong>pas</strong> être changé plus tard ! Utilisez simplement une contraction facile à retenir de vos prénom et nom, telle que ce login n’existe pas encore sur Github (il faut parfois essayer plusieurs combinaisons différentes pour les noms courants).
 </p>
 </div>
-<p>Vous allez donc vous créer un compte sur Github en cliquant sur le bouton correspondant, et en indiquant un login et un mot de passe. <strong>Nous vous demandons également d’utiliser expressément et uniquement votre adresse email UMONS ici : <a href="mailto:prénom.nom@student.umons.ac.be" class="email">prénom.nom@student.umons.ac.be</a>.</strong> En effet, ce sera, pour nous, notre seul moyen de vous identifier sans erreur sur Github lorsque nous interviendrons pour vous conseiller et/ou pour corriger vos travaux.</p>
+<p>Vous allez donc vous créer un compte sur Github en cliquant sur le bouton correspondant, et en indiquant un login et un mot de passe. <strong>Nous vous demandons également d’utiliser expressément et uniquement votre adresse email UMONS ici : <a href="mailto:prénom.nom@student.umons.ac.be" class="email">prénom.nom@student.umons.ac.be</a>.</strong> En effet, ce sera, pour nous, notre seul moyen de vous identifier sans erreur sur Github lorsque nous interviendrons pour vous conseiller et/ou pour corriger vos travaux.</p>
 <center>
 <p><img src="images/annexe1/github-login.png" /></p>
 </center>
 <p>Une fois enregistré sur le site de Github, reportez votre login et votre adresse email dans le configurateur de la SciViews Box, pour que Git puisse vous identifier correctement en local<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
-<p><img src="images/annexe1/svbox-config7.png" /></p>
+<p><img src="images/annexe1/svbox-config8.png" /></p>
 <p>Après avoir effectué tout ceci,vous pourrez cliquer sur le bouton <code>OK</code> de la fenêtre du configurateur SciViews Box. La machine virtuelle devra redémarrer pour appliquer toutes les modifications de manière durable. Cliquez donc également <code>OK</code> dans la boite de dialogue qui apparait ensuite (sinon, elle redémarrera toute seule après 30 sec) :</p>
 <center>
 <p><img src="images/annexe1/svbox-config-reboot.png" /></p>
@@ -483,7 +489,7 @@ Durant nos cours de Science des Données à l’UMONS et ceux de Bioinformatique
 <hr />
 <ol start="4">
 <li id="fn4"><p>Si jamais vous voulez retourner plus tard au configurateur de la SciViews Box, vous n’aurez qu’à cliquer sur son icône tout en haut à droite dans la barre supérieure.<a href="configuration.html#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>Le Mac définit ses raccourcis claviers différemment du PC. Outre l’inversion de l’utilisation des touches <code>Ctrl</code> et <code>Cmd</code>, le Mac possède deux touches <code>Alt</code>, une à gauche et une à droite. Le PC a, par contre, deux touches correspondantes, mais celle de droite est nommée <code>Alt Gr</code>. Ces touches jouent des rôles différents: raccourcis claviers pour <code>Alt</code> et accès aux touches de niveau 3 et 4 pour <code>Alt Gr</code>. <strong>Pour les utilisateurs Mac, notez que vos deux touches <code>Alt</code> ont des rôles différents dans la SciViews Box comme pour un clavier PC.</strong> Enfin, VirtualBox réserve une touche clavier à son propre usage. Par défaut, c’est la touche <code>Cmd</code> ou <code>Win</code> de droite. <strong>Il est déconseillé de modifier ce choix car toutes les autres touches sont indispensables dans la SciViews box!</strong><a href="configuration.html#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>Le Mac définit ses raccourcis claviers différemment du PC. Outre l’inversion de l’utilisation des touches <code>Ctrl</code> et <code>Command</code>, le Mac possède deux touches <code>Alt</code>, une à gauche et une à droite. Le PC a, par contre, deux touches correspondantes, mais celle de droite est nommée <code>Alt Gr</code>. Ces touches jouent des rôles différents: raccourcis claviers pour <code>Alt</code> et accès aux touches de niveau 3 et 4 pour <code>Alt Gr</code>. <strong>Pour les utilisateurs Mac, notez que vos deux touches <code>Alt</code> ont des rôles différents dans la SciViews Box comme pour un clavier PC.</strong><a href="configuration.html#fnref5" class="footnote-back">↩</a></p></li>
 <li id="fn6"><p>A la première utilisation de Git à l’intérieur du logiciel <strong>RStudio</strong>, votre login et votre mot de passe vous seront également redemandés. De même, vous devrez également fournir ces informations dans <strong>Github Desktop</strong> et la première fois que vous naviguerez vers <a href="https://github.com" class="uri">https://github.com</a> depuis le navigateur Web de votre PC hôte. Mais ensuite, vous accèderez immédiatement au service.<a href="configuration.html#fnref6" class="footnote-back">↩</a></p></li>
 <li id="fn7"><p>Il pourra ainsi être replacé au bon endroit et exécuté dans la Box<a href="configuration.html#fnref7" class="footnote-back">↩</a></p></li>
 <li id="fn8"><p>Le presse-papier est synchronisé entre les deux machines pour le texte qui y est copié.<a href="configuration.html#fnref8" class="footnote-back">↩</a></p></li>
