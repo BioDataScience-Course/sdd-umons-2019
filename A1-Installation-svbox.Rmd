@@ -465,21 +465,29 @@ Après avoir effectué tout ceci,vous pourrez cliquer sur le bouton `OK` de la f
 
 Nous allons maintenant installer les tutoriels liés à ces cours de science des données biologiques. Vous allez apprendre par la même occasion comment ajouter des applications dans votre SciViews Box. Cela se fait en trois étapes:
 
-1) Télécharger l'installeur de l'application. Vous le trouverez à l'adresse http://go.sciviews.org/BioDataScience1. Assurez-vous de bien le charger dans le répertoire **Downloads** ou **Téléchargements** par défaut sur votre ordinateur^[Il pourra ainsi être replacé au bon endroit et exécuté dans la Box]. Téléchargez, de même, la mise-à-jour vers la version 2.0 de la SciViews Box à l'adresse http://go.sciviews.org/svbox2018a2.
+1) Télécharger l'installeur de l'application. Vous le trouverez à l'adresse http://go.sciviews.org/BioDataScience2. Assurez-vous de bien le charger dans le répertoire **Downloads** ou **Téléchargements** par défaut sur votre ordinateur^[Il pourra ainsi être replacé au bon endroit et exécuté dans la Box].
 
 2) Rentrez dans le lanceur rapide de la SciViews Box. Il repère les autoinstalleurs et les déplace dans le dossier partagé pour les rendre utilisables par la SciViews Box. Vous devez voir un message indiquant la disponibilité d'autoinstalleur(s). Vos fichiers téléchargés ont également disparus du répertoire de téléchargement à ce stade,
 
-   ![](images/annexe1/autoinstall-message.png)
+<center>
+
+![](images/annexe1/autoinstall-message.png)
+
+</center>
 
 3) Rentrez dans la SciViews Box depuis le lanceur. Si la Box était déjà active ou si elle est réveillée du mode veille, vous allez devoir vous délogger et relogger pour que l'installation démarre, ... sinon, vous allez voir directement le message suivant qui propose d'installer ces apps (cliquez sur `Yes`, bien sûr, pour l'installer).
 
+<center>
+
 ![](images/annexe1/autoinstall-bdd-message.png)
+
+</center>
 
 Si le message n'apparait pas, voici comment se délogger (**log out**).
 
 <center>
 
-![](images/annexe1/svbox-exit.gif)
+![](images/annexe1/svbox-logout.gif)
 
 </center>
 
@@ -522,13 +530,13 @@ Sous MacOS, vous glissez-déposez **projects** dans la barre latérale du Finder
 Dans la **SciViews Box**, ce dossier est accessible depuis deux endroits: `/media/sf_shared` et `~/shared` (`~` représente le répertoire de l'utilisateur, c'est-à-dire `/home/sv`). Ici aussi vous pouvez épingler votre dossier **projects** pour en facilter l'accès:
 
 ```{block2, type='svbox'}
-Les deux moyens d'accéder au dossier **projects** dans la SciViews Box et comment l'épingler sur le côté.
+Les deux moyens d'accéder au dossier **projects** dans la SciViews Box (à partir de `sf_shared` ou de `sv`, puis `shared) et comment l'épingler sur le côté.
 
 ![](images/annexe1/pin-projects-svbox.gif)
 
 ```
 
-**A retenir:** le dossier **shared** et ses sous-dossiers comme **projects** sont considérés un peu comme des dossiers réseau par la SciViews Box. Cela implique que certaines fonctions du système de fichiers n'y sont pas accessibles. Parmi celles-ci, la **poubelle**. Donc, vous ne pourrez qu'effacer complètement des items en cliquant bouton droit et sélectionnant 'Delete' dans le menu contextuel dans le gestionnaire de fichiers. Si vous essayer de placer des fichiers ou dossiers depuis **shared** dans la poubelle de la SciViews Box, cela vous sera refusé (voir copie d'écran ci-dessous). _Par contre, cela fonctionne très bien depuis l'ordinateur hôte._
+**A retenir:** le dossier **shared** et ses sous-dossiers comme **projects** sont considérés un peu comme des dossiers réseau par la SciViews Box. Cela implique que certaines fonctions du système de fichiers n'y sont pas accessibles. Parmi celles-ci, la **poubelle**. Donc, vous ne pourrez qu'effacer complètement des items en cliquant bouton droit et sélectionnant 'Delete' dans le menu contextuel dans le gestionnaire de fichiers. Si vous essayer de placer des fichiers ou dossiers depuis **shared** dans la poubelle de la SciViews Box, cela vous sera refusé (voir copie d'écran ci-dessous). _Par contre, cela fonctionne très bien depuis l'ordinateur hôte (Windows, MacOS, ...)._
 
 <center>
 

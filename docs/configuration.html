@@ -67,72 +67,6 @@
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    background-color: #ffffff;
-    color: #a0a0a0;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
-div.sourceCode
-  { color: #1f1c1b; background-color: #ffffff; }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span. { color: #1f1c1b; } /* Normal */
-code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
-code span.an { color: #ca60ca; } /* Annotation */
-code span.at { color: #0057ae; } /* Attribute */
-code span.bn { color: #b08000; } /* BaseN */
-code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #924c9d; } /* Char */
-code span.cn { color: #aa5500; } /* Constant */
-code span.co { color: #898887; } /* Comment */
-code span.cv { color: #0095ff; } /* CommentVar */
-code span.do { color: #607880; } /* Documentation */
-code span.dt { color: #0057ae; } /* DataType */
-code span.dv { color: #b08000; } /* DecVal */
-code span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code span.fl { color: #b08000; } /* Float */
-code span.fu { color: #644a9b; } /* Function */
-code span.im { color: #ff5500; } /* Import */
-code span.in { color: #b08000; } /* Information */
-code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code span.op { color: #1f1c1b; } /* Operator */
-code span.ot { color: #006e28; } /* Other */
-code span.pp { color: #006e28; } /* Preprocessor */
-code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
-code span.sc { color: #3daee9; } /* SpecialChar */
-code span.ss { color: #ff5500; } /* SpecialString */
-code span.st { color: #bf0303; } /* String */
-code span.va { color: #0057ae; } /* Variable */
-code span.vs { color: #bf0303; } /* VerbatimString */
-code span.wa { color: #bf0303; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -447,7 +381,7 @@ Cette dernière étape est importante ! Ne cliquez pas <code>No</code> ici, sou
 <center>
 <p><img src="images/annexe1/svbox-config1.png" /></p>
 </center>
-<p>Prenez le temps de parcourir les différents éléments dans cette fenêtre<a href="references.html#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a>.</p>
+<p>Prenez le temps de parcourir les différents éléments dans cette fenêtre<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</p>
 <p>La partie à gauche en haut concerne la <strong>configuration du clavier</strong>. En effet, la machine virtuelle utilisera votre clavier physique, mais elle n’a aucun moyen de déterminer de quel modèle il s’agit. Vous allez donc l’indiquer maintenant. Utilisez la zone de texte intitulée <code>Test area (type here)</code> pour vérifier que la machine virtuelle interprète correctement les touches de votre clavier. Pour le changer, cliquez sur le bouton <code>Change keyboard layout</code>.</p>
 <center>
 <p><img src="images/annexe1/config-keyboard.png" /></p>
@@ -455,7 +389,7 @@ Cette dernière étape est importante ! Ne cliquez pas <code>No</code> ici, sou
 <p>La boite de dialogue de sélection du clavier apparait. Elle propose des configurations différentes sous forme de représentations graphiques, avec les touches caractéristiques surlignées en jaune. Vous pouvez entrer les premières lettres du type de clavier pour aller directement à la configuration correspondante dans la liste (ex.: entrez <code>be</code> pour un clavier belge). Si votre clavier ne se trouve pas dans les templates les plus courants, configurez-le à l’aide du bouton <code>Other keyboard...</code>. Fermez cette fenêtre pour retourner au configurateur lorsque vous aurez fini. Attention que pour un clavier de Mac, vous devez utiliser la configuration intitulée <code>fr(mac)</code>, comme dans la copie d’écran ci-dessus. Sur un PC, la configuration sera simplement <code>be</code>.</p>
 <p>Enfin, toujours concernant le clavier, la case à cocher <code>Exchange left CTRL / CMD (Mac shortcuts)</code> permet d’utiliser les raccourcis Mac (comme <code>Command-c</code> pour copier et <code>Command-v</code> pour coller à la place de <code>Ctrl-c</code> ou <code>Ctrl-v</code> sur un PC).</p>
 <p><img src="images/annexe1/svbox-config2.png" /></p>
-<p>Cette option n’est utile qu’aux possesseurs d’un Mac qui veulent avoir des raccourcis plus homogènes entre leur système MacOS hôte et la machine virtuelle<a href="references.html#fn66" class="footnote-ref" id="fnref66"><sup>66</sup></a>.</p>
+<p>Cette option n’est utile qu’aux possesseurs d’un Mac qui veulent avoir des raccourcis plus homogènes entre leur système MacOS hôte et la machine virtuelle<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 <center>
 <p><img src="images/annexe1/virtualbox-keyboard-settings1.png" /></p>
 </center>
@@ -492,7 +426,7 @@ Durant nos cours de Science des Données à l’UMONS et ceux de Bioinformatique
 <center>
 <p><img src="images/annexe1/github-login.png" /></p>
 </center>
-<p>Une fois enregistré sur le site de Github, reportez votre login et votre adresse email dans le configurateur de la SciViews Box, pour que Git puisse vous identifier correctement en local<a href="references.html#fn67" class="footnote-ref" id="fnref67"><sup>67</sup></a>.</p>
+<p>Une fois enregistré sur le site de Github, reportez votre login et votre adresse email dans le configurateur de la SciViews Box, pour que Git puisse vous identifier correctement en local<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>.</p>
 <p><img src="images/annexe1/svbox-config8.png" /></p>
 <p>Après avoir effectué tout ceci,vous pourrez cliquer sur le bouton <code>OK</code> de la fenêtre du configurateur SciViews Box. La machine virtuelle devra redémarrer pour appliquer toutes les modifications de manière durable. Cliquez donc également <code>OK</code> dans la boite de dialogue qui apparait ensuite (sinon, elle redémarrera toute seule après 30 sec) :</p>
 <center>
@@ -503,22 +437,28 @@ Durant nos cours de Science des Données à l’UMONS et ceux de Bioinformatique
 <h3><span class="header-section-number">A.3.3</span> Installation des tutoriels</h3>
 <p>Nous allons maintenant installer les tutoriels liés à ces cours de science des données biologiques. Vous allez apprendre par la même occasion comment ajouter des applications dans votre SciViews Box. Cela se fait en trois étapes:</p>
 <ol style="list-style-type: decimal">
-<li><p>Télécharger l’installeur de l’application. Vous le trouverez à l’adresse <a href="http://go.sciviews.org/BioDataScience1" class="uri">http://go.sciviews.org/BioDataScience1</a>. Assurez-vous de bien le charger dans le répertoire <strong>Downloads</strong> ou <strong>Téléchargements</strong> par défaut sur votre ordinateur<a href="references.html#fn68" class="footnote-ref" id="fnref68"><sup>68</sup></a>. Téléchargez, de même, la mise-à-jour vers la version 2.0 de la SciViews Box à l’adresse <a href="http://go.sciviews.org/svbox2018a2" class="uri">http://go.sciviews.org/svbox2018a2</a>.</p></li>
-<li><p>Rentrez dans le lanceur rapide de la SciViews Box. Il repère les autoinstalleurs et les déplace dans le dossier partagé pour les rendre utilisables par la SciViews Box. Vous devez voir un message indiquant la disponibilité d’autoinstalleur(s). Vos fichiers téléchargés ont également disparus du répertoire de téléchargement à ce stade,</p>
-<p><img src="images/annexe1/autoinstall-message.png" /></p></li>
-<li><p>Rentrez dans la SciViews Box depuis le lanceur. Si la Box était déjà active ou si elle est réveillée du mode veille, vous allez devoir vous délogger et relogger pour que l’installation démarre, … sinon, vous allez voir directement le message suivant qui propose d’installer ces apps (cliquez sur <code>Yes</code>, bien sûr, pour l’installer).</p></li>
+<li><p>Télécharger l’installeur de l’application. Vous le trouverez à l’adresse <a href="http://go.sciviews.org/BioDataScience2" class="uri">http://go.sciviews.org/BioDataScience2</a>. Assurez-vous de bien le charger dans le répertoire <strong>Downloads</strong> ou <strong>Téléchargements</strong> par défaut sur votre ordinateur<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.</p></li>
+<li><p>Rentrez dans le lanceur rapide de la SciViews Box. Il repère les autoinstalleurs et les déplace dans le dossier partagé pour les rendre utilisables par la SciViews Box. Vous devez voir un message indiquant la disponibilité d’autoinstalleur(s). Vos fichiers téléchargés ont également disparus du répertoire de téléchargement à ce stade,</p></li>
 </ol>
+<center>
+<p><img src="images/annexe1/autoinstall-message.png" /></p>
+</center>
+<ol start="3" style="list-style-type: decimal">
+<li>Rentrez dans la SciViews Box depuis le lanceur. Si la Box était déjà active ou si elle est réveillée du mode veille, vous allez devoir vous délogger et relogger pour que l’installation démarre, … sinon, vous allez voir directement le message suivant qui propose d’installer ces apps (cliquez sur <code>Yes</code>, bien sûr, pour l’installer).</li>
+</ol>
+<center>
 <p><img src="images/annexe1/autoinstall-bdd-message.png" /></p>
+</center>
 <p>Si le message n’apparait pas, voici comment se délogger (<strong>log out</strong>).</p>
 <center>
-<p><img src="images/annexe1/svbox-exit.gif" /></p>
+<p><img src="images/annexe1/svbox-logout.gif" /></p>
 </center>
 <p>Ensuite, entrez votre mot de passe comme d’habitude pour vous relogger… A ce moment, le message doit apparaitre, et l’installation doit se faire après avoir cliqué sur le bouton <code>Yes</code>.</p>
 <p><strong>Bravo! Vous avez terminé l’installation et la configuration de votre SciViews Box. Cependant, nous allons encore effectuer une petite opération qui vous facilitera la vie, et nous vous expliquerons par la même occasion comment accéder aux fichiers respectifs de la machine virtuelle et du système hôte dans la section suivante.</strong></p>
 </div>
 <div id="acces-aux-fichiers" class="section level3">
 <h3><span class="header-section-number">A.3.4</span> Accès aux fichiers</h3>
-<p>Le disque physique de votre ordinateur hôte, et le disque virtuel de la SciViews Box sont deux choses différentes. Cela signifie que vous avez, en réalité deux ordinateurs et deux disques indépendants. Donc, vous n’accédez <strong>pas</strong> aux fichiers d’une machine à partir de l’autre<a href="references.html#fn69" class="footnote-ref" id="fnref69"><sup>69</sup></a>. Ce n’est pas pratique, et ce n’est pas vrai pour un dossier particuler nommé <strong>shared</strong>.</p>
+<p>Le disque physique de votre ordinateur hôte, et le disque virtuel de la SciViews Box sont deux choses différentes. Cela signifie que vous avez, en réalité deux ordinateurs et deux disques indépendants. Donc, vous n’accédez <strong>pas</strong> aux fichiers d’une machine à partir de l’autre<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. Ce n’est pas pratique, et ce n’est pas vrai pour un dossier particuler nommé <strong>shared</strong>.</p>
 <center>
 <p><img src="images/annexe1/svbox-diagram.svg" /></p>
 </center>
@@ -540,11 +480,11 @@ Durant nos cours de Science des Données à l’UMONS et ceux de Bioinformatique
 <p>Dans la <strong>SciViews Box</strong>, ce dossier est accessible depuis deux endroits: <code>/media/sf_shared</code> et <code>~/shared</code> (<code>~</code> représente le répertoire de l’utilisateur, c’est-à-dire <code>/home/sv</code>). Ici aussi vous pouvez épingler votre dossier <strong>projects</strong> pour en facilter l’accès:</p>
 
 <div class="svbox">
-<p>Les deux moyens d’accéder au dossier <strong>projects</strong> dans la SciViews Box et comment l’épingler sur le côté.</p>
+<p>Les deux moyens d’accéder au dossier <strong>projects</strong> dans la SciViews Box (à partir de <code>sf_shared</code> ou de <code>sv</code>, puis `shared) et comment l’épingler sur le côté.</p>
 <p><img src="images/annexe1/pin-projects-svbox.gif" /></p>
 </div>
 
-<p><strong>A retenir:</strong> le dossier <strong>shared</strong> et ses sous-dossiers comme <strong>projects</strong> sont considérés un peu comme des dossiers réseau par la SciViews Box. Cela implique que certaines fonctions du système de fichiers n’y sont pas accessibles. Parmi celles-ci, la <strong>poubelle</strong>. Donc, vous ne pourrez qu’effacer complètement des items en cliquant bouton droit et sélectionnant ‘Delete’ dans le menu contextuel dans le gestionnaire de fichiers. Si vous essayer de placer des fichiers ou dossiers depuis <strong>shared</strong> dans la poubelle de la SciViews Box, cela vous sera refusé (voir copie d’écran ci-dessous). <em>Par contre, cela fonctionne très bien depuis l’ordinateur hôte.</em></p>
+<p><strong>A retenir:</strong> le dossier <strong>shared</strong> et ses sous-dossiers comme <strong>projects</strong> sont considérés un peu comme des dossiers réseau par la SciViews Box. Cela implique que certaines fonctions du système de fichiers n’y sont pas accessibles. Parmi celles-ci, la <strong>poubelle</strong>. Donc, vous ne pourrez qu’effacer complètement des items en cliquant bouton droit et sélectionnant ‘Delete’ dans le menu contextuel dans le gestionnaire de fichiers. Si vous essayer de placer des fichiers ou dossiers depuis <strong>shared</strong> dans la poubelle de la SciViews Box, cela vous sera refusé (voir copie d’écran ci-dessous). <em>Par contre, cela fonctionne très bien depuis l’ordinateur hôte (Windows, MacOS, …).</em></p>
 <center>
 <p><img src="images/annexe1/shared_no-trash.png" /></p>
 </center>
@@ -553,12 +493,12 @@ Durant nos cours de Science des Données à l’UMONS et ceux de Bioinformatique
 </div>
 <div class="footnotes">
 <hr />
-<ol start="65">
-<li id="fn65"><p>Si jamais vous voulez retourner plus tard au configurateur de la SciViews Box, vous n’aurez qu’à cliquer sur son icône tout en haut à droite dans la barre supérieure.<a href="configuration.html#fnref65" class="footnote-back">↩</a></p></li>
-<li id="fn66"><p>Le Mac définit ses raccourcis claviers différemment du PC. Outre l’inversion de l’utilisation des touches <code>Ctrl</code> et <code>Command</code>, le Mac possède deux touches <code>Alt</code>, une à gauche et une à droite. Le PC a, par contre, deux touches correspondantes, mais celle de droite est nommée <code>Alt Gr</code>. Ces touches jouent des rôles différents: raccourcis claviers pour <code>Alt</code> et accès aux touches de niveau 3 et 4 pour <code>Alt Gr</code>. <strong>Pour les utilisateurs Mac, notez que vos deux touches <code>Alt</code> ont des rôles différents dans la SciViews Box comme pour un clavier PC.</strong><a href="configuration.html#fnref66" class="footnote-back">↩</a></p></li>
-<li id="fn67"><p>A la première utilisation de Git à l’intérieur du logiciel <strong>RStudio</strong>, votre login et votre mot de passe vous seront également redemandés. De même, vous devrez également fournir ces informations dans <strong>Github Desktop</strong> et la première fois que vous naviguerez vers <a href="https://github.com" class="uri">https://github.com</a> depuis le navigateur Web de votre PC hôte. Mais ensuite, vous accèderez immédiatement au service.<a href="configuration.html#fnref67" class="footnote-back">↩</a></p></li>
-<li id="fn68"><p>Il pourra ainsi être replacé au bon endroit et exécuté dans la Box<a href="configuration.html#fnref68" class="footnote-back">↩</a></p></li>
-<li id="fn69"><p>Le presse-papier est synchronisé entre les deux machines pour le texte qui y est copié.<a href="configuration.html#fnref69" class="footnote-back">↩</a></p></li>
+<ol start="4">
+<li id="fn4"><p>Si jamais vous voulez retourner plus tard au configurateur de la SciViews Box, vous n’aurez qu’à cliquer sur son icône tout en haut à droite dans la barre supérieure.<a href="configuration.html#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>Le Mac définit ses raccourcis claviers différemment du PC. Outre l’inversion de l’utilisation des touches <code>Ctrl</code> et <code>Command</code>, le Mac possède deux touches <code>Alt</code>, une à gauche et une à droite. Le PC a, par contre, deux touches correspondantes, mais celle de droite est nommée <code>Alt Gr</code>. Ces touches jouent des rôles différents: raccourcis claviers pour <code>Alt</code> et accès aux touches de niveau 3 et 4 pour <code>Alt Gr</code>. <strong>Pour les utilisateurs Mac, notez que vos deux touches <code>Alt</code> ont des rôles différents dans la SciViews Box comme pour un clavier PC.</strong><a href="configuration.html#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn6"><p>A la première utilisation de Git à l’intérieur du logiciel <strong>RStudio</strong>, votre login et votre mot de passe vous seront également redemandés. De même, vous devrez également fournir ces informations dans <strong>Github Desktop</strong> et la première fois que vous naviguerez vers <a href="https://github.com" class="uri">https://github.com</a> depuis le navigateur Web de votre PC hôte. Mais ensuite, vous accèderez immédiatement au service.<a href="configuration.html#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn7"><p>Il pourra ainsi être replacé au bon endroit et exécuté dans la Box<a href="configuration.html#fnref7" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p>Le presse-papier est synchronisé entre les deux machines pour le texte qui y est copié.<a href="configuration.html#fnref8" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
@@ -632,19 +572,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
