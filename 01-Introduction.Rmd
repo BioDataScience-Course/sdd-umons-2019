@@ -237,49 +237,23 @@ Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails d
 *Maintenant que vous comprenez mieux avec quels outils informatiques nous allons travaillez, vous pouvez passer à votre premier exercice pour découvrir la SciViews Box, RStudio, Markdown, Git et GitHub : vous allez réaliser un site web professionnel en ligne...*
 
 
-## Site web professionnel {#site}
+## Premier document en markdown {#markdown}
 
-De nos jours, un nombre important de données sont collectées via notre activité sur le web. A la fin de vos études, vous serez amenés à rechercher un travail (dans le milieu de la recherche universitaire, dans la recherche en entreprise, dans les métiers de l'éco-conseils, dans l'industrie, etc.). Tous les recruteurs utilisent actuellement les données que l'on a semé sur le net afin de réaliser un profil détaillé sur nous. Il est donc de votre intérêt d'avoir le meilleur profil possible sur Internet... et qu'il apparaisse comme à la fois sérieux, dynamique et professionnel. *Nous allons vous y aider !*
-
-Les réseaux sociaux sont une mine d'or sur nos habitudes de vie comme Facebook, Twitter ou encore Instagram. On peut parler de l'image numérique d'une personne. Afin de mettre l'accent sur les compétences professionnelles, de plus en plus de personnes utilisent des réseaux dédiés comme [LinkedIn](https://www.linkedin.com) ou encore, ont recours à un **site web personnel professionel** (par exemple : <http://phgrosjean.sciviews.org/>, <http://www.guyliann.be/>).
-
-Dans le cadre de ce premier module, vous allez réaliser votre premier site web professionnel (contenant également une section "blog" que vous pourrez alimenter, entre autres, avec vos considérations concernant vos cours, les analyse de données, et autres, ...). Ce site sera immédiatement disponible sur le web et ce, de manière entièrement gratuite ! Afin de mener à bien ce premier projet, divers outils vous seront nécessaires. Ces outils seront complétés plus tard par d'autres pour que vous ayez une boite à outils complète pour vos futures analyses de données dans un contexte professionnel.
+Dans le cadre de ce premier module, vous allez réaliser votre premier document écrit en markdown. Nous vous proposons pour ce faire, d'écrire une petite introduction d'un article scientifique sur un animal de votre choix. Vous trouverez le lien pour cette activité dans le rubrique "Avous de jouer" ci-dessous. 
 
 
 ##### A vous de jouer {-}
 
 ```{block, type = 'bdd'}
-Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre site web professionnel via l’adresse suivante : <https://github.com/BioDataScience-Course/blogdown.source>. Les instructions détaillées sont dans le fichier `README.md` sur ce dépôt.
+Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre premier document rédigé en markdown via l’adresse suivante : 
+
+Pour le cours de Bio-informatique et science des données  : <https://classroom.github.com/a/GY_xtRk6>. 
+
+Les instructions détaillées sont dans le fichier `README.md` sur ce dépôt.
+
+Si vous n'êtes pas famillarisé avec github Classeroom;, vous pouvez vous référer au lien suivant :
+<https://biodatascience-course.sciviews.org/sdd-umons/github-classroom.html>
+
 ```
 
-Lorsque vous éditez votre site blogdown, faites attention à ceci :
 
-- Hugo (le logiciel qui compile le site Web) n'est pas très tolérant. Vous **devez** respecter la syntaxe qu'il impose. Faites attention aux détails, comme les **virgules** indispensables pour séparer les items dans une liste. Par exemple, dans la liste `[interests]` qui apparaît dans `content/home/about.md`, si vous ajoutez des items comme ceci, Hugo ne compilera plus le site correctement.
-    ```
-      interests = [
-        "Biology",
-        "Ecology"
-        "Movies"
-      ]
-    ```
-    Tous les items doivent être séparés par une virgule, ce qui n'est pas le cas de `"Ecology"` et `"Movies"`. La forme correcte est présentée ci-dessous :
-    ```
-      interests = [
-        "Biology",
-        "Ecology",
-        "Movies"
-      ]
-    ```
-
-- **Ne cliquez pas sur le bouton `Preview`** lorsque vous éditez un fichier `.md`. Normalement dans RStudio, c'est effectivement avec ce bouton qu'on obtient une visualisation du rendu final du document. Mais avec blogdown, il *faut* passer par `Addins -> BLOGDOWN -> Serve Site`. De plus, si vous avez cliqué sur `Preview`, le fichier `.html` généré peut empêcher la bonne construction du site. Donc, **effacez tous les fichiers `.html` correspondant aux `.md` présents dans un sous-dossier de `content`**.
-
-- S'il vous semble que la compilation du site est bloquée, redémarrez R. Dans le menu de RStudio, faites `Session -> Restart R`, ensuite relancez la compilation du site avec `Addins -> BLOGDOWN -> Serve Site`. Traquez un message d'erreur éventuel qui apparaîtrait dans l'onglet `Console`, et sinon, vérifiez la syntaxe dans `config.toml`, les entêtes de tous les fichiers `.md`, ainsi que l'absence de fichiers `.html`associés.
-
-- N'oubliez pas de "commiter" vos changements à partir de l'onglet `Git` dans RStudio. A ce stade, vous avez mis à jour les **sources** de votre site, mais pas votre site lui-même. Pour mettre à jour votre site en ligne, il faut aussi "commiter" les changements dans `<your_login>.github.io`. Ouvrez ce dernier dépôt dans `Github Desktop` et effectuez-y un "commit". Ensuite, naviguez vers `http://<your_login>.github.io` pour vérifier ce qui apparaît en ligne. Attention, il se peut que le cache du navigateur ou d'un routeur vous renvoie encore une ancienne version. Rafraîchissez la page deux ou trois fois pour voir apparaître la dernière version de votre oeuvre.
-
-
-##### Pour en savoir plus {-}
-
-- Le [manuel de blogdown](https://bookdown.org/yihui/blogdown/) (en anglais).
-
-- Des [exemples de sites web](https://awesome-blogdown.com) réalisés avec blogdown.
