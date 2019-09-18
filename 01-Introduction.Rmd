@@ -58,10 +58,10 @@ knitr::include_graphics('images/sdd1_01/svBox-256.png')
 
 ```{block, type = 'bdd'}
 Une fois connecté au compte `sv` dans la machine virtuelle, réalisez l'activité : **Découverte de la machine virtuelle**
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_svbox.pdf>
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_19_svbox.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.Rmd>
+<https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_19_svbox_solution.html>
 ```
 
 Des explications détaillées se trouvent dans l'annexe \@ref(svbox_use) dédiée à l'utilisation de la SciViews Box.
@@ -237,7 +237,7 @@ Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails d
 *Maintenant que vous comprenez mieux avec quels outils informatiques nous allons travaillez, vous pouvez passer à votre premier exercice pour découvrir la SciViews Box, RStudio, Markdown, Git et GitHub : vous allez réaliser un site web professionnel en ligne...*
 
 
-## Premier document en markdown {#markdown}
+## Premier document en markdown {#premier-markdown}
 
 Dans le cadre de ce premier module, vous allez réaliser votre premier document écrit en markdown. Nous vous proposons pour ce faire, d'écrire une petite introduction d'un article scientifique sur un animal de votre choix. Vous trouverez le lien pour cette activité dans le rubrique "Avous de jouer" ci-dessous. 
 

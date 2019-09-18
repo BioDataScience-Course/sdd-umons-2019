@@ -56,8 +56,8 @@ Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à
 </div>
 
 <div class="bdd">
-<p>Une fois connecté au compte <code>sv</code> dans la machine virtuelle, réalisez l’activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_svbox.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_svbox.pdf</a></p>
-<p>Après avoir réalisé l’activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.Rmd" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_svbox.Rmd</a></p>
+<p>Une fois connecté au compte <code>sv</code> dans la machine virtuelle, réalisez l’activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_19_svbox.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_19_svbox.pdf</a></p>
+<p>Après avoir réalisé l’activité, un document récapitulatif est mis à votre disposition : <a href="https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_19_svbox_solution.html" class="uri">https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_19_svbox_solution.html</a></p>
 </div>
 
 Des explications détaillées se trouvent dans l'annexe \@ref(svbox_use) dédiée à l'utilisation de la SciViews Box.
@@ -230,7 +230,7 @@ Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails d
 *Maintenant que vous comprenez mieux avec quels outils informatiques nous allons travaillez, vous pouvez passer à votre premier exercice pour découvrir la SciViews Box, RStudio, Markdown, Git et GitHub : vous allez réaliser un site web professionnel en ligne...*
 
 
-## Premier document en markdown {#markdown}
+## Premier document en markdown {#premier-markdown}
 
 Dans le cadre de ce premier module, vous allez réaliser votre premier document écrit en markdown. Nous vous proposons pour ce faire, d'écrire une petite introduction d'un article scientifique sur un animal de votre choix. Vous trouverez le lien pour cette activité dans le rubrique "Avous de jouer" ci-dessous. 
 
