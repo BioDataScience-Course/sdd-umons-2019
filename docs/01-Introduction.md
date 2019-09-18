@@ -10,8 +10,6 @@
 
 - S'initier à des outils de base (SciViews Box, RStudio, Markdown, Git, GitHub).
 
-- Se sensibiliser à l'importance d'une présence web au niveau professionnel.
-
 
 ## Le monde il y a 25 ans {#donnees}
 
@@ -48,7 +46,7 @@ La science des données est complexe et requiert d'employer des outils performan
 
 La **SciViews Box** est une machine virtuelle (un ordinateur complet, mais totalement indépendant du matériel -le hardware- et qui peut être déployé sur pratiquement n'importe quel ordinateur physique). Cette SciViews Box est complètement configurée et dédiée à la sciences des données biologiques. Elle contient tout ce qu’il faut pour importer et analyser vos données, et ensuite écrire des rapports ou d'autres documents prêts à publication ou à présentation. Elle vous servira également à collaborer avec d'autres chercheurs qui peuvent facilement utiliser exactement la même machine virtuelle (aspect reproductible de vos analyses).
 
-Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à l'installation et la configuration de la SciViews Box.
+Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à l'installation, la configuration et l'utilisation de la SciViews Box.
 
 <div class="figure" style="text-align: center">
 <img src="images/sdd1_01/svBox-256.png" alt="Logo de la SciViews Box" width="256px" />
@@ -60,7 +58,6 @@ Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à
 <p>Après avoir réalisé l’activité, un document récapitulatif est mis à votre disposition : <a href="https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_19_svbox_solution.html" class="uri">https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_19_svbox_solution.html</a></p>
 </div>
 
-Des explications détaillées se trouvent dans l'annexe \@ref(svbox_use) dédiée à l'utilisation de la SciViews Box.
 
 
 ### RStudio
@@ -77,11 +74,11 @@ L'interface utilisateur de RStudio est divisée en quatre zones importantes (A-D
 
 A. Une zone d'édition 
 
-B. Plusieurs onglets sont présents comme `Environnement`, `History` ou encore `Connections`. Par exemple, les différents items (on parle d’objets) chargés en mémoire dans R sont visibles dans l'onglet `Environnement` (mais pour l’instant, il n’y a encore rien).
+B. Plusieurs onglets sont présents comme `Environment`, `History` ou encore `Connections`. Par exemple, les différents items (on parle d’objets) chargés en mémoire dans R sont visibles dans l'onglet `Environment` (mais pour l’instant, il n’y a encore rien).
 
 C. La `Console` est l'endroit où vous pouvez entrer des instructions dans R pour manipuler vos données
 
-D. Une zone multiusage où vous pouvez manipuler vos fichiers (`Files`), vos graphiques (`Plots`), les différents "addins" de R (on parle de `Package`s), accéder aux pages d'aide (`Help`) ou encore, visualiser le rendu final de vos rapports (`Viewer`).
+D. Une zone multiusage où vous pouvez manipuler vos fichiers (`Files`), vos graphiques (`Plots`), les différents "addins" de R (on parle de `Packages`), accéder aux pages d'aide (`Help`) ou encore, visualiser le rendu final de vos rapports (`Viewer`).
 
 Des explications détaillées se trouvent dans l'annexe \@ref(rs) qui présente les bases de l'utilisation de RStudio. Vous avez également à votre disposition un aide-mémoire afin d'appréhender cette interface [RStudio IDE Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf). 
 
@@ -106,11 +103,6 @@ Dans RStudio, les rapports sont rédigés en utilisant le langage **Markdown** d
 Vous avez à votre disposition deux aide-mémoires pour apprendre **Markdown** : [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) et [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) plus détaillé.
 
 Après avoir rédigé votre document, vous devez cliquer sur le bouton `Preview` ou `Knit` (selon le type de document édité) dans la barre d'outils de la zone d'édition pour obtenir la version finale formatée.
-
-<div class="bdd">
-<p>Une fois connecté au compte <code>sv</code> dans la machine virtuelle, réalisez l’activité : <strong>Découverte de RStudio et R Markdown</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_markdown.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_markdown.pdf</a></p>
-<p>Après avoir réalisé l’activité, un document récapitulatif est mis à votre disposition : <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.Rmd" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_markdown.Rmd</a></p>
-</div>
 
 
 ##### Pour en savoir plus {-}
@@ -163,12 +155,12 @@ Différents outils informatiques existent pour faciliter le travail collaboratif
 
 - L'utilisation d'un programme d'édition collaboratif en temps réel ([Etherpad](http://etherpad.org/), [Google Drive - Docs](https://www.google.com/intl/fr_be/docs/about/), [Gobby](https://gobby.github.io/)). Il est possible de travailler en même temps sur un même fichier. Cette option ne règle pas le problème du retour vers une ancienne version. Lorsqu'une modification a été réalisée l'ancienne version est tout simplement écrasée.
 
-- La meilleure combinaison pour gérer ses versions *et* collaborer : [Git](https://git-scm.com/) et [GitHub](https://github.com/). Ces outils sont plutôt considérés comme écrits par et pour des geeks. Cependant, ils permettent de gérer et collaborer de manière efficace sur un même projet contenant du code ou non, et des interfaces facilitant leur utilisation apparaissent comme [GitHub Desktop](https://desktop.github.com), ou même, les [outils Git intégrés dans RStudio](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN).
+- La meilleure combinaison pour **gérer ses versions et collaborer** : [Git](https://git-scm.com/) et [GitHub](https://github.com/). Ces outils sont plutôt considérés comme écrits par et pour des geeks. Cependant, ils permettent de gérer et collaborer de manière efficace sur un même projet contenant du code ou non, et des interfaces facilitant leur utilisation apparaissent comme [GitHub Desktop](https://desktop.github.com), ou même, les [outils Git intégrés dans RStudio](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN).
 
 
 #### Git
 
-La gestion de versions est gérée par *Git*. Cet outil remplacera les nombreuses copies d'un même fichier par une sorte d'arbre que l'on peut représenter schématiquement comme ci-dessous :
+La gestion de versions est gérée par **Git**. Cet outil remplacera les nombreuses copies d'un même fichier par une sorte d'arbre que l'on peut représenter schématiquement comme ci-dessous :
 
 ![Représentation de la gestion de fichiers via Git](images/sdd1_01/git1.png)
 
@@ -228,6 +220,18 @@ Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails d
 **GitHub Classroom** est une extension de GitHub qui facilite le travail avec GitHub dans le contexte d'exercices à réaliser dans le cadre d'un cours. Vous serez amené à cloner et modifier des dépôts issus de GitHub Classroom pour réaliser vos exercices. **Ces dépôts seront privés**. Cela signifie que, seuls vous-mêmes et vos enseignants auront accès à ces dépôts. A la fin de la formation, tous ces dépôts seront détruits. **Donc, si vous voulez les conserver, il faudra les "forker" sur votre propre compte.** Rassurez-vous : nous vous préviendrons avant de faire le ménage ! 
 
 *Maintenant que vous comprenez mieux avec quels outils informatiques nous allons travaillez, vous pouvez passer à votre premier exercice pour découvrir la SciViews Box, RStudio, Markdown, Git et GitHub : vous allez réaliser un site web professionnel en ligne...*
+
+
+\BeginKnitrBlock{bdd}<div class="bdd">Démarrez la SciViews Box et RStudio. 
+
+Dans la fenêtre **Console** de RStudio, entrez l'instruction suivante suivie de la touche `Entrée` pour ouvrir le tutoriel relatif aux différents outils que nous venons de voir et répondez ensuite aux questions qui vous sont posées :
+
+    BioDataScience::run("01a_base")
+
+Quand vous avez terminé, cliquez dans la fenêtre **Console** de RStudio et appuyez sur la touche `ESC` pour reprendre la main dans R à la fin d'un tutoriel.
+
+([BioDataScience](https://github.com/BioDataScience-Course/BioDataScience) est un package R spécialement développé pour ce cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice \@ref(install-tuto)).</div>\EndKnitrBlock{bdd}
+
 
 
 ## Premier document en markdown {#premier-markdown}
