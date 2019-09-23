@@ -381,8 +381,11 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook</a></li>
 </ul></li>
 <li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
-<li class="chapter" data-level="B.2.1" data-path="github-1.html"><a href="github-1.html#deposer-un-depot"><i class="fa fa-check"></i><b>B.2.1</b> Déposer un dépot</a></li>
-<li class="chapter" data-level="B.2.2" data-path="github-1.html"><a href="github-1.html#cloner-un-depot"><i class="fa fa-check"></i><b>B.2.2</b> Cloner un dépot</a></li>
+<li class="chapter" data-level="B.2.1" data-path="github-1.html"><a href="github-1.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
+<li class="chapter" data-level="B.2.2" data-path="github-1.html"><a href="github-1.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
+<li class="chapter" data-level="B.2.3" data-path="github-1.html"><a href="github-1.html#cloner-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Cloner un dépot</a></li>
+<li class="chapter" data-level="B.2.4" data-path="github-1.html"><a href="github-1.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.4</b> Copier un dépôt</a></li>
+<li class="chapter" data-level="B.2.5" data-path="github-1.html"><a href="github-1.html#deposer-un-depot"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un dépot</a></li>
 </ul></li>
 <li class="chapter" data-level="B.3" data-path="github-classroom.html"><a href="github-classroom.html"><i class="fa fa-check"></i><b>B.3</b> GitHub Classroom</a></li>
 </ul></li>
@@ -456,11 +459,11 @@ code span.wa { color: #bf0303; } /* Warning */
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -484,7 +487,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -492,7 +495,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -505,7 +508,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -513,7 +516,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -579,7 +582,7 @@ df</code></pre>
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0

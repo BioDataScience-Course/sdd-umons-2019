@@ -318,16 +318,83 @@ Si vous cliquez sur la petite flèche noire pointant vers le bas juste après `P
 
 ## GitHub 
 
-Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le "cloud", les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org)
+Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le "cloud", les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org).
+
+![](images/annexe_a2/github.png)
+
+### Votre activité et profil
+
+Pour vous montrer différentes sections sur GitHub, nous utiliserons le compte de [GuyliannEngels](https://github.com/GuyliannEngels). Une fois connecter sur Github, nous nous trouvons sur une page qui nous montre notre activité sur ce réseau. A droite de la page, nous pouvons observer les derniers dépôts (On parle de `Repositories` dans GitHub) sur lequels vous avez travaillé et au centre votre activité récente. 
+
+![](images/annexe_a2/github1.png)
+
+Nous pouvons également visiter notre profil. A droite, il y a une photo et une petite présentation vous concernant tout comme vous le retrouvez sur tout réseau social, au centre vos projets récents (`Popular repositories`) et vos contributions générale sur ce réseau social. Les contributions sur le réseau est très important. Il indique de manière globale votre travail ou plutot votre apport sur vos différents projets.
+
+![](images/annexe_a2/github3.png)
+
+Dans notre exemple, nous pouvons observer 983 contributions sur l'année écoulée. 
+
+### Vos projets
+
+Sur GitHub, vous pouvez héberger vos projets (qui se nomment sur GitHub `repositories`). Notre exemple se base sur le projet [sdd-umons](https://github.com/BioDataScience-Course/sdd-umons), que vous pouvez librement consulter. Il s'agit en effet d'un dépôt public. Vous avez la possibilité d'avoir des projets publics ou privés. 
+
+Les projets publics sont visibles par tous. La collaboration est le point central de GitHub. Un dépôt public peut être vu par tous. Il peuvent y apporter des modifications et puis vous soumettre les modifications. Nous reviendrons plus tard sur ces apports par la communauté.
+
+Pour des projets plus sensibles, vous avez la possiblité d'avoir des projets privés. Pour collaborer sur des projets privées vous serez amené à prendre un compte payant. Dans le cadre de notre cours, nous resterons toujours sur un compte gratuit. 
+
+Un dépôt sur GitHub est proposé de la manière suivante. Vous pouvez observer le nom du dépot et la personne ou l'organisation qui travaille sur ce projet (`BioDataScience-Course/sdd-umons`). Dans notre cas, tous les projets relatifs au cours de sciences des données biologiques sont hébergés sur [BioDataScience-Course](https://github.com/BioDataScience-Course)(Il en sera de même pour tous les travaux que vous réaliserez dans le cadre des cours). Sous le nom du dépôt, vous pouvez observer, le dépots sur lequel ce projet s'inspire (`phgrosjean/bookdown-test`). 
+
+Vous pouvez observer une première barre d'outils comprenant les sections `Code`, `Issues`, `Pull requests`, `Projects`, `Security`, `Insights` et `Settings` (toutes les sections ne seront pas détaillées dans cet ouvrage). 
+
+![](images/annexe_a2/github5.gif)
+
+#### `Code` 
+
+Dans cette section, vous pouvez observer une nouvelle barre d'outils qui comprend les sections suivantes : `commits`, `branches`, `releases`, `environment`, `contributors` et `View license`.
+
+![](images/annexe_a2/github4.gif)
+
+Nous pouvons observer pas moins de 270 `commits` (Rappelez vous qu'un état d'avancement d'un projet est un `commit`).
+
+![](images/annexe_a2/github6.gif)
+
+#### `Issues`
+
+Cette section est prévue afin de discuter, de réfléchir et de collaborer sur un projet commun. 
+
+![](images/annexe_a2/github7.gif)
+
+#### `Insights`
+
+La section `Insights` nous renseigne sur l'activité de notre projet. On peut y voir par exemple les contributeurs (`Contributors`) du projet. Nous avons donc 4 personnes qui ont contribué sur cet ouvrage. 
+
+![](images/annexe_a2/github8.gif)
+
+Les informations fournies dans cette section sont employées dans le cadre des corrections des travaux de groupes. 
+
+### Cloner un dépot
+
+Lorsque nous souhaitons travailler sur un de nos projets, il faut commencer par le cloner pour avoir une copie en local de ce dernier. 
+
+![](images/annexe_a2/github9.png)
+
+Pour commencer, vous devez copier le lien menant à votre dépôt sur GitHub. Il vous suffit de cliquer sur `Clone or download`et de copier l'url proposée (vous avez d'ailleurs un bouton à cet effet).
+
+Ensuite, vous devez vous rendre dans RStudio et sélectionner l'onglet `Project`, suivi de `New Project...` (Si les projets restent encore un peu flous pour vous, rendez vous dans la section \@ref(#rs-projet)). Une nouvelle fenêtre s'ouvre . Vous devez sélectionner `Version Control`, puis `Git`.  
+
+Pour finir, vous devez renseigner l'url précédemment copiée depuis GitHub, chosir un nom à votre dépôt (Laissez le nom par défaut est une bonne pratique), choisir un dossier pour cloner votre dépot (le dossier projects, du dossier shared est dédié à cela) et créer une copie en local de votre projet en cliquant sur `Create Project`. 
+
+Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des Commit, des Pull et des Push.
+
+### Copier un dépôt
+
+Lorsque que vous souhaitez apporter votre aide sur un projet qui n'est pas le votre. Vous devez réaliser un `Fork` de ce travail puis un `Clone`.
+
+N'oubliez pas que la base de GitHub est de faciliter la collaboration. Afin de soumettre vos modifications à un projet. Il faut réaliser un `Pull requests`. Cette étape permet de proposer vos modifications au responsable du projet. Ce dernier pourra accepter ou refuser vos modifications. Il s'agit souvent d'un espace de discussions entre le responsable et le collaborateur volontaire. 
 
 ### Déposer un dépot
 
 TODO
-
-### Cloner un dépot
-
-TODO
-
 
 ## GitHub Classroom
 
@@ -347,14 +414,4 @@ Votre travail individuel ou par groupe se configure avant de vous proposer de re
 
 ![](images/annexe_a2/github-classroom2.png)
 
-Depuis GitHub, vous devez cloner votre dépôt pour y avoir accès en local. 
-
-![](images/annexe_a2/github-classroom8.png)
-
-Pour commencer, vous devez copier le lien menant à votre dépôt sur GitHub. Il vous suffit de cliquer sur `Clone or download`et de copier l'url proposée (vous avez d'ailleurs un bouton à cet effet).
-
-Ensuite, vous devez vous rendre dans RStudio et sélectionner l'onglet `Project`, suivi de `New Project...` (Si les projets restent encore un peu flous pour vous, rendez vous dans la section \@ref(#rs-projet)). Une nouvelle fenêtre s'ouvre . Vous devez sélectionner `Version Control`, puis `Git`.  
-
-Pour finir, vous devez renseigner l'url précédemment copiée depuis GitHub, chosir un nom à votre dépôt (Laissez le nom par défaut est une bonne pratique), choisir un dossier pour cloner votre dépot (le dossier projects, du dossier shared est dédié à cela) et créer une copie en local de votre projet en cliquant sur `Create Project`. 
-
-Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des Commit, des Pull et des Push.
+Depuis GitHub, vous devez cloner votre dépôt pour y avoir accès en local comme expliqué dans la section précédente. Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des Commit, des Pull et des Push.

@@ -381,8 +381,11 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook</a></li>
 </ul></li>
 <li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
-<li class="chapter" data-level="B.2.1" data-path="github-1.html"><a href="github-1.html#deposer-un-depot"><i class="fa fa-check"></i><b>B.2.1</b> Déposer un dépot</a></li>
-<li class="chapter" data-level="B.2.2" data-path="github-1.html"><a href="github-1.html#cloner-un-depot"><i class="fa fa-check"></i><b>B.2.2</b> Cloner un dépot</a></li>
+<li class="chapter" data-level="B.2.1" data-path="github-1.html"><a href="github-1.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
+<li class="chapter" data-level="B.2.2" data-path="github-1.html"><a href="github-1.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
+<li class="chapter" data-level="B.2.3" data-path="github-1.html"><a href="github-1.html#cloner-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Cloner un dépot</a></li>
+<li class="chapter" data-level="B.2.4" data-path="github-1.html"><a href="github-1.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.4</b> Copier un dépôt</a></li>
+<li class="chapter" data-level="B.2.5" data-path="github-1.html"><a href="github-1.html#deposer-un-depot"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un dépot</a></li>
 </ul></li>
 <li class="chapter" data-level="B.3" data-path="github-classroom.html"><a href="github-classroom.html"><i class="fa fa-check"></i><b>B.3</b> GitHub Classroom</a></li>
 </ul></li>
@@ -435,12 +438,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p><img src="images/annexe_a2/github-classroom1.png" /></p>
 <p>Votre travail individuel ou par groupe se configure avant de vous proposer de retourner sur GitHub afin de voir votre dépôt en utilisant le lien proposé.</p>
 <p><img src="images/annexe_a2/github-classroom2.png" /></p>
-<p>Depuis GitHub, vous devez cloner votre dépôt pour y avoir accès en local.</p>
-<p><img src="images/annexe_a2/github-classroom8.png" /></p>
-<p>Pour commencer, vous devez copier le lien menant à votre dépôt sur GitHub. Il vous suffit de cliquer sur <code>Clone or download</code>et de copier l’url proposée (vous avez d’ailleurs un bouton à cet effet).</p>
-<p>Ensuite, vous devez vous rendre dans RStudio et sélectionner l’onglet <code>Project</code>, suivi de <code>New Project...</code> (Si les projets restent encore un peu flous pour vous, rendez vous dans la section @ref(#rs-projet)). Une nouvelle fenêtre s’ouvre . Vous devez sélectionner <code>Version Control</code>, puis <code>Git</code>.</p>
-<p>Pour finir, vous devez renseigner l’url précédemment copiée depuis GitHub, chosir un nom à votre dépôt (Laissez le nom par défaut est une bonne pratique), choisir un dossier pour cloner votre dépot (le dossier projects, du dossier shared est dédié à cela) et créer une copie en local de votre projet en cliquant sur <code>Create Project</code>.</p>
-<p>Vous êtes enfin prêt à éditer votre projet. N’oubliez pas de réaliser des Commit, des Pull et des Push.</p>
+<p>Depuis GitHub, vous devez cloner votre dépôt pour y avoir accès en local comme expliqué dans la section précédente. Vous êtes enfin prêt à éditer votre projet. N’oubliez pas de réaliser des Commit, des Pull et des Push.</p>
 
 </div>
 <!-- </div> -->
@@ -515,6 +513,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
