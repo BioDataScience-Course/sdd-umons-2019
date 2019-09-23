@@ -318,9 +318,43 @@ Si vous cliquez sur la petite flèche noire pointant vers le bas juste après `P
 
 ## GitHub 
 
+Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le "cloud", les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org)
+
+### Déposer un dépot
+
+TODO
+
+### Cloner un dépot
+
 TODO
 
 
 ## GitHub Classroom
 
-TODO
+**GitHub Classroom** est une extension de GitHub qui facilite le travail avec GitHub dans le contexte d'exercices à réaliser dans le cadre d'un cours. Vous serrez amené à cloner et modifier des dépôts issus de GitHub Classroom pour réaliser vos exercices.
+
+Nous avons fait le choix de configurer vos dépôts afin qu'il soit privé. En effet, vos travaux ne sont visibles que par vous et vos professeurs. 
+
+Vous rencontrerez tout au long de cet ouvrage des fenêtres d'exercice comme montré ci-dessous. Il vous suffit de cliquer sur le lien mis à votre disposition.
+
+![](images/annexe_a2/github-classroom.png)
+
+Ce lien vous redirige vers le site GitHub Classroom. Il vous suffit à nouveau uniquement d'accepter l'assignation (*Accept assigment*).
+
+![](images/annexe_a2/github-classroom1.png)
+
+Votre travail individuel ou par groupe se configure avant de vous proposer de retourner sur GitHub afin de voir votre dépôt en utilisant le lien proposé. 
+
+![](images/annexe_a2/github-classroom2.png)
+
+Depuis GitHub, vous devez cloner votre dépôt pour y avoir accès en local. 
+
+![](images/annexe_a2/github-classroom8.png)
+
+Pour commencer, vous devez copier le lien menant à votre dépôt sur GitHub. Il vous suffit de cliquer sur `Clone or download`et de copier l'url proposée (vous avez d'ailleurs un bouton à cet effet).
+
+Ensuite, vous devez vous rendre dans RStudio et sélectionner l'onglet `Project`, suivi de `New Project...` (Si les projets restent encore un peu flous pour vous, rendez vous dans la section \@ref(#rs-projet)). Une nouvelle fenêtre s'ouvre . Vous devez sélectionner `Version Control`, puis `Git`.  
+
+Pour finir, vous devez renseigner l'url précédemment copiée depuis GitHub, chosir un nom à votre dépôt (Laissez le nom par défaut est une bonne pratique), choisir un dossier pour cloner votre dépot (le dossier projects, du dossier shared est dédié à cela) et créer une copie en local de votre projet en cliquant sur `Create Project`. 
+
+Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des Commit, des Pull et des Push.
