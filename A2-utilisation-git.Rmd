@@ -317,7 +317,7 @@ Si vous cliquez sur la petite flèche noire pointant vers le bas juste après `P
 ![](images/annexe_a2/rmd6.png)
 
 
-## GitHub {github-annexe}
+## GitHub {#github-annexe}
 
 Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le "cloud", les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org).
 
@@ -373,9 +373,55 @@ La section `Insights` nous renseigne sur l'activité de notre projet. On peut y 
 
 Les informations fournies dans cette section sont employées dans le cadre des corrections des travaux de groupes. 
 
-### Cloner un dépot {github-clone}
+### Débuter un dépôt
+
+Lorsque nous souhaitons débuter un nouveau projet qui sera déposé sur Github, nous devons l'initialiser sur GitHub. 
+
+![](images/annexe_a2/github10.png)
+
+Pour créer un nouveau dépôt (`Create a new repository`), nous devons fournir les informations suivantes :
+
+- `Repository template` 
+
+Nous devons décider d'utiliser ou non un template existant parmi la liste des templates que nous avons.
+
+- `Owner`
+
+Nous devons decider du responsable du dépôt soit  une organisation ou un responsable.
+
+- `Repository name`
+
+Nous devons définir un nom pertinent pour notre projet.
+
+- `Description`
+
+Nous pouvons proposer une courte description de notre dépôt.
+
+- `Public` ou `Private`
+
+Nous devons décider si notre projet est public ou privé.
+
+- `README`
+
+Nous pouvons éditer un fichier de présentation qui se nomme le README. Ce dernier est un fichier qui va présenter succinctement notre projet. On peut l'éditer depuis GitHub directement.
+
+- `.gitignore`
+
+Il est intéressant de configurer le dépôt avec un fichier .gitignore orienté sur l'utilisation de **R**. GitHub peut en effet héberger des projets avec des languages très variés.
+
+- `license`
+
+Nous pouvons adjoindre à notre projet une licence. Il en existe plusieurs afin d'expliquer précisement ce que l'on a le droit de faire ou non avec votre dépôt.
+
+Le site <https://choosealicense.com> peut vous aider à définir votre licence.
+
+Une fois votre dépôt configuré, il ne vous reste plus qu'à le cloner comme expliqué dans la section \@ref(github-clone).
+
+### Cloner un dépot existant {#github-clone}
 
 Lorsque nous souhaitons travailler sur un de nos projets, il faut commencer par le cloner pour avoir une copie en local de ce dernier. 
+
+#### Via RStudio
 
 ![](images/annexe_a2/github9.png)
 
@@ -387,15 +433,33 @@ Pour finir, vous devez renseigner l'url précédemment copiée depuis GitHub, ch
 
 Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des Commit, des Pull et des Push.
 
+
+#### Via GitHub Desktop
+
+Il existe plusieurs programmes pour vous aider à cérer vos dépots sur GitHub. Nous avons décidé de vous présenter [GitHub Desktop](https://desktop.github.com). 
+
+TODO
+
+
+### Déposer un projet débuté 
+
+Nous avons débuté un projet sur RStudio configuré avec le gestionnaire de version. 
+
+#### Via RStudio
+
+TODO
+
+#### Via GitHub Desktop
+
+TODO
+
+
 ### Copier un dépôt
 
 Lorsque que vous souhaitez apporter votre aide sur un projet qui n'est pas le votre. Vous devez réaliser un `Fork` de ce travail puis un `Clone`.
 
 N'oubliez pas que la base de GitHub est de faciliter la collaboration. Afin de soumettre vos modifications à un projet. Il faut réaliser un `Pull requests`. Cette étape permet de proposer vos modifications au responsable du projet. Ce dernier pourra accepter ou refuser vos modifications. Il s'agit souvent d'un espace de discussions entre le responsable et le collaborateur volontaire. 
 
-### Déposer un dépot
-
-TODO
 
 ## GitHub Classroom {#github-classroom}
 
