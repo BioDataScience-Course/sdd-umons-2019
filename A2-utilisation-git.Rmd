@@ -317,7 +317,7 @@ Si vous cliquez sur la petite flèche noire pointant vers le bas juste après `P
 ![](images/annexe_a2/rmd6.png)
 
 
-## GitHub 
+## GitHub {github-annexe}
 
 Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le "cloud", les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org).
 
@@ -373,7 +373,7 @@ La section `Insights` nous renseigne sur l'activité de notre projet. On peut y 
 
 Les informations fournies dans cette section sont employées dans le cadre des corrections des travaux de groupes. 
 
-### Cloner un dépot
+### Cloner un dépot {github-clone}
 
 Lorsque nous souhaitons travailler sur un de nos projets, il faut commencer par le cloner pour avoir une copie en local de ce dernier. 
 
@@ -397,7 +397,7 @@ N'oubliez pas que la base de GitHub est de faciliter la collaboration. Afin de s
 
 TODO
 
-## GitHub Classroom
+## GitHub Classroom {#github-classroom}
 
 **GitHub Classroom** est une extension de GitHub qui facilite le travail avec GitHub dans le contexte d'exercices à réaliser dans le cadre d'un cours. Vous serrez amené à cloner et modifier des dépôts issus de GitHub Classroom pour réaliser vos exercices.
 
@@ -415,4 +415,4 @@ Votre travail individuel ou par groupe se configure avant de vous proposer de re
 
 ![](images/annexe_a2/github-classroom2.png)
 
-Depuis GitHub, vous devez cloner votre dépôt pour y avoir accès en local comme expliqué dans la section précédente. Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des Commit, des Pull et des Push.
+Depuis GitHub, vous devez cloner votre dépôt pour y avoir accès en local comme expliqué dans la section \@ref(github-clone). Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des Commit, des Pull et des Push.

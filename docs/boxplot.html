@@ -442,7 +442,7 @@ x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</sp
 <p>Le premier descripteur des cinq nombres est la <strong>médiane</strong> qui est la valeur se situant à la moitié des observations, donc, avec autant d’observations plus petites et d’observations plus grande qu’elle. La médiane sépare l’échantillon en deux.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(x)</code></pre>
 <pre><code># [1] 68</code></pre>
-<p>Les quartiles séparent l’échantillon en quatre. Le <strong>premier quartile</strong> (Q1) sera la valeur pour laquelle 25% des observations seront plus petites. Elle se situe donc entre la valeur minimale et la médiane. Cette médiane est égale au second quartile (50% des observations plus petites). Le <strong>troisième quartile</strong> (Q3) est la valeur pour laquelle 75% des observations de l’échantillon sont plus petites<a href="references.html#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>. Enfin, la valeur <strong>minimale</strong> et la valeur <strong>maximale</strong> observées dans l’échantillon complètent ces cinq nombres qui décrivent de manière synthétique la <em>position</em> et l’<em>étendue</em> des observations.</p>
+<p>Les quartiles séparent l’échantillon en quatre. Le <strong>premier quartile</strong> (Q1) sera la valeur pour laquelle 25% des observations seront plus petites. Elle se situe donc entre la valeur minimale et la médiane. Cette médiane est égale au second quartile (50% des observations plus petites). Le <strong>troisième quartile</strong> (Q3) est la valeur pour laquelle 75% des observations de l’échantillon sont plus petites<a href="references.html#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>. Enfin, la valeur <strong>minimale</strong> et la valeur <strong>maximale</strong> observées dans l’échantillon complètent ces cinq nombres qui décrivent de manière synthétique la <em>position</em> et l’<em>étendue</em> des observations.</p>
 
 <div class="note">
 Les <strong>cinq nombres</strong> sont : la <strong>valeur minimale</strong>, le <strong>premier quartile</strong>, la <strong>médiane</strong> (ou deuxième quartile), le <strong>troisième quartile</strong> et la <strong>valeur maximale</strong>.
@@ -451,7 +451,7 @@ Les <strong>cinq nombres</strong> sont : la <strong>valeur minimale</strong>, le
 <p>Voici comment on les calcules facilement dans R :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fivenum</span>(x)</code></pre>
 <pre><code># [1]   1  54  68  80 120</code></pre>
-<p>La boite de dispersion est une représentation graphique codifiée de ces cinq nombres. La représentation de <code>x</code> sous forme de nuage de points n’est ni très esthétique, ni très lisible, surtout si nous avons affaire à des milliers ou des millions d’observations qui se chevauchent sur le graphique<a href="references.html#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>.</p>
+<p>La boite de dispersion est une représentation graphique codifiée de ces cinq nombres. La représentation de <code>x</code> sous forme de nuage de points n’est ni très esthétique, ni très lisible, surtout si nous avons affaire à des milliers ou des millions d’observations qui se chevauchent sur le graphique<a href="references.html#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:nuage-de-points"></span>
 <img src="04-Visualisation-III_files/figure-html/nuage-de-points-1.png" alt="Nuage de points univarié." width="672" />
 <p class="caption">
@@ -568,9 +568,9 @@ Figure 4.18:  Croissance de dents de cochons d’Inde en fonction de la supplém
 </div>
 <div class="footnotes">
 <hr />
-<ol start="13">
-<li id="fn13"><p>Notez que, lorsque la coupure tombe entre deux observations, une valeur intermédiaire est utilisée. Ici par exemple, le premier quartile est entre 53 et 55, donc, il vaut 54. Le troisième quartile se situe entre 78 et 82. Il vaut donc 80.<a href="boxplot.html#fnref13" class="footnote-back">↩</a></p></li>
-<li id="fn14"><p>Il est possible de modifier la transparence des points et/ou de les déplacer légèrement vers la gauche ou vers la droite de manière aléatoire pour résoudre le problème de chevauchement des points sur un graphique en nuage de points univarié.<a href="boxplot.html#fnref14" class="footnote-back">↩</a></p></li>
+<ol start="14">
+<li id="fn14"><p>Notez que, lorsque la coupure tombe entre deux observations, une valeur intermédiaire est utilisée. Ici par exemple, le premier quartile est entre 53 et 55, donc, il vaut 54. Le troisième quartile se situe entre 78 et 82. Il vaut donc 80.<a href="boxplot.html#fnref14" class="footnote-back">↩</a></p></li>
+<li id="fn15"><p>Il est possible de modifier la transparence des points et/ou de les déplacer légèrement vers la gauche ou vers la droite de manière aléatoire pour résoudre le problème de chevauchement des points sur un graphique en nuage de points univarié.<a href="boxplot.html#fnref15" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

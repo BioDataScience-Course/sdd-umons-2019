@@ -543,7 +543,7 @@ Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio da
 </p>
 <pre><code>BioDataScience::run(&quot;10a_anova&quot;)</code></pre>
 </div>
-<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="references.html#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>.</p>
+<p>La distribution <em>F</em> est une distribution asymétrique n’admettant que des valeurs nulles ou positives, d’une allure assez similaire à la distribution du <span class="math inline">\(\chi^2\)</span> que nous avons étudiée au module <a href="chi2.html#chi2">8</a>. Elle est appelée loi de Fisher, ou encore, loi de Fisher-Snedecor. Elle a une asymptote horizontale à <span class="math inline">\(+\infty\)</span>. La distribution <em>F</em> admet deux paramètres, respectivement les degrés de liberté au numérateur (inter) et au dénominateur (intra). La Fig. <a href="anova-a-un-facteur.html#fig:fplot">10.5</a> représente la densité de probabilité d’une loi <em>F</em> typique<a href="references.html#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:fplot"></span>
 <img src="10-Variance_files/figure-html/fplot-1.png" alt="Allure typique de la densité de probabilité de la distribution F (ici ddl inter = 5 et ddl intra = 20). Plus *F~obs* est grand, plus l'hypothèse nulle est suspecte. La zone de rejet est donc positionnée à droite (en rouge)." width="672" />
 <p class="caption">
@@ -620,7 +620,7 @@ Figure 10.6: Graphique quantile-quantile appliqué aux résidus d’une ANOVA po
 Figure 10.7: Transformation puissance cinq du ratio largeur arrière/largeur max en fonction du groupe de crabes <em>L. variegatus</em>.
 </p>
 </div>
-<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="references.html#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a> :</p>
+<p>Nous poursuivons sur une description des données utile pour l’ANOVA<a href="references.html#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a> :</p>
 <pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">group_by</span>(., group) <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">summarise</span>(.,
@@ -666,9 +666,9 @@ Figure 10.8: Graphique quantile-quantile des résidus pour l’analyse de <code>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="50">
-<li id="fn50"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref50" class="footnote-back">↩</a></p></li>
-<li id="fn51"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref51" class="footnote-back">↩</a></p></li>
+<ol start="51">
+<li id="fn51"><p>Les fonctions qui permettent les calculs relatifs à la distribution <em>F</em> dans R sont <code>&lt;x&gt;f()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.if</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="anova-a-un-facteur.html#fnref51" class="footnote-back">↩</a></p></li>
+<li id="fn52"><p>Un snippet dédié est disponible dans le menu <code>hypothesis tests: means</code> à partir de <code>.hm</code>.<a href="anova-a-un-facteur.html#fnref52" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

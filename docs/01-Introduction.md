@@ -171,6 +171,8 @@ Comme vous pouvez le voir ci-dessus, on peut suivre la progression de notre proj
 
 Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le "cloud", les partager et collaborer avec d'autres personnes. Ce système se nomme [GitHub](https://github.com) (tout comme Facebook ou LinkedIn). GitHub rassemble donc "Git", la gestion de version et "Hub" relatif au réseau. D'autres réseaux équivalents existent comme [Gitlab](https://about.gitlab.com) ou [Bitbucket](https://bitbucket.org), mais dans ce cours, nous utiliserons GitHub ensemble, sachant que les notions apprises ici seront réutilisables ailleurs.
 
+Une description plus détaillée de GitHub est présente dans l'annexe \@ref(github-annexe) 
+
 Lorsque l'on travaille seul tout en utilisant GitHub, l'évolution de notre projet ressemblera à l'arbre ci-dessous : 
 
 ![Représentation des versions successives d'un projet avec GitHub.](images/sdd1_01/github.png)
@@ -221,6 +223,7 @@ Ceci n'est qu'une explication très succincte. Vous trouverez plus de détails d
 
 *Maintenant que vous comprenez mieux avec quels outils informatiques nous allons travaillez, vous pouvez passer à votre premier exercice pour découvrir la SciViews Box, RStudio, Markdown, Git et GitHub : vous allez réaliser un site web professionnel en ligne...*
 
+Avant de poursuivre, vous allez devoir effectuer une séance d'exercice de type learnR. Pour apprendre à utiliser ces tutoriels, reportez-vous à l'appendice \@ref(learnr).
 
 \BeginKnitrBlock{bdd}<div class="bdd">Démarrez la SciViews Box et RStudio. 
 
@@ -233,12 +236,11 @@ Quand vous avez terminé, cliquez dans la fenêtre **Console** de RStudio et app
 ([BioDataScience](https://github.com/BioDataScience-Course/BioDataScience) est un package R spécialement développé pour ce cours et que vous avez dû installer lors de la configuration de votre SciViews Box, voir Appendice \@ref(install-tuto)).</div>\EndKnitrBlock{bdd}
 
 
-
 ## Premier document en markdown {#premier-markdown}
 
 Dans le cadre de ce premier module, vous allez réaliser votre premier document écrit en markdown. Nous vous proposons pour ce faire, d'écrire une petite introduction d'un article scientifique sur un animal de votre choix. Vous trouverez le lien pour cette activité dans le rubrique "A vous de jouer" ci-dessous. 
 
-L'accès a cette tâche, qui est un travail **individuel**, se fait en utilisant GitHub Classroom \@ref(classroom). 
+L'accès a cette tâche, qui est un travail **individuel**, se fait en utilisant GitHub Classroom \@ref(github-classroom). 
 
 Lorsque votre assignation est réalisée, faites un clone local de votre dépôt et placez-le dans le sous-dossier `projects` de votre dossier partagé avec la SciViews Box `shared`. Vous aurez alors un nouveau projet RStudio \@ref(rs-projet)
 
