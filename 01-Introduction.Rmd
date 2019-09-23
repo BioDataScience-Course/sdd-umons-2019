@@ -244,6 +244,10 @@ Quand vous avez terminé, cliquez dans la fenêtre **Console** de RStudio et app
 
 Dans le cadre de ce premier module, vous allez réaliser votre premier document écrit en markdown. Nous vous proposons pour ce faire, d'écrire une petite introduction d'un article scientifique sur un animal de votre choix. Vous trouverez le lien pour cette activité dans le rubrique "Avous de jouer" ci-dessous. 
 
+L'accès a cette tâche, qui est un travail **individuel**, se fait en utilisant GitHub Classroom \@ref(classroom). 
+
+Lorsque votre assignation réalisée, faites un clone local de votre dépôt et placez-le dans le sous-dossier `projects` de votre dossier partagé avec la SciViews Box `shared`. Vous aurez alors un nouveau projet RStudio \@ref(rs-projet)
+
 
 ##### A vous de jouer {-}
 
