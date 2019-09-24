@@ -383,7 +383,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="B.2" data-path="github-annexe.html"><a href="github-annexe.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
 <li class="chapter" data-level="B.2.1" data-path="github-annexe.html"><a href="github-annexe.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
 <li class="chapter" data-level="B.2.2" data-path="github-annexe.html"><a href="github-annexe.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
-<li class="chapter" data-level="B.2.3" data-path="github-annexe.html"><a href="github-annexe.html#debuter-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Débuter un dépôt</a></li>
+<li class="chapter" data-level="B.2.3" data-path="github-annexe.html"><a href="github-annexe.html#create-repository"><i class="fa fa-check"></i><b>B.2.3</b> Débuter un dépôt</a></li>
 <li class="chapter" data-level="B.2.4" data-path="github-annexe.html"><a href="github-annexe.html#github-clone"><i class="fa fa-check"></i><b>B.2.4</b> Cloner un dépot existant</a></li>
 <li class="chapter" data-level="B.2.5" data-path="github-annexe.html"><a href="github-annexe.html#deposer-un-projet-debute"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un projet débuté</a></li>
 <li class="chapter" data-level="B.2.6" data-path="github-annexe.html"><a href="github-annexe.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.6</b> Copier un dépôt</a></li>
@@ -468,7 +468,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Les informations fournies dans cette section sont employées dans le cadre des corrections des travaux de groupes.</p>
 </div>
 </div>
-<div id="debuter-un-depot" class="section level3">
+<div id="create-repository" class="section level3">
 <h3><span class="header-section-number">B.2.3</span> Débuter un dépôt</h3>
 <p>Lorsque nous souhaitons débuter un nouveau projet qui sera déposé sur Github, nous devons l’initialiser sur GitHub.</p>
 <p><img src="images/annexe_a2/github10.png" /></p>
@@ -521,16 +521,25 @@ code span.wa { color: #bf0303; } /* Warning */
 </div>
 <div id="via-github-desktop" class="section level4">
 <h4><span class="header-section-number">B.2.4.2</span> Via GitHub Desktop</h4>
-<p>Il existe plusieurs programmes pour vous aider à cérer vos dépots sur GitHub. Nous avons décidé de vous présenter <a href="https://desktop.github.com">GitHub Desktop</a>.</p>
 <p>TODO</p>
 </div>
 </div>
 <div id="deposer-un-projet-debute" class="section level3">
 <h3><span class="header-section-number">B.2.5</span> Déposer un projet débuté</h3>
-<p>Nous avons débuté un projet sur RStudio configuré avec le gestionnaire de version.</p>
+<p>Nous avons débuté un projet sur RStudio configuré avec le gestionnaire de version comme présenté dans l’annexe <a href="rs.html#create-project">B.1.1.1</a>. Cependant, après avoir progressé dans ce projet (et réalisé plusieurs <code>Commit</code>), vous souhaitez le partager sur GitHub. Rassurez-vous, il ne faut pas tout recommencer. Il aurait cependant été plus simple de réflechir dès le début du projet à cette éventuallité, néanmoins voici une solution à ce problème.</p>
+<blockquote>
+<p>Une bonne pratique avant de vous lancer dans un nouveau projet et de se poser et de réfléchir aux objectifs du projets et aux moyens à mettre en oeuvre pour atteindre ces objectifs.</p>
+</blockquote>
 <div id="via-rstudio-1" class="section level4">
 <h4><span class="header-section-number">B.2.5.1</span> Via RStudio</h4>
-<p>TODO</p>
+<p>Nous partons d’un projet RStudio d’exemple qui se nomme <code>repos-example</code>. Comme vous pouvez le voir, ce projet comprend 3 <code>Commit</code> mais nous ne pouvons ni faire des <code>Pull</code> et des <code>Push</code>. C’est tout à fait normal vu que nous ne sommes pas lié avec GitHub.</p>
+<p><img src="images/annexe_a2/github11.png" /></p>
+<p>Pour déposer un projet RStudio existant sur GitHub, vous devez débuter par créer un nouveau dépôt dans Github qui ressemble très fortement à l’annexe <a href="github-annexe.html#create-repository">B.2.3</a>. Avec une particularité que vous ne devez pas configuré le <code>README</code>, le <code>.gitignore</code> et la <code>license</code>. Vous pouvez vous appercevoir que le dépot est vide et qu’il vous est proposé différentes solutions dont <code>…or push an existing repository from the command line</code> . Il s’agit donc de mettre en ligne (<code>Push</code>) un projet exsitant.</p>
+<p><img src="images/annexe_a2/github12.png" /></p>
+<p>Dans votre projet RStudio, sélectionnez l’onglet <code>Tools</code> puis <code>Shell...</code>. Un onglet <code>terminal</code> vient de s’ouvrir à côte de l’onglet de la <code>console</code>. Il vous suffit ensuite d’y copier les 3 instructions proposer sur GitHub et de taper sur la touche <code>enter</code> et le tour est joué</p>
+<p><img src="images/annexe_a2/github13.png" /></p>
+<p>Afin de vérifier que votre projet RStudio est correctement mis en ligne sur GitHub, vous pouvez recharger votre page sur GitHub.</p>
+<p><img src="images/annexe_a2/github14.png" /></p>
 </div>
 <div id="via-github-desktop-1" class="section level4">
 <h4><span class="header-section-number">B.2.5.2</span> Via GitHub Desktop</h4>
