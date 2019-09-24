@@ -436,8 +436,21 @@ Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des C
 
 #### Via GitHub Desktop
 
-TODO
+Github Desktop est un programme mis au point afin de faciliter l'utilisation de GitHub. Cloner un dépôt avec GitHub desktop est d'une simplicité déconcertante. 
 
+Depuis Github, sélectionnez `Clone or download` puis `Open in Desktop` et enfin acceptez l'ouverture de `Github deskop`.
+
+![](images/annexe_a2/githubdesktop.gif)
+
+Dans GitHub Desktop, une fenêtre de configuration s'ouvre, il suffit de sélectionner le dossier où l'on souhaite placer le dépôt et cloner le dépôt.
+
+![](images/annexe_a2/githubdesktop2.gif)
+
+```{note}
+
+Cette fonction n'est disponible que sur la version Mac et Windows de GitHub Desktop
+
+```
 
 ### Déposer un projet débuté 
 
@@ -469,7 +482,13 @@ Afin de vérifier que votre projet RStudio est correctement mis en ligne sur Git
 
 #### Via GitHub Desktop
 
-TODO
+Nous partons d'un projet RStudio d'exemple qui se nomme `repos-example2` similaire au projet présenté précédement.
+
+![](images/annexe_a2/githubdesktop3.png)
+
+Dans GitHub Desktop, vous devez sélectionner `File`, puis `Add Local Repository...`. Vous devez commencer par sélectionner le dossier de votre projet, puis de publier votre dépôt (`publish repository`). C'est à nouveau un programme très simple d'utilisation.
+
+![](images/annexe_a2/githubdesktop4.gif)
 
 ### Copier un dépôt
 
