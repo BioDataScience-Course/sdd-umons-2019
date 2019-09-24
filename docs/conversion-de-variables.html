@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-23">
+<meta name="date" content="2019-09-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -380,12 +380,13 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Scripts R dans RStudio</a></li>
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
-<li class="chapter" data-level="B.2.1" data-path="github-1.html"><a href="github-1.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
-<li class="chapter" data-level="B.2.2" data-path="github-1.html"><a href="github-1.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
-<li class="chapter" data-level="B.2.3" data-path="github-1.html"><a href="github-1.html#cloner-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Cloner un dépot</a></li>
-<li class="chapter" data-level="B.2.4" data-path="github-1.html"><a href="github-1.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.4</b> Copier un dépôt</a></li>
-<li class="chapter" data-level="B.2.5" data-path="github-1.html"><a href="github-1.html#deposer-un-depot"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un dépot</a></li>
+<li class="chapter" data-level="B.2" data-path="github-annexe.html"><a href="github-annexe.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="github-annexe.html"><a href="github-annexe.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
+<li class="chapter" data-level="B.2.2" data-path="github-annexe.html"><a href="github-annexe.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
+<li class="chapter" data-level="B.2.3" data-path="github-annexe.html"><a href="github-annexe.html#debuter-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Débuter un dépôt</a></li>
+<li class="chapter" data-level="B.2.4" data-path="github-annexe.html"><a href="github-annexe.html#github-clone"><i class="fa fa-check"></i><b>B.2.4</b> Cloner un dépot existant</a></li>
+<li class="chapter" data-level="B.2.5" data-path="github-annexe.html"><a href="github-annexe.html#deposer-un-projet-debute"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un projet débuté</a></li>
+<li class="chapter" data-level="B.2.6" data-path="github-annexe.html"><a href="github-annexe.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.6</b> Copier un dépôt</a></li>
 </ul></li>
 <li class="chapter" data-level="B.3" data-path="github-classroom.html"><a href="github-classroom.html"><i class="fa fa-check"></i><b>B.3</b> GitHub Classroom</a></li>
 </ul></li>
@@ -459,11 +460,11 @@ code span.wa { color: #bf0303; } /* Warning */
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -487,7 +488,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -495,7 +496,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -508,7 +509,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -516,7 +517,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -525,7 +526,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 </div>
 <div id="decoupage-en-classes" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Découpage en classes</h3>
-<p>La conversion d’une variable quantitative à qualitative doit souvent passer par une réduction des niveaux en rassemblant les valeurs proches dans des <strong>classes</strong>. Vous avez déjà utilisé de manière implicite le découpage en classes lorsque vous avez réalisé des histogrammes. Si les histogrammes sont bi- ou multimodaux, un découpage se justifie. Par exemple, le jeu de données portant sur la biométrie humaine est typique d’un cas de distribution bimodale. En fait, ce sont des étudiants (ayant tous une vingtaine d’années) qui ont réalisé ces mesures. La plupart ont choisi de s’inclure dans l’échantillon, d’où un premier mode vers une vingtaine d’années. Ensuite, ils ont pu mesurer d’autres personnes, éventuellement dans leur entourage. Beaucoup ont demandé à leurs parents, ce qui résulte en un second mode vers la cinquantaine<a href="references.html#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>. Donc, la distribution bimodale résulte plus de l’échantillonnage en lui-même que d’une réalité démographique ! Cela ne change cependant rien pour l’exercice.</p>
+<p>La conversion d’une variable quantitative à qualitative doit souvent passer par une réduction des niveaux en rassemblant les valeurs proches dans des <strong>classes</strong>. Vous avez déjà utilisé de manière implicite le découpage en classes lorsque vous avez réalisé des histogrammes. Si les histogrammes sont bi- ou multimodaux, un découpage se justifie. Par exemple, le jeu de données portant sur la biométrie humaine est typique d’un cas de distribution bimodale. En fait, ce sont des étudiants (ayant tous une vingtaine d’années) qui ont réalisé ces mesures. La plupart ont choisi de s’inclure dans l’échantillon, d’où un premier mode vers une vingtaine d’années. Ensuite, ils ont pu mesurer d’autres personnes, éventuellement dans leur entourage. Beaucoup ont demandé à leurs parents, ce qui résulte en un second mode vers la cinquantaine<a href="references.html#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>. Donc, la distribution bimodale résulte plus de l’échantillonnage en lui-même que d’une réalité démographique ! Cela ne change cependant rien pour l’exercice.</p>
 <pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
 <span class="kw">chart</span>(<span class="dt">data =</span> biometry, <span class="op">~</span><span class="st"> </span>age) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">20</span>) <span class="op">+</span>
@@ -582,7 +583,7 @@ df</code></pre>
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -621,8 +622,8 @@ Les différents niveaux des variables <code>factor</code> ou <code>ordered</code
 </div>
 <div class="footnotes">
 <hr />
-<ol start="20">
-<li id="fn20"><p>Notez que ceci ne constitue <strong>pas</strong> un échantillonnage correct par rapport à la population générale du Hainaut pour plusieurs raisons. (1) toutes les tranches d’âges ne sont échantillonnées de manière équivalente pour les raisons évoquées, (2) des liens génétiques existent au sein des familles, ce qui résulte en une <strong>non indépendance</strong> des observations entre elles, et (3) seule une sous-population constituée de personnes fréquentant l’université et de leur entourage a été échantillonnée. Cependant, dans le cadre de l’exercice, nous accepterons ces biais, tout en étant conscients qu’ils existent.<a href="conversion-de-variables.html#fnref20" class="footnote-back">↩</a></p></li>
+<ol start="19">
+<li id="fn19"><p>Notez que ceci ne constitue <strong>pas</strong> un échantillonnage correct par rapport à la population générale du Hainaut pour plusieurs raisons. (1) toutes les tranches d’âges ne sont échantillonnées de manière équivalente pour les raisons évoquées, (2) des liens génétiques existent au sein des familles, ce qui résulte en une <strong>non indépendance</strong> des observations entre elles, et (3) seule une sous-population constituée de personnes fréquentant l’université et de leur entourage a été échantillonnée. Cependant, dans le cadre de l’exercice, nous accepterons ces biais, tout en étant conscients qu’ils existent.<a href="conversion-de-variables.html#fnref19" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

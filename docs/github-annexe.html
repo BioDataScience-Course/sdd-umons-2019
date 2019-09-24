@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Module 8 Test Chi carré | Science des données biologiques</title>
+  <title>B.2 GitHub | Science des données biologiques</title>
   <meta name="description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Module 8 Test Chi carré | Science des données biologiques" />
+  <meta property="og:title" content="B.2 GitHub | Science des données biologiques" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://biodatascience-course.sciviews.org/sdd-umons/" />
   <meta property="og:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="biodatascience-course/sdd-umons" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Module 8 Test Chi carré | Science des données biologiques" />
+  <meta name="twitter:title" content="B.2 GitHub | Science des données biologiques" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
   <meta name="twitter:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="graphique-quantile-quantile.html">
-<link rel="next" href="echantillonnage.html">
+<link rel="prev" href="rs.html">
+<link rel="next" href="github-classroom.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -429,23 +429,119 @@ code span.wa { color: #bf0303; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chi2" class="section level1">
-<h1><span class="header-section-number">Module 8</span> Test Chi carré</h1>
-<p>Dans ce module, nous entrons dans le monde de l’inférence statistique et des tests d’hypothèses qui nous permettront de répondre à des questions biologiques sur base de données empiriques malgré une incertitude inévitables (hasard de l’échantillonnage, variabilité individuelle, erreurs de mesure, …).</p>
-<div id="objectifs-7" class="section level5 unnumbered">
-<h5>Objectifs</h5>
-<ul>
-<li><p>Appréhender l’inférence statistique</p></li>
-<li><p>Être capable d’effectuer un échantillonnage correctement</p></li>
-<li><p>Comprendre ce qu’est un test d’hypothèse</p></li>
-<li><p>Connaitre la distribution Chi<sup>2</sup> et les tests d’hypothèses basés sur cette distribution</p></li>
-<li><p>Développer un regard critique (positif !) sur le travail de ses collègues via l’évaluation d’un rapport par les pairs (initiation au “peer reviewing”)</p></li>
-</ul>
+<div id="github-annexe" class="section level2">
+<h2><span class="header-section-number">B.2</span> GitHub</h2>
+<p>Un réseau social a été conçu autour de Git pour sauvegarder vos projets sur le “cloud”, les partager et collaborer avec d’autres personnes. Ce système se nomme <a href="https://github.com">GitHub</a> (tout comme Facebook ou LinkedIn). GitHub rassemble donc “Git”, la gestion de version et “Hub” relatif au réseau. D’autres réseaux équivalents existent comme <a href="https://about.gitlab.com">Gitlab</a> ou <a href="https://bitbucket.org">Bitbucket</a>.</p>
+<p><img src="images/annexe_a2/github.png" /></p>
+<div id="votre-activite-et-profil" class="section level3">
+<h3><span class="header-section-number">B.2.1</span> Votre activité et profil</h3>
+<p>Pour vous montrer différentes sections sur GitHub, nous utiliserons le compte de <a href="https://github.com/GuyliannEngels">GuyliannEngels</a>. Une fois connecter sur Github, nous nous trouvons sur une page qui nous montre notre activité sur ce réseau. A droite de la page, nous pouvons observer les derniers dépôts (On parle de <code>Repositories</code> dans GitHub) sur lequels vous avez travaillé et au centre votre activité récente.</p>
+<p><img src="images/annexe_a2/github1.png" /></p>
+<p>Nous pouvons également visiter notre profil. A droite, il y a une photo et une petite présentation vous concernant tout comme vous le retrouvez sur tout réseau social, au centre vos projets récents (<code>Popular repositories</code>) et vos contributions générale sur ce réseau social. Les contributions sur le réseau est très important. Il indique de manière globale votre travail ou plutot votre apport sur vos différents projets.</p>
+<p><img src="images/annexe_a2/github3.png" /></p>
+<p>Dans notre exemple, nous pouvons observer 983 contributions sur l’année écoulée.</p>
 </div>
-<div id="prerequis-6" class="section level5 unnumbered">
-<h5>Prérequis</h5>
-<p>Les probabilités et lois de distributions statistiques vues au module <a href="proba.html#proba">7</a> doivent être comprises avant d’attaquer cette section.</p>
-</div> 
+<div id="vos-projets" class="section level3">
+<h3><span class="header-section-number">B.2.2</span> Vos projets</h3>
+<p>Sur GitHub, vous pouvez héberger vos projets (qui se nomment sur GitHub <code>repositories</code>). Notre exemple se base sur le projet <a href="https://github.com/BioDataScience-Course/sdd-umons">sdd-umons</a>, que vous pouvez librement consulter. Il s’agit en effet d’un dépôt public. Vous avez la possibilité d’avoir des projets publics ou privés.</p>
+<p>Les projets publics sont visibles par tous. La collaboration est le point central de GitHub. Un dépôt public peut être vu par tous. Il peuvent y apporter des modifications et puis vous soumettre les modifications. Nous reviendrons plus tard sur ces apports par la communauté.</p>
+<p>Pour des projets plus sensibles, vous avez la possiblité d’avoir des projets privés. Pour collaborer sur des projets privées vous serez amené à prendre un compte payant. Dans le cadre de notre cours, nous resterons toujours sur un compte gratuit.</p>
+<p>Un dépôt sur GitHub est proposé de la manière suivante. Vous pouvez observer le nom du dépot et la personne ou l’organisation qui travaille sur ce projet (<code>BioDataScience-Course/sdd-umons</code>). Dans notre cas, tous les projets relatifs au cours de sciences des données biologiques sont hébergés sur <a href="https://github.com/BioDataScience-Course">BioDataScience-Course</a>(Il en sera de même pour tous les travaux que vous réaliserez dans le cadre des cours). Sous le nom du dépôt, vous pouvez observer, le dépots sur lequel ce projet s’inspire (<code>phgrosjean/bookdown-test</code>).</p>
+<p>Vous pouvez observer une première barre d’outils comprenant les sections <code>Code</code>, <code>Issues</code>, <code>Pull requests</code>, <code>Projects</code>, <code>Security</code>, <code>Insights</code> et <code>Settings</code> (toutes les sections ne seront pas détaillées dans cet ouvrage).</p>
+<p><img src="images/annexe_a2/github5.gif" /></p>
+<div id="code" class="section level4">
+<h4><span class="header-section-number">B.2.2.1</span> <code>Code</code></h4>
+<p>Dans cette section, vous pouvez observer une nouvelle barre d’outils qui comprend les sections suivantes : <code>commits</code>, <code>branches</code>, <code>releases</code>, <code>environment</code>, <code>contributors</code> et <code>View license</code>.</p>
+<p><img src="images/annexe_a2/github4.gif" /></p>
+<p>Nous pouvons observer pas moins de 270 <code>commits</code> (Rappelez vous qu’un état d’avancement d’un projet est un <code>commit</code>).</p>
+<p><img src="images/annexe_a2/github6.gif" /></p>
+</div>
+<div id="issues" class="section level4">
+<h4><span class="header-section-number">B.2.2.2</span> <code>Issues</code></h4>
+<p>Cette section est prévue afin de discuter, de réfléchir et de collaborer sur un projet commun.</p>
+<p><img src="images/annexe_a2/github7.gif" /></p>
+</div>
+<div id="insights" class="section level4">
+<h4><span class="header-section-number">B.2.2.3</span> <code>Insights</code></h4>
+<p>La section <code>Insights</code> nous renseigne sur l’activité de notre projet. On peut y voir par exemple les contributeurs (<code>Contributors</code>) du projet. Nous avons donc 4 personnes qui ont contribué sur cet ouvrage.</p>
+<p><img src="images/annexe_a2/github8.gif" /></p>
+<p>Les informations fournies dans cette section sont employées dans le cadre des corrections des travaux de groupes.</p>
+</div>
+</div>
+<div id="debuter-un-depot" class="section level3">
+<h3><span class="header-section-number">B.2.3</span> Débuter un dépôt</h3>
+<p>Lorsque nous souhaitons débuter un nouveau projet qui sera déposé sur Github, nous devons l’initialiser sur GitHub.</p>
+<p><img src="images/annexe_a2/github10.png" /></p>
+<p>Pour créer un nouveau dépôt (<code>Create a new repository</code>), nous devons fournir les informations suivantes :</p>
+<ul>
+<li><code>Repository template</code></li>
+</ul>
+<p>Nous devons décider d’utiliser ou non un template existant parmi la liste des templates que nous avons.</p>
+<ul>
+<li><code>Owner</code></li>
+</ul>
+<p>Nous devons decider du responsable du dépôt soit une organisation ou un responsable.</p>
+<ul>
+<li><code>Repository name</code></li>
+</ul>
+<p>Nous devons définir un nom pertinent pour notre projet.</p>
+<ul>
+<li><code>Description</code></li>
+</ul>
+<p>Nous pouvons proposer une courte description de notre dépôt.</p>
+<ul>
+<li><code>Public</code> ou <code>Private</code></li>
+</ul>
+<p>Nous devons décider si notre projet est public ou privé.</p>
+<ul>
+<li><code>README</code></li>
+</ul>
+<p>Nous pouvons éditer un fichier de présentation qui se nomme le README. Ce dernier est un fichier qui va présenter succinctement notre projet. On peut l’éditer depuis GitHub directement.</p>
+<ul>
+<li><code>.gitignore</code></li>
+</ul>
+<p>Il est intéressant de configurer le dépôt avec un fichier .gitignore orienté sur l’utilisation de <strong>R</strong>. GitHub peut en effet héberger des projets avec des languages très variés.</p>
+<ul>
+<li><code>license</code></li>
+</ul>
+<p>Nous pouvons adjoindre à notre projet une licence. Il en existe plusieurs afin d’expliquer précisement ce que l’on a le droit de faire ou non avec votre dépôt.</p>
+<p>Le site <a href="https://choosealicense.com" class="uri">https://choosealicense.com</a> peut vous aider à définir votre licence.</p>
+<p>Une fois votre dépôt configuré, il ne vous reste plus qu’à le cloner comme expliqué dans la section <a href="github-annexe.html#github-clone">B.2.4</a>.</p>
+</div>
+<div id="github-clone" class="section level3">
+<h3><span class="header-section-number">B.2.4</span> Cloner un dépot existant</h3>
+<p>Lorsque nous souhaitons travailler sur un de nos projets, il faut commencer par le cloner pour avoir une copie en local de ce dernier.</p>
+<div id="via-rstudio" class="section level4">
+<h4><span class="header-section-number">B.2.4.1</span> Via RStudio</h4>
+<p><img src="images/annexe_a2/github9.png" /></p>
+<p>Pour commencer, vous devez copier le lien menant à votre dépôt sur GitHub. Il vous suffit de cliquer sur <code>Clone or download</code>et de copier l’url proposée (vous avez d’ailleurs un bouton à cet effet).</p>
+<p>Ensuite, vous devez vous rendre dans RStudio et sélectionner l’onglet <code>Project</code>, suivi de <code>New Project...</code> (Si les projets restent encore un peu flous pour vous, rendez vous dans la section @ref(#rs-projet)). Une nouvelle fenêtre s’ouvre . Vous devez sélectionner <code>Version Control</code>, puis <code>Git</code>.</p>
+<p>Pour finir, vous devez renseigner l’url précédemment copiée depuis GitHub, chosir un nom à votre dépôt (Laissez le nom par défaut est une bonne pratique), choisir un dossier pour cloner votre dépot (le dossier projects, du dossier shared est dédié à cela) et créer une copie en local de votre projet en cliquant sur <code>Create Project</code>.</p>
+<p>Vous êtes enfin prêt à éditer votre projet. N’oubliez pas de réaliser des Commit, des Pull et des Push.</p>
+</div>
+<div id="via-github-desktop" class="section level4">
+<h4><span class="header-section-number">B.2.4.2</span> Via GitHub Desktop</h4>
+<p>Il existe plusieurs programmes pour vous aider à cérer vos dépots sur GitHub. Nous avons décidé de vous présenter <a href="https://desktop.github.com">GitHub Desktop</a>.</p>
+<p>TODO</p>
+</div>
+</div>
+<div id="deposer-un-projet-debute" class="section level3">
+<h3><span class="header-section-number">B.2.5</span> Déposer un projet débuté</h3>
+<p>Nous avons débuté un projet sur RStudio configuré avec le gestionnaire de version.</p>
+<div id="via-rstudio-1" class="section level4">
+<h4><span class="header-section-number">B.2.5.1</span> Via RStudio</h4>
+<p>TODO</p>
+</div>
+<div id="via-github-desktop-1" class="section level4">
+<h4><span class="header-section-number">B.2.5.2</span> Via GitHub Desktop</h4>
+<p>TODO</p>
+</div>
+</div>
+<div id="copier-un-depot" class="section level3">
+<h3><span class="header-section-number">B.2.6</span> Copier un dépôt</h3>
+<p>Lorsque que vous souhaitez apporter votre aide sur un projet qui n’est pas le votre. Vous devez réaliser un <code>Fork</code> de ce travail puis un <code>Clone</code>.</p>
+<p>N’oubliez pas que la base de GitHub est de faciliter la collaboration. Afin de soumettre vos modifications à un projet. Il faut réaliser un <code>Pull requests</code>. Cette étape permet de proposer vos modifications au responsable du projet. Ce dernier pourra accepter ou refuser vos modifications. Il s’agit souvent d’un espace de discussions entre le responsable et le collaborateur volontaire.</p>
+</div>
 </div>
 <div id="disqus_thread"></div>
 <script>
@@ -472,8 +568,8 @@ s.setAttribute('data-timestamp', +new Date());
           </div>
         </div>
       </div>
-<a href="graphique-quantile-quantile.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="echantillonnage.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="github-classroom.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -503,7 +599,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/08-Test-Chi2.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/A2-utilisation-git.Rmd",
 "text": "Editer"
 },
 "history": {

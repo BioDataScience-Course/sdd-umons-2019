@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-23">
+<meta name="date" content="2019-09-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -380,12 +380,13 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Scripts R dans RStudio</a></li>
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
-<li class="chapter" data-level="B.2.1" data-path="github-1.html"><a href="github-1.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
-<li class="chapter" data-level="B.2.2" data-path="github-1.html"><a href="github-1.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
-<li class="chapter" data-level="B.2.3" data-path="github-1.html"><a href="github-1.html#cloner-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Cloner un dépot</a></li>
-<li class="chapter" data-level="B.2.4" data-path="github-1.html"><a href="github-1.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.4</b> Copier un dépôt</a></li>
-<li class="chapter" data-level="B.2.5" data-path="github-1.html"><a href="github-1.html#deposer-un-depot"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un dépot</a></li>
+<li class="chapter" data-level="B.2" data-path="github-annexe.html"><a href="github-annexe.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="github-annexe.html"><a href="github-annexe.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
+<li class="chapter" data-level="B.2.2" data-path="github-annexe.html"><a href="github-annexe.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
+<li class="chapter" data-level="B.2.3" data-path="github-annexe.html"><a href="github-annexe.html#debuter-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Débuter un dépôt</a></li>
+<li class="chapter" data-level="B.2.4" data-path="github-annexe.html"><a href="github-annexe.html#github-clone"><i class="fa fa-check"></i><b>B.2.4</b> Cloner un dépot existant</a></li>
+<li class="chapter" data-level="B.2.5" data-path="github-annexe.html"><a href="github-annexe.html#deposer-un-projet-debute"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un projet débuté</a></li>
+<li class="chapter" data-level="B.2.6" data-path="github-annexe.html"><a href="github-annexe.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.6</b> Copier un dépôt</a></li>
 </ul></li>
 <li class="chapter" data-level="B.3" data-path="github-classroom.html"><a href="github-classroom.html"><i class="fa fa-check"></i><b>B.3</b> GitHub Classroom</a></li>
 </ul></li>
@@ -431,7 +432,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="chainage-des-instructions" class="section level2">
 <h2><span class="header-section-number">5.5</span> Chaînage des instructions</h2>
 <p>Le chaînage (ou “pipe” en anglais) permet de combiner une suite d’instructions R. Il permet une représentation facilement lisible et compréhensible d’un traitement décomposé en plusieurs étapes simples de remaniement des données.</p>
-<p>Différents opérateurs de chaînage existent dans R. Le <a href="https://www.tidyverse.org">Tidyverse</a> et RStudio sont en faveur de l’adoption d’un opérateur de chaînage <strong><code>%&gt;%</code></strong> issu du package <strong><a href="https://magrittr.tidyverse.org">magrittr</a></strong>. Si nous sommes sensibles au clin d’œil fait ici à un artiste belge bien connu (“ceci n’est pas un pipe”), nous n’adhérons pas à ce choix pour des raisons multiples et plutôt techniques qui n’ont pas leur place dans ce document<a href="references.html#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>. Nous vous présentons ici l’un des opérateurs de chaînage du package <strong>flow</strong> : <strong><code>%&gt;.%</code></strong>. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d’un tableau de données avec et sans l’utilisation du chaînage.</p>
+<p>Différents opérateurs de chaînage existent dans R. Le <a href="https://www.tidyverse.org">Tidyverse</a> et RStudio sont en faveur de l’adoption d’un opérateur de chaînage <strong><code>%&gt;%</code></strong> issu du package <strong><a href="https://magrittr.tidyverse.org">magrittr</a></strong>. Si nous sommes sensibles au clin d’œil fait ici à un artiste belge bien connu (“ceci n’est pas un pipe”), nous n’adhérons pas à ce choix pour des raisons multiples et plutôt techniques qui n’ont pas leur place dans ce document<a href="references.html#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>. Nous vous présentons ici l’un des opérateurs de chaînage du package <strong>flow</strong> : <strong><code>%&gt;.%</code></strong>. Le jeu de données sur la biométrie humaine est employé pour cette démonstration qui va comparer le remaniement d’un tableau de données avec et sans l’utilisation du chaînage.</p>
 <pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)</code></pre>
 <p>Vous vous intéressez à l’indice de masse corporelle ou IMC (BMI en anglais) des individus de moins de 25 ans. Vous souhaitez représenter la moyenne, la médiane et le nombre d’observations de manière séparée pour les hommes et les femmes. Pour obtenir ces résultats vous devez :</p>
 <ul>
@@ -522,7 +523,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span
 </tbody>
 </table>
 <ul>
-<li>Des trois approches, la version ci-dessous avec chaînage des opérations est la plus lisible et la plus pratique<a href="references.html#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>.</li>
+<li>Des trois approches, la version ci-dessous avec chaînage des opérations est la plus lisible et la plus pratique<a href="references.html#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>.</li>
 </ul>
 <pre class="sourceCode r"><code class="sourceCode r">biometry <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">bmi =</span> weight <span class="op">/</span><span class="st"> </span>(height<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span>) <span class="op">%&gt;.%</span>
@@ -595,9 +596,9 @@ Créez un rapport et effectuez les différents exercices en suivant les instruct
 <!-- </div> -->
 <div class="footnotes">
 <hr />
-<ol start="23">
-<li id="fn23"><p>Le lecteur intéressé pourra lire les différents articles suivants : <a href="http://www.win-vector.com/blog/2017/12/more-pipes-in-r/">more pipes in R</a>, y compris les liens qui s’y trouvent, permet de se faire une idée de la diversité des opérateurs de chaînage dans R et de leur historique. <a href="https://winvector.github.io/wrapr/articles/dot_pipe.html">Dot pipe</a> présente l’opérateur <code>%.&gt;%</code> du package <strong>wrapr</strong> très proche du nôtre et <a href="http://www.win-vector.com/blog/2017/07/in-praise-of-syntactic-sugar/">in praise of syntactic sugar</a> explique ses avantages. Nous partageons l’idée que le “pipe de base” ne devrait pas modifier l’instruction de droite contrairement à ce que fait <code>%&gt;%</code> de <strong>magrittr</strong>, et notre opérateur <code>%&gt;.%</code> va en outre plus loin encore que <code>%.&gt;%</code> dans la facilité de débogage du code chaîne. <a href="chainage-des-instructions.html#fnref23" class="footnote-back">↩</a></p></li>
-<li id="fn24"><p>Le chaînage n’est cependant pas forcément plus facile à déboguer que la version avec variables intermédiaires. Le package <strong>flow</strong> propose la fonction <code>debug_flow()</code> à appeler directement après un plantage pour inspecter la dernière instruction qui a causé l’erreur, voir <code>?debug_flow</code>.<a href="chainage-des-instructions.html#fnref24" class="footnote-back">↩</a></p></li>
+<ol start="22">
+<li id="fn22"><p>Le lecteur intéressé pourra lire les différents articles suivants : <a href="http://www.win-vector.com/blog/2017/12/more-pipes-in-r/">more pipes in R</a>, y compris les liens qui s’y trouvent, permet de se faire une idée de la diversité des opérateurs de chaînage dans R et de leur historique. <a href="https://winvector.github.io/wrapr/articles/dot_pipe.html">Dot pipe</a> présente l’opérateur <code>%.&gt;%</code> du package <strong>wrapr</strong> très proche du nôtre et <a href="http://www.win-vector.com/blog/2017/07/in-praise-of-syntactic-sugar/">in praise of syntactic sugar</a> explique ses avantages. Nous partageons l’idée que le “pipe de base” ne devrait pas modifier l’instruction de droite contrairement à ce que fait <code>%&gt;%</code> de <strong>magrittr</strong>, et notre opérateur <code>%&gt;.%</code> va en outre plus loin encore que <code>%.&gt;%</code> dans la facilité de débogage du code chaîne. <a href="chainage-des-instructions.html#fnref22" class="footnote-back">↩</a></p></li>
+<li id="fn23"><p>Le chaînage n’est cependant pas forcément plus facile à déboguer que la version avec variables intermédiaires. Le package <strong>flow</strong> propose la fonction <code>debug_flow()</code> à appeler directement après un plantage pour inspecter la dernière instruction qui a causé l’erreur, voir <code>?debug_flow</code>.<a href="chainage-des-instructions.html#fnref23" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-09-23">
+<meta name="date" content="2019-09-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -380,12 +380,13 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="B.1.2" data-path="rs.html"><a href="rs.html#script"><i class="fa fa-check"></i><b>B.1.2</b> Scripts R dans RStudio</a></li>
 <li class="chapter" data-level="B.1.3" data-path="rs.html"><a href="rs.html#Rmd"><i class="fa fa-check"></i><b>B.1.3</b> R Markdown/R Notebook</a></li>
 </ul></li>
-<li class="chapter" data-level="B.2" data-path="github-1.html"><a href="github-1.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
-<li class="chapter" data-level="B.2.1" data-path="github-1.html"><a href="github-1.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
-<li class="chapter" data-level="B.2.2" data-path="github-1.html"><a href="github-1.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
-<li class="chapter" data-level="B.2.3" data-path="github-1.html"><a href="github-1.html#cloner-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Cloner un dépot</a></li>
-<li class="chapter" data-level="B.2.4" data-path="github-1.html"><a href="github-1.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.4</b> Copier un dépôt</a></li>
-<li class="chapter" data-level="B.2.5" data-path="github-1.html"><a href="github-1.html#deposer-un-depot"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un dépot</a></li>
+<li class="chapter" data-level="B.2" data-path="github-annexe.html"><a href="github-annexe.html"><i class="fa fa-check"></i><b>B.2</b> GitHub</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="github-annexe.html"><a href="github-annexe.html#votre-activite-et-profil"><i class="fa fa-check"></i><b>B.2.1</b> Votre activité et profil</a></li>
+<li class="chapter" data-level="B.2.2" data-path="github-annexe.html"><a href="github-annexe.html#vos-projets"><i class="fa fa-check"></i><b>B.2.2</b> Vos projets</a></li>
+<li class="chapter" data-level="B.2.3" data-path="github-annexe.html"><a href="github-annexe.html#debuter-un-depot"><i class="fa fa-check"></i><b>B.2.3</b> Débuter un dépôt</a></li>
+<li class="chapter" data-level="B.2.4" data-path="github-annexe.html"><a href="github-annexe.html#github-clone"><i class="fa fa-check"></i><b>B.2.4</b> Cloner un dépot existant</a></li>
+<li class="chapter" data-level="B.2.5" data-path="github-annexe.html"><a href="github-annexe.html#deposer-un-projet-debute"><i class="fa fa-check"></i><b>B.2.5</b> Déposer un projet débuté</a></li>
+<li class="chapter" data-level="B.2.6" data-path="github-annexe.html"><a href="github-annexe.html#copier-un-depot"><i class="fa fa-check"></i><b>B.2.6</b> Copier un dépôt</a></li>
 </ul></li>
 <li class="chapter" data-level="B.3" data-path="github-classroom.html"><a href="github-classroom.html"><i class="fa fa-check"></i><b>B.3</b> GitHub Classroom</a></li>
 </ul></li>
@@ -442,7 +443,7 @@ Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio da
 </div>
 <div id="variances-inegales" class="section level3">
 <h3><span class="header-section-number">9.4.1</span> Variances inégales</h3>
-<p>Dans le test précédent, nous avons supposé que les variances entre les valeurs <span class="math inline">\(rear_F\)</span> et <span class="math inline">\(rear_M\)</span> étaient égales, mais rien ne dit que cela soit le cas<a href="references.html#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>. Si nous ne voulons pas de cette contrainte, une variante du test permet de comparer deux moyennes même en présence de variances inégales : le <strong>test de Welch</strong>. Il consiste à ajuster les degrés de liberté en cas de variances inégales. Il suffit de préciser <code>var.equal = FALSE</code>.</p>
+<p>Dans le test précédent, nous avons supposé que les variances entre les valeurs <span class="math inline">\(rear_F\)</span> et <span class="math inline">\(rear_M\)</span> étaient égales, mais rien ne dit que cela soit le cas<a href="references.html#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>. Si nous ne voulons pas de cette contrainte, une variante du test permet de comparer deux moyennes même en présence de variances inégales : le <strong>test de Welch</strong>. Il consiste à ajuster les degrés de liberté en cas de variances inégales. Il suffit de préciser <code>var.equal = FALSE</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>sex,
   <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="dt">conf.level =</span> <span class="fl">0.95</span>, <span class="dt">var.equal =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># 
@@ -559,7 +560,7 @@ Attention ! Les hypothèses se formulent différemment. Il s’agit de la diffe
 # sample estimates:
 # mean of the differences 
 #                  2.8445</code></pre>
-<p>Nous rejettons <span class="math inline">\(H_0\)</span> car la valeur <em>P</em> est inférieure à <span class="math inline">\(\alpha\)</span>. Nous en concluons que le crabe <em>L. variegatus</em> a une carapace significativement plus large à l’avant qu’à l’arrière (t test apparié = 25,3, ddl = 199, valeur <em>P</em> &lt;&lt; 10<sup>-3</sup>). Naturellement, les variantes unilatérales à gauche et à droite existent aussi pour ce test. Par contre, la question des variances égales ou non ne se pose pas dans ce cas<a href="references.html#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a>. Notez que le test se limite à indiquer que la valeur <em>P</em> &lt; 2,2 . 10<sup>-16</sup>. Effectivement, notre calcul donne 3.7 . 10<sup>-64</sup>.</p>
+<p>Nous rejettons <span class="math inline">\(H_0\)</span> car la valeur <em>P</em> est inférieure à <span class="math inline">\(\alpha\)</span>. Nous en concluons que le crabe <em>L. variegatus</em> a une carapace significativement plus large à l’avant qu’à l’arrière (t test apparié = 25,3, ddl = 199, valeur <em>P</em> &lt;&lt; 10<sup>-3</sup>). Naturellement, les variantes unilatérales à gauche et à droite existent aussi pour ce test. Par contre, la question des variances égales ou non ne se pose pas dans ce cas<a href="references.html#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>. Notez que le test se limite à indiquer que la valeur <em>P</em> &lt; 2,2 . 10<sup>-16</sup>. Effectivement, notre calcul donne 3.7 . 10<sup>-64</sup>.</p>
 <div id="conditions-dapplication-3" class="section level5 unnumbered">
 <h5>Conditions d’application</h5>
 <ul>
@@ -678,9 +679,9 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep2)</
 </div>
 <div class="footnotes">
 <hr />
-<ol start="46">
-<li id="fn46"><p>Il existe des tests pour le vérifier, comme le <strong>test de Bartlett</strong>, mais ce n’est pas le propos ici.<a href="variantes-du-test-t-de-student.html#fnref46" class="footnote-back">↩</a></p></li>
-<li id="fn47"><p>Pouvez-vous expliquer pourquoi ? Réfléchissez, c’est assez évident.<a href="variantes-du-test-t-de-student.html#fnref47" class="footnote-back">↩</a></p></li>
+<ol start="45">
+<li id="fn45"><p>Il existe des tests pour le vérifier, comme le <strong>test de Bartlett</strong>, mais ce n’est pas le propos ici.<a href="variantes-du-test-t-de-student.html#fnref45" class="footnote-back">↩</a></p></li>
+<li id="fn46"><p>Pouvez-vous expliquer pourquoi ? Réfléchissez, c’est assez évident.<a href="variantes-du-test-t-de-student.html#fnref46" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
