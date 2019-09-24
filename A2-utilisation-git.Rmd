@@ -54,7 +54,7 @@ Un projet sert, dans RStudio, à organiser son travail. Un projet va regrouper l
 Notez que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l'onglet **Console** (`~/shared/projects/mon_premier_projet/` dans l'exemple), et que l'onglet **Files** affiche son contenu. Un fichier `mon_premier_projet.Rproj` y  est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet^[N'éditer **jamais** à la main un fichier `.Rproj`. Laisser RStudio s'en occuper tout seul.]. C'est aussi une excellente façon de repérer qu'un répertoire est la base d'un projet RStudio, en repérant ce fameux fichier `.Rproj`.
 
 
-#### Création d'un projet
+#### Création d'un projet {#create-project}
 
 Créez votre premier projet en suivant les quatre étapes suivantes :
 
@@ -373,7 +373,7 @@ La section `Insights` nous renseigne sur l'activité de notre projet. On peut y 
 
 Les informations fournies dans cette section sont employées dans le cadre des corrections des travaux de groupes. 
 
-### Débuter un dépôt
+### Débuter un dépôt {#create-repository}
 
 Lorsque nous souhaitons débuter un nouveau projet qui sera déposé sur Github, nous devons l'initialiser sur GitHub. 
 
@@ -436,23 +436,40 @@ Vous êtes enfin prêt à éditer votre projet. N'oubliez pas de réaliser des C
 
 #### Via GitHub Desktop
 
-Il existe plusieurs programmes pour vous aider à cérer vos dépots sur GitHub. Nous avons décidé de vous présenter [GitHub Desktop](https://desktop.github.com). 
-
 TODO
 
 
 ### Déposer un projet débuté 
 
-Nous avons débuté un projet sur RStudio configuré avec le gestionnaire de version. 
+Nous avons débuté un projet sur RStudio configuré avec le gestionnaire de version comme présenté dans l'annexe \@ref(create-project). Cependant, après avoir progressé dans ce projet (et réalisé plusieurs `Commit`), vous souhaitez le partager sur GitHub. Rassurez-vous, il ne faut pas tout recommencer. Il aurait cependant été plus simple de réflechir dès le début du projet à cette éventuallité, néanmoins voici une solution à ce problème.
+
+>  Une bonne pratique avant de vous lancer dans un nouveau projet et de se poser et de réfléchir aux objectifs du projets et aux moyens à mettre en oeuvre pour atteindre ces objectifs. 
+
 
 #### Via RStudio
 
-TODO
+Nous partons d'un projet RStudio d'exemple qui se nomme `repos-example`. Comme vous pouvez le voir, ce projet comprend 3 `Commit` mais nous ne pouvons ni faire des `Pull` et des `Push`. C'est tout à fait normal vu que nous ne sommes pas lié avec GitHub.
+
+![](images/annexe_a2/github11.png)
+
+Pour déposer un projet RStudio existant sur GitHub, vous devez débuter par créer un nouveau dépôt dans Github qui ressemble très fortement à l'annexe \@ref(create-repository). Avec une particularité que vous ne devez pas configuré le `README`, le `.gitignore` et la `license`. Vous pouvez vous appercevoir que le dépot est vide et qu'il vous est proposé différentes solutions dont `…or push an existing repository from the command line` .  Il s'agit donc de mettre en ligne (`Push`) un projet exsitant.
+
+
+![](images/annexe_a2/github12.png)
+
+
+Dans votre projet RStudio, sélectionnez l'onglet `Tools` puis `Shell...`. Un onglet `terminal` vient de s'ouvrir à côte de l'onglet de la `console`. Il vous suffit ensuite d'y copier les 3 instructions proposer sur GitHub et de taper sur la touche `enter` et le tour est joué 
+
+
+![](images/annexe_a2/github13.png)
+
+Afin de vérifier que votre projet RStudio est correctement mis en ligne sur GitHub, vous pouvez recharger votre page sur GitHub.
+
+![](images/annexe_a2/github14.png)
 
 #### Via GitHub Desktop
 
 TODO
-
 
 ### Copier un dépôt
 
