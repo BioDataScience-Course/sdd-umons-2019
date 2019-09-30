@@ -54,8 +54,8 @@ Des explications détaillées se trouvent dans l'annexe \@ref(svbox) dédiée à
 </div>
 
 <div class="bdd">
-<p>Une fois connecté au compte <code>sv</code> dans la machine virtuelle, réalisez l’activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_19_svbox.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_19_svbox.pdf</a></p>
-<p>Après avoir réalisé l’activité, un document récapitulatif est mis à votre disposition : <a href="https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_19_svbox_solution.html" class="uri">https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_19_svbox_solution.html</a></p>
+<p>Une fois connecté au compte <code>sv</code> dans la machine virtuelle, réalisez l’activité : <strong>Découverte de la machine virtuelle</strong> <a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_01/presentations/sdd1_01_svbox.pdf" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_01/presentations/sdd1_01_svbox.pdf</a></p>
+<p>Après avoir réalisé l’activité, un document récapitulatif est mis à votre disposition : <a href="https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_01/exercises/sdd1_01_svbox.html" class="uri">https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_01/exercises/sdd1_01_svbox.html</a></p>
 </div>
 
 
@@ -249,9 +249,16 @@ Lorsque votre assignation est réalisée, faites un clone local de votre dépôt
 
 <div class="bdd">
 <p>Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre premier document rédigé en markdown via l’adresse suivante :</p>
-<p>Pour le cours de Bio-informatique et science des données : <a href="https://classroom.github.com/a/GY_xtRk6" class="uri">https://classroom.github.com/a/GY_xtRk6</a>.</p>
-<p>Les instructions détaillées sont dans le fichier <code>README.md</code> sur ce dépôt.</p>
-<p>Si vous n’êtes pas famillarisé avec github Classeroom;, vous pouvez vous référer au lien suivant : <a href="https://biodatascience-course.sciviews.org/sdd-umons/github-classroom.html" class="uri">https://biodatascience-course.sciviews.org/sdd-umons/github-classroom.html</a></p>
+<p>Les explications relatives à la tâche qui vous est assignée sont dans le fichier <code>README.md</code>du dépôt accessible depuis :</p>
+<ul>
+<li><p>Pour l’année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants :</p>
+<ul>
+<li>Cours de Bioinformatique et Sciences des données à charleroi : <a href="https://classroom.github.com/a/GY_xtRk6" class="uri">https://classroom.github.com/a/GY_xtRk6</a></li>
+<li>Cours de Sciences des données I à Mons : <a href="https://classroom.github.com/a/PFiyfMa6" class="uri">https://classroom.github.com/a/PFiyfMa6</a></li>
+</ul></li>
+<li><p>Pour les autres utilisateurs de ce livre, veuillez faire un “fork” du dépôt <a href="https://github.com/BioDataScience-Course/markdown-decouverte">markdown-decouverte</a>. Si vous souhaitez accéder à une version précédente de l’exercice, sélectionner la branche correspondante à l’année que vous recherchez.</p></li>
+</ul>
 </div>
 
+Si vous n'êtes pas famillarisé avec github Classeroom, vous pouvez vous référer à l'Appendice \@ref(github-classroom).
 
