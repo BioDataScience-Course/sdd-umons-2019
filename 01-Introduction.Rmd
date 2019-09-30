@@ -56,10 +56,10 @@ knitr::include_graphics('images/sdd1_01/svBox-256.png')
 
 ```{block, type = 'bdd'}
 Une fois connecté au compte `sv` dans la machine virtuelle, réalisez l'activité : **Découverte de la machine virtuelle**
-<https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/presentations/sdd1_01_19_svbox.pdf>
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_01/presentations/sdd1_01_svbox.pdf>
 
 Après avoir réalisé l'activité, un document récapitulatif est mis à votre disposition : 
-<https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/master/sdd1_01/exercises/sdd1_01_19_svbox_solution.html>
+<https://htmlpreview.github.io/?https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_01/exercises/sdd1_01_svbox.html>
 ```
 
 
@@ -256,13 +256,16 @@ Lorsque votre assignation est réalisée, faites un clone local de votre dépôt
 ```{block, type = 'bdd'}
 Maintenant que vous avez appréhendé les différents outils, lancez vous dans la création de votre premier document rédigé en markdown via l’adresse suivante : 
 
-Pour le cours de Bio-informatique et science des données  : <https://classroom.github.com/a/GY_xtRk6>. 
+Les explications relatives à la tâche qui vous est assignée sont dans le fichier `README.md`du dépôt accessible depuis : 
 
-Les instructions détaillées sont dans le fichier `README.md` sur ce dépôt.
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : <https://classroom.github.com/a/GY_xtRk6>
+    * Cours de Sciences des données I à Mons : <https://classroom.github.com/a/PFiyfMa6>
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [markdown-decouverte](https://github.com/BioDataScience-Course/markdown-decouverte). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
 
-Si vous n'êtes pas famillarisé avec github Classeroom;, vous pouvez vous référer au lien suivant :
-<https://biodatascience-course.sciviews.org/sdd-umons/github-classroom.html>
-
+Si vous n'êtes pas famillarisé avec github Classeroom, vous pouvez vous référer à l'Appendice \@ref(github-classroom).
 ```
 
 
