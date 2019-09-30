@@ -443,7 +443,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -453,7 +453,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Commençons par corriger l’encodage erroné des techniciens qui ferait penser que seulement deux personnes ont travaillé dans l’ensemble des six laboratoires.</p>
@@ -464,7 +464,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -474,7 +474,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Nous avons à présent douze techniciens notés <code>I.one</code>, <code>I.two</code>, <code>II.one</code>, <code>II.two</code>, … Nous pouvons visualiser ces données. Comme nous n’avons que quatre réplicats par technicien, nous nous limitons à la représentation des observations de départ et des moyennes.</p>
@@ -557,7 +557,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -565,7 +565,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">eggs_means <span class="op">%&gt;.%</span>

@@ -254,7 +254,7 @@ Lorsque votre assignation est réalisée, faites un clone local de votre dépôt
 <li><p>Pour l’année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants :</p>
 <ul>
 <li>Cours de Bioinformatique et Sciences des données à charleroi : <a href="https://classroom.github.com/a/GY_xtRk6" class="uri">https://classroom.github.com/a/GY_xtRk6</a></li>
-<li>Cours de Sciences des données I à Mons : <a href="https://classroom.github.com/a/PFiyfMa6" class="uri">https://classroom.github.com/a/PFiyfMa6</a></li>
+<li>Cours de Sciences des données I à Mons : <a href="https://classroom.github.com/a/cfirRjgx" class="uri">https://classroom.github.com/a/cfirRjgx</a></li>
 </ul></li>
 <li><p>Pour les autres utilisateurs de ce livre, veuillez faire un “fork” du dépôt <a href="https://github.com/BioDataScience-Course/markdown-decouverte">markdown-decouverte</a>. Si vous souhaitez accéder à une version précédente de l’exercice, sélectionner la branche correspondante à l’année que vous recherchez.</p></li>
 </ul>
