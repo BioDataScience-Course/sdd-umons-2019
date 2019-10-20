@@ -726,13 +726,21 @@ Le pipe permet d'éviter de répéter le nom des objets (version avec variables 
 
 Maintenant que vous venez d'apprendre à importer correctement vos données, à les remanier avec quelques-uns des opérateurs les plus fréquents, et que vous savez chaîner vos instructions, il est temps de vous exercer sur un cas concret.
 
+
 ```{block2, type='bdd'}
-Une tâche individuelle vous est assignée via l'URL suivante\ :
+Pour cette activité, vous allez **travailler seul** sur les données d'un projet étudiant la croissance des coraux.
 
-- <https://classroom.github.com/a/WfxTmH4b>
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md`du dépôt accessible depuis : 
 
-Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md` de ce dépôt GitHub Classroom.
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/a/XkmTR88D
+    * Cours de Sciences des données I à Mons : 
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_coral_growth](https://github.com/BioDataScience-Course/sdd1_coral_growth). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
+
 ```
+
 
 Terminez ce module en vérifiant que vous en avez acquis les notions principales.
 
