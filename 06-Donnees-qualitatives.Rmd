@@ -261,7 +261,7 @@ Dans le module \@ref(import), vous avez pris connaissance des types de variable 
     + Remanier des données
     + Visualiser et décrire des données 
     + Analyser les données (traitements statistiques, modélisation,...).
-- Produire des supports de présentation pour répondant à la question de départ et diffuser l'information dans la communauté scientifique
+- Produire des supports de présentation répondant à la question de départ et diffuser l'information dans la communauté scientifique
 
 Nous traitons ici des premières étapes qui visent à acquérir les données.
 
@@ -282,9 +282,9 @@ De même, vous allez devoir attribuer un code **unique** à chaque individu mesu
 
 #### Respect de la vie privée
 
-Lors d'expérience sur des personnes, le respect de la vie privée **doit** être pris en compte^[En Europe, les données numériques concernant les personnes sont soumises à des règles strictes édictées dans le [Règlement Général pour la Protection des Données](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/principles-gdpr_fr) ou **RGPD** en abrégé, en vigueur depuis le 25 mai 2018. Vous devez vous assurer de respecter ce règlement lors de la collecte et de l'utilisation de données relatives à des personnes. Pour les autres type de données, le droit d'auteur ou des copyrights peuvent aussi limiter votre champ d'action. Renseignez-vous !]. Le nom et le prénom, ou toute autre information permettant de retrouver les individus étudiés (adresse mail, numéro de sécurité sociale, etc.) ne *peut pas* apparaître dans la base de données consolidée. En outre, il vous faudra un accord explicite des personnes que vous voulez mesurer, et il faudra leur expliquer *ce que* vous faites, et *comment* les données seront ensuite utilisées. Une question se pose : comment pouvoir revenir vers les enregistrements liés à un individu en particulier (en cas d'erreur d'encodage, par exemple) si les informations relatives directement à ces individus ne sont pas consignées dans le tableau final ? Réfléchissez à la façon dont vous vous y prendriez avant de lire la suite...
+Lors d'expérience sur des personnes, le respect de la vie privée **doit** être pris en compte^[En Europe, les données numériques concernant les personnes sont soumises à des règles strictes édictées dans le [Règlement Général pour la Protection des Données](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/principles-gdpr_fr) ou **RGPD** en abrégé, en vigueur depuis le 25 mai 2018. Vous devez vous assurer de respecter ce règlement lors de la collecte et de l'utilisation de données relatives à des personnes. Pour les autres type de données, le droit d'auteur ou des copyrights peuvent aussi limiter votre champ d'action. Renseignez-vous !]. Le nom et le prénom, ou toute autre information permettant de retrouver les individus étudiés (adresse mail, numéro de sécurité sociale, etc.) **ne peuvent pas apparaître** dans la base de données consolidée. En outre, il vous faudra un **accord explicite** des personnes que vous voulez mesurer, et il faudra leur expliquer ce que vous faites, et **comment** les données seront ensuite utilisées. Une question se pose : comment pouvoir revenir vers les enregistrements liés à un individu en particulier (en cas d'erreur d'encodage, par exemple) si les informations relatives directement à ces individus ne sont pas consignées dans le tableau final ? Réfléchissez à la façon dont vous vous y prendriez avant de lire la suite...
 
-Voici un petit tableau qui correspond à ce que vous ne pourrez **pas** faire (nom et prénom explicitement mentionnés dans le tableau) :
+Voici un petit tableau qui correspond à ce que vous ne pourrez **pas faire** (nom et prénom explicitement mentionnés dans le tableau) :
 
 ```{r}
 (biometry_marvel <- as_dataframe(tribble(
@@ -439,13 +439,17 @@ La logique de `spread()` est illustrée via l'animation suivante :
 ![`spread()` par [apreshill](https://github.com/apreshill/teachthat/blob/master/spread/spread.gif).](images/sdd1_06/spread.gif)
 
 ```{block2, type='bdd'}
-Une tâche en binome vous est assignée via l'URL suivante\ :
+Pour cette activité, vous allez **travailler en équipe** sur les données d'une analyse métagénomique sur 4 communautés microbiennes obtenues par  une équipe de recherche de l'Université de Mons.
 
-- <https://classroom.github.com/g/shtUkGbz>
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md`du dépôt accessible depuis : 
 
-Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md` de ce dépôt GitHub Classroom.
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/g/6UoszJja
+    * Cours de Sciences des données I à Mons : 
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_mmetagenomics](https://github.com/BioDataScience-Course/sdd1_metagenomics). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
 ```
-
 
 ### Recombinaison de variables
 
