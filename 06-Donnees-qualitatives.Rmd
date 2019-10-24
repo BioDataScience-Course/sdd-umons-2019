@@ -326,17 +326,21 @@ Votre objectif est d'acquérir des données pour étudier la prévalence de l'ob
 
 
 ```{block2, type='bdd'}
-La tableau de données que vous devez completer est disponible via le lien suivant\ :
-
-- <https://docs.google.com/spreadsheets/d/1UfpZvx1_nd7d10vIMAfGVZ1vWyIuzeiKxPL0jfkNSQM/edit?usp=sharing>
-
-Le dictionnaire des données est disponible via le lien suivant\ :
-
-- <https://docs.google.com/document/d/1lgYD39W7vmVYyS5ea0wEl9ArE1dhuDRkIIBzZ4K6d_o/edit?usp=sharing>
-
-Le tableau de données est téléchargeable via le lien suivant\ :
+Pour les étudiants du cours de bioinformatique et sciences des données des données à Charleroi :
   
-- <https://docs.google.com/spreadsheets/d/e/2PACX-1vQoVtSWbENWzxbALxD0qyNDqxV4uSYqzLCtJgcNGE7ciT6nkWOjA9b6dMBHaSUY8Nw5f-mSpUEeN-3S/pub?output=csv>
+  - Le tableau de données que vous devez completer est disponible via le lien suivant : https://docs.google.com/spreadsheets/d/1XopTEpRjM0TdyVfJHva80JWaAyB7TmBbm1_k99ewzWM/edit?usp=sharing
+
+  - Le dictionnaire des données est disponible via le lien suivant : https://docs.google.com/document/d/1eBnbmzanzZXBk-UMVl8d3uQeUWzePfK0sYjW7SlzIDk/edit?usp=sharing
+
+  - Le tableau de données est téléchargeable via le lien suivant : https://docs.google.com/spreadsheets/d/e/2PACX-1vS9UthgeinmFnbJjziwOR6t0qXKgIAQdY7vkd7PZIax4XHxlvr632rVn4-NT3djJFKfgEshftEvuiJa/pub?gid=0&single=true&output=csv
+
+Pour les étudiants du cours de sciences des données des données à Mons :
+  
+  - Le tableau de données que vous devez completer est disponible via le lien suivant :
+
+  - Le dictionnaire des données est disponible via le lien suivant : 
+
+  - Le tableau de données est téléchargeable via le lien suivant :
   
 ```
 
@@ -448,7 +452,7 @@ Créez un rapport et effectuez les différents exercices en suivant les instruct
     * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/g/6UoszJja
     * Cours de Sciences des données I à Mons : 
   
-* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_mmetagenomics](https://github.com/BioDataScience-Course/sdd1_metagenomics). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_metagenomics](https://github.com/BioDataScience-Course/sdd1_metagenomics). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
 ```
 
 ### Recombinaison de variables
