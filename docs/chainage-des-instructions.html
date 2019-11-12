@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-10-24">
+<meta name="date" content="2019-11-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -565,7 +565,9 @@ knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span
 <p>Le pipe permet d’éviter de répéter le nom des objets (version avec variables intermédiaires), ce qui alourdit inutilement le code et le rend moins agréable à la lecture. L’imbrication des fonctions dans la première version est catastrophique pour la compréhension du code car les arguments des fonctions de plus haut niveau sont repoussés loin. Par exemple, l’argument de l’appel à <code>group_by()</code> (<code>gender</code>) se retrouve quatre lignes plus loin. Et encore, nous avons pris soin d’indenter le code pour repérer sur un plan vertical qui appartient à qui, mais imaginez ce que cela donne si l’instruction est mise à plat sur une seule ligne ! Le code le plus clair à la lecture est définitivement celui avec chaînage des opérations. Or, un code plus lisible est plus compréhensible… et donc, moins bogué.</p>
 <div id="a-vous-de-jouer-6" class="section level5 unnumbered">
 <h5>A vous de jouer</h5>
-<p>Maintenant que vous venez d’apprendre à importer correctement vos données, à les remanier avec quelques-uns des opérateurs les plus fréquents, et que vous savez chaîner vos instructions, il est temps de vous exercer sur un cas concret.</p>
+<ul>
+<li>Maintenant que vous venez d’apprendre à importer correctement vos données, à les remanier avec quelques-uns des opérateurs les plus fréquents, et que vous savez chaîner vos instructions, il est temps de vous exercer sur un cas concret.</li>
+</ul>
 
 <div class="bdd">
 <p>Pour cette activité, vous allez <strong>travailler seul</strong> sur les données d’un projet étudiant la croissance des coraux.</p>
@@ -574,21 +576,35 @@ knitr<span class="op">::</span><span class="kw">kable</span>(biometry_tab, <span
 <li><p>Pour l’année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants :</p>
 <ul>
 <li>Cours de Bioinformatique et Sciences des données à charleroi : <a href="https://classroom.github.com/a/XkmTR88D" class="uri">https://classroom.github.com/a/XkmTR88D</a></li>
-<li>Cours de Sciences des données I à Mons :</li>
+<li>Cours de Sciences des données I à Mons : <a href="https://classroom.github.com/a/4eP5yL1L" class="uri">https://classroom.github.com/a/4eP5yL1L</a></li>
 </ul></li>
 <li>Pour les autres utilisateurs de ce livre, veuillez faire un “fork” du dépôt <a href="https://github.com/BioDataScience-Course/sdd1_coral_growth">sdd1_coral_growth</a>. Si vous souhaitez accéder à une version précédente de l’exercice, sélectionner la branche correspondante à l’année que vous recherchez.<br />
 </li>
 </ul>
 </div>
 
-<p>Terminez ce module en vérifiant que vous en avez acquis les notions principales.</p>
+<ul>
+<li>Afin d’appliquer vos nouvelles conniassances, des challenges vous sont proposés afin d’améliorer vos compétences en remaniement de données.</li>
+</ul>
+
+<div class="bdd">
+<p>Réalisez dans le projet sur la biométrie humaine les exercies suivants :</p>
+<p><a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_05/exercises/sdd1_05_biometry.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_05/exercises/sdd1_05_biometry.md</a></p>
+<p>Consignez vos résultats dans une document R Markdown avec une explication de vos différents remaniements.</p>
+<p>Réalisez dans le projet sur le zooplankton les exercies suivants :</p>
+<p><a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_05/exercises/sdd1_05_zooplankton.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_05/exercises/sdd1_05_zooplankton.md</a></p>
+Consignez vos résultats dans une document R Markdown avec une explication de vos différents remaniements.
+</div>
+
+<ul>
+<li>Terminez ce module en vérifiant que vous en avez acquis les notions principales.</li>
+</ul>
 
 <div class="bdd">
 <p>Ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
 <pre><code>BioDataScience::run(&quot;05a_test&quot;)</code></pre>
 </div>
 
-<p>Des challenges vous sont proposés afin d’améliorer vos compétences en remaniement de données. Ces derniers sont <a href="https://github.com/BioDataScience-Course/sdd_lesson/tree/master/sdd1_05/exercises">disponibles ici</a>.</p>
 </div>
 <div id="pour-en-savoir-plus-12" class="section level5 unnumbered">
 <h5>Pour en savoir plus</h5>
