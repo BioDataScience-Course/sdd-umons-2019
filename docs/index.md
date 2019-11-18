@@ -1,7 +1,7 @@
 --- 
 title: "Science des données biologiques"
 author: "Philippe Grosjean, Guyliann Engels & Raphael Conotte"
-date: "2019-11-12"
+date: "2019-11-18"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
@@ -123,7 +123,7 @@ sessioninfo::session_info()
 #  collate  en_US.UTF-8                 
 #  ctype    en_US.UTF-8                 
 #  tz       Europe/Brussels             
-#  date     2019-11-12                  
+#  date     2019-11-18                  
 # 
 # ─ Packages ──────────────────────────────────────────────────────────────
 #  package     * version date       lib source        
