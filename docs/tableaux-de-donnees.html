@@ -431,12 +431,154 @@ code span.wa { color: #bf0303; } /* Warning */
             <section class="normal" id="section-">
 <div id="tableaux-de-donnees" class="section level2">
 <h2><span class="header-section-number">6.1</span> Tableaux de données</h2>
-<p>Les tableaux de données sont principalement représentés sous deux formes : les tableaux <strong>cas par variables</strong> et les tableaux de <strong>contingence</strong>.</p>
+<p>Les tableaux de données sont principalement représentés sous deux formes : les tableaux <strong>cas par variables</strong> et les tableaux de <strong>contingence</strong>.</p>
 <div id="tableaux-cas-par-variables" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Tableaux cas par variables</h3>
-<p>Chaque individus est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de <a href="https://www.jstatsoft.org/article/view/v059i10">tidy data</a>.</p>
-<p>Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j’ai un seul et même individu représenté sur <em>chaque</em> ligne du tableau ? Si la réponse est non, le tableau de données n’est <strong>pas</strong> correctement encodé.</p>
-<p>TODO : exemple et solution</p>
+<p>Chaque individu est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de <a href="https://www.jstatsoft.org/article/view/v059i10">tidy data</a>.</p>
+<p>Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j’ai un seul et même individu représenté sur <em>chaque</em> ligne du tableau ? Si la réponse est non, le tableau de données n’est <strong>pas</strong> correctement encodé.</p>
+<p>Par exemple, considérez les données suivantes concernant la taille adulte mesurée en cm pour deux espèces de petits rongeurs :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">hamster</th>
+<th align="left">cobaye</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">15,4</td>
+<td align="left">21,7</td>
+</tr>
+<tr class="even">
+<td align="left">18,2</td>
+<td align="left">22,0</td>
+</tr>
+<tr class="odd">
+<td align="left">17,6</td>
+<td align="left">24,3</td>
+</tr>
+<tr class="even">
+<td align="left">14,2</td>
+<td align="left">23,9</td>
+</tr>
+<tr class="odd">
+<td align="left">16,8</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Nous notons immédiatement que ce <em>n’est pas</em> un tableau correctement présenté en cas par variable. En effet, un même individu ne peut appartenir simultanément aux hamsters et aux cobayes. Il s’agit forcément d’individus différents mesurés. Nous n’avons donc pas respecté ici la règle de “une ligne = un individu”. D’ailleurs, nous avons plus de hamsters mesurés ici que de cobayes, ce qui se marque par un déséquilibre dans le remplissage du tableau… qui doit aussi être un signal d’alarme (à moins qu’il n’y ait des valeurs manquantes).</p>
+<p>Une présentation correcte de ces données consiste à utiliser une colonne “taille” et une seconde “espèce” pour indiquer toutes les caractéristiques pertinentes dans le cadre de l’étude tout en respectant les conventions d’un tableau cas par variables. Cela donne :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">espèce</th>
+<th align="left">taille</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">hamster</td>
+<td align="left">15,4</td>
+</tr>
+<tr class="even">
+<td align="left">hamster</td>
+<td align="left">18,2</td>
+</tr>
+<tr class="odd">
+<td align="left">hamster</td>
+<td align="left">17,6</td>
+</tr>
+<tr class="even">
+<td align="left">hamster</td>
+<td align="left">14,2</td>
+</tr>
+<tr class="odd">
+<td align="left">hamster</td>
+<td align="left">16,8</td>
+</tr>
+<tr class="even">
+<td align="left">cobaye</td>
+<td align="left">21,7</td>
+</tr>
+<tr class="odd">
+<td align="left">cobaye</td>
+<td align="left">22,0</td>
+</tr>
+<tr class="even">
+<td align="left">cobaye</td>
+<td align="left">24,3</td>
+</tr>
+<tr class="odd">
+<td align="left">cobaye</td>
+<td align="left">23,9</td>
+</tr>
+</tbody>
+</table>
+<p>Ce dernier tableau est moins compact et plus “verbeux” que le présenter (il faut répéter “hamster” ou “cobaye” plusieurs fois dans la première colonne). Pour cette raison, un novice ou un encodeur ignorant les règles élémentaires des sciences des données est souvent amené, de bonne fois, à adopter la présentation qui semble la plus compacte, <strong>mais ce n’est pas toujours la plus pertinente !</strong> Heureusement, dons R le outils existent pour passer d’une forme à l’autre facilement.</p>
+<p>Considérez maintenant ce second exemple fictif avec le résultat d’un test enregistré avant et après un traitement sensé améliorer le résultat du test :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">individu</th>
+<th align="left">résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">individu 1 avant</td>
+<td align="left">10,3</td>
+</tr>
+<tr class="even">
+<td align="left">individu 1 après</td>
+<td align="left">12,5</td>
+</tr>
+<tr class="odd">
+<td align="left">individu 2 avant</td>
+<td align="left">11,6</td>
+</tr>
+<tr class="even">
+<td align="left">individu 2 après</td>
+<td align="left">12,4</td>
+</tr>
+<tr class="odd">
+<td align="left">individu 3 avant</td>
+<td align="left">10,8</td>
+</tr>
+<tr class="even">
+<td align="left">individu 3 après</td>
+<td align="left">10,6</td>
+</tr>
+</tbody>
+</table>
+<p>Ici, les labels utilisés dans la colonne “individu” suggère que l’expérience à été menée avant et après à chaque fois sur le même individu. Ainsi, le tableau a 6 lignes, mais ne représente que 3 individus. Ici encore, le tableau est mal encodé. Il aurait fallu considérer une et une seule ligne par individu et reporter les résultats “avant” et “après” le traitement dans des <em>colonnes différentes</em>. Voici ces mêmes données présentées correctement selon un tableau cas par variables :</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">avant</th>
+<th align="left">après</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">10,3</td>
+<td align="left">12,5</td>
+</tr>
+<tr class="even">
+<td align="left">11,6</td>
+<td align="left">12,4</td>
+</tr>
+<tr class="odd">
+<td align="left">10,8</td>
+<td align="left">10,6</td>
+</tr>
+</tbody>
+</table>
+
+<div class="note">
+Avant toute analyse, vérifier le type de tableau de données que vous avez à disposition. Le point de départ le plus courant et le plus sûr est le <strong>tableau cas par variables</strong>. La question à se poser pour vérifier si le tableau est bien présenté est : “a-t-on une et une seule ligne dans le tableau pour chaque individu ?” Si ce n’est pas le cas, il faut remanier le tableau avant de commencer son analyse.
+</div>
+
 <p>Les tableaux de données que vous avez traités jusqu’à présent étaient tous des tableaux <strong>cas par variables</strong>. Chaque ligne représentait un <em>individu</em> sur qui une ou plusieurs <em>variables</em> (en colonnes) étaient mesurées.</p>
 <pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;fr&quot;</span>)
 <span class="kw">head</span>(biometry)</code></pre>
@@ -491,7 +633,7 @@ code span.wa { color: #bf0303; } /* Warning */
 </div>
 <div id="tableaux-de-contingence" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Tableaux de contingence</h3>
-<p>C’est le dénombrement de l’occurrence de chaque niveau d’une (tableau à une entrée) ou de deux variables <strong>qualitatives</strong> (tableau à double entrée). La fonction <code>table()</code> crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :</p>
+<p>Le tableau cas par variables n’est toutefois pas la seule représentation (correcte) possible des données. Un <strong>tableau de contingence</strong> représente de manière bien plus compacte le dénombrement de l’occurrence de chaque niveau d’une (tableau à une entrée) ou de deux variables <strong>qualitatives</strong> (tableau à double entrée). La fonction <code>table()</code> crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :</p>
 <pre class="sourceCode r"><code class="sourceCode r">biometry<span class="op">$</span>age_rec &lt;-<span class="st"> </span><span class="kw">cut</span>(biometry<span class="op">$</span>age, <span class="dt">include.lowest =</span> <span class="ot">FALSE</span>, <span class="dt">right =</span> <span class="ot">TRUE</span>,
   <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">14</span>, <span class="dv">27</span>, <span class="dv">90</span>))
 (bio_tab &lt;-<span class="st"> </span><span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))</code></pre>
@@ -508,7 +650,7 @@ code span.wa { color: #bf0303; } /* Warning */
 anthirrhinum</code></pre>
 <pre><code>#   fleur rouge    fleur rose fleur blanche 
 #            54           122            58</code></pre>
-<p>Une troisième possibilité est d’utiliser un tableau indiquant les <strong>fréquences d’occurence</strong> dans une colonne (<code>freq</code> ci-dessus). Ce n’est <strong>pas</strong> un tableau cas par variable, mais une forme bien plus concise et pratique pour pré-encoder les données qui devront être ensuite transformées en tableau de contingence à l’aide de la fonction <code>xtabs()</code>. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction <code>rep()</code>).</p>
+<p>Une troisième possibilité est d’utiliser un tableau indiquant les <strong>fréquences d’occurence</strong> dans une colonne (<code>freq</code> ci-dessus). Ce n’est <strong>pas</strong> un tableau cas par variables, mais une forme bien plus concise et pratique pour pré-encoder les données qui devront être ensuite transformées en tableau de contingence à l’aide de la fonction <code>xtabs()</code>. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction <code>rep()</code>).</p>
 <pre class="sourceCode r"><code class="sourceCode r">timolol &lt;-<span class="st"> </span><span class="kw">tibble</span>(
   <span class="dt">traitement =</span> <span class="kw">c</span>(<span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;placebo&quot;</span>),
   <span class="dt">patient    =</span> <span class="kw">c</span>(<span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>,  <span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>),
@@ -554,7 +696,7 @@ timolol_table</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(timolol_table,
   <span class="dt">caption =</span> <span class="st">&quot;Exemple de table de contingence à double entrée.&quot;</span>)</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-11">Tableau 6.1: </span>Exemple de table de contingence à double entrée.</caption>
+<caption><span id="tab:unnamed-chunk-12">Tableau 6.1: </span>Exemple de table de contingence à double entrée.</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -575,12 +717,12 @@ timolol_table</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques<a href="references.html#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>.</p>
+<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">tab1 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">head</span>(biometry), <span class="dt">rows =</span> <span class="ot">NULL</span>)
 tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))
 
 <span class="kw">combine_charts</span>(<span class="kw">list</span>(tab1, tab2), <span class="dt">nrow =</span> <span class="dv">2</span>)</code></pre>
-<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Différentes fonctions dans R existent également pour convertir un tableau de contingence en tableau cas par variables (ou en tous cas, en un tableau similaire). Par exemple, <code>as_dataframe()</code> renvoie un tableau indiquant les fréquences d’occurrences :</p>
 <pre class="sourceCode r"><code class="sourceCode r">(timolol2 &lt;-<span class="st"> </span><span class="kw">as_dataframe</span>(timolol_table, <span class="dt">n =</span> <span class="st">&quot;freq&quot;</span>))</code></pre>
 <pre><code># # A tibble: 4 x 3
@@ -590,7 +732,7 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 # 2 sain    placebo       19
 # 3 malade  timolol      116
 # 4 sain    timolol       44</code></pre>
-<p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="references.html#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a> :</p>
+<p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">uncount</span>(timolol2, freq)</code></pre>
 <pre><code># # A tibble: 307 x 2
 #    patient traitement
@@ -750,9 +892,9 @@ Le dictionnaire des données est un outil important pour comprendre ce que conti
 </div>
 <div class="footnotes">
 <hr />
-<ol start="24">
-<li id="fn24"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref24" class="footnote-back">↩</a></p></li>
-<li id="fn25"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurrences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref25" class="footnote-back">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurrences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

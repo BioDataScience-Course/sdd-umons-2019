@@ -13,7 +13,7 @@ SciViews::R
 
 - Acquérir des données et les encoder correctement et de manière à ce que les analyses soient reproductibles
 
-- Etre capable de remanier des tableaux de données et de fusionner plusieurs tableaux
+- Être capable de remanier des tableaux de données et de fusionner plusieurs tableaux
 
 
 ##### Prérequis {-}
@@ -23,16 +23,65 @@ Ce module est la continuation du module \@ref(import) dont le contenu doit être
 
 ## Tableaux de données
 
-Les tableaux de données sont principalement représentés sous deux formes : les tableaux **cas par variables** et les tableaux de **contingence**.
+Les tableaux de données sont principalement représentés sous deux formes\ : les tableaux **cas par variables** et les tableaux de **contingence**.
 
 
 ### Tableaux cas par variables
 
-Chaque individus est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de [tidy data](https://www.jstatsoft.org/article/view/v059i10).
+Chaque individu est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de [tidy data](https://www.jstatsoft.org/article/view/v059i10).
 
-Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j'ai un seul et même individu représenté sur *chaque* ligne du tableau\ ? Si la réponse est non, le tableau de données n'est **pas** correctement encodé.
+Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante\ : est-ce que j'ai un seul et même individu représenté sur *chaque* ligne du tableau\ ? Si la réponse est non, le tableau de données n'est **pas** correctement encodé.
 
-TODO : exemple et solution
+Par exemple, considérez les données suivantes concernant la taille adulte mesurée en cm pour deux espèces de petits rongeurs\ :
+
+| hamster  | cobaye  |
+|:---------|:--------|
+| 15,4     | 21,7    |
+| 18,2     | 22,0    |
+| 17,6     | 24,3    |
+| 14,2     | 23,9    |
+| 16,8     |         |
+
+Nous notons immédiatement que ce *n'est pas* un tableau correctement présenté en cas par variable. En effet, un même individu ne peut appartenir simultanément aux hamsters et aux cobayes. Il s'agit forcément d'individus différents mesurés. Nous n'avons donc pas respecté ici la règle de "une ligne = un individu". D'ailleurs, nous avons plus de hamsters mesurés ici que de cobayes, ce qui se marque par un déséquilibre dans le remplissage du tableau... qui doit aussi être un signal d'alarme (à moins qu'il n'y ait des valeurs manquantes).
+
+Une présentation correcte de ces données consiste à utiliser une colonne "taille" et une seconde "espèce" pour indiquer toutes les caractéristiques pertinentes dans le cadre de l'étude tout en respectant les conventions d'un tableau cas par variables. Cela donne\ :
+
+| espèce  |  taille  |
+|:--------|:---------|
+| hamster | 15,4     |
+| hamster | 18,2     |
+| hamster | 17,6     |
+| hamster | 14,2     |
+| hamster | 16,8     |
+| cobaye  | 21,7     |
+| cobaye  | 22,0     |
+| cobaye  | 24,3     |
+| cobaye  | 23,9     |
+
+Ce dernier tableau est moins compact et plus "verbeux" que le présenter (il faut répéter "hamster" ou "cobaye" plusieurs fois dans la première colonne). Pour cette raison, un novice ou un encodeur ignorant les règles élémentaires des sciences des données est souvent amené, de bonne fois, à adopter la présentation qui semble la plus compacte, **mais ce n'est pas toujours la plus pertinente\ !** Heureusement, dons R le outils existent pour passer d'une forme à l'autre facilement.
+
+Considérez maintenant ce second exemple fictif avec le résultat d'un test enregistré avant et après un traitement sensé améliorer le résultat du test\ :
+
+| individu         |  résultat  |
+|:-----------------|:-----------|
+| individu 1 avant |  10,3      |
+| individu 1 après |  12,5      |
+| individu 2 avant |  11,6      |
+| individu 2 après |  12,4      |
+| individu 3 avant |  10,8      |
+| individu 3 après |  10,6      |
+
+Ici, les labels utilisés dans la colonne "individu" suggère que l'expérience à été menée avant et après à chaque fois sur le même individu. Ainsi, le tableau a 6 lignes, mais ne représente que 3 individus. Ici encore, le tableau est mal encodé. Il aurait fallu considérer une et une seule ligne par individu et reporter les résultats "avant" et "après" le traitement dans des *colonnes différentes*. Voici ces mêmes données présentées correctement selon un tableau cas par variables\ :
+
+| avant  | après |
+|:-------|:------|
+| 10,3   | 12,5  |
+| 11,6   | 12,4  |
+| 10,8   | 10,6  |
+
+```{block2, type='note'}
+Avant toute analyse, vérifier le type de tableau de données que vous avez à disposition. Le point de départ le plus courant et le plus sûr est le **tableau cas par variables**. La question à se poser pour vérifier si le tableau est bien présenté est\ : "a-t-on une et une seule ligne dans le tableau pour chaque individu\ ?" Si ce n'est pas le cas, il faut remanier le tableau avant de commencer son analyse.
+```
 
 Les tableaux de données que vous avez traités jusqu'à présent étaient tous des tableaux **cas par variables**. Chaque ligne représentait un _individu_ sur qui une ou plusieurs _variables_ (en colonnes) étaient mesurées.
 
@@ -85,7 +134,7 @@ Pour de plus gros tableaux, il vaut mieux utiliser un tableur tel que Excel ou L
 
 ### Tableaux de contingence
 
-C'est le dénombrement de l’occurrence de chaque niveau d'une (tableau à une entrée) ou de deux variables **qualitatives** (tableau à double entrée). La fonction `table()` crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :
+Le tableau cas par variables n'est toutefois pas la seule représentation (correcte) possible des données. Un **tableau de contingence** représente de manière bien plus compacte le dénombrement de l’occurrence de chaque niveau d'une (tableau à une entrée) ou de deux variables **qualitatives** (tableau à double entrée). La fonction `table()` crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :
 
 ```{r}
 biometry$age_rec <- cut(biometry$age, include.lowest = FALSE, right = TRUE,
@@ -104,7 +153,7 @@ anthirrhinum <- as.table(c(
 anthirrhinum
 ```
 
-Une troisième possibilité est d'utiliser un tableau indiquant les **fréquences d'occurence** dans une colonne (`freq` ci-dessus). Ce n'est **pas** un tableau cas par variable, mais une forme bien plus concise et pratique pour pré-encoder les données qui devront être ensuite transformées en tableau de contingence à l'aide de la fonction `xtabs()`. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction `rep()`).
+Une troisième possibilité est d'utiliser un tableau indiquant les **fréquences d'occurence** dans une colonne (`freq` ci-dessus). Ce n'est **pas** un tableau cas par variables, mais une forme bien plus concise et pratique pour pré-encoder les données qui devront être ensuite transformées en tableau de contingence à l'aide de la fonction `xtabs()`. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction `rep()`).
 
 ```{r}
 timolol <- tibble(
@@ -455,6 +504,7 @@ Créez un rapport et effectuez les différents exercices en suivant les instruct
 * Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_metagenomics](https://github.com/BioDataScience-Course/sdd1_metagenomics). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
 ```
 
+
 ### Recombinaison de variables
 
 Parfois, ce sont les variables qui sont encodées de manière inappropriée par rapport aux analyses que vous souhaitez faire. Les fonctions `separate()` et `unite()` permettent de séparer une colonne en plusieurs, ou inversément.
@@ -483,6 +533,7 @@ La fonction complémentaire à `unite()` est `separate()`. Elle permet de sépar
 crabs <- separate(crabs, col = "sp_sex", into = c("sex", "species"), sep = "_")
 rmarkdown::paged_table(crabs)
 ```
+
 
 ## Traitements multi-tableaux
 
@@ -559,7 +610,7 @@ oceano <- bind_cols(nutrients, physico)
 rmarkdown::paged_table(oceano)
 ```
 
-Qu'observez vous ?
+Qu'observez vous\ ?
 
 Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. Il est préférable d'employer des fonctions de fusion de tableaux plus complexes comme `full_joint()` (ci-dessous). Pour utiliser correctement `bind_cols()`, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant `arrange()` :
 
