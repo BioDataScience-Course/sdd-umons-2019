@@ -235,7 +235,9 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="6.1.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.1.3</b> Métadonnées</a></li>
 <li class="chapter" data-level="6.1.4" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#dictionnaire-des-donnees"><i class="fa fa-check"></i><b>6.1.4</b> Dictionnaire des données</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a></li>
+<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-representatif"><i class="fa fa-check"></i><b>6.2.1</b> Échantillonnage représentatif</a></li>
+</ul></li>
 <li class="chapter" data-level="6.3" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitude"><i class="fa fa-check"></i><b>6.3.1</b> Précision et exactitude</a></li>
 <li class="chapter" data-level="6.3.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.3.2</b> Codification des données</a></li>
@@ -433,6 +435,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">6.4</span> Recombinaison de tableaux</h2>
 <div id="formats-long-et-large" class="section level3">
 <h3><span class="header-section-number">6.4.1</span> Formats long et large</h3>
+<!-- Newer versions (for svbox20?) propose pivot_long() and pivot_large() instead of spread() and gather() with a more intuitive syntax and arguments names, see: https://blog.methodsconsultants.com/posts/data-pivoting-with-tidyr/ => to be change later on ! -->
 <div class="figure">
 <img src="images/sdd1_06/tidyr-spread-gather.gif" alt="gather() versus spread() par gadenbuie." />
 <p class="caption"><code>gather()</code> versus <code>spread()</code> par <a href="https://github.com/gadenbuie/tidyexplain/blob/master/images/tidyr-spread-gather.gif">gadenbuie</a>.</p>
@@ -447,7 +450,7 @@ code span.wa { color: #bf0303; } /* Warning */
 # 4 f     test1       3.1
 # 5 m     test2       0.9
 # 6 f     test2       1.2</code></pre>
-<p>Voici maintenant le même jeu de données présenté dans le format large :</p>
+<p>Voici maintenant le même jeu de données présenté dans le format large :</p>
 <pre><code># # A tibble: 2 x 4
 #   sex   control test1 test2
 #   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -501,7 +504,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(shotgun_l
 <p>Vous conviendrez que le tableau nommé <code>shotgun_long</code> est moins compact et moins aisé à lire comparé à <code>shotgun_wide</code>. C’est une raison qui fait que beaucoup de scientifiques sont tentés d’utiliser le format large alors qu’ici il ne correspond <strong>pas</strong> à un tableau cas par variables correct, puisqu’il est impossible que les <em>mêmes</em> individus soient présents dans les différents lots (il s’agit de communautés microbiennes <em>indépendantes</em> les unes des autres). De plus, seul le format <code>shotgun_long</code> permet de produire des graphiques pertinents<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> shotgun_long, sequences <span class="op">~</span><span class="st"> </span>batch <span class="op">%fill=%</span><span class="st"> </span>kingdom) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">position =</span> <span class="st">&quot;fill&quot;</span>)</code></pre>
-<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Essayez de réaliser ce type de graphique en partant de <code>shotgun_wide</code>… Bonne chance !</p>
 <div class="note">
 <p>

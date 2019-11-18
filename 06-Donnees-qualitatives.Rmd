@@ -282,11 +282,53 @@ Le dictionnaire des données est un outil important pour comprendre ce que conti
 
 ## Population et échantillonnage
 
-TODO: partie encore à écrire
+Nos analyses statistiques seraient bien évidemment beaucoup plus simple si nous pouvions toujours mesurer tous les individus concernés par nos études. En fait, c'est presque toujours impossible car les **populations** concernées sont souvent très larges, voire infinies. Nous devons donc mesurer un petit sous-ensemble de la population, ce que nous appelons un **échantillon** ("sample" en anglais). Le processus qui mène à la sélection des individus dans l'échantillon s'appelle l'**échantillonnage** ("sampling" en anglais). De cet échantillon, nous souhaitons malgré tout retirer un maximum d'information concernant la population d'origine. Cela s'appelle faire de l'**inférence** sur la population à partir de l'échantillon ("to infer" en anglais).
+
+![Population et échantillon.](images/sdd1_06/pop_sample.png)
+
+```{block2, type='warning'}
+Faites attention à la signification des termes selon les disciplines. Par exemple, le terme **population** ne signifie pas la même chose pour un biologiste (ensemble des individus d'une même espèce pouvant se reproduire entre eux) et pour un statisticien (ensemble des valeurs que peut prendre une variable). Ainsi, la définition statstique du terme se réfère à un bien plus grand sous-ensemble en général. Par exemple, si nous étudions la souris *Mus musculus*, nous considèrerons bien évidemment une population (ou une souche donnée pour les souris de laboratoire) en qualité de biologistes. Les statisticiens considèreront l'ensemble des souris qui existent, ont existé et existeront à l'avenir comme **la** population de souris.
+
+De même, un **individu** statistique est une entité sur laquelle nous effectuons nos mesures (ce qui donne lieu à une **observation** pour chaque **variable**). Ainsi, un individu statistique peut correspondre ou non à un individu biologique selon ce que l'on considère. Par exemple, une section dans un organe peut constituer un individu statistique lors de l'étude de l'hétérogénéité à l'intérieur de cet organe. Nous aurons donc autant d'individus statistiques que de sites de prélèvement sur l'organe, ... même si ce dernier provient au final du même individu biologique (même animal ou végétal)\ !
+```
+
+
+### Échantillonnage représentatif
+
+La démarche du statisticien et du scientifique des données est de retirer un maximum d'information d'un échantillon afin de faire des inférences fiables sur la population tout entière (c'est-à-dire, tenter de tirer des conclusions les plus générales possibles à partir de l'étude d'un petit échantillon seulement). Ceci n'est possible que si l'échantillon "est conforme" à la population. En langage statistique on dit que l'**échantillon est représentatif**.
+
+Un échantillon représentatif n'est pas facile à obtenir et il faut respecter scrupuleusement certaines règles pour l'obtenir. *A contrario*  un échantillon **non** représentatif s'obtient sans précautions particulières, mais ce dernier est quasi-toujours totalement inutile (on ne peut tirer de conclusions *que* sur cet échantillon particulier). Imaginez un soudage qui ne représente pas la population sondée... quel est son intérêt\ ? Il est nul\ !
+
+La meilleure façon d'obtenir un échantillon représentatif est de réaliser un **échantillonnage aléatoire**. Dans ce cas, chaque individu de la population doit avoir la même chance d'être sélectionné dans l'échantillon. Nous parlons aussi d'échantillonnage au hasard. Vous devez bien réfléchir au **processus** qui va mener à la sélection des individus dans l'échantillon. Celui-ci doit comporter une étape qui fait intervenir le hasard.
+
+```{block2, type='error'}
+"Choisir au hasard" ses individus en les prélevant au petit bonheur la chance en fonction de son humeur n'est **pas** une bonne approche. En effet, notre main qui saisira les individus à inclure dans l'échantillon aura tendance à prélever ceux qui sont plus facile à attraper ou plus proches, par exemple. Il peut s'agir d'individus moins vigoureux, moins réactifs, ou au contraire, moins peureux... Du coup, nous n'étudierions qu'une fraction de la population qui correspond à une caractéristique particulière (ceux qui sont faibles et peu réactifs, par exemple)
+
+Une bonne sélection aléatoire **doit** faire intervenir le hasard (tirage au sort dans une urne, pile ou face, jet de dés, ou génération de nombres dits "pseudo-aléatoires" à l'aide d'un ordinateur). Par exemple, si vous avez un élevage de souris dans votre laboratoire, et que vous considérez cet élevage comme votre population, vous pouvez réaliser deux groupes (témoin et traitement) de cinq souris chacuns de plusieurs façons\ :
+  
+1. Prendre dix souris dans les cages "au hasard", et les répartir toujours "au hasard" entre les deux groupes. Ce type d'échantillonnage est **incorrect**. En effet, votre choix sera (inconsciemment) conditionné.
+
+2. Donner un identifiant numérique unique à chacune de vos souris. Ensuite tirer deux fois cinq identifiants à partir d'une urne, ou effectuer ce même traitement virtuellement à l'aide d'un ordinateur. Dans ce cas, l'échantillonnage sera réellement aléatoire et correctement réalisé\ !
+```
+
+En pratique, nous pourrons utiliser la fonction `sample()` dans R. Elle permet de simulation facilement et rapidement le processus de tirage au hasard depuis une urne. Dans le cas de nos deux groupes de cinq souris à partir d'un élevage qui contient 213 animaux numérotés de 1 à 213 (identifiants uniques), nous ferons\ :
+
+```{r, echo=FALSE, results='hide'}
+set.seed(67567)
+```
+
 
 ```{r}
-DT::datatable(iris)
+# Echantillon de 5 souris témoins
+sample(1:213, size = 5)
+# Echantillon de cinq souris pour le traitement
+sample(1:213, size = 5)
 ```
+
+Ici, la sélection aléatoire (en réalité, on parle de "pseudo-aléatoire" pour ces nombres générés par un algorithme, mais qui ont des propriétés très similaires au hasard pur) nous indique que nous devrons aller chercher les souris n°15, 12, 102, 136 er 42 dans notre élevage pour notre groupe témoin, et les souris n°187, 108, 211, 68 et 49 pour le groupe traitement.
+
+Dans le cas où un échantillonnage doit se faire **avec replacement** (l'équivalent de replacer une boule dans l'urne à chaque tirage au sort), nous pouvons indiquer l'argument `replace = TRUE` dans `sample()`. Donc, quelque chose comme `sample(0:9, size = 50, replace = TRUE)` pour échantillon les chiffres 0 à 9 au hasard cinquante fois avec remise (à chaque tirage chaque chiffre a même chance d'être tiré).
+
 
 
 ## Acquisition de données
@@ -399,6 +441,8 @@ Pour les étudiants du cours de sciences des données des données à Mons :
 
 ### Formats long et large
 
+<!-- Newer versions (for svbox20?) propose pivot_long() and pivot_large() instead of spread() and gather() with a more intuitive syntax and arguments names, see: https://blog.methodsconsultants.com/posts/data-pivoting-with-tidyr/ => to be change later on ! -->
+
 ![`gather()` versus `spread()` par [gadenbuie](https://github.com/gadenbuie/tidyexplain/blob/master/images/tidyr-spread-gather.gif).](images/sdd1_06/tidyr-spread-gather.gif)
 
 Le **format long** d'un tableau de données correspond à un encodage en un minimum de colonnes, les données étant réparties sur un plus grand nombre de lignes en comparaison du **format large** qui regroupe les données dans plusieurs colonnes successives. Voici un exemple fictif d'un jeu de données au fomat long :
@@ -415,7 +459,7 @@ tribble(
 )
 ```
 
-Voici maintenant le même jeu de données présenté dans le format large :
+Voici maintenant le même jeu de données présenté dans le format large\ :
 
 ```{r, echo=FALSE}
 tribble(
