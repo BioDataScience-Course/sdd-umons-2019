@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-11-18">
+<meta name="date" content="2019-11-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -720,7 +720,7 @@ timolol_table</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>Il est même possible de représenter <em>graphiquement</em> un tableau de contingence pour l’inclure dans une figure composée, éventuellement en le mélangeant avec des graphiques<a href="references.html#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">tab1 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">head</span>(biometry), <span class="dt">rows =</span> <span class="ot">NULL</span>)
 tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="kw">ggtexttable</span>(<span class="kw">table</span>(biometry<span class="op">$</span>gender, biometry<span class="op">$</span>age_rec))
 
@@ -735,7 +735,7 @@ tab2 &lt;-<span class="st"> </span>ggpubr<span class="op">::</span><span class="
 # 2 sain    placebo       19
 # 3 malade  timolol      116
 # 4 sain    timolol       44</code></pre>
-<p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> :</p>
+<p>Si vous insistez, vous pouvez aussi obtenir un tableau cas par variables (mais celui-ci est très long et peu pratique à manipuler) à l’aide de la fonction <code>uncount()</code><a href="references.html#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a> :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">uncount</span>(timolol2, freq)</code></pre>
 <pre><code># # A tibble: 307 x 2
 #    patient traitement
@@ -895,9 +895,9 @@ Le dictionnaire des données est un outil important pour comprendre ce que conti
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurrences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref2" class="footnote-back">↩</a></p></li>
+<ol start="24">
+<li id="fn24"><p>Utilisez cette option avec parcimonie : il vaut toujours mieux représenter un tableau comme … un tableau plutôt que comme une figure !<a href="tableaux-de-donnees.html#fnref24" class="footnote-back">↩</a></p></li>
+<li id="fn25"><p>Notez également que passer d’un tableau cas par variables à un tableau des fréquences d’occurrences se fait à l’aide de <code>count()</code>.<a href="tableaux-de-donnees.html#fnref25" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

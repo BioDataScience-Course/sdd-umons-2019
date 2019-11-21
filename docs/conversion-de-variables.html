@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-11-18">
+<meta name="date" content="2019-11-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -235,7 +235,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="6.1.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.1.3</b> Métadonnées</a></li>
 <li class="chapter" data-level="6.1.4" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#dictionnaire-des-donnees"><i class="fa fa-check"></i><b>6.1.4</b> Dictionnaire des données</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a></li>
+<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-aleatoire"><i class="fa fa-check"></i><b>6.2.1</b> Échantillonnage aléatoire</a></li>
+<li class="chapter" data-level="6.2.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-stratifie"><i class="fa fa-check"></i><b>6.2.2</b> Échantillonnage stratifié</a></li>
+</ul></li>
 <li class="chapter" data-level="6.3" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitude"><i class="fa fa-check"></i><b>6.3.1</b> Précision et exactitude</a></li>
 <li class="chapter" data-level="6.3.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.3.2</b> Codification des données</a></li>
@@ -460,11 +463,11 @@ code span.wa { color: #bf0303; } /* Warning */
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -488,7 +491,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -496,7 +499,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -509,7 +512,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -517,7 +520,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -583,7 +586,7 @@ df</code></pre>
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
