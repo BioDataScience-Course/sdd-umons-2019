@@ -661,6 +661,12 @@ A partir des données du tableau général consolidé, personne à part lui ne p
 
 ##### A vous de jouer {-}
 
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("06a_test")
+</div>\EndKnitrBlock{bdd}
+
 Votre objectif est d'acquérir des données pour étudier la prévalence de l'obésité dans la population. En classe, vous allez réfléchir par équipes aux données qu'il vous faudra mesurer : *quoi ?* *pourquoi ?* *comment ?* Les résultats de votre réflexion seront ensuite consolidées pour arriver à un *consensus*  général. Ensuite, le fruit de cette réflexion ainsi que l'analyse que vous réaliserez seront à ajouter dans le projet **sdd1_biometry**. Une feuille Google Sheets sera mise à disposition pour encoder vos données de manière collaborative sur base des spécifications que vous aurez formulées.
 
 
@@ -779,7 +785,7 @@ chart(data = shotgun_long, sequences ~ batch %fill=% kingdom) +
   geom_col(position = "fill")
 ```
 
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" />
+<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" />
 
 Essayez de réaliser ce type de graphique en partant de `shotgun_wide`... Bonne chance !
 
@@ -1050,6 +1056,12 @@ Il existe, en fait, plusieurs versions pour la fusion de tableaux, représentée
 
 
 ##### A vous de jouer {-}
+
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("06b_recombinaison")
+</div>\EndKnitrBlock{bdd}
 
  - Pour les étudiants de Bioinformatique et Sciences des données à charleroi
  
