@@ -661,6 +661,12 @@ A partir des données du tableau général consolidé, personne à part lui ne p
 
 ##### A vous de jouer {-}
 
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("06a_test")
+</div>\EndKnitrBlock{bdd}
+
 Votre objectif est d'acquérir des données pour étudier la prévalence de l'obésité dans la population. En classe, vous allez réfléchir par équipes aux données qu'il vous faudra mesurer : *quoi ?* *pourquoi ?* *comment ?* Les résultats de votre réflexion seront ensuite consolidées pour arriver à un *consensus*  général. Ensuite, le fruit de cette réflexion ainsi que l'analyse que vous réaliserez seront à ajouter dans le projet **sdd1_biometry**. Une feuille Google Sheets sera mise à disposition pour encoder vos données de manière collaborative sur base des spécifications que vous aurez formulées.
 
 
@@ -779,7 +785,7 @@ chart(data = shotgun_long, sequences ~ batch %fill=% kingdom) +
   geom_col(position = "fill")
 ```
 
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" />
+<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" />
 
 Essayez de réaliser ce type de graphique en partant de `shotgun_wide`... Bonne chance !
 
@@ -805,17 +811,6 @@ rmarkdown::paged_table(shotgun_wide2)
 La logique de `spread()` est illustrée via l'animation suivante :
 
 ![`spread()` par [apreshill](https://github.com/apreshill/teachthat/blob/master/spread/spread.gif).](images/sdd1_06/spread.gif)
-
-\BeginKnitrBlock{bdd}<div class="bdd">Pour cette activité, vous allez **travailler en équipe** sur les données d'une analyse métagénomique sur 4 communautés microbiennes obtenues par  une équipe de recherche de l'Université de Mons.
-
-Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md`du dépôt accessible depuis : 
-
-* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
-  
-    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/g/6UoszJja
-    * Cours de Sciences des données I à Mons : 
-  
-* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_metagenomics](https://github.com/BioDataScience-Course/sdd1_metagenomics). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  </div>\EndKnitrBlock{bdd}
 
 
 ### Recombinaison de variables
@@ -1062,8 +1057,36 @@ Il existe, en fait, plusieurs versions pour la fusion de tableaux, représentée
 
 ##### A vous de jouer {-}
 
-TODO
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
+    BioDataScience::run("06b_recombinaison")
+</div>\EndKnitrBlock{bdd}
+
+ - Pour les étudiants de Bioinformatique et Sciences des données à charleroi
+ 
+\BeginKnitrBlock{bdd}<div class="bdd">Pour cette activité, vous allez **travailler en équipe** sur les données d'une analyse métagénomique sur 4 communautés microbiennes obtenues par  une équipe de recherche de l'Université de Mons.
+
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md`du dépôt accessible depuis : 
+
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/g/6UoszJja
+    * Cours de Sciences des données I à Mons : 
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_metagenomics](https://github.com/BioDataScience-Course/sdd1_metagenomics). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  </div>\EndKnitrBlock{bdd}
+
+- Pour les étudiants de Sciences des données I à Mons  : 
+
+\BeginKnitrBlock{bdd}<div class="bdd">Pour cette activité, vous allez **travailler en binome** sur les données de la population belge.
+
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md`du dépôt accessible depuis : 
+
+* Pour l'année académique 2019-2020, l'URL à utiliser pour accéder à votre tâche sont les suivants : 
+
+    * Cours de Sciences des données I à Mons : <https://classroom.github.com/g/nohKNIkL>
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [belgium_inhabitants](https://github.com/BioDataScience-Course/belgium_inhabitants). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  </div>\EndKnitrBlock{bdd}
 
 ##### Pour en savoir plus {-}
 
