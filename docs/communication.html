@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-11-18">
+<meta name="date" content="2019-11-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -235,7 +235,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="6.1.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.1.3</b> Métadonnées</a></li>
 <li class="chapter" data-level="6.1.4" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#dictionnaire-des-donnees"><i class="fa fa-check"></i><b>6.1.4</b> Dictionnaire des données</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a></li>
+<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-aleatoire"><i class="fa fa-check"></i><b>6.2.1</b> Échantillonnage aléatoire</a></li>
+<li class="chapter" data-level="6.2.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-stratifie"><i class="fa fa-check"></i><b>6.2.2</b> Échantillonnage stratifié</a></li>
+</ul></li>
 <li class="chapter" data-level="6.3" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitude"><i class="fa fa-check"></i><b>6.3.1</b> Précision et exactitude</a></li>
 <li class="chapter" data-level="6.3.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.3.2</b> Codification des données</a></li>
@@ -433,7 +436,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">12.2</span> Communication</h2>
 <p>Savoir communiquer ses résultats est vital en science des données. Ce n’est pas si facile car il faut pouvoir simplifier les analyses et utiliser au mieux les visuels (c’est-à-dire, les graphiques) pour raconter une histoire qui soit à la fois captivante et compréhensible. <strong>Communiquer le fruit de ses recherches de la meilleure façon qui soit pour que les non-initiés puissent le comprendre fait partie du bagage indispensable du scientifique des données</strong>.</p>
 <p><img src="images/sdd1_12/data-scientist-useful.jpg" /></p>
-<p>Hans Rosling est sans nuls doute très doué pour communiquer des résultats statistiques. La vidéo suivante est un peu longue (20min) et en anglais, mais elle en vaut vraiment la peine<a href="references.html#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a>. De plus, il explique à quel point il est important de partager et de rassembler les données dans des grandes bases de données, et ensuite d’en tirer des études <em>utiles</em> pour l’humanité. C’est l’avenir des sciences des données, y compris en biologie, qu’il est en train de prédire là.</p>
+<p>Hans Rosling est sans nuls doute très doué pour communiquer des résultats statistiques. La vidéo suivante est un peu longue (20min) et en anglais, mais elle en vaut vraiment la peine<a href="references.html#fn61" class="footnote-ref" id="fnref61"><sup>61</sup></a>. De plus, il explique à quel point il est important de partager et de rassembler les données dans des grandes bases de données, et ensuite d’en tirer des études <em>utiles</em> pour l’humanité. C’est l’avenir des sciences des données, y compris en biologie, qu’il est en train de prédire là.</p>
 <iframe src="https://www.youtube.com/embed/hVimVzgtD6w" width="770" height="433" frameborder="0" allowfullscreen=""></iframe>
 <div id="presentations-r-markdown" class="section level3">
 <h3><span class="header-section-number">12.2.1</span> Présentations R Markdown</h3>
@@ -447,7 +450,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p><img src="images/sdd1_12/r-markdown-pres2.png" /></p>
 <p>Ls deux formats par défaut sont <strong>ioslides</strong> et <strong>Slidy</strong>. L’apparence et les fonctionnalités des deux systèmes diffèrent quelque peu. Le mieux est de tester les deux et de choisir celui qu’on préfère. La présentation apparait dans une fenêtre séparée. Les possibilités de personnalisation sont plus poussées, mais elles se font à l’aide de feuilles de styles au format CSS. Cela impose de comprendre leur logique.</p>
 <p><img src="images/sdd1_12/r-markdown-pres3.png" /></p>
-<p>Une troisième option est de compiler un document PDF de présentation en passant par le package <strong>Beamer</strong> sous LaTeX. L’avantage est que c’est lisible partout. L’inconvénient : seul du <em>contenu statique</em> est accepté (pas de gifs animés, pas de vidéos ou difficilement directement dans la présentation). Sinon, les possibilités de personnalisation sont immenses<a href="references.html#fn61" class="footnote-ref" id="fnref61"><sup>61</sup></a>.</p>
+<p>Une troisième option est de compiler un document PDF de présentation en passant par le package <strong>Beamer</strong> sous LaTeX. L’avantage est que c’est lisible partout. L’inconvénient : seul du <em>contenu statique</em> est accepté (pas de gifs animés, pas de vidéos ou difficilement directement dans la présentation). Sinon, les possibilités de personnalisation sont immenses<a href="references.html#fn62" class="footnote-ref" id="fnref62"><sup>62</sup></a>.</p>
 <p>Les trois formats <strong>ioslides</strong>, <strong>Slidy</strong> et <strong>Beamer</strong> sont parfaitement intégrés à RStudio, avec un menu contextuel dans le bouton <code>Knit</code> qui permet de passer facilement de l’un à l’autre pour autant que vous n’utilisez pas des balises spécifiques à l’un de ces trois formats.</p>
 <p><img src="images/sdd1_12/r-markdown-pres4.png" /></p>
 <p>Avec le format <strong>Beamer</strong>, vous voyez le PDF résultant dans une fenêtre séparée. Cette fenêtre ne permet pas de lancer la présentation. Il vous faut l’ouvrir dans un lecteur PDF séparé qui offre cette fonctionnalité (Acrobat Reader, Mac Preview, SumatraPDF sous Windows, eVince sous Linux, …) pour visionner votre présentation confortablement.</p>
@@ -466,9 +469,9 @@ Dans la prochaine version de la SciViews Box, il sera également possible de gé
 </div>
 <div class="footnotes">
 <hr />
-<ol start="60">
-<li id="fn60"><p>Vous pouvez activer les sous-titres en anglais via la barre de boutons en bas de la vidéo.<a href="communication.html#fnref60" class="footnote-back">↩</a></p></li>
-<li id="fn61"><p>Toutes nos présentations dans le cadre du cours sont au format R Markdown/Beamer avec un template UMONS/SDD fortement personnalisé. Dans le cadre de vos exercices, vous aurez accès à un dépôt GotHub Classroom qui vous prose un template similaire.<a href="communication.html#fnref61" class="footnote-back">↩</a></p></li>
+<ol start="61">
+<li id="fn61"><p>Vous pouvez activer les sous-titres en anglais via la barre de boutons en bas de la vidéo.<a href="communication.html#fnref61" class="footnote-back">↩</a></p></li>
+<li id="fn62"><p>Toutes nos présentations dans le cadre du cours sont au format R Markdown/Beamer avec un template UMONS/SDD fortement personnalisé. Dans le cadre de vos exercices, vous aurez accès à un dépôt GotHub Classroom qui vous prose un template similaire.<a href="communication.html#fnref62" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

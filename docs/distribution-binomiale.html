@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-11-18">
+<meta name="date" content="2019-11-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -235,7 +235,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="6.1.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.1.3</b> Métadonnées</a></li>
 <li class="chapter" data-level="6.1.4" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#dictionnaire-des-donnees"><i class="fa fa-check"></i><b>6.1.4</b> Dictionnaire des données</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a></li>
+<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-aleatoire"><i class="fa fa-check"></i><b>6.2.1</b> Échantillonnage aléatoire</a></li>
+<li class="chapter" data-level="6.2.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-stratifie"><i class="fa fa-check"></i><b>6.2.2</b> Échantillonnage stratifié</a></li>
+</ul></li>
 <li class="chapter" data-level="6.3" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitude"><i class="fa fa-check"></i><b>6.3.1</b> Précision et exactitude</a></li>
 <li class="chapter" data-level="6.3.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.3.2</b> Codification des données</a></li>
@@ -443,7 +446,7 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul>
 <p>Les conditions particulières de cette situation sont appelées <strong>épreuve de Bernoulli</strong>. Mathématiquement, nous l’écrirons comme suit. Soit une variable aléatoire <span class="math inline">\(Y\)</span> qui comptabilise le nombre de succès, la probabilité d’obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais est :</p>
 <p><span class="math display">\[P(Y=j)= C^j_n \times p^j \times (1-p)^{n-j}\]</span></p>
-<p>Le <strong>coefficient binomial</strong> <span class="math inline">\(C^j_n\)</span> vaut<a href="references.html#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a> : <span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
+<p>Le <strong>coefficient binomial</strong> <span class="math inline">\(C^j_n\)</span> vaut<a href="references.html#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a> : <span class="math display">\[C^j_n = \frac{n!}{j!(n-j)!}\]</span></p>
 <p><span class="math inline">\(C^j_n\)</span> représente le nombre de combinaisons possibles pour obtenir <span class="math inline">\(j\)</span> succès parmi <span class="math inline">\(n\)</span> essais réalisés dans un ordre quelconque. On pourra écrire aussi :</p>
 <p><span class="math display">\[Y \sim B(n,p)\]</span></p>
 <p>Notre exemple rentre parfaitement dans le cadre de l’épreuve de Bernoulli avec <em>n</em> = 6 et <em>p</em>, la probabilité du succès, c’est-à-dire, d’avoir un enfant qui ne développe pas la maladie de 3/4 : <span class="math inline">\(Y \sim B(6, 0.75)\)</span>.</p>
@@ -481,8 +484,8 @@ Figure 7.7: Probabilité d’avoir des garçons parmi une fratrie de 6 enfants (
 </div>
 <div class="footnotes">
 <hr />
-<ol start="34">
-<li id="fn34"><p>Le factoriel d’un nombre <span class="math inline">\(n\)</span>, noté <span class="math inline">\(n!\)</span> est <span class="math inline">\(1 \times 2 \times 3 \times ... \times n\)</span>, avec <span class="math inline">\(0! = 1\)</span>.<a href="distribution-binomiale.html#fnref34" class="footnote-back">↩</a></p></li>
+<ol start="35">
+<li id="fn35"><p>Le factoriel d’un nombre <span class="math inline">\(n\)</span>, noté <span class="math inline">\(n!\)</span> est <span class="math inline">\(1 \times 2 \times 3 \times ... \times n\)</span>, avec <span class="math inline">\(0! = 1\)</span>.<a href="distribution-binomiale.html#fnref35" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

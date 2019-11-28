@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-11-18">
+<meta name="date" content="2019-11-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -235,7 +235,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="6.1.3" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#metadonnees"><i class="fa fa-check"></i><b>6.1.3</b> Métadonnées</a></li>
 <li class="chapter" data-level="6.1.4" data-path="tableaux-de-donnees.html"><a href="tableaux-de-donnees.html#dictionnaire-des-donnees"><i class="fa fa-check"></i><b>6.1.4</b> Dictionnaire des données</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a></li>
+<li class="chapter" data-level="6.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html"><i class="fa fa-check"></i><b>6.2</b> Population et échantillonnage</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-aleatoire"><i class="fa fa-check"></i><b>6.2.1</b> Échantillonnage aléatoire</a></li>
+<li class="chapter" data-level="6.2.2" data-path="population-et-echantillonnage.html"><a href="population-et-echantillonnage.html#echantillonnage-stratifie"><i class="fa fa-check"></i><b>6.2.2</b> Échantillonnage stratifié</a></li>
+</ul></li>
 <li class="chapter" data-level="6.3" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html"><i class="fa fa-check"></i><b>6.3</b> Acquisition de données</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#precision-et-exactitude"><i class="fa fa-check"></i><b>6.3.1</b> Précision et exactitude</a></li>
 <li class="chapter" data-level="6.3.2" data-path="acquisition-de-donnees.html"><a href="acquisition-de-donnees.html#codification-des-donnees"><i class="fa fa-check"></i><b>6.3.2</b> Codification des données</a></li>
@@ -460,7 +463,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <h3><span class="header-section-number">B.1.1</span> Projet dans RStudio</h3>
 <p>Un projet sert, dans RStudio, à organiser son travail. Un projet va regrouper l’ensemble des <strong>jeux de données</strong>, des <strong>rapports</strong>, des <strong>présentations</strong>, des <strong>scripts</strong> d’une <strong>analyse</strong> généralement en relation avec une ou plusieurs expériences ou observations réalisés sur le terrain ou en laboratoire. Voici à quoi ressemble l’interface de RStudio lorsque vous ouvrez un projet :</p>
 <p><img src="images/annexe_a2/project1.png" /></p>
-<p>Notez que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l’onglet <strong>Console</strong> (<code>~/shared/projects/mon_premier_projet/</code> dans l’exemple), et que l’onglet <strong>Files</strong> affiche son contenu. Un fichier <code>mon_premier_projet.Rproj</code> y est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet<a href="references.html#fn70" class="footnote-ref" id="fnref70"><sup>70</sup></a>. C’est aussi une excellente façon de repérer qu’un répertoire est la base d’un projet RStudio, en repérant ce fameux fichier <code>.Rproj</code>.</p>
+<p>Notez que le nom du projet est mentionné en haut à droite. Notez également, que le répertoire de base de votre projet est le répertoire actif dans l’onglet <strong>Console</strong> (<code>~/shared/projects/mon_premier_projet/</code> dans l’exemple), et que l’onglet <strong>Files</strong> affiche son contenu. Un fichier <code>mon_premier_projet.Rproj</code> y est placé automatiquement par RStudio. Ce fichier contient les paramètres de configuration propres à ce projet<a href="references.html#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a>. C’est aussi une excellente façon de repérer qu’un répertoire est la base d’un projet RStudio, en repérant ce fameux fichier <code>.Rproj</code>.</p>
 <div id="create-project" class="section level4">
 <h4><span class="header-section-number">B.1.1.1</span> Création d’un projet</h4>
 <p>Créez votre premier projet en suivant les quatre étapes suivantes :</p>
@@ -590,7 +593,7 @@ code span.wa { color: #bf0303; } /* Warning */
 </div>
 <div id="Rmd" class="section level3">
 <h3><span class="header-section-number">B.1.3</span> R Markdown/R Notebook</h3>
-<p>Un document R Markdown est un fichier dont l’extension est <code>.Rmd</code>. Il combine à la fois des instructions R (pour les analyses) et le langage Markdown (pour le texte). Le R Markdown ne vous permet pas de visualiser directement le résultat final d’un rapport d’analyse<a href="references.html#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a></p>
+<p>Un document R Markdown est un fichier dont l’extension est <code>.Rmd</code>. Il combine à la fois des instructions R (pour les analyses) et le langage Markdown (pour le texte). Le R Markdown ne vous permet pas de visualiser directement le résultat final d’un rapport d’analyse<a href="references.html#fn72" class="footnote-ref" id="fnref72"><sup>72</sup></a></p>
 <p><img src="images/annexe_a2/rmd.gif" /></p>
 <p>Tout comme dans un script R, les intructions doivent être également exécutées lors de la réalisation du rapport. Une forme spéciale de document R Markdown est le <strong>R Notebook</strong>. Ce dernier est un peu un intermédiaire entre un script R et un R Markdown. Il se présente de manière très similaire à ce dernier, mais vous pouvez également exécuter le code qu’il contient ligne par ligne comme dans un script.</p>
 <p>Un document R Markdown / R Notebook se structure de la manière suivante :</p>
@@ -658,9 +661,9 @@ code span.wa { color: #bf0303; } /* Warning */
 </div>
 <div class="footnotes">
 <hr />
-<ol start="70">
-<li id="fn70"><p>N’éditer <strong>jamais</strong> à la main un fichier <code>.Rproj</code>. Laisser RStudio s’en occuper tout seul.<a href="rs.html#fnref70" class="footnote-back">↩</a></p></li>
-<li id="fn71"><p>Les systèmes d’édition professionnels dissocient en effet le fond de la forme : vous rédiger d’abord le contenu, et ensuite, vous indiquer le style à lui appliquer.<a href="rs.html#fnref71" class="footnote-back">↩</a></p></li>
+<ol start="71">
+<li id="fn71"><p>N’éditer <strong>jamais</strong> à la main un fichier <code>.Rproj</code>. Laisser RStudio s’en occuper tout seul.<a href="rs.html#fnref71" class="footnote-back">↩</a></p></li>
+<li id="fn72"><p>Les systèmes d’édition professionnels dissocient en effet le fond de la forme : vous rédiger d’abord le contenu, et ensuite, vous indiquer le style à lui appliquer.<a href="rs.html#fnref72" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
