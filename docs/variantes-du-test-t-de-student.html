@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-11-28">
+<meta name="date" content="2019-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -509,7 +509,7 @@ Figure 9.7: Visualisation de la distribution de Student réduite sous l’hypoth
 <img src="images/sdd1_09/t-test-independent.png" alt="Un test t indépendant nécessite une variable numérique et une variable facteur à deux niveaux." />
 <p class="caption">Un test <em>t</em> indépendant nécessite une variable numérique et une variable facteur à deux niveaux.</p>
 </div>
-<p>Un autre cas de figure se présente si nous comparons des mesures réalisées sur les <em>mêmes</em> individus. Dans ce cas, le tableau de données se présente différemment :</p>
+<p>Un autre cas de figure se présente si nous comparons des mesures réalisées sur les <strong>mêmes</strong> individus. Dans ce cas, le tableau de données se présente différemment :</p>
 <div class="figure">
 <img src="images/sdd1_09/t-tests-paired.png" alt="Un test t apparié nécessite deux variables numériques mesurées sur les mêmes individus, donc les mêmes lignes dans un tableau cas par variables." />
 <p class="caption">Un test <em>t</em> apparié nécessite deux variables numériques mesurées sur les mêmes individus, donc les mêmes lignes dans un tableau cas par variables.</p>
@@ -642,7 +642,7 @@ rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(sleep2)</
 <li><span class="math inline">\(H_0: \overline{med1} = 0\)</span></li>
 <li><span class="math inline">\(H_1: \overline{med1} \neq 0\)</span></li>
 </ul>
-<p>N’oublions pas une représentation graphique adéquate. Icic, une boite de dispersion avec un trait horizontal superposé pour indiquer la valeur cible convient très bien.</p>
+<p>N’oublions pas une représentation graphique adéquate. Ici, une boite de dispersion avec un trait horizontal superposé pour indiquer la valeur cible convient très bien.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep2, med1 <span class="op">~</span><span class="st"> &quot;&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
