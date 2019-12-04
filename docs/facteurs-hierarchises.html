@@ -439,7 +439,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k(\tau1_j) + \epsilon_i \mathrm{\ avec\ } \ \epsilon_i \sim N(0, \sigma) \]</span></p>
 <p>… et dans R, nous utiliserons la formule suivante :</p>
 <p><span class="math display">\[y \sim fact1 + fact2\ \%in\%\ fact1\]</span></p>
-<p>Voici un exemple concret. Un gros échantillon d’oeufs déshydratés homogène est réparti entre six laboratoires différents en vue de la détermination de la teneur en matières grasses dans cet échantillon. Le but de la manoeuvre est de déterminer si les laboratoires donnent des résultats consistants. Les deux techniciens de chaque laboratoire sont labellés <code>one</code> et <code>two</code>, mais ce sont en fait à chaque fois des techniciens <em>différents</em> dans chaque laboratoire<a href="references.html#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a>.</p>
+<p>Voici un exemple concret. Un gros échantillon d’oeufs déshydratés homogène est réparti entre six laboratoires différents en vue de la détermination de la teneur en matières grasses dans cet échantillon. Le but de la manoeuvre est de déterminer si les laboratoires donnent des résultats consistants. Les deux techniciens de chaque laboratoire sont labellés <code>one</code> et <code>two</code>, mais ce sont en fait à chaque fois des techniciens <em>différents</em> dans chaque laboratoire<a href="references.html#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">eggs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;eggs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;faraway&quot;</span>)
 skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 <pre><code># Skim summary statistics
@@ -616,8 +616,8 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 </div>
 <div class="footnotes">
 <hr />
-<ol start="56">
-<li id="fn56"><p>La variable <code>Sample valant</code>G<code>ou</code>H` ne sera pas utilisée ici. En fait, au départ, les initiateurs de l’expérience ont fait croire aux laboratoires qu’il s’agissait de deux échantillons différents alors que c’est le même en réalité.<a href="facteurs-hierarchises.html#fnref56" class="footnote-back">↩</a></p></li>
+<ol start="55">
+<li id="fn55"><p>La variable <code>Sample valant</code>G<code>ou</code>H` ne sera pas utilisée ici. En fait, au départ, les initiateurs de l’expérience ont fait croire aux laboratoires qu’il s’agissait de deux échantillons différents alors que c’est le même en réalité.<a href="facteurs-hierarchises.html#fnref55" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
