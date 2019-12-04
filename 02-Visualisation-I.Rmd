@@ -162,6 +162,17 @@ Appliquez par vous même les transformations des variables via l'application ci-
 
 <iframe src="https://guyliannengels.shinyapps.io/transfo_data/" width="800" height="470" frameborder="0"></iframe>
 
+<!-- Pour inclure des pages web ou des applis shiny, utiliser plutôt -->
+
+```{r, include=FALSE, out.extra='style="border: none;"', out.width='100%'}
+knitr::include_app("https://yihui.shinyapps.io/miniUI/", height = "600px")
+```
+
+```{r, include=FALSE, out.extra='style="border: none;"', out.width='100%'}
+knitr::include_url("http://www.sciviews.org", height = "600px")
+```
+
+
 ##### Pièges et astuces {-}
 
 RStudio permet de récupérer rapidement des instructions à partir d'une banque de solutions toutes prêtes. Cela s'appelle des **snippets**. Vous avez une série de snippets disponibles dans la SciViews Box. Celui qui vous permet de réaliser un graphique en nuage de points s'appelle `.cbxy` (pour **c**hart -> **b**ivariate -> **xy**-plot). Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci dans la fenêtre d'édition :
