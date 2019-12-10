@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-04">
+<meta name="date" content="2019-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -298,7 +298,8 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="8.2.5" data-path="test-dhypothese.html"><a href="test-dhypothese.html#test-chi2-dindependance"><i class="fa fa-check"></i><b>8.2.5</b> Test Chi<sup>2</sup> d’indépendance</a></li>
 <li class="chapter" data-level="8.2.6" data-path="test-dhypothese.html"><a href="test-dhypothese.html#autres-tests-chi2"><i class="fa fa-check"></i><b>8.2.6</b> Autres tests Chi<sup>2</sup></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="evaluation-par-les-pairs.html"><a href="evaluation-par-les-pairs.html"><i class="fa fa-check"></i><b>8.3</b> Evaluation par les pairs</a></li>
+<li class="chapter" data-level="8.3" data-path="metriques-etudiants-de-lumons.html"><a href="metriques-etudiants-de-lumons.html"><i class="fa fa-check"></i><b>8.3</b> Métriques (étudiants de l’UMONS)</a></li>
+<li class="chapter" data-level="8.4" data-path="evaluation-par-les-pairs-etudiants-de-charleroi.html"><a href="evaluation-par-les-pairs-etudiants-de-charleroi.html"><i class="fa fa-check"></i><b>8.4</b> Evaluation par les pairs (étudiants de Charleroi)</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a><ul>
 <li class="chapter" data-level="9.1" data-path="une-histoire-de-biere.html"><a href="une-histoire-de-biere.html"><i class="fa fa-check"></i><b>9.1</b> Une histoire de bière…</a></li>
@@ -434,7 +435,7 @@ code span.wa { color: #bf0303; } /* Warning */
             <section class="normal" id="section-">
 <div id="modele-croise-complet" class="section level2">
 <h2><span class="header-section-number">11.3</span> Modèle croisé complet</h2>
-<p>Le modèle ANOVA que nous venons de faire s’appelle un <strong>modèle croisé</strong> parce que les mesures sont effectuées pour chaque combinaison des niveaux des deux variables facteurs explicatives, et ce, de manière indépendante (les observations d’un niveau ne sont pas dépendantes de celles d’un autre niveau)<a href="references.html#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a>.</p>
+<p>Le modèle ANOVA que nous venons de faire s’appelle un <strong>modèle croisé</strong> parce que les mesures sont effectuées pour chaque combinaison des niveaux des deux variables facteurs explicatives, et ce, de manière indépendante (les observations d’un niveau ne sont pas dépendantes de celles d’un autre niveau)<a href="references.html#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">crabs2 <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">count</span>(., species, sex)</code></pre>
 <pre><code># # A tibble: 4 x 3
@@ -481,8 +482,8 @@ Faites attention à un piège fréquent lorsque vous avez des mesures multiples 
 </div>
 <div class="footnotes">
 <hr />
-<ol start="54">
-<li id="fn54"><p>De plus, nous avons ici un <strong>plan balancé</strong> puisque le nombre de répliquats pour chaque niveau est le même. C’est une situation optimale qu’il faut toujours chercher à atteindre pour une ANOVA, même si un nombre différent d’observations par niveau est également accepté.<a href="modele-croise-complet.html#fnref54" class="footnote-back">↩</a></p></li>
+<ol start="55">
+<li id="fn55"><p>De plus, nous avons ici un <strong>plan balancé</strong> puisque le nombre de répliquats pour chaque niveau est le même. C’est une situation optimale qu’il faut toujours chercher à atteindre pour une ANOVA, même si un nombre différent d’observations par niveau est également accepté.<a href="modele-croise-complet.html#fnref55" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

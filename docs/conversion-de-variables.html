@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-04">
+<meta name="date" content="2019-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -298,7 +298,8 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="8.2.5" data-path="test-dhypothese.html"><a href="test-dhypothese.html#test-chi2-dindependance"><i class="fa fa-check"></i><b>8.2.5</b> Test Chi<sup>2</sup> d’indépendance</a></li>
 <li class="chapter" data-level="8.2.6" data-path="test-dhypothese.html"><a href="test-dhypothese.html#autres-tests-chi2"><i class="fa fa-check"></i><b>8.2.6</b> Autres tests Chi<sup>2</sup></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="evaluation-par-les-pairs.html"><a href="evaluation-par-les-pairs.html"><i class="fa fa-check"></i><b>8.3</b> Evaluation par les pairs</a></li>
+<li class="chapter" data-level="8.3" data-path="metriques-etudiants-de-lumons.html"><a href="metriques-etudiants-de-lumons.html"><i class="fa fa-check"></i><b>8.3</b> Métriques (étudiants de l’UMONS)</a></li>
+<li class="chapter" data-level="8.4" data-path="evaluation-par-les-pairs-etudiants-de-charleroi.html"><a href="evaluation-par-les-pairs-etudiants-de-charleroi.html"><i class="fa fa-check"></i><b>8.4</b> Evaluation par les pairs (étudiants de Charleroi)</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a><ul>
 <li class="chapter" data-level="9.1" data-path="une-histoire-de-biere.html"><a href="une-histoire-de-biere.html"><i class="fa fa-check"></i><b>9.1</b> Une histoire de bière…</a></li>
@@ -463,11 +464,11 @@ code span.wa { color: #bf0303; } /* Warning */
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -491,7 +492,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -499,7 +500,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -512,7 +513,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -520,7 +521,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -586,7 +587,7 @@ df</code></pre>
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0

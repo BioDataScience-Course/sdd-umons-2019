@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-04">
+<meta name="date" content="2019-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -298,7 +298,8 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="8.2.5" data-path="test-dhypothese.html"><a href="test-dhypothese.html#test-chi2-dindependance"><i class="fa fa-check"></i><b>8.2.5</b> Test Chi<sup>2</sup> d’indépendance</a></li>
 <li class="chapter" data-level="8.2.6" data-path="test-dhypothese.html"><a href="test-dhypothese.html#autres-tests-chi2"><i class="fa fa-check"></i><b>8.2.6</b> Autres tests Chi<sup>2</sup></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="evaluation-par-les-pairs.html"><a href="evaluation-par-les-pairs.html"><i class="fa fa-check"></i><b>8.3</b> Evaluation par les pairs</a></li>
+<li class="chapter" data-level="8.3" data-path="metriques-etudiants-de-lumons.html"><a href="metriques-etudiants-de-lumons.html"><i class="fa fa-check"></i><b>8.3</b> Métriques (étudiants de l’UMONS)</a></li>
+<li class="chapter" data-level="8.4" data-path="evaluation-par-les-pairs-etudiants-de-charleroi.html"><a href="evaluation-par-les-pairs-etudiants-de-charleroi.html"><i class="fa fa-check"></i><b>8.4</b> Evaluation par les pairs (étudiants de Charleroi)</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a><ul>
 <li class="chapter" data-level="9.1" data-path="une-histoire-de-biere.html"><a href="une-histoire-de-biere.html"><i class="fa fa-check"></i><b>9.1</b> Une histoire de bière…</a></li>
@@ -525,7 +526,7 @@ Figure 11.3: Taille relative de la carapace à l’arrière de crabes <em>L. var
 # ---
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Comme la variance est décomposée en trois étapes (selon l’espèce, puis selon le sexe, puis les résidus), nous avons trois lignes dans le tableau de l’ANOVA. Nous effectuons deux tests. Le premier consiste à comparer les carrés moyens (<code>Mean Sq</code>) pour l’espèce par rapport aux résidus. Donc, la valeur <code>F</code> est le ratio de la somme des carrés <code>species</code> divisé par la somme des carrés des résidus, et cette valeur est reportée sur la loi de distribution théorique <em>F</em> pour obtenir une première valeur <em>P</em> (ici 5,12 . 10<sup>-5</sup>). De même, le second test qui s’intéresse au sexe calcule la valeur <em>F</em> via la ratio de la somme des carrés pour <code>sex</code> divisé par la somme des carrés des résidus, et la loi <em>F</em> nous permet de calculer une seconde valeur <em>P</em> (ici 2,2 . 10<sup>-16</sup>).</p>
-<p>Nous interprétons chacun des deux tests séparément. Dans notre cas, nous pouvons dire avec un seuil <span class="math inline">\(\alpha\)</span> de 5% que nous rejettons <span class="math inline">\(H_0\)</span> dans les deux cas. Donc le rapport largeur arrière sur largeur max de la carapace est significativement différent au seuil <span class="math inline">\(\alpha\)</span> de 5% à la fois en fonction de l’espèce (F = 17,15, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001) et du sexe (F = 436, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001)<a href="references.html#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a>.</p>
+<p>Nous interprétons chacun des deux tests séparément. Dans notre cas, nous pouvons dire avec un seuil <span class="math inline">\(\alpha\)</span> de 5% que nous rejettons <span class="math inline">\(H_0\)</span> dans les deux cas. Donc le rapport largeur arrière sur largeur max de la carapace est significativement différent au seuil <span class="math inline">\(\alpha\)</span> de 5% à la fois en fonction de l’espèce (F = 17,15, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001) et du sexe (F = 436, ddl = 197 et 1, valeur <em>P</em> &lt;&lt; 0,001)<a href="references.html#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a>.</p>
 <p>La suite logique consiste à réaliser des tests “post hoc”. Ils ne sont pas vraiment nécessaires ici puisque nous n’avons que deux niveaux pour chacune des deux variables, mais nous les réalisons quand même pour montrer le code correspondant. Un template est accessible via le “snippet” <code>anova - multiple comparisons [multcomp]</code> du menu <code>.hm</code>. Pensez juste à rajouter le second facteur <code>sex</code> dans les arguments de la fonction <code>mcp()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(anovaComp. &lt;-<span class="st"> </span><span class="kw">confint</span>(multcomp<span class="op">::</span><span class="kw">glht</span>(anova.,
   <span class="dt">linfct =</span> multcomp<span class="op">::</span><span class="kw">mcp</span>(<span class="dt">species =</span> <span class="st">&quot;Tukey&quot;</span>, <span class="dt">sex =</span> <span class="st">&quot;Tukey&quot;</span>)))) <span class="co"># Add a second factor if you want</span></code></pre>
@@ -570,8 +571,8 @@ Figure 11.4: Graphique quantile-quantile des résidus pour l’ANOVA à deux fac
 </div>
 <div class="footnotes">
 <hr />
-<ol start="53">
-<li id="fn53"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="modele-sans-interactions.html#fnref53" class="footnote-back">↩</a></p></li>
+<ol start="54">
+<li id="fn54"><p>Notez que si vous incluez le tableau de l’ANOVA dans votre rapport ou dans une publication, il n’est pas nécessaire de répéter les résultats des tests entre parenthèses. Vous pouvez juste vous référer au tableau en question.<a href="modele-sans-interactions.html#fnref54" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-04">
+<meta name="date" content="2019-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -298,7 +298,8 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="8.2.5" data-path="test-dhypothese.html"><a href="test-dhypothese.html#test-chi2-dindependance"><i class="fa fa-check"></i><b>8.2.5</b> Test Chi<sup>2</sup> d’indépendance</a></li>
 <li class="chapter" data-level="8.2.6" data-path="test-dhypothese.html"><a href="test-dhypothese.html#autres-tests-chi2"><i class="fa fa-check"></i><b>8.2.6</b> Autres tests Chi<sup>2</sup></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="evaluation-par-les-pairs.html"><a href="evaluation-par-les-pairs.html"><i class="fa fa-check"></i><b>8.3</b> Evaluation par les pairs</a></li>
+<li class="chapter" data-level="8.3" data-path="metriques-etudiants-de-lumons.html"><a href="metriques-etudiants-de-lumons.html"><i class="fa fa-check"></i><b>8.3</b> Métriques (étudiants de l’UMONS)</a></li>
+<li class="chapter" data-level="8.4" data-path="evaluation-par-les-pairs-etudiants-de-charleroi.html"><a href="evaluation-par-les-pairs-etudiants-de-charleroi.html"><i class="fa fa-check"></i><b>8.4</b> Evaluation par les pairs (étudiants de Charleroi)</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a><ul>
 <li class="chapter" data-level="9.1" data-path="une-histoire-de-biere.html"><a href="une-histoire-de-biere.html"><i class="fa fa-check"></i><b>9.1</b> Une histoire de bière…</a></li>
@@ -438,7 +439,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Tout d’abort, nous mettons en place un garde-fou. Nous effectuons <em>toujours</em> une ANOVA en premier lieu, et nous n’envisageons les comparaisons multiples que lorsque <span class="math inline">\(H_0\)</span> est rejettée. Cela évite beaucoup de faux positifs. On appelle cela des tests “post hoc” car ils ne sont pas planifiés d’amblée, mais suivent un conclusion préalable (ici, le rejet de <span class="math inline">\(H_0\)</span> dans un test ANOVA).</p>
 <p>Une approche simple consisterait à modifier notre seuil <span class="math inline">\(\alpha\)</span> pour chaque test individuel vers le bas afin que le risque de se tromper dans au moins un des tests ne dépasse pas la valeur de <span class="math inline">\(/alpha\)</span> que nous nous sommes fixée. C’est la <strong>correction de Bonferroni</strong>. Elle consiste à diviser la valeur de <span class="math inline">\(/alpha\)</span> par le nombre de tests simultanés nécessaires, et d’utiliser cette valeur corrigée comme seuil <span class="math inline">\(\alpha\)</span> de chaque test de Student individuel. Dans le cas de quatre populations, nous avons vu qu’il y a six comparaisons multiples deux à deux. Donc, en appliquant un seuil corrigé de <span class="math inline">\(\alpha/6 = 0,05 / 6 = 0,00833\)</span> pour chaque test, on aura la probabilité suivante pour <span class="math inline">\(1 - \alpha\)</span> :</p>
 <p><span class="math display">\[(1 - 0,05/6)^6 = 0,951\]</span></p>
-<p>Donc, le risque <em>global</em> pour l’ensemble des six tests est bien de 1 - 0,951 = 0,049, soit 5%. Si elle a le mérite d’être simple, cette façon de faire n’est pas considérée comme la plus efficace. Actuellement, la méthode <strong>HSD de Tukey</strong> est préférée. HSD veut dire “Honest Significant Difference”. La technique consiste à calculer l’écart minimal des moyennes pour considérer qu’elles sont significativement différentes l’une de l’autre. Ensuite, pour chaque comparaison deux à deux, l’écart entre les moyennes est comparée à cette valeur de référence<a href="references.html#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>. Le test de comparaisons multiples de Tukey est accessible à partir des “snippets” dans la SciViews Box (<code>.hm</code> pour le menu <code>hypothesis tests: means</code>, puis <code>anova - multiple comparisons</code>). Nous obtenons à la fois une version textuelle et une version graphique qui résume les comparaisons.</p>
+<p>Donc, le risque <em>global</em> pour l’ensemble des six tests est bien de 1 - 0,951 = 0,049, soit 5%. Si elle a le mérite d’être simple, cette façon de faire n’est pas considérée comme la plus efficace. Actuellement, la méthode <strong>HSD de Tukey</strong> est préférée. HSD veut dire “Honest Significant Difference”. La technique consiste à calculer l’écart minimal des moyennes pour considérer qu’elles sont significativement différentes l’une de l’autre. Ensuite, pour chaque comparaison deux à deux, l’écart entre les moyennes est comparée à cette valeur de référence<a href="references.html#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a>. Le test de comparaisons multiples de Tukey est accessible à partir des “snippets” dans la SciViews Box (<code>.hm</code> pour le menu <code>hypothesis tests: means</code>, puis <code>anova - multiple comparisons</code>). Nous obtenons à la fois une version textuelle et une version graphique qui résume les comparaisons.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(anovaComp. &lt;-<span class="st"> </span><span class="kw">confint</span>(multcomp<span class="op">::</span><span class="kw">glht</span>(anova.,
   <span class="dt">linfct =</span> multcomp<span class="op">::</span><span class="kw">mcp</span>(<span class="dt">group =</span> <span class="st">&quot;Tukey&quot;</span>))))</code></pre>
 <pre><code># 
@@ -471,8 +472,8 @@ code span.wa { color: #bf0303; } /* Warning */
 </div>
 <div class="footnotes">
 <hr />
-<ol start="52">
-<li id="fn52"><p>Nous ne détaillons pas le calcul du test de Tukey ici, mais vous pouvez aller voir <a href="https://www.itl.nist.gov/div898/handbook/prc/section4/prc471.htm">ici</a>.<a href="test-post-hoc.html#fnref52" class="footnote-back">↩</a></p></li>
+<ol start="53">
+<li id="fn53"><p>Nous ne détaillons pas le calcul du test de Tukey ici, mais vous pouvez aller voir <a href="https://www.itl.nist.gov/div898/handbook/prc/section4/prc471.htm">ici</a>.<a href="test-post-hoc.html#fnref53" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

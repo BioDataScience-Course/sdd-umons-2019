@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-04">
+<meta name="date" content="2019-12-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -298,7 +298,8 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="8.2.5" data-path="test-dhypothese.html"><a href="test-dhypothese.html#test-chi2-dindependance"><i class="fa fa-check"></i><b>8.2.5</b> Test Chi<sup>2</sup> d’indépendance</a></li>
 <li class="chapter" data-level="8.2.6" data-path="test-dhypothese.html"><a href="test-dhypothese.html#autres-tests-chi2"><i class="fa fa-check"></i><b>8.2.6</b> Autres tests Chi<sup>2</sup></a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="evaluation-par-les-pairs.html"><a href="evaluation-par-les-pairs.html"><i class="fa fa-check"></i><b>8.3</b> Evaluation par les pairs</a></li>
+<li class="chapter" data-level="8.3" data-path="metriques-etudiants-de-lumons.html"><a href="metriques-etudiants-de-lumons.html"><i class="fa fa-check"></i><b>8.3</b> Métriques (étudiants de l’UMONS)</a></li>
+<li class="chapter" data-level="8.4" data-path="evaluation-par-les-pairs-etudiants-de-charleroi.html"><a href="evaluation-par-les-pairs-etudiants-de-charleroi.html"><i class="fa fa-check"></i><b>8.4</b> Evaluation par les pairs (étudiants de Charleroi)</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="moyenne.html"><a href="moyenne.html"><i class="fa fa-check"></i><b>9</b> Moyenne</a><ul>
 <li class="chapter" data-level="9.1" data-path="une-histoire-de-biere.html"><a href="une-histoire-de-biere.html"><i class="fa fa-check"></i><b>9.1</b> Une histoire de bière…</a></li>
@@ -436,7 +437,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <h2><span class="header-section-number">9.5</span> Test de Wilcoxon</h2>
 <p>Nous avons vu que le test <em>t</em> de Student se réfère à une distribution qui n’est exacte que si la population de départ est normale. Même si le théorème central limite permet encore d’utiliser le test dans le cas contraire lorsque <em>n</em> est grand, tous les cas ne sont pas rencontrés. Si <em>n</em> est petit et que l’on soupçonne une distribution non normale (pensez au graphique quantile-quantile pour visualiser la distribution) que faire ?</p>
 <p>En fait, il existe un test similaire qui ne fait <strong>aucune</strong> hypothèse sur la distribution des données : le test de Wilcoxon. Comme il ne se réfère pas aux paramètres d’une distribution théorique, ce type de test est appelé <strong>non paramétrique</strong>, par opposition au test <em>t</em> de Student qui est qualifié de <strong>paramétrique</strong>. Les mêmes variantes existent (test indépendant, test apparié, bilatéral <em>versus</em> unilatéral). Ce test se réalise à partir de la fonction <code>wilcox.test()</code> accessible à partir des “snippets” dans le menu <code>.hn</code> pour <code>hypothesis tests: nonparametric</code>. Bien que ce test ne travaille plus sur les moyennes mais est associé aux médianes, nous le présentons ici parce qu’il représente une alternative au test <em>t</em> de Student.</p>
-<p>Pour les données relatives à <code>med1</code> de <code>sleep2</code>, cela donne<a href="references.html#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a> :</p>
+<p>Pour les données relatives à <code>med1</code> de <code>sleep2</code>, cela donne<a href="references.html#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a> :</p>
 <ul>
 <li><span class="math inline">\(H_0: mediane_{med1} = 0\)</span></li>
 <li><span class="math inline">\(H_1: mediane_{med1} \neq 0\)</span></li>
@@ -535,8 +536,8 @@ Appliquez les test de student et ses variantes dans vos projets portant sur la b
 </div>
 <div class="footnotes">
 <hr />
-<ol start="47">
-<li id="fn47"><p>Dans le cas d’un test de Wilcoxon apparié, on a <span class="math inline">\(H_0: mediane_x = mediane_y\)</span>.<a href="test-de-wilcoxon.html#fnref47" class="footnote-back">↩</a></p></li>
+<ol start="48">
+<li id="fn48"><p>Dans le cas d’un test de Wilcoxon apparié, on a <span class="math inline">\(H_0: mediane_x = mediane_y\)</span>.<a href="test-de-wilcoxon.html#fnref48" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
