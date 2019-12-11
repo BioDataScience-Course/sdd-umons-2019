@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-10">
+<meta name="date" content="2019-12-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -450,17 +450,23 @@ crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st
 <img src="images/sdd1_08/Leptograpsus_variegatus.jpg" alt="Crabe Leptograpsus variegatus variété bleue. Photo : Neville Coleman, license CC By 4.0 Museums Victoria." />
 <p class="caption">Crabe <em>Leptograpsus variegatus</em> variété bleue. Photo : Neville Coleman, license CC By 4.0 <a href="https://collections.museumvictoria.com.au/species/8662">Museums Victoria</a>.</p>
 </div>
-<p>Nous pouvons explorer ce jeu de données en vue de déterminer si des différences morphologiques de la carapace existent entre sexes (variable <code>sex</code>, soit <code>M</code>, soit <code>F</code>) ou entre variétés (variable <code>species</code>, soit <code>B</code>, soit <code>O</code>).</p>
+<p>Nous pouvons explorer ce jeu de données en vue de déterminer si des différences morphologiques de la carapace existent entre sexes (variable <code>sex</code>, soit <code>M</code>, soit <code>F</code>) ou entre variétés (variable <code>species</code>, soit <code>B</code>, soit <code>O</code>). Un tableau de contingence à deux entrées peut être obtenu à l’aide de la fonction <code>table()</code> :</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(crabs<span class="op">$</span>species, crabs<span class="op">$</span>sex)</code></pre>
+<pre><code>#    
+#      F  M
+#   B 50 50
+#   O 50 50</code></pre>
+<p>Un snippet existe pour obtenir quelque chose de similaire (entrer <code>...</code>, puis <code>exploratory stats</code> puis <code>contingency</code>, puis <code>contingency table - 2 entries</code>). La sortie n’est pas très belle, mais la réalisation d’un table mieux formattée nécessite pour l’instant plus de travail dans R (ne cherchez pas à retenir ce code) :</p>
 <pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="co"># Changer les labels de species et sex pour des valeurs plus explicites</span>
-    <span class="dt">species =</span> <span class="kw">fct_recode</span>(.<span class="op">$</span>species, <span class="st">`</span><span class="dt">**Variété bleue**</span><span class="st">`</span> =<span class="st"> &quot;B&quot;</span>, <span class="st">`</span><span class="dt">**Variété orange**</span><span class="st">`</span> =<span class="st"> &quot;O&quot;</span>),
-    <span class="dt">sex =</span> <span class="kw">fct_recode</span>(.<span class="op">$</span>sex, <span class="st">`</span><span class="dt">Femelle</span><span class="st">`</span> =<span class="st"> &quot;F&quot;</span>, Mâ<span class="dt">le =</span> <span class="st">&quot;M&quot;</span>)
+    <span class="dt">species =</span> <span class="kw">fct_recode</span>(species, <span class="st">`</span><span class="dt">**Variété bleue**</span><span class="st">`</span> =<span class="st"> &quot;B&quot;</span>, <span class="st">`</span><span class="dt">**Variété orange**</span><span class="st">`</span> =<span class="st"> &quot;O&quot;</span>),
+    <span class="dt">sex =</span> <span class="kw">fct_recode</span>(sex, <span class="st">`</span><span class="dt">Femelle</span><span class="st">`</span> =<span class="st"> &quot;F&quot;</span>, Mâ<span class="dt">le =</span> <span class="st">&quot;M&quot;</span>)
   ) <span class="op">%&gt;.%</span>
-<span class="st">  </span><span class="kw">with</span>(., <span class="kw">table</span>(species, sex)) <span class="op">%&gt;.%</span><span class="st"> </span><span class="co"># Tableau de contingen ce à 2 entrées</span>
+<span class="st">  </span><span class="kw">with</span>(., <span class="kw">table</span>(species, sex)) <span class="op">%&gt;.%</span><span class="st"> </span><span class="co"># Tableau de contingence à 2 entrées</span>
 <span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(., <span class="dt">caption =</span> <span class="st">&quot;Nombre de crabes mesurés par variété et par sexe.&quot;</span>,
     <span class="dt">align =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>)</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-20">Tableau 8.1: </span>Nombre de crabes mesurés par variété et par sexe.</caption>
+<caption><span id="tab:unnamed-chunk-21">Tableau 8.1: </span>Nombre de crabes mesurés par variété et par sexe.</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -484,29 +490,29 @@ crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st
 <p>Notre échantillon est bien balancé entre les variétés et les sexes avec 100 individus pour chacun répartis en sous-groupes d’effectifs égaux (<em>n</em> = 50). On parle de <strong>plan balancé</strong> lorsqu’un échantillonnage stratifié a été réalisé pour s’assurer d’avoir le même nombre d’individus pour chaque niveau d’une ou plusieurs variables qualitatives, quelle que soit la proportion de ces différents niveaux dans la population de départ. C’est une situation optimale pour bien comparer les variétés et/ou les sexes ici.</p>
 <p>Cinq mesures sont réalisées (toutes exprimées en mm) sur la carapace de ces crabes : <code>front</code> (taille du lobe frontal), <code>rear</code> (largeur à l’arrière), <code>length</code> (longueur), <code>width</code> (largeur à l’endroit le plus large) et <code>depth</code> (épaisseur). Il n’y a pas de valeurs manquantes dans le tableau. Aucune de ces variables morphométriques ne permet de discerner les deux variétés de couleur ou les sexes comme le montrent les cinq graphiques en violon ci-dessous.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, front <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+<span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="dt">trim =</span> <span class="ot">FALSE</span>)</code></pre>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, length <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, width <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, width <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
 <p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, width <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, width <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Des tendances générales peuvent être notées. Par exemple, le lobe frontal tend à être légèrement plus grand pour la variété orange, ou la largeur à l’arrière tend à être plus grande pour les femelles, surtout chez la variété orange. Cependant, aucun de ces critères ne peut être retenu pour différencier les variétés ou les espèces <em>pour un individu en particulier</em> car les distributions se chevauchent toutes très largement.</p>
 <p>Nous pouvons aussi représenter des nuages de points afin de visualiser la variation d’une variable par rapport à une autre. Parmi tous les graphiques réalisables (toutes les combinaisons deux à deux des cinq variables morphologiques), examinons plus en détails les représentations suivantes :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>length <span class="op">%shape=%</span><span class="st"> </span>species <span class="op">%col=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Ce graphique sépare relativement bien les mâles des femelles pour les deux variétés.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, front <span class="op">~</span><span class="st"> </span>width <span class="op">%shape=%</span><span class="st"> </span>species <span class="op">%col=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Ce graphique, en revanche, sépare les deux variétés, quel que soit leur sexe (la variété bleue en bas, et la varété orange en haut). Cela signifie donc que les données morphométriques contiennent une information permettant de discerner les sexes et les variétés, mais cette information n’est pas visible lorsqu’une seule variable quantitative est représentée en fonction des sous-populations comme dans les graphiques en violons.</p>
 <p>En réalité, les différences de <em>forme</em> sont masquées sur les mesures individuelles par une variation encore plus grande liée à la <em>taille</em> des animaux. Comment pouvons-nous mettre en évidence un facteur de forme en faisant abstraction de la taille ? Pour expliquer cela simplement, considérons un cas facile. Imaginons que nous voulons classer un ensemble de quadrilatères à angles droits. Nous savons tous que ce sont des <em>rectangles</em>. Un cas particulier est le <em>carré</em> avec ses côtés égaux. Tant que nous représentons la longueur ou la largeur de nos quatrilatères à angles droits de toutes tailles, nous ne pouvons pas distinguer les carrés des rectangles. Par contre, si nous calculons le <strong>ratio</strong> longueur/largeur, nous faisons abstraction de la <em>taille</em> pour quantifier la <em>forme</em> (allongée ou pas). Tous les quadrilatères à angles droits dont le ratio longueur/largeur vaut un est un carré !</p>
 <p>C’est exactement le même raisonnement que nous pouvons appliquer à nos données <code>crabs</code> : nous pouvons calculer des variables qui feront abstraction de la taille pour quantifier des facteurs de forme particuliers. Les femelles ayant une carapace plus large à l’arrière <em>proportionnellement à leur taille</em>, le ratio <code>rear</code>/<code>length</code> calculé et nommé <code>rear_length</code> donne ceci :</p>
@@ -515,21 +521,21 @@ crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st
 <span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., rear_length <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Ratio largeur arrière/longueur&quot;</span>)</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Notre métrique <code>rear_length</code> est naturellement ultra-simple. Elle ne permet pas de différencier <em>tous</em> les mâles de <em>toutes</em> les femelles, mais la séparation est déjà bien meilleure qu’en utilisant soit <code>rear</code> soit <code>length</code> seuls. A l’aide de techniques statistiques que vous étudierez au <a href="http://biodatascience-course.sciviews.org/sdd-umons2/lm.html">cours de science des données biologiques II</a> l’an prochain, nous pouvons montrer qu’une meilleure métrique (ou indice) pour séparer les mâles des femelles est en réalité : <code>rear / (0.3 * length + 2.4)</code><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. La séparation entre les sexes n’est pas totale, mais s’en rapproche fortement, surtout pour la variété orange.</p>
 <pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">rear_length2 =</span> rear <span class="op">/</span><span class="st"> </span>(<span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>length <span class="op">+</span><span class="st"> </span><span class="fl">2.4</span>)) <span class="op">%&gt;.%</span><span class="st">  </span><span class="co"># Calcul de rear_length2</span>
 <span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., rear_length2 <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Ratio largeur arrière/(0.3*longueur + 2.4)&quot;</span>)</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>De même, nous pouvons utiliser l’indice <code>front_width = front / (0.43 * width)</code> pour séparer les variétés qui donne ceci :</p>
 <pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">front_width =</span> front <span class="op">/</span><span class="st"> </span>(<span class="fl">0.43</span> <span class="op">*</span><span class="st"> </span>width)) <span class="op">%&gt;.%</span><span class="st"> </span><span class="co"># Calcul de front_width</span>
 <span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., front_width <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Ratio lobe frontal/(0.43*largeur)&quot;</span>)</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Avec cette nouvelle variable calculée, nous pouvons séparer pratiquement parfaitement les crabes de la variété orange de ceux de la variété bleue sur base uniquement de la forme de la carapace. Admettons que le critère de couleur ne soit pas fiable à 100% avec des individus pouvant arborer des colorations intermédiaires qui rendent la discrimination des variétés sur base uniquement du criètre de couleur hazardeuse. Si c’est le cas, notre indice <code>front_width</code> est très utile pour séparer ces variétés ou en tous cas, pour aider à le faire.</p>
 <div class="info">
 <p>

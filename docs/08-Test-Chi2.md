@@ -452,28 +452,44 @@ L'aide en ligne de ce jeu de données (voir `.?crabs`) nous indique qu'il s'agit
 ![Crabe *Leptograpsus variegatus* variété bleue. Photo\ : Neville Coleman, license CC By 4.0 [Museums Victoria](
 https://collections.museumvictoria.com.au/species/8662).](images/sdd1_08/Leptograpsus_variegatus.jpg)
 
-Nous pouvons explorer ce jeu de données en vue de déterminer si des différences morphologiques de la carapace existent entre sexes (variable `sex`, soit `M`, soit `F`) ou entre variétés (variable `species`, soit `B`, soit `O`).
+Nous pouvons explorer ce jeu de données en vue de déterminer si des différences morphologiques de la carapace existent entre sexes (variable `sex`, soit `M`, soit `F`) ou entre variétés (variable `species`, soit `B`, soit `O`). Un tableau de contingence à deux entrées peut être obtenu à l'aide de la fonction `table()`\ :
+
+
+```r
+table(crabs$species, crabs$sex)
+```
+
+```
+#    
+#      F  M
+#   B 50 50
+#   O 50 50
+```
+
+Un snippet existe pour obtenir quelque chose de similaire (entrer `...`, puis `exploratory stats` puis `contingency`, puis `contingency table - 2 entries`). La sortie n'est pas très belle, mais la réalisation d'un table mieux formattée nécessite pour l'instant plus de travail dans R (ne cherchez pas à retenir ce code)\ :
 
 
 ```r
 crabs %>.%
   mutate(., # Changer les labels de species et sex pour des valeurs plus explicites
-    species = fct_recode(.$species, `**Variété bleue**` = "B", `**Variété orange**` = "O"),
-    sex = fct_recode(.$sex, `Femelle` = "F", Mâle = "M")
+    species = fct_recode(species, `**Variété bleue**` = "B", `**Variété orange**` = "O"),
+    sex = fct_recode(sex, `Femelle` = "F", Mâle = "M")
   ) %>.%
-  with(., table(species, sex)) %>.% # Tableau de contingen ce à 2 entrées
+  with(., table(species, sex)) %>.% # Tableau de contingence à 2 entrées
   knitr::kable(., caption = "Nombre de crabes mesurés par variété et par sexe.",
     align = "c", escape = FALSE)
 ```
 
 
 
-Table: (\#tab:unnamed-chunk-20)Nombre de crabes mesurés par variété et par sexe.
+Table: (\#tab:unnamed-chunk-21)Nombre de crabes mesurés par variété et par sexe.
 
                       Femelle    Mâle 
 -------------------  ---------  ------
 **Variété bleue**       50        50  
 **Variété orange**      50        50  
+
+
 
 Notre échantillon est bien balancé entre les variétés et les sexes avec 100 individus pour chacun répartis en sous-groupes d'effectifs égaux (*n* = 50). On parle de **plan balancé** lorsqu'un échantillonnage stratifié a été réalisé pour s'assurer d'avoir le même nombre d'individus pour chaque niveau d'une ou plusieurs variables qualitatives, quelle que soit la proportion de ces différents niveaux dans la population de départ. C'est une situation optimale pour bien comparer les variétés et/ou les sexes ici.
 
@@ -482,10 +498,10 @@ Cinq mesures sont réalisées (toutes exprimées en mm) sur la carapace de ces c
 
 ```r
 chart(data = crabs, front ~ species %fill=% sex) +
-  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), trim = FALSE)
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -493,7 +509,7 @@ chart(data = crabs, rear ~ species %fill=% sex) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -501,23 +517,23 @@ chart(data = crabs, length ~ species %fill=% sex) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" />
-
-
-```r
-chart(data = crabs, width ~ species %fill=% sex) +
-  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
-```
-
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />
-
-
-```r
-chart(data = crabs, width ~ species %fill=% sex) +
-  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
-```
-
 <img src="08-Test-Chi2_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" />
+
+
+```r
+chart(data = crabs, width ~ species %fill=% sex) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+```
+
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" />
+
+
+```r
+chart(data = crabs, width ~ species %fill=% sex) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+```
+
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
 
 Des tendances générales peuvent être notées. Par exemple, le lobe frontal tend à être légèrement plus grand pour la variété orange, ou la largeur à l'arrière tend à être plus grande pour les femelles, surtout chez la variété orange. Cependant, aucun de ces critères ne peut être retenu pour différencier les variétés ou les espèces *pour un individu en particulier* car les distributions se chevauchent toutes très largement.
 
@@ -529,7 +545,7 @@ chart(data = crabs, rear ~ length %shape=% species %col=% sex) +
   geom_point()
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" />
 
 Ce graphique sépare relativement bien les mâles des femelles pour les deux variétés.
 
@@ -539,7 +555,7 @@ chart(data = crabs, front ~ width %shape=% species %col=% sex) +
   geom_point()
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
 
 Ce graphique, en revanche, sépare les deux variétés, quel que soit leur sexe (la variété bleue en bas, et la varété orange en haut). Cela signifie donc que les données morphométriques contiennent une information permettant de discerner les sexes et les variétés, mais cette information n'est pas visible lorsqu'une seule variable quantitative est représentée en fonction des sous-populations comme dans les graphiques en violons.
 
@@ -556,7 +572,7 @@ crabs %>.%
     ylab("Ratio largeur arrière/longueur")
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
 
 Notre métrique `rear_length` est naturellement ultra-simple. Elle ne permet pas de différencier *tous* les mâles de *toutes* les femelles, mais la séparation est déjà bien meilleure qu'en utilisant soit `rear` soit `length` seuls. A l'aide de techniques statistiques que vous étudierez au [cours de science des données biologiques II](http://biodatascience-course.sciviews.org/sdd-umons2/lm.html) l'an prochain, nous pouvons montrer qu'une meilleure métrique (ou indice) pour séparer les mâles des femelles est en réalité\ : `rear / (0.3 * length + 2.4)`^[Pour le lecteur plus avancé, il s'agit en fait de la droite de régression ajustée dans le nuage de points.]. La séparation entre les sexes n'est pas totale, mais s'en rapproche fortement, surtout pour la variété orange.
 
@@ -569,7 +585,7 @@ crabs %>.%
     ylab("Ratio largeur arrière/(0.3*longueur + 2.4)")
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
 
 De même, nous pouvons utiliser l'indice `front_width = front / (0.43 * width)` pour séparer les variétés qui donne ceci\ :
 
@@ -582,7 +598,7 @@ crabs %>.%
     ylab("Ratio lobe frontal/(0.43*largeur)")
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" />
 
 Avec cette nouvelle variable calculée, nous pouvons séparer pratiquement parfaitement les crabes de la variété orange de ceux de la variété bleue sur base uniquement de la forme de la carapace. Admettons que le critère de couleur ne soit pas fiable à 100% avec des individus pouvant arborer des colorations intermédiaires qui rendent la discrimination des variétés sur base uniquement du criètre de couleur hazardeuse. Si c'est le cas, notre indice `front_width` est très utile pour séparer ces variétés ou en tous cas, pour aider à le faire.
 

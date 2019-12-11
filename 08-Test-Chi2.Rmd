@@ -406,15 +406,32 @@ L'aide en ligne de ce jeu de données (voir `.?crabs`) nous indique qu'il s'agit
 ![Crabe *Leptograpsus variegatus* variété bleue. Photo\ : Neville Coleman, license CC By 4.0 [Museums Victoria](
 https://collections.museumvictoria.com.au/species/8662).](images/sdd1_08/Leptograpsus_variegatus.jpg)
 
-Nous pouvons explorer ce jeu de données en vue de déterminer si des différences morphologiques de la carapace existent entre sexes (variable `sex`, soit `M`, soit `F`) ou entre variétés (variable `species`, soit `B`, soit `O`).
+Nous pouvons explorer ce jeu de données en vue de déterminer si des différences morphologiques de la carapace existent entre sexes (variable `sex`, soit `M`, soit `F`) ou entre variétés (variable `species`, soit `B`, soit `O`). Un tableau de contingence à deux entrées peut être obtenu à l'aide de la fonction `table()`\ :
+
+```{r}
+table(crabs$species, crabs$sex)
+```
+
+Un snippet existe pour obtenir quelque chose de similaire (entrer `...`, puis `exploratory stats` puis `contingency`, puis `contingency table - 2 entries`). La sortie n'est pas très belle, mais la réalisation d'un table mieux formattée nécessite pour l'instant plus de travail dans R (ne cherchez pas à retenir ce code)\ :
 
 ```{r}
 crabs %>.%
   mutate(., # Changer les labels de species et sex pour des valeurs plus explicites
-    species = fct_recode(.$species, `**Variété bleue**` = "B", `**Variété orange**` = "O"),
-    sex = fct_recode(.$sex, `Femelle` = "F", Mâle = "M")
+    species = fct_recode(species, `**Variété bleue**` = "B", `**Variété orange**` = "O"),
+    sex = fct_recode(sex, `Femelle` = "F", Mâle = "M")
   ) %>.%
-  with(., table(species, sex)) %>.% # Tableau de contingen ce à 2 entrées
+  with(., table(species, sex)) %>.% # Tableau de contingence à 2 entrées
+  knitr::kable(., caption = "Nombre de crabes mesurés par variété et par sexe.",
+    align = "c", escape = FALSE)
+```
+
+```{r, eval = FALSE, echo = FALSE}
+crabs %>.%
+  mutate(., # Changer les labels de species et sex pour des valeurs plus explicites
+    species = factor(fct_recode(species, `**Variété bleue**` = "B", `**Variété orange**` = "O")),
+    sex = factor(fct_recode(sex, `Femelle` = "F", Mâle = "M"))
+  ) %>.% # Need to use factor() to drop labels, or tabyl() will warn badly!
+  janitor::tabyl(., species, sex) %>.% # Tableau de contingen ce à 2 entrées
   knitr::kable(., caption = "Nombre de crabes mesurés par variété et par sexe.",
     align = "c", escape = FALSE)
 ```
@@ -425,7 +442,7 @@ Cinq mesures sont réalisées (toutes exprimées en mm) sur la carapace de ces c
 
 ```{r}
 chart(data = crabs, front ~ species %fill=% sex) +
-  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), trim = FALSE)
 ```
 
 ```{r}
