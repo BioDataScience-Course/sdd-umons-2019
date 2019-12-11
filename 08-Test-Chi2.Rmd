@@ -579,7 +579,7 @@ Le jeu de données sur la biométrie humaine que vous avez vous-mêmes réalisé
 
 Rappelons nous que nous avons déjà utilisé une métrique avec l'imc et les différentes classes proposées par l'OMS.
 
-Prenons le jeu de données `biometry` du package `BioDataScience` pour utiliser l'IMC.
+Prenons le jeu de données `biometry` du package `BioDataScience`  comme exemple.
 
 ```{r}
 biometry <- read("biometry", package = "BioDataScience", lang = "FR") %>.%
@@ -588,14 +588,14 @@ biometry <- read("biometry", package = "BioDataScience", lang = "FR") %>.%
 biometry
 ```
 
-L'utilisation d'un nuage de points de la taille en focntion de la masse ne nous permet pas de quantifier l'obésité au sein de notre échantillon comme le montre le graphique ci-dessous\ :
+L'utilisation d'un nuage de points de la taille en fonction de la masse ne nous permet pas de quantifier l'obésité au sein de notre échantillon comme le montre le graphique ci-dessous\ :
 
 ```{r}
 chart(biometry, height ~ weight) +
   geom_point()
 ```
 
-L'utilisation de l'IMC comme métrique afin de quantifier l'obésité est bien plus intéressant.
+L'utilisation de l'IMC comme indice afin de quantifier l'obésité est bien plus intéressant.
 
 ```{r}
 biometry %>.%
@@ -615,7 +615,7 @@ biometry %>.%
 biometry
 ```
 
-Le graphique en barres de notre métrique IMC est plus intéressant que le graphique précendent afin de mettre en avant les individus obèses. 
+Le graphique en barres de l'imc est plus intéressant que le graphique précendent afin de mettre en avant les individus obèses. 
 
 ```{r}
 chart(biometry, ~ bmi_schedule) +
@@ -630,7 +630,7 @@ Dans le projet portant sur le biométrie humaine, réalisez les instructions pro
 
 <https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md>
 
-Afin de vous aider dans la recherche d'indices intéressants et pertinents, de documents sont mis à votre disposition via le lien suivant:
+Afin de vous aider dans la recherche d'indices intéressants et pertinents, des documents sont mis à votre disposition via le lien suivant:
 
 <https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp>
 

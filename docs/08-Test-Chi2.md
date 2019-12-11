@@ -672,7 +672,7 @@ Le jeu de données sur la biométrie humaine que vous avez vous-mêmes réalisé
 
 Rappelons nous que nous avons déjà utilisé une métrique avec l'imc et les différentes classes proposées par l'OMS.
 
-Prenons le jeu de données `biometry` du package `BioDataScience` pour utiliser l'IMC.
+Prenons le jeu de données `biometry` du package `BioDataScience`  comme exemple.
 
 
 ```r
@@ -699,7 +699,7 @@ biometry
 # # … with 385 more rows
 ```
 
-L'utilisation d'un nuage de points de la taille en focntion de la masse ne nous permet pas de quantifier l'obésité au sein de notre échantillon comme le montre le graphique ci-dessous\ :
+L'utilisation d'un nuage de points de la taille en fonction de la masse ne nous permet pas de quantifier l'obésité au sein de notre échantillon comme le montre le graphique ci-dessous\ :
 
 
 ```r
@@ -709,7 +709,7 @@ chart(biometry, height ~ weight) +
 
 <img src="08-Test-Chi2_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" />
 
-L'utilisation de l'IMC comme métrique afin de quantifier l'obésité est bien plus intéressant.
+L'utilisation de l'IMC comme indice afin de quantifier l'obésité est bien plus intéressant.
 
 
 ```r
@@ -747,7 +747,7 @@ biometry
 # # … with 385 more rows
 ```
 
-Le graphique en barres de notre métrique IMC est plus intéressant que le graphique précendent afin de mettre en avant les individus obèses. 
+Le graphique en barres de l'imc est plus intéressant que le graphique précendent afin de mettre en avant les individus obèses. 
 
 
 ```r
@@ -763,7 +763,7 @@ chart(biometry, ~ bmi_schedule) +
 <div class="bdd">
 <p>Dans le projet portant sur le biométrie humaine, réalisez les instructions proposées via le lien suivant :</p>
 <p><a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md</a></p>
-<p>Afin de vous aider dans la recherche d’indices intéressants et pertinents, de documents sont mis à votre disposition via le lien suivant:</p>
+<p>Afin de vous aider dans la recherche d’indices intéressants et pertinents, des documents sont mis à votre disposition via le lien suivant:</p>
 <p><a href="https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp</a></p>
 <p>Débutez votre recherche d’indice avec la lecture de l’article : Comment mesurer la corpulence et le poids idéal ? Histoire, intérêts et limites de l’indice de masse corporelle</p>
 </div>
