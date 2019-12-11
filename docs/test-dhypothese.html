@@ -460,9 +460,26 @@ code span.wa { color: #bf0303; } /* Warning */
 <img src="images/sdd1_08/red-crossbills-male.jpg" alt="Bec-croisés des sapins mâles montrant les deux variétés (bec croisé à gauche ou à droite). Photo : Elaine R. Wilson (license CC BY-SA 3.0)." />
 <p class="caption">Bec-croisés des sapins mâles montrant les deux variétés (bec croisé à gauche ou à droite). Photo : Elaine R. Wilson (license CC BY-SA 3.0).</p>
 </div>
-<p>Comme des individus à bec croisé à gauche et d’autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu les résultats suivants :</p>
-<pre class="sourceCode r"><code class="sourceCode r">(crossbill &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(<span class="dt">left =</span> <span class="dv">1895</span>, <span class="dt">right =</span> <span class="dv">1752</span>)))</code></pre>
-<pre><code>#  left right 
+<p>Comme des individus à bec croisé à gauche et d’autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu le tableau suivant :</p>
+<pre class="sourceCode r"><code class="sourceCode r">(crossbill &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">cb =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;left&quot;</span>, <span class="dv">1895</span>), <span class="kw">rep</span>(<span class="st">&quot;right&quot;</span>, <span class="dv">1752</span>))))</code></pre>
+<pre><code># # A tibble: 3,647 x 1
+#    cb   
+#    &lt;chr&gt;
+#  1 left 
+#  2 left 
+#  3 left 
+#  4 left 
+#  5 left 
+#  6 left 
+#  7 left 
+#  8 left 
+#  9 left 
+# 10 left 
+# # … with 3,637 more rows</code></pre>
+<p>Ce tableau peut être résumé sous la forme d’un tableau de contingence :</p>
+<pre class="sourceCode r"><code class="sourceCode r">(crossbill_tab &lt;-<span class="st"> </span><span class="kw">table</span>(crossbill<span class="op">$</span>cb))</code></pre>
+<pre><code># 
+#  left right 
 #  1895  1752</code></pre>
 <p>Les scientifiques pensent que les variétés gauches et droites se rencontrent avec un ratio 1:1 dans la population étudiée suite à une sélection présumée basée sur le rapport des deux variétés. La question se traduit sous forme d’un test d’hypothèse comme ceci (retenez la notation particulière utilisée pour spécifier les hypothèses) :</p>
 <ul>
@@ -487,11 +504,11 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="realisation-du-test-chi2-dans-r" class="section level5 unnumbered">
 <h5>Réalisation du test Chi<sup>2</sup> dans R</h5>
 <p>Dans R, le test du <span class="math inline">\(\chi^2\)</span> est réalisé facilement à l’aide de la fonction <code>chisq.test()</code>. Voici ce que cela donne et comment on l’interprète :</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill_tab, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># 
 #   Chi-squared test for given probabilities
 # 
-# data:  crossbill
+# data:  crossbill_tab
 # X-squared = 5.6071, df = 1, p-value = 0.01789</code></pre>
 <p>Le premier argument donné à <code>chisq.test()</code> est le tableau de contingence à une entrée indiquant les effectifs observés, ici <code>crossbill</code>. L’argument <code>p =</code> est la liste des probabilités attendues sous <span class="math inline">\(H_0\)</span> et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser <code>rescale.p = TRUE</code>. Ce fragment de code est également disponible dans les snippets à partir du menu <code>hypothesis test : contingency</code> ou <code>.hc</code> (test Chi<sup>2</sup> univarié).</p>
 <p>L’exécution de ce code nous donne un court rapport avec :</p>
@@ -510,10 +527,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <div id="explications-detaillees" class="section level5 unnumbered">
 <h5>Explications détaillées</h5>
 <p>Voici comment ce test se construit. Notre tableau de contingence à simple entrée <code>crossbill</code> contient nos <span class="math inline">\(a_i\)</span>. Nous devons donc calculer quels sont les effectifs théoriques <span class="math inline">\(\alpha_i\)</span>. Le nombre total d’oiseaux observés est :</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(crossbill)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(crossbill_tab)</code></pre>
 <pre><code># [1] 3647</code></pre>
 <p>… et les effectifs attendus sous <span class="math inline">\(H_0\)</span> sont :</p>
-<pre class="sourceCode r"><code class="sourceCode r">(alpha_i &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">left =</span> <span class="kw">sum</span>(crossbill)<span class="op">/</span><span class="dv">2</span>, <span class="dt">right =</span> <span class="kw">sum</span>(crossbill)<span class="op">/</span><span class="dv">2</span>))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">(alpha_i &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">left =</span> <span class="kw">sum</span>(crossbill_tab)<span class="op">/</span><span class="dv">2</span>, <span class="dt">right =</span> <span class="kw">sum</span>(crossbill_tab)<span class="op">/</span><span class="dv">2</span>))</code></pre>
 <pre><code>#   left  right 
 # 1823.5 1823.5</code></pre>
 <p>Les hypothèses du test <span class="math inline">\(\chi^2\)</span> univarié se définissent comme ceci :</p>
@@ -524,10 +541,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Le principe de la <strong>statistique <span class="math inline">\(\chi^2\)</span></strong> consiste à sommer les écarts au carré par rapport aux <span class="math inline">\(\alpha_i\)</span> de référence divisés par ces mêmes <span class="math inline">\(\alpha_i\)</span> pour quantifier l’écart entre les valeurs observées et les valeurs théoriques. Donc :</p>
 <p><span class="math display">\[\chi^2_\mathrm{obs} = \sum_{i=1}^n\frac{(a_i - \alpha_i)^2}{\alpha_i}\]</span></p>
 <p>Notez que cette statistique prend la valeur nulle lorsque tous les <span class="math inline">\(a_i\)</span> sont strictement égaux aux <span class="math inline">\(\alpha_i\)</span>. Dans tous les autres cas, des termes positifs (le carré de différences est toujours une valeur positive) apparaissent. Donc la statistique <span class="math inline">\(\chi^2\)</span> est d’autant plus grande que les observations s’éloignent de la théorie.</p>
-<p>Calculons <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> dans notre cas<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> :</p>
-<pre class="sourceCode r"><code class="sourceCode r">(chi2_obs &lt;-<span class="st"> </span><span class="kw">sum</span>((crossbill <span class="op">-</span><span class="st"> </span>alpha_i)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>alpha_i))</code></pre>
+<p>Calculons <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> dans notre cas<a href="references.html#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a> :</p>
+<pre class="sourceCode r"><code class="sourceCode r">(chi2_obs &lt;-<span class="st"> </span><span class="kw">sum</span>((crossbill_tab <span class="op">-</span><span class="st"> </span>alpha_i)<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>alpha_i))</code></pre>
 <pre><code># [1] 5.607074</code></pre>
-<p>Pour répondre à la question, il nous faut une loi de distribution statistique qui permette d’associer une probabilité au quantile <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> sous <span class="math inline">\(H_0\)</span>. C’est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du <span class="math inline">\(\chi^2\)</span>. La loi du même nom admet un seul paramètre, les <strong>degrés de libertés</strong> (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée <span class="math inline">\(n\)</span> moins un. Ici, ddl = 2 - 1 = 1. La Fig. <a href="test-dhypothese.html#fig:chi2plot">8.1</a> représente la densité de probabilité d’une loi <span class="math inline">\(\chi^2\)</span> typique<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. C’est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à <span class="math inline">\(+\infty\)</span>.</p>
+<p>Pour répondre à la question, il nous faut une loi de distribution statistique qui permette d’associer une probabilité au quantile <span class="math inline">\(\chi^2_\mathrm{obs}\)</span> sous <span class="math inline">\(H_0\)</span>. C’est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du <span class="math inline">\(\chi^2\)</span>. La loi du même nom admet un seul paramètre, les <strong>degrés de libertés</strong> (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée <span class="math inline">\(n\)</span> moins un. Ici, ddl = 2 - 1 = 1. La Fig. <a href="test-dhypothese.html#fig:chi2plot">8.1</a> représente la densité de probabilité d’une loi <span class="math inline">\(\chi^2\)</span> typique<a href="references.html#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>. C’est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à <span class="math inline">\(+\infty\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:chi2plot"></span>
 <img src="08-Test-Chi2_files/figure-html/chi2plot-1.png" alt="Allure typique de la densité de probabilité de la distribution Chi^2^ (ici ddl = 3)." width="672" />
 <p class="caption">
@@ -566,16 +583,16 @@ Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution C
 </div>
 <div id="effet-de-leffectif-etudie" class="section level3">
 <h3><span class="header-section-number">8.2.4</span> Effet de l’effectif étudié</h3>
-<p>En inférence, la qualité des données (échantillons <em>représentatifs</em>) est importante, mais la quantité aussi. <strong>Plus vous pourrez mesurer d’individus, mieux c’est.</strong> Par contre, dès que la taille de l’échantillon (ici, l’effectif total mesuré) est suffisant pour rejeter <span class="math inline">\(H_0\)</span>, vous n’avez plus besoin d’augmenter la taille de votre échantillon<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Voyons l’effet de la taille de l’échantillon sur l’étude des becs croisés des sapins. Nous n’avons pas besoin d’un effectif plus grand que celui mesuré, car nous rejetons <span class="math inline">\(H_0\)</span> ici. Qu’aurait donné notre test <span class="math inline">\(\chi^2\)</span>, par contre, si l’auteur avait mesuré disons 10 fois moins d’oiseaux, les proportions restant par ailleurs identiques entre becs croisés à gauche et à droite ?</p>
+<p>En inférence, la qualité des données (échantillons <em>représentatifs</em>) est importante, mais la quantité aussi. <strong>Plus vous pourrez mesurer d’individus, mieux c’est.</strong> Par contre, dès que la taille de l’échantillon (ici, l’effectif total mesuré) est suffisant pour rejeter <span class="math inline">\(H_0\)</span>, vous n’avez plus besoin d’augmenter la taille de votre échantillon<a href="references.html#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>. Voyons l’effet de la taille de l’échantillon sur l’étude des becs croisés des sapins. Nous n’avons pas besoin d’un effectif plus grand que celui mesuré, car nous rejetons <span class="math inline">\(H_0\)</span> ici. Qu’aurait donné notre test <span class="math inline">\(\chi^2\)</span>, par contre, si l’auteur avait mesuré disons 10 fois moins d’oiseaux, les proportions restant par ailleurs identiques entre becs croisés à gauche et à droite ?</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Proportions équivalentes, mais échantillon 10x plus petit</span>
-(crossbill2 &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(<span class="dt">left =</span> <span class="dv">190</span>, <span class="dt">right =</span> <span class="dv">175</span>)))</code></pre>
+(crossbill_tab2 &lt;-<span class="st"> </span><span class="kw">as.table</span>(<span class="kw">c</span>(<span class="dt">left =</span> <span class="dv">190</span>, <span class="dt">right =</span> <span class="dv">175</span>)))</code></pre>
 <pre><code>#  left right 
 #   190   175</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill2, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chisq.test</span>(crossbill_tab2, <span class="dt">p =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>), <span class="dt">rescale.p =</span> <span class="ot">FALSE</span>)</code></pre>
 <pre><code># 
 #   Chi-squared test for given probabilities
 # 
-# data:  crossbill2
+# data:  crossbill_tab2
 # X-squared = 0.61644, df = 1, p-value = 0.4324</code></pre>
 <p>Nous constatons que la valeur du <span class="math inline">\(\chi^2_{obs}\)</span> dépend de l’effectif. Sa valeur est plus petite ici. Par conséquent, la valeur <em>P</em> a également changé et elle vaut à présent 43%. Cette valeur est <em>supérieure</em> maintenant à notre seuil <span class="math inline">\(\alpha\)</span> de 5%. Donc, nous ne pouvons pas rejeter <span class="math inline">\(H_0\)</span>. Dans un pareil cas, nous conclurons que les becs croisés à gauche ne sont <strong>pas significativement</strong> plus nombreux que ceux à droite au seuil <span class="math inline">\(\alpha\)</span> de 5% (test <span class="math inline">\(\chi^2\)</span> = 0,62, ddl = 1, valeur <em>P</em> = 0,43). Notez, c’est important, que nous n’avons pas écrit “ne sont <strong>pas</strong>”, mais nous avons précisé “ne sont <strong>pas significativement</strong>” plus nombreux. C’est un détail très important. En effet, cela veut dire que l’on ne peut pas conclure qu’il y ait des différences sur base de l’échantillon utilisé, mais il se peut aussi que l’échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (<code>crossbill</code>), et nous savons bien que c’est effectivement le cas. Est-ce que vous saisissez bien ce que le mot <strong>significativement</strong> veut dire, et la subtilité qui apparaît lorsqu’un test d’hypothèse ne rejette <strong>pas</strong> <span class="math inline">\(H_0\)</span> ? Les conclusions tirées avec <code>crossbill</code> et <code>crossbill2</code> et le même test d’hypothèse sont diamétralement opposées car l’un rejette et l’autre ne rejette pas <span class="math inline">\(H_0\)</span>. Pourtant ces deux analyses ne se contredisent pas ! Les deux interprétations sont <em>simultanément</em> correctes. C’est l’interprétation asymétrique du test qui permet cela, et l’adverbe <strong>significativement</strong> est indispensable pour introduire cette nuance dans le texte !</p>
 </div>
@@ -603,19 +620,34 @@ Figure 8.2: Densité de probabilité sous <em>H</em><sub>0</sub> (distribution C
 </div>
 <div id="example-et-resolution-dans-r" class="section level5 unnumbered">
 <h5>Example et résolution dans R</h5>
-<p>Reprenons le jeu de données concernant le test d’une molécule potentiellement anti-cancéreuse, le timolol :</p>
-<pre class="sourceCode r"><code class="sourceCode r">timolol &lt;-<span class="st"> </span><span class="kw">tibble</span>(
-  <span class="dt">traitement =</span> <span class="kw">c</span>(<span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;timolol&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;placebo&quot;</span>),
-  <span class="dt">patient    =</span> <span class="kw">c</span>(<span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>,  <span class="st">&quot;sain&quot;</span>,    <span class="st">&quot;malade&quot;</span>),
-  <span class="dt">freq       =</span> <span class="kw">c</span>(<span class="dv">44</span>,        <span class="dv">116</span>,       <span class="dv">19</span>,        <span class="dv">128</span>)
-)
-<span class="co"># Création du tableau de contingence </span>
-timolol_table &lt;-<span class="st"> </span><span class="kw">xtabs</span>(<span class="dt">data =</span> timolol, freq <span class="op">~</span><span class="st"> </span>patient <span class="op">+</span><span class="st"> </span>traitement)
-timolol_table</code></pre>
-<pre><code>#         traitement
-# patient  placebo timolol
-#   malade     128     116
-#   sain        19      44</code></pre>
+<p>Prenons le jeu de données concernant le test d’une molécule potentiellement anti-cancéreuse, le timolol :</p>
+<pre class="sourceCode r"><code class="sourceCode r">(timolol &lt;-<span class="st"> </span><span class="kw">tibble</span>(
+  <span class="dt">traitement =</span> <span class="kw">c</span>(
+    <span class="kw">rep</span>(<span class="st">&quot;timolol&quot;</span>, <span class="dv">160</span>), <span class="kw">rep</span>(<span class="st">&quot;placebo&quot;</span>, <span class="dv">147</span>)),
+  <span class="dt">patient =</span> <span class="kw">c</span>(
+    <span class="kw">rep</span>(<span class="st">&quot;sain&quot;</span>, <span class="dv">44</span>), <span class="kw">rep</span>(<span class="st">&quot;malade&quot;</span>, <span class="dv">116</span>), 
+    <span class="kw">rep</span>(<span class="st">&quot;sain&quot;</span>, <span class="dv">19</span>), <span class="kw">rep</span>(<span class="st">&quot;malade&quot;</span>, <span class="dv">128</span>))
+  ))</code></pre>
+<pre><code># # A tibble: 307 x 2
+#    traitement patient
+#    &lt;chr&gt;      &lt;chr&gt;  
+#  1 timolol    sain   
+#  2 timolol    sain   
+#  3 timolol    sain   
+#  4 timolol    sain   
+#  5 timolol    sain   
+#  6 timolol    sain   
+#  7 timolol    sain   
+#  8 timolol    sain   
+#  9 timolol    sain   
+# 10 timolol    sain   
+# # … with 297 more rows</code></pre>
+<p>Nous pouvons résumer ce tableau cas par variable en un tableau de contingence à double entrée :</p>
+<pre class="sourceCode r"><code class="sourceCode r">(timolol_table &lt;-<span class="st"> </span><span class="kw">table</span>(timolol<span class="op">$</span>traitement, timolol<span class="op">$</span>patient))</code></pre>
+<pre><code>#          
+#           malade sain
+#   placebo    128   19
+#   timolol    116   44</code></pre>
 <p>Nous avons ici un tableau de contingence à double entrée qui répertorie le nombre de cas attribués aléatoirement au traitement avec placebo (somme de la première colonne, soit 128 + 19 = 147 patients) et le nombre de cas qui ont reçu du timolol (116 + 44 = 160), tout autre traitement étant par ailleurs équivalent. Nous avons donc un total général de 307 patients étudiés. Les conditions d’application du test sont rencontrées ici.</p>
 <p>La répartition dans le tableau selon les ligne est, elle, tributaire des effets respectifs des deux traitements ? La clé ici est de <strong>considérer comme <span class="math inline">\(H_0\)</span> un partitionnement des cas équivalent entre les deux traitements.</strong> Ceci revient au même que de dire que l’effet d’une variable (le traitement administré) est <em>indépendant</em> de l’effet de l’autre variable (le fait d’être guéri ou non). C’est pour cette raison qu’on parle de <strong>test <span class="math inline">\(\chi^2\)</span> d’indépendance.</strong> Les hypothèses sont :</p>
 <ul>
@@ -634,10 +666,10 @@ timolol_table</code></pre>
 # data:  timolol_table
 # X-squared = 9.1046, df = 1, p-value = 0.00255</code></pre>
 <pre><code># Expected frequencies:</code></pre>
-<pre><code>#         traitement
-# patient    placebo   timolol
-#   malade 116.83388 127.16612
-#   sain    30.16612  32.83388</code></pre>
+<pre><code>#          
+#             malade     sain
+#   placebo 116.8339 30.16612
+#   timolol 127.1661 32.83388</code></pre>
 </div>
 <div id="interpretation-1" class="section level5 unnumbered">
 <h5>Interprétation</h5>
@@ -690,10 +722,10 @@ Gardez toujours à l’esprit que, quelle que soit la qualité d’un test d’a
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Faites également le calcul manuellement à la calculatrice pour vérifier que vous avez bien compris.<a href="test-dhypothese.html#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Les fonctions qui permettent les calculs relatifs à la distribution <span class="math inline">\(\chi^2\)</span> dans R sont <code>&lt;x&gt;chisq()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.ic</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="test-dhypothese.html#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>Attention ! Vous devez fixer la taille de l’échantillon dès le départ <em>a priori</em>. Vous ne pouvez pas accumuler des données jusqu’à obtenir un rejet de <span class="math inline">\(H_0\)</span>, sans quoi votre analyse sera biaisée.<a href="test-dhypothese.html#fnref3" class="footnote-back">↩</a></p></li>
+<ol start="38">
+<li id="fn38"><p>Faites également le calcul manuellement à la calculatrice pour vérifier que vous avez bien compris.<a href="test-dhypothese.html#fnref38" class="footnote-back">↩</a></p></li>
+<li id="fn39"><p>Les fonctions qui permettent les calculs relatifs à la distribution <span class="math inline">\(\chi^2\)</span> dans R sont <code>&lt;x&gt;chisq()</code>, et les snippets correspondants dans la SciViews Box sont disponibles à partir de <code>.ic</code>. Leur utilisation est similaire à celle des distributions vues au module <a href="proba.html#proba">7</a>.<a href="test-dhypothese.html#fnref39" class="footnote-back">↩</a></p></li>
+<li id="fn40"><p>Attention ! Vous devez fixer la taille de l’échantillon dès le départ <em>a priori</em>. Vous ne pouvez pas accumuler des données jusqu’à obtenir un rejet de <span class="math inline">\(H_0\)</span>, sans quoi votre analyse sera biaisée.<a href="test-dhypothese.html#fnref40" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

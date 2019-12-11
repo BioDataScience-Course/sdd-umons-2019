@@ -75,17 +75,44 @@ Tout cela reste très abstrait. Prenons un exemple concret simple. Le bec-crois�
 
 ![Bec-croisés des sapins mâles montrant les deux variétés (bec croisé à gauche ou à droite). Photo\ : Elaine R. Wilson (license CC BY-SA 3.0).](images/sdd1_08/red-crossbills-male.jpg)
 
-Comme des individus à bec croisé à gauche et d'autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu les résultats suivants\ :
+Comme des individus à bec croisé à gauche et d'autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu le tableau suivant\ :
 
 
 ```r
-(crossbill <- as.table(c(left = 1895, right = 1752)))
+(crossbill <- tibble(cb = c(rep("left", 1895), rep("right", 1752))))
 ```
 
 ```
+# # A tibble: 3,647 x 1
+#    cb   
+#    <chr>
+#  1 left 
+#  2 left 
+#  3 left 
+#  4 left 
+#  5 left 
+#  6 left 
+#  7 left 
+#  8 left 
+#  9 left 
+# 10 left 
+# # … with 3,637 more rows
+```
+
+Ce tableau peut être résumé sous la forme d'un tableau de contingence\ : 
+
+
+```r
+(crossbill_tab <- table(crossbill$cb))
+```
+
+```
+# 
 #  left right 
 #  1895  1752
 ```
+
+
 
 Les scientifiques pensent que les variétés gauches et droites se rencontrent avec un ratio 1:1 dans la population étudiée suite à une sélection présumée basée sur le rapport des deux variétés. La question se traduit sous forme d'un test d'hypothèse comme ceci (retenez la notation particulière utilisée pour spécifier les hypothèses)\ :
 
@@ -119,16 +146,18 @@ Dans R, le test du $\chi^2$ est réalisé facilement à l'aide de la fonction `c
 
 
 ```r
-chisq.test(crossbill, p = c(1/2, 1/2), rescale.p = FALSE)
+chisq.test(crossbill_tab, p = c(1/2, 1/2), rescale.p = FALSE)
 ```
 
 ```
 # 
 # 	Chi-squared test for given probabilities
 # 
-# data:  crossbill
+# data:  crossbill_tab
 # X-squared = 5.6071, df = 1, p-value = 0.01789
 ```
+
+
 
 Le premier argument donné à `chisq.test()` est le tableau de contingence à une entrée indiquant les effectifs observés, ici `crossbill`. L'argument `p = ` est la liste des probabilités attendues sous $H_0$ et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser `rescale.p = TRUE`. Ce fragment de code est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2^ univarié).
 
@@ -153,7 +182,7 @@ Voici comment ce test se construit. Notre tableau de contingence à simple entr�
 
 
 ```r
-sum(crossbill)
+sum(crossbill_tab)
 ```
 
 ```
@@ -163,7 +192,7 @@ sum(crossbill)
 
 
 ```r
-(alpha_i <- c(left = sum(crossbill)/2, right = sum(crossbill)/2))
+(alpha_i <- c(left = sum(crossbill_tab)/2, right = sum(crossbill_tab)/2))
 ```
 
 ```
@@ -186,7 +215,7 @@ Calculons $\chi^2_\mathrm{obs}$ dans notre cas^[Faites également le calcul manu
 
 
 ```r
-(chi2_obs <- sum((crossbill - alpha_i)^2 / alpha_i))
+(chi2_obs <- sum((crossbill_tab - alpha_i)^2 / alpha_i))
 ```
 
 ```
@@ -253,7 +282,7 @@ En inférence, la qualité des données (échantillons *représentatifs*) est im
 
 ```r
 # Proportions équivalentes, mais échantillon 10x plus petit
-(crossbill2 <- as.table(c(left = 190, right = 175)))
+(crossbill_tab2 <- as.table(c(left = 190, right = 175)))
 ```
 
 ```
@@ -262,14 +291,14 @@ En inférence, la qualité des données (échantillons *représentatifs*) est im
 ```
 
 ```r
-chisq.test(crossbill2, p = c(1/2, 1/2), rescale.p = FALSE)
+chisq.test(crossbill_tab2, p = c(1/2, 1/2), rescale.p = FALSE)
 ```
 
 ```
 # 
 # 	Chi-squared test for given probabilities
 # 
-# data:  crossbill2
+# data:  crossbill_tab2
 # X-squared = 0.61644, df = 1, p-value = 0.4324
 ```
 
@@ -301,26 +330,53 @@ Comme toujours, le test $\chi^2$ d'indépendance est assorti de conditions d'app
 
 ##### Example et résolution dans R {-}
 
-Reprenons le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
+Prenons le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
 
 
 ```r
-timolol <- tibble(
-  traitement = c("timolol", "timolol", "placebo", "placebo"),
-  patient    = c("sain",    "malade",  "sain",    "malade"),
-  freq       = c(44,        116,       19,        128)
-)
-# Création du tableau de contingence 
-timolol_table <- xtabs(data = timolol, freq ~ patient + traitement)
-timolol_table
+(timolol <- tibble(
+  traitement = c(
+    rep("timolol", 160), rep("placebo", 147)),
+  patient = c(
+    rep("sain", 44), rep("malade", 116), 
+    rep("sain", 19), rep("malade", 128))
+  ))
 ```
 
 ```
-#         traitement
-# patient  placebo timolol
-#   malade     128     116
-#   sain        19      44
+# # A tibble: 307 x 2
+#    traitement patient
+#    <chr>      <chr>  
+#  1 timolol    sain   
+#  2 timolol    sain   
+#  3 timolol    sain   
+#  4 timolol    sain   
+#  5 timolol    sain   
+#  6 timolol    sain   
+#  7 timolol    sain   
+#  8 timolol    sain   
+#  9 timolol    sain   
+# 10 timolol    sain   
+# # … with 297 more rows
 ```
+
+
+
+Nous pouvons résumer ce tableau cas par variable en un tableau de contingence à double entrée\ :
+
+
+```r
+(timolol_table <- table(timolol$traitement, timolol$patient))
+```
+
+```
+#          
+#           malade sain
+#   placebo    128   19
+#   timolol    116   44
+```
+
+
 
 Nous avons ici un tableau de contingence à double entrée qui répertorie le nombre de cas attribués aléatoirement au traitement avec placebo (somme de la première colonne, soit 128 + 19 = 147 patients) et le nombre de cas qui ont reçu du timolol (116 + 44 = 160), tout autre traitement étant par ailleurs équivalent. Nous avons donc un total général de 307 patients étudiés. Les conditions d'application du test sont rencontrées ici.
 
@@ -357,10 +413,10 @@ Enfin, nous comparons cette valeur à la distribution théorique de $\chi^2$  à
 ```
 
 ```
-#         traitement
-# patient    placebo   timolol
-#   malade 116.83388 127.16612
-#   sain    30.16612  32.83388
+#          
+#             malade     sain
+#   placebo 116.8339 30.16612
+#   timolol 127.1661 32.83388
 ```
 
 
@@ -482,7 +538,7 @@ crabs %>.%
 
 
 
-Table: (\#tab:unnamed-chunk-21)Nombre de crabes mesurés par variété et par sexe.
+Table: (\#tab:unnamed-chunk-27)Nombre de crabes mesurés par variété et par sexe.
 
                       Femelle    Mâle 
 -------------------  ---------  ------
@@ -501,7 +557,7 @@ chart(data = crabs, front ~ species %fill=% sex) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), trim = FALSE)
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -509,7 +565,7 @@ chart(data = crabs, rear ~ species %fill=% sex) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -517,7 +573,7 @@ chart(data = crabs, length ~ species %fill=% sex) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -525,7 +581,7 @@ chart(data = crabs, width ~ species %fill=% sex) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -533,7 +589,7 @@ chart(data = crabs, width ~ species %fill=% sex) +
   geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" />
 
 Des tendances générales peuvent être notées. Par exemple, le lobe frontal tend à être légèrement plus grand pour la variété orange, ou la largeur à l'arrière tend à être plus grande pour les femelles, surtout chez la variété orange. Cependant, aucun de ces critères ne peut être retenu pour différencier les variétés ou les espèces *pour un individu en particulier* car les distributions se chevauchent toutes très largement.
 
@@ -545,7 +601,7 @@ chart(data = crabs, rear ~ length %shape=% species %col=% sex) +
   geom_point()
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" />
 
 Ce graphique sépare relativement bien les mâles des femelles pour les deux variétés.
 
@@ -555,7 +611,7 @@ chart(data = crabs, front ~ width %shape=% species %col=% sex) +
   geom_point()
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" />
 
 Ce graphique, en revanche, sépare les deux variétés, quel que soit leur sexe (la variété bleue en bas, et la varété orange en haut). Cela signifie donc que les données morphométriques contiennent une information permettant de discerner les sexes et les variétés, mais cette information n'est pas visible lorsqu'une seule variable quantitative est représentée en fonction des sous-populations comme dans les graphiques en violons.
 
@@ -572,7 +628,7 @@ crabs %>.%
     ylab("Ratio largeur arrière/longueur")
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" />
 
 Notre métrique `rear_length` est naturellement ultra-simple. Elle ne permet pas de différencier *tous* les mâles de *toutes* les femelles, mais la séparation est déjà bien meilleure qu'en utilisant soit `rear` soit `length` seuls. A l'aide de techniques statistiques que vous étudierez au [cours de science des données biologiques II](http://biodatascience-course.sciviews.org/sdd-umons2/lm.html) l'an prochain, nous pouvons montrer qu'une meilleure métrique (ou indice) pour séparer les mâles des femelles est en réalité\ : `rear / (0.3 * length + 2.4)`^[Pour le lecteur plus avancé, il s'agit en fait de la droite de régression ajustée dans le nuage de points.]. La séparation entre les sexes n'est pas totale, mais s'en rapproche fortement, surtout pour la variété orange.
 
@@ -585,7 +641,7 @@ crabs %>.%
     ylab("Ratio largeur arrière/(0.3*longueur + 2.4)")
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" />
 
 De même, nous pouvons utiliser l'indice `front_width = front / (0.43 * width)` pour séparer les variétés qui donne ceci\ :
 
@@ -598,7 +654,7 @@ crabs %>.%
     ylab("Ratio lobe frontal/(0.43*largeur)")
 ```
 
-<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" />
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" />
 
 Avec cette nouvelle variable calculée, nous pouvons séparer pratiquement parfaitement les crabes de la variété orange de ceux de la variété bleue sur base uniquement de la forme de la carapace. Admettons que le critère de couleur ne soit pas fiable à 100% avec des individus pouvant arborer des colorations intermédiaires qui rendent la discrimination des variétés sur base uniquement du criètre de couleur hazardeuse. Si c'est le cas, notre indice `front_width` est très utile pour séparer ces variétés ou en tous cas, pour aider à le faire.
 
@@ -614,7 +670,103 @@ Avec cette nouvelle variable calculée, nous pouvons séparer pratiquement parfa
 
 Le jeu de données sur la biométrie humaine que vous avez vous-mêmes réalisé est un fantastique terrain de jeu pour définir des métriques. La question centrale étant ici d'étudier la question de l'obésité, les métriques les plus importantes sont celles qui permettent de bien quantifier cela.
 
-TODO: citer quelques références biblio pour commencer et fournir un encadré qui propose un exercice relatif à cette question.
+Rappelons nous que nous avons déjà utilisé une métrique avec l'imc et les différentes classes proposées par l'OMS.
+
+Prenons le jeu de données `biometry` du package `BioDataScience` pour utiliser l'IMC.
+
+
+```r
+biometry <- read("biometry", package = "BioDataScience", lang = "FR") %>.%
+  select(., height, weight)
+
+biometry
+```
+
+```
+# # A tibble: 395 x 2
+#    height weight
+#     <dbl>  <dbl>
+#  1    182     69
+#  2    190     74
+#  3    185     83
+#  4    175     60
+#  5    167     48
+#  6    179     52
+#  7    167     72
+#  8    180     74
+#  9    189    110
+# 10    160     82
+# # … with 385 more rows
+```
+
+L'utilisation d'un nuage de points de la taille en focntion de la masse ne nous permet pas de quantifier l'obésité au sein de notre échantillon comme le montre le graphique ci-dessous\ :
+
+
+```r
+chart(biometry, height ~ weight) +
+  geom_point()
+```
+
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" />
+
+L'utilisation de l'IMC comme métrique afin de quantifier l'obésité est bien plus intéressant.
+
+
+```r
+biometry %>.%
+  mutate(., 
+         bmi = weight / (height / 100)^2,
+         bmi_schedule = case_when(
+           bmi < 18.5 ~ "sous-poids",
+           bmi >= 18.5 & bmi < 25 ~ "poids normal",
+           bmi >= 25 & bmi < 30 ~ "surpoids",
+           bmi >= 30 ~ "obèse"),
+         bmi_schedule = factor(
+           bmi_schedule, 
+           levels = c("sous-poids", "poids normal", "surpoids", "obèse"), 
+           ordered = TRUE)
+         ) -> biometry
+
+biometry
+```
+
+```
+# # A tibble: 395 x 4
+#    height weight   bmi bmi_schedule
+#     <dbl>  <dbl> <dbl> <ord>       
+#  1    182     69  20.8 poids normal
+#  2    190     74  20.5 poids normal
+#  3    185     83  24.3 poids normal
+#  4    175     60  19.6 poids normal
+#  5    167     48  17.2 sous-poids  
+#  6    179     52  16.2 sous-poids  
+#  7    167     72  25.8 surpoids    
+#  8    180     74  22.8 poids normal
+#  9    189    110  30.8 obèse       
+# 10    160     82  32.0 obèse       
+# # … with 385 more rows
+```
+
+Le graphique en barres de notre métrique IMC est plus intéressant que le graphique précendent afin de mettre en avant les individus obèses. 
+
+
+```r
+chart(biometry, ~ bmi_schedule) +
+  geom_bar() +
+  labs(x = "Echelle de l'IMC", "Dénombrement")
+```
+
+<img src="08-Test-Chi2_files/figure-html/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" />
+
+##### A vous de jouer ! {-}
+
+<div class="bdd">
+<p>Dans le projet portant sur le biométrie humaine, réalisez les instructions proposées via le lien suivant :</p>
+<p><a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md</a></p>
+<p>Afin de vous aider dans la recherche d’indices intéressants et pertinents, de documents sont mis à votre disposition via le lien suivant:</p>
+<p><a href="https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp</a></p>
+<p>Débutez votre recherche d’indice avec la lecture de l’article : Comment mesurer la corpulence et le poids idéal ? Histoire, intérêts et limites de l’indice de masse corporelle</p>
+</div>
 
 
 ## Evaluation par les pairs (étudiants de Charleroi)
