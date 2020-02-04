@@ -430,8 +430,8 @@ Cette distribution *n'est pas* une Student. Par contre, elle y ressemble plus qu
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/tdistri5-1.png" alt="Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange)." width="672" />
-<p class="caption">(\#fig:tdistri5)Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange).</p>
+<img src="09-Moyenne_files/figure-html/tdistri5-1.png" alt="Distribution d'échantillonnage à partir d'une distribution uniforme, n = 100. Ajustement d'une distribution de Student équivalente par dessus l'histogramme." width="672" />
+<p class="caption">(\#fig:tdistri5)Distribution d'échantillonnage à partir d'une distribution uniforme, n = 100. Ajustement d'une distribution de Student équivalente par dessus l'histogramme.</p>
 </div>
 
 Nous venons de montrer de manière empirique que lorsque la distribution de la population est différente d'une distribution normale, la distribution d'échantillonnage tend vers une *t* de Student pour un $n$ grand. Ceci se démontre de manière mathématique par le fameux **théorème central limite** que nous avons déjà abordé et qui est si cher aux statisticiens (nous vous épargnons cette démonstration ici).
@@ -470,16 +470,16 @@ skimr::skim(crabs)
 #  n obs: 200 
 #  n variables: 8 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -1104,11 +1104,160 @@ La puissance est de 0,954. Donc, $\beta$ vaut 1 - 0,954 = 0,046 ou pratiquement 
 </div>
 
 
-
-
 ## Représentation graphique
 
-Présentation graphique: dynamite plot + barres d’erreurs. Transformation des données pour linéariser et ou rendre symétrique autour de la moyenne.
+Il n'existe pas un graphique de référence afin de présenter un test *t* de Student ou un test de Wilcoxon. On retrouve malheureusement dans la littérature plusieurs graphiques qui coexistent.  Afin de présenter 3 graphiques courants, nous utilisons le jeu de données `crabs`.
+
+On retrouve généralement 2 graphiques montrant la moyenne et l'intervalle de confiance.
+
+
+```r
+a <- chart(data = crabs, rear ~ sex) +
+  stat_summary(geom = "col", fun.y = "mean") +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_cl_normal", fun.args = list(conf.int = 0.95))
+
+b <- chart(data = crabs, rear ~ sex) +
+  geom_jitter(alpha = 0.3, width = 0.2) +
+  stat_summary(geom = "point", fun.y = "mean", size = 2) +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_cl_normal", fun.args = list(conf.int = 0.95), size = 1)
+
+combine_charts(list(a,b))
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" />
+
+La graphique en barre et le nuage de point représentent identiquement la information. Ils représentent la moyenne avec des barres erreurs qui représentent l'intervalle de confiance à 0.95. Le graphe en dynamite avec des barres d'erreurs ne donne aucune information sur le nombre d'observation. Nous avons déja abordé rapidement cette problématique dans la section \@ref(barres-mean). Il n'est donc pas le graphique optimal pour présenter un test *t* de Student.
+
+Malgré le fait que le test *t* de Student est un test paramétrique, on retrouve dans la littérature scientifique la boite de dispersion qui est pourtant un graphique associé à des valeurs non paramétriques. Pour le test de wilcoxon, la boite de dispersion est l'outil graphique recommandé. 
+
+
+```r
+chart(data = crabs, rear ~ sex) +
+  geom_boxplot()
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" />
+
+Parmi ces 3 choix, nous vous conseillons d'employer le nuage de point avec la valeur moyenne et l'intervalle de confiance.
+
+
+```r
+chart(data = crabs, rear ~ sex) +
+  geom_jitter(alpha = 0.3, width = 0.2) +
+  stat_summary(geom = "point", fun.y = "mean") +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_cl_normal", fun.args = list(conf.int = 0.95))
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" />
+
+##### Pièges et astuces {-}
+
+###### Les barres d'erreurs {-}
+
+Que vous utilisiez le nuage de points ou le graphique en barres, vous devez être extrêmement vigilant aux barres d'erreurs. Vous devez toujours préciser et bien comprendre ce que les barres d'erreurs cachent. Voici 4 graphiques qui présentent différentes barres d'erreurs (la taille de l'axe y a volontairement été figée).
+
+
+```r
+p <- chart(data = crabs, rear ~ sex) +
+  geom_jitter(alpha = 0.1, width = 0.2) +
+  stat_summary(geom = "point", fun.y = "mean") +
+  scale_y_continuous(limits = c(5,22))
+
+a <- p +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_cl_normal", fun.args = list(conf.int = 0.95)) 
+
+b <- p +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_sdl", fun.args = list(mult = 1))
+
+c <- p +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_sdl", fun.args = list(mult = 2)) 
+
+d <- p + 
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_se", fun.args = list(mult = 1))
+
+combine_charts(list(a,b,c,d))
+```
+
+<div class="figure" style="text-align: center">
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-53-1.png" alt="Nuage de points de la largeur de l'arrière de la carapace en focntion du sexe avec la moyenne et des barres d'erreurs. Graphe A : moyenne et intervalle de confiance 0.95. Graphe B : moyenne et écart-type. Graphe C : moyenne et 2*écart-type. Graphe D : moyenne et erreur standard" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-53)Nuage de points de la largeur de l'arrière de la carapace en focntion du sexe avec la moyenne et des barres d'erreurs. Graphe A : moyenne et intervalle de confiance 0.95. Graphe B : moyenne et écart-type. Graphe C : moyenne et 2*écart-type. Graphe D : moyenne et erreur standard</p>
+</div>
+
+Les formules associées aux barres d'erreurs sont les suivantes de A à D:
+
+- Graphe A : l'intervalle de confiance 0.95 
+
+$$\mathrm{IC}(1 - \alpha) \simeq \bar{x} \pm t_{\alpha/2}^{n-1} \cdot SE_x$$
+
+
+```r
+mean_cl_normal(crabs$rear)
+```
+
+```
+#         y     ymin     ymax
+# 1 12.7385 12.37968 13.09732
+```
+
+- Graphe B : l'écart-type 
+
+$$s_x = \sqrt{\sum_{i=1}^n{\frac{(x_i - \bar{x})^2}{n-1}}}$$
+
+
+```r
+mean_sdl(crabs$rear, mult = 1)
+```
+
+```
+#         y     ymin     ymax
+# 1 12.7385 10.16516 15.31184
+```
+
+- Graphe C : deux fois la valeur de l'écart-type
+
+$$2 \times s_x$$
+
+
+```r
+mean_sdl(crabs$rear, mult = 2)
+```
+
+```
+#         y    ymin     ymax
+# 1 12.7385 7.59182 17.88518
+```
+
+- Graphe D : l'erreur standard  
+
+$$SE_x = \frac{s_x}{\sqrt{n}}$$
+
+
+```r
+mean_se(crabs$rear)
+```
+
+```
+#         y     ymin     ymax
+# 1 12.7385 12.55654 12.92046
+```
+
+Comme nous venons de le voir, les barres d'erreurs sont calculées à partir de différentes fonctions. Il est donc indispensable de préciser explicitement ce que les barres d'erreurs représentent. 
+
+
+##### Pour en savoir plus {-} 
+
+- [Beware of dynamite](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/TatsukiRcode/Poster3.pdf). Démonstration de l'impact d'un graphe en barres pour représenter la moyenne (et l'écart type) = graphique en "dynamite".
+
+- [Dynamite plots : unmitigated evil?](http://emdbolker.wikidot.com/blog%3Adynamite) Une autre comparaison du graphe en dynamite avec des représentations alternatives qui montre que le premier peut avoir quand même quelques avantages dans des situations particulières.
+
+- [Comparaison de moyennes : indiquez la significativité des différences sur le graph](https://statistique-et-logiciel-r.com/comparaison-de-moyennes-indiquer-les-differences-significatives-sur-le-graph/). Tutoriel sur la comparaison de moyennes avec `ggpubr`
 
 
 Pour terminer, bien que la moyenne soit un descripteur statistique très utile, il est parfois utilisé de manière abusive. Une distribution statistique ne se résume pas à un nombre, fût-ce la moyenne. De plus, si la distribution est *asymétrique*, la moyenne est un mauvais choix (préférer alors la médiane, ou transformer les données pour rendre la distribution plus symétrique). La vidéo suivante détaille le problème qui peut se produire\ :
