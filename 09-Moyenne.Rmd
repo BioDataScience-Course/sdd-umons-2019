@@ -909,17 +909,17 @@ b <- chart(data = crabs, rear ~ sex) +
 
 combine_charts(list(a,b))
 ```
-La graphique en barre et le nuage de point représente identiquement la même chose. Ils représentent la moyenne avec des barres erreurs qui représentent l'intervalle de confiance à 0.95. Le graphe en dynamite avec des barres d'erreurs ne donne aucune information sur le nombre d'observation. Nous avons déja abordé rapidement cette problématique dans la section \@ref(barres-mean).
 
+La graphique en barre et le nuage de point représentent identiquement la information. Ils représentent la moyenne avec des barres erreurs qui représentent l'intervalle de confiance à 0.95. Le graphe en dynamite avec des barres d'erreurs ne donne aucune information sur le nombre d'observation. Nous avons déja abordé rapidement cette problématique dans la section \@ref(barres-mean). Il n'est donc pas le graphique optimal pour présenter un test *t* de Student.
 
-Malgré le fait que le test *t* de student est un test paramétrique, on retrouve dans la littérature scientifique la boite de dispersion qui est pourtant un graphique associé à des valeurs non paramétriques. Pour le test de wilcoxon, la boite de dispersion est l'outil graphique recommandé. 
+Malgré le fait que le test *t* de Student est un test paramétrique, on retrouve dans la littérature scientifique la boite de dispersion qui est pourtant un graphique associé à des valeurs non paramétriques. Pour le test de wilcoxon, la boite de dispersion est l'outil graphique recommandé. 
 
 ```{r}
 chart(data = crabs, rear ~ sex) +
   geom_boxplot()
 ```
 
-Parmi ces 3 choix, nous vous conseillons d'employer le nuage de point avec la valeur moyenne et l'interval de confiance.
+Parmi ces 3 choix, nous vous conseillons d'employer le nuage de point avec la valeur moyenne et l'intervalle de confiance.
 
 ```{r}
 chart(data = crabs, rear ~ sex) +
@@ -933,10 +933,9 @@ chart(data = crabs, rear ~ sex) +
 
 ###### Les barres d'erreurs
 
-Que vous utilisiez le nuage de point ou le graphique en barres, vous devez être extrêmement vigilant aux barres d'erreurs. Vous devez toujours préciser et bien comprendre ce que les barres d'erreurs cachent. Voici 4 graphiques qui présentent différentes barres d'erreurs (la taille de l'axe y à volontairement été figée)
+Que vous utilisiez le nuage de points ou le graphique en barres, vous devez être extrêmement vigilant aux barres d'erreurs. Vous devez toujours préciser et bien comprendre ce que les barres d'erreurs cachent. Voici 4 graphiques qui présentent différentes barres d'erreurs (la taille de l'axe y a volontairement été figée).
 
-```{r}
-
+```{r, fig.cap="Nuage de points de la largeur de l'arrière de la carapace en focntion du sexe avec la moyenne et des barres d'erreurs. Graphe A : moyenne et intervalle de confiance 0.95. Graphe B : moyenne et écart-type. Graphe C : moyenne et 2*écart-type. Graphe D : moyenne et erreur standard }
 a <- chart(data = crabs, rear ~ sex) +
   geom_jitter(alpha = 0.1, width = 0.2) +
   stat_summary(geom = "point", fun.y = "mean") +
@@ -968,19 +967,42 @@ d <- chart(data = crabs, rear ~ sex) +
 combine_charts(list(a,b,c,d))
 ```
 
+Les formules associées aux barres d'erreurs sont les suivantes de A à D:
 
+- Graphe A : l'intervalle de confiance 0.95 
 
-
+$$\mathrm{IC}(1 - \alpha) \simeq \bar{x} \pm t_{\alpha/2}^{n-1} \cdot SE_x$$
 
 ```{r}
-chart(data = crabs, rear ~ sex) +
-  geom_jitter(alpha = 0.4, width = 0.2) +
-  stat_summary(geom = "point", fun.y = "mean") +
-  stat_summary(geom = "errorbar", width = 0.1,
-    fun.data = "mean_sdl", fun.args = list(mult = 1))
+mean_cl_normal(crabs$rear)
 ```
 
-Présentation graphique: dynamite plot + barres d’erreurs. Transformation des données pour linéariser et ou rendre symétrique autour de la moyenne.
+- Graphe B : l'écart-type 
+
+$$s_x = \sqrt{\sum_{i=1}^n{\frac{(x_i - \bar{x})^2}{n-1}}}$$
+
+```{r}
+mean_sdl(crabs$rear, mult = 1)
+```
+
+- Graphe C : deux fois la valeur de l'écart-type
+
+$$2 \times s_x$$
+
+```{r}
+mean_sdl(crabs$rear, mult = 2)
+```
+
+- Graphe D : l'erreur standard  
+
+$$SE_x = \frac{s_x}{\sqrt{n}}$$
+
+```{r}
+mean_se(crabs$rear)
+```
+
+Comme nous venons de le voir, les barres d'erreurs sont calculé à partir de différentes fonctions. Il est donc indispensable de préciser explicitement ce que les barres d'erreurs représentent. 
+
 
 ##### Pour en savoir plus {-} 
 
