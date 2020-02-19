@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2020-02-04">
+<meta name="date" content="2020-02-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -457,8 +457,8 @@ Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio da
   s_x = \sqrt{\sum_{i=1}^n{\frac{(x_i - \bar{x})^2}{n-1}}}
   \tag{9.2}
 \end{equation}\]</span></p>
-<p>A noter que <span class="math inline">\(s^2\)</span> est également appelée la <strong>variance</strong><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
-<p>En fait, ce qui nous intéresse, ce n’est pas vraiment la moyenne de l’échantillon, mais celle de la population que l’on notera <span class="math inline">\(\mu\)</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. D’où la question : comment varie la moyenne d’un échantillon à l’autre ?</p>
+<p>A noter que <span class="math inline">\(s^2\)</span> est également appelée la <strong>variance</strong><a href="references.html#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>.</p>
+<p>En fait, ce qui nous intéresse, ce n’est pas vraiment la moyenne de l’échantillon, mais celle de la population que l’on notera <span class="math inline">\(\mu\)</span><a href="references.html#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>. D’où la question : comment varie la moyenne d’un échantillon à l’autre ?</p>
 <p>Nous pouvons répondre à cette question de manière empirique en utilisant le générateur pseudo-aléatoire de R. Partons d’une distribution théorique de la population qui soit normale, de moyenne <span class="math inline">\(\mu\)</span> = 8 et d’écart type <span class="math inline">\(\sigma\)</span> = 2. Nous pouvons échantillonner neuf individus. Cela donne :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">8431641</span>)
 smpl1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">9</span>, <span class="dt">mean =</span> <span class="dv">8</span>, <span class="dt">sd =</span> <span class="dv">2</span>)
@@ -470,7 +470,7 @@ smpl1</code></pre>
 <p>Dans ce cas-ci, nous obtenons une moyenne de 7,8. Ce n’est pas égal à 8. Le hasard de l’échantillonnage en est responsable. La moyenne de l’échantillon tendra vers la moyenne de la population seulement lorsque <span class="math inline">\(n \longrightarrow \infty\)</span>. Réalisons un second échantillonnage fictif.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>, <span class="dt">mean =</span> <span class="dv">8</span>, <span class="dt">sd =</span> <span class="dv">2</span>))</code></pre>
 <pre><code># [1] 8.660309</code></pre>
-<p>Cette fois-ci, nous obtenons une moyenne de 8,7. Nous savons que la moyenne <span class="math inline">\(\mu\)</span> qui nous intéresse est très probablement différente de la moyenne de notre échantillon, <strong>mais de combien ?</strong> Pour le déterminer, nous devons définir comment la moyenne de l’échantillon varie d’un échantillon à l’autre, c’est ce qu’on appelle la <strong>distribution d’échantillonnage</strong>. Nous pouvons le déterminer expérimentalement en échantillonnant un grand nombre de fois. On appelle cela une <strong>méta-expérience.</strong> En pratique, c’est difficile à faire, mais avec notre ordinateur et le générateur de nombres pseudo-aléatoires de R, pas de problèmes. Donc, comment se distribue la moyenne entre, … disons dix mille échantillons différents de neufs individus tirés de la même population<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> ?</p>
+<p>Cette fois-ci, nous obtenons une moyenne de 8,7. Nous savons que la moyenne <span class="math inline">\(\mu\)</span> qui nous intéresse est très probablement différente de la moyenne de notre échantillon, <strong>mais de combien ?</strong> Pour le déterminer, nous devons définir comment la moyenne de l’échantillon varie d’un échantillon à l’autre, c’est ce qu’on appelle la <strong>distribution d’échantillonnage</strong>. Nous pouvons le déterminer expérimentalement en échantillonnant un grand nombre de fois. On appelle cela une <strong>méta-expérience.</strong> En pratique, c’est difficile à faire, mais avec notre ordinateur et le générateur de nombres pseudo-aléatoires de R, pas de problèmes. Donc, comment se distribue la moyenne entre, … disons dix mille échantillons différents de neufs individus tirés de la même population<a href="references.html#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a> ?</p>
 <pre class="sourceCode r"><code class="sourceCode r">means_n9 &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">10000</span>) <span class="co"># Vecteur de 10000 valeurs</span>
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>)
   means_n9[i] &lt;-<span class="st"> </span><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">9</span>, <span class="dt">mean =</span> <span class="dv">8</span>, <span class="dt">sd =</span> <span class="dv">2</span>))
@@ -671,10 +671,10 @@ Figure 9.5: Distribution d’échantillonnage à partir d’une distribution uni
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p>L’équation proposée est, en fait, valable pour un échantillon, et est calculé comme tel par R à l’aide des fonctions <code>sd()</code> pour l’écart type ou <code>var()</code> pour la variance. Pour la population ou pour un échantillon de taille très grande, voire infinie, nous pourrions plutôt diviser par <span class="math inline">\(n\)</span> au lieu de <span class="math inline">\(n - 1\)</span>, … mais puisque <span class="math inline">\(n\)</span> est très grand, cela ne change pas grand chose au final.<a href="distribution-dechantillonnage.html#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>Notez que les lettres latines sont utilisées pour se référer aux variables et aux descripteurs statistiques telle que la moyenne pour l’échantillon, alors que les paramètres équivalents de la population, qui sont inconnus, sont représentés par des lettres grecques en statistiques.<a href="distribution-dechantillonnage.html#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>Nous utilisons pour se faire une boucle <code>for</code> dans R qui réitère un calcul sur chaque élément d’un vecteur, ici, une séquence 1, 2, 3, …, 10000 obtenue à l’aide de l’instruction <code>1:10000</code>.<a href="distribution-dechantillonnage.html#fnref4" class="footnote-back">↩</a></p></li>
+<ol start="43">
+<li id="fn43"><p>L’équation proposée est, en fait, valable pour un échantillon, et est calculé comme tel par R à l’aide des fonctions <code>sd()</code> pour l’écart type ou <code>var()</code> pour la variance. Pour la population ou pour un échantillon de taille très grande, voire infinie, nous pourrions plutôt diviser par <span class="math inline">\(n\)</span> au lieu de <span class="math inline">\(n - 1\)</span>, … mais puisque <span class="math inline">\(n\)</span> est très grand, cela ne change pas grand chose au final.<a href="distribution-dechantillonnage.html#fnref43" class="footnote-back">↩</a></p></li>
+<li id="fn44"><p>Notez que les lettres latines sont utilisées pour se référer aux variables et aux descripteurs statistiques telle que la moyenne pour l’échantillon, alors que les paramètres équivalents de la population, qui sont inconnus, sont représentés par des lettres grecques en statistiques.<a href="distribution-dechantillonnage.html#fnref44" class="footnote-back">↩</a></p></li>
+<li id="fn45"><p>Nous utilisons pour se faire une boucle <code>for</code> dans R qui réitère un calcul sur chaque élément d’un vecteur, ici, une séquence 1, 2, 3, …, 10000 obtenue à l’aide de l’instruction <code>1:10000</code>.<a href="distribution-dechantillonnage.html#fnref45" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

@@ -67,7 +67,7 @@ skimr::skim(crabs2)
 #  n obs: 200 
 #  n variables: 4 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────
+# ── Variable type:factor ──────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #     group       0      200 200        4 B-F: 50, B-M: 50, O-F: 50, O-M: 50
 #       sex       0      200 200        2              F: 100, M: 100, NA: 0
@@ -77,7 +77,7 @@ skimr::skim(crabs2)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────
+# ── Variable type:numeric ─────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean   sd   p0  p25  p50  p75 p100     hist
 #    aspect       0      200 200 0.35 0.03 0.28 0.32 0.36 0.38 0.41 ▂▅▅▃▅▇▆▁
 ```
@@ -231,6 +231,8 @@ La **statistique _F_~obs~ est le rapport des carrés moyens inter/intra.** Elle 
 ### Distribution *F*
 
 ##### A vous de jouer ! {-}
+
+
 
 <div class="bdd">
 <p>Afin d’appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
@@ -461,6 +463,16 @@ En conclusion, tous les groupes diffèrent de manière siginificative sauf les m
 
 Les conditions d'application pour le test post hoc de Tukey sont les mêmes que pour l'ANOVA.
 
+##### A vous de jouer {-}
+
+<div class="bdd">
+<p>Suite à la lecture de l’ANOVA à un facteur, réalisez ce projet individuel pour appliquer vos nouvelles connaissances.</p>
+<ul>
+<li><a href="https://classroom.github.com/a/bHQ01LHm" class="uri">https://classroom.github.com/a/bHQ01LHm</a></li>
+</ul>
+<p>Lisez attentivement le README.</p>
+<p><em>Ce projet doit être terminé à la fin de ce module</em></p>
+</div>
 
 ## Test de Kruskal-Wallis
 
@@ -608,7 +620,7 @@ summary(kw_comp. <- nparcomp::nparcomp(data = crabs2, aspect ~ group))
 plot(kw_comp.)
 ```
 
-<img src="10-Variance_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" />
+<img src="10-Variance_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" />
 
 La présentation des résultats est plus détaillée que pour le HSD de Tukey. Le graphique est très imilaire. Ici, toutes les différences sont considérées comme significatives, même si la comparaison des mâles `B-M - O-M` avec une valeur *P* tout juste significative de 0,049 est à prendre avec des pincettes étant donné sa proximité du seuil.
 
