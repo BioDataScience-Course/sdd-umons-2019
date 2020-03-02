@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-11">
+<meta name="date" content="2020-03-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -340,7 +340,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="11.4" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html"><i class="fa fa-check"></i><b>11.4</b> Facteurs hiérarchisés</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html#simplification-du-modele"><i class="fa fa-check"></i><b>11.4.1</b> Simplification du modèle</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a></li>
+<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-en-parcelles-divisees-split-plot"><i class="fa fa-check"></i><b>11.5.1</b> Modèle en parcelles divisées (split-plot)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-a-mesures-repetees"><i class="fa fa-check"></i><b>11.5.2</b> Modèle à mesures répétées</a></li>
+</ul></li>
 <li class="chapter" data-level="11.6" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html"><i class="fa fa-check"></i><b>11.6</b> Syntaxe de R</a><ul>
 <li class="chapter" data-level="11.6.1" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#indicage-dans-r"><i class="fa fa-check"></i><b>11.6.1</b> Indiçage dans R</a></li>
 <li class="chapter" data-level="11.6.2" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#comparaison-de-styles"><i class="fa fa-check"></i><b>11.6.2</b> Comparaison de styles</a></li>
@@ -522,7 +525,7 @@ crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st
 <span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Ratio largeur arrière/longueur&quot;</span>)</code></pre>
 <p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Notre métrique <code>rear_length</code> est naturellement ultra-simple. Elle ne permet pas de différencier <em>tous</em> les mâles de <em>toutes</em> les femelles, mais la séparation est déjà bien meilleure qu’en utilisant soit <code>rear</code> soit <code>length</code> seuls. A l’aide de techniques statistiques que vous étudierez au <a href="http://biodatascience-course.sciviews.org/sdd-umons2/lm.html">cours de science des données biologiques II</a> l’an prochain, nous pouvons montrer qu’une meilleure métrique (ou indice) pour séparer les mâles des femelles est en réalité : <code>rear / (0.3 * length + 2.4)</code><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. La séparation entre les sexes n’est pas totale, mais s’en rapproche fortement, surtout pour la variété orange.</p>
+<p>Notre métrique <code>rear_length</code> est naturellement ultra-simple. Elle ne permet pas de différencier <em>tous</em> les mâles de <em>toutes</em> les femelles, mais la séparation est déjà bien meilleure qu’en utilisant soit <code>rear</code> soit <code>length</code> seuls. A l’aide de techniques statistiques que vous étudierez au <a href="http://biodatascience-course.sciviews.org/sdd-umons2/lm.html">cours de science des données biologiques II</a> l’an prochain, nous pouvons montrer qu’une meilleure métrique (ou indice) pour séparer les mâles des femelles est en réalité : <code>rear / (0.3 * length + 2.4)</code><a href="references.html#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>. La séparation entre les sexes n’est pas totale, mais s’en rapproche fortement, surtout pour la variété orange.</p>
 <pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">rear_length2 =</span> rear <span class="op">/</span><span class="st"> </span>(<span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>length <span class="op">+</span><span class="st"> </span><span class="fl">2.4</span>)) <span class="op">%&gt;.%</span><span class="st">  </span><span class="co"># Calcul de rear_length2</span>
 <span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., rear_length2 <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
@@ -560,8 +563,8 @@ Les <strong>métriques</strong> sont des variables issues de calculs plus comple
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>Pour le lecteur plus avancé, il s’agit en fait de la droite de régression ajustée dans le nuage de points.<a href="metriques-etudiants-de-lumons.html#fnref4" class="footnote-back">↩</a></p></li>
+<ol start="41">
+<li id="fn41"><p>Pour le lecteur plus avancé, il s’agit en fait de la droite de régression ajustée dans le nuage de points.<a href="metriques-etudiants-de-lumons.html#fnref41" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

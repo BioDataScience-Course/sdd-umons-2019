@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-11">
+<meta name="date" content="2020-03-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -340,7 +340,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="11.4" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html"><i class="fa fa-check"></i><b>11.4</b> Facteurs hiérarchisés</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html#simplification-du-modele"><i class="fa fa-check"></i><b>11.4.1</b> Simplification du modèle</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a></li>
+<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-en-parcelles-divisees-split-plot"><i class="fa fa-check"></i><b>11.5.1</b> Modèle en parcelles divisées (split-plot)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-a-mesures-repetees"><i class="fa fa-check"></i><b>11.5.2</b> Modèle à mesures répétées</a></li>
+</ul></li>
 <li class="chapter" data-level="11.6" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html"><i class="fa fa-check"></i><b>11.6</b> Syntaxe de R</a><ul>
 <li class="chapter" data-level="11.6.1" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#indicage-dans-r"><i class="fa fa-check"></i><b>11.6.1</b> Indiçage dans R</a></li>
 <li class="chapter" data-level="11.6.2" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#comparaison-de-styles"><i class="fa fa-check"></i><b>11.6.2</b> Comparaison de styles</a></li>
@@ -586,7 +589,7 @@ Faites bien attention avec le coefficient de corrélation, la matrice de corrél
 <p>Séparons les quatre variables <em>X</em> d’un côté et les quatre variables <em>Y</em> de l’autre.</p>
 <pre class="sourceCode r"><code class="sourceCode r">ans_x &lt;-<span class="st"> </span>anscombe[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
 ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span class="op">:</span><span class="dv">8</span>]</code></pre>
-<p>Que valent les moyennes<a href="references.html#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a>, les variances et les coefficients de corrélation ?</p>
+<p>Que valent les moyennes<a href="references.html#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a>, les variances et les coefficients de corrélation ?</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Moyennes des X</span>
 <span class="kw">lapply</span>(ans_x, mean)</code></pre>
 <pre><code># $x1
@@ -639,7 +642,7 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 # 
 # $y4
 # [1] 4.123249</code></pre>
-<p>C’est les mêmes valeurs pour les 4 séries. Que donnent les coefficients de corrélation<a href="references.html#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a> ?</p>
+<p>C’est les mêmes valeurs pour les 4 séries. Que donnent les coefficients de corrélation<a href="references.html#fn61" class="footnote-ref" id="fnref61"><sup>61</sup></a> ?</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(<span class="kw">cor</span>(ans_x, ans_y))</code></pre>
 <pre><code># [1] 0.8164205 0.8162365 0.8162867 0.8165214</code></pre>
 <p>Nous avons quatre fois la même valeur… et pourtant :</p>
@@ -770,9 +773,9 @@ ans_y &lt;-<span class="st"> </span>anscombe[, <span class="dv">5</span><span cl
 </div>
 <div class="footnotes">
 <hr />
-<ol start="59">
-<li id="fn59"><p>La fonction <code>lapply()</code> distribue la fonction donnée en argument sur tous les éléments du tableau, et calcule ici la moyenne successivement pour les 4 variables.<a href="association-de-deux-variables.html#fnref59" class="footnote-back">↩</a></p></li>
-<li id="fn60"><p>Ici, nous croisons les X et les Y, et extrayons la diagonale de ce tableau qui correspond aux coefficients entre <em>X1</em> et <em>Y1</em>, entre <em>X2</em> et <em>Y2</em>, entre <em>X3</em> et <em>Y3</em> et entre <em>X4</em> et <em>Y4</em>, respectivement.<a href="association-de-deux-variables.html#fnref60" class="footnote-back">↩</a></p></li>
+<ol start="60">
+<li id="fn60"><p>La fonction <code>lapply()</code> distribue la fonction donnée en argument sur tous les éléments du tableau, et calcule ici la moyenne successivement pour les 4 variables.<a href="association-de-deux-variables.html#fnref60" class="footnote-back">↩</a></p></li>
+<li id="fn61"><p>Ici, nous croisons les X et les Y, et extrayons la diagonale de ce tableau qui correspond aux coefficients entre <em>X1</em> et <em>Y1</em>, entre <em>X2</em> et <em>Y2</em>, entre <em>X3</em> et <em>Y3</em> et entre <em>X4</em> et <em>Y4</em>, respectivement.<a href="association-de-deux-variables.html#fnref61" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

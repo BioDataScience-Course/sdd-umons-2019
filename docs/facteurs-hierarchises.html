@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-11">
+<meta name="date" content="2020-03-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -340,7 +340,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="11.4" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html"><i class="fa fa-check"></i><b>11.4</b> Facteurs hiérarchisés</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html#simplification-du-modele"><i class="fa fa-check"></i><b>11.4.1</b> Simplification du modèle</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a></li>
+<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-en-parcelles-divisees-split-plot"><i class="fa fa-check"></i><b>11.5.1</b> Modèle en parcelles divisées (split-plot)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-a-mesures-repetees"><i class="fa fa-check"></i><b>11.5.2</b> Modèle à mesures répétées</a></li>
+</ul></li>
 <li class="chapter" data-level="11.6" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html"><i class="fa fa-check"></i><b>11.6</b> Syntaxe de R</a><ul>
 <li class="chapter" data-level="11.6.1" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#indicage-dans-r"><i class="fa fa-check"></i><b>11.6.1</b> Indiçage dans R</a></li>
 <li class="chapter" data-level="11.6.2" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#comparaison-de-styles"><i class="fa fa-check"></i><b>11.6.2</b> Comparaison de styles</a></li>
@@ -450,7 +453,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -460,7 +463,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Commençons par corriger l’encodage erroné des techniciens qui ferait penser que seulement deux personnes ont travaillé dans l’ensemble des six laboratoires.</p>
@@ -471,7 +474,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -481,7 +484,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Nous avons à présent douze techniciens notés <code>I.one</code>, <code>I.two</code>, <code>II.one</code>, <code>II.two</code>, … Nous pouvons visualiser ces données. Comme nous n’avons que quatre réplicats par technicien, nous nous limitons à la représentation des observations de départ et des moyennes.</p>
@@ -503,7 +506,7 @@ Figure 11.5: Mesures de fractions en matières grasses dans des oeufs dans six l
 # 
 # data:  Fat by Technician
 # Bartlett&#39;s K-squared = 13.891, df = 11, p-value = 0.2391</code></pre>
-<p>Avec une valeur <em>P</em> de 23,9%, nous pouvons considérer qu’il y a homoscédasticité. Voilà l’ANOVA (utilisez le “snippet” <code>two-way ANOVA (nested model)</code> le menu contextuel <code>hypothesis tests: means</code> que vous obtenez en tapant <code>.hm</code>).</p>
+<p>Avec une valeur <em>p</em> de 23,9%, nous pouvons considérer qu’il y a homoscédasticité. Voilà l’ANOVA (utilisez le “snippet” <code>two-way ANOVA (nested model)</code> le menu contextuel <code>hypothesis tests: means</code> que vous obtenez en tapant <code>.hm</code>).</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(anova. &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">data =</span> eggs, Fat <span class="op">~</span><span class="st"> </span>Lab <span class="op">+</span><span class="st"> </span>Technician <span class="op">%in%</span><span class="st"> </span>Lab))</code></pre>
 <pre><code># Analysis of Variance Table
 # 
@@ -564,7 +567,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -572,7 +575,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">eggs_means <span class="op">%&gt;.%</span>
@@ -616,12 +619,16 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 <p><img src="11-Variance-II_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code># [1] 1 7</code></pre>
 <p>Nous n’avons plus d’effet significatif, malgré que le labo I obtient, en moyenne, une mesure beaucoup plus forte que les autres. En fait, en réduisant de la sorte nos données, nous avons perdu tellement d’information que le test a perdu toute puissance et n’est plus capable de détecter de manière significative des différences entre moyennes pourtant importantes. Si nous avions quatre techniciens par labo qui auraient tous dosés les échantillons en duplicats (également huit mesures par labo au total), nous n’aurions pas une perte d’information aussi forte en effectuant quatre moyennes de duplicats par labo, et l’analyse simplifiée aurait peut-être été utilisable. Il faut voir au cas par cas…</p>
+<div id="conditions-dapplication-10" class="section level5 unnumbered">
+<h5>Conditions d’application</h5>
+<p>Les conditions d’application sont les mêmes que pour l’ANOVA à deux facteurs sans interactions, sauf qu’ici, les interactions sont bien évidemment incluses dans le modèle par construction.</p>
+</div>
 </div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="56">
-<li id="fn56"><p>La variable <code>Sample valant</code>G<code>ou</code>H` ne sera pas utilisée ici. En fait, au départ, les initiateurs de l’expérience ont fait croire aux laboratoires qu’il s’agissait de deux échantillons différents alors que c’est le même en réalité.<a href="facteurs-hierarchises.html#fnref56" class="footnote-back">↩</a></p></li>
+<li id="fn56"><p>La variable <code>Sample</code> valant <code>G</code> ou <code>H</code> ne sera pas utilisée ici. En fait, au départ, les initiateurs de l’expérience ont fait croire aux laboratoires qu’il s’agissait de deux échantillons différents alors que c’est le même en réalité.<a href="facteurs-hierarchises.html#fnref56" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-11">
+<meta name="date" content="2020-03-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -340,7 +340,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="11.4" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html"><i class="fa fa-check"></i><b>11.4</b> Facteurs hiérarchisés</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html#simplification-du-modele"><i class="fa fa-check"></i><b>11.4.1</b> Simplification du modèle</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a></li>
+<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-en-parcelles-divisees-split-plot"><i class="fa fa-check"></i><b>11.5.1</b> Modèle en parcelles divisées (split-plot)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-a-mesures-repetees"><i class="fa fa-check"></i><b>11.5.2</b> Modèle à mesures répétées</a></li>
+</ul></li>
 <li class="chapter" data-level="11.6" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html"><i class="fa fa-check"></i><b>11.6</b> Syntaxe de R</a><ul>
 <li class="chapter" data-level="11.6.1" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#indicage-dans-r"><i class="fa fa-check"></i><b>11.6.1</b> Indiçage dans R</a></li>
 <li class="chapter" data-level="11.6.2" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#comparaison-de-styles"><i class="fa fa-check"></i><b>11.6.2</b> Comparaison de styles</a></li>
@@ -443,7 +446,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Dans cette dernière section du module <a href="variance2.html#variance2">11</a>, nous revenons sur nos outils logiciels. C’est bien de connaître les techniques de visualisation et d’analyse des données, mais c’est encore mieux de pouvoir les appliquer en pratique, … et pour cela il faut maîtriser un ou plusieurs logiciels. Nous avons utilisé principalement <strong>R</strong>, via l’interface proposée par RStudio. Nous allons maintenant approfondir quelque peu nos connaissances en R.</p>
 </div>
 
-<p>Vous avez pu vous rendre compte que R n’est pas qu’un logiciel de science des données. Il comprend également un <strong>langage informatique</strong> du même nom<a href="references.html#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a> dédié à la manipulation, la visualisation et l’analyse des données.</p>
+<p>Vous avez pu vous rendre compte que R n’est pas qu’un logiciel de science des données. Il comprend également un <strong>langage informatique</strong> du même nom<a href="references.html#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a> dédié à la manipulation, la visualisation et l’analyse des données.</p>
 <p>Les langages informatiques sont, pour la plupart, conçus autour de standards bien définis. Mais R est toujours resté volontairement très libertaire à ce niveau. Comme R permet également de presque tout redéfinir dans son langage, il est apparu au cours du temps différents styles. Ces styles co-existent et co-existeront encore longtemps car ils ont tous des avantages et des inconvénients, ce qui mène à des choix personnels de chaque utilisateur dictés par l’usage qu’il fait de R, ses goûts, son caractère, et comment il a été formé (à quelle “école” il appartient). Nous n’entrerons pas dans les débats stériles autant que passionnés autour de ces questions de styles. Il est cependant utile de comprendre ces différentes approches au moins dans leurs grandes lignes.</p>
 <p>Aujourd’hui, on peut distinguer principalement trois styles dans R, <a href="http://www.amelia.mn/Syntax-cheatsheet.pdf">résumés dans un aide-mémoire</a> :</p>
 <ul>
@@ -608,13 +611,13 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre>
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -718,7 +721,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre>
 # 15 Malacostracé        121
 # 16 Poecilostomatoïde   158
 # 17 Protiste             50</code></pre>
-<p>Le résultat est le même. Comparons maintenant la fonction <code>table()</code> de base et <code>count()</code> de tidyverse du point de vue des arguments. <code>table()</code> prend un vecteur comme argument. A nous de l’extraire du data frame à l’aide de <code>zoo$class</code>, ce qui donne <code>table(zoo$class)</code>. Par contre, <code>count()</code> comme toute fonction tidyverse qui se respecte, prend comme premier argument un <code>tibble</code> ou un <code>data.frame</code>, bref un tableau cas par variables. C’est ensuite au niveau du second argument que l’on spécifie la variable que nous souhaitons utiliser à partir de ce tableau. Ici, plus besoin d’indiquer que c’est une variable qui vient du tableau <code>zoo</code>, car <code>count()</code> le sait déjà. Bien que ce ne soit pas évident au premier cou d’œil, <code>count()</code> ne respecte <strong>pas</strong> la syntaxe de base de R et évalue <code>class</code> de manière particulière<a href="references.html#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a>. Au final, l’appel à <code>table()</code> nécessite de comprendre ce que fait l’opérateur <code>$</code>. Au contraire, l’instruction tidyverse <code>count(zoo, class)</code> se lit et se comprend très bien presque comme si c’était écrit en anglais. Vous lisez en effet “compte dans zoo la classe” (avantage), mais le coût en est une évaluation non standard de ses arguments (inconvénient qui ne peut pas apparaître à ce stade mais que vous constaterez plus tard quand vous ferez des choses plus évoluées avec ces instructions).</p>
+<p>Le résultat est le même. Comparons maintenant la fonction <code>table()</code> de base et <code>count()</code> de tidyverse du point de vue des arguments. <code>table()</code> prend un vecteur comme argument. A nous de l’extraire du data frame à l’aide de <code>zoo$class</code>, ce qui donne <code>table(zoo$class)</code>. Par contre, <code>count()</code> comme toute fonction tidyverse qui se respecte, prend comme premier argument un <code>tibble</code> ou un <code>data.frame</code>, bref un tableau cas par variables. C’est ensuite au niveau du second argument que l’on spécifie la variable que nous souhaitons utiliser à partir de ce tableau. Ici, plus besoin d’indiquer que c’est une variable qui vient du tableau <code>zoo</code>, car <code>count()</code> le sait déjà. Bien que ce ne soit pas évident au premier cou d’œil, <code>count()</code> ne respecte <strong>pas</strong> la syntaxe de base de R et évalue <code>class</code> de manière particulière<a href="references.html#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a>. Au final, l’appel à <code>table()</code> nécessite de comprendre ce que fait l’opérateur <code>$</code>. Au contraire, l’instruction tidyverse <code>count(zoo, class)</code> se lit et se comprend très bien presque comme si c’était écrit en anglais. Vous lisez en effet “compte dans zoo la classe” (avantage), mais le coût en est une évaluation non standard de ses arguments (inconvénient qui ne peut pas apparaître à ce stade mais que vous constaterez plus tard quand vous ferez des choses plus évoluées avec ces instructions).</p>
 
 <div class="note">
 Le style de SciViews-R accepte à la fois la syntaxe de base et celle de tidyverse, avec une préférence pour cette dernière lorsque la lisibilité des instructions est primordiale. De plus, le style formule est également abondamment utilisé dès qu’il s’agit de réaliser un graphique ou un modèle statistique (les deux étant d’ailleurs souvent associés).
@@ -805,27 +808,27 @@ zoo2<span class="op">$</span>class &lt;-<span class="st"> </span><span class="kw
 <p>Voici un graphe de base… avec également la syntaxe de base :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(zoo2<span class="op">$</span>log_area, zoo2<span class="op">$</span>aspect, <span class="dt">col =</span> zoo2<span class="op">$</span>class)
 <span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Oeuf allongé&quot;</span>, <span class="st">&quot;Oeuf rond&quot;</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-72-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Le même graphique, mais en utilisant l’interface formule alternative avec <code>plot()</code> :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area, <span class="dt">col =</span> class)
 <span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Oeuf allongé&quot;</span>, <span class="st">&quot;Oeuf rond&quot;</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-48-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-73-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>L’interface formule est également employée avec le moteur lattice via la fonction <code>xyplot()</code>. Ici, nous utilisons la version <code>chart()</code> en appelant <code>chart$xyplot()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">chart<span class="op">$</span><span class="kw">xyplot</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area, <span class="dt">groups =</span> zoo2<span class="op">$</span>class, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-49-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-74-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Dans tidyverse, c’est le moteur graphique ggplot2 qui est utilisé, avec sa syntaxe propre :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> zoo2, <span class="kw">aes</span>(<span class="dt">x =</span> log_area, <span class="dt">y =</span> aspect, <span class="dt">col =</span> class)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Dans SciViews-R, <code>chart()</code> utilise aussi par défaut le moteur graphique ggplot2, mais il est plus flexible et permet soit d’utiliser <code>aes()</code> comme <code>ggplot()</code>, soit une interface formule élargie (c’est-à-dire qu’il est possible d’y inclure d’autres “aesthetics” à l’aide des opérateurs <code>%aes=%</code>) :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chart() et aes() </span>
 <span class="kw">chart</span>(<span class="dt">data =</span> zoo2, <span class="kw">aes</span>(<span class="dt">x =</span> log_area, <span class="dt">y =</span> aspect, <span class="dt">col =</span> class)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-76-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chart() avec une formule élargie</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area <span class="op">%col=%</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-77-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Il y aurait encore beaucoup à dire sur les différents styles de syntaxe dans R, mais nous venons de discuter les éléments essentiels. SciViews-R propose d’utiliser un ensemble cohérent d’instructions qui est soigneusement choisi pour rendre l’utilisation de R plus facile (sur base de nos observations des difficultés et erreurs d’apprentissage principales). Il se base sur tidyverse avec une pincée de R de base et une bonne dose de formules là où elles se montrent utiles. Des fonctions et des opérateurs originaux sont ajoutés dans le but d’homogénéiser et/ou clarifier la syntaxe.</p>
 <blockquote>
 <p>De votre côté, vous êtes libre d’utiliser le style que vous préférez. si la curiosité vous pousse à essayer autre chose et à adopter un autre style que SciViews-R, nous en serons ravis. R est ouvert, il offre beaucoup et c’est à vous maintenant de créer votre propre boite à outils taillée réellement à <em>votre</em> mesure !</p>
@@ -851,9 +854,9 @@ zoo2<span class="op">$</span>class &lt;-<span class="st"> </span><span class="kw
 <!-- </div> -->
 <div class="footnotes">
 <hr />
-<ol start="57">
-<li id="fn57"><p>Historiquement, ce langage s’appelait <strong>S</strong> à l’origine dans les années 1970 alors qu’il a été inventé par John Chambers et ses collègues aux laboratoires Bell. R est une implémentation open source de S écrite dans les années 1990 par Ross Ihaka et Robert Gentleman. Ensuite R a pris de l’importance à tel point qu’on parle maintenant du langage R (sachant bien qu’il s’agit d’un <em>dialecte</em> du langage S).<a href="syntaxe-de-r.html#fnref57" class="footnote-back">↩</a></p></li>
-<li id="fn58"><p>Cette évaluation particulière s’appelle le “tidyeval”. Son explication est hors de propos dans cette introduction à la science des données mais si vous êtes curieux, vous pouvez toujours <a href="https://thinkr.fr/tidyeval/">lire ceci</a>.<a href="syntaxe-de-r.html#fnref58" class="footnote-back">↩</a></p></li>
+<ol start="58">
+<li id="fn58"><p>Historiquement, ce langage s’appelait <strong>S</strong> à l’origine dans les années 1970 alors qu’il a été inventé par John Chambers et ses collègues aux laboratoires Bell. R est une implémentation open source de S écrite dans les années 1990 par Ross Ihaka et Robert Gentleman. Ensuite R a pris de l’importance à tel point qu’on parle maintenant du langage R (sachant bien qu’il s’agit d’un <em>dialecte</em> du langage S).<a href="syntaxe-de-r.html#fnref58" class="footnote-back">↩</a></p></li>
+<li id="fn59"><p>Cette évaluation particulière s’appelle le “tidyeval”. Son explication est hors de propos dans cette introduction à la science des données mais si vous êtes curieux, vous pouvez toujours <a href="https://thinkr.fr/tidyeval/">lire ceci</a>.<a href="syntaxe-de-r.html#fnref59" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

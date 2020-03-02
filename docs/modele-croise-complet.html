@@ -25,7 +25,7 @@
 <meta name="author" content="Philippe Grosjean, Guyliann Engels &amp; Raphael Conotte">
 
 
-<meta name="date" content="2019-12-11">
+<meta name="date" content="2020-03-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -340,7 +340,10 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="11.4" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html"><i class="fa fa-check"></i><b>11.4</b> Facteurs hiérarchisés</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="facteurs-hierarchises.html"><a href="facteurs-hierarchises.html#simplification-du-modele"><i class="fa fa-check"></i><b>11.4.1</b> Simplification du modèle</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a></li>
+<li class="chapter" data-level="11.5" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html"><i class="fa fa-check"></i><b>11.5</b> Effet aléatoire</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-en-parcelles-divisees-split-plot"><i class="fa fa-check"></i><b>11.5.1</b> Modèle en parcelles divisées (split-plot)</a></li>
+<li class="chapter" data-level="11.5.2" data-path="effet-aleatoire.html"><a href="effet-aleatoire.html#modele-a-mesures-repetees"><i class="fa fa-check"></i><b>11.5.2</b> Modèle à mesures répétées</a></li>
+</ul></li>
 <li class="chapter" data-level="11.6" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html"><i class="fa fa-check"></i><b>11.6</b> Syntaxe de R</a><ul>
 <li class="chapter" data-level="11.6.1" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#indicage-dans-r"><i class="fa fa-check"></i><b>11.6.1</b> Indiçage dans R</a></li>
 <li class="chapter" data-level="11.6.2" data-path="syntaxe-de-r.html"><a href="syntaxe-de-r.html#comparaison-de-styles"><i class="fa fa-check"></i><b>11.6.2</b> Comparaison de styles</a></li>
@@ -469,7 +472,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <p>Notre analyse confirme qu’il n’y a pas d’interactions. La valeur <em>P</em> (0,57) en regard du terme <code>species:sex</code> correspondant est très largement supérieure à <span class="math inline">\(\alpha\)</span> de 5%. Notez aussi que les tests relatifs à <code>species</code> et <code>sex</code> donnent des valeurs différentes de notre modèle sans interactions. Les différences entre les deux seront d’autant plus importantes que les interactions sont fortes. Les conclusions restent les mêmes que précédemment, et ici, nous démontrons par un test d’hypothèse que les interactions ne sont pas significatives. Naturellement, la description des données, les vérifications (homoscédasticité, distribution normale ou quasi-normale des résidus) et les analyses “post-hoc” en cas de rejet de <span class="math inline">\(H_0\)</span> sont à réaliser ici aussi. Nous les avons déjà faites plus haut à peu de choses prêt (les résutats seront ici très proches de ceux du modèle sans interactions, puisque ces dernières sont négligeables).</p>
 <div class="warning">
 <p>
-Faites attention à un piège fréquent lorsque vous avez des mesures multiples sur les <em>mêmes</em> individus. Par exemple, si vous étudiez trois populations avec disons, cinq réplicats par population et que vous dénombrez des cellules marquées sur dix coupes histologiques réalisées chaque fois dans un organe du <em>même</em> individu, vous aurez 3x5x10 = 150 mesures, mais vous ne pouvez pas utiliser une ANOVA à deux facteurs croisés car les 150 observations ne sont pas indépendantes les unes des autres. Vous n’avez jamais mesuré que 15 individus au total. Si vous analysez ces données comme si vous en aviez mesuré 150, <strong>votre analyse sera incorrecte</strong>. Il s’agit ici d’une erreur qui s’appelle la <strong>pseudo-réplication</strong>. Vous devrez utiliser d’autres modèles comme le modèle à facteurs hiérarchisés (voir section suivante).
+Faites attention à un piège fréquent lorsque vous avez des mesures multiples sur les <em>mêmes</em> individus. Par exemple, si vous étudiez trois populations avec disons, cinq réplicats par population et que vous dénombrez des cellules marquées sur dix coupes histologiques réalisées chaque fois dans un organe du <em>même</em> individu, vous aurez 3x5x10 = 150 mesures, mais vous ne pouvez pas utiliser une ANOVA à deux facteurs croisés car les 150 observations ne sont pas indépendantes les unes des autres. Vous n’avez jamais mesuré que 15 individus au total. Si vous analysez ces données comme si vous en aviez mesuré 150, <strong>votre analyse sera incorrecte</strong>. Il s’agit ici d’une erreur qui s’appelle la <strong>pseudo-réplication</strong>. Vous devrez utiliser d’autres modèles comme le modèle à facteurs hiérarchisés (voir section suivante) ou le modèle à mesures répétées (voir encore après).
 </p>
 </div>
 <div id="conditions-dapplication-9" class="section level5 unnumbered">
@@ -486,7 +489,7 @@ Faites attention à un piège fréquent lorsque vous avez des mesures multiples 
 <div class="footnotes">
 <hr />
 <ol start="55">
-<li id="fn55"><p>De plus, nous avons ici un <strong>plan balancé</strong> puisque le nombre de répliquats pour chaque niveau est le même. C’est une situation optimale qu’il faut toujours chercher à atteindre pour une ANOVA, même si un nombre différent d’observations par niveau est également accepté.<a href="modele-croise-complet.html#fnref55" class="footnote-back">↩</a></p></li>
+<li id="fn55"><p>De plus, nous avons ici un <strong>plan balancé</strong> puisque le nombre de réplicats pour chaque niveau est le même. C’est une situation optimale qu’il faut toujours chercher à atteindre pour une ANOVA, même si un nombre différent d’observations par niveau est également accepté.<a href="modele-croise-complet.html#fnref55" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
