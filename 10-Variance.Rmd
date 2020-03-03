@@ -241,6 +241,8 @@ La **statistique _F_~obs~ est le rapport des carrés moyens inter/intra.** Elle 
 
 ##### A vous de jouer ! {-}
 
+
+
 ```{block, type='bdd'}
 Afin d'appliquer directement les concepts vu dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
@@ -446,6 +448,17 @@ En conclusion, tous les groupes diffèrent de manière siginificative sauf les m
 
 Les conditions d'application pour le test post hoc de Tukey sont les mêmes que pour l'ANOVA.
 
+##### A vous de jouer {-}
+
+```{block, type='bdd'}
+Suite à la lecture de l'ANOVA à un facteur, réalisez ce projet individuel pour appliquer vos nouvelles connaissances.
+
+- <https://classroom.github.com/a/bHQ01LHm>
+
+Lisez attentivement le README. 
+
+*Ce projet doit être terminé à la fin de ce module*
+```
 
 ## Test de Kruskal-Wallis
 

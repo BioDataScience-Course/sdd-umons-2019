@@ -82,10 +82,24 @@ Tout cela reste très abstrait. Prenons un exemple concret simple. Le bec-crois�
 
 ![Bec-croisés des sapins mâles montrant les deux variétés (bec croisé à gauche ou à droite). Photo\ : Elaine R. Wilson (license CC BY-SA 3.0).](images/sdd1_08/red-crossbills-male.jpg)
 
-Comme des individus à bec croisé à gauche et d'autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu les résultats suivants\ :
+Comme des individus à bec croisé à gauche et d'autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu le tableau suivant\ :
 
 ```{r}
-(crossbill <- as.table(c(left = 1895, right = 1752)))
+(crossbill <- tibble(cb = c(rep("left", 1895), rep("right", 1752))))
+```
+
+Ce tableau peut être résumé sous la forme d'un tableau de contingence\ : 
+
+```{r}
+(crossbill_tab <- table(crossbill$cb))
+```
+
+```{r, eval=FALSE, echo=FALSE}
+library(janitor)
+cb_tab <- tabyl(crossbill, cb)
+
+cb_tab %>.%
+  adorn_totals(.)
 ```
 
 Les scientifiques pensent que les variétés gauches et droites se rencontrent avec un ratio 1:1 dans la population étudiée suite à une sélection présumée basée sur le rapport des deux variétés. La question se traduit sous forme d'un test d'hypothèse comme ceci (retenez la notation particulière utilisée pour spécifier les hypothèses)\ :
@@ -119,7 +133,12 @@ Dans R, le test du $\chi^2$ est réalisé facilement à l'aide de la fonction `c
 
 
 ```{r}
-chisq.test(crossbill, p = c(1/2, 1/2), rescale.p = FALSE)
+chisq.test(crossbill_tab, p = c(1/2, 1/2), rescale.p = FALSE)
+```
+
+```{r, echo=FALSE, eval=FALSE}
+library(janitor)
+chisq.test(cb_tab$n, p = c(1/2, 1/2), rescale.p = FALSE)
 ```
 
 Le premier argument donné à `chisq.test()` est le tableau de contingence à une entrée indiquant les effectifs observés, ici `crossbill`. L'argument `p = ` est la liste des probabilités attendues sous $H_0$ et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser `rescale.p = TRUE`. Ce fragment de code est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2^ univarié).
@@ -144,12 +163,12 @@ Dans notre exemple, nous pouvons donc rejeter $H_0$ et nous dirons que **la prob
 Voici comment ce test se construit. Notre tableau de contingence à simple entrée `crossbill` contient nos $a_i$. Nous devons donc calculer quels sont les effectifs théoriques $\alpha_i$. Le nombre total d'oiseaux observés est\ :
 
 ```{r}
-sum(crossbill)
+sum(crossbill_tab)
 ```
 ... et les effectifs attendus sous $H_0$ sont\ :
 
 ```{r}
-(alpha_i <- c(left = sum(crossbill)/2, right = sum(crossbill)/2))
+(alpha_i <- c(left = sum(crossbill_tab)/2, right = sum(crossbill_tab)/2))
 ```
 
 Les hypothèses du test $\chi^2$ univarié se définissent comme ceci\ :
@@ -166,7 +185,7 @@ Notez que cette statistique prend la valeur nulle lorsque tous les $a_i$ sont st
 Calculons $\chi^2_\mathrm{obs}$ dans notre cas^[Faites également le calcul manuellement à la calculatrice pour vérifier que vous avez bien compris.]\ :
 
 ```{r}
-(chi2_obs <- sum((crossbill - alpha_i)^2 / alpha_i))
+(chi2_obs <- sum((crossbill_tab - alpha_i)^2 / alpha_i))
 ```
 
 Pour répondre à la question, il nous faut une loi de distribution statistique qui permette d'associer une probabilité au quantile $\chi^2_\mathrm{obs}$ sous $H_0$. C'est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du $\chi^2$. La loi du même nom admet un seul paramètre, les **degrés de libertés** (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée $n$ moins un. Ici, ddl = 2 - 1 = 1. La Fig. \@ref(fig:chi2plot) représente la densité de probabilité d'une loi $\chi^2$ typique^[Les fonctions qui permettent les calculs relatifs à la distribution $\chi^2$ dans R sont `<x>chisq()`, et les snippets correspondants dans la SciViews Box sont disponibles à partir de `.ic`. Leur utilisation est similaire à celle des distributions vues au module \@ref(proba).]. C'est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à $+\infty$.
@@ -262,8 +281,8 @@ En inférence, la qualité des données (échantillons *représentatifs*) est im
 
 ```{r}
 # Proportions équivalentes, mais échantillon 10x plus petit
-(crossbill2 <- as.table(c(left = 190, right = 175)))
-chisq.test(crossbill2, p = c(1/2, 1/2), rescale.p = FALSE)
+(crossbill_tab2 <- as.table(c(left = 190, right = 175)))
+chisq.test(crossbill_tab2, p = c(1/2, 1/2), rescale.p = FALSE)
 ```
 
 Nous constatons que la valeur du $\chi^2_{obs}$ dépend de l'effectif. Sa valeur est plus petite ici. Par conséquent, la valeur *P* a également changé et elle vaut à présent 43%. Cette valeur est *supérieure* maintenant à notre seuil $\alpha$ de 5%. Donc, nous ne pouvons pas rejeter $H_0$. Dans un pareil cas, nous conclurons que les becs croisés à gauche ne sont **pas significativement** plus nombreux que ceux à droite au seuil $\alpha$ de 5% (test $\chi^2$ = 0,62, ddl = 1, valeur *P* = 0,43). Notez, c'est important, que nous n'avons pas écrit "ne sont **pas**", mais nous avons précisé "ne sont **pas significativement**" plus nombreux. C'est un détail très important. En effet, cela veut dire que l'on ne peut pas conclure qu'il y ait des différences sur base de l'échantillon utilisé, mais il se peut aussi que l'échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (`crossbill`), et nous savons bien que c'est effectivement le cas. Est-ce que vous saisissez bien ce que le mot **significativement** veut dire, et la subtilité qui apparaît lorsqu'un test d'hypothèse ne rejette **pas** $H_0$\ ? Les conclusions tirées avec `crossbill` et `crossbill2` et le même test d'hypothèse sont diamétralement opposées car l'un rejette et l'autre ne rejette pas $H_0$. Pourtant ces deux analyses ne se contredisent pas\ ! Les deux interprétations sont *simultanément* correctes. C'est l'interprétation asymétrique du test qui permet cela, et l'adverbe **significativement** est indispensable pour introduire cette nuance dans le texte\ !
@@ -296,17 +315,43 @@ Comme toujours, le test $\chi^2$ d'indépendance est assorti de conditions d'app
 
 ##### Example et résolution dans R {-}
 
-Reprenons le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
+Prenons le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
 
 ```{r}
-timolol <- tibble(
+(timolol <- tibble(
+  traitement = c(
+    rep("timolol", 160), rep("placebo", 147)),
+  patient = c(
+    rep("sain", 44), rep("malade", 116), 
+    rep("sain", 19), rep("malade", 128))
+  ))
+
+```
+
+```{r, echo=FALSE, eval=FALSE}
+timolol1 <- tibble(
   traitement = c("timolol", "timolol", "placebo", "placebo"),
   patient    = c("sain",    "malade",  "sain",    "malade"),
   freq       = c(44,        116,       19,        128)
 )
 # Création du tableau de contingence 
-timolol_table <- xtabs(data = timolol, freq ~ patient + traitement)
+timolol_table <- xtabs(data = timolol1, freq ~ patient + traitement)
 timolol_table
+```
+
+Nous pouvons résumer ce tableau cas par variable en un tableau de contingence à double entrée\ :
+
+```{r}
+(timolol_table <- table(timolol$traitement, timolol$patient))
+```
+
+```{r, echo=FALSE, eval=FALSE}
+timolol %>.%
+  tabyl(., traitement, patient) -> timo_tab
+
+timo_tab %>.%
+  adorn_totals(., where = c("row", "col")) %>.%
+  adorn_title(., "combined")
 ```
 
 Nous avons ici un tableau de contingence à double entrée qui répertorie le nombre de cas attribués aléatoirement au traitement avec placebo (somme de la première colonne, soit 128 + 19 = 147 patients) et le nombre de cas qui ont reçu du timolol (116 + 44 = 160), tout autre traitement étant par ailleurs équivalent. Nous avons donc un total général de 307 patients étudiés. Les conditions d'application du test sont rencontrées ici.
@@ -532,7 +577,66 @@ Les **métriques** sont des variables issues de calculs plus complexes et qui vi
 
 Le jeu de données sur la biométrie humaine que vous avez vous-mêmes réalisé est un fantastique terrain de jeu pour définir des métriques. La question centrale étant ici d'étudier la question de l'obésité, les métriques les plus importantes sont celles qui permettent de bien quantifier cela.
 
-TODO: citer quelques références biblio pour commencer et fournir un encadré qui propose un exercice relatif à cette question.
+Rappelons nous que nous avons déjà utilisé une métrique avec l'imc et les différentes classes proposées par l'OMS.
+
+Prenons le jeu de données `biometry` du package `BioDataScience`  comme exemple.
+
+```{r}
+biometry <- read("biometry", package = "BioDataScience", lang = "FR") %>.%
+  select(., height, weight)
+
+biometry
+```
+
+L'utilisation d'un nuage de points de la taille en fonction de la masse ne nous permet pas de quantifier l'obésité au sein de notre échantillon comme le montre le graphique ci-dessous\ :
+
+```{r}
+chart(biometry, height ~ weight) +
+  geom_point()
+```
+
+L'utilisation de l'IMC comme indice afin de quantifier l'obésité est bien plus intéressant.
+
+```{r}
+biometry %>.%
+  mutate(., 
+         bmi = weight / (height / 100)^2,
+         bmi_schedule = case_when(
+           bmi < 18.5 ~ "sous-poids",
+           bmi >= 18.5 & bmi < 25 ~ "poids normal",
+           bmi >= 25 & bmi < 30 ~ "surpoids",
+           bmi >= 30 ~ "obèse"),
+         bmi_schedule = factor(
+           bmi_schedule, 
+           levels = c("sous-poids", "poids normal", "surpoids", "obèse"), 
+           ordered = TRUE)
+         ) -> biometry
+
+biometry
+```
+
+Le graphique en barres de l'imc est plus intéressant que le graphique précendent afin de mettre en avant les individus obèses. 
+
+```{r}
+chart(biometry, ~ bmi_schedule) +
+  geom_bar() +
+  labs(x = "Echelle de l'IMC", "Dénombrement")
+```
+
+##### A vous de jouer ! {-}
+
+```{block, type='bdd'}
+Dans le projet portant sur le biométrie humaine, réalisez les instructions proposées  via le lien suivant :
+
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md>
+
+Afin de vous aider dans la recherche d'indices intéressants et pertinents, des documents sont mis à votre disposition via le lien suivant:
+
+<https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp>
+
+Débutez votre recherche d'indice avec la lecture de l'article : Comment mesurer la corpulence et le poids idéal ? Histoire, intérêts et limites de l'indice de masse corporelle
+
+```
 
 
 ## Evaluation par les pairs (étudiants de Charleroi)

@@ -189,7 +189,7 @@ code span.wa { color: #bf0303; } /* Warning */
 <li class="chapter" data-level="4.1" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html"><i class="fa fa-check"></i><b>4.1</b> Graphique en barres</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html#effectifs-par-facteur"><i class="fa fa-check"></i><b>4.1.1</b> Effectifs par facteur</a></li>
 <li class="chapter" data-level="4.1.2" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html#effectifs-par-2-facteurs"><i class="fa fa-check"></i><b>4.1.2</b> Effectifs par 2 facteurs</a></li>
-<li class="chapter" data-level="4.1.3" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html#valeurs-moyennes"><i class="fa fa-check"></i><b>4.1.3</b> Valeurs moyennes</a></li>
+<li class="chapter" data-level="4.1.3" data-path="graphique-en-barres.html"><a href="graphique-en-barres.html#barres-mean"><i class="fa fa-check"></i><b>4.1.3</b> Valeurs moyennes</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="graphique-en-camembert.html"><a href="graphique-en-camembert.html"><i class="fa fa-check"></i><b>4.2</b> Graphique en camembert</a></li>
 <li class="chapter" data-level="4.3" data-path="boxplot.html"><a href="boxplot.html"><i class="fa fa-check"></i><b>4.3</b> Boite de dispersion</a><ul>
@@ -469,7 +469,7 @@ crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st
 <span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(., <span class="dt">caption =</span> <span class="st">&quot;Nombre de crabes mesurés par variété et par sexe.&quot;</span>,
     <span class="dt">align =</span> <span class="st">&quot;c&quot;</span>, <span class="dt">escape =</span> <span class="ot">FALSE</span>)</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-21">Tableau 8.1: </span>Nombre de crabes mesurés par variété et par sexe.</caption>
+<caption><span id="tab:unnamed-chunk-27">Tableau 8.1: </span>Nombre de crabes mesurés par variété et par sexe.</caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -494,28 +494,28 @@ crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st
 <p>Cinq mesures sont réalisées (toutes exprimées en mm) sur la carapace de ces crabes : <code>front</code> (taille du lobe frontal), <code>rear</code> (largeur à l’arrière), <code>length</code> (longueur), <code>width</code> (largeur à l’endroit le plus large) et <code>depth</code> (épaisseur). Il n’y a pas de valeurs manquantes dans le tableau. Aucune de ces variables morphométriques ne permet de discerner les deux variétés de couleur ou les sexes comme le montrent les cinq graphiques en violon ci-dessous.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, front <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>), <span class="dt">trim =</span> <span class="ot">FALSE</span>)</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, length <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, width <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, width <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Des tendances générales peuvent être notées. Par exemple, le lobe frontal tend à être légèrement plus grand pour la variété orange, ou la largeur à l’arrière tend à être plus grande pour les femelles, surtout chez la variété orange. Cependant, aucun de ces critères ne peut être retenu pour différencier les variétés ou les espèces <em>pour un individu en particulier</em> car les distributions se chevauchent toutes très largement.</p>
 <p>Nous pouvons aussi représenter des nuages de points afin de visualiser la variation d’une variable par rapport à une autre. Parmi tous les graphiques réalisables (toutes les combinaisons deux à deux des cinq variables morphologiques), examinons plus en détails les représentations suivantes :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, rear <span class="op">~</span><span class="st"> </span>length <span class="op">%shape=%</span><span class="st"> </span>species <span class="op">%col=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Ce graphique sépare relativement bien les mâles des femelles pour les deux variétés.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> crabs, front <span class="op">~</span><span class="st"> </span>width <span class="op">%shape=%</span><span class="st"> </span>species <span class="op">%col=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Ce graphique, en revanche, sépare les deux variétés, quel que soit leur sexe (la variété bleue en bas, et la varété orange en haut). Cela signifie donc que les données morphométriques contiennent une information permettant de discerner les sexes et les variétés, mais cette information n’est pas visible lorsqu’une seule variable quantitative est représentée en fonction des sous-populations comme dans les graphiques en violons.</p>
 <p>En réalité, les différences de <em>forme</em> sont masquées sur les mesures individuelles par une variation encore plus grande liée à la <em>taille</em> des animaux. Comment pouvons-nous mettre en évidence un facteur de forme en faisant abstraction de la taille ? Pour expliquer cela simplement, considérons un cas facile. Imaginons que nous voulons classer un ensemble de quadrilatères à angles droits. Nous savons tous que ce sont des <em>rectangles</em>. Un cas particulier est le <em>carré</em> avec ses côtés égaux. Tant que nous représentons la longueur ou la largeur de nos quatrilatères à angles droits de toutes tailles, nous ne pouvons pas distinguer les carrés des rectangles. Par contre, si nous calculons le <strong>ratio</strong> longueur/largeur, nous faisons abstraction de la <em>taille</em> pour quantifier la <em>forme</em> (allongée ou pas). Tous les quadrilatères à angles droits dont le ratio longueur/largeur vaut un est un carré !</p>
 <p>C’est exactement le même raisonnement que nous pouvons appliquer à nos données <code>crabs</code> : nous pouvons calculer des variables qui feront abstraction de la taille pour quantifier des facteurs de forme particuliers. Les femelles ayant une carapace plus large à l’arrière <em>proportionnellement à leur taille</em>, le ratio <code>rear</code>/<code>length</code> calculé et nommé <code>rear_length</code> donne ceci :</p>
@@ -524,21 +524,21 @@ crabs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st
 <span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., rear_length <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Ratio largeur arrière/longueur&quot;</span>)</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Notre métrique <code>rear_length</code> est naturellement ultra-simple. Elle ne permet pas de différencier <em>tous</em> les mâles de <em>toutes</em> les femelles, mais la séparation est déjà bien meilleure qu’en utilisant soit <code>rear</code> soit <code>length</code> seuls. A l’aide de techniques statistiques que vous étudierez au <a href="http://biodatascience-course.sciviews.org/sdd-umons2/lm.html">cours de science des données biologiques II</a> l’an prochain, nous pouvons montrer qu’une meilleure métrique (ou indice) pour séparer les mâles des femelles est en réalité : <code>rear / (0.3 * length + 2.4)</code><a href="references.html#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>. La séparation entre les sexes n’est pas totale, mais s’en rapproche fortement, surtout pour la variété orange.</p>
 <pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">rear_length2 =</span> rear <span class="op">/</span><span class="st"> </span>(<span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>length <span class="op">+</span><span class="st"> </span><span class="fl">2.4</span>)) <span class="op">%&gt;.%</span><span class="st">  </span><span class="co"># Calcul de rear_length2</span>
 <span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., rear_length2 <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Ratio largeur arrière/(0.3*longueur + 2.4)&quot;</span>)</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>De même, nous pouvons utiliser l’indice <code>front_width = front / (0.43 * width)</code> pour séparer les variétés qui donne ceci :</p>
 <pre class="sourceCode r"><code class="sourceCode r">crabs <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">mutate</span>(., <span class="dt">front_width =</span> front <span class="op">/</span><span class="st"> </span>(<span class="fl">0.43</span> <span class="op">*</span><span class="st"> </span>width)) <span class="op">%&gt;.%</span><span class="st"> </span><span class="co"># Calcul de front_width</span>
 <span class="st">  </span><span class="kw">chart</span>(<span class="dt">data =</span> ., front_width <span class="op">~</span><span class="st"> </span>species <span class="op">%fill=%</span><span class="st"> </span>sex) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_violin</span>(<span class="dt">draw_quantiles =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Ratio lobe frontal/(0.43*largeur)&quot;</span>)</code></pre>
-<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Avec cette nouvelle variable calculée, nous pouvons séparer pratiquement parfaitement les crabes de la variété orange de ceux de la variété bleue sur base uniquement de la forme de la carapace. Admettons que le critère de couleur ne soit pas fiable à 100% avec des individus pouvant arborer des colorations intermédiaires qui rendent la discrimination des variétés sur base uniquement du criètre de couleur hazardeuse. Si c’est le cas, notre indice <code>front_width</code> est très utile pour séparer ces variétés ou en tous cas, pour aider à le faire.</p>
 <div class="info">
 <p>
@@ -558,7 +558,85 @@ Les <strong>métriques</strong> sont des variables issues de calculs plus comple
 <div id="biometrie-humaine" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> Biométrie humaine</h3>
 <p>Le jeu de données sur la biométrie humaine que vous avez vous-mêmes réalisé est un fantastique terrain de jeu pour définir des métriques. La question centrale étant ici d’étudier la question de l’obésité, les métriques les plus importantes sont celles qui permettent de bien quantifier cela.</p>
-<p>TODO: citer quelques références biblio pour commencer et fournir un encadré qui propose un exercice relatif à cette question.</p>
+<p>Rappelons nous que nous avons déjà utilisé une métrique avec l’imc et les différentes classes proposées par l’OMS.</p>
+<p>Prenons le jeu de données <code>biometry</code> du package <code>BioDataScience</code> comme exemple.</p>
+<pre class="sourceCode r"><code class="sourceCode r">biometry &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;biometry&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;BioDataScience&quot;</span>, <span class="dt">lang =</span> <span class="st">&quot;FR&quot;</span>) <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">select</span>(., height, weight)
+
+biometry</code></pre>
+<pre><code># # A tibble: 395 x 2
+#    height weight
+#     &lt;dbl&gt;  &lt;dbl&gt;
+#  1    182     69
+#  2    190     74
+#  3    185     83
+#  4    175     60
+#  5    167     48
+#  6    179     52
+#  7    167     72
+#  8    180     74
+#  9    189    110
+# 10    160     82
+# # … with 385 more rows</code></pre>
+<p>L’utilisation d’un nuage de points de la taille en fonction de la masse ne nous permet pas de quantifier l’obésité au sein de notre échantillon comme le montre le graphique ci-dessous :</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(biometry, height <span class="op">~</span><span class="st"> </span>weight) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>L’utilisation de l’IMC comme indice afin de quantifier l’obésité est bien plus intéressant.</p>
+<pre class="sourceCode r"><code class="sourceCode r">biometry <span class="op">%&gt;.%</span>
+<span class="st">  </span><span class="kw">mutate</span>(., 
+         <span class="dt">bmi =</span> weight <span class="op">/</span><span class="st"> </span>(height <span class="op">/</span><span class="st"> </span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span>,
+         <span class="dt">bmi_schedule =</span> <span class="kw">case_when</span>(
+           bmi <span class="op">&lt;</span><span class="st"> </span><span class="fl">18.5</span> <span class="op">~</span><span class="st"> &quot;sous-poids&quot;</span>,
+           bmi <span class="op">&gt;=</span><span class="st"> </span><span class="fl">18.5</span> <span class="op">&amp;</span><span class="st"> </span>bmi <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> <span class="op">~</span><span class="st"> &quot;poids normal&quot;</span>,
+           bmi <span class="op">&gt;=</span><span class="st"> </span><span class="dv">25</span> <span class="op">&amp;</span><span class="st"> </span>bmi <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span> <span class="op">~</span><span class="st"> &quot;surpoids&quot;</span>,
+           bmi <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">~</span><span class="st"> &quot;obèse&quot;</span>),
+         <span class="dt">bmi_schedule =</span> <span class="kw">factor</span>(
+           bmi_schedule, 
+           <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;sous-poids&quot;</span>, <span class="st">&quot;poids normal&quot;</span>, <span class="st">&quot;surpoids&quot;</span>, <span class="st">&quot;obèse&quot;</span>), 
+           <span class="dt">ordered =</span> <span class="ot">TRUE</span>)
+         ) -&gt;<span class="st"> </span>biometry
+
+biometry</code></pre>
+<pre><code># # A tibble: 395 x 4
+#    height weight   bmi bmi_schedule
+#     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt;       
+#  1    182     69  20.8 poids normal
+#  2    190     74  20.5 poids normal
+#  3    185     83  24.3 poids normal
+#  4    175     60  19.6 poids normal
+#  5    167     48  17.2 sous-poids  
+#  6    179     52  16.2 sous-poids  
+#  7    167     72  25.8 surpoids    
+#  8    180     74  22.8 poids normal
+#  9    189    110  30.8 obèse       
+# 10    160     82  32.0 obèse       
+# # … with 385 more rows</code></pre>
+<p>Le graphique en barres de l’imc est plus intéressant que le graphique précendent afin de mettre en avant les individus obèses.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(biometry, <span class="op">~</span><span class="st"> </span>bmi_schedule) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Echelle de l&#39;IMC&quot;</span>, <span class="st">&quot;Dénombrement&quot;</span>)</code></pre>
+<p><img src="08-Test-Chi2_files/figure-html/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="a-vous-de-jouer-14" class="section level5 unnumbered">
+<h5>A vous de jouer !</h5>
+<div class="bdd">
+<p>
+Dans le projet portant sur le biométrie humaine, réalisez les instructions proposées via le lien suivant :
+</p>
+<p>
+<a href="https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md</a>
+</p>
+<p>
+Afin de vous aider dans la recherche d’indices intéressants et pertinents, des documents sont mis à votre disposition via le lien suivant:
+</p>
+<p>
+<a href="https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp" class="uri">https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp</a>
+</p>
+<p>
+Débutez votre recherche d’indice avec la lecture de l’article : Comment mesurer la corpulence et le poids idéal ? Histoire, intérêts et limites de l’indice de masse corporelle
+</p>
+</div>
+</div>
 </div>
 </div>
 <div class="footnotes">
