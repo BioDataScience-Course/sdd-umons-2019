@@ -453,7 +453,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -463,7 +463,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Commençons par corriger l’encodage erroné des techniciens qui ferait penser que seulement deux personnes ont travaillé dans l’ensemble des six laboratoires.</p>
@@ -474,7 +474,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -484,7 +484,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Nous avons à présent douze techniciens notés <code>I.one</code>, <code>I.two</code>, <code>II.one</code>, <code>II.two</code>, … Nous pouvons visualiser ces données. Comme nous n’avons que quatre réplicats par technicien, nous nous limitons à la représentation des observations de départ et des moyennes.</p>
@@ -552,7 +552,7 @@ Figure 11.6: Graphique quantile-quantile des résidus pour l’ANOVA à deux fac
 # VI-IV  -0.10875 -0.25334081  0.035840805 0.2356038
 # VI-V   -0.08625 -0.23084081  0.058340805 0.4817411</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(anovaComp.)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Nous pouvons observer des différences significatives au seuil <span class="math inline">\(\alpha\)</span> de 5% entre le labo I et tous les autres labos. Les autres comparaisons n’apparaissent pas significatives.</p>
 <div id="simplification-du-modele" class="section level3">
 <h3><span class="header-section-number">11.4.1</span> Simplification du modèle</h3>
@@ -567,7 +567,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -575,7 +575,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">eggs_means <span class="op">%&gt;.%</span>
@@ -596,7 +596,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">group_by</span>(eggs_means, Lab) <span class="op">%&gt;.%</span>
 <span class="st">    </span><span class="kw">summarise</span>(., <span class="dt">means =</span> <span class="kw">mean</span>(Fat_mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),
     <span class="kw">f_aes</span>(means <span class="op">~</span><span class="st"> </span>Lab), <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> eggs_means, Fat_mean <span class="op">~</span><span class="st"> </span>Lab)</code></pre>
 <pre><code># 
 #   Bartlett test of homogeneity of variances
@@ -616,7 +616,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 <span class="st">  </span>car<span class="op">::</span><span class="kw">qqPlot</span>(.<span class="op">$</span>.std.resid, <span class="dt">distribution =</span> <span class="st">&quot;norm&quot;</span>,
     <span class="dt">envelope =</span> <span class="fl">0.95</span>, <span class="dt">col =</span> <span class="st">&quot;Black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles théoriques (distri. normale)&quot;</span>,
     <span class="dt">ylab =</span> <span class="st">&quot;Résidus standardisés&quot;</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code># [1] 1 7</code></pre>
 <p>Nous n’avons plus d’effet significatif, malgré que le labo I obtient, en moyenne, une mesure beaucoup plus forte que les autres. En fait, en réduisant de la sorte nos données, nous avons perdu tellement d’information que le test a perdu toute puissance et n’est plus capable de détecter de manière significative des différences entre moyennes pourtant importantes. Si nous avions quatre techniciens par labo qui auraient tous dosés les échantillons en duplicats (également huit mesures par labo au total), nous n’aurions pas une perte d’information aussi forte en effectuant quatre moyennes de duplicats par labo, et l’analyse simplifiée aurait peut-être été utilisable. Il faut voir au cas par cas…</p>
 <div id="conditions-dapplication-10" class="section level5 unnumbered">

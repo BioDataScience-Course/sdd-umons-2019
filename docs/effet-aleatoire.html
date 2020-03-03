@@ -471,7 +471,7 @@ pen</code></pre>
 <p>Visualisons ces données. En absence de réplicats pour chaque niveau <em>plate</em> par <em>sample</em>, le graphique suivant offre une bonne vision d’ensemble des données :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> pen, diameter <span class="op">~</span><span class="st"> </span>plate <span class="op">|</span><span class="st"> </span>sample) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Sur base du graphique, nous pouvons observer des différences entre lots (le ‘F’ semble moins efficace, alors que les lots ‘A’ et ‘C’ montrent le plus grand diamètre d’action). De plus, des variations d’une boite de Pétri à l’autre sont observables. Par exemple, la boite ‘g’ montre des résultats faibles partout. Si nous considérons <em>sample</em> et <em>plate</em> comme facteurs fixes, nous serions tentés d’utiliser une ANOVA à deux facteurs classique sans interactions. Ici, nous n’avons pas de test de variance qui prenne simultanément deux facteurs en compte. En absence d’interactions entre les deux facteurs, nous pouvons toujours réaliser deux tests séparés mais cela reste du domaine du “bidouillage” (nous verrons une meilleure approche via l’analyse des résidus plus loin) :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">bartlett.test</span>(<span class="dt">data =</span> pen, diameter <span class="op">~</span><span class="st"> </span>sample)</code></pre>
 <pre><code># 
@@ -502,7 +502,7 @@ pen</code></pre>
 <span class="st">  </span>car<span class="op">::</span><span class="kw">qqPlot</span>(.<span class="op">$</span>.std.resid, <span class="dt">distribution =</span> <span class="st">&quot;norm&quot;</span>,
     <span class="dt">envelope =</span> <span class="fl">0.95</span>, <span class="dt">col =</span> <span class="st">&quot;Black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles théoriques (distri. normale)&quot;</span>,
     <span class="dt">ylab =</span> <span class="st">&quot;Résidus standardisés&quot;</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code># [1] 137  14</code></pre>
 <p>Nous pouvons ensuite vérifier visuellement l’égalité des variances (bien mieux que le bricolage avec les deux tests de Batlett) avec un graphique issu du snippet <code>.mlplot1</code> ou <code>... &gt; models &gt; linear &gt; plot residuals versus fitted [chart, broom]</code> qui permet de visualiser sur l’axe des ordonnées l’étalement des résidus en fonction des valeurs prédites par le modèle sur l’axe des abscisses. Cet étalement doit être relativement homogène (avec la ligne de tendance qui se rapproche de zéro) comme c’est le cas ici :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot(anova., which = 1)</span>
@@ -513,7 +513,7 @@ anova. <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Fitted values&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Residuals&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Residuals vs Fitted&quot;</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Au final, les effets <em>sample</em> et <em>plate</em> apparaissent tous deux significatifs. Mais en considérant l’effet <em>plate</em> comme fixe, nous ne pouvons considérer que les résultats pour ces boites de Pétri-là, et aucunes autres. Cependant, il est évident que les 24 boites de Pétri ont été prises <em>au hasard</em> dans le lot de boites disponibles et que nous souhaitons interpréter l’analyse quelles que soient les boites de Pétri utilisées. Ainsi, nous considèrerons maintenant l’effet <em>plate</em> comme un <strong>effet aléatoire</strong>. Cela signifie que nous considérons une réponse plus générale suivant une distribution Normale pour les boites de Pétri. Un modèle sans interactions avec un effet aléatoire s’écrit dès lors :</p>
 <p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k + \epsilon_i \mathrm{\ avec\ } \tau2_k \sim N(0, \sigma_{\tau2}) \mathrm{\ et\ } \epsilon_i \sim N(0, \sigma) \]</span></p>
 <p>L’équation du modèle n’a pas changé, mais nous avons maintenant un terme aléatoire supplémentaire, <span class="math inline">\(\tau2_k\)</span> dont il faudra tenir compte dans les calculs. Les hypothèses nulle et alternative pour ce facteur s’écrivent également différemment. Nous n’indiquons plus quelles moyennes de toutes les modalités sont égales (il peut éventuellement y en avoir une infinité possibles). Sous <span class="math inline">\(H_0\)</span>, l’effet lié aux boites de Pétri est null. Ceci sera obtenu lorsque l’écart type de la distribution Normale associée (<span class="math inline">\(\sigma_{\tau2}\)</span>) est lui-même nul :</p>
@@ -594,7 +594,7 @@ split_plot</code></pre>
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 # (Adjusted p values reported -- single-step method)</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">.oma &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">oma =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>)); <span class="kw">plot</span>(anovaComp.); <span class="kw">par</span>(.oma); <span class="kw">rm</span>(.oma)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Ici, tous les lots diffèrent, sauf A-C et E-D. Si la première modalité était une situation de référence, nous aurions aussi pu utiliser la comparaison multiple de Dunnet en remplaçant <code>&quot;Tukey&quot;</code> par <code>&quot;Dunnet&quot;</code> dans le code ci-dessus. Dans ce cas, toutes les comparaisons deux à deux ne seraient pas réalisées, seulement les comparaisons au témoin, donc à la modalité de référence.</p>
 <p>N’oublions par de réaliser une petite analyse des résidus de ce modèle pour vérifier qu’ils ont bien une distribution normale et que les variances sont homogènes (homoscédasticité).</p>
 <pre class="sourceCode r"><code class="sourceCode r">split_plot <span class="op">%&gt;.%</span>
@@ -602,7 +602,7 @@ split_plot</code></pre>
 <span class="st">  </span>car<span class="op">::</span><span class="kw">qqPlot</span>(.<span class="op">$</span>.resid, <span class="dt">distribution =</span> <span class="st">&quot;norm&quot;</span>,
     <span class="dt">envelope =</span> <span class="fl">0.95</span>, <span class="dt">col =</span> <span class="st">&quot;Black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles théoriques (distri. normale)&quot;</span>,
     <span class="dt">ylab =</span> <span class="st">&quot;Résidus standardisés&quot;</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code># [1] 137  14</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot(split_plot, which = 1)</span>
 split_plot <span class="op">%&gt;.%</span>
@@ -612,7 +612,7 @@ split_plot <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Fitted values&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Residuals&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Residuals vs Fitted&quot;</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Vous pouvez constater via ces graphiques que les résidus sont les mêmes que pour le modèle fixe. Nous concluons donc, encore une fois, que la distribution des résidus est compatible avec le modèle.</p>
 <p>Maintenant, si nous considérons que <em>sample</em> est également un facteur aléatoire, car nous avons prélevé six lots au hasard parmi tous les lots produits par la firme pharmaceutique, alors nous devrons utiliser le modèle suivant utilisant <strong>deux facteurs aléatoires</strong> :</p>
 <p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k + \epsilon_i \mathrm{\ avec\ } \tau1_j \sim N(0, \sigma_{\tau1}) \mathrm{, } \tau2_k \sim N(0, \sigma_{\tau2}) \mathrm{\ et\ } \epsilon_i \sim N(0, \sigma) \]</span></p>
@@ -666,13 +666,13 @@ sleep</code></pre>
 #  n obs: 180 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #   Subject       0      180 180       18 308: 10, 309: 10, 310: 10, 330: 10
 #  ordered
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────
 #  variable missing complete   n   mean    sd     p0    p25    p50    p75
 #      Days       0      180 180   4.5   2.88   0      2      4.5    7   
 #  Reaction       0      180 180 298.51 56.33 194.33 255.38 288.65 336.75
@@ -682,17 +682,17 @@ sleep</code></pre>
 <p>Un graphique pertinent ici relie les points relatifs aux tests de chaque patient afin de bien montrer le lien entre les mesures issues des mêmes sujets, soit un graphique de ce type :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep, Reaction <span class="op">~</span><span class="st"> </span>Days <span class="op">%col=%</span><span class="st"> </span>Subject) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Nous pouvons aussi utiliser des facettes si ce graphique est trop encombré :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep, Reaction <span class="op">~</span><span class="st"> </span>Days <span class="op">|</span><span class="st"> </span>Subject) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Comme nous pouvons nous y attendre, le temps de réaction semble augmenter en fonction de la déprivation de sommeil, mais un effet individuel est possible. Attention : résistez à la tentation de représenter ici les valeurs moyennes par jour de temps de réaction. Il est important de conserver la continuité temporelle individu par individu sur le graphique en reliant les points relatifs à chaque patient comme ci-dessus.</p>
 <p>Nous pouvons, par contre, faire la supposition que la varaition du temps de réaction soit linéaire, et le représenter graphiquement comme suit :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">chart</span>(<span class="dt">data =</span> sleep, Reaction <span class="op">~</span><span class="st"> </span>Days <span class="op">|</span><span class="st"> </span>Subject) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">  </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="co"># Ajuste une droite sur les données</span></code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>C’est ce dernier modèle que nous allons considérer. Contrairement au modèle split_plot précédent, notez que les facteurs ne sont pas croisés ici, mais les mesures répétées dans le temps sont <strong>imbriquées</strong> dans la variable <em>Subject</em>. Nous avons, en quelque sorte, un modèle qui est à la fois hiérarchisé et mixte, donc, contenant un facteur fixe <em>Days</em> et un facteur aléatoire <em>Subject</em>. Le modèle correspondant est :</p>
 <p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k(\tau1_j) + \epsilon_i \mathrm{\ avec\ } \tau2_k \sim N(0, \sigma_{\tau2}) \mathrm{\ et\ } \epsilon_i \sim N(0, \sigma) \]</span></p>
 <p>Avec <code>lmerTest::lmer()</code>, cela donne (notez la formulation particulière <code>(fact1 | fact 2)</code> pour marquer l’imbrication) :</p>
@@ -765,7 +765,7 @@ repeated</code></pre>
 <span class="st">  </span>car<span class="op">::</span><span class="kw">qqPlot</span>(.<span class="op">$</span>.resid, <span class="dt">distribution =</span> <span class="st">&quot;norm&quot;</span>,
     <span class="dt">envelope =</span> <span class="fl">0.95</span>, <span class="dt">col =</span> <span class="st">&quot;Black&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Quantiles théoriques (distri. normale)&quot;</span>,
     <span class="dt">ylab =</span> <span class="st">&quot;Résidus standardisés&quot;</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-44-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code># [1] 57  8</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot(repeated, which = 1)</span>
 repeated <span class="op">%&gt;.%</span>
@@ -775,7 +775,7 @@ repeated <span class="op">%&gt;.%</span>
 <span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span>x) <span class="op">+</span>
 <span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Fitted values&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Residuals&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Residuals vs Fitted&quot;</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Nous avons quelques valeurs extrêmes qui étaient déjà repérables sur les graphiques des données brutes. Il s’agit probablement de mesures erronées, mais à part cela, la distribution des résidus est correcte.</p>
 <div class="note">
 <p>

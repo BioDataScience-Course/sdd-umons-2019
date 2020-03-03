@@ -590,7 +590,7 @@ df</code></pre>
 # 1     1     2   -10
 # 2     4     5   -15</code></pre>
 <p>Maintenant que nous sommes familiarisés avec les différents modes d’indiçage dans R de base, nous pouvons les comparer à d’autres styles.</p>
-<div id="a-vous-de-jouer-24" class="section level5 unnumbered">
+<div id="a-vous-de-jouer-25" class="section level5 unnumbered">
 <h5>A vous de jouer</h5>
 <div class="bdd">
 <p>
@@ -611,13 +611,13 @@ skimr<span class="op">::</span><span class="kw">skim</span>(zoo)</code></pre>
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -808,27 +808,27 @@ zoo2<span class="op">$</span>class &lt;-<span class="st"> </span><span class="kw
 <p>Voici un graphe de base… avec également la syntaxe de base :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(zoo2<span class="op">$</span>log_area, zoo2<span class="op">$</span>aspect, <span class="dt">col =</span> zoo2<span class="op">$</span>class)
 <span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Oeuf allongé&quot;</span>, <span class="st">&quot;Oeuf rond&quot;</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-72-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-73-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Le même graphique, mais en utilisant l’interface formule alternative avec <code>plot()</code> :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area, <span class="dt">col =</span> class)
 <span class="kw">legend</span>(<span class="st">&quot;bottomright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;Oeuf allongé&quot;</span>, <span class="st">&quot;Oeuf rond&quot;</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dt">pch =</span> <span class="dv">1</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-73-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-74-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>L’interface formule est également employée avec le moteur lattice via la fonction <code>xyplot()</code>. Ici, nous utilisons la version <code>chart()</code> en appelant <code>chart$xyplot()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">chart<span class="op">$</span><span class="kw">xyplot</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area, <span class="dt">groups =</span> zoo2<span class="op">$</span>class, <span class="dt">auto.key =</span> <span class="ot">TRUE</span>)</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-74-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Dans tidyverse, c’est le moteur graphique ggplot2 qui est utilisé, avec sa syntaxe propre :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> zoo2, <span class="kw">aes</span>(<span class="dt">x =</span> log_area, <span class="dt">y =</span> aspect, <span class="dt">col =</span> class)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-76-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Dans SciViews-R, <code>chart()</code> utilise aussi par défaut le moteur graphique ggplot2, mais il est plus flexible et permet soit d’utiliser <code>aes()</code> comme <code>ggplot()</code>, soit une interface formule élargie (c’est-à-dire qu’il est possible d’y inclure d’autres “aesthetics” à l’aide des opérateurs <code>%aes=%</code>) :</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chart() et aes() </span>
 <span class="kw">chart</span>(<span class="dt">data =</span> zoo2, <span class="kw">aes</span>(<span class="dt">x =</span> log_area, <span class="dt">y =</span> aspect, <span class="dt">col =</span> class)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-76-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-77-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chart() avec une formule élargie</span>
 <span class="kw">chart</span>(<span class="dt">data =</span> zoo2, aspect <span class="op">~</span><span class="st"> </span>log_area <span class="op">%col=%</span><span class="st"> </span>class) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-77-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="11-Variance-II_files/figure-html/unnamed-chunk-78-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Il y aurait encore beaucoup à dire sur les différents styles de syntaxe dans R, mais nous venons de discuter les éléments essentiels. SciViews-R propose d’utiliser un ensemble cohérent d’instructions qui est soigneusement choisi pour rendre l’utilisation de R plus facile (sur base de nos observations des difficultés et erreurs d’apprentissage principales). Il se base sur tidyverse avec une pincée de R de base et une bonne dose de formules là où elles se montrent utiles. Des fonctions et des opérateurs originaux sont ajoutés dans le but d’homogénéiser et/ou clarifier la syntaxe.</p>
 <blockquote>
 <p>De votre côté, vous êtes libre d’utiliser le style que vous préférez. si la curiosité vous pousse à essayer autre chose et à adopter un autre style que SciViews-R, nous en serons ravis. R est ouvert, il offre beaucoup et c’est à vous maintenant de créer votre propre boite à outils taillée réellement à <em>votre</em> mesure !</p>
