@@ -21,6 +21,40 @@ output:
 Ce module présente la suite de l'ANOVA initiée au module \@ref(variance). Vous devez avoir bien compris l'ANOVA à un facteur avant d'entamer le présent chapitre.
 
 
+##### A vous de jouer {-}
+
+En lien avec ce modules vous avez une série d'exercice à réaliser. Vous avez à : 
+
+- réaliser un learnR sur l'anova à 2 facteurs
+
+<div class="bdd">
+<p>Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;11a_anova2&quot;)</code></pre>
+<p><em>Ce projet doit être terminé à la fin de ce module</em></p>
+</div>
+
+- compléter des fichiers RMD au sein du projet ci-dessous : 
+
+<div class="bdd">
+<p>Suite à la lecture de l’ANOVA à un 2 facteurs, réalisez ce projet individuel pour appliquer vos nouvelles connaissances.</p>
+<ul>
+<li><a href="https://classroom.github.com/a/evNsJgOs" class="uri">https://classroom.github.com/a/evNsJgOs</a></li>
+</ul>
+<p>Lisez attentivement le README.</p>
+<p><em>Ce projet doit être terminé à la fin de ce module</em></p>
+</div>
+
+
+- réaliser un learnR sur les différentes syntaxe dans R
+
+<div class="bdd">
+<p>Afin d’appliquer directement les concepts vus au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
+<pre><code>BioDataScience::run(&quot;11b_syntaxr&quot;)</code></pre>
+<p><em>Ce projet doit être terminé à la fin de ce module</em></p>
+</div>
+
+- réaliser au moins 1 ANOVA à deux facteurs dans votre projet transversal sur la biométrie humaine
+
 ## ANOVA à deux facteurs
 
 Dans le cadre de l'ANOVA à un facteur, nous avions une variable réponse numérique étudiée pour différents niveaux d'*une seule* variable facteur à *j* niveaux ou modalités. Le modèle utilisé était\ :
@@ -33,14 +67,6 @@ $$y \sim fact$$
 avec $y$ la variable numérique réponse et $fact$ la variable facteur explicative unique.
 
 Si nous prenons notre exemple des crabes *L. variegatus*, nous avions travaillé un peu artificiellement sur une seule variable facteur en regroupant les variables `species` et `sex` en une seule variable `group`. Qu'en est-il si nous voulons quand même considérer les deux variables `species` et `sex` séparément\ ? c'est possible avec une **ANOVA à deux facteurs**. Les sections suivantes vous présentent quelques variantes possibles de cette analyse.
-
-
-##### A vous de jouer {-}
-
-<div class="bdd">
-<p>Afin d’appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l’instruction suivante dans la fenêtre console :</p>
-<pre><code>BioDataScience::run(&quot;11a_anova2&quot;)</code></pre>
-</div>
 
 
 ## Modèle sans interactions
@@ -212,7 +238,7 @@ summary(anovaComp. <- confint(multcomp::glht(anova.,
 .oma <- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
 
 Ceci confirme que les différences sont significatives au seuil $\alpha$ de 5%. Il ne nous reste plus qu'à vérifier la distribution des résidus de l'ANOVA pour que notre analyse soit complète (Fig.\ \@ref(fig:anova2-resid)).
 
@@ -302,16 +328,6 @@ Notre analyse confirme qu'il n'y a pas d'interactions. La valeur *P* (0,57) en r
 
 Les conditions d'application sont les mêmes que pour l'ANOVA à deux facteurs sans interactions, sauf qu'ici, les interactions sont bien évidemment permises.
 
-##### A vous de jouer {-}
-
-<div class="bdd">
-<p>Suite à la lecture de l’ANOVA à un 2 facteurs, réalisez ce projet individuel pour appliquer vos nouvelles connaissances.</p>
-<ul>
-<li><a href="https://classroom.github.com/a/9j6Sgaif" class="uri">https://classroom.github.com/a/9j6Sgaif</a></li>
-</ul>
-<p>Lisez attentivement le README.</p>
-<p><em>Ce projet doit être terminé à la fin de ce module</em></p>
-</div>
 
 ##### Pour en savoir plus {-}
 
@@ -343,7 +359,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -353,7 +369,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -372,7 +388,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -382,7 +398,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -487,7 +503,7 @@ aov. <- aov(data = eggs, Fat ~ Lab + Technician %in% Lab)
 plot(anovaComp.)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" />
 
 Nous pouvons observer des différences significatives au seuil $\alpha$ de 5% entre le labo I et tous les autres labos. Les autres comparaisons n'apparaissent pas significatives.
 
@@ -512,7 +528,7 @@ skimr::skim(eggs_means)
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -520,7 +536,7 @@ skimr::skim(eggs_means)
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
 ```
@@ -556,7 +572,7 @@ chart(eggs_means, Fat_mean ~ Lab) +
     f_aes(means ~ Lab), size = 3, col = "red")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -596,7 +612,7 @@ anova. %>.%
     ylab = "Résidus standardisés")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" />
 
 ```
 # [1] 1 7
@@ -666,7 +682,7 @@ chart(data = pen, diameter ~ plate | sample) +
   geom_point()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />
 
 Sur base du graphique, nous pouvons observer des différences entre lots (le 'F' semble moins efficace, alors que les lots 'A' et 'C' montrent le plus grand diamètre d'action). De plus, des variations d'une boite de Pétri à l'autre sont observables. Par exemple, la boite 'g' montre des résultats faibles partout. Si nous considérons *sample* et *plate* comme facteurs fixes, nous serions tentés d'utiliser une ANOVA à deux facteurs classique sans interactions. Ici, nous n'avons pas de test de variance qui prenne simultanément deux facteurs en compte. En absence d'interactions entre les deux facteurs, nous pouvons toujours réaliser deux tests séparés mais cela reste du domaine du "bidouillage" (nous verrons une meilleure approche via l'analyse des résidus plus loin)\ :
 
@@ -726,7 +742,7 @@ anova. %>.%
     ylab = "Résidus standardisés")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
 
 ```
 # [1] 137  14
@@ -746,7 +762,7 @@ anova. %>.%
   ggtitle("Residuals vs Fitted")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" />
 
 Au final, les effets *sample* et *plate* apparaissent tous deux significatifs. Mais en considérant l'effet *plate* comme fixe, nous ne pouvons considérer que les résultats pour ces boites de Pétri-là, et aucunes autres. Cependant, il est évident que les 24 boites de Pétri ont été prises *au hasard* dans le lot de boites disponibles et que nous souhaitons interpréter l'analyse quelles que soient les boites de Pétri utilisées. Ainsi, nous considèrerons maintenant l'effet *plate* comme un **effet aléatoire**. Cela signifie que nous considérons une réponse plus générale suivant une distribution Normale pour les boites de Pétri. Un modèle sans interactions avec un effet aléatoire s'écrit dès lors\ :
 
@@ -849,21 +865,21 @@ summary(anovaComp. <- confint(multcomp::glht(split_plot,
 # 
 # Linear Hypotheses:
 #            Estimate Std. Error z value Pr(>|z|)    
-# B - A == 0 -3.20833    0.15875 -20.210   <1e-04 ***
+# B - A == 0 -3.20833    0.15875 -20.210   <0.001 ***
 # C - A == 0 -0.25000    0.15875  -1.575    0.615    
-# D - A == 0 -2.29167    0.15875 -14.436   <1e-04 ***
-# E - A == 0 -2.20833    0.15875 -13.911   <1e-04 ***
-# F - A == 0 -5.20833    0.15875 -32.809   <1e-04 ***
-# C - B == 0  2.95833    0.15875  18.635   <1e-04 ***
-# D - B == 0  0.91667    0.15875   5.774   <1e-04 ***
-# E - B == 0  1.00000    0.15875   6.299   <1e-04 ***
-# F - B == 0 -2.00000    0.15875 -12.599   <1e-04 ***
-# D - C == 0 -2.04167    0.15875 -12.861   <1e-04 ***
-# E - C == 0 -1.95833    0.15875 -12.336   <1e-04 ***
-# F - C == 0 -4.95833    0.15875 -31.234   <1e-04 ***
+# D - A == 0 -2.29167    0.15875 -14.436   <0.001 ***
+# E - A == 0 -2.20833    0.15875 -13.911   <0.001 ***
+# F - A == 0 -5.20833    0.15875 -32.809   <0.001 ***
+# C - B == 0  2.95833    0.15875  18.635   <0.001 ***
+# D - B == 0  0.91667    0.15875   5.774   <0.001 ***
+# E - B == 0  1.00000    0.15875   6.299   <0.001 ***
+# F - B == 0 -2.00000    0.15875 -12.599   <0.001 ***
+# D - C == 0 -2.04167    0.15875 -12.861   <0.001 ***
+# E - C == 0 -1.95833    0.15875 -12.336   <0.001 ***
+# F - C == 0 -4.95833    0.15875 -31.234   <0.001 ***
 # E - D == 0  0.08333    0.15875   0.525    0.995    
-# F - D == 0 -2.91667    0.15875 -18.373   <1e-04 ***
-# F - E == 0 -3.00000    0.15875 -18.898   <1e-04 ***
+# F - D == 0 -2.91667    0.15875 -18.373   <0.001 ***
+# F - E == 0 -3.00000    0.15875 -18.898   <0.001 ***
 # ---
 # Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 # (Adjusted p values reported -- single-step method)
@@ -873,7 +889,7 @@ summary(anovaComp. <- confint(multcomp::glht(split_plot,
 .oma <- par(oma = c(0, 5.1, 0, 0)); plot(anovaComp.); par(.oma); rm(.oma)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" />
 
 Ici, tous les lots diffèrent, sauf A-C et E-D. Si la première modalité était une situation de référence, nous aurions aussi pu utiliser la comparaison multiple de Dunnet en remplaçant `"Tukey"` par `"Dunnet"` dans le code ci-dessus. Dans ce cas, toutes les comparaisons deux à deux ne seraient pas réalisées, seulement les comparaisons au témoin, donc à la modalité de référence.
 
@@ -888,7 +904,7 @@ split_plot %>.%
     ylab = "Résidus standardisés")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" />
 
 ```
 # [1] 137  14
@@ -906,7 +922,7 @@ split_plot %>.%
   ggtitle("Residuals vs Fitted")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" />
 
 Vous pouvez constater via ces graphiques que les résidus sont les mêmes que pour le modèle fixe. Nous concluons donc, encore une fois, que la distribution des résidus est compatible avec le modèle.
 
@@ -997,13 +1013,13 @@ skimr::skim(sleep)
 #  n obs: 180 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #   Subject       0      180 180       18 308: 10, 309: 10, 310: 10, 330: 10
 #  ordered
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n   mean    sd     p0    p25    p50    p75
 #      Days       0      180 180   4.5   2.88   0      2      4.5    7   
 #  Reaction       0      180 180 298.51 56.33 194.33 255.38 288.65 336.75
@@ -1020,7 +1036,7 @@ chart(data = sleep, Reaction ~ Days %col=% Subject) +
   geom_line()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" />
 
 Nous pouvons aussi utiliser des facettes si ce graphique est trop encombré\ :
 
@@ -1030,7 +1046,7 @@ chart(data = sleep, Reaction ~ Days | Subject) +
   geom_line()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" />
 
 Comme nous pouvons nous y attendre, le temps de réaction semble augmenter en fonction de la déprivation de sommeil, mais un effet individuel est possible. Attention\ : résistez à la tentation de représenter ici les valeurs moyennes par jour de temps de réaction. Il est important de conserver la continuité temporelle individu par individu sur le graphique en reliant les points relatifs à chaque patient comme ci-dessus.
 
@@ -1043,7 +1059,7 @@ chart(data = sleep, Reaction ~ Days | Subject) +
   stat_smooth(method = "lm") # Ajuste une droite sur les données
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" />
 
 C'est ce dernier modèle que nous allons considérer. Contrairement au modèle split_plot précédent, notez que les facteurs ne sont pas croisés ici, mais les mesures répétées dans le temps sont **imbriquées** dans la variable *Subject*. Nous avons, en quelque sorte, un modèle qui est à la fois hiérarchisé et mixte, donc, contenant un facteur fixe *Days* et un facteur aléatoire *Subject*. Le modèle correspondant est\ :
 
@@ -1160,7 +1176,7 @@ repeated %>.%
     ylab = "Résidus standardisés")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-45-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" />
 
 ```
 # [1] 57  8
@@ -1178,7 +1194,7 @@ repeated %>.%
   ggtitle("Residuals vs Fitted")
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-46-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" />
 
 Nous avons quelques valeurs extrêmes qui étaient déjà repérables sur les graphiques des données brutes. Il s'agit probablement de mesures erronées, mais à part cela, la distribution des résidus est correcte.
 
@@ -1564,13 +1580,13 @@ skimr::skim(zoo)
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 
@@ -1845,7 +1861,7 @@ plot(zoo2$log_area, zoo2$aspect, col = zoo2$class)
 legend("bottomright", legend = c("Oeuf allongé", "Oeuf rond"), col = 1:2, pch = 1)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-73-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-74-1.png" width="672" style="display: block; margin: auto;" />
 
 Le même graphique, mais en utilisant l'interface formule alternative avec `plot()`\ :
 
@@ -1855,7 +1871,7 @@ plot(data = zoo2, aspect ~ log_area, col = class)
 legend("bottomright", legend = c("Oeuf allongé", "Oeuf rond"), col = 1:2, pch = 1)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-74-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" />
 
 L'interface formule est également employée avec le moteur lattice via la fonction `xyplot()`. Ici, nous utilisons la version `chart()` en appelant `chart$xyplot()`.
 
@@ -1864,7 +1880,7 @@ L'interface formule est également employée avec le moteur lattice via la fonct
 chart$xyplot(data = zoo2, aspect ~ log_area, groups = zoo2$class, auto.key = TRUE)
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-75-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-76-1.png" width="672" style="display: block; margin: auto;" />
 
 Dans tidyverse, c'est le moteur graphique ggplot2 qui est utilisé, avec sa syntaxe propre\ :
 
@@ -1874,7 +1890,7 @@ ggplot(data = zoo2, aes(x = log_area, y = aspect, col = class)) +
   geom_point()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-76-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-77-1.png" width="672" style="display: block; margin: auto;" />
 
 Dans SciViews-R, `chart()` utilise aussi par défaut le moteur graphique ggplot2, mais il est plus flexible et permet soit d'utiliser `aes()` comme `ggplot()`, soit une interface formule élargie (c'est-à-dire qu'il est possible d'y inclure d'autres "aesthetics" à l'aide des opérateurs `%aes=%`)\ :
 
@@ -1885,7 +1901,7 @@ chart(data = zoo2, aes(x = log_area, y = aspect, col = class)) +
   geom_point()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-77-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-78-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1894,7 +1910,7 @@ chart(data = zoo2, aspect ~ log_area %col=% class) +
   geom_point()
 ```
 
-<img src="11-Variance-II_files/figure-html/unnamed-chunk-78-1.png" width="672" style="display: block; margin: auto;" />
+<img src="11-Variance-II_files/figure-html/unnamed-chunk-79-1.png" width="672" style="display: block; margin: auto;" />
 
 Il y aurait encore beaucoup à dire sur les différents styles de syntaxe dans R, mais nous venons de discuter les éléments essentiels. SciViews-R propose d'utiliser un ensemble cohérent d'instructions qui est soigneusement choisi pour rendre l'utilisation de R plus facile (sur base de nos observations des difficultés et erreurs d'apprentissage principales). Il se base sur tidyverse avec une pincée de R de base et une bonne dose de formules là où elles se montrent utiles. Des fonctions et des opérateurs originaux sont ajoutés dans le but d'homogénéiser et/ou clarifier la syntaxe.
 

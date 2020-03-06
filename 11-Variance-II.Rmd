@@ -24,6 +24,48 @@ SciViews::R
 Ce module présente la suite de l'ANOVA initiée au module \@ref(variance). Vous devez avoir bien compris l'ANOVA à un facteur avant d'entamer le présent chapitre.
 
 
+##### A vous de jouer {-}
+
+En lien avec ce modules vous avez une série d'exercice à réaliser. Vous avez à : 
+
+- réaliser un learnR sur l'anova à 2 facteurs
+
+```{block, type='bdd'}
+
+Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("11a_anova2")
+
+*Ce projet doit être terminé à la fin de ce module*
+
+```
+
+- compléter des fichiers RMD au sein du projet ci-dessous : 
+
+```{block, type='bdd'}
+Suite à la lecture de l'ANOVA à un 2 facteurs, réalisez ce projet individuel pour appliquer vos nouvelles connaissances.
+
+- <https://classroom.github.com/a/evNsJgOs>
+
+Lisez attentivement le README. 
+
+*Ce projet doit être terminé à la fin de ce module*
+```
+
+
+- réaliser un learnR sur les différentes syntaxe dans R
+
+```{block, type='bdd'}
+
+Afin d'appliquer directement les concepts vus au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("11b_syntaxr")
+
+*Ce projet doit être terminé à la fin de ce module*
+```
+
+- réaliser au moins 1 ANOVA à deux facteurs dans votre projet transversal sur la biométrie humaine
+
 ## ANOVA à deux facteurs
 
 Dans le cadre de l'ANOVA à un facteur, nous avions une variable réponse numérique étudiée pour différents niveaux d'*une seule* variable facteur à *j* niveaux ou modalités. Le modèle utilisé était\ :
@@ -36,17 +78,6 @@ $$y \sim fact$$
 avec $y$ la variable numérique réponse et $fact$ la variable facteur explicative unique.
 
 Si nous prenons notre exemple des crabes *L. variegatus*, nous avions travaillé un peu artificiellement sur une seule variable facteur en regroupant les variables `species` et `sex` en une seule variable `group`. Qu'en est-il si nous voulons quand même considérer les deux variables `species` et `sex` séparément\ ? c'est possible avec une **ANOVA à deux facteurs**. Les sections suivantes vous présentent quelques variantes possibles de cette analyse.
-
-
-##### A vous de jouer {-}
-
-```{block, type='bdd'}
-
-Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
-
-    BioDataScience::run("11a_anova2")
-
-```
 
 
 ## Modèle sans interactions
@@ -195,17 +226,6 @@ Faites attention à un piège fréquent lorsque vous avez des mesures multiples 
 
 Les conditions d'application sont les mêmes que pour l'ANOVA à deux facteurs sans interactions, sauf qu'ici, les interactions sont bien évidemment permises.
 
-##### A vous de jouer {-}
-
-```{block, type='bdd'}
-Suite à la lecture de l'ANOVA à un 2 facteurs, réalisez ce projet individuel pour appliquer vos nouvelles connaissances.
-
-- <https://classroom.github.com/a/9j6Sgaif>
-
-Lisez attentivement le README. 
-
-*Ce projet doit être terminé à la fin de ce module*
-```
 
 ##### Pour en savoir plus {-}
 
