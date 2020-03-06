@@ -23,7 +23,7 @@ Ce module présente la suite de l'ANOVA initiée au module \@ref(variance). Vous
 
 ##### A vous de jouer {-}
 
-En lien avec ce modules vous avez une série d'exercice à réaliser. Vous avez à : 
+En lien avec ce module vous avez une série d'exercices à réaliser. Vous avez à : 
 
 - réaliser un learnR sur l'anova à 2 facteurs
 
@@ -359,7 +359,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -369,7 +369,7 @@ skimr::skim(eggs)
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -388,7 +388,7 @@ skimr::skim(eggs)
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -398,7 +398,7 @@ skimr::skim(eggs)
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁
 ```
@@ -528,7 +528,7 @@ skimr::skim(eggs_means)
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -536,7 +536,7 @@ skimr::skim(eggs_means)
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁
 ```
@@ -865,21 +865,21 @@ summary(anovaComp. <- confint(multcomp::glht(split_plot,
 # 
 # Linear Hypotheses:
 #            Estimate Std. Error z value Pr(>|z|)    
-# B - A == 0 -3.20833    0.15875 -20.210   <0.001 ***
+# B - A == 0 -3.20833    0.15875 -20.210   <1e-04 ***
 # C - A == 0 -0.25000    0.15875  -1.575    0.615    
-# D - A == 0 -2.29167    0.15875 -14.436   <0.001 ***
-# E - A == 0 -2.20833    0.15875 -13.911   <0.001 ***
-# F - A == 0 -5.20833    0.15875 -32.809   <0.001 ***
-# C - B == 0  2.95833    0.15875  18.635   <0.001 ***
-# D - B == 0  0.91667    0.15875   5.774   <0.001 ***
-# E - B == 0  1.00000    0.15875   6.299   <0.001 ***
-# F - B == 0 -2.00000    0.15875 -12.599   <0.001 ***
-# D - C == 0 -2.04167    0.15875 -12.861   <0.001 ***
-# E - C == 0 -1.95833    0.15875 -12.336   <0.001 ***
-# F - C == 0 -4.95833    0.15875 -31.234   <0.001 ***
+# D - A == 0 -2.29167    0.15875 -14.436   <1e-04 ***
+# E - A == 0 -2.20833    0.15875 -13.911   <1e-04 ***
+# F - A == 0 -5.20833    0.15875 -32.809   <1e-04 ***
+# C - B == 0  2.95833    0.15875  18.635   <1e-04 ***
+# D - B == 0  0.91667    0.15875   5.774   <1e-04 ***
+# E - B == 0  1.00000    0.15875   6.299   <1e-04 ***
+# F - B == 0 -2.00000    0.15875 -12.599   <1e-04 ***
+# D - C == 0 -2.04167    0.15875 -12.861   <1e-04 ***
+# E - C == 0 -1.95833    0.15875 -12.336   <1e-04 ***
+# F - C == 0 -4.95833    0.15875 -31.234   <1e-04 ***
 # E - D == 0  0.08333    0.15875   0.525    0.995    
-# F - D == 0 -2.91667    0.15875 -18.373   <0.001 ***
-# F - E == 0 -3.00000    0.15875 -18.898   <0.001 ***
+# F - D == 0 -2.91667    0.15875 -18.373   <1e-04 ***
+# F - E == 0 -3.00000    0.15875 -18.898   <1e-04 ***
 # ---
 # Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 # (Adjusted p values reported -- single-step method)
@@ -1013,13 +1013,13 @@ skimr::skim(sleep)
 #  n obs: 180 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #   Subject       0      180 180       18 308: 10, 309: 10, 310: 10, 330: 10
 #  ordered
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #  variable missing complete   n   mean    sd     p0    p25    p50    p75
 #      Days       0      180 180   4.5   2.88   0      2      4.5    7   
 #  Reaction       0      180 180 298.51 56.33 194.33 255.38 288.65 336.75
@@ -1580,13 +1580,13 @@ skimr::skim(zoo)
 #  n obs: 1262 
 #  n variables: 20 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #  variable missing complete    n n_unique
 #     class       0     1262 1262       17
 #                              top_counts ordered
 #  Cal: 288, Poe: 158, Déc: 126, Mal: 121   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #      variable missing complete    n   mean      sd    p0   p25    p50
 #          area       0     1262 1262  0.72   1.74   0.06  0.23   0.35 
 #        aspect       0     1262 1262  0.54   0.24   0.059 0.35   0.52 

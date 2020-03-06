@@ -525,7 +525,7 @@ anova. <span class="op">%&gt;.%</span>
 <p>Dans la suite, nous verrons deux modèles aléatoires particuliers qui ont une configuration permettant un calcul correct des valeurs de <em>p</em> : le modèle en parcelles divisées (split-plot) et le modèle à mesures répétées.</p>
 <div id="modele-en-parcelles-divisees-split-plot" class="section level3">
 <h3><span class="header-section-number">11.5.1</span> Modèle en parcelles divisées (split-plot)</h3>
-<p>Un des modèles pour lequel les valeurs <em>p</em> sont calculables est le modèle dit en <a href="https://stat.ethz.ch/education/semesters/as2015/anova/08_Split_Plots.pdf">parcelles divisées</a> (split-plot en anglais). Cette situation apparait lorsque, parmi deux facteurs, l’un est plus difficile à diviser en sous-unités <em>indépendantes</em>. C’est le cas ici avec nos boites de Pétri qui forment chacune un petit microcosme unique. Il est possible de diviser la boite de Pétri en sous-régions. C’est ce qui a été fait ici pour tester les six lots, mais ces sous-régions ne <strong>sont pas indépendantes</strong> les unes des autres, elles continuent d’être liées entre elle au sein de la même boite de Pétri. Nous pouvons néanmoins considérer la boite de Pétri comme facteur aléatoire dans ce modèle split-plot. Dans ce cas, nous avons intérêt à utiliser <code>lmeTest::lmer()</code> qui calculera ces valeurs <em>p</em> là où elles sont pertinentes<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Dans la formule, un facteur aléatoire simple s’écrit <code>(1 | facteur)</code>. Cela donne :</p>
+<p>Un des modèles pour lequel les valeurs <em>p</em> sont calculables est le modèle dit en <a href="https://stat.ethz.ch/education/semesters/as2015/anova/08_Split_Plots.pdf">parcelles divisées</a> (split-plot en anglais). Cette situation apparait lorsque, parmi deux facteurs, l’un est plus difficile à diviser en sous-unités <em>indépendantes</em>. C’est le cas ici avec nos boites de Pétri qui forment chacune un petit microcosme unique. Il est possible de diviser la boite de Pétri en sous-régions. C’est ce qui a été fait ici pour tester les six lots, mais ces sous-régions ne <strong>sont pas indépendantes</strong> les unes des autres, elles continuent d’être liées entre elle au sein de la même boite de Pétri. Nous pouvons néanmoins considérer la boite de Pétri comme facteur aléatoire dans ce modèle split-plot. Dans ce cas, nous avons intérêt à utiliser <code>lmeTest::lmer()</code> qui calculera ces valeurs <em>p</em> là où elles sont pertinentes<a href="references.html#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>. Dans la formule, un facteur aléatoire simple s’écrit <code>(1 | facteur)</code>. Cela donne :</p>
 <pre class="sourceCode r"><code class="sourceCode r">split_plot &lt;-<span class="st"> </span>lmerTest<span class="op">::</span><span class="kw">lmer</span>(<span class="dt">data =</span> pen, diameter <span class="op">~</span><span class="st"> </span>sample <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">|</span><span class="st"> </span>plate))
 split_plot</code></pre>
 <pre><code># Linear mixed model fit by REML [&#39;lmerModLmerTest&#39;]
@@ -575,21 +575,21 @@ split_plot</code></pre>
 # 
 # Linear Hypotheses:
 #            Estimate Std. Error z value Pr(&gt;|z|)    
-# B - A == 0 -3.20833    0.15875 -20.210   &lt;0.001 ***
+# B - A == 0 -3.20833    0.15875 -20.210   &lt;1e-04 ***
 # C - A == 0 -0.25000    0.15875  -1.575    0.615    
-# D - A == 0 -2.29167    0.15875 -14.436   &lt;0.001 ***
-# E - A == 0 -2.20833    0.15875 -13.911   &lt;0.001 ***
-# F - A == 0 -5.20833    0.15875 -32.809   &lt;0.001 ***
-# C - B == 0  2.95833    0.15875  18.635   &lt;0.001 ***
-# D - B == 0  0.91667    0.15875   5.774   &lt;0.001 ***
-# E - B == 0  1.00000    0.15875   6.299   &lt;0.001 ***
-# F - B == 0 -2.00000    0.15875 -12.599   &lt;0.001 ***
-# D - C == 0 -2.04167    0.15875 -12.861   &lt;0.001 ***
-# E - C == 0 -1.95833    0.15875 -12.336   &lt;0.001 ***
-# F - C == 0 -4.95833    0.15875 -31.234   &lt;0.001 ***
+# D - A == 0 -2.29167    0.15875 -14.436   &lt;1e-04 ***
+# E - A == 0 -2.20833    0.15875 -13.911   &lt;1e-04 ***
+# F - A == 0 -5.20833    0.15875 -32.809   &lt;1e-04 ***
+# C - B == 0  2.95833    0.15875  18.635   &lt;1e-04 ***
+# D - B == 0  0.91667    0.15875   5.774   &lt;1e-04 ***
+# E - B == 0  1.00000    0.15875   6.299   &lt;1e-04 ***
+# F - B == 0 -2.00000    0.15875 -12.599   &lt;1e-04 ***
+# D - C == 0 -2.04167    0.15875 -12.861   &lt;1e-04 ***
+# E - C == 0 -1.95833    0.15875 -12.336   &lt;1e-04 ***
+# F - C == 0 -4.95833    0.15875 -31.234   &lt;1e-04 ***
 # E - D == 0  0.08333    0.15875   0.525    0.995    
-# F - D == 0 -2.91667    0.15875 -18.373   &lt;0.001 ***
-# F - E == 0 -3.00000    0.15875 -18.898   &lt;0.001 ***
+# F - D == 0 -2.91667    0.15875 -18.373   &lt;1e-04 ***
+# F - E == 0 -3.00000    0.15875 -18.898   &lt;1e-04 ***
 # ---
 # Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 # (Adjusted p values reported -- single-step method)</code></pre>
@@ -666,13 +666,13 @@ sleep</code></pre>
 #  n obs: 180 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #  variable missing complete   n n_unique                         top_counts
 #   Subject       0      180 180       18 308: 10, 309: 10, 310: 10, 330: 10
 #  ordered
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #  variable missing complete   n   mean    sd     p0    p25    p50    p75
 #      Days       0      180 180   4.5   2.88   0      2      4.5    7   
 #  Reaction       0      180 180 298.51 56.33 194.33 255.38 288.65 336.75
@@ -807,8 +807,8 @@ Le modèle utilisé ici considère une variation du temps de réaction identique
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>Notez toutefois qu’il est conseillé de manière générale de <strong>ne pas</strong> utiliser les valeurs <em>p</em> du tout, mais de privilégier d’autres approches comme le rapport de la log-vraissemblance entre modèles, voir <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9450.2010.00852.x">ici</a>, mais cela sort du cadre de ce cours.<a href="effet-aleatoire.html#fnref4" class="footnote-back">↩</a></p></li>
+<ol start="57">
+<li id="fn57"><p>Notez toutefois qu’il est conseillé de manière générale de <strong>ne pas</strong> utiliser les valeurs <em>p</em> du tout, mais de privilégier d’autres approches comme le rapport de la log-vraissemblance entre modèles, voir <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9450.2010.00852.x">ici</a>, mais cela sort du cadre de ce cours.<a href="effet-aleatoire.html#fnref57" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>

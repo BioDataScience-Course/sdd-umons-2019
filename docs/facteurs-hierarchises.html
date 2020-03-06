@@ -446,14 +446,14 @@ code span.wa { color: #bf0303; } /* Warning */
 <p><span class="math display">\[y_{ijk} = \mu + \tau1_j + \tau2_k(\tau1_j) + \epsilon_i \mathrm{\ avec\ } \ \epsilon_i \sim N(0, \sigma) \]</span></p>
 <p>… et dans R, nous utiliserons la formule suivante :</p>
 <p><span class="math display">\[y \sim fact1 + fact2\ \%in\%\ fact1\]</span></p>
-<p>Voici un exemple concret. Un gros échantillon d’oeufs déshydratés homogène est réparti entre six laboratoires différents en vue de la détermination de la teneur en matières grasses dans cet échantillon. Le but de la manoeuvre est de déterminer si les laboratoires donnent des résultats consistants. Les deux techniciens de chaque laboratoire sont labellés <code>one</code> et <code>two</code>, mais ce sont en fait à chaque fois des techniciens <em>différents</em> dans chaque laboratoire<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+<p>Voici un exemple concret. Un gros échantillon d’oeufs déshydratés homogène est réparti entre six laboratoires différents en vue de la détermination de la teneur en matières grasses dans cet échantillon. Le but de la manoeuvre est de déterminer si les laboratoires donnent des résultats consistants. Les deux techniciens de chaque laboratoire sont labellés <code>one</code> et <code>two</code>, mais ce sont en fait à chaque fois des techniciens <em>différents</em> dans chaque laboratoire<a href="references.html#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">eggs &lt;-<span class="st"> </span><span class="kw">read</span>(<span class="st">&quot;eggs&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;faraway&quot;</span>)
 skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 <pre><code># Skim summary statistics
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -463,7 +463,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Commençons par corriger l’encodage erroné des techniciens qui ferait penser que seulement deux personnes ont travaillé dans l’ensemble des six laboratoires.</p>
@@ -474,7 +474,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -484,7 +484,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Nous avons à présent douze techniciens notés <code>I.one</code>, <code>I.two</code>, <code>II.one</code>, <code>II.two</code>, … Nous pouvons visualiser ces données. Comme nous n’avons que quatre réplicats par technicien, nous nous limitons à la représentation des observations de départ et des moyennes.</p>
@@ -567,7 +567,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ─────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -575,7 +575,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">eggs_means <span class="op">%&gt;.%</span>
@@ -627,8 +627,8 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>La variable <code>Sample</code> valant <code>G</code> ou <code>H</code> ne sera pas utilisée ici. En fait, au départ, les initiateurs de l’expérience ont fait croire aux laboratoires qu’il s’agissait de deux échantillons différents alors que c’est le même en réalité.<a href="facteurs-hierarchises.html#fnref3" class="footnote-back">↩</a></p></li>
+<ol start="56">
+<li id="fn56"><p>La variable <code>Sample</code> valant <code>G</code> ou <code>H</code> ne sera pas utilisée ici. En fait, au départ, les initiateurs de l’expérience ont fait croire aux laboratoires qu’il s’agissait de deux échantillons différents alors que c’est le même en réalité.<a href="facteurs-hierarchises.html#fnref56" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <div id="disqus_thread"></div>
