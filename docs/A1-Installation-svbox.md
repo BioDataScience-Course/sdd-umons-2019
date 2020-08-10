@@ -544,6 +544,3 @@ Le "dock" en bas du bureau permet de lancer des applications rapidement et d'acc
 Pour accèder à vos dossiers et fichiers, il suffit de cliquer sur l'icône en forme de dossier avec une image de petite maison que l'on retrouve également dans le dock.
 
 ![](images/annexe_a1/sv_home.gif)
-
-
-

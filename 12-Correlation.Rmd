@@ -25,11 +25,11 @@ SciViews::R
 
 Ce module présente des descripteurs statistiques de l'association de deux variables, ainsi qu'un test d'hypothèse associé. Pour comprendre cette matière, il faut comprendre la logique derrière un test d'hypothèse vue au module \@ref(chi2). La seconde partie reviendra sur les représentations graphiques vues aux modules \@ref(visu1), \@ref(visu2) et \@ref(visu3) qui doivent être bien maîtrisé avant d'aborder cette section.
 
-
-## Association de deux variables
-
-
 ##### A vous de jouer {-}
+
+En lien avec ce module vous avez une série d'exercices à réaliser. Vous avez à : 
+
+- Réalisez une séance d'exercice sur la corrélation 
 
 ```{block, type='bdd'}
 
@@ -38,6 +38,20 @@ Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RSt
     BioDataScience::run("12a_correlation")
 
 ```
+
+- compléter des fichiers RMD au sein du projet ci-dessous : 
+
+```{block, type='bdd'}
+Ce projet couvre toute la matière du module 12. Il y a 3 exercices pour les 3 parties de ce module.
+
+- <https://classroom.github.com/a/sjzY0x-h>
+
+Lisez attentivement le README. 
+
+*Ce projet doit être terminé à la fin de ce module*
+```
+
+## Association de deux variables
 
 Nous pouvons décrire l'étendue d'une variable numérique à l'aide de la **variance** qui, pour rappel est la somme des écarts à la moyenne divisée par le nombre de degrés de liberté (*n* dans le cas d'une population et *n* - 1 dans le cas d'un échantillon).
 
@@ -323,6 +337,33 @@ cor.test(data = trees, ~ diameter + height,
 
 Même remarque concernant les ex aequos et valeur *P* très similaire ici à celle du test de Spearman.
 
+##### A vous de jouer {-}
+
+Vous avez a présent toutes les connaissances théoriques afin de :
+
+- réaliser le learnR spécifique au module 12
+
+```{block, type='bdd'}
+
+Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("12a_correlation")
+
+```
+
+- appliquer vos connaissances dans la première partie du projet spécifique du module
+
+```{block, type='bdd'}
+La première partie porte sur la corrélation. Le lien pour débuter ce projet ce trouve en début de module 12
+
+- <http://biodatascience-course.sciviews.org/sdd-umons/correlation.html>
+```
+
+- appliquer vos connaissances dans le projet de biométrie humaine
+
+```{block, type='bdd'}
+Retournez dans votre projet de biométrie humaine et réalisez au moins un test de corrélation.
+```
 
 ## Communication
 
@@ -380,6 +421,15 @@ Quel type de présentation R Markdown choisir au final\ ? Toute cette panoplie d
 Dans la prochaine version de la SciViews Box, il sera également possible de générer ses présentations directement au format PowerPoint.
 ```
 
+##### A vous de jouer {-} 
+
+- appliquer vos connaissances dans la seconde partie du projet spécifique du module
+
+```{block, type='bdd'}
+La seconde partie porte sur la réalisation d'une présentation. Le lien pour débuter ce projet ce trouve en début de module 12
+
+- <http://biodatascience-course.sciviews.org/sdd-umons/correlation.html>
+```
 
 ## Critique statistique
 
@@ -416,16 +466,6 @@ Voici quelques conseils qui vous aideront à développer votre esprit critique s
 ![](images/sdd1_12/wrong-graph.gif)
 
 Pour terminer ce module, nous vous proposons quelques situations (soit des problèmes, soit des graphiques) qui ont toutes en commun d'être erronées. A vous de trouver ce qui ne va pas. Pour ne pas fausser la donne, les réponses ne **sont pas** fournies dans ce documents, mais seront discutées en classes tous ensembles.
-
-```{block, type='bdd'}
-Profitez-en pour réaliser votre première présentation R Markdown. Choisissez une situation et un type de présentation R Markdown (ioslides, Slidy, Beamer, R Presentation, ...). Ensuite réalisez deux ou trois "slides" de présentation. Dans la première, vous exposez la situation. Dans les suivantes, vous expliquer ce qui est incorrect et vous proposez une bonne façon de faire à la place.
-
-Vous avez à votre disposition une tâche Guthub Classroom
-
- - <https://classroom.github.com/a/ZLNkeFCo>
- 
- 
-```
 
 -----
 
@@ -631,6 +671,18 @@ Par le plus grand des hasards, le numéro 8 est sorti 6 fois en 7 tirages succes
 **_La prochaine fois que vous remplirez votre grille de lotto, jouerez-vous le numéro 8 ? Pourquoi ?_**
 
 **_Vous est-il arrivé de jouer la suite 1, 2, 3, 4, 5, 6, 7, 8 au lotto (ou rempliriez-vous une grille avec ces nombres si vous deviez y jouer) ? Pourquoi ?_**
+
+
+##### A vous de jouer {-} 
+
+- appliquer vos connaissances dans la dernière partie du projet spécifique du module
+
+```{block, type='bdd'}
+La dernière partie porte sur la critique statistique. Le lien pour débuter ce projet ce trouve en début de module 12
+
+- <http://biodatascience-course.sciviews.org/sdd-umons/correlation.html>
+```
+
 
 -----
 

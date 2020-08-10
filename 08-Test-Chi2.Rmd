@@ -27,7 +27,7 @@ Les probabilités et lois de distributions statistiques vues au module \@ref(pro
 
 ## Échantillonnage
 
-Si nous pouvions mesurer **tous** les individus d'une population statistique à chaque fois, nous n'aurions pas besoin des statistiques. Mais ce n'est pratiquement jamais possible. Tout d'abord, le nombre d'individus est potentiellement très grand. Le travail nécessaire risque alors d'être démesuré. Afin de limiter les mesures à un nombre raisonnable de cas, nous effectuons un **échantillonnage** qui consiste à prélever un petit sous-ensemble de taille $n$ donné depuis la population de départ. Il existe différentes stratégies d'échantillonnage, mais la plus fréquente est l'**échantillonnage aléatoire** pour lequel\ :
+Nous avons déjà abordé cette question dans le chapitre 6. Si nous pouvions mesurer **tous** les individus d'une population à chaque fois, nous n'aurions pas besoin des statistiques. Mais ce n'est pratiquement jamais possible. Tout d'abord, le nombre d'individus est potentiellement très grand. Le travail nécessaire risque alors d'être démesuré. Afin de limiter les mesures à un nombre raisonnable de cas, nous effectuons un **échantillonnage** qui consiste à prélever un petit sous-ensemble de taille $n$ donné depuis la population de départ. Il existe différentes stratégies d'échantillonnage, mais nous avons vu que la plus fréquente est l'**échantillonnage aléatoire** pour lequel\ :
 
 - chaque individu dans la population a la même probabilité d'être pris dans l'échantillon,
 - les mesures et les individu sont indépendants les uns des autres.
@@ -37,7 +37,7 @@ Nous n'avons pas forcément accès à tous les individus d'une population. Dans 
 Quoi qu'il en soit, l'échantillon n'est qu'un petit sous-ensemble sélectionné par un mécanisme faisant intervenir le hasard. Donc, deux échantillons de la même population ont un très forte probabilité d'être différents l'un de l'autre. Il en va également des statistiques calculées sur ces échantillons, comme les effectifs observés pour chaque niveau de variables qualitatives ou les valeurs moyennes pour les variables quantitatives, par exemple. **Cette variabilité d'un échantillon à l'autre ne nous intéresse pas car elle n'apporte pas d'information sur la population elle-même.** Ce qui nous intéresse, c'est d'estimer au mieux les valeurs (effectifs, moyennes, etc.) dans la population.
 
 ```{block, type='note'}
-L'estimation de paramètres d'une population par le biais de calculs sur un échantillon représentatif issu de cette population s'appelle l'**inférence statistique.**
+L'estimation de paramètres d'une population par le biais de calculs sur un échantillon représentatif issu de cette population s'appelle l'**inférence statistique.** Rappelez-vous le schéma qui relie population et échantillon via l'échantillonnage d'une part, et l'inférence d'autre part.
 
 ![](images/sdd1_08/inference.png)
 
@@ -69,7 +69,7 @@ Les deux hypothèses ne sont pas symétriques. Notre intention est de **rejeter 
 
 ```{block2, type='bdd'}
 
-Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console pour effectuer les exercices d'auto-évaluation en parallèle à la lecture du texte ci-dessous\ :
 
     BioDataScience::run("08a_chi2")
 
@@ -82,13 +82,27 @@ Tout cela reste très abstrait. Prenons un exemple concret simple. Le bec-crois�
 
 ![Bec-croisés des sapins mâles montrant les deux variétés (bec croisé à gauche ou à droite). Photo\ : Elaine R. Wilson (license CC BY-SA 3.0).](images/sdd1_08/red-crossbills-male.jpg)
 
-Comme des individus à bec croisé à gauche et d'autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu les résultats suivants\ :
+Comme des individus à bec croisé à gauche et d'autres à bec croisé à droite se rencontrent dans la même population, Groth (1992) a comptabilisé les deux types dans un échantillon aléatoire et représentatif de plus de 3000 oiseaux. Il a obtenu le tableau suivant\ :
 
 ```{r}
-(crossbill <- as.table(c(left = 1895, right = 1752)))
+(crossbill <- tibble(cb = c(rep("left", 1895), rep("right", 1752))))
 ```
 
-Les scientifiques pensent que les variétés gauches et droites se rencontrent avec un ratio 1:1 dans la population étudiée suite à une sélection présumée basée sur le rapport des deux variétés. La question se traduit sous forme d'un test d'hypothèse comme ceci\ :
+Ce tableau peut être résumé sous la forme d'un tableau de contingence\ : 
+
+```{r}
+(crossbill_tab <- table(crossbill$cb))
+```
+
+```{r, eval=FALSE, echo=FALSE}
+library(janitor)
+cb_tab <- tabyl(crossbill, cb)
+
+cb_tab %>.%
+  adorn_totals(.)
+```
+
+Les scientifiques pensent que les variétés gauches et droites se rencontrent avec un ratio 1:1 dans la population étudiée suite à une sélection présumée basée sur le rapport des deux variétés. La question se traduit sous forme d'un test d'hypothèse comme ceci (retenez la notation particulière utilisée pour spécifier les hypothèses)\ :
 
 - $H_0: \mathrm{P}(left) = \frac{1}{2}\ \mathrm{et}\ \mathrm{P}(right) = \frac{1}{2}$
 - $H_1: \mathrm{P}(left) \neq \frac{1}{2}\ \mathrm{ou}\ \mathrm{P}(right) \neq \frac{1}{2}$ 
@@ -101,15 +115,60 @@ Pouvons-nous rejeter $H_0$ ici\ ?
 Le test Chi^2^ (ou $\chi^2$) de Pearson est un test d'hypothèse qui permet de comparer des effectifs observés notés $a_i$ à des effectifs théoriques $\alpha_i$ sous l'hypothèse nulle pour les différents niveaux $i$ allant de 1 à $n$ d'une variable qualitative (version dite univariée du test). A noter que par rapport à la définition des hypothèses ci-dessus, ce ne sont **pas** les probabilités qui sont testées, mais les effectifs.
 
 
-Notre tableau de contingence à simple entrée `crossbill` contient nos $a_i$. Nous devons donc calculer quels sont les effectifs théoriques $\alpha_i$. Le nombre total d'oiseaux observés est\ :
+##### Conditions d'application {-}
+
+Tout test d'hypothèse impose des **conditions d'application** qu'il faudra vérifier avant d'effectuer le test. Pour le test $\chi^2$, ce sont\ :
+
+- échantillonnage aléatoire et observations indépendantes,
+- aucun effectif théorique (ou probabilité) sous $H_0$ nul,
+- aucun effectif observé, si possible, inférieur à 5 (ceci n'est **pas** une condition stricte\ ; le test sera "approximativement" bon dans le cas contraire).
+
+Ces conditions d'application sont bien rencontrées ici.
+
+
+##### Réalisation du test Chi^2^ dans R {-}
+
+Dans R, le test du $\chi^2$ est réalisé facilement à l'aide de la fonction `chisq.test()`. Voici ce que cela donne et comment on l'interprète\ :
+
+
 
 ```{r}
-sum(crossbill)
+chisq.test(crossbill_tab, p = c(1/2, 1/2), rescale.p = FALSE)
+```
+
+```{r, echo=FALSE, eval=FALSE}
+library(janitor)
+chisq.test(cb_tab$n, p = c(1/2, 1/2), rescale.p = FALSE)
+```
+
+Le premier argument donné à `chisq.test()` est le tableau de contingence à une entrée indiquant les effectifs observés, ici `crossbill`. L'argument `p = ` est la liste des probabilités attendues sous $H_0$ et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser `rescale.p = TRUE`. Ce fragment de code est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2^ univarié).
+
+L'exécution de ce code nous donne un court rapport avec\ :
+
+- Un titre qui précise le test d'hypothèse effectué (test $\chi^2$ avec des probabilités sous $H_0$ fournies via l'argument `p =`)
+
+- Un rappel du jeu de données traité (`crossbill` ici)
+
+- La dernière ligne qui indique le résultat du test. Les détails et explications concernant cette ligne sont développés ci-dessous. L'interprétation se fait en fonction de la valeur *P* (`p-value = 0.01789`). En fonction d'un seuil choisi avant de faire le test, et appelé seuil $\alpha$. La décision est prise comme suit\ :
+    - Si la valeur *P* est inférieure à $\alpha$, nous rejetons l'hypothèse $H_0$, considérée comme trop peu probable,
+    - Si la valeur *P* est supérieur ou égale à $\alpha$, nous ne rejetons pas $H_0$, et considérons que notre échantillon ne nous permet pas de considérer cette hypothèse nulle comme suffisamment improbable (soit elle est effectivement correcte, soit l'effectif $n$ de notre échantillon est insuffisant pour démontrer qu'elle ne l'est pas au seuil $\alpha$ choisi).
+
+Souvent en biologie, on choisi $\alpha$ = 5%, mais dans les cas où nous souhaitons avoir plus de "certitude" dans notre réponse, nous pouvons aussi choisir un seuil plus restrictif de 1%, voire de 0,1%. Encore une fois, les explications sont détaillées ci-dessous.
+
+Dans notre exemple, nous pouvons donc rejeter $H_0$ et nous dirons que **la probabilité d'observer un bec croisé gauche est significativement plus grande qu'un bec croisé droit au seuil $\alpha$  de 5% dans la population étudiée (test $\chi^2$ = 5,61, ddl = 1, valeur *P* = 0,018)**. A ce stade, notre analyse statistique se termine. Une interprétation *biologique* du résultat, des hypothèses concernant les *mécanismes biologiques* que cela implique, une confrontation à ce que d'autres ont observé via la littérature scientifique et des conclusions et/ou perspectives finalisent l'étude.
+
+
+##### Explications détaillées {-}
+
+Voici comment ce test se construit. Notre tableau de contingence à simple entrée `crossbill` contient nos $a_i$. Nous devons donc calculer quels sont les effectifs théoriques $\alpha_i$. Le nombre total d'oiseaux observés est\ :
+
+```{r}
+sum(crossbill_tab)
 ```
 ... et les effectifs attendus sous $H_0$ sont\ :
 
 ```{r}
-(alpha_i <- c(left = sum(crossbill)/2, right = sum(crossbill)/2))
+(alpha_i <- c(left = sum(crossbill_tab)/2, right = sum(crossbill_tab)/2))
 ```
 
 Les hypothèses du test $\chi^2$ univarié se définissent comme ceci\ :
@@ -126,7 +185,7 @@ Notez que cette statistique prend la valeur nulle lorsque tous les $a_i$ sont st
 Calculons $\chi^2_\mathrm{obs}$ dans notre cas^[Faites également le calcul manuellement à la calculatrice pour vérifier que vous avez bien compris.]\ :
 
 ```{r}
-(chi2_obs <- sum((crossbill - alpha_i)^2 / alpha_i))
+(chi2_obs <- sum((crossbill_tab - alpha_i)^2 / alpha_i))
 ```
 
 Pour répondre à la question, il nous faut une loi de distribution statistique qui permette d'associer une probabilité au quantile $\chi^2_\mathrm{obs}$ sous $H_0$. C'est là que le statisticien Karl Pearson vient à notre secours. Il a, en effet, modélisé la distribution statistique du $\chi^2$. La loi du même nom admet un seul paramètre, les **degrés de libertés** (ddl) qui sont égaux au nombre de niveaux de la variable facteur étudiée $n$ moins un. Ici, ddl = 2 - 1 = 1. La Fig. \@ref(fig:chi2plot) représente la densité de probabilité d'une loi $\chi^2$ typique^[Les fonctions qui permettent les calculs relatifs à la distribution $\chi^2$ dans R sont `<x>chisq()`, et les snippets correspondants dans la SciViews Box sont disponibles à partir de `.ic`. Leur utilisation est similaire à celle des distributions vues au module \@ref(proba).]. C'est une distribution qui démarre à zéro, passe par un maximum et est asymptotique horizontale à $+\infty$.
@@ -215,23 +274,6 @@ Le test d'hypothèse reporte la valeur *P* afin qu'un lecteur qui aurait choisi 
 - valeur *P* < seuil $\alpha$, $=> \mathrm{R}H_0$ (on rejette $H_0$),
 - valeur *P* ≥ seuil $\alpha$, $=> \rlap{\mathrm{R}} \diagup H_0$ (on ne rejette pas $H_0$).
 
-Pour finir, nous ne devons heureusement pas refaire tous les calculs à la main à chaque fois que nous voulons faire un test du $\chi^2$ dans R. La fonction `chisq.test()` fait tout cela pour nous^[Avec `chisq.test()`, l'argument `p = ` est la liste des probabilités attendues sous $H_0$ et dont la somme vaut un. On peut aussi donner les effectifs attendus, mais il faut alors préciser `rescale.p = TRUE`.]. Elle est également disponible dans les snippets à partir du menu `hypothesis test : contingency` ou `.hc` (test Chi^2^ univarié).
-
-```{r}
-chisq.test(crossbill, p = c(1/2, 1/2), rescale.p = FALSE)
-```
-
-
-##### Conditions d'application {-}
-
-Tout test d'hypothèse impose des **conditions d'application** qu'il faudra vérifier avant d'effectuer le test. Pour le test $\chi^2$, ce sont\ :
-
-- échantillonnage aléatoire et observations indépendantes,
-- aucun effectif théorique sous $H_0$ nul,
-- aucun effectif observé, si possible, inférieur à 5 (pas condition stricte).
-
-C'est bien le cas ici.
-
 
 ### Effet de l'effectif étudié
 
@@ -239,11 +281,11 @@ En inférence, la qualité des données (échantillons *représentatifs*) est im
 
 ```{r}
 # Proportions équivalentes, mais échantillon 10x plus petit
-(crossbill2 <- as.table(c(left = 190, right = 175)))
-chisq.test(crossbill2, p = c(1/2, 1/2), rescale.p = FALSE)
+(crossbill_tab2 <- as.table(c(left = 190, right = 175)))
+chisq.test(crossbill_tab2, p = c(1/2, 1/2), rescale.p = FALSE)
 ```
 
-Nous constatons que la valeur du $\chi^2_{obs}$ dépend de l'effectif. Sa valeur est plus petite ici. Par conséquent, la valeur *P* a également changé et elle vaut à présent 43%. Cette valeur est *supérieure* maintenant à notre seuil $\alpha$ de 5%. Donc, nous ne pouvons pas rejeter $H_0$. Dans un pareil cas, nous conclurons que les becs croisés à gauche ne sont **pas significativement** plus nombreux que ceux à droite au seuil $\alpha$ de 5% (test $\chi^2$ = 0,62, ddl = 1, valeur *P* = 0,43). Notez, c'est important, que nous n'avons pas écrit "ne sont **pas**", mais nous avons précisé "ne sont **pas significativement**" plus nombreux. C'est un détail très important. En effet, cela veut dire que l'on ne peut pas conclure qu'il y ait des différences sur base de l'échantillon utilisé, mais il se peut aussi que l'échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (`crossbill`), et nous savons bien que c'est effectivement le cas. Est-ce que vous saisissez bien ce que le mot **significativement** veut dire, et la subtilité qui apparaît lorsqu'un test d'hypothèse ne rejette **pas** $H_0$\ ? Les conclusions tirées avec `crossbill` et `crossbill2` et le même test d'hypothèse sont diamétralement opposées car l'un rejette et l'autre ne rejette pas $H_0$. Pourtant ces deux analyses ne se contredisent pas\ ! Les deux interprétations sont *simultanément* correctes. C'est l'interprétation asymétrique du test qui permet cela, et l'adverbe **significativement** est indispensable pour introduire cette nuance dans le texte.
+Nous constatons que la valeur du $\chi^2_{obs}$ dépend de l'effectif. Sa valeur est plus petite ici. Par conséquent, la valeur *P* a également changé et elle vaut à présent 43%. Cette valeur est *supérieure* maintenant à notre seuil $\alpha$ de 5%. Donc, nous ne pouvons pas rejeter $H_0$. Dans un pareil cas, nous conclurons que les becs croisés à gauche ne sont **pas significativement** plus nombreux que ceux à droite au seuil $\alpha$ de 5% (test $\chi^2$ = 0,62, ddl = 1, valeur *P* = 0,43). Notez, c'est important, que nous n'avons pas écrit "ne sont **pas**", mais nous avons précisé "ne sont **pas significativement**" plus nombreux. C'est un détail très important. En effet, cela veut dire que l'on ne peut pas conclure qu'il y ait des différences sur base de l'échantillon utilisé, mais il se peut aussi que l'échantillon ne soit pas suffisamment grand pour mettre en évidence une différence. Or, nous avons analysé en réalité un plus grand échantillon (`crossbill`), et nous savons bien que c'est effectivement le cas. Est-ce que vous saisissez bien ce que le mot **significativement** veut dire, et la subtilité qui apparaît lorsqu'un test d'hypothèse ne rejette **pas** $H_0$\ ? Les conclusions tirées avec `crossbill` et `crossbill2` et le même test d'hypothèse sont diamétralement opposées car l'un rejette et l'autre ne rejette pas $H_0$. Pourtant ces deux analyses ne se contredisent pas\ ! Les deux interprétations sont *simultanément* correctes. C'est l'interprétation asymétrique du test qui permet cela, et l'adverbe **significativement** est indispensable pour introduire cette nuance dans le texte\ !
 
 
 ### Test Chi^2^ d'indépendance
@@ -260,20 +302,59 @@ Une séance d'exercice vous est proposée en lien avec le test Chi^2^ d'indépen
 
 ```
 
-Reprenons le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
+
+##### Conditions d'application {-}
+
+Comme toujours, le test $\chi^2$ d'indépendance est assorti de conditions d'application que nous devons vérifier *avant* de considérer d'utiliser ce test\ :
+
+- échantillon représentatif (échantillonnage aléatoire et individus indépendants les uns des autres),
+- attribution des traitements aux individus de manière aléatoire,
+- aucun effectif théorique nul,
+- Si possible, aucun effectif observé inférieur à 5 (pas règle stricte, mais voir à utiliser un test exact de Fisher ci-dessous dans la section "pour en savoir plus" en base de page dans ce cas).
+
+
+##### Example et résolution dans R {-}
+
+Prenons le jeu de données concernant le test d'une molécule potentiellement anti-cancéreuse, le timolol\ :
 
 ```{r}
-timolol <- tibble(
+(timolol <- tibble(
+  traitement = c(
+    rep("timolol", 160), rep("placebo", 147)),
+  patient = c(
+    rep("sain", 44), rep("malade", 116), 
+    rep("sain", 19), rep("malade", 128))
+  ))
+
+```
+
+```{r, echo=FALSE, eval=FALSE}
+timolol1 <- tibble(
   traitement = c("timolol", "timolol", "placebo", "placebo"),
   patient    = c("sain",    "malade",  "sain",    "malade"),
   freq       = c(44,        116,       19,        128)
 )
 # Création du tableau de contingence 
-timolol_table <- xtabs(data = timolol, freq ~ patient + traitement)
+timolol_table <- xtabs(data = timolol1, freq ~ patient + traitement)
 timolol_table
 ```
 
-Nous avons ici un tableau de contingence à double entrée qui répertorie le nombre de cas attribués aléatoirement au traitement avec placebo (somme de la première colonne, soit 128 + 19 = 147 patients) et le nombre de cas qui ont reçu du timolol (116 + 44 = 160), tout autre traitement étant par ailleurs équivalent. Nous avons donc un total général de 307 patients étudiés.
+Nous pouvons résumer ce tableau cas par variable en un tableau de contingence à double entrée\ :
+
+```{r}
+(timolol_table <- table(timolol$traitement, timolol$patient))
+```
+
+```{r, echo=FALSE, eval=FALSE}
+timolol %>.%
+  tabyl(., traitement, patient) -> timo_tab
+
+timo_tab %>.%
+  adorn_totals(., where = c("row", "col")) %>.%
+  adorn_title(., "combined")
+```
+
+Nous avons ici un tableau de contingence à double entrée qui répertorie le nombre de cas attribués aléatoirement au traitement avec placebo (somme de la première colonne, soit 128 + 19 = 147 patients) et le nombre de cas qui ont reçu du timolol (116 + 44 = 160), tout autre traitement étant par ailleurs équivalent. Nous avons donc un total général de 307 patients étudiés. Les conditions d'application du test sont rencontrées ici.
 
 La répartition dans le tableau selon les ligne est, elle, tributaire des effets respectifs des deux traitements\ ? La clé ici est de **considérer comme $H_0$ un partitionnement des cas équivalent entre les deux traitements.** Ceci revient au même que de dire que l'effet d'une variable (le traitement administré) est *indépendant* de l'effet de l'autre variable (le fait d'être guéri ou non). C'est pour cette raison qu'on parle de **test $\chi^2$ d'indépendance.** Les hypothèses sont\ :
 
@@ -288,15 +369,16 @@ Nous pouvons dès lors calculer le $\chi^2_{obs}$ pratiquement comme d'habitude 
 
 $$\chi^2_{obs} = \sum_{i=1}^m{\sum_{j=1}^n{\frac{(a_{i,j} - \alpha_{i,j})^2}{\alpha_{i,j}}}}$$
 
-Enfin, nous comparons cette valeur à la distribution théorique de $\chi^2$  à $(m - 1) \times (n - 1)$ degrés de liberté. Dans le cas d'un tableau 2 par 2, nous avons 1 degré de liberté. Voici le test effectué à l'aide de la fonction `chisq.test()` suivi de l'affichage des effectifs théoriques. Vous accédez facilement à ce code depuis le snippet `Chi2 test (independence)` dans le menu `hypothesis tests: contingency` à partir de `.hc`. Mais avant toute chose, nous devons choisir le seuil $\alpha$ **avant de réaliser le test**. Nous prendrons ici, par exemple, 1% puisque l'analyse est effectuée dans un contexte critique (maladie mortelle).
+Enfin, nous comparons cette valeur à la distribution théorique de $\chi^2$  à $(m - 1) \times (n - 1)$ degrés de liberté. Dans le cas d'un tableau 2 par 2, nous avons 1 degré de liberté. Voici le test effectué à l'aide de la fonction `chisq.test()` suivi de l'affichage des effectifs théoriques. Vous accédez facilement à ce code depuis le snippet `Chi2 test (independence)` dans le menu `hypothesis tests: contingency` à partir de `.hc`. Mais avant toute chose, nous devons choisir le seuil $\alpha$ **avant de réaliser le test**. Nous prendrons ici, par exemple 1% puisque l'analyse est effectuée dans un contexte critique (maladie mortelle).
 
 ```{r}
 (chi2. <- chisq.test(timolol_table)); cat("Expected frequencies:\n"); chi2.[["expected"]]
 ```
 
+
 ##### Interprétation {-}
 
-La valeur *p* de 0,0026 est inférieure au seuil $\alpha$ choisi de 0,01. Donc, nous rejetons $H_0$. Il n'y a pas indépendance entre les deux variables. Pour voir quels sont les effets de la dépendance entre les variables, nous devons comparer les effectifs théoriques affichés ci-dessus avec les effectifs observés. Dans le cas du placebo, sous $H_0$, nous aurions du obtenir 117 malades contre 30 patients guéris. Or, nous en avons 128 malades et seulement 19 guéris. D'un autre côté, sous $H_0$ nous aurions du observer 127 patients malades et 33 sains avec le timolol. Or, nous en observons 116 malades et 44 sains. Donc, les valeurs observées sont en faveur d'un meilleur effet avec le timolol. Nous pourrons dire\ : le timolol a un effet positif significatif sur la guérison de la maladie au seuil $\alpha$ de 1% ($\chi^2$ d'indépendance = 9,10, ddl = 1, valeur *P* = 0,0026).
+La valeur *P* de 0,0026 est inférieure au seuil $\alpha$ choisi de 0,01. Donc, nous rejetons $H_0$. Il n'y a pas indépendance entre les deux variables. Pour voir quels sont les effets de la dépendance entre les variables, nous devons comparer les effectifs théoriques affichés ci-dessus avec les effectifs observés. Dans le cas du placebo, sous $H_0$, nous aurions du obtenir 117 malades contre 30 patients guéris. Or, nous en avons 128 malades et seulement 19 guéris. D'un autre côté, sous $H_0$ nous aurions du observer 127 patients malades et 33 sains avec le timolol. Or, nous en observons 116 malades et 44 sains. Donc, les valeurs observées sont en faveur d'un meilleur effet avec le timolol. Nous pourrons dire\ : le timolol a un effet positif significatif sur la guérison de la maladie au seuil $\alpha$ de 1% ($\chi^2$ d'indépendance = 9,10, ddl = 1, valeur *P* = 0,0026).
 
 
 ##### Correction de Yates {-}
@@ -315,14 +397,6 @@ Cela donne 9,98. Or notre test renvoie la valeur de 9,10. A quoi est due cette d
 # Test d'indépendance sans correction de Yates
 chisq.test(timolol_table, correct = FALSE)
 ```
-
-
-##### Conditions d'application {-}
-
-- échantillon représentatif (échantillonnage aléatoire et individus indépendants les uns des autres),
-- attribution des traitements aux individus de manière aléatoire,
-- aucun effectif théorique nul,
-- Si possible, aucun effectif observé inférieur à 5 (pas règle strict, mais voir à utiliser un test exact de Fisher ci-dessous dans ce cas).
 
 
 ### Autres tests Chi^2^
@@ -356,7 +430,216 @@ Employez le test d'hypothèse que vous venez d'apprendre dans votre rapport sur 
 - Le [test exact de Fisher](http://www.sthda.com/french/wiki/test-exact-de-fisher-avec-r) comme test alternatif, en particulier lorsque les effectifs sont faibles.
 
 
-## Evaluation par les pairs
+## Métriques (étudiants de l'UMONS)
+
+En matière de gestion des données, nous avons vu jusqu'ici comment *encoder* ses données dans un tableau cas par variables, comment *importer* des données dans R, et comment remanier les tableaux de données et les variables (numériques, tranformation en variable `factor`, encodage et gestion des valeurs manquantes, etc.) Toutes les variables présentes dans le tableau de départ à l'importation sont dites **variables brutes**... mais les possibilités ne sont pas seulement limitées à ces variables de départ.
+
+En science des données, les variables brutes ne sont pas toujours les plus utiles par rapport aux questions que nous nous posons. Au delà de la simple transformation des données (logarithme, puissance, racine, inverse, ...) pour linéariser un nuage de points, nous sommes amenés à élaborer des **variables calculées** ou **métriques** qui vont caractériser ou quantifier un aspect particulier présent dans les données.
+
+
+### Morphométrie de crabes
+
+Partons d'un exemple concret. Le jeu de données `crabs` du package `MASS` rassemble des données relatives à la morphométrie de la carapace d'un crabe.
+
+```{r}
+SciViews::R
+crabs <- read("crabs", package = "MASS", lang = "fr")
+```
+
+L'aide en ligne de ce jeu de données (voir `.?crabs`) nous indique qu'il s'agit de mesures réalisées sur des crabes de l'espèce *Leptograpsus variegatus* (Fabricius, 1793) collectés à Freemantle à l'ouest de l'Australie. Deux variétés co-existent (incorrectement libellées `species` dans le jeu de données)\ : la variété bleue (`B`) et la variété orange (`O`).
+
+![Crabe *Leptograpsus variegatus* variété bleue. Photo\ : Neville Coleman, license CC By 4.0 [Museums Victoria](
+https://collections.museumvictoria.com.au/species/8662).](images/sdd1_08/Leptograpsus_variegatus.jpg)
+
+Nous pouvons explorer ce jeu de données en vue de déterminer si des différences morphologiques de la carapace existent entre sexes (variable `sex`, soit `M`, soit `F`) ou entre variétés (variable `species`, soit `B`, soit `O`). Un tableau de contingence à deux entrées peut être obtenu à l'aide de la fonction `table()`\ :
+
+```{r}
+table(crabs$species, crabs$sex)
+```
+
+Un snippet existe pour obtenir quelque chose de similaire (entrer `...`, puis `exploratory stats` puis `contingency`, puis `contingency table - 2 entries`). La sortie n'est pas très belle, mais la réalisation d'un table mieux formattée nécessite pour l'instant plus de travail dans R (ne cherchez pas à retenir ce code)\ :
+
+```{r}
+crabs %>.%
+  mutate(., # Changer les labels de species et sex pour des valeurs plus explicites
+    species = fct_recode(species, `**Variété bleue**` = "B", `**Variété orange**` = "O"),
+    sex = fct_recode(sex, `Femelle` = "F", Mâle = "M")
+  ) %>.%
+  with(., table(species, sex)) %>.% # Tableau de contingence à 2 entrées
+  knitr::kable(., caption = "Nombre de crabes mesurés par variété et par sexe.",
+    align = "c", escape = FALSE)
+```
+
+```{r, eval = FALSE, echo = FALSE}
+crabs %>.%
+  mutate(., # Changer les labels de species et sex pour des valeurs plus explicites
+    species = factor(fct_recode(species, `**Variété bleue**` = "B", `**Variété orange**` = "O")),
+    sex = factor(fct_recode(sex, `Femelle` = "F", Mâle = "M"))
+  ) %>.% # Need to use factor() to drop labels, or tabyl() will warn badly!
+  janitor::tabyl(., species, sex) %>.% # Tableau de contingen ce à 2 entrées
+  knitr::kable(., caption = "Nombre de crabes mesurés par variété et par sexe.",
+    align = "c", escape = FALSE)
+```
+
+Notre échantillon est bien balancé entre les variétés et les sexes avec 100 individus pour chacun répartis en sous-groupes d'effectifs égaux (*n* = 50). On parle de **plan balancé** lorsqu'un échantillonnage stratifié a été réalisé pour s'assurer d'avoir le même nombre d'individus pour chaque niveau d'une ou plusieurs variables qualitatives, quelle que soit la proportion de ces différents niveaux dans la population de départ. C'est une situation optimale pour bien comparer les variétés et/ou les sexes ici.
+
+Cinq mesures sont réalisées (toutes exprimées en mm) sur la carapace de ces crabes\ : `front` (taille du lobe frontal), `rear` (largeur à l'arrière), `length` (longueur), `width` (largeur à l'endroit le plus large) et `depth` (épaisseur). Il n'y a pas de valeurs manquantes dans le tableau. Aucune de ces variables morphométriques ne permet de discerner les deux variétés de couleur ou les sexes comme le montrent les cinq graphiques en violon ci-dessous.
+
+```{r}
+chart(data = crabs, front ~ species %fill=% sex) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), trim = FALSE)
+```
+
+```{r}
+chart(data = crabs, rear ~ species %fill=% sex) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+```
+
+```{r}
+chart(data = crabs, length ~ species %fill=% sex) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+```
+
+```{r}
+chart(data = crabs, width ~ species %fill=% sex) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+```
+
+```{r}
+chart(data = crabs, width ~ species %fill=% sex) +
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75))
+```
+
+Des tendances générales peuvent être notées. Par exemple, le lobe frontal tend à être légèrement plus grand pour la variété orange, ou la largeur à l'arrière tend à être plus grande pour les femelles, surtout chez la variété orange. Cependant, aucun de ces critères ne peut être retenu pour différencier les variétés ou les espèces *pour un individu en particulier* car les distributions se chevauchent toutes très largement.
+
+Nous pouvons aussi représenter des nuages de points afin de visualiser la variation d'une variable par rapport à une autre. Parmi tous les graphiques réalisables (toutes les combinaisons deux à deux des cinq variables morphologiques), examinons plus en détails les représentations suivantes\ :
+
+```{r}
+chart(data = crabs, rear ~ length %shape=% species %col=% sex) +
+  geom_point()
+```
+
+Ce graphique sépare relativement bien les mâles des femelles pour les deux variétés.
+
+```{r}
+chart(data = crabs, front ~ width %shape=% species %col=% sex) +
+  geom_point()
+```
+
+Ce graphique, en revanche, sépare les deux variétés, quel que soit leur sexe (la variété bleue en bas, et la varété orange en haut). Cela signifie donc que les données morphométriques contiennent une information permettant de discerner les sexes et les variétés, mais cette information n'est pas visible lorsqu'une seule variable quantitative est représentée en fonction des sous-populations comme dans les graphiques en violons.
+
+En réalité, les différences de *forme* sont masquées sur les mesures individuelles par une variation encore plus grande liée à la *taille* des animaux. Comment pouvons-nous mettre en évidence un facteur de forme en faisant abstraction de la taille\ ? Pour expliquer cela simplement, considérons un cas facile. Imaginons que nous voulons classer un ensemble de quadrilatères à angles droits. Nous savons tous que ce sont des *rectangles*. Un cas particulier est le *carré* avec ses côtés égaux. Tant que nous représentons la longueur ou la largeur de nos quatrilatères à angles droits de toutes tailles, nous ne pouvons pas distinguer les carrés des rectangles. Par contre, si nous calculons le **ratio** longueur/largeur, nous faisons abstraction de la *taille* pour quantifier la *forme* (allongée ou pas). Tous les quadrilatères à angles droits dont le ratio longueur/largeur vaut un est un carré\ !
+
+C'est exactement le même raisonnement que nous pouvons appliquer à nos données `crabs`\ : nous pouvons calculer des variables qui feront abstraction de la taille pour quantifier des facteurs de forme particuliers. Les femelles ayant une carapace plus large à l'arrière *proportionnellement à leur taille*, le ratio `rear`/`length` calculé et nommé `rear_length` donne ceci\ :
+
+```{r}
+crabs %>.%
+  mutate(., rear_length = rear / length) %>.% # Calcul de rear_length
+  chart(data = ., rear_length ~ species %fill=% sex) +
+    geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
+    ylab("Ratio largeur arrière/longueur")
+```
+
+Notre métrique `rear_length` est naturellement ultra-simple. Elle ne permet pas de différencier *tous* les mâles de *toutes* les femelles, mais la séparation est déjà bien meilleure qu'en utilisant soit `rear` soit `length` seuls. A l'aide de techniques statistiques que vous étudierez au [cours de science des données biologiques II](http://biodatascience-course.sciviews.org/sdd-umons2/lm.html) l'an prochain, nous pouvons montrer qu'une meilleure métrique (ou indice) pour séparer les mâles des femelles est en réalité\ : `rear / (0.3 * length + 2.4)`^[Pour le lecteur plus avancé, il s'agit en fait de la droite de régression ajustée dans le nuage de points.]. La séparation entre les sexes n'est pas totale, mais s'en rapproche fortement, surtout pour la variété orange.
+
+```{r}
+crabs %>.%
+  mutate(., rear_length2 = rear / (0.3 * length + 2.4)) %>.%  # Calcul de rear_length2
+  chart(data = ., rear_length2 ~ species %fill=% sex) +
+    geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
+    ylab("Ratio largeur arrière/(0.3*longueur + 2.4)")
+```
+
+De même, nous pouvons utiliser l'indice `front_width = front / (0.43 * width)` pour séparer les variétés qui donne ceci\ :
+
+```{r}
+crabs %>.%
+  mutate(., front_width = front / (0.43 * width)) %>.% # Calcul de front_width
+  chart(data = ., front_width ~ species %fill=% sex) +
+    geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
+    ylab("Ratio lobe frontal/(0.43*largeur)")
+```
+
+Avec cette nouvelle variable calculée, nous pouvons séparer pratiquement parfaitement les crabes de la variété orange de ceux de la variété bleue sur base uniquement de la forme de la carapace. Admettons que le critère de couleur ne soit pas fiable à 100% avec des individus pouvant arborer des colorations intermédiaires qui rendent la discrimination des variétés sur base uniquement du criètre de couleur hazardeuse. Si c'est le cas, notre indice `front_width` est très utile pour séparer ces variétés ou en tous cas, pour aider à le faire.
+
+```{block, type='info'}
+Les **variables calculées** transforment les données brutes pour les rendre plus utilisables dans le cadre d'analyses statistiques. C'est un processus utile et important. Elles permettent de calculer des **indices**, des **ratios**, des **attributs**, ... qui mettent en évidence une partie de l'information contenue dans les données de départ, mais mal exprimée au niveau des variables brutes individuelles.
+
+Les tranformations de variables (logarithme, puissances, racines, fonction inverse, ...) constituent une "famille de calculs" que nous pouvons appliquer pour rendre les données plus facile à traiter, typiquement pour linéariser un nuage de points curvilinéaire, ou pour transformer une distribution log-Normale en distribution Normale.
+
+Les **métriques** sont des variables issues de calculs plus complexes et qui visent à faire émerger une propriété particulièrement intéressante en rapport avec une question que nous nous posons. *Bien définir et calculer des métriques est un art complexe*, mais c'est aussi la clé d'une bonne analyse. La capacité à définir correctement ses métriques distingue un bon scientifique des données de quelqu'un qui utilise les outils statistiques de manière machinale sans réfléchir suffisamment à ce qu'il fait.
+
+**Devenez une/une bon(ne) scientifique des données\ : créez et utilisez des métriques adéquates le plus souvent possible.**
+```
+
+
+### Biométrie humaine
+
+Le jeu de données sur la biométrie humaine que vous avez vous-mêmes réalisé est un fantastique terrain de jeu pour définir des métriques. La question centrale étant ici d'étudier la question de l'obésité, les métriques les plus importantes sont celles qui permettent de bien quantifier cela.
+
+Rappelons nous que nous avons déjà utilisé une métrique avec l'imc et les différentes classes proposées par l'OMS.
+
+Prenons le jeu de données `biometry` du package `BioDataScience`  comme exemple.
+
+```{r}
+biometry <- read("biometry", package = "BioDataScience", lang = "FR") %>.%
+  select(., height, weight)
+
+biometry
+```
+
+L'utilisation d'un nuage de points de la taille en fonction de la masse ne nous permet pas de quantifier l'obésité au sein de notre échantillon comme le montre le graphique ci-dessous\ :
+
+```{r}
+chart(biometry, height ~ weight) +
+  geom_point()
+```
+
+L'utilisation de l'IMC comme indice afin de quantifier l'obésité est bien plus intéressant.
+
+```{r}
+biometry %>.%
+  mutate(., 
+         bmi = weight / (height / 100)^2,
+         bmi_schedule = case_when(
+           bmi < 18.5 ~ "sous-poids",
+           bmi >= 18.5 & bmi < 25 ~ "poids normal",
+           bmi >= 25 & bmi < 30 ~ "surpoids",
+           bmi >= 30 ~ "obèse"),
+         bmi_schedule = factor(
+           bmi_schedule, 
+           levels = c("sous-poids", "poids normal", "surpoids", "obèse"), 
+           ordered = TRUE)
+         ) -> biometry
+
+biometry
+```
+
+Le graphique en barres de l'imc est plus intéressant que le graphique précendent afin de mettre en avant les individus obèses. 
+
+```{r}
+chart(biometry, ~ bmi_schedule) +
+  geom_bar() +
+  labs(x = "Echelle de l'IMC", "Dénombrement")
+```
+
+##### A vous de jouer ! {-}
+
+```{block, type='bdd'}
+Dans le projet portant sur le biométrie humaine, réalisez les instructions proposées  via le lien suivant :
+
+<https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_08/presentations/indices.md>
+
+Afin de vous aider dans la recherche d'indices intéressants et pertinents, des documents sont mis à votre disposition via le lien suivant:
+
+<https://github.com/BioDataScience-Course/sdd_lesson/tree/2019-2020/sdd1_08/biometry_doc_supp>
+
+Débutez votre recherche d'indice avec la lecture de l'article : Comment mesurer la corpulence et le poids idéal ? Histoire, intérêts et limites de l'indice de masse corporelle
+
+```
+
+
+## Evaluation par les pairs (étudiants de Charleroi)
 
 En science, l'évaluation par les pairs ("peer-reviewing" en anglais) est le mécanisme le plus efficace pour améliorer la qualité des travaux publiés (articles scientifiques ou ouvrages plus conséquents). Par définition, les résultats publiés en science sont à la frontière de l'inconnu. Il est donc difficile de vérifier si le travail est correct. Les personnes les plus à même de le faire sont les collègues qui travaillent sur le même sujet, ou dans un domaine proche, les "pairs".
 

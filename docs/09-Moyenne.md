@@ -19,14 +19,14 @@
 
 ##### Prérequis {-}
 
-Ce module élabore sur les notions vues au module \@ref(proba) concernant les lois de distribution statistiques et sur le concept de test d'hypothèse abordé dans le module \@ref(chi2). Ces deux précédents modules doivent donc être maîtrisés avant d'aller plus avant ici.
+Ce module est élaboré sur les notions vues au module \@ref(proba) concernant les lois de distribution statistiques et sur le concept de test d'hypothèse abordé dans le module \@ref(chi2). Ces deux précédents modules doivent donc être maîtrisés avant d'aller plus avant ici.
 
 
 ## Une histoire de bière...
 
 Les belges, c'est connu, apprécient la bière. Mais ils ne sont pas les seuls, et c'est très heureux\ ! Car c'est en effet grâce à un certain William Sealy Gosset, brasseur et statisticien (et oui, ça ne s'invente pas) que l'un des tests d'hypothèses des plus utilisés en biologie a vu le jour\ : le test de "Student" qui permet de comparer des moyennes.
 
-Pour la petite histoire, Gosset a travaillé pour une certaine brasserie irlandaise du nom de Guiness au début du 20^ème^siècle. C'est en étudiant la variabilité de sa bière d'un cru à l'autre que Gosset a découvert la façon dont la moyenne d'un échantillon se distribue. Il a pu dériver une formulation mathématique de cette distribution, la **distribution *t* de Student**, et à partir de là, nous verrons que de nombreuses applications en découlent. Nous pourrons, par exemple, dire si deux moyennes diffèrent *significativement* l'une de l'autre ou pas.
+Pour la petite histoire, Gosset a travaillé pour une certaine brasserie irlandaise du nom de Guiness au début du 20^ème^siècle. C'est en étudiant la variabilité de sa bière d'un cru à l'autre que Gosset a découvert la façon dont la moyenne d'un échantillon se distribue. Il a pu dériver une formulation mathématique de cette distribution, la **distribution *t* de Student**, et à partir de là, nous verrons que de nombreuses applications en découlent. Nous pourrons, par exemple, dire si deux moyennes diffèrent **significativement** l'une de l'autre ou pas.
 
 Mais au fait, pourquoi, cette distribution porte-t-elle le nom de "Student"\ ? Visionnez la vidéo suivante (malheureusement en anglais) pour le découvrir^[Vous pouvez activer les sous-titres en anglais via la barre de boutons en bas de la vidéo pour vous aider à comprendre l'histoire.].
 
@@ -44,7 +44,7 @@ Le contrat que Gosset a signé avec son employeur l'empêchait de publier des r�
 <pre><code>BioDataScience::run(&quot;09a_ttest&quot;)</code></pre>
 </div>
 
-Pour rappel, nous faisons de l'**inférence** sur base d'un échantillon parce que nous sommes incapables de mesurer tous les individus d'une population. Il faut au préalable que l'échantillon soit *représentatif*, donc réalisé dans les règles de l'art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d'un échantillon facilement (eq. \@ref(eq:moyenne). 
+Pour rappel, nous faisons de l'**inférence** sur base d'un échantillon parce que nous sommes incapables de mesurer tous les individus d'une population. Il faut au préalable que l'échantillon soit **représentatif**, donc réalisé dans les règles de l'art (par exemple, un échantillonnage aléatoire simple de la population). Nous pouvons calculer la moyenne d'un échantillon facilement (eq. \@ref(eq:moyenne)). 
 
 \begin{equation} 
   \bar{x}=\sum_{i=1}^n{\frac{x_i}{n}}
@@ -64,7 +64,7 @@ A noter que $s^2$ est également appelée la **variance**^[L'équation proposée
 
 En fait, ce qui nous intéresse, ce n'est pas vraiment la moyenne de l'échantillon, mais celle de la population que l'on notera $\mu$^[Notez que les lettres latines sont utilisées pour se référer aux variables et aux descripteurs statistiques telle que la moyenne pour l'échantillon, alors que les paramètres équivalents de la population, qui sont inconnus, sont représentés par des lettres grecques en statistiques.]. D'où la question\ : comment varie la moyenne d'un échantillon à l'autre\ ?
 
-Nous pouvons répondre à cette question de manière empirique en utilisant le générateur pseudo-aléatoire de R. Partons d'une distribution théorique de la population qui soit normale, de moyenne *\mu$ = 8 et d'écart type $\sigma$ = 2. Nous pouvons échantillonner neuf individus. Cela donne\ :
+Nous pouvons répondre à cette question de manière empirique en utilisant le générateur pseudo-aléatoire de R. Partons d'une distribution théorique de la population qui soit normale, de moyenne $\mu$ = 8 et d'écart type $\sigma$ = 2. Nous pouvons échantillonner neuf individus. Cela donne\ :
 
 
 ```r
@@ -97,7 +97,7 @@ mean(rnorm(9, mean = 8, sd = 2))
 # [1] 8.660309
 ```
 
-Cette fois-ci, nous obtenons une moyenne de 8,7. Nous savons que la moyenne $\mu$ qui nous intéresse est très probablement différente de la moyenne de notre échantillon, **mais de conbien\ ?** Pour le déterminer, nous devons définir comment la moyenne de l'échantillon varie d'un échantillon à l'autre, c'est ce qu'on appelle la **distribution d'échantillonnage**. Nous pouvons le déterminer expérimentalement en échantillonnant un grand nombre de fois. On appelle cela une **méta-expérience.** En pratique, c'est difficile à faire, mais avec notre ordinateur et le générateur de nombres pseudo-aléatoires de R, pas de problèmes. Donc, comment se distribue la moyenne entre, ... disons dix mille échantillons différents de neufs individus tirés de la même population^[Nous utilisons pour se faire une boucle `for` dans R qui réitère un calcul sur chaque élément d'un vecteur, ici, une séquence 1, 2, 3, ..., 10000 obtenue à l'aide de l'instruction `1:10000`.]\ ?
+Cette fois-ci, nous obtenons une moyenne de 8,7. Nous savons que la moyenne $\mu$ qui nous intéresse est très probablement différente de la moyenne de notre échantillon, **mais de combien\ ?** Pour le déterminer, nous devons définir comment la moyenne de l'échantillon varie d'un échantillon à l'autre, c'est ce qu'on appelle la **distribution d'échantillonnage**. Nous pouvons le déterminer expérimentalement en échantillonnant un grand nombre de fois. On appelle cela une **méta-expérience.** En pratique, c'est difficile à faire, mais avec notre ordinateur et le générateur de nombres pseudo-aléatoires de R, pas de problèmes. Donc, comment se distribue la moyenne entre, ... disons dix mille échantillons différents de neufs individus tirés de la même population^[Nous utilisons pour se faire une boucle `for` dans R qui réitère un calcul sur chaque élément d'un vecteur, ici, une séquence 1, 2, 3, ..., 10000 obtenue à l'aide de l'instruction `1:10000`.]\ ?
 
 
 ```r
@@ -430,8 +430,8 @@ Cette distribution *n'est pas* une Student. Par contre, elle y ressemble plus qu
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="09-Moyenne_files/figure-html/tdistri5-1.png" alt="Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange)." width="672" />
-<p class="caption">(\#fig:tdistri5)Une distribution de Student avec comparaison de l'IC 95% (entre les aires en rouge) et l'IC 90% (entre les aires en orange).</p>
+<img src="09-Moyenne_files/figure-html/tdistri5-1.png" alt="Distribution d'échantillonnage à partir d'une distribution uniforme, n = 100. Ajustement d'une distribution de Student équivalente par dessus l'histogramme." width="672" />
+<p class="caption">(\#fig:tdistri5)Distribution d'échantillonnage à partir d'une distribution uniforme, n = 100. Ajustement d'une distribution de Student équivalente par dessus l'histogramme.</p>
 </div>
 
 Nous venons de montrer de manière empirique que lorsque la distribution de la population est différente d'une distribution normale, la distribution d'échantillonnage tend vers une *t* de Student pour un $n$ grand. Ceci se démontre de manière mathématique par le fameux **théorème central limite** que nous avons déjà abordé et qui est si cher aux statisticiens (nous vous épargnons cette démonstration ici).
@@ -470,16 +470,16 @@ skimr::skim(crabs)
 #  n obs: 200 
 #  n variables: 8 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #       sex       0      200 200        2 F: 100, M: 100, NA: 0   FALSE
 #   species       0      200 200        2 B: 100, O: 100, NA: 0   FALSE
 # 
-# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:integer ──────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n mean    sd p0 p25  p50 p75 p100     hist
 #     index       0      200 200 25.5 14.47  1  13 25.5  38   50 ▇▇▇▇▇▇▇▇
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n  mean   sd   p0   p25   p50   p75 p100
 #     depth       0      200 200 14.03 3.42  6.1 11.4  13.9  16.6  21.6
 #     front       0      200 200 15.58 3.5   7.2 12.9  15.55 18.05 23.1
@@ -508,7 +508,7 @@ chart(data = crabs, rear ~ sex) +
 
 <img src="09-Moyenne_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" />
 
-Sur le graphique, il semble que les femelles (`sex == "F"`) tendent à avoir une carapace plus large à l'arrière -variable `rear`- que les mâles (`sex == "M"`), mais cette différence est-elle *significative* ou peut-elle être juste liée au hasard de l'échantillonnage\ ? Pour y répondre, nous devons élaborer un test d'hypothèse qui va confronter les hypothèses suivantes (en se basant sur les moyennes)\ :
+Sur le graphique, il semble que les femelles (`sex == "F"`) tendent à avoir une carapace plus large à l'arrière -variable `rear`- que les mâles (`sex == "M"`), mais cette différence est-elle *significative* ou est-elle juste liée au hasard de l'échantillonnage\ ? Pour y répondre, nous devons élaborer un test d'hypothèse qui confrontera les hypothèses suivantes (en se basant sur les moyennes)\ :
 
 - $H_0: \overline{rear_F} = \overline{rear_M}$
 - $H_1: \overline{rear_F} \neq \overline{rear_M}$
@@ -580,7 +580,7 @@ crabs_stats
 # [1] 0.8087907 2.1852093
 ```
 
-Un premier raisonnement consiste à dire que si la valeur attendue sous $H_0$ est comprise dans l'intervalle de confiance, nous ne pouvons pas rejetter l'hypothèse nulle, puisqu'elle représente une des valeurs plausibles à l'intérieur l'IC. Dans le cas présent, l'intervalle de confiance à 95% sur $\Delta rear$ va de 0.81 à 2.19. Il ne contient donc pas zéro. Dans, nous pouvons rejetter $H_0$ au seuil $\alpha$ de 5%.
+Un premier raisonnement consiste à dire que si la valeur attendue sous $H_0$ est comprise dans l'intervalle de confiance, nous ne pouvons pas rejetter l'hypothèse nulle, puisqu'elle représente une des valeurs plausibles à l'intérieur l'IC. Dans le cas présent, l'intervalle de confiance à 95% sur $\Delta rear$ va de 0.81 à 2.19. Il ne contient donc pas zéro. Donc, nous pouvons rejetter $H_0$ au seuil $\alpha$ de 5%.
 
 Nous pouvons effectivement interpréter le test de cette façon, mais le test *t* de Student se définit de manière plus classique en comparant la valeur $t_{obs}$ à la distribution théorique, et en renvoyant une valeur *P* associée au test. Ainsi, le lecteur peut interpréter les résultats avec son propre seuil $\alpha$ éventuellement différent de celui choisi par l'auteur de l'analyse.
 
@@ -615,7 +615,7 @@ Nous pouvons calculer la valeur *P* nous-même comme ceci, sachant la valeur de 
 <p>Ne pas oublier de multiplier la probabilité obtenue par deux, car nous avons un test bilatéral qui considère une probabilité égale à gauche et à droite de la distribution !</p>
 </div>
 
-Naturellement, R propose une fonction toute faite pour réaliser ce test afin que nous ne devions pas détailler les calculs à chaque fois. Il s'agit de la fonction `t.test()`. Dans la SciViews Box, le snippet équivalent est accessible depuis `.hm` pour `hypothesis tests: means`. Dans le menu qui apparaitn, vous choisissez `independant Student's t-test`. Les arguments de la fonction sont les suivants. Le jeu de données dans `data =`, une formule qui reprend le nom de la variable quantitative à gauche (`rear`) et celui de la variable qualitative à deux niveaux à droite (`sex`), l'idication du type d'hypothèse alternative, ici `alternative = "two-sided"` pour un test bilétéral, le niveau de confiance égal à $1 - \alpha$, donc `conf.level = 0.95` et enfin si nous considérons les variances comme égales pour les deux sous-populations `var.equal = TRUE`.
+Naturellement, R propose une fonction toute faite pour réaliser ce test afin que nous ne devions pas détailler les calculs à chaque fois. Il s'agit de la fonction `t.test()`. Dans la SciViews Box, le snippet équivalent est accessible depuis `.hm` pour `hypothesis tests: means`. Dans le menu qui apparait, vous choisissez `independant Student's t-test`. Les arguments de la fonction sont les suivants. Le jeu de données dans `data =`, une formule qui reprend le nom de la variable quantitative à gauche (`rear`) et celui de la variable qualitative à deux niveaux à droite (`sex`), l'idication du type d'hypothèse alternative, ici `alternative = "two-sided"` pour un test bilatéral, le niveau de confiance égal à $1 - \alpha$, donc `conf.level = 0.95` et enfin si nous considérons les variances comme égales pour les deux sous-populations `var.equal = TRUE`.
 
 
 ```r
@@ -637,7 +637,7 @@ t.test(data = crabs, rear ~ sex,
 #          13.487          11.990
 ```
 
-Nous retrouvons exactement toutes les valeurs que nous avons calculées à la main. Dans le cas présent, rappelez-vous la façon d'interpréter le test. Nous comparons la valeur *P* à $\alpha$. Si elle est plus petit, nous rejettons $h_0$, sinon, nous ne la rejettons pas. Ici, nous rejettons $H_0$ et pourrons dire que la largeur à l'arrière de la carapace de *L. variegatus* diffère de manière significative entre les mâles et les femelles au seuil $\alpha$ de 5% (test t bilatéral, *t* = 4,29, ddl = 198, valeur *P* << 10^-3^).
+Nous retrouvons exactement toutes les valeurs que nous avons calculées à la main. Dans le cas présent, rappelez-vous la façon d'interpréter le test. Nous comparons la valeur *P* à $\alpha$. Si elle est plus petit, nous rejettons $H_0$, sinon, nous ne la rejettons pas. Ici, nous rejettons $H_0$ et pourrons dire que la largeur à l'arrière de la carapace de *L. variegatus* diffère de manière significative entre les mâles et les femelles au seuil $\alpha$ de 5% (test t bilatéral, *t* = 4,29, ddl = 198, valeur *P* << 10^-3^).
 
 
 ##### Conditions d'application {-}
@@ -762,7 +762,7 @@ Dans le cas du test indépendant, nous comparons des *individus différents* dan
 
 ![Un test *t* indépendant nécessite une variable numérique et une variable facteur à deux niveaux.](images/sdd1_09/t-test-independent.png)
 
-Un autre cas de figure se présente si nous comparons des mesures réalisées sur les *mêmes* individus. Dans ce cas, le tableau de données se présente différemment\ :
+Un autre cas de figure se présente si nous comparons des mesures réalisées sur les **mêmes** individus. Dans ce cas, le tableau de données se présente différemment\ :
 
 ![Un test *t* apparié nécessite deux variables numériques mesurées sur les mêmes individus, donc les mêmes lignes dans un tableau cas par variables.](images/sdd1_09/t-tests-paired.png)
 
@@ -948,7 +948,7 @@ Le calcul est le même que dans le cas du test *t* apparié, avec l'étape de so
 - $H_0: \overline{med1} = 0$
 - $H_1: \overline{med1} \neq 0$
 
-N'oublions pas une représentation graphique adéquate. Icic, une boite de dispersion avec un trait horizontal superposé pour indiquer la valeur cible convient très bien.
+N'oublions pas une représentation graphique adéquate. Ici, une boite de dispersion avec un trait horizontal superposé pour indiquer la valeur cible convient très bien.
 
 
 ```r
@@ -1104,11 +1104,160 @@ La puissance est de 0,954. Donc, $\beta$ vaut 1 - 0,954 = 0,046 ou pratiquement 
 </div>
 
 
-
-
 ## Représentation graphique
 
-Présentation graphique: dynamite plot + barres d’erreurs. Transformation des données pour linéariser et ou rendre symétrique autour de la moyenne.
+Il n'existe pas un graphique de référence afin de présenter un test *t* de Student ou un test de Wilcoxon. On retrouve malheureusement dans la littérature plusieurs graphiques qui coexistent.  Afin de présenter 3 graphiques courants, nous utilisons le jeu de données `crabs`.
+
+On retrouve généralement 2 graphiques montrant la moyenne et l'intervalle de confiance.
+
+
+```r
+a <- chart(data = crabs, rear ~ sex) +
+  stat_summary(geom = "col", fun.y = "mean") +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_cl_normal", fun.args = list(conf.int = 0.95))
+
+b <- chart(data = crabs, rear ~ sex) +
+  geom_jitter(alpha = 0.3, width = 0.2) +
+  stat_summary(geom = "point", fun.y = "mean", size = 2) +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_cl_normal", fun.args = list(conf.int = 0.95), size = 1)
+
+combine_charts(list(a,b))
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" />
+
+La graphique en barre et le nuage de point représentent identiquement la information. Ils représentent la moyenne avec des barres erreurs qui représentent l'intervalle de confiance à 0.95. Le graphe en dynamite avec des barres d'erreurs ne donne aucune information sur le nombre d'observation. Nous avons déja abordé rapidement cette problématique dans la section \@ref(barres-mean). Il n'est donc pas le graphique optimal pour présenter un test *t* de Student.
+
+Malgré le fait que le test *t* de Student est un test paramétrique, on retrouve dans la littérature scientifique la boite de dispersion qui est pourtant un graphique associé à des valeurs non paramétriques. Pour le test de wilcoxon, la boite de dispersion est l'outil graphique recommandé. 
+
+
+```r
+chart(data = crabs, rear ~ sex) +
+  geom_boxplot()
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" />
+
+Parmi ces 3 choix, nous vous conseillons d'employer le nuage de point avec la valeur moyenne et l'intervalle de confiance.
+
+
+```r
+chart(data = crabs, rear ~ sex) +
+  geom_jitter(alpha = 0.3, width = 0.2) +
+  stat_summary(geom = "point", fun.y = "mean") +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_cl_normal", fun.args = list(conf.int = 0.95))
+```
+
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" />
+
+##### Pièges et astuces {-}
+
+###### Les barres d'erreurs {-}
+
+Que vous utilisiez le nuage de points ou le graphique en barres, vous devez être extrêmement vigilant aux barres d'erreurs. Vous devez toujours préciser et bien comprendre ce que les barres d'erreurs cachent. Voici 4 graphiques qui présentent différentes barres d'erreurs (la taille de l'axe y a volontairement été figée).
+
+
+```r
+p <- chart(data = crabs, rear ~ sex) +
+  geom_jitter(alpha = 0.1, width = 0.2) +
+  stat_summary(geom = "point", fun.y = "mean") +
+  scale_y_continuous(limits = c(5,22))
+
+a <- p +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_cl_normal", fun.args = list(conf.int = 0.95)) 
+
+b <- p +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_sdl", fun.args = list(mult = 1))
+
+c <- p +
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_sdl", fun.args = list(mult = 2)) 
+
+d <- p + 
+  stat_summary(geom = "errorbar", width = 0.1,
+    fun.data = "mean_se", fun.args = list(mult = 1))
+
+combine_charts(list(a,b,c,d))
+```
+
+<div class="figure" style="text-align: center">
+<img src="09-Moyenne_files/figure-html/unnamed-chunk-53-1.png" alt="Nuage de points de la largeur de l'arrière de la carapace en focntion du sexe avec la moyenne et des barres d'erreurs. Graphe A : moyenne et intervalle de confiance 0.95. Graphe B : moyenne et écart-type. Graphe C : moyenne et 2*écart-type. Graphe D : moyenne et erreur standard" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-53)Nuage de points de la largeur de l'arrière de la carapace en focntion du sexe avec la moyenne et des barres d'erreurs. Graphe A : moyenne et intervalle de confiance 0.95. Graphe B : moyenne et écart-type. Graphe C : moyenne et 2*écart-type. Graphe D : moyenne et erreur standard</p>
+</div>
+
+Les formules associées aux barres d'erreurs sont les suivantes de A à D:
+
+- Graphe A : l'intervalle de confiance 0.95 
+
+$$\mathrm{IC}(1 - \alpha) \simeq \bar{x} \pm t_{\alpha/2}^{n-1} \cdot SE_x$$
+
+
+```r
+mean_cl_normal(crabs$rear)
+```
+
+```
+#         y     ymin     ymax
+# 1 12.7385 12.37968 13.09732
+```
+
+- Graphe B : l'écart-type 
+
+$$s_x = \sqrt{\sum_{i=1}^n{\frac{(x_i - \bar{x})^2}{n-1}}}$$
+
+
+```r
+mean_sdl(crabs$rear, mult = 1)
+```
+
+```
+#         y     ymin     ymax
+# 1 12.7385 10.16516 15.31184
+```
+
+- Graphe C : deux fois la valeur de l'écart-type
+
+$$2 \times s_x$$
+
+
+```r
+mean_sdl(crabs$rear, mult = 2)
+```
+
+```
+#         y    ymin     ymax
+# 1 12.7385 7.59182 17.88518
+```
+
+- Graphe D : l'erreur standard  
+
+$$SE_x = \frac{s_x}{\sqrt{n}}$$
+
+
+```r
+mean_se(crabs$rear)
+```
+
+```
+#         y     ymin     ymax
+# 1 12.7385 12.55654 12.92046
+```
+
+Comme nous venons de le voir, les barres d'erreurs sont calculées à partir de différentes fonctions. Il est donc indispensable de préciser explicitement ce que les barres d'erreurs représentent. 
+
+
+##### Pour en savoir plus {-} 
+
+- [Beware of dynamite](http://biostat.mc.vanderbilt.edu/wiki/pub/Main/TatsukiRcode/Poster3.pdf). Démonstration de l'impact d'un graphe en barres pour représenter la moyenne (et l'écart type) = graphique en "dynamite".
+
+- [Dynamite plots : unmitigated evil?](http://emdbolker.wikidot.com/blog%3Adynamite) Une autre comparaison du graphe en dynamite avec des représentations alternatives qui montre que le premier peut avoir quand même quelques avantages dans des situations particulières.
+
+- [Comparaison de moyennes : indiquez la significativité des différences sur le graph](https://statistique-et-logiciel-r.com/comparaison-de-moyennes-indiquer-les-differences-significatives-sur-le-graph/). Tutoriel sur la comparaison de moyennes avec `ggpubr`
 
 
 Pour terminer, bien que la moyenne soit un descripteur statistique très utile, il est parfois utilisé de manière abusive. Une distribution statistique ne se résume pas à un nombre, fût-ce la moyenne. De plus, si la distribution est *asymétrique*, la moyenne est un mauvais choix (préférer alors la médiane, ou transformer les données pour rendre la distribution plus symétrique). La vidéo suivante détaille le problème qui peut se produire\ :

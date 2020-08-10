@@ -22,7 +22,7 @@ La première chose à vérifier à l'ouverture du tutoriel interactif est le nom
 
 ![](images/annexe_a3/learnr2.png)
 
-Le learnr est un outil pédagogique mis au point afin de proposer des tutoriaux interactifs comprennant des illustrations, des questions à choix multiples, des exercices R, ... Les learnr qui vous seront proposés tout au long de votre formation seront composé de la manière suivante :
+Le learnr est un outil pédagogique mis au point afin de proposer des tutoriaux interactifs comprennant des illustrations, des questions à choix multiples, des exercices R, ... Les learnr qui vous seront proposés tout au long de votre formation seront composés de la manière suivante :
 
 - Objectif
 - Introduction
@@ -43,7 +43,7 @@ Cette section vous replacera dans le contexte du tutoriel interactif avec un rap
 
 Cette section peut être de longueur très variable en fonction de la difficulté et des notions à appréhender.
 
-Des zones de codes R vous sont proposées dans les exercices. Elles vous permettent d'expérimenter directement des instructions dans R depuis le document learnr. Pour exécuter ces instructions, il faut cliquer sur `Run Code`. Vous pouvez le faire autant de fois que vous le voulez. Modifiez le code, cliquez `Run Code`, analysez le résultat, modifiez votre code, recliquez `Run Code`, etc... juqu'à ce que vous soyez satisfait du résultat. Finissez l'exercice et soumettez votre réponse en cliquant sur `Submit Answer`.
+Des zones de codes R vous sont proposées dans les exercices. Elles vous permettent d'expérimenter directement des instructions dans R depuis le document learnr. Pour exécuter ces instructions, il faut cliquer sur `Run Code`. Vous pouvez le faire autant de fois que vous le voulez. Modifiez le code, cliquez `Run Code`, analysez le résultat, modifiez votre code, recliquez `Run Code`, etc... jusqu'à ce que vous soyez satisfait du résultat. Finissez l'exercice et soumettez votre réponse en cliquant sur `Submit Answer`.
 
 ![](images/annexe_a3/learnr2.gif)
 
@@ -55,6 +55,6 @@ Cette section termine ce tutoriel et propose de laisser des commentaires avec l'
 
 ![](images/annexe_a3/learnr8.png)
 
-En retournant dans RStudio, vous devez déconnecter votre process R qui est toujours occupé à servir la page learnr du tutoriel. Pour cela, placez le curseur dans la fenêtre `Console` et cliquez sur la touche `Esc`. A ce moment, vous récupérez la main dans R et pouvez à nouveau retravailler normalement dans RStudio.
+En retournant dans RStudio, vous devez déconnecter votre process R qui est toujours occupé à servir la page learnr du tutoriel. Pour cela, placez le curseur dans la fenêtre `Console` et cliquez sur la touche `Esc`. A ce moment, vous récupérez la main dans R et pouvez à nouveau travailler normalement dans RStudio.
 
 ![](images/annexe_a3/learnr9.png)

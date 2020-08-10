@@ -10,7 +10,7 @@
 
 - Acquérir des données et les encoder correctement et de manière à ce que les analyses soient reproductibles
 
-- Etre capable de remanier des tableaux de données et de fusionner plusieurs tableaux
+- Être capable de remanier des tableaux de données et de fusionner plusieurs tableaux
 
 
 ##### Prérequis {-}
@@ -20,16 +20,63 @@ Ce module est la continuation du module \@ref(import) dont le contenu doit être
 
 ## Tableaux de données
 
-Les tableaux de données sont principalement représentés sous deux formes : les tableaux **cas par variables** et les tableaux de **contingence**.
+Les tableaux de données sont principalement représentés sous deux formes\ : les tableaux **cas par variables** et les tableaux de **contingence**.
 
 
 ### Tableaux cas par variables
 
-Chaque individus est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de [tidy data](https://www.jstatsoft.org/article/view/v059i10).
+Chaque individu est représenté en ligne et chaque variable en colonne par convention. En anglais, on parlera de [tidy data](https://www.jstatsoft.org/article/view/v059i10).
 
-Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante : est-ce que j'ai un seul et même individu représenté sur *chaque* ligne du tableau\ ? Si la réponse est non, le tableau de données n'est **pas** correctement encodé.
+Nous nous efforcerons de toujours créer un tableau de ce type pour les données brutes. La question à se poser est la suivante\ : est-ce que j'ai un seul et même individu représenté sur *chaque* ligne du tableau\ ? Si la réponse est non, le tableau de données n'est **pas** correctement encodé.
 
-TODO : exemple et solution
+Par exemple, considérez les données suivantes concernant la taille adulte mesurée en cm pour deux espèces de petits rongeurs\ :
+
+| hamster  | cobaye  |
+|:---------|:--------|
+| 15,4     | 21,7    |
+| 18,2     | 22,0    |
+| 17,6     | 24,3    |
+| 14,2     | 23,9    |
+| 16,8     |         |
+
+Nous notons immédiatement que ce *n'est pas* un tableau correctement présenté en cas par variable. En effet, un même individu ne peut appartenir simultanément aux hamsters et aux cobayes. Il s'agit forcément d'individus différents mesurés. Nous n'avons donc pas respecté ici la règle de "une ligne = un individu". D'ailleurs, nous avons plus de hamsters mesurés ici que de cobayes, ce qui se marque par un déséquilibre dans le remplissage du tableau... qui doit aussi être un signal d'alarme (à moins qu'il n'y ait des valeurs manquantes).
+
+Une présentation correcte de ces données consiste à utiliser une colonne "taille" et une seconde "espèce" pour indiquer toutes les caractéristiques pertinentes dans le cadre de l'étude tout en respectant les conventions d'un tableau cas par variables. Cela donne\ :
+
+| espèce  |  taille  |
+|:--------|:---------|
+| hamster | 15,4     |
+| hamster | 18,2     |
+| hamster | 17,6     |
+| hamster | 14,2     |
+| hamster | 16,8     |
+| cobaye  | 21,7     |
+| cobaye  | 22,0     |
+| cobaye  | 24,3     |
+| cobaye  | 23,9     |
+
+Ce dernier tableau est moins compact et plus "verbeux" que le présenter (il faut répéter "hamster" ou "cobaye" plusieurs fois dans la première colonne). Pour cette raison, un novice ou un encodeur ignorant les règles élémentaires des sciences des données est souvent amené, de bonne fois, à adopter la présentation qui semble la plus compacte, **mais ce n'est pas toujours la plus pertinente\ !** Heureusement, dons R le outils existent pour passer d'une forme à l'autre facilement.
+
+Considérez maintenant ce second exemple fictif avec le résultat d'un test enregistré avant et après un traitement sensé améliorer le résultat du test\ :
+
+| individu         |  résultat  |
+|:-----------------|:-----------|
+| individu 1 avant |  10,3      |
+| individu 1 après |  12,5      |
+| individu 2 avant |  11,6      |
+| individu 2 après |  12,4      |
+| individu 3 avant |  10,8      |
+| individu 3 après |  10,6      |
+
+Ici, les labels utilisés dans la colonne "individu" suggère que l'expérience à été menée avant et après à chaque fois sur le même individu. Ainsi, le tableau a 6 lignes, mais ne représente que 3 individus. Ici encore, le tableau est mal encodé. Il aurait fallu considérer une et une seule ligne par individu et reporter les résultats "avant" et "après" le traitement dans des *colonnes différentes*. Voici ces mêmes données présentées correctement selon un tableau cas par variables\ :
+
+| avant  | après |
+|:-------|:------|
+| 10,3   | 12,5  |
+| 11,6   | 12,4  |
+| 10,8   | 10,6  |
+
+\BeginKnitrBlock{note}<div class="note">Avant toute analyse, vérifier le type de tableau de données que vous avez à disposition. Le point de départ le plus courant et le plus sûr est le **tableau cas par variables**. La question à se poser pour vérifier si le tableau est bien présenté est\ : "a-t-on une et une seule ligne dans le tableau pour chaque individu\ ?" Si ce n'est pas le cas, il faut remanier le tableau avant de commencer son analyse.</div>\EndKnitrBlock{note}
 
 Les tableaux de données que vous avez traités jusqu'à présent étaient tous des tableaux **cas par variables**. Chaque ligne représentait un _individu_ sur qui une ou plusieurs _variables_ (en colonnes) étaient mesurées.
 
@@ -128,7 +175,7 @@ Pour de plus gros tableaux, il vaut mieux utiliser un tableur tel que Excel ou L
 
 ### Tableaux de contingence
 
-C'est le dénombrement de l’occurrence de chaque niveau d'une (tableau à une entrée) ou de deux variables **qualitatives** (tableau à double entrée). La fonction `table()` crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :
+Le tableau cas par variables n'est toutefois pas la seule représentation (correcte) possible des données. Un **tableau de contingence** représente de manière bien plus compacte le dénombrement de l’occurrence de chaque niveau d'une (tableau à une entrée) ou de deux variables **qualitatives** (tableau à double entrée). La fonction `table()` crée ces deux types de tableaux de contingence à partir de données encodées en tableau cas par variables :
 
 
 ```r
@@ -161,7 +208,7 @@ anthirrhinum
 #            54           122            58
 ```
 
-Une troisième possibilité est d'utiliser un tableau indiquant les **fréquences d'occurence** dans une colonne (`freq` ci-dessus). Ce n'est **pas** un tableau cas par variable, mais une forme bien plus concise et pratique pour pré-encoder les données qui devront être ensuite transformées en tableau de contingence à l'aide de la fonction `xtabs()`. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction `rep()`).
+Une troisième possibilité est d'utiliser un tableau indiquant les **fréquences d'occurence** dans une colonne (`freq` ci-dessus). Ce n'est **pas** un tableau cas par variables, mais une forme bien plus concise et pratique pour pré-encoder les données qui devront être ensuite transformées en tableau de contingence à l'aide de la fonction `xtabs()`. Voici un exemple pour un tableau de contingence à double entrée. Notez que le tableau cas par variable correspondant devrait contenir 44 + 116 + 19 + 128 = 307 lignes et serait plus fastidieux à construire et à manipuler (même en utilisant la fonction `rep()`).
 
 
 ```r
@@ -209,7 +256,7 @@ knitr::kable(timolol_table,
 
 
 
-Table: (\#tab:unnamed-chunk-11)Exemple de table de contingence à double entrée.
+Table: (\#tab:unnamed-chunk-12)Exemple de table de contingence à double entrée.
 
           placebo   timolol
 -------  --------  --------
@@ -226,7 +273,7 @@ tab2 <- ggpubr::ggtexttable(table(biometry$gender, biometry$age_rec))
 combine_charts(list(tab1, tab2), nrow = 2)
 ```
 
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" />
+<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" />
 
 Différentes fonctions dans R existent également pour convertir un tableau de contingence en tableau cas par variables (ou en tous cas, en un tableau similaire). Par exemple, `as_dataframe()` renvoie un tableau indiquant les fréquences d’occurrences :
 
@@ -409,15 +456,89 @@ Ce tableau peut-être encodé sous forme textuelle et placé dans le même dossi
 
 ## Population et échantillonnage
 
-TODO: partie encore à écrire
+Nos analyses statistiques seraient bien évidemment beaucoup plus simple si nous pouvions toujours mesurer tous les individus concernés par nos études. En fait, c'est presque toujours impossible car les **populations** concernées sont souvent très larges, voire infinies. Nous devons donc mesurer un petit sous-ensemble de la population, ce que nous appelons un **échantillon** ("sample" en anglais) de taille finie déterminée (on parle de la **taille de l'échantillon** ou "sample size" en anglais). Le processus qui mène à la sélection des individus dans l'échantillon s'appelle l'**échantillonnage** ("sampling" en anglais). De cet échantillon, nous souhaitons malgré tout retirer un maximum d'information concernant la population d'origine. Cela s'appelle faire de l'**inférence** sur la population à partir de l'échantillon ("to infer" en anglais).
+
+![Population et échantillon.](images/sdd1_06/pop_sample.png)
+
+\BeginKnitrBlock{warning}<div class="warning">Faites attention à la signification des termes selon les disciplines. Par exemple, le terme **population** ne signifie pas la même chose pour un biologiste (ensemble des individus d'une même espèce pouvant se reproduire entre eux) et pour un statisticien (ensemble des valeurs que peut prendre une variable). Ainsi, la définition statstique du terme se réfère à un bien plus grand sous-ensemble en général. Par exemple, si nous étudions la souris *Mus musculus*, nous considèrerons bien évidemment une population (ou une souche donnée pour les souris de laboratoire) en qualité de biologistes. Les statisticiens considèreront l'ensemble des souris qui existent, ont existé et existeront à l'avenir comme **la** population de souris.
+
+De même, un **individu** statistique est une entité sur laquelle nous effectuons nos mesures (ce qui donne lieu à une **observation** pour chaque **variable**). Ainsi, un individu statistique peut correspondre ou non à un individu biologique selon ce que l'on considère. Par exemple, une section dans un organe peut constituer un individu statistique lors de l'étude de l'hétérogénéité à l'intérieur de cet organe. Nous aurons donc autant d'individus statistiques que de sites de prélèvement sur l'organe, ... même si ce dernier provient au final du même individu biologique (même animal ou végétal)\ !</div>\EndKnitrBlock{warning}
+
+La **variabilité** tant au niveau de la population que de l'échantillon provient essentiellement de deux facteurs\ :
+
+1. La **variabilité individuelle** inhérente (nous n'avons pas tous la même taille ne la même masse, par exemple),
+
+2. Les **erreurs de mesure**.
+
+Ces deux facteurs se cumulent pour contribuer à disperser les valeurs d'un individu à l'autre. Nous n'avons que peu de prise sur la variabilité individuelle, mais nous pouvons parfois réduire les erreurs de mesure si cela s'avère souhaitable en utilisant un appareil de mesure plus précis, par exemple. Quoi qu'il en soit, plus la variabilité est importante, plus la taille de l'échantillon devra également être grande pour concerver une bonne "représentativité" de la population.
+
+Du point de vue de la notation mathématique, nous utiliserons une lettre latine majuscule en italique pour représenter un variable, par exemple, *X*. La taille de l'échantillon est souvent notée *n*. Les observations individuelles de la variable *x* pour les *n* individus de l'échantillon seront alors notés avec une lettre minuscule en italique assortie d'un indice compris entre 1 et *n*, donc, *x~i~* de manière générale avec l'indice *i* variant de 1 à *n*. Ainsi, *x*~5~ représente la cinquième observation pour la variable *X* dans notre échantillon, et *x~n~* est la dernière observation.
+
+
+### Échantillonnage aléatoire
+
+La démarche du statisticien et du scientifique des données est de retirer un maximum d'information d'un échantillon afin de faire des inférences fiables sur la population tout entière (c'est-à-dire, tenter de tirer des conclusions les plus générales possibles à partir de l'étude d'un petit échantillon seulement). Ceci n'est possible que si l'échantillon "est conforme" à la population. En langage statistique on dit que l'**échantillon est représentatif**.
+
+Un échantillon représentatif n'est pas facile à obtenir et il faut respecter scrupuleusement certaines règles pour l'obtenir. *A contrario*  un échantillon **non** représentatif s'obtient sans précautions particulières, mais ce dernier est quasi-toujours totalement inutile (on ne peut tirer de conclusions *que* sur cet échantillon particulier). Imaginez un soudage qui ne représente pas la population sondée... quel est son intérêt\ ? Il est nul\ !
+
+La meilleure façon d'obtenir un échantillon représentatif est de réaliser un **échantillonnage aléatoire**. Dans ce cas, chaque individu de la population doit avoir la même chance d'être sélectionné dans l'échantillon. Nous parlons aussi d'échantillonnage au hasard. Vous devez bien réfléchir au **processus** qui va mener à la sélection des individus dans l'échantillon. Celui-ci doit comporter une étape qui fait intervenir le hasard.
+
+\BeginKnitrBlock{error}<div class="error">"Choisir au hasard" ses individus en les prélevant au petit bonheur la chance en fonction de son humeur n'est **pas** une bonne approche. En effet, notre main qui saisira les individus à inclure dans l'échantillon aura tendance à prélever ceux qui sont plus facile à attraper ou plus proches, par exemple. Il peut s'agir d'individus moins vigoureux, moins réactifs, ou au contraire, moins peureux... Du coup, nous n'étudierions qu'une fraction de la population qui correspond à une caractéristique particulière (ceux qui sont faibles et peu réactifs, par exemple)
+
+Une bonne sélection aléatoire **doit** faire intervenir le hasard (tirage au sort dans une urne, pile ou face, jet de dés, ou génération de nombres dits "pseudo-aléatoires" à l'aide d'un ordinateur). Par exemple, si vous avez un élevage de souris dans votre laboratoire, et que vous considérez cet élevage comme votre population, vous pouvez réaliser deux groupes (témoin et traitement) de cinq souris chacuns de plusieurs façons\ :
+  
+1. Prendre dix souris dans les cages "au hasard", et les répartir toujours "au hasard" entre les deux groupes. Ce type d'échantillonnage est **incorrect**. En effet, votre choix sera (inconsciemment) conditionné.
+
+2. Donner un identifiant numérique unique à chacune de vos souris. Ensuite tirer deux fois cinq identifiants à partir d'une urne, ou effectuer ce même traitement virtuellement à l'aide d'un ordinateur. Dans ce cas, l'échantillonnage sera réellement aléatoire et correctement réalisé\ !</div>\EndKnitrBlock{error}
+
+En pratique, nous pourrons utiliser la fonction `sample()` dans R. Elle permet de simulation facilement et rapidement le processus de tirage au hasard depuis une urne. Dans le cas de nos deux groupes de cinq souris à partir d'un élevage qui contient 213 animaux numérotés de 1 à 213 (identifiants uniques), nous ferons\ :
+
+
+
 
 
 ```r
-DT::datatable(iris)
+# Echantillon de 5 souris témoins
+sample(1:213, size = 5)
 ```
 
-<!--html_preserve--><div id="htmlwidget-7ba532b54282c8d428ae" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7ba532b54282c8d428ae">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+```
+# [1]  15  12 102 136  42
+```
+
+```r
+# Echantillon de cinq souris pour le traitement
+sample(1:213, size = 5)
+```
+
+```
+# [1] 187 108 211  68  49
+```
+
+Ici, la sélection aléatoire (en réalité, on parle de "pseudo-aléatoire" pour ces nombres générés par un algorithme, mais qui ont des propriétés très similaires au hasard pur) nous indique que nous devrons aller chercher les souris n°15, 12, 102, 136 er 42 dans notre élevage pour notre groupe témoin, et les souris n°187, 108, 211, 68 et 49 pour le groupe traitement.
+
+Dans le cas où un échantillonnage doit se faire **avec replacement** (l'équivalent de replacer une boule dans l'urne à chaque tirage au sort), nous pouvons indiquer l'argument `replace = TRUE` dans `sample()`. Donc, quelque chose comme `sample(0:9, size = 50, replace = TRUE)` pour échantillon les chiffres 0 à 9 au hasard cinquante fois avec remise (à chaque tirage chaque chiffre a même chance d'être tiré).
+
+L'utilisation de `sample()` est pratique, mais cela rend le code **non reproductible**. En effet, à chaque fois, la fonction génère une série différente au hasard (c'est son rôle\ !) Toutefois, comme la série est pseudo-aléatoire, il est possible de regénérer la même série une seconde fois si on part du même point dans l'algorithme qui la calcule. Cela peut être réalisé à l'aide de `set.seed()`. Vous *devez* indiquer comme argument à cette dernière fonction un nombre aléatoire. Ce nombre représentera une position dans la séquence générée par l'algorithme de sorte que la série suivante obtenue à l'aide de `sample()` sera toujours la même. Voici comment cela fonctionne\ :
+
+
+```r
+set.seed(2563) # Utiliser un nombre différent à chaque appel de set.seed() !
+sample(1:10, size = 6)
+```
+
+```
+# [1] 10  3  4  5  7  8
+```
+
+
+### Échantillonnage stratifié
+
+L'échantillonnage aléatoire n'est pas la seule stratégie correcte. L'**échantillonnage stratifié** consiste à diviser la population en sous-populations identifiables facilement (par exemple, séparer la population en fonction du sexe, ou de l'âge, voire des deux simultanément). Ensuite, un échantillonnage aléatoire est réalisé à l'intérieur de chaque sous-population pour un nombre déterminé d'individus, souvent le même. Cette approche plus complexe est utile si les sous-population sont **très mal balancées** (une sous-population possède bien plus d'individus qu'une autre).
+
+Par exemple, vous voulez comparer des prélèvements sanguins faits sur une population d'européens hospitalisés dans le but de déterminer les critères qui permettent de diagnostiquer une infection nosocomiale^[Une infection nosocomiale est une infection contractée dans un hopital.] rare. Les individus sont suivis en hopital par définition et nous admettrons que l'on sait *a priori* s'ils sont atteints de la maladie ou non grâce à d'autres tests plus lourds et coûteux. La maladie est rare heureusement. Sa prévalence n'est que de 1 cas sur 10.000.
+
+Dans ce cas, si vous effectuez un échantillonnage aléatoire de 100 patients ou même de 1.000 patients hospitalisés, vous avez toutes les chances de ne pas include même un seul patient atteint de l'infection\ ! Ici l'échantillonnage stratifié est utile. Il consiste à séparer les patients en deux sous-populations\ : ceux qui sont atteints et les autres. Ensuite, vous décidez, par exemple, d'analyser 50 prélèvements sanguins dans chacune des deux sous-populations. Vous échantillonnez alors 50 patients aléatoirement comme nous l'avons fait plus haut pour nos souris, mais à l'intérieur de chaque sous-population. Au final, votre échantillon contiendra alors 50 patients infectés et 50 autres qui ne le sont pas. Cet échantillon est également représentatif (sauf, bien sûr, de la prévalence de l'infection).
 
 
 ## Acquisition de données
@@ -441,7 +562,7 @@ Dans le module \@ref(import), vous avez pris connaissance des types de variable 
     + Remanier des données
     + Visualiser et décrire des données 
     + Analyser les données (traitements statistiques, modélisation,...).
-- Produire des supports de présentation pour répondant à la question de départ et diffuser l'information dans la communauté scientifique
+- Produire des supports de présentation répondant à la question de départ et diffuser l'information dans la communauté scientifique
 
 Nous traitons ici des premières étapes qui visent à acquérir les données.
 
@@ -462,9 +583,9 @@ De même, vous allez devoir attribuer un code **unique** à chaque individu mesu
 
 #### Respect de la vie privée
 
-Lors d'expérience sur des personnes, le respect de la vie privée **doit** être pris en compte^[En Europe, les données numériques concernant les personnes sont soumises à des règles strictes édictées dans le [Règlement Général pour la Protection des Données](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/principles-gdpr_fr) ou **RGPD** en abrégé, en vigueur depuis le 25 mai 2018. Vous devez vous assurer de respecter ce règlement lors de la collecte et de l'utilisation de données relatives à des personnes. Pour les autres type de données, le droit d'auteur ou des copyrights peuvent aussi limiter votre champ d'action. Renseignez-vous !]. Le nom et le prénom, ou toute autre information permettant de retrouver les individus étudiés (adresse mail, numéro de sécurité sociale, etc.) ne *peut pas* apparaître dans la base de données consolidée. En outre, il vous faudra un accord explicite des personnes que vous voulez mesurer, et il faudra leur expliquer *ce que* vous faites, et *comment* les données seront ensuite utilisées. Une question se pose : comment pouvoir revenir vers les enregistrements liés à un individu en particulier (en cas d'erreur d'encodage, par exemple) si les informations relatives directement à ces individus ne sont pas consignées dans le tableau final ? Réfléchissez à la façon dont vous vous y prendriez avant de lire la suite...
+Lors d'expérience sur des personnes, le respect de la vie privée **doit** être pris en compte^[En Europe, les données numériques concernant les personnes sont soumises à des règles strictes édictées dans le [Règlement Général pour la Protection des Données](https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/principles-gdpr_fr) ou **RGPD** en abrégé, en vigueur depuis le 25 mai 2018. Vous devez vous assurer de respecter ce règlement lors de la collecte et de l'utilisation de données relatives à des personnes. Pour les autres type de données, le droit d'auteur ou des copyrights peuvent aussi limiter votre champ d'action. Renseignez-vous !]. Le nom et le prénom, ou toute autre information permettant de retrouver les individus étudiés (adresse mail, numéro de sécurité sociale, etc.) **ne peuvent pas apparaître** dans la base de données consolidée. En outre, il vous faudra un **accord explicite** des personnes que vous voulez mesurer, et il faudra leur expliquer ce que vous faites, et **comment** les données seront ensuite utilisées. Une question se pose : comment pouvoir revenir vers les enregistrements liés à un individu en particulier (en cas d'erreur d'encodage, par exemple) si les informations relatives directement à ces individus ne sont pas consignées dans le tableau final ? Réfléchissez à la façon dont vous vous y prendriez avant de lire la suite...
 
-Voici un petit tableau qui correspond à ce que vous ne pourrez **pas** faire (nom et prénom explicitement mentionnés dans le tableau) :
+Voici un petit tableau qui correspond à ce que vous ne pourrez **pas faire** (nom et prénom explicitement mentionnés dans le tableau) :
 
 
 ```r
@@ -540,20 +661,30 @@ A partir des données du tableau général consolidé, personne à part lui ne p
 
 ##### A vous de jouer {-}
 
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
+
+    BioDataScience::run("06a_test")
+</div>\EndKnitrBlock{bdd}
+
 Votre objectif est d'acquérir des données pour étudier la prévalence de l'obésité dans la population. En classe, vous allez réfléchir par équipes aux données qu'il vous faudra mesurer : *quoi ?* *pourquoi ?* *comment ?* Les résultats de votre réflexion seront ensuite consolidées pour arriver à un *consensus*  général. Ensuite, le fruit de cette réflexion ainsi que l'analyse que vous réaliserez seront à ajouter dans le projet **sdd1_biometry**. Une feuille Google Sheets sera mise à disposition pour encoder vos données de manière collaborative sur base des spécifications que vous aurez formulées.
 
 
-\BeginKnitrBlock{bdd}<div class="bdd">La tableau de données que vous devez completer est disponible via le lien suivant\ :
-
-- <https://docs.google.com/spreadsheets/d/1UfpZvx1_nd7d10vIMAfGVZ1vWyIuzeiKxPL0jfkNSQM/edit?usp=sharing>
-
-Le dictionnaire des données est disponible via le lien suivant\ :
-
-- <https://docs.google.com/document/d/1lgYD39W7vmVYyS5ea0wEl9ArE1dhuDRkIIBzZ4K6d_o/edit?usp=sharing>
-
-Le tableau de données est téléchargeable via le lien suivant\ :
+\BeginKnitrBlock{bdd}<div class="bdd">Pour les étudiants du cours de bioinformatique et sciences des données des données à Charleroi :
   
-- <https://docs.google.com/spreadsheets/d/e/2PACX-1vQoVtSWbENWzxbALxD0qyNDqxV4uSYqzLCtJgcNGE7ciT6nkWOjA9b6dMBHaSUY8Nw5f-mSpUEeN-3S/pub?output=csv>
+  - Le tableau de données que vous devez completer est disponible via le lien suivant : https://docs.google.com/spreadsheets/d/1XopTEpRjM0TdyVfJHva80JWaAyB7TmBbm1_k99ewzWM/edit?usp=sharing
+
+  - Le dictionnaire des données est disponible via le lien suivant : https://docs.google.com/document/d/1eBnbmzanzZXBk-UMVl8d3uQeUWzePfK0sYjW7SlzIDk/edit?usp=sharing
+
+  - Le tableau de données est téléchargeable via le lien suivant : https://docs.google.com/spreadsheets/d/e/2PACX-1vS9UthgeinmFnbJjziwOR6t0qXKgIAQdY7vkd7PZIax4XHxlvr632rVn4-NT3djJFKfgEshftEvuiJa/pub?gid=0&single=true&output=csv
+
+Pour les étudiants du cours de sciences des données des données à Mons :
+  
+  - Le tableau de données que vous devez completer est disponible via le lien suivant : <https://docs.google.com/spreadsheets/d/1GJAGWjwNBtEGqQXqFcNxkrwcw-5n-gqwmiGAzxUZrxg/edit?usp=sharing> 
+
+  - Le dictionnaire des données est disponible via le lien suivant : <https://docs.google.com/spreadsheets/d/1j55bB9YEAVbS4eRE-i6L-NEYhHXua-dxs-aQr_qko7k/edit?usp=sharing>
+
+  - Le tableau de données est téléchargeable via le lien suivant : <https://docs.google.com/spreadsheets/d/e/2PACX-1vSfY7b0ICF64uv9vIYi8Jg38Rw3pKvLHC5TW0XOZYVQ4ce2dTmXGM5Cm8J922MsYm_fk75DKOK2wC4b/pub?output=csv>
   </div>\EndKnitrBlock{bdd}
 
 **Attention, veuillez à respectez les conventions** que vous aurez édifiées ensemble lors de l'encodage... et n'oubliez pas de préciser également les métadonnées !
@@ -561,6 +692,8 @@ Le tableau de données est téléchargeable via le lien suivant\ :
 ## Recombinaison de tableaux
 
 ### Formats long et large
+
+<!-- Newer versions (for svbox20?) propose pivot_long() and pivot_large() instead of spread() and gather() with a more intuitive syntax and arguments names, see: https://blog.methodsconsultants.com/posts/data-pivoting-with-tidyr/ => to be change later on ! -->
 
 ![`gather()` versus `spread()` par [gadenbuie](https://github.com/gadenbuie/tidyexplain/blob/master/images/tidyr-spread-gather.gif).](images/sdd1_06/tidyr-spread-gather.gif)
 
@@ -579,7 +712,7 @@ Le **format long** d'un tableau de données correspond à un encodage en un mini
 # 6 f     test2       1.2
 ```
 
-Voici maintenant le même jeu de données présenté dans le format large :
+Voici maintenant le même jeu de données présenté dans le format large\ :
 
 
 ```
@@ -652,7 +785,7 @@ chart(data = shotgun_long, sequences ~ batch %fill=% kingdom) +
   geom_col(position = "fill")
 ```
 
-<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
+<img src="06-Donnees-qualitatives_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" />
 
 Essayez de réaliser ce type de graphique en partant de `shotgun_wide`... Bonne chance !
 
@@ -678,12 +811,6 @@ rmarkdown::paged_table(shotgun_wide2)
 La logique de `spread()` est illustrée via l'animation suivante :
 
 ![`spread()` par [apreshill](https://github.com/apreshill/teachthat/blob/master/spread/spread.gif).](images/sdd1_06/spread.gif)
-
-\BeginKnitrBlock{bdd}<div class="bdd">Une tâche en binome vous est assignée via l'URL suivante\ :
-
-- <https://classroom.github.com/g/shtUkGbz>
-
-Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md` de ce dépôt GitHub Classroom.</div>\EndKnitrBlock{bdd}
 
 
 ### Recombinaison de variables
@@ -735,6 +862,7 @@ rmarkdown::paged_table(crabs)
 {"columns":[{"label":["sex"],"name":[1],"type":["chr"],"align":["left"]},{"label":["species"],"name":[2],"type":["chr"],"align":["left"]},{"label":["index"],"name":[3],"type":["int"],"align":["right"]},{"label":["front"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["rear"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["length"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["width"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["depth"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"M","2":"B","3":"1","4":"8.1","5":"6.7","6":"16.1","7":"19.0","8":"7.0"},{"1":"M","2":"B","3":"2","4":"8.8","5":"7.7","6":"18.1","7":"20.8","8":"7.4"},{"1":"M","2":"B","3":"3","4":"9.2","5":"7.8","6":"19.0","7":"22.4","8":"7.7"},{"1":"M","2":"B","3":"4","4":"9.6","5":"7.9","6":"20.1","7":"23.1","8":"8.2"},{"1":"M","2":"B","3":"5","4":"9.8","5":"8.0","6":"20.3","7":"23.0","8":"8.2"},{"1":"M","2":"B","3":"6","4":"10.8","5":"9.0","6":"23.0","7":"26.5","8":"9.8"},{"1":"M","2":"B","3":"7","4":"11.1","5":"9.9","6":"23.8","7":"27.1","8":"9.8"},{"1":"M","2":"B","3":"8","4":"11.6","5":"9.1","6":"24.5","7":"28.4","8":"10.4"},{"1":"M","2":"B","3":"9","4":"11.8","5":"9.6","6":"24.2","7":"27.8","8":"9.7"},{"1":"M","2":"B","3":"10","4":"11.8","5":"10.5","6":"25.2","7":"29.3","8":"10.3"},{"1":"M","2":"B","3":"11","4":"12.2","5":"10.8","6":"27.3","7":"31.6","8":"10.9"},{"1":"M","2":"B","3":"12","4":"12.3","5":"11.0","6":"26.8","7":"31.5","8":"11.4"},{"1":"M","2":"B","3":"13","4":"12.6","5":"10.0","6":"27.7","7":"31.7","8":"11.4"},{"1":"M","2":"B","3":"14","4":"12.8","5":"10.2","6":"27.2","7":"31.8","8":"10.9"},{"1":"M","2":"B","3":"15","4":"12.8","5":"10.9","6":"27.4","7":"31.5","8":"11.0"},{"1":"M","2":"B","3":"16","4":"12.9","5":"11.0","6":"26.8","7":"30.9","8":"11.4"},{"1":"M","2":"B","3":"17","4":"13.1","5":"10.6","6":"28.2","7":"32.3","8":"11.0"},{"1":"M","2":"B","3":"18","4":"13.1","5":"10.9","6":"28.3","7":"32.4","8":"11.2"},{"1":"M","2":"B","3":"19","4":"13.3","5":"11.1","6":"27.8","7":"32.3","8":"11.3"},{"1":"M","2":"B","3":"20","4":"13.9","5":"11.1","6":"29.2","7":"33.3","8":"12.1"},{"1":"M","2":"B","3":"21","4":"14.3","5":"11.6","6":"31.3","7":"35.5","8":"12.7"},{"1":"M","2":"B","3":"22","4":"14.6","5":"11.3","6":"31.9","7":"36.4","8":"13.7"},{"1":"M","2":"B","3":"23","4":"15.0","5":"10.9","6":"31.4","7":"36.4","8":"13.2"},{"1":"M","2":"B","3":"24","4":"15.0","5":"11.5","6":"32.4","7":"37.0","8":"13.4"},{"1":"M","2":"B","3":"25","4":"15.0","5":"11.9","6":"32.5","7":"37.2","8":"13.6"},{"1":"M","2":"B","3":"26","4":"15.2","5":"12.1","6":"32.3","7":"36.7","8":"13.6"},{"1":"M","2":"B","3":"27","4":"15.4","5":"11.8","6":"33.0","7":"37.5","8":"13.6"},{"1":"M","2":"B","3":"28","4":"15.7","5":"12.6","6":"35.8","7":"40.3","8":"14.5"},{"1":"M","2":"B","3":"29","4":"15.9","5":"12.7","6":"34.0","7":"38.9","8":"14.2"},{"1":"M","2":"B","3":"30","4":"16.1","5":"11.6","6":"33.8","7":"39.0","8":"14.4"},{"1":"M","2":"B","3":"31","4":"16.1","5":"12.8","6":"34.9","7":"40.7","8":"15.7"},{"1":"M","2":"B","3":"32","4":"16.2","5":"13.3","6":"36.0","7":"41.7","8":"15.4"},{"1":"M","2":"B","3":"33","4":"16.3","5":"12.7","6":"35.6","7":"40.9","8":"14.9"},{"1":"M","2":"B","3":"34","4":"16.4","5":"13.0","6":"35.7","7":"41.8","8":"15.2"},{"1":"M","2":"B","3":"35","4":"16.6","5":"13.5","6":"38.1","7":"43.4","8":"14.9"},{"1":"M","2":"B","3":"36","4":"16.8","5":"12.8","6":"36.2","7":"41.8","8":"14.9"},{"1":"M","2":"B","3":"37","4":"16.9","5":"13.2","6":"37.3","7":"42.7","8":"15.6"},{"1":"M","2":"B","3":"38","4":"17.1","5":"12.6","6":"36.4","7":"42.0","8":"15.1"},{"1":"M","2":"B","3":"39","4":"17.1","5":"12.7","6":"36.7","7":"41.9","8":"15.6"},{"1":"M","2":"B","3":"40","4":"17.2","5":"13.5","6":"37.6","7":"43.9","8":"16.1"},{"1":"M","2":"B","3":"41","4":"17.7","5":"13.6","6":"38.7","7":"44.5","8":"16.0"},{"1":"M","2":"B","3":"42","4":"17.9","5":"14.1","6":"39.7","7":"44.6","8":"16.8"},{"1":"M","2":"B","3":"43","4":"18.0","5":"13.7","6":"39.2","7":"44.4","8":"16.2"},{"1":"M","2":"B","3":"44","4":"18.8","5":"15.8","6":"42.1","7":"49.0","8":"17.8"},{"1":"M","2":"B","3":"45","4":"19.3","5":"13.5","6":"41.6","7":"47.4","8":"17.8"},{"1":"M","2":"B","3":"46","4":"19.3","5":"13.8","6":"40.9","7":"46.5","8":"16.8"},{"1":"M","2":"B","3":"47","4":"19.7","5":"15.3","6":"41.9","7":"48.5","8":"17.8"},{"1":"M","2":"B","3":"48","4":"19.8","5":"14.2","6":"43.2","7":"49.7","8":"18.6"},{"1":"M","2":"B","3":"49","4":"19.8","5":"14.3","6":"42.4","7":"48.9","8":"18.3"},{"1":"M","2":"B","3":"50","4":"21.3","5":"15.7","6":"47.1","7":"54.6","8":"20.0"},{"1":"F","2":"B","3":"1","4":"7.2","5":"6.5","6":"14.7","7":"17.1","8":"6.1"},{"1":"F","2":"B","3":"2","4":"9.0","5":"8.5","6":"19.3","7":"22.7","8":"7.7"},{"1":"F","2":"B","3":"3","4":"9.1","5":"8.1","6":"18.5","7":"21.6","8":"7.7"},{"1":"F","2":"B","3":"4","4":"9.1","5":"8.2","6":"19.2","7":"22.2","8":"7.7"},{"1":"F","2":"B","3":"5","4":"9.5","5":"8.2","6":"19.6","7":"22.4","8":"7.8"},{"1":"F","2":"B","3":"6","4":"9.8","5":"8.9","6":"20.4","7":"23.9","8":"8.8"},{"1":"F","2":"B","3":"7","4":"10.1","5":"9.3","6":"20.9","7":"24.4","8":"8.4"},{"1":"F","2":"B","3":"8","4":"10.3","5":"9.5","6":"21.3","7":"24.7","8":"8.9"},{"1":"F","2":"B","3":"9","4":"10.4","5":"9.7","6":"21.7","7":"25.4","8":"8.3"},{"1":"F","2":"B","3":"10","4":"10.8","5":"9.5","6":"22.5","7":"26.3","8":"9.1"},{"1":"F","2":"B","3":"11","4":"11.0","5":"9.8","6":"22.5","7":"25.7","8":"8.2"},{"1":"F","2":"B","3":"12","4":"11.2","5":"10.0","6":"22.8","7":"26.9","8":"9.4"},{"1":"F","2":"B","3":"13","4":"11.5","5":"11.0","6":"24.7","7":"29.2","8":"10.1"},{"1":"F","2":"B","3":"14","4":"11.6","5":"11.0","6":"24.6","7":"28.5","8":"10.4"},{"1":"F","2":"B","3":"15","4":"11.6","5":"11.4","6":"23.7","7":"27.7","8":"10.0"},{"1":"F","2":"B","3":"16","4":"11.7","5":"10.6","6":"24.9","7":"28.5","8":"10.4"},{"1":"F","2":"B","3":"17","4":"11.9","5":"11.4","6":"26.0","7":"30.1","8":"10.9"},{"1":"F","2":"B","3":"18","4":"12.0","5":"10.7","6":"24.6","7":"28.9","8":"10.5"},{"1":"F","2":"B","3":"19","4":"12.0","5":"11.1","6":"25.4","7":"29.2","8":"11.0"},{"1":"F","2":"B","3":"20","4":"12.6","5":"12.2","6":"26.1","7":"31.6","8":"11.2"},{"1":"F","2":"B","3":"21","4":"12.8","5":"11.7","6":"27.1","7":"31.2","8":"11.9"},{"1":"F","2":"B","3":"22","4":"12.8","5":"12.2","6":"26.7","7":"31.1","8":"11.1"},{"1":"F","2":"B","3":"23","4":"12.8","5":"12.2","6":"27.9","7":"31.9","8":"11.5"},{"1":"F","2":"B","3":"24","4":"13.0","5":"11.4","6":"27.3","7":"31.8","8":"11.3"},{"1":"F","2":"B","3":"25","4":"13.1","5":"11.5","6":"27.6","7":"32.6","8":"11.1"},{"1":"F","2":"B","3":"26","4":"13.2","5":"12.2","6":"27.9","7":"32.1","8":"11.5"},{"1":"F","2":"B","3":"27","4":"13.4","5":"11.8","6":"28.4","7":"32.7","8":"11.7"},{"1":"F","2":"B","3":"28","4":"13.7","5":"12.5","6":"28.6","7":"33.8","8":"11.9"},{"1":"F","2":"B","3":"29","4":"13.9","5":"13.0","6":"30.0","7":"34.9","8":"13.1"},{"1":"F","2":"B","3":"30","4":"14.7","5":"12.5","6":"30.1","7":"34.7","8":"12.5"},{"1":"F","2":"B","3":"31","4":"14.9","5":"13.2","6":"30.1","7":"35.6","8":"12.0"},{"1":"F","2":"B","3":"32","4":"15.0","5":"13.8","6":"31.7","7":"36.9","8":"14.0"},{"1":"F","2":"B","3":"33","4":"15.0","5":"14.2","6":"32.8","7":"37.4","8":"14.0"},{"1":"F","2":"B","3":"34","4":"15.1","5":"13.3","6":"31.8","7":"36.3","8":"13.5"},{"1":"F","2":"B","3":"35","4":"15.1","5":"13.5","6":"31.9","7":"37.0","8":"13.8"},{"1":"F","2":"B","3":"36","4":"15.1","5":"13.8","6":"31.7","7":"36.6","8":"13.0"},{"1":"F","2":"B","3":"37","4":"15.2","5":"14.3","6":"33.9","7":"38.5","8":"14.7"},{"1":"F","2":"B","3":"38","4":"15.3","5":"14.2","6":"32.6","7":"38.3","8":"13.8"},{"1":"F","2":"B","3":"39","4":"15.4","5":"13.3","6":"32.4","7":"37.6","8":"13.8"},{"1":"F","2":"B","3":"40","4":"15.5","5":"13.8","6":"33.4","7":"38.7","8":"14.7"},{"1":"F","2":"B","3":"41","4":"15.6","5":"13.9","6":"32.8","7":"37.9","8":"13.4"},{"1":"F","2":"B","3":"42","4":"15.6","5":"14.7","6":"33.9","7":"39.5","8":"14.3"},{"1":"F","2":"B","3":"43","4":"15.7","5":"13.9","6":"33.6","7":"38.5","8":"14.1"},{"1":"F","2":"B","3":"44","4":"15.8","5":"15.0","6":"34.5","7":"40.3","8":"15.3"},{"1":"F","2":"B","3":"45","4":"16.2","5":"15.2","6":"34.5","7":"40.1","8":"13.9"},{"1":"F","2":"B","3":"46","4":"16.4","5":"14.0","6":"34.2","7":"39.8","8":"15.2"},{"1":"F","2":"B","3":"47","4":"16.7","5":"16.1","6":"36.6","7":"41.9","8":"15.4"},{"1":"F","2":"B","3":"48","4":"17.4","5":"16.9","6":"38.2","7":"44.1","8":"16.6"},{"1":"F","2":"B","3":"49","4":"17.5","5":"16.7","6":"38.6","7":"44.5","8":"17.0"},{"1":"F","2":"B","3":"50","4":"19.2","5":"16.5","6":"40.9","7":"47.9","8":"18.1"},{"1":"M","2":"O","3":"1","4":"9.1","5":"6.9","6":"16.7","7":"18.6","8":"7.4"},{"1":"M","2":"O","3":"2","4":"10.2","5":"8.2","6":"20.2","7":"22.2","8":"9.0"},{"1":"M","2":"O","3":"3","4":"10.7","5":"8.6","6":"20.7","7":"22.7","8":"9.2"},{"1":"M","2":"O","3":"4","4":"11.4","5":"9.0","6":"22.7","7":"24.8","8":"10.1"},{"1":"M","2":"O","3":"5","4":"12.5","5":"9.4","6":"23.2","7":"26.0","8":"10.8"},{"1":"M","2":"O","3":"6","4":"12.5","5":"9.4","6":"24.2","7":"27.0","8":"11.2"},{"1":"M","2":"O","3":"7","4":"12.7","5":"10.4","6":"26.0","7":"28.8","8":"12.1"},{"1":"M","2":"O","3":"8","4":"13.2","5":"11.0","6":"27.1","7":"30.4","8":"12.2"},{"1":"M","2":"O","3":"9","4":"13.4","5":"10.1","6":"26.6","7":"29.6","8":"12.0"},{"1":"M","2":"O","3":"10","4":"13.7","5":"11.0","6":"27.5","7":"30.5","8":"12.2"},{"1":"M","2":"O","3":"11","4":"14.0","5":"11.5","6":"29.2","7":"32.2","8":"13.1"},{"1":"M","2":"O","3":"12","4":"14.1","5":"10.4","6":"28.9","7":"31.8","8":"13.5"},{"1":"M","2":"O","3":"13","4":"14.1","5":"10.5","6":"29.1","7":"31.6","8":"13.1"},{"1":"M","2":"O","3":"14","4":"14.1","5":"10.7","6":"28.7","7":"31.9","8":"13.3"},{"1":"M","2":"O","3":"15","4":"14.2","5":"10.6","6":"28.7","7":"31.7","8":"12.9"},{"1":"M","2":"O","3":"16","4":"14.2","5":"10.7","6":"27.8","7":"30.9","8":"12.7"},{"1":"M","2":"O","3":"17","4":"14.2","5":"11.3","6":"29.2","7":"32.2","8":"13.5"},{"1":"M","2":"O","3":"18","4":"14.6","5":"11.3","6":"29.9","7":"33.5","8":"12.8"},{"1":"M","2":"O","3":"19","4":"14.7","5":"11.1","6":"29.0","7":"32.1","8":"13.1"},{"1":"M","2":"O","3":"20","4":"15.1","5":"11.4","6":"30.2","7":"33.3","8":"14.0"},{"1":"M","2":"O","3":"21","4":"15.1","5":"11.5","6":"30.9","7":"34.0","8":"13.9"},{"1":"M","2":"O","3":"22","4":"15.4","5":"11.1","6":"30.2","7":"33.6","8":"13.5"},{"1":"M","2":"O","3":"23","4":"15.7","5":"12.2","6":"31.7","7":"34.2","8":"14.2"},{"1":"M","2":"O","3":"24","4":"16.2","5":"11.8","6":"32.3","7":"35.3","8":"14.7"},{"1":"M","2":"O","3":"25","4":"16.3","5":"11.6","6":"31.6","7":"34.2","8":"14.5"},{"1":"M","2":"O","3":"26","4":"17.1","5":"12.6","6":"35.0","7":"38.9","8":"15.7"},{"1":"M","2":"O","3":"27","4":"17.4","5":"12.8","6":"36.1","7":"39.5","8":"16.2"},{"1":"M","2":"O","3":"28","4":"17.5","5":"12.0","6":"34.4","7":"37.3","8":"15.3"},{"1":"M","2":"O","3":"29","4":"17.5","5":"12.7","6":"34.6","7":"38.4","8":"16.1"},{"1":"M","2":"O","3":"30","4":"17.8","5":"12.5","6":"36.0","7":"39.8","8":"16.7"},{"1":"M","2":"O","3":"31","4":"17.9","5":"12.9","6":"36.9","7":"40.9","8":"16.5"},{"1":"M","2":"O","3":"32","4":"18.0","5":"13.4","6":"36.7","7":"41.3","8":"17.1"},{"1":"M","2":"O","3":"33","4":"18.2","5":"13.7","6":"38.8","7":"42.7","8":"17.2"},{"1":"M","2":"O","3":"34","4":"18.4","5":"13.4","6":"37.9","7":"42.2","8":"17.7"},{"1":"M","2":"O","3":"35","4":"18.6","5":"13.4","6":"37.8","7":"41.9","8":"17.3"},{"1":"M","2":"O","3":"36","4":"18.6","5":"13.5","6":"36.9","7":"40.2","8":"17.0"},{"1":"M","2":"O","3":"37","4":"18.8","5":"13.4","6":"37.2","7":"41.1","8":"17.5"},{"1":"M","2":"O","3":"38","4":"18.8","5":"13.8","6":"39.2","7":"43.3","8":"17.9"},{"1":"M","2":"O","3":"39","4":"19.4","5":"14.1","6":"39.1","7":"43.2","8":"17.8"},{"1":"M","2":"O","3":"40","4":"19.4","5":"14.4","6":"39.8","7":"44.3","8":"17.9"},{"1":"M","2":"O","3":"41","4":"20.1","5":"13.7","6":"40.6","7":"44.5","8":"18.0"},{"1":"M","2":"O","3":"42","4":"20.6","5":"14.4","6":"42.8","7":"46.5","8":"19.6"},{"1":"M","2":"O","3":"43","4":"21.0","5":"15.0","6":"42.9","7":"47.2","8":"19.4"},{"1":"M","2":"O","3":"44","4":"21.5","5":"15.5","6":"45.5","7":"49.7","8":"20.9"},{"1":"M","2":"O","3":"45","4":"21.6","5":"15.4","6":"45.7","7":"49.7","8":"20.6"},{"1":"M","2":"O","3":"46","4":"21.6","5":"14.8","6":"43.4","7":"48.2","8":"20.1"},{"1":"M","2":"O","3":"47","4":"21.9","5":"15.7","6":"45.4","7":"51.0","8":"21.1"},{"1":"M","2":"O","3":"48","4":"22.1","5":"15.8","6":"44.6","7":"49.6","8":"20.5"},{"1":"M","2":"O","3":"49","4":"23.0","5":"16.8","6":"47.2","7":"52.1","8":"21.5"},{"1":"M","2":"O","3":"50","4":"23.1","5":"15.7","6":"47.6","7":"52.8","8":"21.6"},{"1":"F","2":"O","3":"1","4":"10.7","5":"9.7","6":"21.4","7":"24.0","8":"9.8"},{"1":"F","2":"O","3":"2","4":"11.4","5":"9.2","6":"21.7","7":"24.1","8":"9.7"},{"1":"F","2":"O","3":"3","4":"12.5","5":"10.0","6":"24.1","7":"27.0","8":"10.9"},{"1":"F","2":"O","3":"4","4":"12.6","5":"11.5","6":"25.0","7":"28.1","8":"11.5"},{"1":"F","2":"O","3":"5","4":"12.9","5":"11.2","6":"25.8","7":"29.1","8":"11.9"},{"1":"F","2":"O","3":"6","4":"14.0","5":"11.9","6":"27.0","7":"31.4","8":"12.6"},{"1":"F","2":"O","3":"7","4":"14.0","5":"12.8","6":"28.8","7":"32.4","8":"12.7"},{"1":"F","2":"O","3":"8","4":"14.3","5":"12.2","6":"28.1","7":"31.8","8":"12.5"},{"1":"F","2":"O","3":"9","4":"14.7","5":"13.2","6":"29.6","7":"33.4","8":"12.9"},{"1":"F","2":"O","3":"10","4":"14.9","5":"13.0","6":"30.0","7":"33.7","8":"13.3"},{"1":"F","2":"O","3":"11","4":"15.0","5":"12.3","6":"30.1","7":"33.3","8":"14.0"},{"1":"F","2":"O","3":"12","4":"15.6","5":"13.5","6":"31.2","7":"35.1","8":"14.1"},{"1":"F","2":"O","3":"13","4":"15.6","5":"14.0","6":"31.6","7":"35.3","8":"13.8"},{"1":"F","2":"O","3":"14","4":"15.6","5":"14.1","6":"31.0","7":"34.5","8":"13.8"},{"1":"F","2":"O","3":"15","4":"15.7","5":"13.6","6":"31.0","7":"34.8","8":"13.8"},{"1":"F","2":"O","3":"16","4":"16.1","5":"13.6","6":"31.6","7":"36.0","8":"14.0"},{"1":"F","2":"O","3":"17","4":"16.1","5":"13.7","6":"31.4","7":"36.1","8":"13.9"},{"1":"F","2":"O","3":"18","4":"16.2","5":"14.0","6":"31.6","7":"35.6","8":"13.7"},{"1":"F","2":"O","3":"19","4":"16.7","5":"14.3","6":"32.3","7":"37.0","8":"14.7"},{"1":"F","2":"O","3":"20","4":"17.1","5":"14.5","6":"33.1","7":"37.2","8":"14.6"},{"1":"F","2":"O","3":"21","4":"17.5","5":"14.3","6":"34.5","7":"39.6","8":"15.6"},{"1":"F","2":"O","3":"22","4":"17.5","5":"14.4","6":"34.5","7":"39.0","8":"16.0"},{"1":"F","2":"O","3":"23","4":"17.5","5":"14.7","6":"33.3","7":"37.6","8":"14.6"},{"1":"F","2":"O","3":"24","4":"17.6","5":"14.0","6":"34.0","7":"38.6","8":"15.5"},{"1":"F","2":"O","3":"25","4":"18.0","5":"14.9","6":"34.7","7":"39.5","8":"15.7"},{"1":"F","2":"O","3":"26","4":"18.0","5":"16.3","6":"37.9","7":"43.0","8":"17.2"},{"1":"F","2":"O","3":"27","4":"18.3","5":"15.7","6":"35.1","7":"40.5","8":"16.1"},{"1":"F","2":"O","3":"28","4":"18.4","5":"15.5","6":"35.6","7":"40.0","8":"15.9"},{"1":"F","2":"O","3":"29","4":"18.4","5":"15.7","6":"36.5","7":"41.6","8":"16.4"},{"1":"F","2":"O","3":"30","4":"18.5","5":"14.6","6":"37.0","7":"42.0","8":"16.6"},{"1":"F","2":"O","3":"31","4":"18.6","5":"14.5","6":"34.7","7":"39.4","8":"15.0"},{"1":"F","2":"O","3":"32","4":"18.8","5":"15.2","6":"35.8","7":"40.5","8":"16.6"},{"1":"F","2":"O","3":"33","4":"18.9","5":"16.7","6":"36.3","7":"41.7","8":"15.3"},{"1":"F","2":"O","3":"34","4":"19.1","5":"16.0","6":"37.8","7":"42.3","8":"16.8"},{"1":"F","2":"O","3":"35","4":"19.1","5":"16.3","6":"37.9","7":"42.6","8":"17.2"},{"1":"F","2":"O","3":"36","4":"19.7","5":"16.7","6":"39.9","7":"43.6","8":"18.2"},{"1":"F","2":"O","3":"37","4":"19.9","5":"16.6","6":"39.4","7":"43.9","8":"17.9"},{"1":"F","2":"O","3":"38","4":"19.9","5":"17.9","6":"40.1","7":"46.4","8":"17.9"},{"1":"F","2":"O","3":"39","4":"20.0","5":"16.7","6":"40.4","7":"45.1","8":"17.7"},{"1":"F","2":"O","3":"40","4":"20.1","5":"17.2","6":"39.8","7":"44.1","8":"18.6"},{"1":"F","2":"O","3":"41","4":"20.3","5":"16.0","6":"39.4","7":"44.1","8":"18.0"},{"1":"F","2":"O","3":"42","4":"20.5","5":"17.5","6":"40.0","7":"45.5","8":"19.2"},{"1":"F","2":"O","3":"43","4":"20.6","5":"17.5","6":"41.5","7":"46.2","8":"19.2"},{"1":"F","2":"O","3":"44","4":"20.9","5":"16.5","6":"39.9","7":"44.7","8":"17.5"},{"1":"F","2":"O","3":"45","4":"21.3","5":"18.4","6":"43.8","7":"48.4","8":"20.0"},{"1":"F","2":"O","3":"46","4":"21.4","5":"18.0","6":"41.2","7":"46.2","8":"18.7"},{"1":"F","2":"O","3":"47","4":"21.7","5":"17.1","6":"41.7","7":"47.2","8":"19.6"},{"1":"F","2":"O","3":"48","4":"21.9","5":"17.2","6":"42.6","7":"47.4","8":"19.5"},{"1":"F","2":"O","3":"49","4":"22.5","5":"17.2","6":"43.0","7":"48.7","8":"19.8"},{"1":"F","2":"O","3":"50","4":"23.1","5":"20.2","6":"46.2","7":"52.5","8":"21.1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+
 
 ## Traitements multi-tableaux
 
@@ -846,7 +974,7 @@ rmarkdown::paged_table(oceano)
   </script>
 </div>
 
-Qu'observez vous ?
+Qu'observez vous\ ?
 
 Effectivement nos deux tableaux de données n'ont pas les lignes dans le même ordre. Il faut être vigilant lors de ce genre de combinaison de tableaux. Il est préférable d'employer des fonctions de fusion de tableaux plus complexes comme `full_joint()` (ci-dessous). Pour utiliser correctement `bind_cols()`, il faut vous assurer que les lignes des deux tableaux correspondent exactement, par exemple, en utilisant `arrange()` :
 
@@ -929,8 +1057,36 @@ Il existe, en fait, plusieurs versions pour la fusion de tableaux, représentée
 
 ##### A vous de jouer {-}
 
-TODO
+\BeginKnitrBlock{bdd}<div class="bdd">
+Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante dans la fenêtre console\ :
 
+    BioDataScience::run("06b_recombinaison")
+</div>\EndKnitrBlock{bdd}
+
+ - Pour les étudiants de Bioinformatique et Sciences des données à charleroi
+ 
+\BeginKnitrBlock{bdd}<div class="bdd">Pour cette activité, vous allez **travailler en équipe** sur les données d'une analyse métagénomique sur 4 communautés microbiennes obtenues par  une équipe de recherche de l'Université de Mons.
+
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md`du dépôt accessible depuis : 
+
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/g/6UoszJja
+    * Cours de Sciences des données I à Mons : 
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_metagenomics](https://github.com/BioDataScience-Course/sdd1_metagenomics). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  </div>\EndKnitrBlock{bdd}
+
+- Pour les étudiants de Sciences des données I à Mons  : 
+
+\BeginKnitrBlock{bdd}<div class="bdd">Pour cette activité, vous allez **travailler en binome** sur les données de la population belge.
+
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md`du dépôt accessible depuis : 
+
+* Pour l'année académique 2019-2020, l'URL à utiliser pour accéder à votre tâche sont les suivants : 
+
+    * Cours de Sciences des données I à Mons : <https://classroom.github.com/g/nohKNIkL>
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [belgium_inhabitants](https://github.com/BioDataScience-Course/belgium_inhabitants). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  </div>\EndKnitrBlock{bdd}
 
 ##### Pour en savoir plus {-}
 

@@ -21,9 +21,16 @@ Pour réaliser les exercices dans ce module, vous devez être capables de travai
 
 Une nouvelle tâche vous est demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Une fois votre assignation réalisée, faites un clone de votre dépôt et placez-le dans le dossier `shared/projects`. Pour cette tâche, vous démarrerez d'un projet RStudio \@ref(rs-projet) que vous obtiendrez via une tâche GitHub Classroom.
 
-\BeginKnitrBlock{bdd}<div class="bdd">Un projet sur le zooplancton provenant de Madagascar est mis à votre disposition. Utilisez l'URL suivante qui vous donne accès à votre tâche. **Cette tâche est un travail en binôme**
+\BeginKnitrBlock{bdd}<div class="bdd">Pour cette activité, vous allez **travailler en binôme** sur les données d'un projet étudiant le zooplancton provenant de Madagascar.
 
-- <https://classroom.github.com/g/7Ji4Aj9G>
+Les explications relatives à la tâche qui vous est assignée sont dans le fichier `README.md`du dépôt accessible depuis : 
+
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/g/qJZ0kmPG 
+    * Cours de Sciences des données I à Mons : https://classroom.github.com/g/AkOJKC3n 
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_zooplankton](https://github.com/BioDataScience-Course/sdd1_zooplankton). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
 </div>\EndKnitrBlock{bdd}
 
 

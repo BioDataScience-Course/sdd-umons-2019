@@ -724,17 +724,41 @@ Le pipe permet d'éviter de répéter le nom des objets (version avec variables 
 
 ##### A vous de jouer {-}
 
-Maintenant que vous venez d'apprendre à importer correctement vos données, à les remanier avec quelques-uns des opérateurs les plus fréquents, et que vous savez chaîner vos instructions, il est temps de vous exercer sur un cas concret.
+- Maintenant que vous venez d'apprendre à importer correctement vos données, à les remanier avec quelques-uns des opérateurs les plus fréquents, et que vous savez chaîner vos instructions, il est temps de vous exercer sur un cas concret.
+
 
 ```{block2, type='bdd'}
-Une tâche individuelle vous est assignée via l'URL suivante\ :
+Pour cette activité, vous allez **travailler seul** sur les données d'un projet étudiant la croissance des coraux.
 
-- <https://classroom.github.com/a/WfxTmH4b>
+Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md`du dépôt accessible depuis : 
 
-Créez un rapport et effectuez les différents exercices en suivant les instructions qui sont dans le fichier `README.md` de ce dépôt GitHub Classroom.
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/a/XkmTR88D
+    * Cours de Sciences des données I à Mons : https://classroom.github.com/a/4eP5yL1L 
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_coral_growth](https://github.com/BioDataScience-Course/sdd1_coral_growth). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
+
 ```
 
-Terminez ce module en vérifiant que vous en avez acquis les notions principales.
+- Afin d'appliquer vos nouvelles conniassances, des challenges vous sont proposés afin d'améliorer vos compétences en remaniement de données. 
+
+```{block2, type='bdd'}
+Réalisez dans le projet sur la biométrie humaine les exercies suivants : 
+  
+  <https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_05/exercises/sdd1_05_biometry.md>
+
+Consignez vos résultats dans une document R Markdown avec une explication de vos différents remaniements.
+  
+Réalisez dans le projet sur le zooplankton les exercies suivants : 
+  
+  <https://github.com/BioDataScience-Course/sdd_lesson/blob/2019-2020/sdd1_05/exercises/sdd1_05_zooplankton.md>
+  
+Consignez vos résultats dans une document R Markdown avec une explication de vos différents remaniements.
+```
+
+
+- Terminez ce module en vérifiant que vous en avez acquis les notions principales.
 
 ```{block2, type='bdd'}
 
@@ -743,8 +767,6 @@ Ouvrez RStudio dans votre SciViews Box, puis exécutez l'instruction suivante da
     BioDataScience::run("05a_test")
 
 ```
-
-Des challenges vous sont proposés afin d'améliorer vos compétences en remaniement de données. Ces derniers sont [disponibles ici](https://github.com/BioDataScience-Course/sdd_lesson/tree/master/sdd1_05/exercises). 
 
 
 ##### Pour en savoir plus {-}

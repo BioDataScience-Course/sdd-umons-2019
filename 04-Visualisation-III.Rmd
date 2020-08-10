@@ -168,7 +168,7 @@ chart(data = zooplankton, ~ class) +
 - [Autres exemples de graphes en barres](http://ggplot.yhathq.com/docs/geom_bar.html) à l'aide de ``ggplot()`.
 
 
-### Valeurs moyennes
+### Valeurs moyennes  {#barres-mean}
 
 Le graphique en barres peut être aussi employé pour résumer des données numériques via la moyenne. Il ne s'agit plus de dénombrer les effectifs d'une variable facteur mais de résumer des données numériques en fonction d'une variable facteur. On peut exprimer cette relation dans R sous la forme de
 

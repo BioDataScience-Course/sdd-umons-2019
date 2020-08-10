@@ -162,6 +162,17 @@ Appliquez par vous même les transformations des variables via l'application ci-
 
 <iframe src="https://guyliannengels.shinyapps.io/transfo_data/" width="800" height="470" frameborder="0"></iframe>
 
+<!-- Pour inclure des pages web ou des applis shiny, utiliser plutôt -->
+
+```{r, include=FALSE, out.extra='style="border: none;"', out.width='100%'}
+knitr::include_app("https://yihui.shinyapps.io/miniUI/", height = "600px")
+```
+
+```{r, include=FALSE, out.extra='style="border: none;"', out.width='100%'}
+knitr::include_url("http://www.sciviews.org", height = "600px")
+```
+
+
 ##### Pièges et astuces {-}
 
 RStudio permet de récupérer rapidement des instructions à partir d'une banque de solutions toutes prêtes. Cela s'appelle des **snippets**. Vous avez une série de snippets disponibles dans la SciViews Box. Celui qui vous permet de réaliser un graphique en nuage de points s'appelle `.cbxy` (pour **c**hart -> **b**ivariate -> **xy**-plot). Entrez ce code et appuyez ensuite sur la tabulation dans un script R, et vous verrez le code remplacé par ceci dans la fenêtre d'édition :
@@ -179,9 +190,16 @@ Vous avez à votre disposition un ensemble de snippets que vous pouvez retrouver
 Une nouvelle tâche vous est demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **individuel**. Une fois votre assignation réalisée, faites un clone local de votre dépôt et placez-le dans le sous-dossier `projects` de votre dossier partagé avec la SciViews Box `shared`. Vous aurez alors un nouveau projet RStudio \@ref(rs-projet)
 
 ```{block2, type='bdd'}
-Les instructions R que vous expérimentez dans un learnR peuvent être employées également dans un script d'analyse. Sur base du jeu de données `urchin_bio`, explorez différents graphiques en nuages de points. Utilisez l'URL suivante pour accéder à votre tâche\ :
+Les instructions R que vous expérimentez dans un learnR peuvent être employées également dans un script d'analyse. Sur base du jeu de données `urchin_bio`, explorez différents graphiques en nuages de points. 
 
-- <https://classroom.github.com/a/eYrXLy_u>
+Les explications relatives à la tâche qui vous est assignée sont dans le fichier `README.md`du dépôt accessible depuis : 
+
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/a/p2m_RPt1 
+    * Cours de Sciences des données I à Mons : https://classroom.github.com/a/GxS0euIC
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_urchin_bio](https://github.com/BioDataScience-Course/sdd1_urchin_bio). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
 
 ```
 
@@ -280,14 +298,21 @@ Votre objectif est de comprendre les données proposées, en utilisant des visua
 
 ```
 
-- Flux de travail "classique" en biologie (Microsoft Excel et Word) comparé à R et R Markdown.
+- Comparaions du flux de travail en biologie : R et Microsoft Word *versus* R et R Markdown.
 
 Une nouvelle tâche vous est demandée ci-dessous en utilisant GitHub Classroom \@ref(classroom). Cette tâche est un travail **en équipe**. Une fois votre assignation réalisée, faites un clone de votre dépôt et placez-le dans le dossier `shared/projects`.
 
 ```{block2, type='bdd'}
 
-Comparez le workflow classique en biologie via Microsoft Office avec l'utilisation de R - R Markdown en suivant les explications dans le fichier `README.md`du dépôt accessible depuis\ :
+Comparez le workflow classique en biologie via Microsoft Office avec l'utilisation de R - R Markdown. 
 
-- <https://classroom.github.com/g/2Cii2dws>
+Les explications relatives à la tâche qui vous est assignée sont dans le fichier `README.md`du dépôt accessible depuis : 
+
+* Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
+  
+    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/g/jvDR9nhM
+    * Cours de Sciences des données I à Mons : https://classroom.github.com/g/Q1-L0PhW
+  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_biometry](https://github.com/BioDataScience-Course/sdd1_biometry). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez. 
 
 ```

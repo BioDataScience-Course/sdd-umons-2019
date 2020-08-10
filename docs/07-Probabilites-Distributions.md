@@ -664,7 +664,7 @@ Maintenant, nous pouvons poser la question autrement. Prenons un couple sain au 
 # [1] 0.999375
 ```
 
-Pour un couple au hasard sans connaissance *a priori* du fait que les parents soient porteurs ou non, la probabilité d'avoir un enfant atteint de la mucoviscidose est heureusement très, très faible, mais non nulle (de l'ordre de 1/1600 = 0.999375). Si nous considérons maintenant une population suffisamment grande pour pouvoir espérer y trouver "statistiquement" une personne atteinte de mucoviscidose, nous pourrions décider d'étudier un échantillon aléatoire de 1600 enfants belges. La distribution binomiale requiert alors le calcul de $C^j_n$ sur base de $n = 1600$, ce qui revient à devoir calculer le factoriel de 1600 :
+Pour un couple au hasard sans connaissance *a priori* du fait que les parents soient porteurs ou non, la probabilité d'avoir un enfant atteint de la mucoviscidose est heureusement très, très faible, mais non nulle (de l'ordre de 1/1600 = 0,000625 = 1 - 0.999375). Si nous considérons maintenant une population suffisamment grande pour pouvoir espérer y trouver "statistiquement" une personne atteinte de mucoviscidose, nous pourrions décider d'étudier un échantillon aléatoire de 1600 enfants belges. La distribution binomiale requiert alors le calcul de $C^j_n$ sur base de $n = 1600$, ce qui revient à devoir calculer le factoriel de 1600\ :
 
 
 ```r
