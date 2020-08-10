@@ -1,6 +1,6 @@
 --- 
 title: "Science des données biologiques"
-author: "Philippe Grosjean & Guyliann Engels with contributions of Raphael Conotte"
+author: "Philippe Grosjean & Guyliann Engels avec des contributions de Raphael Conotte"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output:
@@ -25,6 +25,11 @@ knitr::opts_chunk$set(comment = "#", fig.align = "center")
 knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
 ```
 
+
+```{block, type='info'}
+Cet ouvrage a été écrit pour le cours de science des données I : inférence et visualisation à Mons et le cours de Bio-informatique et Sciences des Données à Charleroi pour l'année académique 2019-2020 (UMONS). Afin de trouver la dernière version disponible de cet ouvrage suivez le lien suivant :
+- <http://biodatascience-course.sciviews.org/sdd-umons/> 
+```
  
 Cet ouvrage interactif est le premier volume d'une série de trois ouvrages traitant de la science des données biologiques. L'écriture de cette suite de livres a débuté au cours de l'année académique 2018-2019. 
 
