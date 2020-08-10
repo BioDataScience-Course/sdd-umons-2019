@@ -464,7 +464,6 @@ Une autre représentation courante est la **densité de probabilité cumulée** 
 </div>
 
 
-
 <div class="note">
 <p><strong>Notation :</strong> nous noterons qu’une variable suit une loi de distribution comme ceci (le tilde ~ se lit “suit une distribution”, et <em>U</em> représente la distribution uniforme avec entre parenthèse, les <em>paramètres</em> de la distribution, ici, les bornes inférieure et supérieure) :</p>
 <p><span class="math display">\[X \sim U(0, 4)\]</span></p>

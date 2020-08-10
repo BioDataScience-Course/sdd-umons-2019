@@ -485,15 +485,15 @@ skimr::skim(biometry)
 #  n obs: 395 
 #  n variables: 7 
 # 
-# ── Variable type:Date ─────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:Date ──────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete   n        min        max     median n_unique
 #  day_birth       0      395 395 1927-08-29 2000-08-11 1988-10-05      210
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete   n n_unique            top_counts ordered
 #    gender       0      395 395        2 M: 198, W: 197, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #      variable missing complete   n    mean    sd     p0    p25    p50  p75
 #           age       0      395 395   35.34 17.32   15     19     27     50
 #        height       0      395 395  170.71  9.07  146    164    171    177
@@ -588,11 +588,11 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -622,7 +622,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -630,7 +630,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -651,7 +651,7 @@ skimr::skim(tooth)
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -659,7 +659,7 @@ skimr::skim(tooth)
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ───────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -766,7 +766,7 @@ skimr::skim(df)
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -1315,10 +1315,10 @@ Créez un rapport et effectuez les différents exercices en suivant les instruct
 
 * Pour l'année académique 2019-2020, les URLs à utiliser pour accéder à votre tâche sont les suivants : 
   
-    * Cours de Bioinformatique et Sciences des données à charleroi : https://classroom.github.com/a/XkmTR88D
+    * Cours de Bioinformatique et Sciences des données à Charleroi : https://classroom.github.com/a/XkmTR88D
     * Cours de Sciences des données I à Mons : https://classroom.github.com/a/4eP5yL1L 
   
-* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_coral_growth](https://github.com/BioDataScience-Course/sdd1_coral_growth). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.  
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_coral_growth](https://github.com/BioDataScience-Course/sdd1_coral_growth). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez
 </div>\EndKnitrBlock{bdd}
 
 - Afin d'appliquer vos nouvelles conniassances, des challenges vous sont proposés afin d'améliorer vos compétences en remaniement de données. 

@@ -36,12 +36,11 @@ En lien avec ce module vous avez une série d'exercices à réaliser. Vous avez 
 - compléter des fichiers RMD au sein du projet ci-dessous : 
 
 <div class="bdd">
-<p>Ce projet couvre toute la matière du module 12. Il y a 3 exercices pour les 3 parties de ce module.</p>
+<p>Un projet couvre toute la matière du module 12. Il y a 3 exercices pour les 3 parties de ce module.</p>
 <ul>
-<li><a href="https://classroom.github.com/a/sjzY0x-h" class="uri">https://classroom.github.com/a/sjzY0x-h</a></li>
+<li><p>Pour l’année académique 2019-2020, l’URL à utiliser pour accéder à votre tâche si vous suivez le cours de Sciences des données I à Mons est le suivants : <a href="https://classroom.github.com/a/sjzY0x-h" class="uri">https://classroom.github.com/a/sjzY0x-h</a>. Lisez attentivement le <code>README</code>. <em>Ce projet doit être terminé à la fin du module</em>.</p></li>
+<li><p>Pour les autres utilisateurs de ce livre, veuillez faire un “fork” du dépôt <a href="https://github.com/BioDataScience-Course/sdd1_module12">sdd1_module12</a>. Si vous souhaitez accéder à une version précédente de l’exercice, sélectionner la branche correspondante à l’année que vous recherchez.</p></li>
 </ul>
-<p>Lisez attentivement le README.</p>
-<p><em>Ce projet doit être terminé à la fin de ce module</em></p>
 </div>
 
 ## Association de deux variables

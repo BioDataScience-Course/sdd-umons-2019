@@ -42,13 +42,13 @@ Afin d'appliquer directement les concepts vu au cours dans ce module, ouvrez RSt
 - compléter des fichiers RMD au sein du projet ci-dessous : 
 
 ```{block, type='bdd'}
-Ce projet couvre toute la matière du module 12. Il y a 3 exercices pour les 3 parties de ce module.
 
-- <https://classroom.github.com/a/sjzY0x-h>
+Un projet couvre toute la matière du module 12. Il y a 3 exercices pour les 3 parties de ce module.
 
-Lisez attentivement le README. 
+* Pour l'année académique 2019-2020, l'URL à utiliser pour accéder à votre tâche si vous suivez le cours de Sciences des données I à Mons est le suivants : <https://classroom.github.com/a/sjzY0x-h>. Lisez attentivement le `README`. *Ce projet doit être terminé à la fin du module*.
 
-*Ce projet doit être terminé à la fin de ce module*
+* Pour les autres utilisateurs de ce livre, veuillez faire un "fork" du dépôt [sdd1_module12](https://github.com/BioDataScience-Course/sdd1_module12). Si vous souhaitez accéder à une version précédente de l'exercice, sélectionner la branche correspondante à l'année que vous recherchez.
+
 ```
 
 ## Association de deux variables

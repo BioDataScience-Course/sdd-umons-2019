@@ -385,7 +385,6 @@ chart(data = tibble(Quantiles = .x, Prob = .dc(.x)), Prob ~ Quantiles) +
 ```
 
 
-
 ```{block, type='note'}
 **Notation :** nous noterons qu'une variable suit une loi de distribution comme ceci (le tilde ~ se lit "suit une distribution", et *U* représente la distribution uniforme avec entre parenthèse, les *paramètres* de la distribution, ici, les bornes inférieure et supérieure)\ :
 
