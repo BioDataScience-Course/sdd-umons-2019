@@ -1,6 +1,6 @@
 --- 
 title: "Science des données biologiques"
-author: "Philippe Grosjean & Guyliann Engels avec des contributions de Raphael Conotte"
+author: "Philippe Grosjean & Guyliann Engels (avec des contributions de Raphaël Conotte)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output:
@@ -11,8 +11,8 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: biodatascience-course/sdd-umons
-url: 'https\://biodatascience-course.sciviews.org/sdd-umons/'
+github-repo: 'biodatascience-course/sdd-umons-2019'
+url: 'https\://biodatascience-course.sciviews.org/sdd-umons-2019/'
 description: "Tutoriel interactif pour la science des données avec R & SciViews-R."
 cover-image: "images/front-cover.png"
 ---
@@ -25,19 +25,18 @@ knitr::opts_chunk$set(comment = "#", fig.align = "center")
 knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
 ```
 
-
 ```{block, type='info'}
 Cet ouvrage a été écrit pour le cours de science des données I : inférence et visualisation à Mons et le cours de Bio-informatique et Sciences des Données à Charleroi pour l'année académique 2019-2020 (UMONS). Afin de trouver la dernière version disponible de cet ouvrage suivez le lien suivant :
-- <http://biodatascience-course.sciviews.org/sdd-umons/> 
+- <https://wp.sciviews.org/sdd-umons> 
 ```
  
 Cet ouvrage interactif est le premier volume d'une série de trois ouvrages traitant de la science des données biologiques. L'écriture de cette suite de livres a débuté au cours de l'année académique 2018-2019. 
 
 Pour l'année académique 2019-2020, cet ouvrage interactif est le support des cours suivants :
 
-- [Science des données I : Visualisation et inférence, UMONS](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOL-006-M.htm) dont le responsable est Grosjean Philippe
+- [Science des données I : Visualisation et inférence, UMONS](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOL-006-M.htm) dont le responsable est Philippe Grosjean
 
-- [Bio-informatique et sciences des données, UMONS-ULB](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOC-926-C.htm) dont le responsable est Conotte Raphael
+- [Bio-informatique et sciences des données, UMONS-ULB](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOC-926-C.htm) dont le responsable est Raphaël Conotte
 
 Cet ouvrage est conçu pour être utilisé de manière interactive en ligne. En effet, nous y ajoutons des vidéos, des démonstrations interactives ainsi que des exercices sous forme de questionnaires interactifs. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
 
