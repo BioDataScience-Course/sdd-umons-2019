@@ -9,7 +9,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Science des données biologiques</a></li>
       after: |
-        <li><a href="http://biodatascience-course.sciviews.org">Site Web du cours</a></li>
+        <li><a href="http://wp.sciviews.org">Site Web du cours</a></li>
         <li><a href="https://github.com/BioDataScience-Course">Site Github du cours</a></li>
         <br/>
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
