@@ -11,21 +11,21 @@
 
   <meta property="og:title" content="11.4 Facteurs hiérarchisés | Science des données biologiques" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://biodatascience-course.sciviews.org/sdd-umons/" />
-  <meta property="og:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta property="og:url" content="https://biodatascience-course.sciviews.org/sdd-umons-2019/" />
+  <meta property="og:image" content="https://biodatascience-course.sciviews.org/sdd-umons-2019/images/front-cover.png" />
   <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
-  <meta name="github-repo" content="biodatascience-course/sdd-umons" />
+  <meta name="github-repo" content="biodatascience-course/sdd-umons-2019" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="11.4 Facteurs hiérarchisés | Science des données biologiques" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
-  <meta name="twitter:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta name="twitter:image" content="https://biodatascience-course.sciviews.org/sdd-umons-2019/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels avec des contributions de Raphael Conotte">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels (avec des contributions de Raphaël Conotte)">
 
 
-<meta name="date" content="2020-08-10">
+<meta name="date" content="2020-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -417,7 +417,8 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
-<li><a href="http://biodatascience-course.sciviews.org">Site Web du cours</a></li>
+<li><a href="https://wp.sciviews.org/sdd-umons">Dernière version de ce cours</a></li>
+<li><a href="https://wp.sciviews.org">Site Web du cours</a></li>
 <li><a href="https://github.com/BioDataScience-Course">Site Github du cours</a></li>
 <br/>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
@@ -453,7 +454,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique                 top_counts
 #         Lab       0       48 48        6 I: 8, II: 8, III: 8, IV: 8
 #      Sample       0       48 48        2        G: 24, H: 24, NA: 0
@@ -463,7 +464,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #    FALSE
 #    FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Commençons par corriger l’encodage erroné des techniciens qui ferait penser que seulement deux personnes ont travaillé dans l’ensemble des six laboratoires.</p>
@@ -474,7 +475,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #  n obs: 48 
 #  n variables: 4 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       48 48        6
 #      Sample       0       48 48        2
@@ -484,7 +485,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs)</code></pre>
 #         G: 24, H: 24, NA: 0            FALSE
 #                           I.o: 4, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #       Fat       0       48 48 0.39 0.15 0.06 0.31 0.37 0.43  0.8 ▁▂▃▇▁▁▁▁</code></pre>
 <p>Nous avons à présent douze techniciens notés <code>I.one</code>, <code>I.two</code>, <code>II.one</code>, <code>II.two</code>, … Nous pouvons visualiser ces données. Comme nous n’avons que quatre réplicats par technicien, nous nous limitons à la représentation des observations de départ et des moyennes.</p>
@@ -567,7 +568,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  n obs: 12 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────
 #    variable missing complete  n n_unique
 #         Lab       0       12 12        6
 #  Technician       0       12 12       12
@@ -575,7 +576,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(eggs_means)</code></
 #  I: 2, II: 2, III: 2, IV: 2            FALSE
 #                           I.o: 1, II   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n mean   sd   p0  p25  p50  p75 p100     hist
 #  Fat_mean       0       12 12 0.39 0.13 0.17 0.36 0.37 0.39 0.72 ▁▁▇▂▁▁▁▁</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">eggs_means <span class="op">%&gt;.%</span>
@@ -687,7 +688,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/11-Variance-II.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons-2019/edit/master/11-Variance-II.Rmd",
 "text": "Editer"
 },
 "history": {

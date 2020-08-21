@@ -11,21 +11,21 @@
 
   <meta property="og:title" content="5.3 Conversion de variables | Science des données biologiques" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://biodatascience-course.sciviews.org/sdd-umons/" />
-  <meta property="og:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta property="og:url" content="https://biodatascience-course.sciviews.org/sdd-umons-2019/" />
+  <meta property="og:image" content="https://biodatascience-course.sciviews.org/sdd-umons-2019/images/front-cover.png" />
   <meta property="og:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
-  <meta name="github-repo" content="biodatascience-course/sdd-umons" />
+  <meta name="github-repo" content="biodatascience-course/sdd-umons-2019" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="5.3 Conversion de variables | Science des données biologiques" />
   
   <meta name="twitter:description" content="Tutoriel interactif pour la science des données avec R &amp; SciViews-R." />
-  <meta name="twitter:image" content="https://biodatascience-course.sciviews.org/sdd-umons/images/front-cover.png" />
+  <meta name="twitter:image" content="https://biodatascience-course.sciviews.org/sdd-umons-2019/images/front-cover.png" />
 
-<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels avec des contributions de Raphael Conotte">
+<meta name="author" content="Philippe Grosjean &amp; Guyliann Engels (avec des contributions de Raphaël Conotte)">
 
 
-<meta name="date" content="2020-08-10">
+<meta name="date" content="2020-08-21">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -417,7 +417,8 @@ code span.wa { color: #bf0303; } /* Warning */
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>Références</a></li>
 <li class="divider"></li>
-<li><a href="http://biodatascience-course.sciviews.org">Site Web du cours</a></li>
+<li><a href="https://wp.sciviews.org/sdd-umons">Dernière version de ce cours</a></li>
+<li><a href="https://wp.sciviews.org">Site Web du cours</a></li>
 <li><a href="https://github.com/BioDataScience-Course">Site Github du cours</a></li>
 <br/>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Publié avec bookdown</a></li>
@@ -470,11 +471,11 @@ code span.wa { color: #bf0303; } /* Warning */
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique            top_counts ordered
 #      supp       0       60 60        2 OJ: 30, VC: 30, NA: 0   FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #      dose       0       60 60  1.17 0.63 0.5  0.5   1     2     2  
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
@@ -498,7 +499,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -506,7 +507,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0   FALSE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -519,7 +520,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #  n obs: 60 
 #  n variables: 3 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n n_unique
 #      dose       0       60 60        3
 #      supp       0       60 60        2
@@ -527,7 +528,7 @@ skimr<span class="op">::</span><span class="kw">skim</span>(tooth)</code></pre>
 #                      0.5: 20, 1: 20, 2: 20, NA: 0    TRUE
 #  OJ: 30, VC: 30, NA: 0                              FALSE
 # 
-# ── Variable type:numeric ────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:numeric ──────────────────────────────────────────────────────────────────────────────────────────────
 #  variable missing complete  n  mean   sd  p0   p25   p50   p75 p100
 #       len       0       60 60 18.81 7.65 4.2 13.07 19.25 25.27 33.9
 #      hist
@@ -593,7 +594,7 @@ df</code></pre>
 #  n obs: 5 
 #  n variables: 2 
 # 
-# ── Variable type:factor ─────────────────────────────────────────────────────────────────────────────────────────────────────
+# ── Variable type:factor ───────────────────────────────────────────────────────────────────────────────────────────────
 #   variable missing complete n n_unique                    top_counts
 #      color       0        5 5        3 gre: 2, blu: 2, red: 1, NA: 0
 #  intensity       0        5 5        3 low: 2, hig: 2, mid: 1, NA: 0
@@ -692,7 +693,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/BioDataScience-Course/sdd-umons/edit/master/05-Importation-Transformation.Rmd",
+"link": "https://github.com/BioDataScience-Course/sdd-umons-2019/edit/master/05-Importation-Transformation.Rmd",
 "text": "Editer"
 },
 "history": {

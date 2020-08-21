@@ -1,7 +1,7 @@
 --- 
 title: "Science des données biologiques"
-author: "Philippe Grosjean & Guyliann Engels avec des contributions de Raphael Conotte"
-date: "2020-08-10"
+author: "Philippe Grosjean & Guyliann Engels (avec des contributions de Raphaël Conotte)"
+date: "2020-08-21"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
@@ -11,8 +11,8 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: biodatascience-course/sdd-umons
-url: 'https\://biodatascience-course.sciviews.org/sdd-umons/'
+github-repo: 'biodatascience-course/sdd-umons-2019'
+url: 'https\://biodatascience-course.sciviews.org/sdd-umons-2019/'
 description: "Tutoriel interactif pour la science des données avec R & SciViews-R."
 cover-image: "images/front-cover.png"
 ---
@@ -21,18 +21,17 @@ cover-image: "images/front-cover.png"
 
 
 
-
 <div class="info">
-<p>Cet ouvrage a été écrit pour le cours de science des données I : inférence et visualisation à Mons et le cours de Bio-informatique et Sciences des Données à Charleroi pour l’année académique 2019-2020 (UMONS). Afin de trouver la dernière version disponible de cet ouvrage suivez le lien suivant : - <a href="http://biodatascience-course.sciviews.org/sdd-umons/" class="uri">http://biodatascience-course.sciviews.org/sdd-umons/</a></p>
+<p>Cet ouvrage a été écrit pour le cours de science des données I : inférence et visualisation à Mons et le cours de Bio-informatique et Sciences des Données à Charleroi pour l’année académique 2019-2020 (UMONS). Afin de trouver la dernière version disponible de cet ouvrage suivez le lien suivant : - <a href="https://wp.sciviews.org/sdd-umons" class="uri">https://wp.sciviews.org/sdd-umons</a></p>
 </div>
  
 Cet ouvrage interactif est le premier volume d'une série de trois ouvrages traitant de la science des données biologiques. L'écriture de cette suite de livres a débuté au cours de l'année académique 2018-2019. 
 
 Pour l'année académique 2019-2020, cet ouvrage interactif est le support des cours suivants :
 
-- [Science des données I : Visualisation et inférence, UMONS](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOL-006-M.htm) dont le responsable est Grosjean Philippe
+- [Science des données I : Visualisation et inférence, UMONS](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOL-006-M.htm) dont le responsable est Philippe Grosjean
 
-- [Bio-informatique et sciences des données, UMONS-ULB](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOC-926-C.htm) dont le responsable est Conotte Raphael
+- [Bio-informatique et sciences des données, UMONS-ULB](http://applications.umons.ac.be/web/fr/pde/2019-2020/ue/US-B2-SCBIOC-926-C.htm) dont le responsable est Raphaël Conotte
 
 Cet ouvrage est conçu pour être utilisé de manière interactive en ligne. En effet, nous y ajoutons des vidéos, des démonstrations interactives ainsi que des exercices sous forme de questionnaires interactifs. **Ces différents éléments ne sont, bien évidemment, utilisables qu'en ligne.**
 
@@ -127,71 +126,53 @@ sessioninfo::session_info()
 #  collate  en_US.UTF-8                 
 #  ctype    en_US.UTF-8                 
 #  tz       Europe/Brussels             
-#  date     2020-08-10                  
+#  date     2020-08-21                  
 # 
 # ─ Packages ──────────────────────────────────────────────────────────────
-#  package      * version   date       lib source        
-#  assertthat     0.2.1     2019-03-21 [2] CRAN (R 3.5.3)
-#  bookdown       0.9       2018-12-21 [2] CRAN (R 3.5.3)
-#  brew           1.0-6     2011-04-13 [2] CRAN (R 3.5.3)
-#  cli            1.1.0     2019-03-19 [2] CRAN (R 3.5.3)
-#  codetools      0.2-16    2018-12-24 [2] CRAN (R 3.5.3)
-#  colorspace     1.4-1     2019-03-18 [2] CRAN (R 3.5.3)
-#  crayon         1.3.4     2017-09-16 [2] CRAN (R 3.5.3)
-#  DiagrammeR     1.0.0     2018-03-01 [2] CRAN (R 3.5.3)
-#  digest         0.6.18    2018-10-10 [2] CRAN (R 3.5.3)
-#  downloader     0.4       2015-07-09 [2] CRAN (R 3.5.3)
-#  dplyr          0.8.0.1   2019-02-15 [2] CRAN (R 3.5.3)
-#  evaluate       0.13      2019-02-12 [2] CRAN (R 3.5.3)
-#  farver         1.1.0     2018-11-20 [2] CRAN (R 3.5.3)
-#  fortunes       1.5-4     2016-12-29 [2] CRAN (R 3.5.3)
-#  gganimate      1.0.3     2019-04-02 [2] CRAN (R 3.5.3)
-#  ggplot2        3.1.1     2019-04-07 [2] CRAN (R 3.5.3)
-#  glue           1.3.1     2019-03-12 [2] CRAN (R 3.5.3)
-#  gridExtra      2.3       2017-09-09 [2] CRAN (R 3.5.3)
-#  gtable         0.3.0     2019-03-25 [2] CRAN (R 3.5.3)
-#  hms            0.4.2     2018-03-10 [2] CRAN (R 3.5.3)
-#  htmltools      0.3.6     2017-04-28 [2] CRAN (R 3.5.3)
-#  htmlwidgets    1.3       2018-09-30 [2] CRAN (R 3.5.3)
-#  igraph         1.2.4     2019-02-13 [2] CRAN (R 3.5.3)
-#  influenceR     0.1.0     2015-09-03 [2] CRAN (R 3.5.3)
-#  inline         0.3.15    2018-05-18 [2] CRAN (R 3.5.3)
-#  jsonlite       1.6       2018-12-07 [2] CRAN (R 3.5.3)
-#  knitr          1.22      2019-03-08 [2] CRAN (R 3.5.3)
-#  lazyeval       0.2.2     2019-03-15 [2] CRAN (R 3.5.3)
-#  magick         2.0       2018-10-05 [2] CRAN (R 3.5.3)
-#  magrittr       1.5       2014-11-22 [2] CRAN (R 3.5.3)
-#  munsell        0.5.0     2018-06-12 [2] CRAN (R 3.5.3)
-#  pillar         1.3.1     2018-12-15 [2] CRAN (R 3.5.3)
-#  pkgconfig      2.0.2     2018-08-16 [2] CRAN (R 3.5.3)
-#  plyr           1.8.4     2016-06-08 [2] CRAN (R 3.5.3)
-#  prettyunits    1.0.2     2015-07-13 [2] CRAN (R 3.5.3)
-#  progress       1.2.0     2018-06-14 [2] CRAN (R 3.5.3)
-#  purrr          0.3.2     2019-03-15 [2] CRAN (R 3.5.3)
-#  R6             2.4.0     2019-02-14 [2] CRAN (R 3.5.3)
-#  RColorBrewer   1.1-2     2014-12-07 [2] CRAN (R 3.5.3)
-#  Rcpp           1.0.1     2019-03-17 [2] CRAN (R 3.5.3)
-#  readr          1.3.1     2018-12-21 [2] CRAN (R 3.5.3)
-#  rgexf          0.15.3    2015-03-24 [2] CRAN (R 3.5.3)
-#  rlang          0.3.4     2019-04-07 [2] CRAN (R 3.5.3)
-#  rmarkdown      1.12      2019-03-14 [2] CRAN (R 3.5.3)
-#  Rook           1.1-1     2014-10-20 [2] CRAN (R 3.5.3)
-#  rstudioapi     0.10      2019-03-19 [2] CRAN (R 3.5.3)
-#  scales         1.0.0     2018-08-09 [2] CRAN (R 3.5.3)
-#  sessioninfo    1.1.1     2018-11-05 [2] CRAN (R 3.5.3)
-#  stringi        1.4.3     2019-03-12 [2] CRAN (R 3.5.3)
-#  stringr        1.4.0     2019-02-10 [2] CRAN (R 3.5.3)
-#  tibble         2.1.1     2019-03-16 [2] CRAN (R 3.5.3)
-#  tidyr          0.8.3     2019-03-01 [2] CRAN (R 3.5.3)
-#  tidyselect     0.2.5     2018-10-11 [2] CRAN (R 3.5.3)
-#  tweenr         1.0.1     2018-12-14 [2] CRAN (R 3.5.3)
-#  viridis        0.5.1     2018-03-29 [2] CRAN (R 3.5.3)
-#  viridisLite    0.3.0     2018-02-01 [2] CRAN (R 3.5.3)
-#  visNetwork     2.0.6     2019-03-26 [2] CRAN (R 3.5.3)
-#  withr          2.1.2     2018-03-15 [2] CRAN (R 3.5.3)
-#  xfun           0.6       2019-04-02 [2] CRAN (R 3.5.3)
-#  XML            3.98-1.19 2019-03-06 [2] CRAN (R 3.5.3)
-#  yaml           2.2.0     2018-07-25 [2] CRAN (R 3.5.3)
+#  package     * version date       lib source        
+#  assertthat    0.2.1   2019-03-21 [2] CRAN (R 3.5.3)
+#  bookdown      0.9     2018-12-21 [2] CRAN (R 3.5.3)
+#  cli           1.1.0   2019-03-19 [2] CRAN (R 3.5.3)
+#  colorspace    1.4-1   2019-03-18 [2] CRAN (R 3.5.3)
+#  crayon        1.3.4   2017-09-16 [2] CRAN (R 3.5.3)
+#  digest        0.6.18  2018-10-10 [2] CRAN (R 3.5.3)
+#  dplyr         0.8.0.1 2019-02-15 [2] CRAN (R 3.5.3)
+#  evaluate      0.13    2019-02-12 [2] CRAN (R 3.5.3)
+#  farver        1.1.0   2018-11-20 [2] CRAN (R 3.5.3)
+#  fortunes      1.5-4   2016-12-29 [2] CRAN (R 3.5.3)
+#  gganimate     1.0.3   2019-04-02 [2] CRAN (R 3.5.3)
+#  ggplot2       3.1.1   2019-04-07 [2] CRAN (R 3.5.3)
+#  glue          1.3.1   2019-03-12 [2] CRAN (R 3.5.3)
+#  gtable        0.3.0   2019-03-25 [2] CRAN (R 3.5.3)
+#  hms           0.4.2   2018-03-10 [2] CRAN (R 3.5.3)
+#  htmltools     0.3.6   2017-04-28 [2] CRAN (R 3.5.3)
+#  inline        0.3.15  2018-05-18 [2] CRAN (R 3.5.3)
+#  knitr         1.22    2019-03-08 [2] CRAN (R 3.5.3)
+#  lazyeval      0.2.2   2019-03-15 [2] CRAN (R 3.5.3)
+#  magick        2.0     2018-10-05 [2] CRAN (R 3.5.3)
+#  magrittr      1.5     2014-11-22 [2] CRAN (R 3.5.3)
+#  munsell       0.5.0   2018-06-12 [2] CRAN (R 3.5.3)
+#  pillar        1.3.1   2018-12-15 [2] CRAN (R 3.5.3)
+#  pkgconfig     2.0.2   2018-08-16 [2] CRAN (R 3.5.3)
+#  plyr          1.8.4   2016-06-08 [2] CRAN (R 3.5.3)
+#  prettyunits   1.0.2   2015-07-13 [2] CRAN (R 3.5.3)
+#  progress      1.2.0   2018-06-14 [2] CRAN (R 3.5.3)
+#  purrr         0.3.2   2019-03-15 [2] CRAN (R 3.5.3)
+#  R6            2.4.0   2019-02-14 [2] CRAN (R 3.5.3)
+#  Rcpp          1.0.1   2019-03-17 [2] CRAN (R 3.5.3)
+#  rlang         0.3.4   2019-04-07 [2] CRAN (R 3.5.3)
+#  rmarkdown     1.12    2019-03-14 [2] CRAN (R 3.5.3)
+#  rstudioapi    0.10    2019-03-19 [2] CRAN (R 3.5.3)
+#  scales        1.0.0   2018-08-09 [2] CRAN (R 3.5.3)
+#  sessioninfo   1.1.1   2018-11-05 [2] CRAN (R 3.5.3)
+#  stringi       1.4.3   2019-03-12 [2] CRAN (R 3.5.3)
+#  stringr       1.4.0   2019-02-10 [2] CRAN (R 3.5.3)
+#  tibble        2.1.1   2019-03-16 [2] CRAN (R 3.5.3)
+#  tidyselect    0.2.5   2018-10-11 [2] CRAN (R 3.5.3)
+#  tweenr        1.0.1   2018-12-14 [2] CRAN (R 3.5.3)
+#  withr         2.1.2   2018-03-15 [2] CRAN (R 3.5.3)
+#  xfun          0.6     2019-04-02 [2] CRAN (R 3.5.3)
+#  yaml          2.2.0   2018-07-25 [2] CRAN (R 3.5.3)
 # 
 # [1] /home/sv/R/x86_64-pc-linux-gnu-library/3.5
 # [2] /usr/local/lib/R/site-library
